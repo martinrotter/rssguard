@@ -1437,22 +1437,22 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
       <source>Rearrange subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+      <translation>Réorganiser les sous-catégories par ordre alphabétique</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
       <source>Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>Voulez-vous vraiment réorganiser les sous-dossiers des éléments sélectionnés par ordre alphabétique ? Cette action ne peut pas être annulée.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="729"/>
       <source>Rearrange feeds alphabetically</source>
-      <translation type="unfinished">Rearrange feeds alphabetically</translation>
+      <translation>Réarranger les flux par ordre alphabétique</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="730"/>
       <source>Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>Voulez-vous vraiment réorganiser les sous-dossiers des éléments sélectionnés par ordre alphabétique ? Cette action ne peut pas être annulée.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
@@ -2726,16 +2726,16 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
       <source>About source webpages</source>
-      <translation type="unfinished">About source webpages</translation>
+      <translation>A propos des pages web sources</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="211"/>
       <source>When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
 
 Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</source>
-      <translation type="unfinished">When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+      <translation>Lorsque cette option est activée, la sélection d'un article charge sa page web source dans RSS Guard au lieu du contenu de l'article fourni par le flux. La page Web peut contenir différents textes, images, médias ou mises en forme.
 
-Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</translation>
+Les pièces jointes fournies par le flux sont séparées de la page Web et peuvent ne pas y apparaître. Les pièces jointes lisibles restent disponibles à partir du menu du boutton du lecteur multimédia lorsque le support du lecteur multimédia est activé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="226"/>
@@ -2825,7 +2825,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
       <source>Open source webpage instead of RSS Guard article preview</source>
-      <translation type="unfinished">Open source webpage instead of RSS Guard article preview</translation>
+      <translation>Ouvrir la page Web source à la place de l'aperçu de l'article RSS Guard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
@@ -3673,25 +3673,25 @@ selectionné d&apos;une manière &amp;récursive</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>&amp;Copy article data...</source>
-      <translation type="unfinished">&amp;Copy article data...</translation>
+      <translation>&amp;Copier les données de l'article...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Choose the format and copy selected article data to the clipboard</source>
-      <translation type="unfinished">Choose the format and copy selected article data to the clipboard</translation>
+      <translation>Choisissez le format et copiez les données d'articles sélectionnées dans le presse-papiers</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Copy article data (&amp;no dialog)</source>
-      <translation type="unfinished">Copy article data (&amp;no dialog)</translation>
+      <translation>Copier les données de l'article (&amp;sans dialogue)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>Copy selected article data using the saved format without opening the dialog</source>
-      <translation type="unfinished">Copy selected article data using the saved format without opening the dialog</translation>
+      <translation>Copier les données d'articles sélectionnées en utilisant le format enregistré sans ouvrir la boîte de dialogue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="878"/>
@@ -6181,12 +6181,12 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="49"/>
       <source>Attachment %1</source>
-      <translation type="unfinished">Attachment %1</translation>
+      <translation>Pièce jointe %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="56"/>
       <source>%1 (%2)</source>
-      <translation type="unfinished">%1 (%2)</translation>
+      <translation>%1 (%2)</translation>
     </message>
   </context>
   <context>
@@ -6808,7 +6808,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>Play attachment</source>
-      <translation type="unfinished">Play attachment</translation>
+      <translation>Lire la pièce jointe</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="836"/>
@@ -7734,7 +7734,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
       <source>Play link in media player</source>
-      <translation type="unfinished">Play link in media player</translation>
+      <translation>Lire le lien dans le lecteur multimédia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
@@ -7967,22 +7967,22 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="86"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Déjà en cours d'exécution</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="87"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>L'application est déjà en cours d'exécution.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="115"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>Impossible d'ajouter le flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="116"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Le flux ne peut pas être ajouté car il n'y aucun compte actif pouvant ajouter des flux.</translation>
     </message>
   </context>
   <context>
@@ -11399,7 +11399,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>Play current URL in media player</source>
-      <translation type="unfinished">Play current URL in media player</translation>
+      <translation>Lire l'URL actuelle dans le lecteur multimédia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
