@@ -56,37 +56,37 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="549"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="573"/>
       <source>Output directory is not writable.</source>
       <translation>De uitvoermap is niet beschrijfbaar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="111"/>
       <source>Initializing application...</source>
       <translation>Applicatie initialiseren...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="136"/>
       <source>Initializing application services...</source>
       <translation>Applicatiediensten initialiseren...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="163"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="169"/>
       <source>Loading appearance...</source>
       <translation>Uiterlijk laden...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="169"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="175"/>
       <source>Preparing the application...</source>
       <translation>Applicatie voorbereiden...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="557"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Het instellingenbestand is niet gekopieerd naar de uitvoermap.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="600"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Herstel van de instellingen is niet gestart. Zorg ervoor dat de uitvoermap beschrijfbaar is.</translation>
     </message>
@@ -478,12 +478,12 @@ Aantal uitgeschakelde feeds: %3</translation>
   <context>
     <name>DatabaseDriver</name>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="159"/>
       <source>this database cannot be used because it comes from too old major app version</source>
       <translation>deze database kan niet worden gebruikt omdat het afkomstig is van een te oude versie van de applicatie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="155"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="166"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
       <translation>databaseschema is te nieuw, toepassing vereist &lt;= %1 maar %2 is geïnstalleerd</translation>
     </message>
@@ -512,12 +512,12 @@ Probeer de gebruikte databasenaam in de instellingen aan te passen en probeer he
       <translation>Verbinding met je database werd niet gemaakt fout: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="85"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="86"/>
       <source>Cannot use database</source>
       <translation>Kan databank niet gebruiken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="86"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="87"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
       <translation>Applicatie kan niet starten omdat er een probleem is met DB: %1.</translation>
     </message>
@@ -803,37 +803,37 @@ Item ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="220"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="212"/>
       <source>file contains invalid JSON: %1</source>
       <translation>bestand bevat ongeldige JSON opmaak: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="224"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="216"/>
       <source>file does not contain a filter list</source>
       <translation>bestand bevat geen filterlijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="262"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="254"/>
       <source>full article content is empty, likely due to required cookies or other problem</source>
       <translation>volledige artikelinhoud is leeg, waarschijnlijk als gevolg van vereiste cookies of andere problemen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="354"/>
       <source>Cannot start database transaction when removing article filter.</source>
       <translation>Kan de database transactie niet starten tijdens het verwijderen van het artikelfilter.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="370"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>Cannot commit database transaction when removing article filter.</source>
       <translation>Kan database transactie niet uitvoeren tijdens het verwijderen van artikel filter.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="556"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="548"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Automatisch downloaden van sommige feeds-artikelen starten</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="557"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="549"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>automatisch nieuwe artikelen downloaden voor %n feed.</numerusform>
@@ -841,32 +841,32 @@ Item ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="583"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="575"/>
       <source>Some feeds have errors</source>
       <translation>Sommige feeds bevatten een fout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="584"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="576"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>Bij het ophalen van sommige feeds ging iets mis.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="136"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="128"/>
       <source>Cannot fetch articles at this point</source>
       <translation>Kan op dit moment geen artikelen ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="86"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="78"/>
       <source>Not fetched on startup</source>
       <translation>Niet opgehaald tijdens opstarten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="87"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="79"/>
       <source>Fetching of feeds on app startup was skipped because auto-fetching is paused.</source>
       <translation>Ophalen van feeds bij het opstarten van de app is overgeslagen omdat automatisch ophalen is gepauzeerd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="137"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="129"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
       <translation>U kunt nu geen nieuwe artikelen ophalen omdat er een andere kritieke bewerking aan de gang is.</translation>
     </message>
@@ -1220,210 +1220,210 @@ Item ID: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="352"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="353"/>
       <source>Cannot edit item</source>
       <translation>Kan item niet bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="473"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="655"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="655"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="474"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
       <source>Cannot delete item</source>
       <translation>Kan item niet verwijderen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="353"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="354"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>Het geselecteerde item kan niet worden bewerkt omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="181"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="182"/>
       <source>Selected account does not support adding of new folders.</source>
       <translation>Dit account heeft geen ondersteuning voor het toevoegen van mappen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="266"/>
       <source>Do you really want to purge all non-important articles from selected feeds?</source>
       <translation>Weet u zeker dat u alle niet-ster gemarkeerde artikelen uit geselecteerde feeds wilt verwijderen?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="474"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="475"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>Het geselecteerde item kan niet worden verwijderd omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="236"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="602"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="602"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="237"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="603"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="603"/>
       <source>Are you sure?</source>
       <translation>Weet je het zeker?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="164"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Dit account heeft geen ondersteuning voor het toevoegen van feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="237"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="238"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Weet je zeker dat je alle artikelen van de geselecteerde items wilt wissen?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="254"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
-      <source>Cannot clear items</source>
-      <translation>Kan items niet wissen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="340"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="340"/>
+      <source>Cannot clear items</source>
+      <translation>Kan items niet wissen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="256"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="341"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="341"/>
       <source>Failed to clear items: %1.</source>
       <translation>Fout bij het wissen van items: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
       <source>Cannot purge feeds</source>
       <translation>Kan feeds niet opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="282"/>
       <source>Failed to purge feeds: %1.</source>
       <translation>Opschonen van feeds mislukt: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="297"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
       <source>Enable or disable feeds</source>
       <translation>Feed in- of uitschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="299"/>
       <source>You selected multiple feeds to enable/disable them.</source>
       <translation>Je hebt meerdere feeds geselecteerd om ze in- of uit te schakelen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="300"/>
       <source>Do you really want to enable or disable selected feeds?</source>
       <translation>Weet je zeker dat je de geselecteerde feeds wilt in- of uitschakelen?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="373"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="390"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="406"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="390"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="406"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="374"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="391"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="391"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
       <source>Cannot edit items</source>
       <translation>Kan items niet bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="374"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="375"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Geselecteerde items kunnen niet worden bewerkt. Dit wordt (nog) niet ondersteund.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="391"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="392"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 ondersteunt geen batchbewerking van items van meerdere accounts.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="407"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="408"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 ondersteunt geen batchbewerking van items van verschillende types.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="418"/>
       <source>Cannot edit some items</source>
       <translation>Kan sommige items niet bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="418"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="419"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Sommige van de geselecteerde items kunnen niet worden bewerkt. Ga door om de rest te bewerken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="502"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="503"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Sommige items worden nie&amp;t verwijderd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="503"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="504"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Sommige geselecteerde items zullen niet worden verwijderd, omdat deze niet kunnen worden verwijderd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="510"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="511"/>
       <source>feed</source>
       <translation>feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="512"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="513"/>
       <source>category</source>
       <translation>categorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="514"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="515"/>
       <source>account</source>
       <translation>account</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="516"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="517"/>
       <source>label</source>
       <translation>label</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="518"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="519"/>
       <source>probe</source>
       <translation>probe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="521"/>
       <source>item</source>
       <translation>item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="564"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;Artikel:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="566"/>
       <source>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="587"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
       <source>&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;Geselecteerde items:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="589"/>
       <source>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="591"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="592"/>
       <source>&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;onderliggende feeds:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="592"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="593"/>
       <source>&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</source>
       <translation>&lt;li&gt;&lt;b&gt;onderliggende categorieën:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="594"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="595"/>
       <source>&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</source>
       <translation>&lt;p&gt;U staat op het punt de geselecteerde item(s) volledig te verwijderen.&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="600"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="601"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>%n items verwijderen</numerusform>
@@ -1431,63 +1431,83 @@ Item ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="657"/>
       <source>Failed to delete selected item: %1.</source>
       <translation>Kan geselecteerde item niet verwijderen: %1.</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
+      <source>Rearrange subfolders alphabetically</source>
+      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
+      <source>Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</source>
+      <translation type="unfinished">Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="729"/>
+      <source>Rearrange feeds alphabetically</source>
+      <translation type="unfinished">Rearrange feeds alphabetically</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="730"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="752"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="752"/>
+      <source>Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</source>
+      <translation type="unfinished">Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="777"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="777"/>
       <source>Cannot mark item read unread</source>
       <translation>Kan item niet markeren als gelezen ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="731"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="753"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="753"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="756"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="778"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="778"/>
       <source>Failed to mark item read or unread: %1.</source>
       <translation>Item markeren mislukt als gelezen of ongelezen: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="762"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="787"/>
       <source>Mark everything as read</source>
       <translation>Alles als gelezen markeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="763"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="788"/>
       <source>Do you really want to mark everything as read?</source>
       <translation>Wil je echt alles als gelezen markeren?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1140"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1165"/>
       <source>Not supported</source>
       <translation>Niet ondersteund</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1141"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1166"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation>Context menu's met items van meer dan één account worden niet ondersteund.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1165"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1190"/>
       <source>Menu for feed list</source>
       <translation>Menu voor feedlijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1061"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1086"/>
       <source>Feed filtered out</source>
       <translation>Gefilterde feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1087"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation>Je feed is waarschijnlijk uitgefilterd en kan niet worden onthuld.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="162"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="180"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="181"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="181"/>
       <source>Not supported by account</source>
       <translation>Niet ondersteund door een account</translation>
     </message>
@@ -2705,37 +2725,51 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="216"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
+      <source>About source webpages</source>
+      <translation type="unfinished">About source webpages</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="211"/>
+      <source>When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+
+Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</source>
+      <translation type="unfinished">When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+
+Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="226"/>
       <source>Fetch articles using global interval</source>
       <translation>Ophalen van artikelen met behulp van de globale interval</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="218"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="228"/>
       <source>Fetch articles every</source>
       <translation>Ophalen artikelen elke</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="220"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="230"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Artikelen niet automatisch bijwerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="223"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="233"/>
       <source>Left-to-right</source>
       <translation>Links-naar-rechts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="224"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="234"/>
       <source>Right-to-left (everywhere)</source>
       <translation>Rechts-naar-links (overal)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="225"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="235"/>
       <source>Right-to-left (everywhere except feed list)</source>
       <translation>Rechts-naar-links (overal behalve feedlijst)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="227"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="237"/>
       <source>Right-to-left (only in article viewer)</source>
       <translation>Rechts-naar-links (alleen in artikel lezer)</translation>
     </message>
@@ -2746,57 +2780,57 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="254"/>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="220"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="261"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="220"/>
       <source>Common</source>
       <translation>Algemeen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="242"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="249"/>
       <source>Auto-downloading of articles</source>
       <translation>Artikelen automatisch downloaden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="246"/>
-      <source>Open articles via their URL automatically</source>
-      <translation>Artikelen automatisch via de URL openen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="115"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="249"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="256"/>
       <source>Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</source>
       <translation>Deze feed uitsluiten van ongelezen aantallen weergegeven in globale indicatoren, zoals het tray pictogram, taakbalk, applicatie-badge, en venstertitel.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="251"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="121"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="258"/>
       <source>Exclude this feed from global unread counters</source>
       <translation>Deze feed uitsluiten van globale ongelezen tellers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="148"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="151"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="260"/>
       <source>Right-to-left behavior</source>
       <translation>Rechts-naar-links gedrag</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="132"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="252"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="135"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="259"/>
       <source>Disable this feed</source>
       <translation>Deze feed uitschakelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="244"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="251"/>
       <source>Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</source>
       <translation>Selecteer de auto-download strategie voor artikelen van deze feed. Standaard auto-download strategie betekent dat nieuwe artikelen van deze feed worden gedownload op tijd ingesteld in programma-instellingen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="101"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="247"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
+      <source>Open source webpage instead of RSS Guard article preview</source>
+      <translation type="unfinished">Open source webpage instead of RSS Guard article preview</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="254"/>
       <source>Ignore notifications for this feed</source>
       <translation>Negeer notificaties voor deze feed</translation>
     </message>
@@ -2840,12 +2874,12 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="414"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="415"/>
       <source>No possible actions</source>
       <translation>Geen mogelijke acties</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="373"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="374"/>
       <source>No recycle bin</source>
       <translation>Geen prullenbak</translation>
     </message>
@@ -2866,862 +2900,880 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="893"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="904"/>
       <source>&amp;File</source>
       <translation>&amp;Bestand</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="62"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="894"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="905"/>
       <source>&amp;Help</source>
       <translation>&amp;Help</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="895"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="906"/>
       <source>&amp;View</source>
       <translation>Bee&amp;ld</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="896"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="907"/>
       <source>Show/hide</source>
       <translation>Toon/verberg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="898"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="909"/>
       <source>&amp;Tools</source>
       <translation>H&amp;ulpmiddelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="899"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="910"/>
       <source>F&amp;eeds</source>
       <translation>F&amp;eeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="120"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="900"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="911"/>
       <source>&amp;Add item</source>
       <translation>&amp;Voeg item toe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="125"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="901"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="912"/>
       <source>&amp;Move</source>
       <translation>Verplaatsen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="192"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="905"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="916"/>
       <source>Art&amp;icles</source>
       <translation>Art&amp;ikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="233"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="907"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="234"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="918"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Accounts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="269"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
       <source>&amp;Quit</source>
       <translation>Af&amp;sluiten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="272"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>Quit the application.</source>
       <translation>Sluit het programma.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="283"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>&amp;Settings</source>
       <translation>&amp;Instellingen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="285"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="286"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>Display settings of the application.</source>
       <translation>Toon instellingen van het programma.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="294"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
       <source>&amp;About application</source>
       <translation>&amp;Over RSS Guard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="297"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>Displays extra info about this application.</source>
       <translation>Toon extra informatie over RSS Guard.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="311"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Schermvullend</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="313"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>Switch fullscreen mode.</source>
       <translation>Schakel naar schermvullende mode.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="321"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="322"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Alles ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="324"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Fetch all feeds</source>
       <translation>Alle feeds ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="332"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="333"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
       <source>Fetch &amp;selected</source>
       <translation>Ophalen ge&amp;selecteerde items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="335"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
       <source>Fetch selected feeds</source>
       <translation>Geselecteerde feeds ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="356"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="357"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>Mark articles &amp;read</source>
       <translation>Markeer artikelen &amp;gelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>Mark selected articles read</source>
       <translation>Markeer geselecteerde artikelen als gelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="367"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="368"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Mark articles &amp;unread</source>
       <translation>Markeer artikelen als &amp;ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>Mark selected articles unread</source>
       <translation>Markeer geselecteerde artikelen als ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>Switch &amp;importance</source>
       <translation>Wijzig &amp;prioriteit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
       <source>Switch importance of selected articles</source>
       <translation>Prioriteit van geselecteerde artikelen wisselen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="411"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>&amp;Delete articles</source>
       <translation>&amp;Verwijder artikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="343"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="344"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Bewerk geselecteerde onderdeel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="897"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="908"/>
       <source>&amp;Focus</source>
       <translation>&amp;Focus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="135"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="902"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="913"/>
       <source>&amp;Sort</source>
       <translation>&amp;Sorteren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="148"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="903"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="914"/>
       <source>&amp;Expand/collapse</source>
       <translation>&amp;Uitvouwen/Inklappen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="157"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="904"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="915"/>
       <source>&amp;Edit items</source>
       <translation>&amp;Artikelen bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="906"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="227"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="917"/>
       <source>&amp;Recycle bins</source>
       <translation>&amp;Prullenbak(ken)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="908"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="919"/>
       <source>Tabs</source>
       <translation>Tabbladen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Verwijder geselecteerde onderdeel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>Mark selected items &amp;read</source>
       <translation>Als gelezen ma&amp;rkeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="400"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Als &amp;ongelezen markeren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="419"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="420"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
       <source>&amp;Clean selected items</source>
       <translation>Geselecteerde items opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="431"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>Open in &amp;external browser</source>
       <translation>In externe browser &amp;openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="433"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="434"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Open selected articles in external browser</source>
       <translation>Open geselecteerde artikelen in externe browser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="442"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>Open in &amp;internal browser</source>
       <translation>In &amp;interne browser openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="445"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>Open selected articles in internal browser</source>
       <translation>Open geselecteerde artikelen in externe browser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="456"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>No actions available</source>
       <translation>Geen acties beschikbaar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="459"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>No actions are available right now.</source>
       <translation>Er zijn geen acties beschikbaar op dit moment.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="467"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>&amp;Mark all read</source>
       <translation>&amp;Markeer alles als gelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="480"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="481"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>Switch main window visibility</source>
       <translation>Wissel hoofdscherm zichtbaarheid</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="483"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="484"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Verberg hoofdvenster als het zichtbaar is en toon het als het geminimaliseerd is.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="497"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>&amp;Feed list</source>
       <translation>&amp;Feedlijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="508"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="509"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>&amp;Clean all</source>
       <translation>&amp;Alles opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="519"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="520"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>&amp;Next item</source>
       <translation>Volge&amp;nd item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="528"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Vorig item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="535"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="536"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>&amp;Next article</source>
       <translation>&amp;Volgende artikel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="543"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="544"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Vorige artikel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="552"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Check for &amp;updates</source>
       <translation>Op &amp;updates controleren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="555"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Controleer als nieuwe update voor RSS Guard beschikbaar is om te downloaden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="568"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="569"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>&amp;Main menu</source>
       <translation>Hoofd&amp;menu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="571"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="572"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>Hides or displays the main menu.</source>
       <translation>Verberg of toon het hoofdmenu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="579"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="580"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>Report a &amp;bug...</source>
       <translation>Rapporteer een &amp;bug...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="591"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Werkbalk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="593"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Wissel zichtbaarheid van hoofdwerkbalken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="607"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="608"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>&amp;List headers</source>
       <translation>&amp;Kolomnamen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="615"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="616"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Doneren...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="623"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>Display &amp;documentation</source>
       <translation>&amp;Documentatie weergeven</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>&amp;Restore settings</source>
       <translation>Instellingen &amp;herstellen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="639"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Instellingen back-uppen </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="647"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="648"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
       <source>Switch layout</source>
       <translation>Wissel van lay-out </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
       <source>Add new folder</source>
       <translation>Nieuwe map toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="843"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>Article viewer toolbars</source>
       <translation>Werkbalk van berichtweergave</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="858"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
-      <source>&amp;Copy data to clipboard</source>
-      <translation>&amp;Gegevens naar klembord kopiëren</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="857"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="868"/>
       <source>Focus feed search box</source>
       <translation>Focus feeds zoekvak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="901"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="913"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="869"/>
       <source>Focus article search box</source>
       <translation>Focus titels zoekvak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="906"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="859"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="918"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="870"/>
       <source>Scroll &amp;up preview</source>
       <translation>Blader &amp;omhoog voorvertoning</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="911"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="923"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="871"/>
       <source>Scroll &amp;down preview</source>
       <translation>Blader &amp;omlaag voorvertoning</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="916"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="861"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="928"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="872"/>
       <source>Rearrange &amp;subfolders alphabetically</source>
       <translation>Rangschik &amp;submappen alfabetisch</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="965"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="872"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="977"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="883"/>
       <source>Reload &amp;skin</source>
       <translation>&amp;Thema Verversen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="970"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="873"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="982"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="884"/>
       <source>Focus &amp;feed list</source>
       <translation>Focus &amp;feedlijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="975"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="987"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="885"/>
       <source>Focus &amp;article list</source>
       <translation>Focus titelslijst</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="980"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="875"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="992"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="886"/>
       <source>Focus article &amp;preview</source>
       <translation>Focus artikel &amp;voorbeeld tonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="985"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="997"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="887"/>
       <source>&amp;Load all remaining articles</source>
       <translation>&amp;Alle resterende artikelen laden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="990"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="877"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1002"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="888"/>
       <source>Reveal &amp;feed</source>
       <translation>Onthul &amp;feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="995"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="878"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1007"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
       <source>Open feed &amp;homepage</source>
       <translation>Open feed &amp;homepagina</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="998"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1010"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Open homepage of feed belonging to current article</source>
       <translation>Open de homepage van feed die behoort tot het huidige artikel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1006"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="882"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1018"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="893"/>
       <source>&amp;Enable/disable selected feeds</source>
       <translation>&amp;Inschakelen/uitschakelen geselecteerde feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1011"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="883"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1023"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="894"/>
       <source>Edit &amp;feed of selected article</source>
       <translation>Bewerk &amp;feed van geselecteerd artikel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1016"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="884"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1028"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="895"/>
       <source>Mark articles &amp;above read</source>
       <translation>Markeer &amp;bovenstaande artikelen gelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1021"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="885"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1033"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="896"/>
       <source>Mark articles &amp;below read</source>
       <translation>Markeer &amp;onderstaande artikelen gelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1026"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1038"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="897"/>
       <source>Mark articles &amp;above unread</source>
       <translation>Markeer &amp;bovenstaande artikelen ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1031"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="887"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1043"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="898"/>
       <source>Mark articles &amp;below unread</source>
       <translation>Markeer &amp;onderstaande artikelen ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1036"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="888"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1048"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="899"/>
       <source>&amp;Fetch full contents</source>
       <translation>&amp;Volledige inhoud ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1041"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1053"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="900"/>
       <source>New &amp;web browser tab</source>
       <translation>Nieuw &amp;browsertabblad</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1046"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="890"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1058"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="901"/>
       <source>Cleanup &amp;web cache</source>
       <translation>&amp;Web cache opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1051"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1063"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="902"/>
       <source>Delete stored &amp;cookies</source>
       <translation>Opgeslagen &amp;cookies verwijderen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1056"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="892"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1068"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="903"/>
       <source>Toggle ar&amp;ticles read/unread</source>
       <translation>Schakel ar&amp;tikelen gelezen/ongelezen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="655"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>Send via e-mail</source>
       <translation>Verzenden per e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>Mark all articles (without article filters) from selected items as read.</source>
       <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als gelezen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>Mark all articles (without article filters) from selected items as unread.</source>
       <translation>Markeer alle berichten (zonder berichtenfilters) van geselecteerde items als ongelezen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="422"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="423"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>Deletes all articles from selected items.</source>
       <translation>Verwijder alle berichten van geselecteerde items.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Marks all articles in all items read. This does not take article filters into account.</source>
       <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters in acht.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="500"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Hides or shows the list of feeds/folders.</source>
       <translation>Verbergt of toont de lijst met feeds/mappen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="511"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Deletes all articles from all items.</source>
       <translation>Verwijder alle berichten van alle items.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="658"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="659"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>Send selected articles via e-mail</source>
       <translation>Zend geselecteerde artikelen via E-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="666"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="667"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>&amp;Cleanup database</source>
       <translation>&amp;Databank opschonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="674"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="675"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>&amp;Uitklappen/inklappen geselecteerde item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="682"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="683"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>&amp;Add account</source>
       <translation>&amp;Account toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="690"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="691"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>&amp;Restore articles</source>
       <translation>&amp;Artikelen herstellen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="698"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>Alle prullenbakken &amp;herstellen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="706"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="707"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>All&amp;e prullenbakken legen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="715"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
       <source>Next &amp;unread article</source>
       <translation>Volgende &amp;ongelezen artikel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="729"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>Status bar</source>
       <translation>Statusbalk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="736"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="737"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>&amp;Edit selected account</source>
       <translation>Geselecteerde account &amp;bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="744"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Verwijder geselecteerde account</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="762"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Stop ongoing fetching</source>
       <translation>Ophalen stoppen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="770"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="771"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
       <source>Close all tabs</source>
       <translation>Sluit alle tabbladen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
       <source>Close all tabs except current</source>
       <translation>Sluit alle tabbladen behalve deze</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
       <source>Go to &amp;next tab</source>
       <translation>Ga naar &amp;volgend tabblad</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="785"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
       <source>Go to &amp;previous tab</source>
       <translation>Ga naar &amp;vorig tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="793"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="794"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
       <source>&amp;Enable article preview</source>
       <translation>&amp;Artikelvoorbeeld inschakelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="798"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>URL van item &amp;kopiëren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>Article &amp;filters</source>
       <translation>&amp;Filters voor artikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="811"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="812"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
       <source>&amp;Show tree expanders</source>
       <translation>&amp;Structuur uitbreidingen weergeven</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="816"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="817"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>Feeds ophalen met &amp;aangepast beleid voor automatisch downloaden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="825"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Alternate row colors in lists</source>
       <translation>Afwisselende achtergrondkleuren in lijsten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="832"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="833"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Automatisch &amp;item uitbreiden wanneer geselecteerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>Geselecteerd item &amp;recursief uitvouwen/samenvouwen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="853"/>
       <source>Close &amp;current tab</source>
       <translation>Sluit &amp;huidige tabblad</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
+      <source>&amp;Copy article data...</source>
+      <translation type="unfinished">&amp;Copy article data...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
+      <source>Choose the format and copy selected article data to the clipboard</source>
+      <translation type="unfinished">Choose the format and copy selected article data to the clipboard</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
+      <source>Copy article data (&amp;no dialog)</source>
+      <translation type="unfinished">Copy article data (&amp;no dialog)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
+      <source>Copy selected article data using the saved format without opening the dialog</source>
+      <translation type="unfinished">Copy selected article data using the saved format without opening the dialog</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="878"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
       <source>&amp;Sort alphabetically</source>
       <translation>Alfabetisch &amp;sorteren</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="883"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="863"/>
       <source>Move &amp;up</source>
       <translation>&amp;Omhoog verplaatsen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="853"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="888"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="864"/>
       <source>Move to &amp;top</source>
       <translation>Bovenaan plaa&amp;tsen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="893"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>Move &amp;down</source>
       <translation>Omlaag &amp;verplaatsen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="898"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="866"/>
       <source>Move to &amp;bottom</source>
       <translation>Onderaan &amp;plaatsen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="903"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
       <source>Display application &amp;log</source>
       <translation>Toon applicatie&amp;log</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="921"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="873"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>Rangschik &amp;feeds alfabetisch</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="929"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="863"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
       <source>You must add new account first</source>
       <translation>Je moet eerst een nieuw account toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="944"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
       <source>You must add new account first.</source>
       <translation>Je moet eerst een nieuw account toevoegen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="949"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="878"/>
       <source>Edit &amp;child feeds</source>
       <translation>&amp;Onderliggende feeds bewerken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="942"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="868"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="954"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="879"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Bewerk onderliggende feeds (&amp;recursief)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="947"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="869"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="959"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
       <source>Play in &amp;media player</source>
       <translation>Afspelen in &amp;mediaspeler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="955"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="870"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="967"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="881"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation>&amp;Pauzeer automatisch ophalen van feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="871"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="972"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="882"/>
       <source>&amp;Purge selected feeds</source>
       <translation>&amp;Geselecteerde feeds opruimen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="752"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="329"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="329"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="753"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="330"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="330"/>
       <source>Add new feed</source>
       <translation>Nieuwe feed toevoegen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="380"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="381"/>
       <source>No actions possible</source>
       <translation>Acties niet mogelijk</translation>
     </message>
@@ -3736,52 +3788,52 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <translation>De database kan nu niet opgeschoond worden omdat er een kritieke handeling uitgevoerd wordt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="464"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="465"/>
       <source>Stopping feed fetching</source>
       <translation>Stop ophalen van feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="494"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="495"/>
       <source>Play in media player</source>
       <translation>Afspelen in mediaspeler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="495"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="496"/>
       <source>(not supported)</source>
       <translation>(Niet ondersteund)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="570"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="572"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Sluit geopende modaalvensters eerst.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="880"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="883"/>
       <source>Cookies deleted</source>
       <translation>Cookies verwijderd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="880"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="883"/>
       <source>Stored cookies were deleted.</source>
       <translation>Opgeslagen cookies zijn verwijderd.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="889"/>
       <source>Skin reloaded</source>
       <translation>Thema herladen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="887"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="890"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>Let op! deze functie is alleen voor thema debugging. Start de applicatie opnieuw om alles correct geladen te krijgen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="459"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="460"/>
       <source>Fetching common data</source>
       <translation>Algemene gegevens ophalen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="569"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="571"/>
       <source>Close dialogs</source>
       <translation>Dialogen sluiten</translation>
     </message>
@@ -4364,17 +4416,17 @@ Je moet handmatig herstarten.</translation>
   <context>
     <name>FormStandardFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="37"/>
       <source>General</source>
       <translation>Algemeen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="36"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="38"/>
       <source>Network</source>
       <translation>Netwerk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="37"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="39"/>
       <source>Experimental</source>
       <translation>Experimenteel</translation>
     </message>
@@ -6110,6 +6162,19 @@ Logintoken verloopt: %2</translation>
     </message>
   </context>
   <context>
+    <name>MessageEnclosure</name>
+    <message>
+      <location filename="../src/librssguard/core/message.cpp" line="49"/>
+      <source>Attachment %1</source>
+      <translation type="unfinished">Attachment %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/message.cpp" line="56"/>
+      <source>%1 (%2)</source>
+      <translation type="unfinished">%1 (%2)</translation>
+    </message>
+  </context>
+  <context>
     <name>MessagePreviewer</name>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="35"/>
@@ -6142,12 +6207,12 @@ Logintoken verloopt: %2</translation>
       <translation>Alle labels tonen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="282"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="283"/>
       <source>Fetching failed</source>
       <translation>Ophalen mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="283"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="284"/>
       <source>Article cannot be fetched: %1.</source>
       <translation>Artikel kan niet worden opgehaald: %1.</translation>
     </message>
@@ -6705,29 +6770,34 @@ Logintoken verloopt: %2</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="988"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1036"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Probleem bij het starten van de externe e-mailclient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="989"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1037"/>
       <source>External e-mail client could not be started.</source>
       <translation>Externe e-mailclient kon niet worden gestart.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="633"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="650"/>
       <source>Open with external tool</source>
       <translation>Met externe applicatie openen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="382"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="399"/>
       <source>Use source-specific article list columns</source>
       <translation>Gebruik bronspecifieke artikellijst kolommen</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
+      <source>Play attachment</source>
+      <translation type="unfinished">Play attachment</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="788"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="789"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="789"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="836"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="837"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="837"/>
       <source>%n selected article(s)</source>
       <translation>
         <numerusform>%n geselecteerde artikelen</numerusform>
@@ -6735,16 +6805,16 @@ Logintoken verloopt: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="922"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1266"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1266"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="970"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1314"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1314"/>
       <source>Filtering changed</source>
       <translation>Filtering gewijzigd</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="923"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1267"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1267"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="971"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1315"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1315"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>%n artikel(en) over na de toepassing van het filter</numerusform>
@@ -6752,32 +6822,32 @@ Logintoken verloopt: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="954"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1002"/>
       <source>No URL</source>
       <translation>Geen URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="955"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1003"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>Artikel kan niet worden afgespeeld in mediaspeler omdat het geen URL heeft</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1293"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1341"/>
       <source>Cannot run external tool</source>
       <translation>Kan externe applicatie niet starten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1294"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1342"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>Extern programma &apos;%1&apos; kan niet gestart worden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="654"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="671"/>
       <source>No external tools activated</source>
       <translation>Geen externe applicaties geactiveerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="613"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="630"/>
       <source>Context menu for articles</source>
       <translation>Contextmenu voor artikelen</translation>
     </message>
@@ -7324,12 +7394,12 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van belang zijn, prive kunt organiseren en onderzoeken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1971"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1990"/>
       <source>cannot move item of kind %1</source>
       <translation>kan item van soort %1 niet verplaatsen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2112"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2131"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Kan artikelfilter niet invoegen, omdat de huidige database de laatst ingevoegde rij-ID niet kan retourneren.</translation>
     </message>
@@ -7386,7 +7456,7 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
       <translation>JSON probleem: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="489"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="510"/>
       <location filename="../src/librssguard-xmpp/src/parsers/feedparser.cpp" line="423"/>
       <source>Comments</source>
       <translation>Opmerkingen</translation>
@@ -7413,62 +7483,62 @@ Lijst met ondersteunde lezers:</translation>
       <translation>Inloggen mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="687"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="695"/>
       <source>interesting stuff</source>
       <translation>interessante dingen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="690"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="698"/>
       <source>interesting stuff (highlighted)</source>
       <translation>interessante dingen (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="693"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="701"/>
       <source>errored items</source>
       <translation>items met fouten</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="696"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="704"/>
       <source>errored items (highlighted)</source>
       <translation>items met fouten (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="699"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="707"/>
       <source>items with new articles</source>
       <translation>Onderdelen met nieuwe artikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="702"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="710"/>
       <source>items with new articles (highlighted)</source>
       <translation>Onderdelen met nieuwe artikelen (geaccentueerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="705"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="713"/>
       <source>OK-ish color</source>
       <translation>Acceptabele kleur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="708"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="716"/>
       <source>disabled items</source>
       <translation>uitgeschakelde onderdelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="711"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="719"/>
       <source>folders background</source>
       <translation>mappen achtergrond</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="714"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="722"/>
       <source>folders background (highlighted)</source>
       <translation>mappen achtergrond (geselecteerd)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="717"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="725"/>
       <source>article counts</source>
       <translation>aantal artikelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="720"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="728"/>
       <source>article counts (highlighted)</source>
       <translation>aantal artikelen (gemarkeerd)</translation>
     </message>
@@ -7525,7 +7595,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="306"/>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="180"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="180"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="181"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
       <translation>XML is niet goed vormgegeven, %1, lijn %2, kolom %3</translation>
     </message>
@@ -7551,7 +7621,7 @@ Lijst met ondersteunde lezers:</translation>
       <translation>geen RDF feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="187"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="188"/>
       <source>not a RSS feed</source>
       <translation>geen RSS feed</translation>
     </message>
@@ -7646,6 +7716,11 @@ Lijst met ondersteunde lezers:</translation>
       <translation>Open in een nieuwe tabblad</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
+      <source>Play link in media player</source>
+      <translation type="unfinished">Play link in media player</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
       <source>Download</source>
       <translation>Downloaden</translation>
@@ -7699,11 +7774,6 @@ Lijst met ondersteunde lezers:</translation>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="600"/>
       <source>Open in external browser</source>
       <translation>In de externe browser openen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
-      <source>Play in media player</source>
-      <translation>Afspelen in mediaspeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="614"/>
@@ -7878,6 +7948,26 @@ stack: %3</translation>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
       <translation>Nextcloud feeds antwoord bevat geen JSON array van feeds.</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="86"/>
+      <source>Already running</source>
+      <translation type="unfinished">Already running</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="87"/>
+      <source>Application is already running.</source>
+      <translation type="unfinished">Application is already running.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="115"/>
+      <source>Cannot add feed</source>
+      <translation type="unfinished">Cannot add feed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="116"/>
+      <source>Feed cannot be added because there is no active account which can add feeds.</source>
+      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+    </message>
   </context>
   <context>
     <name>QtMultimediaBackend</name>
@@ -7970,42 +8060,42 @@ stack: %3</translation>
   <context>
     <name>QuiteRssImport</name>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="30"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="31"/>
       <source>Select QuiteRSS database file</source>
       <translation>Selecteer QuiteRSS databasebestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="34"/>
       <source>QuiteRSS DB files (%1)</source>
       <translation>QuiteRSS DB bestanden (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="57"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="61"/>
       <source>Import data from QuiteRSS</source>
       <translation>Importeer van QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="64"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="68"/>
       <source>Imported articles from %1 feeds...</source>
       <translation>Artikelen van %1 feeds geïmporteerd...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="168"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="176"/>
       <source>skipping article, it has no title and no URL</source>
       <translation>artikel overslaan, het heeft geen titel en geen URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="307"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="315"/>
       <source>Unnamed item</source>
       <translation>Naamloos item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="417"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="425"/>
       <source>missing QuiteRSS tables %1</source>
       <translation>QuiteRSS tabellen %1 ontbreken</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="423"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="431"/>
       <source>metadata version 17 was expected</source>
       <translation>metadata versie 17 werd verwacht</translation>
     </message>
@@ -8056,37 +8146,37 @@ stack: %3</translation>
   <context>
     <name>RssGuard4Import</name>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="33"/>
       <source>Select RSS Guard 4.x database file</source>
       <translation>Selecteer RSS Guard 4.x databasebestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="36"/>
       <source>RSS Guard 4.x DB files (%1)</source>
       <translation>RSS Guard 4.x DB bestanden (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="63"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="67"/>
       <source>Import data from RSS Guard 4.x</source>
       <translation>Gegevens importeren uit RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="70"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="74"/>
       <source>Imported articles from %1 feeds...</source>
       <translation>Artikelen van %1 feeds geïmporteerd...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="211"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="219"/>
       <source>skipping article, it has no title and no URL</source>
       <translation>artikel overslaan, het heeft geen titel en geen URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="532"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="540"/>
       <source>missing RSS Guard 4.x tables %1</source>
       <translation>ontbrekende RSS Guard 4.x tabellen %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="538"/>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="546"/>
       <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
       <translation>metadata versie 10 werd verwacht, uw DB bestand komt van een te oude RSS-Guard 4.x</translation>
     </message>
@@ -9878,19 +9968,19 @@ Omschrijving: %3</translation>
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="373"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="381"/>
       <source>Written by </source>
       <translation>Geschreven door </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="370"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="374"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="374"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="378"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="382"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="382"/>
       <source>unknown author</source>
       <translation>onbekende auteur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="611"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="619"/>
       <source>file %1 not found</source>
       <translation>bestand %1 niet gevonden</translation>
     </message>
@@ -10719,7 +10809,7 @@ Laad standaardfeeds: Zal kleine set van verschillende interessante feeds laden.<
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="453"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="459"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
       <translation>De pagina kan niet worden geladen met HTTP/%1 fout.</translation>
     </message>
@@ -11267,43 +11357,43 @@ Laatste login: %4</translation>
   <context>
     <name>WebBrowser</name>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="27"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="29"/>
       <source>Navigation panel</source>
       <translation>Navigatiepaneel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
       <source>Open in system web browser</source>
       <translation>Open in standaard webbrowser</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="34"/>
       <source>Reload</source>
       <translation>Vernieuwen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
       <source>Go back</source>
       <translation>Ga terug</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="36"/>
       <source>Go forward</source>
       <translation>Ga vooruit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="39"/>
-      <source>Play in media player</source>
-      <translation>Afspelen in mediaspeler</translation>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
+      <source>Play current URL in media player</source>
+      <translation type="unfinished">Play current URL in media player</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
       <translation>Geen titel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="357"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="414"/>
       <source>Enter URL or search phrase here</source>
       <translation>Voer URL of zoekopdracht hier in</translation>
     </message>
@@ -11311,42 +11401,42 @@ Laatste login: %4</translation>
   <context>
     <name>WebEnginePage</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="78"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="95"/>
       <source>Proxy &apos;%1&apos; authentication</source>
       <translation>Proxy &apos;%1&apos; authenticatie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="109"/>
       <source>PDF printing done</source>
       <translation>PDF afdrukken klaar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="93"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="110"/>
       <source>PDF printing to file &apos;%1&apos; has finished.</source>
       <translation>PDF printen naar bestand &apos;%1&apos; is klaar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="112"/>
       <source>Open destination folder</source>
       <translation>Open doelmap</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="101"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="118"/>
       <source>PDF printing failed</source>
       <translation>PDF printen mislukt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="102"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="119"/>
       <source>PDF printing to file &apos;%1&apos; failed.</source>
       <translation>PDF printen naar bestand &apos;%1&apos; mislukt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="111"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="128"/>
       <source>Website alert</source>
       <translation>Website melding</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="112"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="129"/>
       <source>URL %1 reports this important message: %2</source>
       <translation>URL %1 meldt dit belangrijke bericht: %2</translation>
     </message>
@@ -11354,72 +11444,72 @@ Laatste login: %4</translation>
   <context>
     <name>WebEngineViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="35"/>
       <source>Print to PDF</source>
       <translation>Print als PDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="37"/>
       <source>Save complete webpage</source>
       <translation>Volledige webpagina opslaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="38"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="40"/>
       <source>GPU</source>
       <translation>GPU</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="80"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="85"/>
       <source>Reload (bypass cache)</source>
       <translation>Herladen (cache omzeilen)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="81"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="86"/>
       <source>View source</source>
       <translation>Bron weergeven</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="331"/>
       <source>Save page to PDF file</source>
       <translation>Pagina opslaan als PDF-bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="334"/>
       <source>PDF files (*.pdf)</source>
       <translation>PDF bestanden (*.pdf)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="330"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="348"/>
       <source>Save complete page to file</source>
       <translation>Volledige pagina opslaan in bestand</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="333"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="351"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation>Mime HTML bestanden (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="386"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="404"/>
       <source>Advanced</source>
       <translation>Geavanceerd</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="389"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="407"/>
       <source>Extra actions</source>
       <translation>Extra acties</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="392"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="410"/>
       <source>Page actions</source>
       <translation>Pagina acties</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="399"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="417"/>
       <source>Web attributes</source>
       <translation>Web attributen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="403"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="421"/>
       <source>Diagnostics</source>
       <translation>Diagnostische gegevens</translation>
     </message>
