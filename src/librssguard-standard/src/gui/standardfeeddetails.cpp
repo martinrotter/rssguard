@@ -140,7 +140,7 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                         const QString& password,
                                         const QList<QPair<QByteArray, QByteArray>>& headers,
                                         const QNetworkProxy& custom_proxy,
-                                        NetworkFactory::CookiePolicy cookie_policy) {
+                                        bool ignore_cookies) {
   try {
     auto metadata = StandardFeed::guessFeed(source_type,
                                             source,
@@ -153,7 +153,7 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
                                             headers,
                                             custom_proxy,
                                             NetworkFactory::Http2Status::DontSet,
-                                            cookie_policy);
+                                            ignore_cookies);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata.first->icon());
@@ -183,7 +183,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QList<QPair<QByteArray, QByteArray>>& headers,
                                     const QNetworkProxy& custom_proxy,
                                     NetworkFactory::Http2Status http2_status,
-                                    NetworkFactory::CookiePolicy cookie_policy) {
+                                    bool ignore_cookies) {
   try {
     auto metadata = StandardFeed::guessFeed(source_type,
                                             source,
@@ -196,7 +196,7 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                             headers,
                                             custom_proxy,
                                             http2_status,
-                                            cookie_policy);
+                                            ignore_cookies);
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata.first->icon());

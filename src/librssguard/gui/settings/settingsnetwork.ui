@@ -31,10 +31,7 @@
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbIgnoreAllCookies">
          <property name="text">
-          <string>Ignore cookies by default</string>
-         </property>
-         <property name="toolTip">
-          <string>Individual standard feeds can override this setting.</string>
+          <string>Ignore all cookies</string>
          </property>
         </widget>
        </item>

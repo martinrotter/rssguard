@@ -97,31 +97,14 @@
   <item>
    <layout class="QHBoxLayout" name="horizontalLayout_9">
     <item>
-     <widget class="MultiFeedEditCheckBox" name="m_mcbCookiePolicy"/>
+     <widget class="MultiFeedEditCheckBox" name="m_mcbIgnoreCookies"/>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="0">
-       <widget class="QLabel" name="m_lblCookiePolicy">
-        <property name="text">
-         <string>Cookie handling</string>
-        </property>
-        <property name="buddy">
-         <cstring>m_cmbCookiePolicy</cstring>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="m_cmbCookiePolicy">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QCheckBox" name="m_cbIgnoreCookies">
+      <property name="text">
+       <string>Ignore cookies when downloading this feed</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </item>
@@ -267,8 +250,8 @@
   <tabstop>m_spinUpdateTimeout</tabstop>
   <tabstop>m_mcbEnableHttp2</tabstop>
   <tabstop>m_cmbEnableHttp2</tabstop>
-  <tabstop>m_mcbCookiePolicy</tabstop>
-  <tabstop>m_cmbCookiePolicy</tabstop>
+  <tabstop>m_mcbIgnoreCookies</tabstop>
+  <tabstop>m_cbIgnoreCookies</tabstop>
   <tabstop>m_mcbNetworkProxy</tabstop>
   <tabstop>m_txtNetworkProxyExtraDomains</tabstop>
   <tabstop>m_mcbNetworkProxyExtraDomains</tabstop>

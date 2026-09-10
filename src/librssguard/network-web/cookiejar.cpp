@@ -11,7 +11,6 @@
 #include <QDateTime>
 #include <QDir>
 #include <QNetworkCookie>
-#include <QScopedValueRollback>
 #include <QSettings>
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -28,8 +27,7 @@ CookieJar::CookieJar(WebFactory* parent)
     m_webEngineCookies(nullptr)
 #endif
     ,
-    m_ignoreAllCookies(qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool()),
-    m_bypassGlobalPolicy(false), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
+    m_ignoreAllCookies(false), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   if (parent != nullptr) {
@@ -41,7 +39,8 @@ CookieJar::CookieJar(WebFactory* parent)
   }
 #endif
 
-  // Load stored cookies and expose them to WebEngine only when cookies are enabled globally.
+  // Load all cookies and also set them into WebEngine store.
+  updateSettings();
   loadCookies();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -95,6 +94,10 @@ QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
 }
 
 void CookieJar::loadCookies() {
+  if (m_ignoreAllCookies) {
+    return;
+  }
+
   Settings* sett = qApp->settings();
   auto keys = sett->allKeys(GROUP(Cookies));
   auto current_dt = QDateTime::currentDateTimeUtc();
@@ -113,7 +116,7 @@ void CookieJar::loadCookies() {
           continue;
         }
 
-        if (!insertCookieInternal(cook, !m_ignoreAllCookies, false)) {
+        if (!insertCookieInternal(cook, true, false)) {
           qCriticalNN << LOGSEC_NETWORK << "Failed to load cookie" << QUOTE_W_SPACE(cookie_key) << "from settings.";
           sett->remove(Cookies::ID, cookie_key);
         }
@@ -123,7 +126,6 @@ void CookieJar::loadCookies() {
 }
 
 void CookieJar::saveCookies() {
-  QReadLocker l(&m_lock);
   auto cookies = allCookies();
   Settings* sett = qApp->settings();
   int i = 1;
@@ -156,49 +158,21 @@ void CookieJar::clearCookies() {
 }
 
 QList<QNetworkCookie> CookieJar::cookiesForUrl(const QUrl& url) const {
-  QReadLocker l(&m_lock);
-
   if (m_ignoreAllCookies) {
     return {};
   }
 
-  return QNetworkCookieJar::cookiesForUrl(url);
-}
-
-bool CookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
-  QWriteLocker l(&m_lock);
-
-  if (m_ignoreAllCookies && !m_bypassGlobalPolicy) {
-    return false;
-  }
-
-  return QNetworkCookieJar::setCookiesFromUrl(cookie_list, url);
-}
-
-QList<QNetworkCookie> CookieJar::cookiesForUrlUnrestricted(const QUrl& url) const {
   QReadLocker l(&m_lock);
   return QNetworkCookieJar::cookiesForUrl(url);
 }
 
-bool CookieJar::setCookiesFromUrlUnrestricted(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
+bool CookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
+  if (m_ignoreAllCookies) {
+    return false;
+  }
+
   QWriteLocker l(&m_lock);
-  QScopedValueRollback<bool> bypass(m_bypassGlobalPolicy, true);
   return QNetworkCookieJar::setCookiesFromUrl(cookie_list, url);
-}
-
-bool CookieJar::insertCookieUnrestricted(const QNetworkCookie& cookie) {
-  QWriteLocker l(&m_lock);
-  return insertCookieInternal(cookie, false, true);
-}
-
-bool CookieJar::updateCookieUnrestricted(const QNetworkCookie& cookie) {
-  QWriteLocker l(&m_lock);
-  return updateCookieInternal(cookie, false);
-}
-
-bool CookieJar::deleteCookieUnrestricted(const QNetworkCookie& cookie) {
-  QWriteLocker l(&m_lock);
-  return deleteCookieInternal(cookie, false);
 }
 
 bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_others, bool should_save) {
@@ -261,13 +235,13 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 }
 
 bool CookieJar::insertCookie(const QNetworkCookie& cookie) {
-  QWriteLocker l(&m_lock);
-
-  if (m_ignoreAllCookies && !m_bypassGlobalPolicy) {
-    return false;
+  if (m_ignoreAllCookies) {
+    return {};
   }
-
-  return insertCookieInternal(cookie, false, true);
+  else {
+    QWriteLocker l(&m_lock);
+    return insertCookieInternal(cookie, false, true);
+  }
 }
 
 bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
@@ -276,43 +250,20 @@ bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
 }
 
 void CookieJar::updateSettings() {
-  const bool ignore_all_cookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
-  QWriteLocker l(&m_lock);
+  m_ignoreAllCookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
 
-  m_ignoreAllCookies = ignore_all_cookies;
+  if (m_ignoreAllCookies) {
+    clearCookies();
+  }
 }
 
 bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
-  QWriteLocker l(&m_lock);
-
-  if (m_ignoreAllCookies && !m_bypassGlobalPolicy) {
+  if (m_ignoreAllCookies) {
     return false;
   }
 
+  QWriteLocker l(&m_lock);
   return updateCookieInternal(cookie, false);
-}
-
-SharedCookieJarProxy::SharedCookieJarProxy(CookieJar* shared_jar, QObject* parent)
-  : QNetworkCookieJar(parent), m_sharedJar(shared_jar) {}
-
-QList<QNetworkCookie> SharedCookieJarProxy::cookiesForUrl(const QUrl& url) const {
-  return m_sharedJar == nullptr ? QList<QNetworkCookie>() : m_sharedJar->cookiesForUrlUnrestricted(url);
-}
-
-bool SharedCookieJarProxy::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
-  return m_sharedJar != nullptr && m_sharedJar->setCookiesFromUrlUnrestricted(cookie_list, url);
-}
-
-bool SharedCookieJarProxy::insertCookie(const QNetworkCookie& cookie) {
-  return m_sharedJar != nullptr && m_sharedJar->insertCookieUnrestricted(cookie);
-}
-
-bool SharedCookieJarProxy::updateCookie(const QNetworkCookie& cookie) {
-  return m_sharedJar != nullptr && m_sharedJar->updateCookieUnrestricted(cookie);
-}
-
-bool SharedCookieJarProxy::deleteCookie(const QNetworkCookie& cookie) {
-  return m_sharedJar != nullptr && m_sharedJar->deleteCookieUnrestricted(cookie);
 }
 
 DiscardingCookieJar::DiscardingCookieJar(QObject* parent) : QNetworkCookieJar(parent) {}

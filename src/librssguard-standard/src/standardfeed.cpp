@@ -52,7 +52,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_httpHeaders = {};
   m_dontUseRawXmlSaving = false;
   m_http2Status = NetworkFactory::Http2Status::DontSet;
-  m_cookiePolicy = NetworkFactory::CookiePolicy::UseApplicationSetting;
+  m_ignoreCookies = false;
   m_fetchCommentsEnabled = false;
   m_reportAsBrokenIfEmpty = false;
   m_updateTimeout = 0;
@@ -76,7 +76,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_updateTimeout = other.updateTimeout();
   m_httpHeaders = other.httpHeaders();
   m_http2Status = other.http2Status();
-  m_cookiePolicy = other.cookiePolicy();
+  m_ignoreCookies = other.ignoreCookies();
   m_proxy = other.networkProxy();
   m_useAccountProxy = other.useAccountProxy();
   m_fetchFullArticles = other.fetchFullArticles();
@@ -86,30 +86,13 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  QString cookie_policy;
-
-  switch (cookiePolicy()) {
-    case NetworkFactory::CookiePolicy::IgnoreCookies:
-      cookie_policy = tr("always ignore");
-      break;
-
-    case NetworkFactory::CookiePolicy::AllowCookies:
-      cookie_policy = tr("always allow");
-      break;
-
-    case NetworkFactory::CookiePolicy::UseApplicationSetting:
-    default:
-      cookie_policy = tr("application setting");
-      break;
-  }
-
   QString source_str = tr("Encoding: %1\n"
                           "Type: %2\n"
                           "Post-processing script: %3\n"
                           "Use raw XML saving: %4\n"
                           "Fetch article comments: %5\n"
                           "HTTP/2: %6\n"
-                          "Cookie handling: %7\n"
+                          "Ignore cookies: %7\n"
                           "Report empty feed as broken: %8\n"
                           "Feed timeout: %9\n"
                           "Fetch full articles: %10 (plain text only: %11)")
@@ -119,7 +102,7 @@ QString StandardFeed::additionalTooltip() const {
                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
                               fetchCommentsEnabled() ? tr("yes") : tr("no"),
                               getHttpDescription(),
-                              cookie_policy,
+                              ignoreCookies() ? tr("yes") : tr("no"),
                               reportAsBrokenIfEmpty() ? tr("yes") : tr("no"),
                               updateTimeout() > 0 ? tr("%1 ms").arg(updateTimeout()) : tr("application default"),
                               fetchFullArticles() ? tr("yes") : tr("no"),
@@ -136,12 +119,12 @@ void StandardFeed::setHttp2Status(NetworkFactory::Http2Status status) {
   m_http2Status = status;
 }
 
-NetworkFactory::CookiePolicy StandardFeed::cookiePolicy() const {
-  return m_cookiePolicy;
+bool StandardFeed::ignoreCookies() const {
+  return m_ignoreCookies;
 }
 
-void StandardFeed::setCookiePolicy(NetworkFactory::CookiePolicy cookie_policy) {
-  m_cookiePolicy = cookie_policy;
+void StandardFeed::setIgnoreCookies(bool ignore_cookies) {
+  m_ignoreCookies = ignore_cookies;
 }
 
 bool StandardFeed::reportAsBrokenIfEmpty() const {
@@ -211,7 +194,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
   data[QSL("http_headers")] = httpHeaders();
   data[QSL("http2_status")] = int(http2Status());
-  data[QSL("cookie_policy")] = int(cookiePolicy());
+  data[QSL("ignore_cookies")] = ignoreCookies();
   data[QSL("report_as_broken_if_empty")] = reportAsBrokenIfEmpty();
   data[QSL("update_timeout")] = updateTimeout();
   data[QSL("use_account_proxy")] = useAccountProxy();
@@ -243,25 +226,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
-  if (data.contains(QSL("cookie_policy"))) {
-    const auto cookie_policy = NetworkFactory::CookiePolicy(data[QSL("cookie_policy")].toInt());
-
-    switch (cookie_policy) {
-      case NetworkFactory::CookiePolicy::UseApplicationSetting:
-      case NetworkFactory::CookiePolicy::IgnoreCookies:
-      case NetworkFactory::CookiePolicy::AllowCookies:
-        setCookiePolicy(cookie_policy);
-        break;
-
-      default:
-        setCookiePolicy(NetworkFactory::CookiePolicy::UseApplicationSetting);
-        break;
-    }
-  }
-  else {
-    setCookiePolicy(data[QSL("ignore_cookies")].toBool() ? NetworkFactory::CookiePolicy::IgnoreCookies
-                                                         : NetworkFactory::CookiePolicy::UseApplicationSetting);
-  }
+  setIgnoreCookies(data[QSL("ignore_cookies")].toBool());
   setReportAsBrokenIfEmpty(data[QSL("report_as_broken_if_empty")].toBool());
   setUpdateTimeout(data[QSL("update_timeout")].toInt());
 
@@ -341,7 +306,7 @@ void StandardFeed::fetchMetadataForItself() {
                               httpHeadersToList(httpHeaders()),
                               useAccountProxy() ? account()->networkProxy() : networkProxy(),
                               http2Status(),
-                              cookiePolicy());
+                              ignoreCookies());
 
     // Copy metadata to our object.
     setTitle(metadata.first->title());
@@ -394,7 +359,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                             const QList<QPair<QByteArray, QByteArray>>& http_headers,
                                                             const QNetworkProxy& custom_proxy,
                                                             NetworkFactory::Http2Status http2_status,
-                                                            NetworkFactory::CookiePolicy cookie_policy) {
+                                                            bool ignore_cookies) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
   NetworkResult network_result;
@@ -406,18 +371,20 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
 
-    network_result = NetworkFactory::performNetworkOperation(source,
-                                                             timeout,
-                                                             QByteArray(),
-                                                             feed_contents,
-                                                             QNetworkAccessManager::Operation::GetOperation,
-                                                             headers,
-                                                             false,
-                                                             {},
-                                                             {},
-                                                             custom_proxy,
-                                                             http2_status,
-                                                             cookie_policy);
+    network_result =
+      NetworkFactory::performNetworkOperation(source,
+                                              timeout,
+                                              QByteArray(),
+                                              feed_contents,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers,
+                                              false,
+                                              {},
+                                              {},
+                                              custom_proxy,
+                                              http2_status,
+                                              ignore_cookies ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                             : NetworkFactory::CookiePolicy::UseSharedCookieJar);
 
     // account->resetHostSpacing(host);
 
@@ -509,9 +476,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                      DOWNLOAD_TIMEOUT,
                                      icon_data,
                                      http_headers,
-                                     custom_proxy,
-                                     http2_status,
-                                     cookie_policy) == QNetworkReply::NetworkError::NoError) {
+                                     custom_proxy) == QNetworkReply::NetworkError::NoError) {
       // Icon for feed was downloaded and is stored now in icon_data.
       feed->setIcon(icon_data);
     }

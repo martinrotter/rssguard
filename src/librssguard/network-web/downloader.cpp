@@ -3,8 +3,6 @@
 #include "network-web/downloader.h"
 
 #include "miscellaneous/application.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/settingskeys.h"
 #include "network-web/cookiejar.h"
 #include "network-web/gemini/geminiparser.h"
 #include "network-web/networkfactory.h"
@@ -20,9 +18,10 @@ Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_poli
   : QObject(parent), m_geminiClient(new GeminiClient(this)), m_geminiParser(GeminiParser()), m_activeReply(nullptr),
     m_downloadManager(new SilentNetworkAccessManager(this)), m_geminiTimer(new QTimer(this)),
     m_geminiTimeout(DOWNLOAD_TIMEOUT), m_inputData(QByteArray()), m_inputMultipartData(nullptr),
-    m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()), m_ignoreCookies(false),
-    m_outputDevice(nullptr), m_outputDeviceWriteFailed(false), m_lastOutputData({}),
-    m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
+    m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
+    m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_outputDevice(nullptr),
+    m_outputDeviceWriteFailed(false), m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError),
+    m_lastHttpStatusCode(0), m_lastHeaders({}) {
   m_geminiTimer->setInterval(DOWNLOAD_TIMEOUT);
   m_geminiTimer->setSingleShot(true);
 
@@ -32,16 +31,12 @@ Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_poli
   connect(m_geminiClient, &GeminiClient::requestComplete, this, &Downloader::geminiFinished);
   connect(m_geminiClient, &GeminiClient::networkError, this, &Downloader::geminiError);
 
-  const bool ignore_all_cookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
-  const auto effective_cookie_policy = NetworkFactory::resolveCookiePolicy(cookie_policy, ignore_all_cookies);
-
-  m_ignoreCookies = effective_cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies;
-
   if (m_ignoreCookies) {
     m_downloadManager->setCookieJar(new DiscardingCookieJar(m_downloadManager.data()));
   }
   else {
-    m_downloadManager->setCookieJar(new SharedCookieJarProxy(qApp->web()->cookieJar(), m_downloadManager.data()));
+    m_downloadManager->setCookieJar(qApp->web()->cookieJar());
+    qApp->web()->cookieJar()->setParent(nullptr);
   }
 }
 
