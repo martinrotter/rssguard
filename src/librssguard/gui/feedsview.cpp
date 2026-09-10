@@ -25,6 +25,7 @@
 #include <QContextMenuEvent>
 #include <QHeaderView>
 #include <QMenu>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPointer>
 #include <QScrollBar>
@@ -703,6 +704,18 @@ void FeedsView::moveSelectedItemBottom() {
 }
 
 void FeedsView::rearrangeCategoriesOfSelectedItem() {
+  if (MsgBox::show({},
+                   QMessageBox::Icon::Question,
+                   tr("Rearrange subfolders alphabetically"),
+                   tr("Do you really want to rearrange the subfolders of selected items alphabetically? "
+                      "This action cannot be undone."),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
+  }
+
   for (RootItem* it : selectedItems()) {
     m_sourceModel->sortDirectDescendants(it, RootItem::Kind::Category);
   }
@@ -711,6 +724,18 @@ void FeedsView::rearrangeCategoriesOfSelectedItem() {
 }
 
 void FeedsView::rearrangeFeedsOfSelectedItem() {
+  if (MsgBox::show({},
+                   QMessageBox::Icon::Question,
+                   tr("Rearrange feeds alphabetically"),
+                   tr("Do you really want to rearrange the feeds of selected items alphabetically? "
+                      "This action cannot be undone."),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
+  }
+
   for (RootItem* it : selectedItems()) {
     m_sourceModel->sortDirectDescendants(it, RootItem::Kind::Feed);
   }

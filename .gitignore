@@ -16,6 +16,7 @@
 *.user*
 localization/*qm
 *.TMP
+__pycache__/
 resources/skins/*/*.map
 aqtinstall.log
 .sass-cache
@@ -27,3 +28,4 @@ docs/html
 resources/scripts/qxmpp
 resources/scripts/standalone/*/vendor
 tmp/
+benchmark-results/
