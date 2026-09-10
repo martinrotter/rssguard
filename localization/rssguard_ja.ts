@@ -1433,22 +1433,22 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
       <source>Rearrange subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+      <translation>サブフォルダーをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
       <source>Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>選択したアイテムのサブフォルダーをアルファベット順に並べ替えてもよろしいですか？この操作は元に戻せません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="729"/>
       <source>Rearrange feeds alphabetically</source>
-      <translation type="unfinished">Rearrange feeds alphabetically</translation>
+      <translation>フィードをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="730"/>
       <source>Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>選択したアイテムのフィードを本当にアルファベット順に並べ替えてもよろしいですか？この操作は元に戻せません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
@@ -2719,16 +2719,16 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
       <source>About source webpages</source>
-      <translation type="unfinished">About source webpages</translation>
+      <translation>ソースとなるウェブページについて</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="211"/>
       <source>When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
 
 Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</source>
-      <translation type="unfinished">When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+      <translation>この機能を有効にすると、記事を選択した際に、フィードから提供される記事本文の代わりに、その記事の元となるウェブページがRSS Guard内で読み込まれます。そのウェブページには、フィード上のものとは異なるテキスト、画像、メディア、または書式が含まれている場合があります。
 
-Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</translation>
+フィードに含まれる添付ファイルはウェブページとは別個の存在であり、ウェブページ上には表示されないことがあります。メディアプレーヤーのサポートが有効な場合、再生可能な添付ファイルは、メディアプレーヤーボタンのメニューから引き続き利用できます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="226"/>
@@ -2818,7 +2818,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
       <source>Open source webpage instead of RSS Guard article preview</source>
-      <translation type="unfinished">Open source webpage instead of RSS Guard article preview</translation>
+      <translation>RSS Guardの記事プレビューの代わりに、元のウェブページを表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
@@ -3652,25 +3652,25 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>&amp;Copy article data...</source>
-      <translation type="unfinished">&amp;Copy article data...</translation>
+      <translation>記事データをコピー…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Choose the format and copy selected article data to the clipboard</source>
-      <translation type="unfinished">Choose the format and copy selected article data to the clipboard</translation>
+      <translation>フォーマットを選択し、選択した記事データをクリップボードにコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Copy article data (&amp;no dialog)</source>
-      <translation type="unfinished">Copy article data (&amp;no dialog)</translation>
+      <translation>記事データをコピー (ダイアログなし)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>Copy selected article data using the saved format without opening the dialog</source>
-      <translation type="unfinished">Copy selected article data using the saved format without opening the dialog</translation>
+      <translation>ダイアログを開かずに、保存されたフォーマットを使用して選択した記事データをコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="878"/>
@@ -6153,12 +6153,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="49"/>
       <source>Attachment %1</source>
-      <translation type="unfinished">Attachment %1</translation>
+      <translation>添付ファイル %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="56"/>
       <source>%1 (%2)</source>
-      <translation type="unfinished">%1 (%2)</translation>
+      <translation>%1 (%2)</translation>
     </message>
   </context>
   <context>
@@ -6773,7 +6773,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>Play attachment</source>
-      <translation type="unfinished">Play attachment</translation>
+      <translation>添付ファイルを再生</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="836"/>
@@ -7694,7 +7694,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
       <source>Play link in media player</source>
-      <translation type="unfinished">Play link in media player</translation>
+      <translation>メディアプレーヤーでリンクを再生</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
@@ -7927,22 +7927,22 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="86"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>すでに実行中</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="87"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>アプリケーションはすでに実行中です</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="115"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>フィードを追加できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="116"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>フィードを追加できる有効なアカウントがないため、フィードを追加できません</translation>
     </message>
   </context>
   <context>
@@ -11350,7 +11350,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>Play current URL in media player</source>
-      <translation type="unfinished">Play current URL in media player</translation>
+      <translation>現在の URL をメディアプレーヤーで再生</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
