@@ -38,7 +38,8 @@ class StandardFeed : public Feed {
       Json = 4,
       Sitemap = 5,
       iCalendar = 6,
-      Gemlog = 7
+      Gemlog = 7,
+      WordpressJson = 8
     };
 
     enum class ArticleDateTimeBehavior {

@@ -8,6 +8,7 @@
 #include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
+#include "src/parsers/wordpressjsonparser.h"
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
@@ -261,6 +262,8 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 
     case Type::Json:
       return QSL("JSON 1.0/1.1");
+    case Type::WordpressJson:
+      return QSL("JSON Wordpress 1.0/1.1");
 
     case Type::Sitemap:
       return QSL("Sitemap");
@@ -438,6 +441,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   parsers.append(QSharedPointer<FeedParser>(new IcalParser({})));
   parsers.append(QSharedPointer<FeedParser>(new GemlogParser({})));
   parsers.append(QSharedPointer<FeedParser>(new JsonParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new WordpressJsonParser({})));
   parsers.append(QSharedPointer<FeedParser>(new SitemapParser({})));
 
   for (const QSharedPointer<FeedParser>& parser : parsers) {
@@ -757,6 +761,7 @@ QString StandardFeed::idealHttpAcceptForFeedType(Type type) {
       return QSL("application/atom+xml, application/xml;q=0.9, text/xml;q=0.8");
 
     case Type::Json:
+    case Type::WordpressJson:
       return QSL("application/feed+json, application/json;q=0.9");
 
     case Type::Sitemap:

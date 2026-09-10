@@ -35,6 +35,8 @@ set(SOURCES
   src/parsers/rssparser.h
   src/parsers/sitemapparser.cpp
   src/parsers/sitemapparser.h
+  src/parsers/wordpressjsonparser.cpp
+  src/parsers/wordpressjsonparser.h
   src/standardcategory.cpp
   src/standardcategory.h
   src/standardfeed.cpp
