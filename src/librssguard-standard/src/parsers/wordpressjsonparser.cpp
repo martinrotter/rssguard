@@ -182,9 +182,9 @@ QString WordpressJsonParser::jsonMessageUrl(const QJsonObject& msg_element) cons
   return msg_element[QSL("link")].toString();
 }
 
-// description is named "excerpt" on wordpress context
+// description is named "content" on wordpress context
 QString WordpressJsonParser::jsonMessageDescription(const QJsonObject& msg_element) const {
-  return msg_element[QSL("excerpt")]
+  return msg_element[QSL("content")]
         .toObject()[QSL("rendered")]
         .toString();
 }
