@@ -2725,9 +2725,9 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <source>When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
 
 Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</source>
-      <translation type="unfinished">When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+      <translation>如果启用，选中一篇文章会在RSS Guard中加载其源网页，而不是新闻源提供的文章内容。 网页可能包含不同的文本、图像、媒体或格式。
 
-Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</translation>
+源提供的附件是与网页分开的，可能不会出现在网页中。 当媒体播放器支持启用时，仍可从媒体播放器按钮&apos;的菜单中找到可播放附件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="226"/>
@@ -2817,7 +2817,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
       <source>Open source webpage instead of RSS Guard article preview</source>
-      <translation type="unfinished">Open source webpage instead of RSS Guard article preview</translation>
+      <translation>打开源网页而不是 RSS Guard 文章预览</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
@@ -3651,25 +3651,25 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>&amp;Copy article data...</source>
-      <translation type="unfinished">&amp;Copy article data...</translation>
+      <translation>复制文章数据(&amp;C)……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Choose the format and copy selected article data to the clipboard</source>
-      <translation type="unfinished">Choose the format and copy selected article data to the clipboard</translation>
+      <translation>选择格式并将选定的文章数据复制到剪贴板</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Copy article data (&amp;no dialog)</source>
-      <translation type="unfinished">Copy article data (&amp;no dialog)</translation>
+      <translation>复制文章数据，无对话框(&amp;)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>Copy selected article data using the saved format without opening the dialog</source>
-      <translation type="unfinished">Copy selected article data using the saved format without opening the dialog</translation>
+      <translation>不打开对话框，使用保存的格式复制选中的文章数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="878"/>
@@ -6150,12 +6150,12 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="49"/>
       <source>Attachment %1</source>
-      <translation type="unfinished">Attachment %1</translation>
+      <translation>附件 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="56"/>
       <source>%1 (%2)</source>
-      <translation type="unfinished">%1 (%2)</translation>
+      <translation>%1 (%2)</translation>
     </message>
   </context>
   <context>
@@ -6770,7 +6770,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>Play attachment</source>
-      <translation type="unfinished">Play attachment</translation>
+      <translation>播放附件</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="836"/>
@@ -7691,7 +7691,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
       <source>Play link in media player</source>
-      <translation type="unfinished">Play link in media player</translation>
+      <translation>在媒体播放器中播放链接</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
@@ -7924,22 +7924,22 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="86"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>已在运行</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="87"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>应用程序已经在运行。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="115"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>无法添加订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="116"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>无法添加 Feed，因为没有可用可以添加 Feed 的活跃账户。</translation>
     </message>
   </context>
   <context>
@@ -11347,7 +11347,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>Play current URL in media player</source>
-      <translation type="unfinished">Play current URL in media player</translation>
+      <translation>在媒体播放器中播放当前的 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
