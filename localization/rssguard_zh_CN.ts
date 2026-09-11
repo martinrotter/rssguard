@@ -1432,22 +1432,22 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
       <source>Rearrange subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+      <translation>按字母顺序重新排列子文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
       <source>Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>您真要按字母顺序重新排列选定项目的子文件夹吗？此操作不能撤消。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="729"/>
       <source>Rearrange feeds alphabetically</source>
-      <translation type="unfinished">Rearrange feeds alphabetically</translation>
+      <translation>按字母顺序重新排列订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="730"/>
       <source>Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>您真要按字母顺序重新排列选定项目的源吗？此操作不能撤消。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
@@ -2718,7 +2718,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
       <source>About source webpages</source>
-      <translation type="unfinished">About source webpages</translation>
+      <translation>关于源网页</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="211"/>
