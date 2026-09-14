@@ -1438,7 +1438,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
       <source>Rearrange subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+      <translation>Unterverzeichnisse alphabetisch sortieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
