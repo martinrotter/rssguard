@@ -3390,13 +3390,13 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1007"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
       <source>Open feed &amp;homepage</source>
-      <translation type="unfinished">Open feed &amp;homepage</translation>
+      <translation>Feed-&amp;Webseite öffnen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1010"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Open homepage of feed belonging to current article</source>
-      <translation type="unfinished">Open homepage of feed belonging to current article</translation>
+      <translation>Feed-&amp;Webseite zum aktuellen Artikel öffnen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1018"/>
@@ -3456,7 +3456,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1063"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="902"/>
       <source>Delete stored &amp;cookies</source>
-      <translation type="unfinished">Delete stored &amp;cookies</translation>
+      <translation>Gespeicherte &amp;Cookies löschen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1068"/>
@@ -3815,7 +3815,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="883"/>
       <source>Stored cookies were deleted.</source>
-      <translation type="unfinished">Stored cookies were deleted.</translation>
+      <translation>Gespeicherte Cookies wurden gelöscht.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="889"/>
