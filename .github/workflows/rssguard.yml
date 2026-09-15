@@ -173,7 +173,7 @@ jobs:
 
       - name: Sign Windows binaries
         if: steps.windows-signing.outputs.enabled == 'true'
-        uses: signpath/github-action-submit-signing-request@v2
+        uses: signpath/github-action-submit-signing-request@v3
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
           organization-id: '${{ env.SIGNPATH_ORGANIZATION_ID }}'
@@ -221,7 +221,7 @@ jobs:
 
       - name: Sign Windows installer
         if: steps.windows-signing.outputs.enabled == 'true'
-        uses: signpath/github-action-submit-signing-request@v2
+        uses: signpath/github-action-submit-signing-request@v3
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
           organization-id: '${{ env.SIGNPATH_ORGANIZATION_ID }}'
