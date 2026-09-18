@@ -354,6 +354,7 @@ bool WindowsTaskbar::setThumbnailButtons(WId window_id, const QList<ThumbnailBut
     const ThumbnailButton& source_button = buttons.at(i);
     THUMBBUTTON& native_button = native_buttons[i];
 
+    native_button = {};
     native_button.iId = source_button.m_id;
     native_button.dwMask = THB_FLAGS;
     native_button.dwFlags =
@@ -362,7 +363,9 @@ bool WindowsTaskbar::setThumbnailButtons(WId window_id, const QList<ThumbnailBut
     if (source_button.m_visible) {
       native_button.dwMask |= THB_ICON | THB_TOOLTIP;
       native_button.hIcon = toHicon(source_button.m_icon);
-      source_button.m_tooltip.left(MAX_PATH - 1).toWCharArray(native_button.szTip);
+      const qsizetype tooltip_length = source_button.m_tooltip.left(MAX_PATH - 1).toWCharArray(native_button.szTip);
+
+      native_button.szTip[tooltip_length] = L'\0';
       icons.append(native_button.hIcon);
     }
   }
