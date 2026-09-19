@@ -68,6 +68,8 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                           QVariant::fromValue(int(StandardFeed::Type::Json)));
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Sitemap),
                           QVariant::fromValue(int(StandardFeed::Type::Sitemap)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::WordpressJson),
+                          QVariant::fromValue(int(StandardFeed::Type::WordpressJson)));
 
   // Load available encodings.
   auto encodings = TextFactory::availableEncodings();
