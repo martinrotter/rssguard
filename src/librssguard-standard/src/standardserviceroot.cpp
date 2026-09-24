@@ -281,6 +281,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
   StandardFeed* f = static_cast<StandardFeed*>(feed);
   QString host = QUrl(f->source()).host();
+  QUrl source_url(f->source());
   QByteArray feed_contents;
   int download_timeout = f->updateTimeout();
 
@@ -333,6 +334,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                QVariant::fromValue(network_result));
     }
     else {
+      if (network_result.m_url.isValid()) {
+        source_url = network_result.m_url;
+      }
+
       f->setLastEtag(network_result.m_headers.value(QSL("etag")));
 
       if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
@@ -437,7 +442,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       break;
     
     case StandardFeed::Type::WordpressJson:
-      parser = new WordpressJsonParser(formatted_feed_contents);
+      parser = new WordpressJsonParser(formatted_feed_contents, source_url);
       break;
 
     default:

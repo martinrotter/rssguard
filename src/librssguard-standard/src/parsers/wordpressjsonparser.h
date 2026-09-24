@@ -3,13 +3,15 @@
 #ifndef WORDPRESSJSONPARSER_H
 #define WORDPRESSJSONPARSER_H
 
-#include "src/parsers/jsonparser.h"
+#include "src/parsers/feedparser.h"
 
 #include <librssguard/core/message.h>
 
-class WordpressJsonParser : public FeedParser { // reuse of JsonParser with the wordpress posts/pages format
+#include <QHash>
+
+class WordpressJsonParser : public FeedParser {
   public:
-    explicit WordpressJsonParser(const QString& data);
+    explicit WordpressJsonParser(const QString& data, const QUrl& source_url = {});
     virtual ~WordpressJsonParser();
 
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
@@ -20,18 +22,23 @@ class WordpressJsonParser : public FeedParser { // reuse of JsonParser with the 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 
   protected:
-    //virtual QString feedAuthor() const;
-    virtual QJsonArray jsonMessageElements() override; // override of the json format reader because wordpress return directly a JSON array
+    virtual QJsonArray jsonMessageElements();
 
     virtual QString jsonMessageTitle(const QJsonObject& msg_element) const;
     virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
     virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
     virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> jsonMessageEnclosures(const QJsonObject& msg_element) const;
     virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
-    virtual bool isWordpressItem(const QJsonObject& item) const;
+  private:
+    bool isWordpressItem(const QJsonObject& item) const;
+    QJsonDocument linkedResource(const QString& href) const;
+
+    QUrl m_sourceUrl;
+    mutable QHash<QString, QJsonDocument> m_linkedResources;
 };
 
 #endif // WORDPRESSJSONPARSER_H

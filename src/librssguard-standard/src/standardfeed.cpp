@@ -8,10 +8,10 @@
 #include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
-#include "src/parsers/wordpressjsonparser.h"
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
+#include "src/parsers/wordpressjsonparser.h"
 #include "src/standardserviceroot.h"
 
 #include <librssguard/database/databasefactory.h>
@@ -262,8 +262,9 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
 
     case Type::Json:
       return QSL("JSON 1.0/1.1");
+
     case Type::WordpressJson:
-      return QSL("JSON Wordpress 1.0/1.1");
+      return QSL("JSON Wordpress");
 
     case Type::Sitemap:
       return QSL("Sitemap");
