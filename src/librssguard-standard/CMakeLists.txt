@@ -29,6 +29,8 @@ set(SOURCES
   src/parsers/icalparser.h
   src/parsers/jsonparser.cpp
   src/parsers/jsonparser.h
+  src/parsers/mediawikiparser.cpp
+  src/parsers/mediawikiparser.h
   src/parsers/rdfparser.cpp
   src/parsers/rdfparser.h
   src/parsers/rssparser.cpp

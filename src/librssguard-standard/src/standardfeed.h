@@ -39,7 +39,8 @@ class StandardFeed : public Feed {
       Sitemap = 5,
       iCalendar = 6,
       Gemlog = 7,
-      WordpressJson = 8
+      WordpressJson = 8,
+      MediaWiki = 9
     };
 
     enum class ArticleDateTimeBehavior {

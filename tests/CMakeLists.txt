@@ -13,10 +13,16 @@ function(add_rssguard_test TEST_TARGET)
   )
 
   if(WIN32)
+    set(TEST_EXTRA_PATH "")
+
+    if(TEST_TARGET STREQUAL "test_mediawikiparser")
+      set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
+    endif()
+
     add_test(NAME ${TEST_TARGET}
       COMMAND ${CMAKE_COMMAND} -E env
         "QT_QPA_PLATFORM=offscreen"
-        "PATH=$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+        "PATH=${TEST_EXTRA_PATH}$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
         $<TARGET_FILE:${TEST_TARGET}>
     )
   else()
@@ -74,6 +80,14 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_databasequeries
     database/test_databasequeries.cpp
   )
+
+  add_rssguard_test(test_mediawikiparser
+    standard/test_mediawikiparser.cpp
+  )
+  target_link_libraries(test_mediawikiparser PRIVATE rssguard-standard)
+  target_include_directories(test_mediawikiparser PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard-standard)
+  set_target_properties(test_mediawikiparser PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src/librssguard-standard)
 endif()
 
 if(ENABLE_BENCHMARKS)

@@ -68,6 +68,8 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                           QVariant::fromValue(int(StandardFeed::Type::Json)));
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::WordpressJson),
                           QVariant::fromValue(int(StandardFeed::Type::WordpressJson)));
+  m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::MediaWiki),
+                          QVariant::fromValue(int(StandardFeed::Type::MediaWiki)));
   m_ui.m_cmbType->addItem(StandardFeed::typeToString(StandardFeed::Type::Sitemap),
                           QVariant::fromValue(int(StandardFeed::Type::Sitemap)));
 
@@ -206,7 +208,10 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
     m_ui.m_txtDescription->lineEdit()->setText(metadata.first->description());
     m_ui.m_cmbType->setCurrentIndex(m_ui.m_cmbType->findData(QVariant::fromValue((int)metadata.first->type())));
 
-    if (metadata.second.m_url.isValid()) {
+    if (!metadata.first->source().isEmpty()) {
+      m_ui.m_txtSource->textEdit()->setPlainText(metadata.first->source());
+    }
+    else if (metadata.second.m_url.isValid()) {
       m_ui.m_txtSource->textEdit()->setPlainText(metadata.second.m_url.toString());
     }
 

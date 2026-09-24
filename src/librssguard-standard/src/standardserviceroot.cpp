@@ -11,6 +11,7 @@
 #include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
+#include "src/parsers/mediawikiparser.h"
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
@@ -300,7 +301,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     headers << StandardFeed::httpHeadersToList(f->httpHeaders());
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
-    if (!f->lastEtag().isEmpty()) {
+    if (f->type() != StandardFeed::Type::MediaWiki && !f->lastEtag().isEmpty()) {
       headers.append({QSL("If-None-Match").toLocal8Bit(), f->lastEtag().toLocal8Bit()});
 
       qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(f->lastEtag());
@@ -338,9 +339,20 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
         source_url = network_result.m_url;
       }
 
-      f->setLastEtag(network_result.m_headers.value(QSL("etag")));
+      if (f->type() == StandardFeed::Type::MediaWiki) {
+        // Article JSON must be requested again even when the catalog did not change.
+        f->setLastEtag({});
+      }
+      else {
+        f->setLastEtag(network_result.m_headers.value(QSL("etag")));
+      }
 
       if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
+        if (f->type() == StandardFeed::Type::MediaWiki) {
+          throw FeedFetchException(Feed::Status::ParsingError,
+                                   tr("MediaWiki API returned HTTP 304 without the required JSON catalog."));
+        }
+
         // We very likely used "eTag" before and server reports that
         // content was not modified since.
         qWarningNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed->source())
@@ -445,6 +457,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       parser = new WordpressJsonParser(formatted_feed_contents, source_url);
       break;
 
+    case StandardFeed::Type::MediaWiki:
+      parser = new MediaWikiParser(formatted_feed_contents, source_url);
+      break;
+
     default:
       break;
   }
@@ -495,7 +511,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     throw FeedFetchException(Feed::Status::ContainsNoArticles, tr("feed is working, but is empty"));
   }
 
-  if (f->fetchFullArticles()) {
+  if (f->fetchFullArticles() && f->type() != StandardFeed::Type::MediaWiki) {
     for (Message& msg : messages) {
       QUrl url = msg.m_url;
 

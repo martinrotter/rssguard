@@ -8,6 +8,7 @@
 #include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
+#include "src/parsers/mediawikiparser.h"
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
@@ -266,6 +267,9 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
     case Type::WordpressJson:
       return QSL("JSON Wordpress");
 
+    case Type::MediaWiki:
+      return QSL("MediaWiki");
+
     case Type::Sitemap:
       return QSL("Sitemap");
 
@@ -319,7 +323,10 @@ void StandardFeed::fetchMetadataForItself() {
     setEncoding(metadata.first->encoding());
     setIcon(metadata.first->icon());
 
-    if (metadata.second.m_url.isValid()) {
+    if (!metadata.first->source().isEmpty()) {
+      setSource(metadata.first->source());
+    }
+    else if (metadata.second.m_url.isValid()) {
       setSource(metadata.second.m_url.toString());
     }
 
@@ -441,6 +448,37 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   parsers.append(QSharedPointer<FeedParser>(new RdfParser({})));
   parsers.append(QSharedPointer<FeedParser>(new IcalParser({})));
   parsers.append(QSharedPointer<FeedParser>(new GemlogParser({})));
+  QSharedPointer<FeedParser> mediawiki_parser(new MediaWikiParser({}));
+  mediawiki_parser->setResourceHandler([=](const QUrl& url) {
+    QByteArray data;
+    QList<QPair<QByteArray, QByteArray>> headers = http_headers;
+    headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
+    const NetworkResult result = NetworkFactory::performNetworkOperation(url.toString(),
+                                                                          timeout,
+                                                                          {},
+                                                                          data,
+                                                                          QNetworkAccessManager::Operation::GetOperation,
+                                                                          headers,
+                                                                          false,
+                                                                          {},
+                                                                          {},
+                                                                          custom_proxy,
+                                                                          http2_status,
+                                                                          ignore_cookies
+                                                                            ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                                            : NetworkFactory::CookiePolicy::UseSharedCookieJar);
+    const QUrl final_url = result.m_url;
+    const int default_port = url.scheme() == QSL("https") ? 443 : 80;
+
+    if (result.m_networkError != QNetworkReply::NetworkError::NoError || final_url.scheme() != url.scheme() ||
+        final_url.host().compare(url.host(), Qt::CaseInsensitive) != 0 ||
+        final_url.port(default_port) != url.port(default_port)) {
+      return QByteArray();
+    }
+
+    return data;
+  });
+  parsers.append(mediawiki_parser);
   parsers.append(QSharedPointer<FeedParser>(new JsonParser({})));
   parsers.append(QSharedPointer<FeedParser>(new WordpressJsonParser({})));
   parsers.append(QSharedPointer<FeedParser>(new SitemapParser({})));
@@ -764,6 +802,9 @@ QString StandardFeed::idealHttpAcceptForFeedType(Type type) {
     case Type::Json:
     case Type::WordpressJson:
       return QSL("application/feed+json, application/json;q=0.9");
+
+    case Type::MediaWiki:
+      return QSL("application/json, */*;q=0.5");
 
     case Type::Sitemap:
       return QSL("application/xml, text/xml;q=0.9");

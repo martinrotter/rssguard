@@ -27,6 +27,7 @@ The plugin recognizes:
 * RDF/RSS 1.0
 * JSON Feed 1.0 and 1.1
 * Wordpress JSON Endpoint API for posts and pages
+* MediaWiki category and search pages, including Wikipedia
 * XML sitemaps, including sitemap indexes; compressed sitemaps when enabled by the build
 * iCalendar
 * Gemlogs
@@ -54,6 +55,28 @@ Use **Switch to advanced mode** when you need to add one feed with custom source
 <img alt="Advanced standard feed details" src="../features/images/feed-details.png">
 
 For a normal feed, enter its address in **Source** and select **Fetch metadata**. RSS Guard attempts to detect the format, title, description, encoding and icon.
+
+### MediaWiki category and search feeds
+
+Paste a MediaWiki category page or a search results page into feed discovery. These Wikipedia URLs are examples:
+
+```text
+https://en.wikipedia.org/wiki/Category:General_encyclopedias
+https://en.wikipedia.org/w/index.php?title=Special:Search&search=quantum+computing&fulltext=1
+```
+
+You can also paste a direct MediaWiki Action API URL into discovery or the advanced feed dialog:
+
+```text
+https://en.wikipedia.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category%3AGeneral_encyclopedias
+https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=quantum%20computing
+```
+
+Discovery and **Fetch metadata** convert these inputs to a canonical API URL and save it as the feed source. Category and search feeds include only main-namespace articles.
+
+The category feed shows pages recently added to the category. The search feed shows matching pages ordered by their latest edit. Each result links to its article, and RSS Guard loads the rendered article HTML through the API. If any required API request fails, the whole feed refresh fails; RSS Guard does not download article web pages as a fallback. An article keeps the same feed item identity when it is edited. Search feeds watch a result set; they do not record every edit as a separate item.
+
+Use `fulltext=1` in a Wikipedia search URL so it opens a results page. Without it, Wikipedia can redirect a query directly to a matching article. Results are limited to five API pages or 250 articles per refresh. Loading full HTML may make large feeds slow because each article needs an additional download.
 
 ## Folders and Local Storage
 Feeds can be organized into folders and rearranged freely. Articles, read states and account structure are stored in RSS Guard's own database; they are not synchronized to another feed reader.

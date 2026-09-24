@@ -166,6 +166,10 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
               outline_feed.setAttribute(QSL("version"), QSL("JSON"));
               break;
 
+            case StandardFeed::Type::MediaWiki:
+              outline_feed.setAttribute(QSL("version"), QSL("MediaWiki"));
+              break;
+
             case StandardFeed::Type::Sitemap:
               outline_feed.setAttribute(QSL("version"), QSL("Sitemap"));
               break;
@@ -310,6 +314,9 @@ void FeedsImportExportModel::fillFeedFromFeedLookupData(StandardFeed* feed, cons
     }
     else if (feed_type == QL1S("JSON")) {
       feed->setType(StandardFeed::Type::Json);
+    }
+    else if (feed_type == QL1S("MEDIAWIKI")) {
+      feed->setType(StandardFeed::Type::MediaWiki);
     }
     else if (feed_type == QL1S("ATOM")) {
       feed->setType(StandardFeed::Type::Atom10);

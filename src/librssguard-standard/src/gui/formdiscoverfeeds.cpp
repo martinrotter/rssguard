@@ -8,6 +8,7 @@
 #include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
+#include "src/parsers/mediawikiparser.h"
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
@@ -50,6 +51,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                new IcalParser({}),
                new GemlogParser({}),
                new JsonParser({}),
+               new MediaWikiParser({}),
                new SitemapParser({}),
                new WordpressJsonParser({})};
 
