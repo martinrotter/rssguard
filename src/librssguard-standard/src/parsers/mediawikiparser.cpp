@@ -20,14 +20,18 @@
 #include <utility>
 
 #include <QJsonParseError>
+#include <QMutex>
+#include <QMutexLocker>
 #include <QRegularExpression>
 #include <QSet>
+#include <QThread>
 #include <QUrlQuery>
 
 namespace {
 
   constexpr int MAX_CATALOG_PAGES = 5;
-  constexpr int MAX_ITEMS = 250;
+  constexpr int MAX_ITEMS = 5;
+  constexpr unsigned long API_REQUEST_PAUSE_MS = 1000;
   constexpr int MAX_HTML_BYTES = 2 * 1024 * 1024;
 
   struct Source {
@@ -119,7 +123,7 @@ namespace {
       query.addQueryItem(QSL("srnamespace"), QSL("0"));
       query.addQueryItem(QSL("srsort"), QSL("last_edit_desc"));
       query.addQueryItem(QSL("srprop"), QSL("snippet|timestamp|wordcount"));
-      query.addQueryItem(QSL("srlimit"), QSL("50"));
+      query.addQueryItem(QSL("srlimit"), QString::number(MAX_ITEMS));
     }
     else {
       query.addQueryItem(QSL("cmtitle"), source.m_value);
@@ -127,7 +131,7 @@ namespace {
       query.addQueryItem(QSL("cmprop"), QSL("ids|title|timestamp"));
       query.addQueryItem(QSL("cmsort"), QSL("timestamp"));
       query.addQueryItem(QSL("cmdir"), QSL("desc"));
-      query.addQueryItem(QSL("cmlimit"), QSL("50"));
+      query.addQueryItem(QSL("cmlimit"), QString::number(MAX_ITEMS));
     }
 
     url.setQuery(query);
@@ -411,6 +415,8 @@ namespace {
                                                                          {},
                                                                          root->networkProxy());
 
+    QThread::msleep(100);
+
     if (result.m_networkError != QNetworkReply::NetworkError::NoError || !sameOrigin(source.m_apiUrl, result.m_url)) {
       return false;
     }
@@ -485,9 +491,16 @@ namespace {
 
 MediaWikiParser::MediaWikiParser(const QString& data,
                                  const QUrl& source_url,
-                                 std::function<QByteArray(const QUrl&)> resource_handler)
-  : FeedParser(data, DataType::Json), m_sourceUrl(source_url) {
+                                 std::function<QByteArray(const QUrl&)> resource_handler,
+                                 std::function<void()> request_pause)
+  : FeedParser(data, DataType::Json), m_sourceUrl(source_url), m_requestPause(std::move(request_pause)) {
   setResourceHandler(std::move(resource_handler));
+
+  if (!m_requestPause) {
+    m_requestPause = []() {
+      QThread::msleep(API_REQUEST_PAUSE_MS);
+    };
+  }
 }
 
 QList<StandardFeed*> MediaWikiParser::discoverFeeds(ServiceRoot* root,
@@ -598,6 +611,13 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
   QSet<qint64> seen_ids;
   QSet<QString> seen_tokens;
   QJsonObject response = m_json.object();
+  const auto fetch_additional_json = [this](const QUrl& url) {
+    // Serialize supplemental API calls from all MediaWiki feeds in this process.
+    static QMutex request_mutex;
+    QMutexLocker lock(&request_mutex);
+    m_requestPause();
+    return m_resourceHandler(url);
+  };
 
   try {
     for (int page = 0; page < MAX_CATALOG_PAGES && accepted.size() < MAX_ITEMS; ++page) {
@@ -649,7 +669,7 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
         throw ApplicationException(QObject::tr("MediaWiki continuation changed origin."));
       }
 
-      response = parseObject(m_resourceHandler(next));
+      response = parseObject(fetch_additional_json(next));
     }
   }
   catch (const ApplicationException& ex) {
@@ -666,7 +686,7 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
     const QUrl request = parseUrl(source->m_apiUrl, id);
 
     try {
-      const QByteArray data = m_resourceHandler(request);
+      const QByteArray data = fetch_additional_json(request);
 
       if (data.toLower().contains("too many requests")) {
         throw FeedFetchException(Feed::Status::OtherError,

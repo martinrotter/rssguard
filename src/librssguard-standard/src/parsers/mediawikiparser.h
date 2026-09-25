@@ -17,7 +17,8 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
   public:
     explicit MediaWikiParser(const QString& data,
                              const QUrl& source_url = {},
-                             std::function<QByteArray(const QUrl&)> resource_handler = {});
+                             std::function<QByteArray(const QUrl&)> resource_handler = {},
+                             std::function<void()> request_pause = {});
 
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
@@ -38,6 +39,7 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
   private:
     QUrl m_sourceUrl;
     QHash<qint64, QString> m_articleHtml;
+    std::function<void()> m_requestPause;
 };
 
 #endif // MEDIAWIKIPARSER_H

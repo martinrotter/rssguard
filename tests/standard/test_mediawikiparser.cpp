@@ -27,6 +27,7 @@ class TestMediaWikiParser : public QObject {
     void articleApiErrorFailsWholeFeed();
     void htmlGuessProbesPreparedSource();
     void apiRateLimitFailsWholeFeed();
+    void limitsArticlesAndPacesRequests();
 };
 
 void TestMediaWikiParser::categoryHtmlUsesEditUri() {
@@ -72,29 +73,37 @@ void TestMediaWikiParser::searchHtmlDecodesFormQuery() {
 void TestMediaWikiParser::categoryContinuationAndFullHtml() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=categorymembers&cmtitle=Category%3ATest&"
-                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=50"));
+                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=5"));
   const QString first = QSL(
     R"({"continue":{"cmcontinue":"next","continue":"-||"},"query":{"categorymembers":[{"pageid":11,"title":"First","timestamp":"2026-09-24T08:00:00Z"}]}})");
   int catalog_requests = 0;
   int article_requests = 0;
-  MediaWikiParser parser(first, source, [&](const QUrl& request) {
-    const QUrlQuery query(request);
+  int pauses = 0;
+  MediaWikiParser parser(
+    first,
+    source,
+    [&](const QUrl& request) {
+      const QUrlQuery query(request);
 
-    if (query.queryItemValue(QSL("action")) == QSL("parse")) {
-      ++article_requests;
-      const QString id = query.queryItemValue(QSL("pageid"));
-      return QSL(R"({"parse":{"pageid":%1,"text":"<a href='/wiki/Target'>Article %1</a>"}})").arg(id).toUtf8();
-    }
+      if (query.queryItemValue(QSL("action")) == QSL("parse")) {
+        ++article_requests;
+        const QString id = query.queryItemValue(QSL("pageid"));
+        return QSL(R"({"parse":{"pageid":%1,"text":"<a href='/wiki/Target'>Article %1</a>"}})").arg(id).toUtf8();
+      }
 
-    ++catalog_requests;
-    return QByteArray(
-      R"({"query":{"categorymembers":[{"pageid":11,"title":"First","timestamp":"2026-09-24T08:00:00Z"},{"pageid":12,"title":"Second","timestamp":"2026-09-24T07:00:00Z"}]}})");
-  });
+      ++catalog_requests;
+      return QByteArray(
+        R"({"query":{"categorymembers":[{"pageid":11,"title":"First","timestamp":"2026-09-24T08:00:00Z"},{"pageid":12,"title":"Second","timestamp":"2026-09-24T07:00:00Z"}]}})");
+    },
+    [&]() {
+      ++pauses;
+    });
 
   const QList<Message> messages = messagesViaBase(&parser);
   QCOMPARE(messages.size(), 2);
   QCOMPARE(catalog_requests, 1);
   QCOMPARE(article_requests, 2);
+  QCOMPARE(pauses, 3);
   QCOMPARE(messages.at(0).m_customId, QSL("11"));
   QCOMPARE(messages.at(1).m_customId, QSL("12"));
   QVERIFY(messages.at(0).m_contents.contains(QSL("https://example.org/wiki/Target")));
@@ -104,14 +113,18 @@ void TestMediaWikiParser::categoryContinuationAndFullHtml() {
 void TestMediaWikiParser::continuationFailureFailsWholeFeed() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=categorymembers&cmtitle=Category%3ATest&"
-                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=50"));
+                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=5"));
   const QString first = QSL(
     R"({"continue":{"cmcontinue":"next","continue":"-||"},"query":{"categorymembers":[{"pageid":11,"title":"First","timestamp":"2026-09-24T08:00:00Z"}]}})");
   int requests = 0;
-  MediaWikiParser parser(first, source, [&](const QUrl&) {
-    ++requests;
-    return QByteArray("not JSON");
-  });
+  MediaWikiParser parser(
+    first,
+    source,
+    [&](const QUrl&) {
+      ++requests;
+      return QByteArray("not JSON");
+    },
+    []() {});
 
   QVERIFY_EXCEPTION_THROWN(messagesViaBase(&parser), FeedFetchException);
   QCOMPARE(requests, 1);
@@ -120,12 +133,16 @@ void TestMediaWikiParser::continuationFailureFailsWholeFeed() {
 void TestMediaWikiParser::searchCatalogAndFullHtml() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=search&srsearch=quantum%20computing&"
-                        "srnamespace=0&srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=50"));
+                        "srnamespace=0&srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=5"));
   const QString data = QSL(
     R"({"query":{"search":[{"pageid":27,"title":"Quantum computing","timestamp":"2026-09-24T09:00:00Z","snippet":"quantum <span class='searchmatch'>computing</span>"}]}})");
-  MediaWikiParser parser(data, source, [](const QUrl&) {
-    return QByteArray(R"({"parse":{"pageid":27,"text":"<p>Full article</p>"}})");
-  });
+  MediaWikiParser parser(
+    data,
+    source,
+    [](const QUrl&) {
+      return QByteArray(R"({"parse":{"pageid":27,"text":"<p>Full article</p>"}})");
+    },
+    []() {});
 
   const QList<Message> messages = messagesViaBase(&parser);
   QCOMPARE(messages.size(), 1);
@@ -138,7 +155,7 @@ void TestMediaWikiParser::searchCatalogAndFullHtml() {
 void TestMediaWikiParser::directApiDiscovery() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=search&srsearch=quantum%20computing&"
-                        "srnamespace=0&srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=50"));
+                        "srnamespace=0&srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=5"));
   const QByteArray data(R"({"query":{"search":[]}})");
   MediaWikiParser parser({});
   const QList<StandardFeed*> feeds = parser.discoverFeeds(nullptr, source, false, {{data, source}});
@@ -155,14 +172,18 @@ void TestMediaWikiParser::directApiDiscovery() {
 void TestMediaWikiParser::articleApiErrorFailsWholeFeed() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=search&srsearch=test&srnamespace=0&"
-                        "srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=50"));
+                        "srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=5"));
   const QString data = QSL(
     R"({"query":{"search":[{"pageid":27,"title":"Article","timestamp":"2026-09-24T09:00:00Z","snippet":"A <span class='searchmatch'>match</span> &amp; result"}]}})");
   int requests = 0;
-  MediaWikiParser parser(data, source, [&](const QUrl&) {
-    ++requests;
-    return QByteArray(R"({"error":{"code":"missingtitle","info":"Page unavailable"}})");
-  });
+  MediaWikiParser parser(
+    data,
+    source,
+    [&](const QUrl&) {
+      ++requests;
+      return QByteArray(R"({"error":{"code":"missingtitle","info":"Page unavailable"}})");
+    },
+    []() {});
 
   QVERIFY_EXCEPTION_THROWN(messagesViaBase(&parser), FeedFetchException);
   QCOMPARE(requests, 1);
@@ -192,26 +213,62 @@ void TestMediaWikiParser::htmlGuessProbesPreparedSource() {
 void TestMediaWikiParser::apiRateLimitFailsWholeFeed() {
   const QUrl source(QSL("https://example.org/w/"
                         "api.php?action=query&format=json&formatversion=2&list=categorymembers&cmtitle=Category%3ATest&"
-                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=50"));
+                        "cmnamespace=0&cmprop=ids%7Ctitle%7Ctimestamp&cmsort=timestamp&cmdir=desc&cmlimit=5"));
   const QString data = QSL(
     R"({"query":{"categorymembers":[{"pageid":379406,"title":"Great Soviet Encyclopedia","timestamp":"2025-04-19T01:34:00Z"},{"pageid":379407,"title":"Another article","timestamp":"2025-04-19T01:33:00Z"}]}})");
   int parse_requests = 0;
   int page_requests = 0;
-  MediaWikiParser parser(data, source, [&](const QUrl& request) {
-    const QUrlQuery query(request);
+  MediaWikiParser parser(
+    data,
+    source,
+    [&](const QUrl& request) {
+      const QUrlQuery query(request);
 
-    if (query.queryItemValue(QSL("action")) == QSL("parse")) {
-      ++parse_requests;
-      return QByteArray("You are making too many requests to the API.");
-    }
+      if (query.queryItemValue(QSL("action")) == QSL("parse")) {
+        ++parse_requests;
+        return QByteArray("You are making too many requests to the API.");
+      }
 
-    ++page_requests;
-    return QByteArray("<html><body>This page must not be requested.</body></html>");
-  });
+      ++page_requests;
+      return QByteArray("<html><body>This page must not be requested.</body></html>");
+    },
+    []() {});
 
   QVERIFY_EXCEPTION_THROWN(messagesViaBase(&parser), FeedFetchException);
   QCOMPARE(parse_requests, 1);
   QCOMPARE(page_requests, 0);
+}
+
+void TestMediaWikiParser::limitsArticlesAndPacesRequests() {
+  const QUrl source(QSL("https://example.org/w/api.php?action=query&format=json&list=search&srsearch=test"));
+  const QString data = QSL(R"({"query":{"search":[
+    {"pageid":1,"title":"First","timestamp":"2026-09-24T10:00:00Z"},
+    {"pageid":2,"title":"Second","timestamp":"2026-09-24T09:00:00Z"},
+    {"pageid":3,"title":"Third","timestamp":"2026-09-24T08:00:00Z"},
+    {"pageid":4,"title":"Fourth","timestamp":"2026-09-24T07:00:00Z"},
+    {"pageid":5,"title":"Fifth","timestamp":"2026-09-24T06:00:00Z"},
+    {"pageid":6,"title":"Sixth","timestamp":"2026-09-24T05:00:00Z"}
+  ]}})");
+  int article_requests = 0;
+  int pauses = 0;
+  MediaWikiParser parser(
+    data,
+    source,
+    [&](const QUrl& request) {
+      ++article_requests;
+      const QString id = QUrlQuery(request).queryItemValue(QSL("pageid"));
+      return QSL(R"({"parse":{"pageid":%1,"text":"<p>Article %1</p>"}})").arg(id).toUtf8();
+    },
+    [&]() {
+      ++pauses;
+    });
+
+  const QList<Message> messages = messagesViaBase(&parser);
+  QCOMPARE(messages.size(), 5);
+  QCOMPARE(article_requests, 5);
+  QCOMPARE(pauses, 5);
+  QCOMPARE(messages.first().m_customId, QSL("1"));
+  QCOMPARE(messages.last().m_customId, QSL("5"));
 }
 
 QTEST_MAIN(TestMediaWikiParser)

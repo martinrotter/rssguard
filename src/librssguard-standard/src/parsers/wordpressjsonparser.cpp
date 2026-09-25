@@ -134,37 +134,36 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
 }
 
 GuessedFeedWithIcons WordpressJsonParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
-  if (network_res.m_contentType.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
-      content.simplified().startsWith('[')) {
-    QJsonParseError json_err;
-    QJsonDocument json = QJsonDocument::fromJson(content, &json_err);
-
-    if (json.isNull() && !json_err.errorString().isEmpty()) {
-      throw FeedRecognizedButFailedException(QObject::tr("JSON error '%1'").arg(json_err.errorString()));
-    }
-
-    if (!json.isArray() || json.array().isEmpty()) {
-      throw ApplicationException(QObject::tr("not a WordPress REST API feed"));
-    }
-
-    const QJsonObject first_item = json.array().first().toObject();
-
-    if (!isWordpressItem(first_item)) {
-      throw ApplicationException(QObject::tr("not a WordPress REST API feed"));
-    }
-
-    auto* feed = new StandardFeed();
-
-    feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
-    feed->setType(StandardFeed::Type::WordpressJson);
-    feed->setTitle(network_res.m_url.toString());
-    feed->setSource(network_res.m_url.toString());
-
-    return {feed, {}};
-  }
-  else {
+  if (!network_res.m_contentType.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) &&
+      !content.simplified().startsWith('[')) {
     throw ApplicationException(QObject::tr("not a JSON Wordpress feed"));
   }
+
+  QJsonParseError json_err;
+  QJsonDocument json = QJsonDocument::fromJson(content, &json_err);
+
+  if (json.isNull() && !json_err.errorString().isEmpty()) {
+    throw FeedRecognizedButFailedException(QObject::tr("JSON error '%1'").arg(json_err.errorString()));
+  }
+
+  if (!json.isArray() || json.array().isEmpty()) {
+    throw ApplicationException(QObject::tr("not a WordPress REST API feed"));
+  }
+
+  const QJsonObject first_item = json.array().first().toObject();
+
+  if (!isWordpressItem(first_item)) {
+    throw ApplicationException(QObject::tr("not a WordPress REST API feed"));
+  }
+
+  auto* feed = new StandardFeed();
+
+  feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
+  feed->setType(StandardFeed::Type::WordpressJson);
+  feed->setTitle(network_res.m_url.toString());
+  feed->setSource(network_res.m_url.toString());
+
+  return {feed, {}};
 }
 
 QString WordpressJsonParser::jsonMessageTitle(const QJsonObject& msg_element) const {
@@ -202,6 +201,7 @@ QString WordpressJsonParser::jsonMessageAuthor(const QJsonObject& msg_element) c
   }
 
   const QJsonValue author_id = msg_element.value(QSL("author"));
+
   return author_id.isDouble() ? QString::number(author_id.toInt()) : QString();
 }
 
