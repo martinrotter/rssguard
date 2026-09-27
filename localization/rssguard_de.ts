@@ -825,7 +825,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>Cannot commit database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+      <translation>Datenbanktransaktion kann nicht durchgeführt werden, wenn der Artikelfilter entfernt wird.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="548"/>
@@ -858,7 +858,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="78"/>
       <source>Not fetched on startup</source>
-      <translation type="unfinished">Not fetched on startup</translation>
+      <translation>Beim Start nicht abgerufen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="79"/>
