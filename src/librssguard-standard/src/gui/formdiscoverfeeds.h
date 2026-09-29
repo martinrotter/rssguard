@@ -17,6 +17,7 @@
 class ServiceRoot;
 class RootItem;
 class Category;
+class QSortFilterProxyModel;
 
 class DiscoveredFeedsModel : public AccountCheckModel {
     Q_OBJECT
@@ -29,7 +30,6 @@ class DiscoveredFeedsModel : public AccountCheckModel {
     virtual QVariant data(const QModelIndex& index, int role) const;
 
     RootItem* removeItem(RootItem* it);
-    RootItem* removeItem(const QModelIndex& idx);
 };
 
 class FormDiscoverFeeds : public QDialog {
@@ -116,6 +116,7 @@ class FormDiscoverFeeds : public QDialog {
     QFutureWatcher<QList<StandardFeed*>> m_watcherLookup;
     QHash<QUrl, QList<DocumentWithUrl>> m_documentsByUrl;
     DiscoveredFeedsModel* m_discoveredModel;
+    QSortFilterProxyModel* m_sortModel;
     bool m_deepDiscovery;
     bool m_cancelDiscoveryRequested;
 };

@@ -33,6 +33,7 @@
 #include <QFileInfo>
 #include <QHash>
 #include <QMetaObject>
+#include <QSortFilterProxyModel>
 #include <QtConcurrentMap>
 
 FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
@@ -40,7 +41,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                                      const QString& url,
                                      QWidget* parent)
   : QDialog(parent), m_serviceRoot(service_root), m_discoveredModel(new DiscoveredFeedsModel(this)),
-    m_deepDiscovery(false), m_cancelDiscoveryRequested(false) {
+    m_sortModel(new QSortFilterProxyModel(this)), m_deepDiscovery(false), m_cancelDiscoveryRequested(false) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
@@ -117,9 +118,14 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
   m_ui.m_txtUrl->textEdit()->setPlaceholderText(tr("Enter feed URLs, one URL per line"));
-  m_ui.m_tvFeeds->setModel(m_discoveredModel);
+  m_sortModel->setSourceModel(m_discoveredModel);
+  m_sortModel->setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+  m_sortModel->setSortLocaleAware(true);
+  m_ui.m_tvFeeds->setModel(m_sortModel);
   m_ui.m_tvFeeds->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
   m_ui.m_tvFeeds->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui.m_tvFeeds->setSortingEnabled(true);
+  m_ui.m_tvFeeds->sortByColumn(0, Qt::SortOrder::AscendingOrder);
 
   connect(m_ui.m_tvFeeds->selectionModel(),
           &QItemSelectionModel::selectionChanged,
@@ -217,7 +223,7 @@ void FormDiscoverFeeds::onDiscoveryFinished() {
 }
 
 StandardFeed* FormDiscoverFeeds::selectedFeed() const {
-  RootItem* it = m_discoveredModel->itemForIndex(m_ui.m_tvFeeds->currentIndex());
+  RootItem* it = m_discoveredModel->itemForIndex(m_sortModel->mapToSource(m_ui.m_tvFeeds->currentIndex()));
 
   return qobject_cast<StandardFeed*>(it);
 }
@@ -671,8 +677,6 @@ void FormDiscoverFeeds::addSingleFeed() {
     return;
   }
 
-  auto idx = m_ui.m_tvFeeds->currentIndex();
-
   QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(m_serviceRoot,
                                                                                    targetParent(),
                                                                                    fd->source(),
@@ -680,7 +684,7 @@ void FormDiscoverFeeds::addSingleFeed() {
 
   if (!form_pointer->addEditFeed<StandardFeed>().isEmpty()) {
     // Feed was added, remove from list.
-    if (m_discoveredModel->removeItem(idx) != nullptr) {
+    if (m_discoveredModel->removeItem(fd) != nullptr) {
       // Feed was guessed by the dialog, we do not need this object.
       fd->deleteLater();
     }
@@ -794,21 +798,6 @@ RootItem* DiscoveredFeedsModel::removeItem(RootItem* it) {
   auto idx = indexForItem(it);
 
   if (!idx.isValid() || it == nullptr || it == m_rootItem || it->parent() == nullptr) {
-    return nullptr;
-  }
-
-  beginRemoveRows(idx.parent(), idx.row(), idx.row());
-  it->parent()->removeChild(it);
-  removeCheckState(it);
-  endRemoveRows();
-
-  return it;
-}
-
-RootItem* DiscoveredFeedsModel::removeItem(const QModelIndex& idx) {
-  RootItem* it = itemForIndex(idx);
-
-  if (it == nullptr || it == m_rootItem || it->parent() == nullptr) {
     return nullptr;
   }
 

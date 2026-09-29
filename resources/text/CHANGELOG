@@ -5,6 +5,7 @@ Released on: 2026-09-XX
 Added:
 * Article data can now be copied immediately using the previously selected format.
 * RSS Guard now asks for confirmation before rearranging feeds or subfolders alphabetically. (#2430)
+* Discovered feeds can now be sorted by title or type from the column headers. (#2435)
 * WordPress posts and pages can now be discovered and read through the WordPress REST JSON API. Thanks to @darcosion. (#2433)
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API for up to five newest results per refresh at a paced request rate.
 
