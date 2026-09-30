@@ -58,11 +58,12 @@ For a normal feed, enter its address in **Source** and select **Fetch metadata**
 
 ### MediaWiki category and search feeds
 
-Paste a MediaWiki category page or a search results page into feed discovery. These Wikipedia URLs are examples:
+Paste a MediaWiki category page or a search results page into feed discovery. These Wikipedia and Gentoo Wiki URLs are examples:
 
 ```text
 https://en.wikipedia.org/wiki/Category:General_encyclopedias
 https://en.wikipedia.org/w/index.php?title=Special:Search&search=quantum+computing&fulltext=1
+https://wiki.gentoo.org/wiki/Category:Software
 ```
 
 You can also paste a direct MediaWiki Action API URL into discovery or the advanced feed dialog:

@@ -260,6 +260,61 @@ namespace {
     return {};
   }
 
+  QString configAsJson(const QString& config) {
+    QString json;
+    json.reserve(config.size());
+    bool quoted = false;
+    bool escaped = false;
+
+    for (qsizetype i = 0; i < config.size(); ++i) {
+      const QChar ch = config.at(i);
+
+      if (quoted) {
+        if (escaped) {
+          escaped = false;
+        }
+        else if (ch == QL1C('\\')) {
+          escaped = true;
+        }
+        else if (ch == QL1C('"')) {
+          quoted = false;
+        }
+      }
+      else if (ch == QL1C('"')) {
+        quoted = true;
+      }
+      else if (ch == QL1C('!') && i + 1 < config.size() &&
+               (config.at(i + 1) == QL1C('0') || config.at(i + 1) == QL1C('1'))) {
+        qsizetype before = i - 1;
+        qsizetype after = i + 2;
+
+        while (before >= 0 && config.at(before).isSpace()) {
+          --before;
+        }
+
+        while (after < config.size() && config.at(after).isSpace()) {
+          ++after;
+        }
+
+        // Older MediaWiki pages minify booleans as !0/!1. Only normalize
+        // complete values outside strings; all other JavaScript stays invalid.
+        if (before >= 0 && after < config.size() &&
+            (config.at(before) == QL1C(':') || config.at(before) == QL1C('[') ||
+             config.at(before) == QL1C(',')) &&
+            (config.at(after) == QL1C(',') || config.at(after) == QL1C(']') ||
+             config.at(after) == QL1C('}'))) {
+          json += config.at(i + 1) == QL1C('0') ? QSL("true") : QSL("false");
+          ++i;
+          continue;
+        }
+      }
+
+      json += ch;
+    }
+
+    return json;
+  }
+
   QJsonObject pageConfig(const QString& html) {
     const QStringList markers = {QSL("window.RLCONF"), QSL("RLCONF="), QSL("mw.config.set")};
 
@@ -302,7 +357,8 @@ namespace {
         }
         else if (ch == QL1C('}') && --depth == 0) {
           QJsonParseError error;
-          const QJsonDocument doc = QJsonDocument::fromJson(html.mid(open, i - open + 1).toUtf8(), &error);
+          const QJsonDocument doc =
+            QJsonDocument::fromJson(configAsJson(html.mid(open, i - open + 1)).toUtf8(), &error);
 
           if (error.error == QJsonParseError::NoError && doc.isObject()) {
             return doc.object();

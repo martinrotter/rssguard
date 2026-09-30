@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <src/parsers/mediawikiparser.h>
 
@@ -19,6 +20,11 @@ class TestMediaWikiParser : public QObject {
 
   private slots:
     void categoryHtmlUsesEditUri();
+    void categoryHtmlUsesMinifiedBooleans_data();
+    void categoryHtmlUsesMinifiedBooleans();
+    void minifiedConfigPreservesStrings();
+    void pageConfigRejectsOtherJavascript_data();
+    void pageConfigRejectsOtherJavascript();
     void searchHtmlDecodesFormQuery();
     void categoryContinuationAndFullHtml();
     void continuationFailureFailsWholeFeed();
@@ -46,6 +52,86 @@ void TestMediaWikiParser::categoryHtmlUsesEditUri() {
   QCOMPARE(QUrlQuery(source).queryItemValue(QSL("list")), QSL("categorymembers"));
   QCOMPARE(QUrlQuery(source).queryItemValue(QSL("cmtitle")), QSL("Kategorie:Věda"));
   delete guessed.m_feed;
+}
+
+void TestMediaWikiParser::categoryHtmlUsesMinifiedBooleans_data() {
+  QTest::addColumn<QByteArray>("assignment");
+  QTest::addColumn<QByteArray>("ending");
+  QTest::newRow("gentoo-rlconf") << QByteArray("RLCONF=") << QByteArray(";");
+  QTest::newRow("window-rlconf") << QByteArray("window.RLCONF = ") << QByteArray(";");
+  QTest::newRow("mw-config") << QByteArray("mw.config.set(") << QByteArray(");");
+}
+
+void TestMediaWikiParser::categoryHtmlUsesMinifiedBooleans() {
+  QFETCH(QByteArray, assignment);
+  QFETCH(QByteArray, ending);
+  // Gentoo's MediaWiki 1.35 emits !0/!1 and advertises /api.php through EditURI.
+  const QByteArray html = QByteArray(R"(<meta name="generator" content="MediaWiki 1.35.14">
+    <link rel="EditURI" href="https://wiki.gentoo.org/api.php?action=rsd"><script>)") +
+                          assignment +
+                          QByteArray(R"({"wgBreakFrames":!1,"wgCanonicalSpecialPageName":!1,
+    "wgNamespaceNumber":14,"wgPageName":"Category:Software","wgIsArticle":!0,
+    "wgIsRedirect": !1 ,"nested":{"values":[!0, !1]},"last":!0})") +
+                          ending + QByteArray("</script>");
+  NetworkResult result;
+  result.m_url = QUrl(QSL("https://wiki.gentoo.org/wiki/Category:Software"));
+  int probes = 0;
+  QUrl probed_url;
+  MediaWikiParser parser({}, {}, [&](const QUrl& request) {
+    ++probes;
+    probed_url = request;
+    return QByteArray(R"({"query":{"categorymembers":[]}})");
+  });
+  auto guessed = parser.guessFeed(html, result);
+
+  QCOMPARE(probes, 1);
+  QCOMPARE(probed_url.path(), QSL("/api.php"));
+  QVERIFY(guessed.m_feed != nullptr);
+  const QUrl source(guessed.m_feed->source());
+  QCOMPARE(source.host(), QSL("wiki.gentoo.org"));
+  QCOMPARE(source.path(), QSL("/api.php"));
+  QCOMPARE(QUrlQuery(source).queryItemValue(QSL("cmtitle")), QSL("Category:Software"));
+  delete guessed.m_feed;
+}
+
+void TestMediaWikiParser::minifiedConfigPreservesStrings() {
+  const QByteArray html = R"(<meta name="generator" content="MediaWiki 1.35">
+    <link rel="EditURI" href="/api.php?action=rsd"><script>
+    RLCONF={"wgBreakFrames":!1,"wgNamespaceNumber":14,
+    "wgPageName":"Category:Software !0 !1 \"quoted\" \\path","last":!0};</script>)";
+  NetworkResult result;
+  result.m_url = QUrl(QSL("https://example.org/wiki/Category:Software"));
+  MediaWikiParser parser({});
+  auto guessed = parser.guessFeed(html, result);
+
+  QVERIFY(guessed.m_feed != nullptr);
+  QCOMPARE(QUrlQuery(QUrl(guessed.m_feed->source())).queryItemValue(QSL("cmtitle"), QUrl::FullyDecoded),
+           QSL(R"(Category:Software !0 !1 "quoted" \path)"));
+  delete guessed.m_feed;
+}
+
+void TestMediaWikiParser::pageConfigRejectsOtherJavascript_data() {
+  QTest::addColumn<QByteArray>("expression");
+  QTest::newRow("other-number") << QByteArray("!2");
+  QTest::newRow("longer-number") << QByteArray("!01");
+  QTest::newRow("fraction") << QByteArray("!0.5");
+  QTest::newRow("exponent") << QByteArray("!0e1");
+  QTest::newRow("double-negation") << QByteArray("!!0");
+  QTest::newRow("expression") << QByteArray("!0 && true");
+  QTest::newRow("function-call") << QByteArray("getConfig()");
+}
+
+void TestMediaWikiParser::pageConfigRejectsOtherJavascript() {
+  QFETCH(QByteArray, expression);
+  const QByteArray html = QByteArray(R"(<meta name="generator" content="MediaWiki 1.35">
+    <link rel="EditURI" href="/api.php?action=rsd"><script>RLCONF={"wgBreakFrames":)") +
+                          expression +
+                          QByteArray(R"(,"wgNamespaceNumber":14,"wgPageName":"Category:Software"};</script>)");
+  NetworkResult result;
+  result.m_url = QUrl(QSL("https://example.org/wiki/Category:Software"));
+  MediaWikiParser parser({});
+
+  QVERIFY_EXCEPTION_THROWN(parser.guessFeed(html, result), ApplicationException);
 }
 
 void TestMediaWikiParser::searchHtmlDecodesFormQuery() {
