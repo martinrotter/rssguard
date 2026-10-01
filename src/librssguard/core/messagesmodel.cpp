@@ -691,7 +691,7 @@ QString MessagesModel::formattedDataOfArticles(const QString& line_pattern,
     }
 
     csv.append(article_pattern);
-    csv.append(QSL("\r\n"));
+    csv.append(TextFactory::newline());
   }
 
   return csv;
