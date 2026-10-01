@@ -23,6 +23,7 @@
     <string>@CMAKE_PROJECT_VERSION@</string>
     <key>NSHighResolutionCapable</key>
     <true/>
+    @MACOS_MINIMUM_VERSION_PLIST_ENTRY@
     <key>NSHumanReadableCopyright</key>
     <string>Copyright (C) 2011-@YEAR@ @APP_AUTHOR@</string>
     <key>NSPrincipalClass</key>

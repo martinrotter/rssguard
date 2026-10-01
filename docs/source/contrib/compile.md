@@ -15,6 +15,13 @@ Official CI binaries include the selected viewer type in their file names:
 
 For example, a Windows package name can contain `web-qt6-win10` or `text-qt6-win10`, and a Linux AppImage can contain `web-qt6-linux64` or `text-qt6-linux64`.
 
+## Official macOS Packages
+CI builds both Qt 6 viewers natively on `macos-15-intel` (`x86_64`, suffix `mac64intel`) and `macos-15` (`arm64`, suffix `mac64arm`). The shared build script takes `MACOS_ARCHITECTURE` and `MACOS_PACKAGE_SUFFIX` from the matrix and rejects mismatched runners. It sets the CMake architecture and the Go helper's `GOARCH` separately.
+
+The deployment target is macOS 13.0. ICU is located using `brew --prefix icu4c`; if its installed libraries require a newer macOS or have the wrong architecture, CI builds Homebrew's verified ICU source with the package deployment target. The Qt SDK's CPU slices are checked before compilation.
+
+`validate-macos-package.py` mounts the finished DMG and checks its metadata, required binaries, SQLite driver, CPU slices, dependency paths, minimum OS requirements and code signatures. It runs the shipped application and extractor, then uses a separate CI executable to exercise real application startup and article rendering against a copy of the packaged libraries. SDK library/plugin overrides are removed for these tests. The CI executable is not included in release packages.
+
 ```{warning}
 Note that on macOS, in some cases, you have to self-sign the application via the `codesign` utility to make it run.
 ```

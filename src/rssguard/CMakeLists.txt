@@ -32,6 +32,26 @@ target_link_libraries(app PUBLIC
   rssguard
 )
 
+# This executable reuses real application startup and is never installed or shipped.
+if(APPLE AND ENABLE_PACKAGE_SMOKE_TEST)
+  add_executable(package_smoke_test
+    main.cpp
+    ${CMAKE_SOURCE_DIR}/resources/scripts/github-actions/package-smoke-test.cpp
+  )
+  target_compile_definitions(package_smoke_test PRIVATE
+    RSSGUARD_DLLSPEC=Q_DECL_IMPORT
+    RSSGUARD_PACKAGE_SMOKE_TEST
+  )
+  target_include_directories(package_smoke_test PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  target_link_libraries(package_smoke_test PRIVATE rssguard)
+  set_target_properties(package_smoke_test PROPERTIES
+    OUTPUT_NAME rssguard-package-smoke
+    MACOSX_BUNDLE FALSE
+    BUILD_WITH_INSTALL_RPATH TRUE
+    INSTALL_RPATH "@executable_path/../Frameworks"
+  )
+endif()
+
 if(APPLE)
   set_target_properties(app PROPERTIES
     MACOSX_BUNDLE FALSE

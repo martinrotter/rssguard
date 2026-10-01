@@ -5,6 +5,8 @@ set -e
 os="$1"
 use_qt5="$2"
 webengine_viewer="$3"
+script_directory="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+platform_options=()
 
 if [[ "$use_qt5" == "ON" ]]; then
   USE_QT6="OFF"
@@ -32,8 +34,28 @@ fi
   qtmultimedia="OFF"
 else
   echo "We are building for macOS."
+  if [[ "$(uname -s)" != "Darwin" || "$use_qt5" != "OFF" ]]; then
+    echo "Official macOS packages must be built on macOS with Qt 6."
+    exit 1
+  fi
+
+  case "${MACOS_ARCHITECTURE:-}" in
+    arm64) expected_suffix="mac64arm"; go_architecture="arm64" ;;
+    x86_64) expected_suffix="mac64intel"; go_architecture="amd64" ;;
+    *) echo "Set MACOS_ARCHITECTURE to arm64 or x86_64."; exit 1 ;;
+  esac
+
+  if [[ "$(uname -m)" != "$MACOS_ARCHITECTURE" || "${MACOS_PACKAGE_SUFFIX:-}" != "$expected_suffix" ]]; then
+    echo "The runner, requested architecture and package suffix must agree."
+    exit 1
+  fi
+
+  export GOOS="darwin"
+  export GOARCH="$go_architecture"
+  export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-13.0}"
+  platform_options+=("-DCMAKE_OSX_ARCHITECTURES=$MACOS_ARCHITECTURE" "-DCMAKE_OSX_DEPLOYMENT_TARGET=$MACOSX_DEPLOYMENT_TARGET" "-DENABLE_PACKAGE_SMOKE_TEST=ON")
   is_linux=false
-  os_id="mac64"
+  os_id="$expected_suffix"
   image_suffix="dmg"
   prefix="RSS Guard.app"
 
@@ -72,7 +94,9 @@ else
   QTVERSION="6.11.2"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
-  brew install aqtinstall go
+  brew install aqtinstall go icu4c
+  icu_root="$(bash "$script_directory/prepare-macos-icu.sh" "$MACOS_ARCHITECTURE" "$MACOSX_DEPLOYMENT_TARGET")"
+  platform_options+=("-DICU_ROOT=$icu_root")
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"
@@ -81,6 +105,9 @@ else
   aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtimageformats" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport" "qtwebengine" "qtwebchannel"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
+
+  # clang_64 is Qt's macOS SDK name; check the actual CPU slices it contains.
+  lipo -verify_arch "$MACOS_ARCHITECTURE" "$QTPATH/$QTVERSION/$QTOS/lib/QtCore.framework/Versions/A/QtCore"
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
   export PATH="$QTBIN:$QTPATH/Tools/CMake/CMake.app/Contents/bin:$QTPATH/Tools/Ninja:$PATH"
@@ -107,7 +134,7 @@ echo "New output file name is: $image_full_name"
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="arm64" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DWEB_ARTICLE_VIEWER_WEBENGINE="$webengine_viewer" -DBUILD_XMPP_PLUGIN="$qxmpp" -DUSE_SYSTEM_QXMPP="ON" -DENABLE_TESTING="$unit_tests" -DENABLE_BENCHMARKS="$benchmarks" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
+cmake .. -G Ninja "${platform_options[@]}" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DWEB_ARTICLE_VIEWER_WEBENGINE="$webengine_viewer" -DBUILD_XMPP_PLUGIN="$qxmpp" -DUSE_SYSTEM_QXMPP="ON" -DENABLE_TESTING="$unit_tests" -DENABLE_BENCHMARKS="$benchmarks" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
@@ -146,7 +173,12 @@ else
   test -f "$QT_PLUGIN_PATH/sqldrivers/libqsqlite.dylib"
   find "$QT_PLUGIN_PATH/sqldrivers" -type f ! -name "libqsqlite.dylib" -print -delete
 
-  # Deploy to DMG.
+  # Deploy the CI probe with the same libraries, then keep it out of release packages.
+  cp ./src/rssguard/rssguard-package-smoke "$prefix/Contents/MacOS/"
+  macdeployqt "$prefix" -executable="$prefix/Contents/MacOS/rssguard-package-smoke" -verbose=2
+  mv "$prefix/Contents/MacOS/rssguard-package-smoke" ./rssguard-package-smoke
+
+  # Sign the final bundle after removing the probe, and deploy to DMG.
   macdeployqt "$prefix" -dmg -verbose=2 -codesign=-
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"

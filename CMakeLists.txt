@@ -129,6 +129,7 @@ option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(RUN_GO_MOD_TIDY "Runs 'go mod tidy' when bundling Go-based plugins." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_TESTING "Enable unit tests." OFF)
+option(ENABLE_PACKAGE_SMOKE_TEST "Build the macOS CI package smoke-test executable." OFF)
 option(ENABLE_BENCHMARKS "Enable benchmarks." OFF)
 option(ENABLE_ICU "Enable ICU." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
@@ -242,7 +243,19 @@ if(ENABLE_ICU)
   endif()
 
   if(APPLE AND NOT ICU_ROOT)
-    set(ICU_ROOT "/opt/homebrew/opt/icu4c")
+    find_program(HOMEBREW_EXECUTABLE brew)
+    if(HOMEBREW_EXECUTABLE)
+      execute_process(
+        COMMAND ${HOMEBREW_EXECUTABLE} --prefix icu4c
+        OUTPUT_VARIABLE ICU_ROOT
+        RESULT_VARIABLE ICU_PREFIX_RESULT
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+        ERROR_QUIET
+      )
+      if(NOT ICU_PREFIX_RESULT EQUAL 0)
+        unset(ICU_ROOT)
+      endif()
+    endif()
   endif()
 
   add_compile_definitions(HAS_ICU)
@@ -367,6 +380,11 @@ if(WIN32)
   file(COPY resources/nsis/NSIS.template.in DESTINATION ${CMAKE_BINARY_DIR})
   file(COPY resources/graphics/${CMAKE_PROJECT_NAME}.ico DESTINATION ${CMAKE_BINARY_DIR})
 elseif(APPLE)
+  set(MACOS_MINIMUM_VERSION_PLIST_ENTRY "")
+  if(CMAKE_OSX_DEPLOYMENT_TARGET)
+    set(MACOS_MINIMUM_VERSION_PLIST_ENTRY
+      "<key>LSMinimumSystemVersion</key><string>${CMAKE_OSX_DEPLOYMENT_TARGET}</string>")
+  endif()
   configure_file(
     resources/macosx/Info.plist.in
     ${CMAKE_BINARY_DIR}/Info.plist
