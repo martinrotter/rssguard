@@ -20,15 +20,17 @@ int rssguardMain(int argc, char* argv[]);
 
 namespace {
   const QString marker = QStringLiteral("RSS Guard packaged article smoke test");
+  const char* rendered_variant = nullptr;
 
   void finishSmokeTest(const QString& text, const char* variant) {
-    if (!text.contains(marker)) {
+    if (rendered_variant != nullptr || !text.contains(marker)) {
       return; // An earlier blank-page load may finish before our article.
     }
 
-    std::printf("RSSGUARD_PACKAGE_SMOKE_OK:%s\n", variant);
-    std::fflush(stdout);
-    QCoreApplication::exit(EXIT_SUCCESS);
+    rendered_variant = variant;
+    std::fprintf(stderr, "Packaged %s article rendered; requesting normal application shutdown.\n", variant);
+    // Let the WebEngine callback return before Qt closes windows and unwinds modal dialogs.
+    QTimer::singleShot(0, QCoreApplication::instance(), &QCoreApplication::quit);
   }
 
   void scheduleSmokeTest() {
@@ -79,5 +81,15 @@ void startPackageSmokeTest() {
 }
 
 int main(int argc, char* argv[]) {
-  return rssguardMain(argc, argv);
+  const int result = rssguardMain(argc, argv);
+
+  // rssguardMain destroys the real main window and Application before returning.
+  if (result == EXIT_SUCCESS && rendered_variant != nullptr) {
+    std::printf("RSSGUARD_PACKAGE_SMOKE_OK:%s\n", rendered_variant);
+    std::fflush(stdout);
+    return EXIT_SUCCESS;
+  }
+
+  std::fprintf(stderr, "Packaged viewer did not finish rendering and shutdown successfully (exit code %d).\n", result);
+  return result == EXIT_SUCCESS ? EXIT_FAILURE : result;
 }

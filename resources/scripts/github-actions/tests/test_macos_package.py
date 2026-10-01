@@ -4,6 +4,8 @@ import importlib.util
 import os
 from pathlib import Path
 import plistlib
+import signal
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -78,6 +80,50 @@ class CompatibilityTests(unittest.TestCase):
                     " name @rpath/RSS Guard.framework/RSS Guard (offset 24)\n"
                     "Load command 2\n cmd LC_ID_DYLIB\n name /build/self.dylib (offset 24)\n")
         self.assertEqual(package.dependencies(commands), ["@rpath/RSS Guard.framework/RSS Guard"])
+
+
+class CommandTests(unittest.TestCase):
+    @patch.object(package.subprocess, "run", return_value=subprocess.CompletedProcess(["probe"], 0, "ok", ""))
+    def test_successful_command_returns_output(self, command):
+        self.assertEqual(package.run(["probe"]), "ok")
+
+    @patch.object(package.subprocess, "run", return_value=subprocess.CompletedProcess(["probe"], 7, "", "failure"))
+    def test_failure_reports_exit_code_and_stderr(self, command):
+        with self.assertRaisesRegex(RuntimeError, "exit code 7") as error:
+            package.run(["probe"])
+        self.assertIn("failure", str(error.exception))
+
+    @patch.object(package.subprocess, "run")
+    def test_rendering_success_does_not_hide_shutdown_crash(self, command):
+        command.return_value = subprocess.CompletedProcess(["probe"], -signal.SIGSEGV,
+                                                          "RSSGUARD_PACKAGE_SMOKE_OK:web", "")
+        with self.assertRaisesRegex(RuntimeError, "signal SIGSEGV"):
+            package.run(["probe"])
+
+    @patch.object(package.shutil, "which", return_value="lldb")
+    @patch.object(package.subprocess, "run", return_value=subprocess.CompletedProcess(["lldb"], 0, "backtrace", ""))
+    def test_debugger_uses_fresh_profile_and_captures_all_threads(self, command, which):
+        with tempfile.TemporaryDirectory() as directory:
+            environment = {"PATH": "normal-path"}
+            package.diagnose_viewer_failure(Path("RSS Guard.app/Contents/MacOS/probe"), Path(directory), environment)
+            self.assertTrue((Path(directory) / "debugger-profile/config").is_dir())
+            arguments = command.call_args.args[0]
+            self.assertIn("thread backtrace all", arguments)
+            self.assertIn("process kill", arguments)
+            self.assertEqual(arguments[arguments.index("--data") + 1], str(Path(directory) / "debugger-profile"))
+            self.assertEqual(command.call_args.kwargs["env"], environment)
+
+    @patch.object(package.shutil, "which", return_value=None)
+    @patch.object(package.subprocess, "run")
+    def test_missing_debugger_does_not_mask_original_failure(self, command, which):
+        package.diagnose_viewer_failure(Path("probe"), Path("unused"), {})
+        command.assert_not_called()
+
+    @patch.object(package.shutil, "which", return_value="lldb")
+    @patch.object(package.subprocess, "run", side_effect=subprocess.TimeoutExpired(["lldb"], 60))
+    def test_debugger_timeout_is_best_effort(self, command, which):
+        with tempfile.TemporaryDirectory() as directory:
+            package.diagnose_viewer_failure(Path("probe"), Path(directory), {})
 
 
 class PackageTests(unittest.TestCase):

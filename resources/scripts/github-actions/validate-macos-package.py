@@ -10,6 +10,7 @@ import platform
 import plistlib
 import re
 import shutil
+import signal
 import subprocess
 import tempfile
 
@@ -28,7 +29,13 @@ MACHO_MAGIC = {
 def run(command, **kwargs):
     result = subprocess.run(command, text=True, capture_output=True, timeout=120, **kwargs)
     if result.returncode:
-        raise RuntimeError(f"Command failed: {command}\n{result.stdout}\n{result.stderr}")
+        status = f"exit code {result.returncode}"
+        if result.returncode < 0:
+            try:
+                status = f"signal {signal.Signals(-result.returncode).name} ({result.returncode})"
+            except ValueError:
+                status = f"signal {-result.returncode}"
+        raise RuntimeError(f"Command failed ({status}): {command}\n{result.stdout}\n{result.stderr}")
     return result.stdout
 
 
@@ -177,6 +184,26 @@ def smoke_environment():
     return environment
 
 
+def diagnose_viewer_failure(probe, directory, environment):
+    debugger = shutil.which("lldb")
+    if not debugger:
+        print("LLDB is unavailable; no viewer backtrace can be collected.", flush=True)
+        return
+    # Reproduce with a fresh profile and preserve the original validation failure.
+    profile = directory / "debugger-profile"
+    command = [debugger, "--batch", "--no-lldbinit", "--one-line", "settings set target.disable-aslr false",
+               "--one-line", "run", "--one-line-on-crash", "thread backtrace all",
+               "--one-line-on-crash", "process kill", "--",
+               str(probe), "--data", str(profile), "--debug"]
+    print("Collecting a viewer shutdown backtrace with LLDB:", flush=True)
+    try:
+        (profile / "config").mkdir(parents=True)
+        report = subprocess.run(command, text=True, capture_output=True, timeout=60, env=environment)
+        print(f"LLDB exit code: {report.returncode}\n{report.stdout}\n{report.stderr}", flush=True)
+    except (OSError, subprocess.TimeoutExpired) as error:
+        print(f"Could not collect the viewer backtrace: {error}", flush=True)
+
+
 def smoke_test(app, probe, probe_dependencies, variant, directory):
     environment = smoke_environment()
     executable = app / "Contents/MacOS/rssguard"
@@ -202,7 +229,14 @@ def smoke_test(app, probe, probe_dependencies, variant, directory):
     for name in probe_dependencies:
         check_dependency(name, deployed_probe, copy)
     run(["codesign", "--force", "--sign", "-", str(deployed_probe)])
-    output = run([str(deployed_probe), "--data", str(directory / "viewer-profile"), "--debug"], env=environment)
+    profile = directory / "viewer-profile"
+    # The encryption key is written before settings create their config directory.
+    (profile / "config").mkdir(parents=True)
+    try:
+        output = run([str(deployed_probe), "--data", str(profile), "--debug"], env=environment)
+    except (RuntimeError, subprocess.TimeoutExpired):
+        diagnose_viewer_failure(deployed_probe, directory, environment)
+        raise
     if f"RSSGUARD_PACKAGE_SMOKE_OK:{variant}" not in output:
         raise RuntimeError(f"The packaged {variant} viewer failed its article test: {output}")
     print(f"Passed native startup, {variant} article rendering and article extraction.")
