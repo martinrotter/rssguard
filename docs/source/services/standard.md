@@ -58,6 +58,23 @@ For a normal feed, enter its address in **Source** and select **Fetch metadata**
 
 ### MediaWiki category and search feeds
 
+```{warning}
+**Log in to Wikimedia through RSS Guard's built-in browser before refreshing many Wikipedia or other Wikimedia feeds.** Use RSS Guard's `web` variant and sign in on the wiki you subscribe to. The browser's [shared cookies](../features/article-display.md#cookies) let feed and API requests use that session. Keep cookies enabled in both application and feed network settings. Logging in only through an external browser does not share your session with RSS Guard.
+
+The relevant [Wikimedia API quotas](https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits), checked on 1 October 2026, are:
+
+| Mode | Wikimedia limit |
+| --- | --- |
+| Unauthenticated + compliant `User-Agent` | **200 req/min** |
+| Authenticated new/low-activity account | **200 req/min** |
+| Authenticated established editor | **2000 req/min** |
+| Authenticated approved bot | **Exempt from this quota** |
+
+**Signing in with a new or low-activity account does not increase the 200 req/min quota.** Established editors receive the higher quota. Approved bots still face operational limits. Quotas apply across Wikimedia projects and may change; other MediaWiki sites have their own policies.
+
+Hitting a quota can produce **HTTP 429 (Too Many Requests)** and fail a feed refresh. Each article needs its own API request, so a refresh can consume several requests. Use a [compliant `User-Agent`](https://foundation.wikimedia.org/wiki/Policy:Wikimedia_Foundation_User-Agent_Policy) and avoid frequent bulk refreshes, even after signing in.
+```
+
 Paste a MediaWiki category page or a search results page into feed discovery. These Wikipedia and Gentoo Wiki URLs are examples:
 
 ```text
@@ -79,9 +96,9 @@ The category feed shows pages recently added to the category. The search feed sh
 
 Use `fulltext=1` in a Wikipedia search URL so it opens a results page. Without it, Wikipedia can redirect a query directly to a matching article.
 
-Each refresh loads five newest results plus up to five additional entries from a saved backfill cursor, with at most ten distinct articles. Categories backfill from oldest to newest; searches continue through their result pages. Progress survives restarting RSS Guard and advances only after the articles have been successfully processed and stored. Failed or cancelled refreshes retry the same backfill batch. At the end, another sweep begins so older articles are revisited. Changing the wiki, category or search query starts a new sweep. Search results can move between refreshes, and a wiki can limit the searchable result set, so changing searches cannot guarantee coverage of every result.
+Each refresh loads up to five newest results plus up to five additional entries from a saved backfill cursor, with at most ten distinct articles. Categories backfill from oldest to newest; searches continue through their result pages. Progress survives restarting RSS Guard and advances only after the articles have been successfully processed and stored. Failed or cancelled refreshes retry the same backfill batch. At the end, another sweep begins so older articles are revisited. Changing the wiki, category or search query starts a new sweep. Search results can move between refreshes, and a wiki can limit the searchable result set, so changing searches cannot guarantee coverage of every result.
 
-RSS Guard fetches each article's HTML through a separate JSON API request. Additional API requests are serialized and separated by a one-second pause. Several feeds or other clients using the same IP address can still share a server-side limit.
+RSS Guard fetches each article's HTML through a separate JSON API request. A refresh normally downloads one newest catalog page, one backfill catalog page and up to ten articles: up to twelve API requests. If invalid or duplicate results require more pagination, the newest catalog is limited to five pages, including the first response. With one backfill page and ten articles, the maximum is sixteen API requests per refresh; overlapping results or reused catalog pages reduce that count. Additional API requests are serialized and separated by a two-second pause. Several feeds or other clients using the same IP address or account can still share a server-side limit.
 
 New MediaWiki feeds accept articles of any age so old backfill articles are not discarded by the application's age cutoff. Existing feeds keep their settings; check **Common** settings if backfill articles do not appear. Explicit article filters and retention limits still apply, so traversing the whole catalog does not necessarily retain every article.
 

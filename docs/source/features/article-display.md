@@ -68,6 +68,8 @@ In the `web` variant, cookies accepted or created in RSS Guard's built-in web br
 
 This is useful for feeds hidden behind simple cookie-based access, but it is not a replacement for real account synchronization or OAuth-based services. It also only applies to the `web` variant; the lighter `text` variant does not use Qt WebEngine.
 
+For Wikipedia and other Wikimedia subscriptions, sign in through the built-in browser and keep cookies enabled so API requests can use your session. See the [MediaWiki feed warning and Wikimedia quotas](../services/standard.md#mediawiki-category-and-search-feeds).
+
 ## Proxy Use
 Both viewer variants can use RSS Guard's account and feed proxy settings, but they do it differently.
 

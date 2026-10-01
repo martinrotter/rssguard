@@ -41,11 +41,17 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
     virtual QString jsonMessageRawContents(const QJsonObject& item) const override;
 
   private:
+    QByteArray fetchAdditionalJson(const QUrl& url) const;
+    void fetchArticleHtml(const QJsonArray& items, const QUrl& api_url);
+
     QUrl m_sourceUrl;
     QHash<qint64, QString> m_articleHtml;
     std::function<void()> m_requestPause;
-    QVariantHash m_nextState;
+
+    // Staged during parsing and committed only after article storage succeeds.
+    QVariantHash m_pendingState;
     QString m_sourceKey;
+    // The feed's source can differ from the effective URL after a redirect.
     QString m_feedSourceKey;
     int m_feedId = 0;
     bool m_hasPendingState = false;
