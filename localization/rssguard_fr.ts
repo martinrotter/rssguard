@@ -7531,7 +7531,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="713"/>
       <source>OK-ish color</source>
-      <translation>Couleur m&apos;ouais</translation>
+      <translation>Couleur acceptable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="716"/>
@@ -11800,7 +11800,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="88"/>
       <source>Yeah.</source>
-      <translation>Ouais.</translation>
+      <translation>Oui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="96"/>
