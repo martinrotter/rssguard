@@ -159,11 +159,11 @@ void WebBrowser::setVerticalScrollBarPosition(double pos) {
 }
 
 void WebBrowser::scrollUp() {
-  m_webView->scrollVerticallyBy(-WEB_BROWSER_SCROLL_STEP);
+  m_webView->scrollVerticallyByPage(false);
 }
 
 void WebBrowser::scrollDown() {
-  m_webView->scrollVerticallyBy(WEB_BROWSER_SCROLL_STEP);
+  m_webView->scrollVerticallyByPage(true);
 }
 
 void WebBrowser::setMediaEnclosures(const QList<QSharedPointer<MessageEnclosure>>& enclosures) {

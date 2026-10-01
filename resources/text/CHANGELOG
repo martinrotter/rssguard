@@ -3,6 +3,9 @@
 Released on: 2026-09-XX
 
 Added:
+* Default keyboard shortcuts now provide modified reading commands, standard tab controls and Ctrl+K command groups. Saved assignments, including cleared shortcuts, continue to override defaults.
+* Feed/article pane and search focus commands now activate the Feeds tab when invoked from a browser or media-player tab.
+* Preview scrolling now moves by one viewport in the active web/text browser instead of a fixed 50-pixel step.
 * Configured keyboard shortcuts now take precedence in the main window and embedded media player. Editable inputs retain typing and standard editing operations; unrelated application commands remain available. Dialogs, popup menus and shortcut recording retain normal handling.
 * Article data can now be copied immediately using the previously selected format.
 * RSS Guard now asks for confirmation before rearranging feeds or subfolders alphabetically. (#2430)

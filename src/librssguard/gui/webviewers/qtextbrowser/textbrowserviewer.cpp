@@ -290,6 +290,10 @@ void TextBrowserViewer::scrollVerticallyBy(double delta) {
   }
 }
 
+void TextBrowserViewer::scrollVerticallyByPage(bool down) {
+  scrollVerticallyBy((down ? 1.0 : -1.0) * verticalScrollBar()->pageStep());
+}
+
 void TextBrowserViewer::applyFont(const QFont& fon) {
   m_baseFont = fon;
 

@@ -286,7 +286,7 @@
     <string>Display settings of the application.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+S</string>
+    <string notr="true">Ctrl+,</string>
    </property>
   </action>
   <action name="m_actionAboutGuard">
@@ -325,7 +325,7 @@
     <string>Fetch all feeds</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+U</string>
+    <string notr="true">Shift+F5</string>
    </property>
   </action>
   <action name="m_actionUpdateSelectedItems">
@@ -336,12 +336,15 @@
     <string>Fetch selected feeds</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+U</string>
+    <string notr="true">F5</string>
    </property>
   </action>
   <action name="m_actionEditSelectedItem">
    <property name="text">
     <string>&amp;Edit selected items</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">F2</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedItem">
@@ -360,7 +363,7 @@
     <string>Mark selected articles read</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+R</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedMessagesAsUnread">
@@ -371,7 +374,7 @@
     <string>Mark selected articles unread</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+U</string>
    </property>
   </action>
   <action name="m_actionSwitchImportanceOfSelectedMessages">
@@ -382,7 +385,7 @@
     <string>Switch importance of selected articles</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+I</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedItemsAsRead">
@@ -393,7 +396,7 @@
     <string>Mark all articles (without article filters) from selected items as read.</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+K, F, R</string>
    </property>
   </action>
   <action name="m_actionMarkSelectedItemsAsUnread">
@@ -404,7 +407,7 @@
     <string>Mark all articles (without article filters) from selected items as unread.</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+K, F, U</string>
    </property>
   </action>
   <action name="m_actionDeleteSelectedMessages">
@@ -434,7 +437,7 @@
     <string>Open selected articles in external browser</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+O</string>
    </property>
   </action>
   <action name="m_actionOpenSelectedMessagesInternally">
@@ -445,7 +448,7 @@
     <string>Open selected articles in internal browser</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+O</string>
    </property>
   </action>
   <action name="m_actionNoActions">
@@ -501,7 +504,7 @@
     <string>Hides or shows the list of feeds/folders.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">L</string>
+    <string notr="true">Ctrl+K, V, F</string>
    </property>
   </action>
   <action name="m_actionClearAllItems">
@@ -512,7 +515,7 @@
     <string>Deletes all articles from all items.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+C</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSelectNextItem">
@@ -520,7 +523,7 @@
     <string>&amp;Next item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">S</string>
+    <string notr="true">Ctrl+Shift+Down</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousItem">
@@ -528,7 +531,7 @@
     <string>&amp;Previous item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">A</string>
+    <string notr="true">Ctrl+Shift+Up</string>
    </property>
   </action>
   <action name="m_actionSelectNextMessage">
@@ -536,7 +539,7 @@
     <string>&amp;Next article</string>
    </property>
    <property name="shortcut">
-    <string notr="true">W</string>
+    <string notr="true">Ctrl+Down</string>
    </property>
   </action>
   <action name="m_actionSelectPreviousMessage">
@@ -544,7 +547,7 @@
     <string>&amp;Previous article</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Q</string>
+    <string notr="true">Ctrl+Up</string>
    </property>
   </action>
   <action name="m_actionCheckForUpdates">
@@ -572,7 +575,7 @@
     <string>Hides or displays the main menu.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">M</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionReportBug">
@@ -594,7 +597,7 @@
     <string>Switch visibility of main toolbars.</string>
    </property>
    <property name="shortcut">
-    <string notr="true">T</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionSwitchListHeaders">
@@ -608,7 +611,7 @@
     <string>&amp;List headers</string>
    </property>
    <property name="shortcut">
-    <string notr="true">H</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionDonate">
@@ -648,7 +651,7 @@
     <string>Switch layout</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+K, V, L</string>
    </property>
   </action>
   <action name="m_actionSendMessageViaEmail">
@@ -667,7 +670,7 @@
     <string>&amp;Cleanup database</string>
    </property>
    <property name="shortcut">
-    <string notr="true">Ctrl+Shift+Del</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionExpandCollapseItem">
@@ -675,7 +678,7 @@
     <string>&amp;Expand/collapse selected item</string>
    </property>
    <property name="shortcut">
-    <string notr="true">E</string>
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionServiceAdd">
@@ -715,7 +718,7 @@
     <string>Next &amp;unread article</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+J</string>
    </property>
   </action>
   <action name="m_actionSwitchStatusBar">
@@ -752,10 +755,16 @@
    <property name="text">
     <string>Add new feed</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+N</string>
+   </property>
   </action>
   <action name="m_actionAddCategoryIntoSelectedItem">
    <property name="text">
     <string>Add new folder</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+N</string>
    </property>
   </action>
   <action name="m_actionStopRunningItemsUpdate">
@@ -763,27 +772,39 @@
     <string>Stop ongoing fetching</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+Shift+F5</string>
    </property>
   </action>
   <action name="m_actionTabsCloseAll">
    <property name="text">
     <string>Close all tabs</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, T, A</string>
+   </property>
   </action>
   <action name="m_actionTabsCloseAllExceptCurrent">
    <property name="text">
     <string>Close all tabs except current</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, T, O</string>
    </property>
   </action>
   <action name="m_actionTabsNext">
    <property name="text">
     <string>Go to &amp;next tab</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Tab</string>
+   </property>
   </action>
   <action name="m_actionTabsPrevious">
    <property name="text">
     <string>Go to &amp;previous tab</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+Tab</string>
    </property>
   </action>
   <action name="m_actionMessagePreviewEnabled">
@@ -793,15 +814,24 @@
    <property name="text">
     <string>&amp;Enable article preview</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, V, P</string>
+   </property>
   </action>
   <action name="m_actionCopyUrlSelectedFeed">
    <property name="text">
     <string>&amp;Copy URL of selected item</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, F, C</string>
+   </property>
   </action>
   <action name="m_actionMessageFilters">
    <property name="text">
     <string>Article &amp;filters</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, A, F</string>
    </property>
   </action>
   <action name="m_actionShowTreeBranches">
@@ -815,6 +845,9 @@
   <action name="m_actionUpdateSelectedItemsWithCustomTimers">
    <property name="text">
     <string>Fetch feeds with &amp;custom auto-download policy</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, F, T</string>
    </property>
   </action>
   <action name="m_actionAlternateColorsInLists">
@@ -848,10 +881,16 @@
    <property name="text">
     <string>Expand/collapse selected item &amp;recursively</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, F, X</string>
+   </property>
   </action>
   <action name="m_actionTabsCloseCurrent">
    <property name="text">
     <string>Close &amp;current tab</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+W</string>
    </property>
   </action>
   <action name="m_actionCopyDataOfSelectedArticles">
@@ -861,6 +900,9 @@
    <property name="toolTip">
     <string>Choose the format and copy selected article data to the clipboard</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, A, C</string>
+   </property>
   </action>
   <action name="m_actionCopyDataOfSelectedArticlesWithoutDialog">
    <property name="text">
@@ -868,6 +910,9 @@
    </property>
    <property name="toolTip">
     <string>Copy selected article data using the saved format without opening the dialog</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+C</string>
    </property>
   </action>
   <action name="m_actionSortFeedsAlphabetically">
@@ -907,20 +952,32 @@
    <property name="text">
     <string>Focus feed search box</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+L</string>
+   </property>
   </action>
   <action name="m_actionFocusSearchArticles">
    <property name="text">
     <string>Focus article search box</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+F</string>
    </property>
   </action>
   <action name="m_actionBrowserScrollUp">
    <property name="text">
     <string>Scroll &amp;up preview</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">PgUp</string>
+   </property>
   </action>
   <action name="m_actionBrowserScrollDown">
    <property name="text">
     <string>Scroll &amp;down preview</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">PgDown</string>
    </property>
   </action>
   <action name="m_actionRearrangeCategories">
@@ -958,6 +1015,9 @@
    <property name="text">
     <string>Play in &amp;media player</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+P</string>
+   </property>
   </action>
   <action name="m_actionPauseFeedFetching">
    <property name="checkable">
@@ -965,6 +1025,9 @@
    </property>
    <property name="text">
     <string>&amp;Pause automatic feed fetching</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, F, P</string>
    </property>
   </action>
   <action name="m_actionPurgeSelectedItems">
@@ -981,25 +1044,40 @@
    <property name="text">
     <string>Focus &amp;feed list</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+1</string>
+   </property>
   </action>
   <action name="m_actionFocusArticleList">
    <property name="text">
     <string>Focus &amp;article list</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+2</string>
    </property>
   </action>
   <action name="m_actionFocusArticlePreview">
    <property name="text">
     <string>Focus article &amp;preview</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+3</string>
+   </property>
   </action>
   <action name="m_actionLoadAllArticles">
    <property name="text">
     <string>&amp;Load all remaining articles</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, A, L</string>
+   </property>
   </action>
   <action name="m_actionGoToMotherFeed">
    <property name="text">
     <string>Reveal &amp;feed</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, A, G</string>
    </property>
   </action>
   <action name="m_actionOpenHomepageOfSelectedArticleFeed">
@@ -1010,17 +1088,23 @@
     <string>Open homepage of feed belonging to current article</string>
    </property>
    <property name="shortcut">
-    <string notr="true"/>
+    <string notr="true">Ctrl+K, A, H</string>
    </property>
   </action>
   <action name="m_actionEnableDisableFeeds">
    <property name="text">
     <string>&amp;Enable/disable selected feeds</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, F, E</string>
+   </property>
   </action>
   <action name="m_actionEditFeedOfSelectedArticle">
    <property name="text">
     <string>Edit &amp;feed of selected article</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+K, A, E</string>
    </property>
   </action>
   <action name="m_actionMarkArticlesAboveRead">
@@ -1047,10 +1131,16 @@
    <property name="text">
     <string>&amp;Fetch full contents</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+D</string>
+   </property>
   </action>
   <action name="m_actionTabsNewBrowser">
    <property name="text">
     <string>New &amp;web browser tab</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+T</string>
    </property>
   </action>
   <action name="m_actionCleanupWebCache">
@@ -1066,6 +1156,9 @@
   <action name="m_actionToggleArticlesReadUnread">
    <property name="text">
     <string>Toggle ar&amp;ticles read/unread</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true">Ctrl+Shift+M</string>
    </property>
   </action>
  </widget>

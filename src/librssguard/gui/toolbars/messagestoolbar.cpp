@@ -256,13 +256,15 @@ void MessagesToolBar::initializeHighlighter() {
                   tr("No extra filtering"),
                   al,
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::NoFiltering),
-                  QSL("articlelist_no_filtering"));
+                  QSL("articlelist_no_filtering"),
+                  QKeySequence(QSL("Ctrl+K, S, A")));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-unread")),
                   tr("Show unread articles"),
                   al,
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowUnread),
-                  QSL("articlelist_show_unread"));
+                  QSL("articlelist_show_unread"),
+                  QKeySequence(QSL("Ctrl+K, S, U")));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show read articles"),
@@ -274,7 +276,8 @@ void MessagesToolBar::initializeHighlighter() {
                   tr("Show important articles"),
                   al,
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowImportant),
-                  QSL("articlelist_show_important"));
+                  QSL("articlelist_show_important"),
+                  QKeySequence(QSL("Ctrl+K, S, I")));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show today's articles"),

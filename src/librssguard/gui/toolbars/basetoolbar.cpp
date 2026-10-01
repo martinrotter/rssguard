@@ -50,13 +50,15 @@ void BaseToolBar::addActionToMenu(QMenu* menu,
                                   const QString& title,
                                   const QString& tooltip_suffix,
                                   const QVariant& value,
-                                  const QString& object_name) {
+                                  const QString& object_name,
+                                  const QKeySequence& shortcut) {
   QAction* action = menu->addAction(icon, title);
 
   action->setToolTip(title + tooltip_suffix);
   action->setCheckable(true);
   action->setData(value);
   action->setObjectName(object_name);
+  action->setShortcut(shortcut);
 }
 
 void BaseToolBar::activateAction(const QString& action_name, QWidgetAction* widget_action) {

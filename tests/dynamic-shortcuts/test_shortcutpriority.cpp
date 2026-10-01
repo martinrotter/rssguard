@@ -196,6 +196,7 @@ class TestShortcutPriority : public QObject {
     void widgetFallback();
     void liveEligibility();
     void sequencesAndPlayerDelivery();
+    void groupedDefaultSequences();
     void nativeCollision();
     void ambiguousConfiguration();
     void scopeExclusions();
@@ -1051,6 +1052,53 @@ void TestShortcutPriority::sequencesAndPlayerDelivery() {
   QApplication::sendEvent(window.target, &repeated_press);
   QCOMPARE(repeated.count(), 1);
   QCOMPARE(window.target->presses, 1);
+}
+
+void TestShortcutPriority::groupedDefaultSequences() {
+  PriorityWindow window;
+  QAction* article = window.bind(QStringLiteral("Ctrl+K, A, G"));
+  QAction* feed = window.bind(QStringLiteral("Ctrl+K, F, R"));
+  QAction* filter = window.bind(QStringLiteral("Ctrl+K, S, U"));
+  QSignalSpy article_triggered(article, &QAction::triggered);
+  QSignalSpy feed_triggered(feed, &QAction::triggered);
+  QSignalSpy filter_triggered(filter, &QAction::triggered);
+  const auto start_group = [&window]() {
+    // Send the chord itself; QTest also synthesizes separate modifier presses.
+    QKeyEvent press(QEvent::KeyPress, Qt::Key_K, Qt::ControlModifier);
+    QKeyEvent release(QEvent::KeyRelease, Qt::Key_K, Qt::ControlModifier);
+    QApplication::sendEvent(window.target, &press);
+    QApplication::sendEvent(window.target, &release);
+  };
+
+  start_group();
+  QTest::keyClick(window.target, Qt::Key_A);
+  QCOMPARE(article_triggered.count(), 0);
+  QCOMPARE(window.target->presses, 0);
+  QTest::keyClick(window.target, Qt::Key_G);
+  QCOMPARE(article_triggered.count(), 1);
+
+  start_group();
+  QTest::keyClick(window.target, Qt::Key_F);
+  QTest::keyClick(window.target, Qt::Key_R);
+  QCOMPARE(feed_triggered.count(), 1);
+
+  start_group();
+  QTest::keyClick(window.target, Qt::Key_S);
+  QTest::keyClick(window.target, Qt::Key_U);
+  QCOMPARE(filter_triggered.count(), 1);
+  QCOMPARE(window.target->presses, 0);
+
+  // An invalid continuation never executes an unrelated grouped command.
+  start_group();
+  QTest::keyClick(window.target, Qt::Key_A);
+  QTest::keyClick(window.target, Qt::Key_Z);
+  QCOMPARE(article_triggered.count(), 1);
+  QCOMPARE(feed_triggered.count(), 1);
+  QCOMPARE(filter_triggered.count(), 1);
+
+  const int presses = window.target->presses;
+  QTest::keyClick(window.target, Qt::Key_Space);
+  QCOMPARE(window.target->presses, presses + 1);
 }
 
 void TestShortcutPriority::nativeCollision() {

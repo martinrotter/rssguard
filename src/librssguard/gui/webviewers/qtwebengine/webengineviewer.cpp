@@ -317,6 +317,13 @@ void WebEngineViewer::scrollVerticallyBy(double delta) {
   }
 }
 
+void WebEngineViewer::scrollVerticallyByPage(bool down) {
+  // Measure in CSS pixels inside the page, so resize and zoom are respected.
+  page()->runJavaScript(QSL("window.scrollBy({left: 0, top: %1 * window.innerHeight, behavior: 'instant'});")
+                          .arg(down ? 1 : -1),
+                        QWebEngineScript::ApplicationWorld);
+}
+
 void WebEngineViewer::applyFont(const QFont& fon) {
   auto pixel_size = QFontMetrics(fon).ascent();
 

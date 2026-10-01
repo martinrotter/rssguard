@@ -107,6 +107,8 @@ class WebViewer {
     virtual double verticalScrollBarPosition() const = 0;
     virtual void setVerticalScrollBarPosition(double pos) = 0;
     virtual void scrollVerticallyBy(double delta);
+    // Scroll one live viewport, retaining relative scrolling for repeated keys.
+    virtual void scrollVerticallyByPage(bool down);
 
     // Called after printing is finished, must be reimplemented by view
     // and this super-implementation called.

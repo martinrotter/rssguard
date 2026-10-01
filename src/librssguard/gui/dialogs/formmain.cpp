@@ -93,6 +93,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   m_actionToolbarMainMenu->setIcon(qApp->icons()->fromTheme(QSL("go-home")));
   m_actionToolbarMainMenu->setText(tr("Open &main menu"));
   m_actionToolbarMainMenu->setObjectName("m_actionToolbarMainMenu");
+  m_actionToolbarMainMenu->setShortcut(QKeySequence(QSL("F10")));
 
   connect(m_actionToolbarMainMenu, &QWidgetAction::triggered, this, [this]() {
     qobject_cast<QToolButton*>(m_actionToolbarMainMenu->defaultWidget())->menu()->exec();
@@ -955,26 +956,20 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionBrowserScrollDown, &QAction::triggered, tabWidget(), &TabWidget::scrollDownCurrentBrowser);
 
   // Toolbar forwardings.
-  connect(m_ui->m_actionFocusSearchFeeds,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox(),
-          QOverload<>::of(&SearchLineEdit::setFocus));
-  connect(m_ui->m_actionFocusSearchArticles,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox(),
-          QOverload<>::of(&SearchLineEdit::setFocus));
-  connect(m_ui->m_actionFocusFeedList,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(),
-          QOverload<>::of(&FeedsView::setFocus));
-  connect(m_ui->m_actionFocusArticleList,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesView(),
-          QOverload<>::of(&MessagesView::setFocus));
-  connect(m_ui->m_actionFocusArticlePreview,
-          &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesBrowser(),
-          QOverload<>::of(&MessagePreviewer::setFocus));
+  const auto connect_focus = [this](QAction* action, QWidget* widget) {
+    const QPointer<QWidget> target(widget);
+    connect(action, &QAction::triggered, widget, [this, target]() {
+      tabWidget()->setCurrentWidget(tabWidget()->feedMessageViewer());
+      if (!target.isNull()) {
+        target->setFocus();
+      }
+    });
+  };
+  connect_focus(m_ui->m_actionFocusSearchFeeds, tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox());
+  connect_focus(m_ui->m_actionFocusSearchArticles, tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox());
+  connect_focus(m_ui->m_actionFocusFeedList, tabWidget()->feedMessageViewer()->feedsView());
+  connect_focus(m_ui->m_actionFocusArticleList, tabWidget()->feedMessageViewer()->messagesView());
+  connect_focus(m_ui->m_actionFocusArticlePreview, tabWidget()->feedMessageViewer()->messagesBrowser());
   connect(m_ui->m_actionAddFeedIntoSelectedItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

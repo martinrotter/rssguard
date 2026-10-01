@@ -44,6 +44,11 @@ void WebViewer::scrollVerticallyBy(double delta) {
   }
 }
 
+void WebViewer::scrollVerticallyByPage(bool down) {
+  // Keep older/custom viewers compatible until they supply their page size.
+  scrollVerticallyBy(down ? WEB_BROWSER_SCROLL_STEP : -WEB_BROWSER_SCROLL_STEP);
+}
+
 namespace {
   bool isGumboVoidTag(GumboTag tag) {
     switch (tag) {

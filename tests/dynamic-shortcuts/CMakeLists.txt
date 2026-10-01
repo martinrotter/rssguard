@@ -26,14 +26,15 @@ target_compile_options(test_shortcutpriority PRIVATE
 
 add_executable(test_shortcutsettings
   test_shortcutsettings.cpp
+  ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/dynamicshortcuts.cpp
   ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/dynamicshortcutswidget.cpp
   ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/dynamicshortcutswidget.h
   ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/shortcutcatcher.cpp
   ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/shortcutcatcher.h
   ${RSSGUARD_SHORTCUT_SOURCE_DIR}/dynamic-shortcuts/shortcutpriority.cpp
 )
-# Only icon/button services and modal decisions are doubled; the recorders and
-# settings-widget implementation are the production sources.
+# Icon/button services, temporary INI access and modal decisions are doubled;
+# shortcut persistence, recorders and the settings widget are production sources.
 target_include_directories(test_shortcutsettings PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/stubs ${RSSGUARD_SHORTCUT_SOURCE_DIR})
 target_link_libraries(test_shortcutsettings PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
 target_compile_options(test_shortcutsettings PRIVATE

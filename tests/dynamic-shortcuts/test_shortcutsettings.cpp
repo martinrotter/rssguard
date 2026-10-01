@@ -1,14 +1,19 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
+#include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "dynamic-shortcuts/dynamicshortcutswidget.h"
 #include "dynamic-shortcuts/shortcutcatcher.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <QAction>
+#include <QDir>
 #include <QKeySequenceEdit>
 #include <QLabel>
 #include <QSignalSpy>
+#include <QTemporaryDir>
 #include <QTest>
 
 class TestShortcutSettings : public QObject {
@@ -24,6 +29,9 @@ class TestShortcutSettings : public QObject {
     void applyFinishesRecording();
     void destructionDuringPrompt();
     void destroyedAction();
+    void savedAssignmentsOverrideDefaults();
+    void missingAssignmentsUseDefaults();
+    void savedLayoutSurvivesDefaultChanges();
 
   private:
     int m_prompts = 0;
@@ -212,6 +220,93 @@ void TestShortcutSettings::destroyedAction() {
   QVERIFY(binding->action() == nullptr);
   binding->clearShortcut();
   widget.updateShortcuts();
+}
+
+void TestShortcutSettings::savedAssignmentsOverrideDefaults() {
+  QTemporaryDir directory(QDir::current().filePath(QStringLiteral("shortcut-settings-XXXXXX")));
+  QVERIFY(directory.isValid());
+  Settings settings(directory.filePath(QStringLiteral("shortcuts.ini")), QSettings::IniFormat);
+  QAction custom, cleared, sequence;
+  custom.setObjectName(QStringLiteral("m_actionUpdateAllItems"));
+  cleared.setObjectName(QStringLiteral("m_actionBrowserScrollDown"));
+  sequence.setObjectName(QStringLiteral("articlelist_show_unread"));
+  custom.setShortcut(QKeySequence(QStringLiteral("Shift+F5")));
+  cleared.setShortcut(QKeySequence(QStringLiteral("PgDown")));
+  sequence.setShortcut(QKeySequence(QStringLiteral("Ctrl+K, S, U")));
+  settings.setValue(GROUP(Keyboard), custom.objectName(), QStringLiteral("Ctrl+Shift+U"));
+  settings.setValue(GROUP(Keyboard), cleared.objectName(), QString());
+  settings.setValue(GROUP(Keyboard), sequence.objectName(), QStringLiteral("Ctrl+J, U"));
+  settings.sync();
+  const QStringList keys = settings.allKeys();
+
+  qApp->setSettings(&settings);
+  DynamicShortcuts::load({&custom, &cleared, &sequence});
+  qApp->setSettings(nullptr);
+  QCOMPARE(custom.shortcut(), QKeySequence(QStringLiteral("Ctrl+Shift+U")));
+  QVERIFY(cleared.shortcut().isEmpty());
+  QCOMPARE(sequence.shortcut(), QKeySequence(QStringLiteral("Ctrl+J, U")));
+  QCOMPARE(settings.allKeys(), keys); // Loading does not rewrite the user's profile.
+  QCOMPARE(settings.value(GROUP(Keyboard), custom.objectName()).toString(), QStringLiteral("Ctrl+Shift+U"));
+  QCOMPARE(settings.value(GROUP(Keyboard), cleared.objectName()).toString(), QString());
+  QCOMPARE(settings.value(GROUP(Keyboard), sequence.objectName()).toString(), QStringLiteral("Ctrl+J, U"));
+}
+
+void TestShortcutSettings::missingAssignmentsUseDefaults() {
+  QTemporaryDir directory(QDir::current().filePath(QStringLiteral("shortcut-settings-XXXXXX")));
+  QVERIFY(directory.isValid());
+  Settings settings(directory.filePath(QStringLiteral("shortcuts.ini")), QSettings::IniFormat);
+  QAction custom, fresh, unbound;
+  custom.setObjectName(QStringLiteral("m_actionSettings"));
+  fresh.setObjectName(QStringLiteral("m_actionTabsNewBrowser"));
+  unbound.setObjectName(QStringLiteral("m_actionClearAllItems"));
+  custom.setShortcut(QKeySequence(QStringLiteral("Ctrl+,")));
+  fresh.setShortcut(QKeySequence(QStringLiteral("Ctrl+T")));
+  settings.setValue(GROUP(Keyboard), custom.objectName(), QStringLiteral("Ctrl+S"));
+
+  qApp->setSettings(&settings);
+  DynamicShortcuts::load({&custom, &fresh, &unbound});
+  qApp->setSettings(nullptr);
+  QCOMPARE(custom.shortcut(), QKeySequence(QStringLiteral("Ctrl+S")));
+  QCOMPARE(fresh.shortcut(), QKeySequence(QStringLiteral("Ctrl+T")));
+  QVERIFY(unbound.shortcut().isEmpty());
+  QCOMPARE(settings.allKeys().size(), 1);
+}
+
+void TestShortcutSettings::savedLayoutSurvivesDefaultChanges() {
+  QTemporaryDir directory(QDir::current().filePath(QStringLiteral("shortcut-settings-XXXXXX")));
+  QVERIFY(directory.isValid());
+  const QString path = directory.filePath(QStringLiteral("shortcuts.ini"));
+  QAction custom, cleared, sequence, legacy;
+  custom.setObjectName(QStringLiteral("m_actionUpdateAllItems"));
+  cleared.setObjectName(QStringLiteral("m_actionBrowserScrollDown"));
+  sequence.setObjectName(QStringLiteral("articlelist_show_unread"));
+  legacy.setObjectName(QStringLiteral("m_actionClearAllItems"));
+  custom.setShortcut(QKeySequence(QStringLiteral("Ctrl+Shift+U")));
+  sequence.setShortcut(QKeySequence(QStringLiteral("Ctrl+J, U")));
+  legacy.setShortcut(QKeySequence(QStringLiteral("Ctrl+Shift+C")));
+  const QList<QAction*> actions = {&custom, &cleared, &sequence, &legacy};
+
+  {
+    Settings settings(path, QSettings::IniFormat);
+    qApp->setSettings(&settings);
+    DynamicShortcuts::save(actions);
+    qApp->setSettings(nullptr);
+    settings.sync();
+    QCOMPARE(settings.status(), QSettings::NoError);
+  }
+  custom.setShortcut(QKeySequence(QStringLiteral("Shift+F5")));
+  cleared.setShortcut(QKeySequence(QStringLiteral("PgDown")));
+  sequence.setShortcut(QKeySequence(QStringLiteral("Ctrl+K, S, U")));
+  legacy.setShortcut({});
+  Settings reloaded(path, QSettings::IniFormat);
+  qApp->setSettings(&reloaded);
+  DynamicShortcuts::load(actions);
+  qApp->setSettings(nullptr);
+  QCOMPARE(custom.shortcut(), QKeySequence(QStringLiteral("Ctrl+Shift+U")));
+  QVERIFY(cleared.shortcut().isEmpty());
+  QCOMPARE(sequence.shortcut(), QKeySequence(QStringLiteral("Ctrl+J, U")));
+  QCOMPARE(legacy.shortcut(), QKeySequence(QStringLiteral("Ctrl+Shift+C")));
+  QCOMPARE(reloaded.allKeys().size(), actions.size());
 }
 
 int main(int argc, char** argv) {

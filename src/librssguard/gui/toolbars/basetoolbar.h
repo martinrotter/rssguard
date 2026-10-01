@@ -3,6 +3,7 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
+#include <QKeySequence>
 #include <QMenu>
 #include <QToolBar>
 #include <QToolButton>
@@ -67,7 +68,8 @@ class BaseToolBar : public QToolBar, public BaseBar {
                          const QString& title,
                          const QString& tooltip_suffix,
                          const QVariant& value,
-                         const QString& object_name);
+                         const QString& object_name,
+                         const QKeySequence& shortcut = {});
     void drawNumberOfCriterias(QToolButton* btn, int count);
 };
 

@@ -46,7 +46,7 @@ The `text` viewer has important limitations:
 
 ## Keyboard Scrolling
 
-The configurable scroll-up and scroll-down commands move the main document in the currently active article or browser tab by 50 pixels. Browser tabs keep independent positions. In the `web` viewer, these commands also work when page JavaScript is disabled; ordinary page scripts remain disabled.
+The configurable scroll-up and scroll-down commands move the main document in the currently active article or browser tab by one live viewport/page step. Browser tabs keep independent positions. In the `web` viewer, these commands also work when page JavaScript is disabled; ordinary page scripts remain disabled.
 
 Scroll commands are unavailable when the feed/article tab displays item details, hides the preview, or uses a custom service previewer without a supported scroll target. They do not select independently scrolling elements or frames. See [Keyboard shortcuts](keyboard-shortcuts.md) for main-window shortcut priority and keyboard-layout limits.
 
