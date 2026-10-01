@@ -37,7 +37,8 @@ if ! check_icu "$icu_root"; then
     export CFLAGS="-arch $architecture -mmacosx-version-min=$minimum_macos"
     export CXXFLAGS="$CFLAGS"
     export LDFLAGS="$CFLAGS"
-    ./configure --prefix="$icu_root" --disable-tests --disable-samples --disable-static
+    # Full install paths let macdeployqt locate ICU and rewrite its bundled dependencies.
+    ./configure --prefix="$icu_root" --enable-rpath --disable-tests --disable-samples --disable-static
     make -j "$(sysctl -n hw.ncpu)"
     make install
   ) >&2

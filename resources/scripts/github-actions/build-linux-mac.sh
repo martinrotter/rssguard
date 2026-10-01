@@ -107,7 +107,7 @@ else
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
   # clang_64 is Qt's macOS SDK name; check the actual CPU slices it contains.
-  lipo -verify_arch "$MACOS_ARCHITECTURE" "$QTPATH/$QTVERSION/$QTOS/lib/QtCore.framework/Versions/A/QtCore"
+  lipo "$QTPATH/$QTVERSION/$QTOS/lib/QtCore.framework/Versions/A/QtCore" -verify_arch "$MACOS_ARCHITECTURE"
 
   export QT_PLUGIN_PATH="$QTPATH/$QTVERSION/$QTOS/plugins"
   export PATH="$QTBIN:$QTPATH/Tools/CMake/CMake.app/Contents/bin:$QTPATH/Tools/Ninja:$PATH"
