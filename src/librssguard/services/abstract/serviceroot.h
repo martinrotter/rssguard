@@ -31,6 +31,12 @@ class CacheForServiceRoot;
 class FormAccountDetails;
 class QMenu;
 
+struct FeedFetchResult {
+    QList<Message> messages;
+    // Empty for services without persistent refresh state. Discard on failure/cancellation.
+    std::function<void()> afterMessagesStored;
+};
+
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
 // service like service account username/password etc.
@@ -128,6 +134,11 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages) = 0;
+
+    virtual FeedFetchResult obtainNewMessagesForUpdate(Feed* feed,
+                                                       const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                         stated_messages,
+                                                       const QHash<QString, QStringList>& tagged_messages);
 
     // Returns special widget to display articles of this account type.
     // Caller does NOT free returned previewer after usage from memory,

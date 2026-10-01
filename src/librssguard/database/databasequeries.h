@@ -34,6 +34,8 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     static void storeCategoryCustomData(const QSqlDatabase& db, Category* category);
     static void storeFeedCustomData(const QSqlDatabase& db, Feed* feed);
+    // Reads custom data without applying it to the live feed.
+    static QVariantHash loadFeedCustomData(const QSqlDatabase& db, Feed* feed);
     static void storeCustomData(const QSqlDatabase& db, const QString& table, int item_id, const QVariantHash& data);
 
     // Universal where clauses for item types.

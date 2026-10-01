@@ -65,6 +65,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
+  m_customDatabaseData = other.m_customDatabaseData;
   m_type = other.type();
   m_postProcessScript = other.postProcessScript();
   m_sourceType = other.sourceType();
@@ -183,7 +184,7 @@ void StandardFeed::setPassword(const QString& password) {
 }
 
 QVariantHash StandardFeed::customDatabaseData() const {
-  QVariantHash data;
+  QVariantHash data = m_customDatabaseData;
 
   data[QSL("source_type")] = int(sourceType());
   data[QSL("type")] = int(type());
@@ -217,6 +218,8 @@ QVariantHash StandardFeed::customDatabaseData() const {
 }
 
 void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
+  m_customDatabaseData = data;
+
   setSourceType(SourceType(data[QSL("source_type")].toInt()));
   setType(Type(data[QSL("type")].toInt()));
   setEncoding(data[QSL("encoding")].toString());
@@ -453,20 +456,20 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     QByteArray data;
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
-    const NetworkResult result = NetworkFactory::performNetworkOperation(url.toString(),
-                                                                          timeout,
-                                                                          {},
-                                                                          data,
-                                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                                          headers,
-                                                                          false,
-                                                                          {},
-                                                                          {},
-                                                                          custom_proxy,
-                                                                          http2_status,
-                                                                          ignore_cookies
-                                                                            ? NetworkFactory::CookiePolicy::IgnoreCookies
-                                                                            : NetworkFactory::CookiePolicy::UseSharedCookieJar);
+    const NetworkResult result =
+      NetworkFactory::performNetworkOperation(url.toString(),
+                                              timeout,
+                                              {},
+                                              data,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers,
+                                              false,
+                                              {},
+                                              {},
+                                              custom_proxy,
+                                              http2_status,
+                                              ignore_cookies ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                             : NetworkFactory::CookiePolicy::UseSharedCookieJar);
     const QUrl final_url = result.m_url;
     const int default_port = url.scheme() == QSL("https") ? 443 : 80;
 

@@ -3,17 +3,90 @@
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
+#include <librssguard/exceptions/sqlexception.h>
 #include <src/parsers/mediawikiparser.h>
 
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QSet>
 #include <QTest>
 #include <QUrlQuery>
 
-// FeedParser::messages() is implemented inside the standard plugin and is not exported.
+// Exercise the inherited messages() implementation through the base API.
 Q_NEVER_INLINE QList<Message> messagesViaBase(FeedParser* parser) {
   return parser->messages();
 }
+
+namespace {
+
+  class MemoryFeed : public Feed {
+    public:
+      QVariantHash customDatabaseData() const override {
+        return m_data;
+      }
+      void setCustomDatabaseData(const QVariantHash& data) override {
+        m_data = data;
+      }
+
+    private:
+      QVariantHash m_data;
+  };
+
+  class MemoryMediaWikiParser : public MediaWikiParser {
+    public:
+      using MediaWikiParser::MediaWikiParser;
+      QVariantHash m_persisted;
+      int m_writes = 0;
+      bool m_failWrite = false;
+
+    protected:
+      QVariantHash loadFeedCustomData() const override {
+        return m_persisted;
+      }
+      void storeFeedCustomData() override {
+        if (m_failWrite) {
+          throw SqlException(SqlException::Type::GeneralError, QSL("Simulated checkpoint failure"));
+        }
+
+        ++m_writes;
+        m_persisted = feed()->customDatabaseData();
+      }
+  };
+
+  QString catalog(bool search, int first, int count, const QJsonObject& continuation = {}) {
+    QJsonArray items;
+
+    for (int id = first; id < first + count; ++id) {
+      items.append(QJsonObject{{QSL("pageid"), id},
+                               {QSL("title"), QSL("Article %1").arg(id)},
+                               {QSL("timestamp"), QSL("2026-09-24T08:00:00Z")}});
+    }
+
+    QJsonObject response{{QSL("query"), QJsonObject{{search ? QSL("search") : QSL("categorymembers"), items}}}};
+
+    if (!continuation.isEmpty()) {
+      response[QSL("continue")] = continuation;
+    }
+
+    return QString::fromUtf8(QJsonDocument(response).toJson(QJsonDocument::Compact));
+  }
+
+  QByteArray articleResponse(const QUrl& url) {
+    const QString id = QUrlQuery(url).queryItemValue(QSL("pageid"));
+    return QSL(R"({"parse":{"pageid":%1,"text":"<p>Article %1</p>"}})").arg(id).toUtf8();
+  }
+
+  QJsonObject savedContinuation(const QVariantHash& data) {
+    return QJsonObject::fromVariantHash(data)
+      .value(QSL("mediawiki"))
+      .toObject()
+      .value(QSL("backfill"))
+      .toObject()
+      .value(QSL("continuation"))
+      .toObject();
+  }
+
+} // namespace
 
 class TestMediaWikiParser : public QObject {
     Q_OBJECT
@@ -34,6 +107,13 @@ class TestMediaWikiParser : public QObject {
     void htmlGuessProbesPreparedSource();
     void apiRateLimitFailsWholeFeed();
     void limitsArticlesAndPacesRequests();
+    void categoryBackfillResumesAfterCommit();
+    void searchBackfillDeduplicatesAndResumes();
+    void searchBackfillConsumesPartialNewestPage();
+    void failedOrDiscardedBatchDoesNotAdvance();
+    void checkpointFailureRestoresLiveState();
+    void changedSourceAndInvalidStateRestartBackfill();
+    void standardFeedPreservesArbitraryData();
 };
 
 void TestMediaWikiParser::categoryHtmlUsesEditUri() {
@@ -355,6 +435,307 @@ void TestMediaWikiParser::limitsArticlesAndPacesRequests() {
   QCOMPARE(pauses, 5);
   QCOMPARE(messages.first().m_customId, QSL("1"));
   QCOMPARE(messages.last().m_customId, QSL("5"));
+}
+
+void TestMediaWikiParser::categoryBackfillResumesAfterCommit() {
+  const QUrl
+    source(QSL("https://example.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+  feed.setCustomDatabaseData({{QSL("unrelated"), QSL("preserve me")}});
+  QVariantHash persisted;
+
+  // Two pages, EOF, and the beginning of another sweep. Each parser is a new refresh.
+  for (int refresh = 0; refresh < 4; ++refresh) {
+    const int first = refresh == 1 ? 6 : (refresh == 2 ? 11 : 1);
+    const int count = refresh == 2 ? 1 : 5;
+    const QJsonObject next =
+      refresh == 2 ? QJsonObject{}
+                   : QJsonObject{{QSL("continue"), QSL("-||")}, {QSL("cmcontinue"), QString::number(first + count)}};
+    QList<QUrl> requests;
+    int pauses = 0;
+    MemoryMediaWikiParser parser(
+      catalog(false, 46, 5),
+      source,
+      [&](const QUrl& request) {
+        requests.append(request);
+        return QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")
+                 ? articleResponse(request)
+                 : catalog(false, first, count, next).toUtf8();
+      },
+      [&]() {
+        ++pauses;
+      });
+    // Simulate SQL JSON roundtrip/restart; the live object is not reloaded by the parser.
+    parser.m_persisted =
+      QJsonDocument::fromJson(QJsonDocument::fromVariant(persisted).toJson()).object().toVariantHash();
+    parser.setFeed(&feed);
+    const QVariantHash before = feed.customDatabaseData();
+    const auto messages = messagesViaBase(&parser);
+
+    QCOMPARE(messages.size(), 5 + count);
+    QCOMPARE(messages.at(5).m_customId, QString::number(first));
+    QCOMPARE(requests.size(), 6 + count);
+    QCOMPARE(pauses, requests.size());
+    const QUrlQuery backfill(requests.first());
+    QCOMPARE(backfill.queryItemValue(QSL("cmdir")), QSL("asc"));
+    QCOMPARE(backfill.queryItemValue(QSL("cmlimit")), QSL("5"));
+    QCOMPARE(backfill.queryItemValue(QSL("cmcontinue")),
+             refresh == 1 || refresh == 2 ? QString::number(first) : QString());
+    QCOMPARE(feed.customDatabaseData(), before);
+    QCOMPARE(parser.m_writes, 0);
+
+    parser.commitCustomDatabaseData();
+    QCOMPARE(parser.m_writes, 1);
+    QCOMPARE(savedContinuation(parser.m_persisted), next);
+    QCOMPARE(parser.m_persisted.value(QSL("unrelated")).toString(), QSL("preserve me"));
+    parser.commitCustomDatabaseData();
+    QCOMPARE(parser.m_writes, 1);
+    persisted = parser.m_persisted;
+  }
+}
+
+void TestMediaWikiParser::searchBackfillDeduplicatesAndResumes() {
+  const QUrl source(QSL("https://example.org/w/api.php?action=query&format=json&list=search&srsearch=test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+  QVariantHash persisted;
+  const QJsonObject newest_next{{QSL("continue"), QSL("-||")}, {QSL("sroffset"), 5}};
+
+  for (int refresh = 0; refresh < 3; ++refresh) {
+    const int offset = refresh == 1 ? 10 : 5;
+    const QJsonObject next =
+      refresh == 1 ? QJsonObject{} : QJsonObject{{QSL("continue"), QSL("-||")}, {QSL("sroffset"), 10}};
+    QList<QUrl> requests;
+    MemoryMediaWikiParser parser(
+      catalog(true, 1, 5, newest_next),
+      source,
+      [&](const QUrl& request) {
+        requests.append(request);
+        // One result overlaps the newest stream; it must be fetched only once.
+        return QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")
+                 ? articleResponse(request)
+                 : catalog(true, refresh == 1 ? 10 : 5, 5, next).toUtf8();
+      },
+      []() {});
+    parser.m_persisted = persisted;
+    parser.setFeed(&feed);
+    const auto messages = messagesViaBase(&parser);
+    QCOMPARE(messages.size(), refresh == 1 ? 10 : 9);
+    QCOMPARE(QUrlQuery(requests.first()).queryItemValue(QSL("sroffset")), QString::number(offset));
+    QSet<QString> ids;
+
+    for (const auto& message : messages) {
+      QVERIFY(!ids.contains(message.m_customId));
+      ids.insert(message.m_customId);
+    }
+
+    QCOMPARE(requests.size(), messages.size() + 1);
+    parser.commitCustomDatabaseData();
+    QCOMPARE(savedContinuation(parser.m_persisted), next);
+    persisted = parser.m_persisted;
+  }
+}
+
+void TestMediaWikiParser::searchBackfillConsumesPartialNewestPage() {
+  const QUrl source(QSL("https://example.org/w/api.php?action=query&format=json&list=search&srsearch=test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+  QList<QUrl> requests;
+  const QJsonObject first_next{{QSL("sroffset"), 5}};
+  const QJsonObject second_next{{QSL("sroffset"), 10}};
+  MemoryMediaWikiParser parser(
+    catalog(true, 1, 4, first_next),
+    source,
+    [&](const QUrl& request) {
+      requests.append(request);
+      return QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")
+               ? articleResponse(request)
+               : catalog(true, 5, 5, second_next).toUtf8();
+    },
+    []() {});
+  parser.setFeed(&feed);
+  const auto messages = messagesViaBase(&parser);
+  // Four newest entries on the first page, one on the next, then its four remaining entries.
+  QCOMPARE(messages.size(), 9);
+  QCOMPARE(requests.size(), 10);
+  QCOMPARE(QUrlQuery(requests.first()).queryItemValue(QSL("sroffset")), QSL("5"));
+
+  for (int index = 0; index < messages.size(); ++index) {
+    QCOMPARE(messages.at(index).m_customId, QString::number(index + 1));
+  }
+
+  parser.commitCustomDatabaseData();
+  QCOMPARE(savedContinuation(parser.m_persisted), second_next);
+}
+
+void TestMediaWikiParser::failedOrDiscardedBatchDoesNotAdvance() {
+  const QUrl
+    source(QSL("https://example.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+  const QVariantHash before = feed.customDatabaseData();
+
+  for (int failure = 0; failure < 5; ++failure) {
+    MemoryMediaWikiParser parser(
+      catalog(false, 46, 5),
+      source,
+      [&](const QUrl& request) {
+        if (QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")) {
+          return failure == 1 ? QByteArray("not JSON") : articleResponse(request);
+        }
+
+        if (failure == 2) {
+          return QByteArray("not JSON");
+        }
+
+        if (failure == 3) {
+          return catalog(false, 1, 6).toUtf8();
+        }
+
+        const QJsonObject continuation =
+          failure == 4 ? QJsonObject{{QSL("cmstart"), QSL("unsafe")}} : QJsonObject{{QSL("cmcontinue"), QSL("6")}};
+        return catalog(false, 1, 5, continuation).toUtf8();
+      },
+      []() {});
+    parser.setFeed(&feed);
+
+    if (failure == 0) {
+      QCOMPARE(messagesViaBase(&parser).size(), 10);
+      // Successful download discarded due to later cancellation/storage failure.
+    }
+    else {
+      QVERIFY_EXCEPTION_THROWN(messagesViaBase(&parser), FeedFetchException);
+      parser.commitCustomDatabaseData();
+    }
+
+    QCOMPARE(parser.m_writes, 0);
+    QCOMPARE(feed.customDatabaseData(), before);
+  }
+}
+
+void TestMediaWikiParser::checkpointFailureRestoresLiveState() {
+  const QUrl
+    source(QSL("https://example.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+
+  for (bool previous : {false, true}) {
+    feed.setCustomDatabaseData(previous ? QVariantHash{{QSL("mediawiki"), QSL("old state")}} : QVariantHash{});
+    MemoryMediaWikiParser parser(
+      catalog(false, 46, 5),
+      source,
+      [](const QUrl& request) {
+        return QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse") ? articleResponse(request)
+                                                                                : catalog(false, 1, 5).toUtf8();
+      },
+      []() {});
+    parser.setFeed(&feed);
+    QCOMPARE(messagesViaBase(&parser).size(), 10);
+    auto data = feed.customDatabaseData();
+    data[QSL("setting_changed_during_download")] = QSL("keep");
+    feed.setCustomDatabaseData(data);
+    parser.m_failWrite = true;
+    QVERIFY_EXCEPTION_THROWN(parser.commitCustomDatabaseData(), SqlException);
+    QCOMPARE(feed.customDatabaseData(), data);
+    QCOMPARE(parser.m_writes, 0);
+    parser.m_failWrite = false;
+    parser.commitCustomDatabaseData();
+    QCOMPARE(parser.m_writes, 1);
+    QCOMPARE(parser.m_persisted.value(QSL("setting_changed_during_download")).toString(), QSL("keep"));
+  }
+}
+
+void TestMediaWikiParser::changedSourceAndInvalidStateRestartBackfill() {
+  const QUrl
+    source(QSL("https://example.org/w/api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Test"));
+  MemoryFeed feed;
+  feed.setId(42);
+  feed.setSource(source.toString());
+  MemoryMediaWikiParser initial(
+    catalog(false, 46, 5),
+    source,
+    [](const QUrl& request) {
+      return QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")
+               ? articleResponse(request)
+               : catalog(false, 1, 5, {{QSL("cmcontinue"), QSL("6")}}).toUtf8();
+    },
+    []() {});
+  initial.setFeed(&feed);
+  messagesViaBase(&initial);
+  initial.commitCustomDatabaseData();
+  const auto persisted = initial.m_persisted;
+
+  for (int invalid = 0; invalid < 4; ++invalid) {
+    auto state = QJsonObject::fromVariantHash(persisted);
+    auto mediawiki = state.value(QSL("mediawiki")).toObject();
+
+    if (invalid == 0) {
+      mediawiki[QSL("source_key")] = QSL("another source");
+    }
+    else if (invalid == 1) {
+      mediawiki[QSL("version")] = 100;
+    }
+    else if (invalid == 2) {
+      mediawiki[QSL("backfill")] = QJsonObject{{QSL("continuation"), QJsonObject{{QSL("cmstart"), QSL("unsafe")}}}};
+    }
+    else {
+      mediawiki[QSL("feed_id")] = 123;
+    }
+
+    state[QSL("mediawiki")] = mediawiki;
+    QUrl requested;
+    MemoryMediaWikiParser parser(
+      catalog(false, 46, 5),
+      source,
+      [&](const QUrl& request) {
+        if (QUrlQuery(request).queryItemValue(QSL("action")) == QSL("parse")) {
+          return articleResponse(request);
+        }
+
+        requested = request;
+        return catalog(false, 1, 5).toUtf8();
+      },
+      []() {});
+    parser.m_persisted = state.toVariantHash();
+    parser.setFeed(&feed);
+    QCOMPARE(messagesViaBase(&parser).size(), 10);
+    QVERIFY(!QUrlQuery(requested).hasQueryItem(QSL("cmcontinue")));
+    feed.setSource(QSL("https://example.org/w/"
+                       "api.php?action=query&format=json&list=categorymembers&cmtitle=Category:Changed"));
+    parser.commitCustomDatabaseData();
+    QCOMPARE(parser.m_writes, 0);
+    feed.setSource(source.toString());
+  }
+}
+
+void TestMediaWikiParser::standardFeedPreservesArbitraryData() {
+  MediaWikiParser parser({});
+  NetworkResult result;
+  result.m_url =
+    QUrl(QSL("https://example.org/w/api.php?action=query&format=json&formatversion=2&list=search&srsearch=test"));
+  auto guessed = parser.guessFeed(QByteArray(R"({"query":{"search":[]}})"), result);
+  // Use exported core virtual methods, avoiding direct calls to unexported StandardFeed symbols.
+  Feed* feed = guessed.m_feed;
+  auto data = feed->customDatabaseData();
+  data[QSL("mediawiki")] = QVariantHash{{QSL("version"), 1}, {QSL("opaque"), QSL("token")}};
+  data[QSL("future_extension")] = QSL("preserve");
+  feed->setCustomDatabaseData(data);
+  const auto roundtrip =
+    QJsonDocument::fromJson(QJsonDocument::fromVariant(feed->customDatabaseData()).toJson()).object().toVariantHash();
+  feed->setCustomDatabaseData(roundtrip);
+  const auto saved = feed->customDatabaseData();
+  QCOMPARE(QJsonObject::fromVariantHash(saved).value(QSL("mediawiki")),
+           QJsonObject::fromVariantHash(data).value(QSL("mediawiki")));
+  QCOMPARE(saved.value(QSL("future_extension")).toString(), QSL("preserve"));
+  QCOMPARE(saved.value(QSL("type")).toInt(), int(StandardFeed::Type::MediaWiki));
+  QVERIFY(feed->articleIgnoreLimit().m_addAnyArticlesToDb);
+  delete feed;
 }
 
 QTEST_MAIN(TestMediaWikiParser)

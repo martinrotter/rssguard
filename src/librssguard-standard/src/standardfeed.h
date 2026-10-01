@@ -178,6 +178,7 @@ class StandardFeed : public Feed {
     QString getHttpDescription() const;
 
   private:
+    QVariantHash m_customDatabaseData;
     SourceType m_sourceType;
     Type m_type;
     QString m_postProcessScript;

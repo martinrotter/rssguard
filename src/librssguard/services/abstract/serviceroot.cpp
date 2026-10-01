@@ -1282,6 +1282,13 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
   return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) & static_cast<char>(rhs));
 }
 
+FeedFetchResult ServiceRoot::obtainNewMessagesForUpdate(Feed* feed,
+                                                        const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                          stated_messages,
+                                                        const QHash<QString, QStringList>& tagged_messages) {
+  return {obtainNewMessages(feed, stated_messages, tagged_messages), {}};
+}
+
 UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
                                             Feed* feed,
                                             bool force_update,

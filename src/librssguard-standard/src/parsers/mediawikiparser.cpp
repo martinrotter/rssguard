@@ -5,10 +5,12 @@
 #include "src/definitions.h"
 
 #include <cmath>
+#include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
+#include <librssguard/exceptions/sqlexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
@@ -30,8 +32,10 @@
 namespace {
 
   constexpr int MAX_CATALOG_PAGES = 5;
-  constexpr int MAX_ITEMS = 5;
-  constexpr unsigned long API_REQUEST_PAUSE_MS = 1000;
+  constexpr int NEWEST_ITEMS = 5;
+  constexpr int BACKFILL_ITEMS = 5;
+  constexpr int STATE_VERSION = 1;
+  constexpr unsigned long API_REQUEST_PAUSE_MS = 2000;
   constexpr int MAX_HTML_BYTES = 2 * 1024 * 1024;
 
   struct Source {
@@ -110,7 +114,7 @@ namespace {
     return Source{endpoint, value, search};
   }
 
-  QUrl catalogUrl(const Source& source) {
+  QUrl catalogUrl(const Source& source, bool backfill = false) {
     QUrl url = source.m_apiUrl;
     QUrlQuery query;
     query.addQueryItem(QSL("action"), QSL("query"));
@@ -123,19 +127,24 @@ namespace {
       query.addQueryItem(QSL("srnamespace"), QSL("0"));
       query.addQueryItem(QSL("srsort"), QSL("last_edit_desc"));
       query.addQueryItem(QSL("srprop"), QSL("snippet|timestamp|wordcount"));
-      query.addQueryItem(QSL("srlimit"), QString::number(MAX_ITEMS));
+      query.addQueryItem(QSL("srlimit"), QString::number(backfill ? BACKFILL_ITEMS : NEWEST_ITEMS));
     }
     else {
       query.addQueryItem(QSL("cmtitle"), source.m_value);
       query.addQueryItem(QSL("cmnamespace"), QSL("0"));
       query.addQueryItem(QSL("cmprop"), QSL("ids|title|timestamp"));
       query.addQueryItem(QSL("cmsort"), QSL("timestamp"));
-      query.addQueryItem(QSL("cmdir"), QSL("desc"));
-      query.addQueryItem(QSL("cmlimit"), QString::number(MAX_ITEMS));
+      query.addQueryItem(QSL("cmdir"), backfill ? QSL("asc") : QSL("desc"));
+      query.addQueryItem(QSL("cmlimit"), QString::number(backfill ? BACKFILL_ITEMS : NEWEST_ITEMS));
     }
 
     url.setQuery(query);
     return url;
+  }
+
+  QString sourceKey(const Source& source) {
+    // The canonical URL excludes caller-supplied continuation, limits and parameter order.
+    return catalogUrl(source).toString(QUrl::FullyEncoded);
   }
 
   QJsonObject parseObject(const QByteArray& data) {
@@ -299,10 +308,8 @@ namespace {
         // Older MediaWiki pages minify booleans as !0/!1. Only normalize
         // complete values outside strings; all other JavaScript stays invalid.
         if (before >= 0 && after < config.size() &&
-            (config.at(before) == QL1C(':') || config.at(before) == QL1C('[') ||
-             config.at(before) == QL1C(',')) &&
-            (config.at(after) == QL1C(',') || config.at(after) == QL1C(']') ||
-             config.at(after) == QL1C('}'))) {
+            (config.at(before) == QL1C(':') || config.at(before) == QL1C('[') || config.at(before) == QL1C(',')) &&
+            (config.at(after) == QL1C(',') || config.at(after) == QL1C(']') || config.at(after) == QL1C('}'))) {
           json += config.at(i + 1) == QL1C('0') ? QSL("true") : QSL("false");
           ++i;
           continue;
@@ -443,6 +450,8 @@ namespace {
     feed->setSourceType(StandardFeed::SourceType::Url);
     feed->setSource(catalogUrl(source).toString(QUrl::FullyEncoded));
     feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
+    // Backfill can be much older than the application's default acceptance cutoff.
+    feed->articleIgnoreLimit().m_addAnyArticlesToDb = true;
     const QString site = site_name.isEmpty() ? source.m_apiUrl.host() : site_name;
     feed->setTitle(source.m_search ? QObject::tr("Search: %1 — %2").arg(source.m_value, site)
                                    : QObject::tr("Category: %1 — %2").arg(source.m_value, site));
@@ -489,9 +498,14 @@ namespace {
   QUrl continuationUrl(const QUrl& source_url, const QJsonObject& continuation) {
     QUrl result = source_url;
     QUrlQuery query(result);
+    const bool search = query.queryItemValue(QSL("list")) == QSL("search");
+
+    if (!continuation.isEmpty() && !continuation.contains(search ? QSL("sroffset") : QSL("cmcontinue"))) {
+      throw ApplicationException(QObject::tr("MediaWiki continuation has no catalog position."));
+    }
 
     for (auto it = continuation.begin(); it != continuation.end(); ++it) {
-      if (it.key() != QSL("continue") && !it.key().startsWith(QSL("cm")) && !it.key().startsWith(QSL("sr"))) {
+      if (it.key() != QSL("continue") && it.key() != (search ? QSL("sroffset") : QSL("cmcontinue"))) {
         throw ApplicationException(QObject::tr("Unexpected MediaWiki continuation parameter."));
       }
 
@@ -499,9 +513,25 @@ namespace {
         throw ApplicationException(QObject::tr("Invalid MediaWiki continuation parameter."));
       }
 
+      if (it.value().isDouble() &&
+          (!search || it.key() != QSL("sroffset") || !std::isfinite(it.value().toDouble()) ||
+           it.value().toDouble() < 0 || it.value().toDouble() > std::numeric_limits<int>::max() ||
+           std::floor(it.value().toDouble()) != it.value().toDouble())) {
+        throw ApplicationException(QObject::tr("Invalid MediaWiki continuation offset."));
+      }
+
       const QString value = it.value().isString() ? it.value().toString() : QString::number(it.value().toInt());
 
-      if (value.size() > 2048) {
+      if (search && it.key() == QSL("sroffset") && it.value().isString()) {
+        bool valid = false;
+        const int offset = value.toInt(&valid);
+
+        if (!valid || offset < 0) {
+          throw ApplicationException(QObject::tr("Invalid MediaWiki continuation offset."));
+        }
+      }
+
+      if (value.isEmpty() || value.size() > 2048) {
         throw ApplicationException(QObject::tr("MediaWiki continuation parameter is too long."));
       }
 
@@ -511,6 +541,18 @@ namespace {
 
     result.setQuery(query);
     return result;
+  }
+
+  QJsonObject catalogContinuation(const QJsonObject& response, const QUrl& catalog_url) {
+    const QJsonValue value = response.value(QSL("continue"));
+
+    if (!value.isUndefined() && !value.isObject()) {
+      throw ApplicationException(QObject::tr("Invalid MediaWiki continuation object."));
+    }
+
+    const QJsonObject continuation = value.toObject();
+    continuationUrl(catalog_url, continuation);
+    return continuation;
   }
 
   QString absoluteArticleLinks(QString html, const QUrl& article_url) {
@@ -656,6 +698,8 @@ GuessedFeedWithIcons MediaWikiParser::guessFeed(const QByteArray& content, const
 }
 
 QJsonArray MediaWikiParser::jsonMessageElements() {
+  m_hasPendingState = false;
+  m_nextState.clear();
   const auto source = sourceFromUrl(m_sourceUrl);
 
   if (!source) {
@@ -663,10 +707,17 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
   }
 
   QJsonArray accepted;
+  m_sourceKey = sourceKey(*source);
+  m_feedId = feed() == nullptr ? 0 : feed()->id();
+  const auto feed_source = feed() == nullptr ? std::optional<Source>{} : sourceFromUrl(QUrl(feed()->source()));
+  m_feedSourceKey = feed_source ? sourceKey(*feed_source) : QString();
   m_articleHtml.clear();
   QSet<qint64> seen_ids;
   QSet<QString> seen_tokens;
   QJsonObject response = m_json.object();
+  QJsonObject newest_continuation;
+  QJsonObject newest_page_start;
+  bool newest_page_truncated = false;
   const auto fetch_additional_json = [this](const QUrl& url) {
     // Serialize supplemental API calls from all MediaWiki feeds in this process.
     static QMutex request_mutex;
@@ -676,32 +727,66 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
   };
 
   try {
-    for (int page = 0; page < MAX_CATALOG_PAGES && accepted.size() < MAX_ITEMS; ++page) {
-      const QJsonArray items = requireCatalog(response, source->m_search);
+    QJsonObject backfill_continuation;
 
-      for (const QJsonValue& item_value : items) {
-        const QJsonObject item = item_value.toObject();
-        const qint64 id = pageId(item);
-        const QDateTime date = QDateTime::fromString(item.value(QSL("timestamp")).toString(), Qt::ISODate);
+    if (m_feedId > 0) {
+      const QJsonObject saved = QJsonObject::fromVariantHash(loadFeedCustomData()).value(QSL("mediawiki")).toObject();
 
-        if (id <= 0 || seen_ids.contains(id) || item.value(QSL("title")).toString().trimmed().isEmpty() ||
-            !date.isValid()) {
-          continue;
+      if (saved.value(QSL("version")).toDouble() == STATE_VERSION &&
+          saved.value(QSL("feed_id")).toDouble() == m_feedId &&
+          saved.value(QSL("source_key")).toString() == m_sourceKey) {
+        const QJsonValue continuation = saved.value(QSL("backfill")).toObject().value(QSL("continuation"));
+
+        if (continuation.isObject()) {
+          try {
+            // Invalid saved state starts another sweep; invalid API replies still fail.
+            continuationUrl(catalogUrl(*source, true), continuation.toObject());
+            backfill_continuation = continuation.toObject();
+          }
+          catch (const ApplicationException&) {
+            backfill_continuation = {};
+          }
         }
+      }
+    }
 
+    const auto append_item = [&](const QJsonValue& item_value) {
+      const QJsonObject item = item_value.toObject();
+      const qint64 id = pageId(item);
+      const QDateTime date = QDateTime::fromString(item.value(QSL("timestamp")).toString(), Qt::ISODate);
+
+      if (id > 0 && !seen_ids.contains(id) && !item.value(QSL("title")).toString().trimmed().isEmpty() &&
+          date.isValid()) {
         seen_ids.insert(id);
         accepted.append(item);
+      }
+    };
 
-        if (accepted.size() >= MAX_ITEMS) {
+    for (int page = 0; page < MAX_CATALOG_PAGES && accepted.size() < NEWEST_ITEMS; ++page) {
+      const QJsonArray items = requireCatalog(response, source->m_search);
+      newest_continuation = catalogContinuation(response, catalogUrl(*source));
+
+      if (m_feedId > 0 && items.size() > NEWEST_ITEMS) {
+        throw ApplicationException(QObject::tr("MediaWiki catalog exceeded the requested page size."));
+      }
+
+      int consumed = 0;
+
+      for (const QJsonValue& item_value : items) {
+        ++consumed;
+        append_item(item_value);
+
+        if (accepted.size() >= NEWEST_ITEMS) {
+          newest_page_truncated = consumed < items.size();
           break;
         }
       }
 
-      if (accepted.size() >= MAX_ITEMS || page + 1 >= MAX_CATALOG_PAGES) {
+      if (accepted.size() >= NEWEST_ITEMS || page + 1 >= MAX_CATALOG_PAGES) {
         break;
       }
 
-      const QJsonObject continuation = response.value(QSL("continue")).toObject();
+      const QJsonObject continuation = newest_continuation;
 
       if (continuation.isEmpty()) {
         break;
@@ -719,14 +804,67 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
         throw ApplicationException(QObject::tr("MediaWiki continuation requires a resource handler."));
       }
 
-      const QUrl next = continuationUrl(m_sourceUrl, continuation);
+      const QUrl next = continuationUrl(catalogUrl(*source), continuation);
 
       if (!sameOrigin(source->m_apiUrl, next)) {
         throw ApplicationException(QObject::tr("MediaWiki continuation changed origin."));
       }
 
+      newest_page_start = continuation;
       response = parseObject(fetch_additional_json(next));
     }
+
+    if (m_feedId > 0) {
+      // A new search sweep starts after the newest stream, avoiding a duplicate first page.
+      // Category backfill uses an independent oldest-first catalog.
+      bool reuse_newest_page = false;
+
+      if (source->m_search && backfill_continuation.isEmpty()) {
+        // If five valid results required part of another page, its unprocessed
+        // remainder must not be skipped by starting at that page's next token.
+        reuse_newest_page = newest_page_truncated;
+        backfill_continuation = reuse_newest_page ? newest_page_start : newest_continuation;
+      }
+
+      QJsonObject next_continuation;
+
+      if (!source->m_search || !backfill_continuation.isEmpty() || reuse_newest_page) {
+        if (!m_resourceHandler) {
+          throw ApplicationException(QObject::tr("MediaWiki backfill requires a resource handler."));
+        }
+
+        const QUrl next = continuationUrl(catalogUrl(*source, true), backfill_continuation);
+        const QJsonObject backfill = reuse_newest_page ? response : parseObject(fetch_additional_json(next));
+        const QJsonArray items = requireCatalog(backfill, source->m_search);
+
+        // Never advance a token past entries omitted by our per-refresh bound.
+        if (items.size() > BACKFILL_ITEMS) {
+          throw ApplicationException(QObject::tr("MediaWiki backfill exceeded the requested page size."));
+        }
+
+        for (const QJsonValue& item_value : items) {
+          append_item(item_value);
+        }
+
+        next_continuation = catalogContinuation(backfill, catalogUrl(*source, true));
+
+        if (!next_continuation.isEmpty() && next_continuation == backfill_continuation) {
+          throw ApplicationException(QObject::tr("MediaWiki API repeated a continuation token."));
+        }
+      }
+
+      m_nextState = QJsonObject{{QSL("version"), STATE_VERSION},
+                                {QSL("feed_id"), m_feedId},
+                                {QSL("source_key"), m_sourceKey},
+                                {QSL("backfill"), QJsonObject{{QSL("continuation"), next_continuation}}}}
+                      .toVariantHash();
+    }
+  }
+  catch (const SqlException&) {
+    throw;
+  }
+  catch (const FeedFetchException&) {
+    throw;
   }
   catch (const ApplicationException& ex) {
     throw FeedFetchException(Feed::Status::ParsingError, ex.message());
@@ -774,7 +912,61 @@ QJsonArray MediaWikiParser::jsonMessageElements() {
     }
   }
 
+  m_hasPendingState = m_feedId > 0;
   return accepted;
+}
+
+QVariantHash MediaWikiParser::loadFeedCustomData() const {
+  return qApp->database()->worker()->read<QVariantHash>([this](const QSqlDatabase& db) {
+    return DatabaseQueries::loadFeedCustomData(db, feed());
+  });
+}
+
+void MediaWikiParser::storeFeedCustomData() {
+  qApp->database()->worker()->write([this](const QSqlDatabase& db) {
+    DatabaseQueries::storeFeedCustomData(db, feed());
+  });
+}
+
+void MediaWikiParser::commitCustomDatabaseData() {
+  if (!m_hasPendingState || feed() == nullptr || feed()->id() != m_feedId) {
+    return;
+  }
+
+  const auto current_source = sourceFromUrl(QUrl(feed()->source()));
+  const auto* standard_feed = qobject_cast<StandardFeed*>(feed());
+
+  if (!current_source || sourceKey(*current_source) != m_feedSourceKey ||
+      (standard_feed != nullptr && standard_feed->type() != StandardFeed::Type::MediaWiki)) {
+    m_hasPendingState = false;
+    return;
+  }
+
+  QVariantHash data = feed()->customDatabaseData();
+  const bool had_state = data.contains(QSL("mediawiki"));
+  const QVariant previous_state = data.value(QSL("mediawiki"));
+  data[QSL("mediawiki")] = m_nextState;
+  feed()->setCustomDatabaseData(data);
+
+  try {
+    storeFeedCustomData();
+  }
+  catch (...) {
+    // Restore only this namespace, preserving other live settings.
+    data = feed()->customDatabaseData();
+
+    if (had_state) {
+      data[QSL("mediawiki")] = previous_state;
+    }
+    else {
+      data.remove(QSL("mediawiki"));
+    }
+
+    feed()->setCustomDatabaseData(data);
+    throw;
+  }
+
+  m_hasPendingState = false;
 }
 
 QString MediaWikiParser::jsonMessageTitle(const QJsonObject& item) const {

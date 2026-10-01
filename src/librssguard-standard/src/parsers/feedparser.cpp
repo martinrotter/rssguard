@@ -48,6 +48,8 @@ FeedParser::FeedParser(QString data, DataType data_type)
 
 FeedParser::~FeedParser() {}
 
+void FeedParser::commitCustomDatabaseData() {}
+
 QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
                                                bool deep_discovery,

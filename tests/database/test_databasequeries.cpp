@@ -3,6 +3,7 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "database/databaseworker.h"
+#include "exceptions/sqlexception.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
@@ -107,6 +108,8 @@ class TestDatabaseQueries : public QObject {
     void updatesMixedArticleBatch();
     void updatesExistingArticles();
     void matchesCustomIdsAcrossSynchronizedAccount();
+    void loadsFeedCustomDataWithoutReloading();
+    void articleWriteErrorsPropagate();
 
   private:
     DatabaseFactory& m_database;
@@ -392,6 +395,61 @@ void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {
   QCOMPARE(synchronized_rows, synchronized_article_count);
   QCOMPARE(moved_rows, synchronized_article_count);
   m_account->setSyncable(false);
+}
+
+void TestDatabaseQueries::loadsFeedCustomDataWithoutReloading() {
+  const QVariantHash data{{QSL("mediawiki"), QVariantHash{{QSL("version"), 1}, {QSL("cursor"), QSL("opaque token")}}},
+                          {QSL("unrelated"), QSL("keep")}};
+  const auto live_before = m_feed->customDatabaseData();
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::storeCustomData(db, QSL("Feeds"), m_feed->id(), data);
+  });
+  const auto loaded = m_database.worker()->read<QVariantHash>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::loadFeedCustomData(db, m_feed);
+  });
+  QCOMPARE(DatabaseQueries::serializeCustomData(loaded), DatabaseQueries::serializeCustomData(data));
+  QCOMPARE(m_feed->customDatabaseData(), live_before);
+
+  Feed missing;
+  missing.setId(-123);
+  QVERIFY_EXCEPTION_THROWN(m_database.worker()->read<QVariantHash>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::loadFeedCustomData(db, &missing);
+  }),
+                           SqlException);
+}
+
+void TestDatabaseQueries::articleWriteErrorsPropagate() {
+  QList<Message> batch{
+    makeMessage(QSL("write-failure"), 1, m_feed->id(), m_account->accountId(), QSL("write-failure"))};
+  // Force real SQLite write failures on the writer connection, without touching other articles.
+  const auto trigger = [&](const QString& operation) {
+    m_database.worker()->write([&](const QSqlDatabase& db) {
+      QSqlQuery query(db);
+      if (!query.exec(QSL("CREATE TEMP TRIGGER test_article_write_failure BEFORE %1 ON Messages "
+                          "WHEN NEW.custom_id = 'write-failure' "
+                          "BEGIN SELECT RAISE(ABORT, 'simulated article failure'); END;")
+                        .arg(operation))) {
+        throw SqlException(query.lastError());
+      }
+    });
+  };
+  const auto drop_trigger = [&]() {
+    m_database.worker()->write([](const QSqlDatabase& db) {
+      QSqlQuery query(db);
+      query.exec(QSL("DROP TRIGGER IF EXISTS test_article_write_failure;"));
+    });
+  };
+
+  trigger(QSL("INSERT"));
+  QVERIFY_EXCEPTION_THROWN(DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true),
+                           SqlException);
+  drop_trigger();
+  QCOMPARE(DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true).m_all.size(), 1);
+  batch.first().m_title = QSL("Updated title");
+  trigger(QSL("UPDATE"));
+  QVERIFY_EXCEPTION_THROWN(DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, true, false),
+                           SqlException);
+  drop_trigger();
 }
 
 int main(int argc, char* argv[]) {

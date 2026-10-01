@@ -5,16 +5,16 @@
 
 #include "src/standardfeed.h"
 
+#include <functional>
 #include <librssguard/core/message.h>
 #include <librssguard/definitions/typedefs.h>
 #include <librssguard/miscellaneous/domdocument.h>
-
-#include <functional>
 
 #include <QByteArray>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QPointer>
 #include <QString>
 #include <QUrl>
 
@@ -33,8 +33,14 @@ struct DocumentWithUrl {
     QUrl m_documentUrl;
 };
 
-// Base class for all XML-based feed parsers.
-class FeedParser {
+#if defined(rssguard_standard_EXPORTS)
+#define FEED_PARSER_DLLSPEC Q_DECL_EXPORT
+#else
+#define FEED_PARSER_DLLSPEC Q_DECL_IMPORT
+#endif
+
+// Base class for standard feed parsers.
+class FEED_PARSER_DLLSPEC FeedParser {
   public:
     enum class DataType {
       Xml,
@@ -58,6 +64,17 @@ class FeedParser {
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();
+
+    // Non-owning context; discovery parsers may have no feed.
+    void setFeed(Feed* feed) {
+      m_feed = feed;
+    }
+    Feed* feed() const {
+      return m_feed.data();
+    }
+
+    // Called only after the returned articles have been processed and stored successfully.
+    virtual void commitCustomDatabaseData();
 
     const QString& dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
@@ -132,6 +149,7 @@ class FeedParser {
     QDateTime decideArticleDate(const QString& published, const QString& updated);
 
   protected:
+    QPointer<Feed> m_feed;
     std::function<QByteArray(const QUrl&)> m_resourceHandler;
     DataType m_dataType = DataType::Xml;
     QString m_data;

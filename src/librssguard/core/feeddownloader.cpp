@@ -289,7 +289,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
   tmr.start();
 
   try {
-    QList<Message> msgs = acc->obtainNewMessages(feed, stated_messages, tagged_messages);
+    auto fetched = acc->obtainNewMessagesForUpdate(feed, stated_messages, tagged_messages);
+    QList<Message>& msgs = fetched.messages;
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
              << QUOTE_W_SPACE_COMMA(feed->customId()) << "operation took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
@@ -447,6 +448,12 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     tmr.restart();
     auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list);
+
+    // Persist progress only after article storage succeeds. All earlier cancellation
+    // returns and exceptions discard the callback together with its proposed state.
+    if (fetched.afterMessagesStored) {
+      fetched.afterMessagesStored();
+    }
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";

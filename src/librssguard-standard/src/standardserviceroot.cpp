@@ -46,6 +46,8 @@
 #include "src/3rd-party/qcompressor/qcompressor.h"
 #endif
 
+#include <memory>
+
 #include <QAction>
 #include <QElapsedTimer>
 #include <QMenu>
@@ -280,6 +282,22 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
+  return obtainNewMessagesImpl(feed, nullptr);
+}
+
+FeedFetchResult StandardServiceRoot::obtainNewMessagesForUpdate(Feed* feed,
+                                                                const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                                  stated_messages,
+                                                                const QHash<QString, QStringList>& tagged_messages) {
+  Q_UNUSED(stated_messages)
+  Q_UNUSED(tagged_messages)
+
+  FeedFetchResult result;
+  result.messages = obtainNewMessagesImpl(feed, &result.afterMessagesStored);
+  return result;
+}
+
+QList<Message> StandardServiceRoot::obtainNewMessagesImpl(Feed* feed, std::function<void()>* after_messages_stored) {
   StandardFeed* f = static_cast<StandardFeed*>(feed);
   QString host = QUrl(f->source()).host();
   QUrl source_url(f->source());
@@ -418,7 +436,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
-  FeedParser* parser;
+  std::shared_ptr<FeedParser> parser;
   QElapsedTimer tmr;
 
   tmr.start();
@@ -426,45 +444,46 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   switch (f->type()) {
     case StandardFeed::Type::Rss0X:
     case StandardFeed::Type::Rss2X:
-      parser = new RssParser(formatted_feed_contents);
+      parser = std::make_shared<RssParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Rdf:
-      parser = new RdfParser(formatted_feed_contents);
+      parser = std::make_shared<RdfParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Atom10:
-      parser = new AtomParser(formatted_feed_contents);
+      parser = std::make_shared<AtomParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Json:
-      parser = new JsonParser(formatted_feed_contents);
+      parser = std::make_shared<JsonParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::iCalendar:
-      parser = new IcalParser(formatted_feed_contents);
+      parser = std::make_shared<IcalParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Gemlog:
-      parser = new GemlogParser(formatted_feed_contents);
+      parser = std::make_shared<GemlogParser>(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Sitemap:
-      parser = new SitemapParser(formatted_feed_contents);
+      parser = std::make_shared<SitemapParser>(formatted_feed_contents);
       break;
-    
+
     case StandardFeed::Type::WordpressJson:
-      parser = new WordpressJsonParser(formatted_feed_contents, source_url);
+      parser = std::make_shared<WordpressJsonParser>(formatted_feed_contents, source_url);
       break;
 
     case StandardFeed::Type::MediaWiki:
-      parser = new MediaWikiParser(formatted_feed_contents, source_url);
+      parser = std::make_shared<MediaWikiParser>(formatted_feed_contents, source_url);
       break;
 
     default:
-      break;
+      throw FeedFetchException(Feed::Status::ParsingError, tr("Unsupported feed type."));
   }
 
+  parser->setFeed(f);
   parser->setArticleDateMode(f->publishedInsteadOfUpdatedTime());
   parser->setFetchComments(f->fetchCommentsEnabled());
   parser->setResourceHandler([&](const QUrl& url) {
@@ -505,7 +524,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     f->setDateTimeFormat(parser->dateTimeFormat());
   }
 
-  delete parser;
+  // The completion callback outlives this function; release references to its locals.
+  parser->setResourceHandler({});
 
   if (messages.isEmpty() && f->reportAsBrokenIfEmpty()) {
     throw FeedFetchException(Feed::Status::ContainsNoArticles, tr("feed is working, but is empty"));
@@ -530,6 +550,12 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
       msg.m_contents = full_contents;
     }
+  }
+
+  if (after_messages_stored != nullptr) {
+    *after_messages_stored = [parser]() {
+      parser->commitCustomDatabaseData();
+    };
   }
 
   return messages;

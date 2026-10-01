@@ -82,6 +82,19 @@ void DatabaseQueries::storeFeedCustomData(const QSqlDatabase& db, Feed* feed) {
   storeCustomData(db, QSL("Feeds"), feed->id(), feed->customDatabaseData());
 }
 
+QVariantHash DatabaseQueries::loadFeedCustomData(const QSqlDatabase& db, Feed* feed) {
+  SqlQuery query(db);
+  query.prepare(QSL("SELECT custom_data FROM Feeds WHERE id = :id;"));
+  query.bindValue(QSL(":id"), feed->id());
+  query.exec();
+
+  if (!query.next()) {
+    throw SqlException(SqlException::Type::GeneralError, QObject::tr("Feed no longer exists in the database."));
+  }
+
+  return deserializeCustomData(query.value(0).toString());
+}
+
 QString DatabaseQueries::whereClauseBin(int account_id) {
   return QSL("Messages.account_id = %1 AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0").arg(account_id);
 }
@@ -1183,21 +1196,16 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         query_update.bindValue(QSL(":score"), message_update.m_score);
         query_update.bindValue(QSL(":id"), message_update.m_id);
 
-        if (query_update.exec(false)) {
-          qDebugNN << LOGSEC_DB << "Overwriting message with title" << QUOTE_W_SPACE(message_update.m_title) << "URL"
-                   << QUOTE_W_SPACE(message_update.m_url) << "in DB.";
+        query_update.exec();
+        qDebugNN << LOGSEC_DB << "Overwriting message with title" << QUOTE_W_SPACE(message_update.m_title) << "URL"
+                 << QUOTE_W_SPACE(message_update.m_url) << "in DB.";
 
-          if (!message_update.m_isRead) {
-            updated_messages.m_unread.append(message_update);
-          }
+        if (!message_update.m_isRead) {
+          updated_messages.m_unread.append(message_update);
+        }
 
-          updated_messages.m_all.append(message_update);
-          message_update.m_insertedUpdated = true;
-        }
-        else if (query_update.lastError().isValid()) {
-          qCriticalNN << LOGSEC_DB
-                      << "Failed to update message in DB:" << QUOTE_W_SPACE_DOT(query_update.lastError().text());
-        }
+        updated_messages.m_all.append(message_update);
+        message_update.m_insertedUpdated = true;
 
         query_update.finish();
       }
@@ -1261,48 +1269,37 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
           QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
           SqlQuery bulk_query(db);
 
-          bulk_query.exec(final_bulk, false);
+          bulk_query.exec(final_bulk);
 
-          auto bulk_error = bulk_query.lastError();
+          // OK, we bulk-inserted many messages but the thing is that they do not
+          // have their DB IDs fetched in objects, therefore labels cannot be assigned etc.
+          //
+          // We can calculate real IDs because of how "auto-increment" algorithms work.
+          //   https://www.sqlite.org/autoinc.html
+          //   https://mariadb.com/kb/en/auto_increment
+          int first_msg_id = bulk_query.lastInsertId().toInt();
 
-          if (bulk_error.isValid()) {
-            QString txt = bulk_error.text();
-
-            // IOFactory::writeFile("a.sql", final_bulk.toUtf8());
-
-            qCriticalNN << LOGSEC_DB << "Failed bulk insert of articles:" << QUOTE_W_SPACE_DOT(txt);
+          if (db.driverName() == QSL(APP_DB_SQLITE_DRIVER)) {
+            first_msg_id -= vals.size() - 1;
           }
-          else {
-            // OK, we bulk-inserted many messages but the thing is that they do not
-            // have their DB IDs fetched in objects, therefore labels cannot be assigned etc.
-            //
-            // We can calculate real IDs because of how "auto-increment" algorithms work.
-            //   https://www.sqlite.org/autoinc.html
-            //   https://mariadb.com/kb/en/auto_increment
-            int first_msg_id = bulk_query.lastInsertId().toInt();
 
-            if (db.driverName() == QSL(APP_DB_SQLITE_DRIVER)) {
-              first_msg_id -= vals.size() - 1;
+          int inserted_index = 0;
+
+          for (int l = i; l < (i + batch_length); l++) {
+            Message* msg = msgs_to_insert[l];
+
+            if (msg->m_title.isEmpty()) {
+              continue;
             }
 
-            int inserted_index = 0;
+            msg->m_insertedUpdated = true;
+            msg->m_id = first_msg_id + inserted_index++;
 
-            for (int l = i; l < (i + batch_length); l++) {
-              Message* msg = msgs_to_insert[l];
-
-              if (msg->m_title.isEmpty()) {
-                continue;
-              }
-
-              msg->m_insertedUpdated = true;
-              msg->m_id = first_msg_id + inserted_index++;
-
-              if (!msg->m_isRead) {
-                updated_messages.m_unread.append(*msg);
-              }
-
-              updated_messages.m_all.append(*msg);
+            if (!msg->m_isRead) {
+              updated_messages.m_unread.append(*msg);
             }
+
+            updated_messages.m_all.append(*msg);
           }
 
           bulk_query.finish();

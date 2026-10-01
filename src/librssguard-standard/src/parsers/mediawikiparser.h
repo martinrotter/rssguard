@@ -25,8 +25,12 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
                                                bool deep_discovery,
                                                const QList<DocumentWithUrl>& documents) const override;
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const override;
+    virtual void commitCustomDatabaseData() override;
 
   protected:
+    // SQL access is isolated from selection so checkpoint behaviour can be tested offline.
+    virtual QVariantHash loadFeedCustomData() const;
+    virtual void storeFeedCustomData();
     virtual QJsonArray jsonMessageElements() override;
     virtual QString jsonMessageTitle(const QJsonObject& item) const override;
     virtual QString jsonMessageUrl(const QJsonObject& item) const override;
@@ -40,6 +44,11 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
     QUrl m_sourceUrl;
     QHash<qint64, QString> m_articleHtml;
     std::function<void()> m_requestPause;
+    QVariantHash m_nextState;
+    QString m_sourceKey;
+    QString m_feedSourceKey;
+    int m_feedId = 0;
+    bool m_hasPendingState = false;
 };
 
 #endif // MEDIAWIKIPARSER_H

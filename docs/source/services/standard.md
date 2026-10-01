@@ -77,7 +77,13 @@ Discovery and **Fetch metadata** convert these inputs to a canonical API URL and
 
 The category feed shows pages recently added to the category. The search feed shows matching pages ordered by their latest edit. Each result links to its article, and RSS Guard loads the rendered article HTML through the API. If any required API request fails, the whole feed refresh fails; RSS Guard does not download article web pages as a fallback. An article keeps the same feed item identity when it is edited. Search feeds watch a result set; they do not record every edit as a separate item.
 
-Use `fulltext=1` in a Wikipedia search URL so it opens a results page. Without it, Wikipedia can redirect a query directly to a matching article. A refresh loads at most five of the newest results and fetches each article's HTML through a separate API request. Additional API requests are serialized and separated by a seven-second pause. This keeps one feed's request rate low, but several feeds or other clients using the same IP address can still share a server-side limit.
+Use `fulltext=1` in a Wikipedia search URL so it opens a results page. Without it, Wikipedia can redirect a query directly to a matching article.
+
+Each refresh loads five newest results plus up to five additional entries from a saved backfill cursor, with at most ten distinct articles. Categories backfill from oldest to newest; searches continue through their result pages. Progress survives restarting RSS Guard and advances only after the articles have been successfully processed and stored. Failed or cancelled refreshes retry the same backfill batch. At the end, another sweep begins so older articles are revisited. Changing the wiki, category or search query starts a new sweep. Search results can move between refreshes, and a wiki can limit the searchable result set, so changing searches cannot guarantee coverage of every result.
+
+RSS Guard fetches each article's HTML through a separate JSON API request. Additional API requests are serialized and separated by a one-second pause. Several feeds or other clients using the same IP address can still share a server-side limit.
+
+New MediaWiki feeds accept articles of any age so old backfill articles are not discarded by the application's age cutoff. Existing feeds keep their settings; check **Common** settings if backfill articles do not appear. Explicit article filters and retention limits still apply, so traversing the whole catalog does not necessarily retain every article.
 
 ## Folders and Local Storage
 Feeds can be organized into folders and rearranged freely. Articles, read states and account structure are stored in RSS Guard's own database; they are not synchronized to another feed reader.

@@ -43,6 +43,10 @@ class StandardServiceRoot : public ServiceRoot {
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
+    virtual FeedFetchResult obtainNewMessagesForUpdate(Feed* feed,
+                                                       const QHash<ServiceRoot::BagOfMessages, QStringList>&
+                                                         stated_messages,
+                                                       const QHash<QString, QStringList>& tagged_messages) override;
 
     virtual QList<QAction*> serviceMenu();
     virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu);
@@ -72,6 +76,7 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    QList<Message> obtainNewMessagesImpl(Feed* feed, std::function<void()>* after_messages_stored);
     void fetchMetadataForAllFeeds(const QList<Feed*>& feeds);
 
     // Takes structure residing under given root item and adds feeds/categories from
