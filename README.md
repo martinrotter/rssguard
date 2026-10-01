@@ -10,6 +10,8 @@
 
 ### [Discord chat](https://discord.gg/7xbVMPPNqH) | [XMPP chat](xmpp:rss-guard@conference.movim.eu?join) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild5) | [Docs](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
 
+Package names include `web` for the full Qt WebEngine viewer or `text` for the smaller, simpler QTextBrowser viewer. macOS packages end in `mac64intel` for Intel Macs or `mac64arm` for Apple Silicon. See [Downloads & Installation](https://rssguard.readthedocs.io/en/latest/downloads.html) for help choosing a package.
+
 **RSS Guard** is a fast, lightweight, and customizable feed reader designed for modern users.  
 It runs on **Windows**, **Linux**, **BSD**, **OS/2**, and **macOS**, and supports a wide range of feed formats including **RSS**, **ATOM**, **JSON**, **iCalendar**, and **Sitemap**.
 

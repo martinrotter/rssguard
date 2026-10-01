@@ -49,7 +49,12 @@ void exception_handler() {
   std::abort();
 }
 
+#if defined(RSSGUARD_PACKAGE_SMOKE_TEST)
+void startPackageSmokeTest();
+int rssguardMain(int argc, char* argv[]) {
+#else
 int main(int argc, char* argv[]) {
+#endif
   /*
    * This is disabled because it has bad side effects - not working redirection etc.
 #if defined(Q_OS_WIN)
@@ -212,6 +217,10 @@ int main(int argc, char* argv[]) {
 
   application.finishSplash(&main_window);
   MemoryDiagnostics::requestSnapshot(QSL("application-ready"));
+
+#if defined(RSSGUARD_PACKAGE_SMOKE_TEST)
+  startPackageSmokeTest();
+#endif
 
   return Application::exec();
 }

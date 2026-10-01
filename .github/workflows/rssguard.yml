@@ -26,13 +26,18 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Check script syntax
-        run: bash -n ./resources/scripts/github-actions/build-linux-mac.sh
+        run: |
+          bash -n ./resources/scripts/github-actions/build-linux-mac.sh
+          bash -n ./resources/scripts/github-actions/prepare-macos-icu.sh
 
       - name: Show shellcheck version
         run: shellcheck --version
 
       - name: Run shellcheck
-        run: shellcheck --color=always ./resources/scripts/github-actions/build-linux-mac.sh
+        run: shellcheck --color=always ./resources/scripts/github-actions/build-linux-mac.sh ./resources/scripts/github-actions/prepare-macos-icu.sh
+
+      - name: Test macOS package validation
+        run: python3 -m unittest discover -s ./resources/scripts/github-actions/tests -v
 
   source-tarball:
     name: create-source-tarball
@@ -99,7 +104,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022, ubuntu-24.04, macos-15]
+        os: [windows-2022, ubuntu-24.04, macos-15, macos-15-intel]
         use_qt5: ["ON", "OFF"]
         webengine_viewer: ["ON", "OFF"]
         include:
@@ -112,8 +117,17 @@ jobs:
           - os: macos-15
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
             cont: null
+            architecture: arm64
+            package_suffix: mac64arm
+          - os: macos-15-intel
+            script_name: ./resources/scripts/github-actions/build-linux-mac.sh
+            cont: null
+            architecture: x86_64
+            package_suffix: mac64intel
         exclude:
           - os: macos-15
+            use_qt5: "ON"
+          - os: macos-15-intel
             use_qt5: "ON"
     steps:
       - name: Checkout source code
@@ -153,6 +167,9 @@ jobs:
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_qt5 }}" "${{ matrix.webengine_viewer }}"
         env:
+          MACOS_ARCHITECTURE: ${{ matrix.architecture }}
+          MACOS_PACKAGE_SUFFIX: ${{ matrix.package_suffix }}
+          MACOSX_DEPLOYMENT_TARGET: "13.0"
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -284,26 +301,26 @@ jobs:
           fi
 
       - name: Validate macOS package
-        if: matrix.os == 'macos-15'
+        if: runner.os == 'macOS'
         shell: bash
         run: |
-          shopt -s nullglob
-          packages=(./rssguard-build/rssguard-*mac64.dmg)
-
-          if (( ${#packages[@]} != 1 )); then
-            echo "Expected exactly one macOS DMG package."
-            exit 1
-          fi
+          python3 ./resources/scripts/github-actions/validate-macos-package.py \
+            --build-directory ./rssguard-build \
+            --architecture "${{ matrix.architecture }}" \
+            --variant "${{ matrix.webengine_viewer == 'ON' && 'web' || 'text' }}" \
+            --minimum-macos 13.0 \
+            --smoke-executable ./rssguard-build/rssguard-package-smoke
 
       - name: Upload binaries
         uses: actions/upload-artifact@v7
         with:
-          name: RSS_Guard-${{ runner.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}-${{ matrix.webengine_viewer == 'ON' && 'Web' || 'Text' }}
+          name: RSS_Guard-${{ matrix.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}-${{ matrix.webengine_viewer == 'ON' && 'Web' || 'Text' }}
           if-no-files-found: error
           path: |
             ./rssguard-build/rssguard-*win*.exe
             ./rssguard-build/rssguard-*win*.7z
-            ./rssguard-build/rssguard-*mac64.dmg
+            ./rssguard-build/rssguard-*mac64intel.dmg
+            ./rssguard-build/rssguard-*mac64arm.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
             ./rssguard-build/rssguard-*linux64.AppImage.zsync
 
