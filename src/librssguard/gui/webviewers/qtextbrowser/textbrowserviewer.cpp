@@ -11,6 +11,7 @@
 #include "network-web/gemini/geminiparser.h"
 #include "network-web/webfactory.h"
 
+#include <cmath>
 #include <utility>
 
 #include <QContextMenuEvent>
@@ -278,6 +279,15 @@ double TextBrowserViewer::verticalScrollBarPosition() const {
 
 void TextBrowserViewer::setVerticalScrollBarPosition(double pos) {
   verticalScrollBar()->setValue(int(pos));
+}
+
+void TextBrowserViewer::scrollVerticallyBy(double delta) {
+  if (std::isfinite(delta)) {
+    QScrollBar* scrollbar = verticalScrollBar();
+    const double position =
+      qBound(double(scrollbar->minimum()), double(scrollbar->value()) + delta, double(scrollbar->maximum()));
+    scrollbar->setValue(int(position));
+  }
 }
 
 void TextBrowserViewer::applyFont(const QFont& fon) {

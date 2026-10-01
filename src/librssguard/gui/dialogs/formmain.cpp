@@ -123,6 +123,7 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
+  qApp->deactivateShortcutPriority();
   qDebugNN << LOGSEC_GUI << "Destroying FormMain instance.";
 }
 
@@ -439,8 +440,9 @@ void FormMain::updateTabsButtonsAvailability(int index) {
 
   m_ui->m_actionTabsCloseCurrent->setEnabled(valid_tab &&
                                              tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable);
-  m_ui->m_actionBrowserScrollUp->setEnabled(tab_content != nullptr && tab_content->webBrowser() != nullptr);
-  m_ui->m_actionBrowserScrollDown->setEnabled(tab_content != nullptr && tab_content->webBrowser() != nullptr);
+  const bool can_scroll = tab_content != nullptr && tab_content->scrollableWebBrowser() != nullptr;
+  m_ui->m_actionBrowserScrollUp->setEnabled(can_scroll);
+  m_ui->m_actionBrowserScrollDown->setEnabled(can_scroll);
 }
 
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
@@ -938,6 +940,12 @@ void FormMain::createConnections() {
           this,
           &FormMain::updateMessageButtonsAvailability);
   connect(tabWidget(), &TabWidget::currentChanged, this, &FormMain::updateTabsButtonsAvailability);
+  connect(tabWidget()->feedMessageViewer()->messagesBrowser(),
+          &MessagePreviewer::scrollableBrowserChanged,
+          this,
+          [this]() {
+            updateTabsButtonsAvailability(tabWidget()->currentIndex());
+          });
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStopRequested, this, &FormMain::onFeedUpdatesStopRequested);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);

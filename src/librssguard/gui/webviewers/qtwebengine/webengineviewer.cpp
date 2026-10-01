@@ -3,6 +3,7 @@
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 
 #include "definitions/definitions.h"
+#include "dynamic-shortcuts/shortcutpriority.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/reusable/scrollablemenu.h"
 #include "gui/webbrowser.h"
@@ -12,6 +13,8 @@
 #include "miscellaneous/memorydiagnostics.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
+
+#include <cmath>
 
 #include <QAction>
 #include <QFileIconProvider>
@@ -28,6 +31,7 @@
 
 #include <QWebEngineHistory>
 #include <QWebEngineProfile>
+#include <QWebEngineScript>
 #include <QWebEngineSettings>
 
 WebEngineViewer::WebEngineViewer(QWidget* parent)
@@ -39,6 +43,8 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
     m_actionDiagGpu(new QAction(qApp->icons()->fromTheme(QSL("video-display"), QSL("dialog-information")),
                                 tr("GPU"),
                                 this)) {
+  // Chromium's focused child reports whether an HTML text input is editable.
+  ShortcutPriority::registerInputMethodEditor(this);
   WebEnginePage* page = new WebEnginePage(false, this);
 
   setPage(page);
@@ -292,20 +298,23 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
 }
 
 double WebEngineViewer::verticalScrollBarPosition() const {
-  double position;
-  QEventLoop loop;
-
-  page()->runJavaScript(QSL("window.pageYOffset;"), [&position, &loop](const QVariant& val) {
-    position = val.toDouble();
-    loop.exit();
-  });
-  loop.exec();
-
-  return position;
+  return page()->scrollPosition().y();
 }
 
 void WebEngineViewer::setVerticalScrollBarPosition(double pos) {
-  page()->runJavaScript(QSL("window.scrollTo(0, %1);").arg(pos));
+  if (std::isfinite(pos)) {
+    page()->runJavaScript(QSL("window.scrollTo({left: 0, top: %1, behavior: 'instant'});")
+                            .arg(QString::number(pos, 'g', 17)),
+                          QWebEngineScript::ApplicationWorld);
+  }
+}
+
+void WebEngineViewer::scrollVerticallyBy(double delta) {
+  if (std::isfinite(delta)) {
+    page()->runJavaScript(QSL("window.scrollBy({left: 0, top: %1, behavior: 'instant'});")
+                            .arg(QString::number(delta, 'g', 17)),
+                          QWebEngineScript::ApplicationWorld);
+  }
 }
 
 void WebEngineViewer::applyFont(const QFont& fon) {

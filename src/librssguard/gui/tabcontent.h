@@ -25,6 +25,12 @@ class TabContent : public QWidget {
     // This can be used for obtaining the menu from the instance and so on.
     virtual WebBrowser* webBrowser() const = 0;
 
+    // Scroll commands need the displayed browser, which may differ from the
+    // default browser retained for menus/settings by a custom previewer.
+    virtual WebBrowser* scrollableWebBrowser() const {
+      return webBrowser();
+    }
+
   protected:
     int m_index;
 };

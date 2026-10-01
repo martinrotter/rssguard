@@ -43,6 +43,9 @@ set(SOURCES
   dynamic-shortcuts/dynamicshortcutswidget.h
   dynamic-shortcuts/shortcutcatcher.cpp
   dynamic-shortcuts/shortcutcatcher.h
+  dynamic-shortcuts/shortcutpriority.cpp
+  dynamic-shortcuts/shortcutpriority.h
+  dynamic-shortcuts/shortcutsequenceedit.h
   exceptions/applicationexception.cpp
   exceptions/applicationexception.h
   exceptions/feedfetchexception.cpp

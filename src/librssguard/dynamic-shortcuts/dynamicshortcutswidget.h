@@ -6,6 +6,7 @@
 #include <QWidget>
 
 class QGridLayout;
+class QLabel;
 class ShortcutCatcher;
 
 class DynamicShortcutsWidget : public QWidget {
@@ -34,9 +35,12 @@ class DynamicShortcutsWidget : public QWidget {
     void setupChanged();
 
   private:
+    void updateConflictWarning();
+
     QGridLayout* m_layout;
+    QLabel* m_conflictWarning;
     QList<ShortcutCatcher*> m_actionBindings;
-    QHash<QKeySequence, ShortcutCatcher*> m_assignedShortcuts;
+    QHash<ShortcutCatcher*, QKeySequence> m_stagedShortcuts;
 };
 
 #endif // DYNAMICSHORTCUTSOVERVIEW_H

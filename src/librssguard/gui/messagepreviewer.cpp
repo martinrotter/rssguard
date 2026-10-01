@@ -95,6 +95,7 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   // and optional custom browser on index 1.
   m_viewerLayout->addWidget(m_msgBrowser);
   m_viewerLayout->addWidget(m_itemDetails);
+  connect(m_viewerLayout, &QStackedLayout::currentChanged, this, &MessagePreviewer::scrollableBrowserChanged);
 
   m_mainLayout->setContentsMargins(3, 3, 3, 3);
   m_mainLayout->addLayout(m_viewerLayout, 0, 1, 1, 1);
@@ -132,6 +133,20 @@ void MessagePreviewer::setToolbarsVisible(bool visible) {
 
 WebBrowser* MessagePreviewer::webBrowser() const {
   return m_msgBrowser;
+}
+
+WebBrowser* MessagePreviewer::scrollableWebBrowser() const {
+  return !isHidden() && m_viewerLayout->currentIndex() == INDEX_DEFAULT ? m_msgBrowser : nullptr;
+}
+
+void MessagePreviewer::showEvent(QShowEvent* event) {
+  TabContent::showEvent(event);
+  emit scrollableBrowserChanged();
+}
+
+void MessagePreviewer::hideEvent(QHideEvent* event) {
+  TabContent::hideEvent(event);
+  emit scrollableBrowserChanged();
 }
 
 void MessagePreviewer::clear() {

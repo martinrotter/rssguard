@@ -2,15 +2,16 @@
 
 #include "dynamic-shortcuts/shortcutcatcher.h"
 
+#include "dynamic-shortcuts/shortcutsequenceedit.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
 #include <QHBoxLayout>
 #include <QKeySequenceEdit>
+#include <QSignalBlocker>
 
-ShortcutCatcher::ShortcutCatcher(QWidget* parent)
-  : QWidget(parent), m_isRecording(false), m_numKey(0), m_modifierKeys(0U) {
+ShortcutCatcher::ShortcutCatcher(QWidget* parent) : QWidget(parent) {
   // Setup layout of the control
   m_layout = new QHBoxLayout(this);
 
@@ -30,7 +31,7 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   m_btnClear->setToolTip(tr("Clear current shortcut"));
 
   // Clear main shortcut catching button.
-  m_shortcutBox = new QKeySequenceEdit(this);
+  m_shortcutBox = new ShortcutSequenceEdit(this);
   m_shortcutBox->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
   m_shortcutBox->setMinimumWidth(170);
   m_shortcutBox->setToolTip(tr("Click and hit new shortcut."));
@@ -43,11 +44,13 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   // Establish needed connections.
   connect(m_btnReset, &QToolButton::clicked, this, &ShortcutCatcher::resetShortcut);
   connect(m_btnClear, &QToolButton::clicked, this, &ShortcutCatcher::clearShortcut);
-  connect(m_shortcutBox, &QKeySequenceEdit::keySequenceChanged, this, &ShortcutCatcher::shortcutChanged);
+  // Validate the completed sequence, not provisional prefixes or the empty
+  // sequence Qt emits when a new recording begins.
+  connect(m_shortcutBox, &QKeySequenceEdit::editingFinished, this, &ShortcutCatcher::finishRecording);
 }
 
 QKeySequence ShortcutCatcher::shortcut() const {
-  return m_shortcutBox->keySequence();
+  return m_currentSequence;
 }
 
 void ShortcutCatcher::setDefaultShortcut(const QKeySequence& key) {
@@ -56,7 +59,19 @@ void ShortcutCatcher::setDefaultShortcut(const QKeySequence& key) {
 }
 
 void ShortcutCatcher::setShortcut(const QKeySequence& key) {
-  m_shortcutBox->setKeySequence(key);
+  {
+    const QSignalBlocker blocker(m_shortcutBox);
+    m_shortcutBox->setKeySequence(key);
+  }
+
+  if (m_currentSequence != key) {
+    m_currentSequence = key;
+    emit shortcutChanged(key);
+  }
+}
+
+void ShortcutCatcher::finishRecording() {
+  setShortcut(m_shortcutBox->keySequence());
 }
 
 void ShortcutCatcher::resetShortcut() {

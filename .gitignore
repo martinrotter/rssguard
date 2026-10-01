@@ -28,4 +28,5 @@ docs/html
 resources/scripts/qxmpp
 resources/scripts/standalone/*/vendor
 tmp/
-benchmark-results/
+benchmark-results*/
+docs/implementation-guide*/

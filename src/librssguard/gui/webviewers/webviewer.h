@@ -106,6 +106,7 @@ class WebViewer {
     // Vertical scrollbar changer.
     virtual double verticalScrollBarPosition() const = 0;
     virtual void setVerticalScrollBarPosition(double pos) = 0;
+    virtual void scrollVerticallyBy(double delta);
 
     // Called after printing is finished, must be reimplemented by view
     // and this super-implementation called.

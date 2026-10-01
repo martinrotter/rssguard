@@ -31,6 +31,7 @@ class MessagePreviewer : public TabContent {
     void reloadFontSettings();
 
     virtual WebBrowser* webBrowser() const;
+    WebBrowser* scrollableWebBrowser() const override;
 
     LabelsMenu* menuLabels() const;
 
@@ -49,10 +50,15 @@ class MessagePreviewer : public TabContent {
     void fetchFullMessageContents();
 
   signals:
+    void scrollableBrowserChanged();
     void articleTweaked(const Message& msg);
     void revealFeed();
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
+
+  protected:
+    void showEvent(QShowEvent* event) override;
+    void hideEvent(QHideEvent* event) override;
 
   private:
     void createConnections();

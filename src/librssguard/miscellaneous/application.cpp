@@ -5,6 +5,7 @@
 #include "core/feedsmodel.h"
 #include "database/databasefactory.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
+#include "dynamic-shortcuts/shortcutpriority.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -262,6 +263,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 }
 
 Application::~Application() {
+  deactivateShortcutPriority();
+
   if (m_memoryDiagnostics != nullptr) {
     m_memoryDiagnostics->recordSnapshot(QSL("application-shutdown"));
     m_memoryDiagnostics.reset();
@@ -349,6 +352,36 @@ void Application::hideOrShowMainForm() {
 
 void Application::loadDynamicShortcuts() {
   DynamicShortcuts::load(userAndExtraActions());
+  // FormMain and its full action registry are ready at this point.
+  m_shortcutPriority.reset(new ShortcutPriority(m_mainForm, [this]() {
+    return userAndExtraActions();
+  }));
+}
+
+bool Application::notify(QObject* receiver, QEvent* event) {
+  if ((event->type() == QEvent::ShortcutOverride || event->type() == QEvent::Shortcut) &&
+      QThread::currentThread() == thread() && m_shortcutPriority != nullptr) {
+    // Keep the coordinator alive across input queries and action callbacks.
+    const auto priority = m_shortcutPriority;
+    const auto decision = priority->intercept(receiver, event);
+
+    if (decision == ShortcutPriority::Decision::Consume) {
+      return true;
+    }
+    if (decision == ShortcutPriority::Decision::DeliverToEditor) {
+      SingleApplication::notify(receiver, event);
+      // Deliver the override first so editors can prepare native edit commands.
+      // Some supported editing keys are not reserved by their Qt handlers.
+      event->accept();
+      return true;
+    }
+  }
+
+  return SingleApplication::notify(receiver, event);
+}
+
+void Application::deactivateShortcutPriority() {
+  m_shortcutPriority.reset();
 }
 
 void Application::offerPolls() const {

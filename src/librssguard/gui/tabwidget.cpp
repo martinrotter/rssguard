@@ -172,7 +172,7 @@ void TabWidget::setupIcons() {
 
 void TabWidget::scrollUpCurrentBrowser() {
   TabContent* tab_content = currentWidget();
-  WebBrowser* browser = tab_content != nullptr ? tab_content->webBrowser() : nullptr;
+  WebBrowser* browser = tab_content != nullptr ? tab_content->scrollableWebBrowser() : nullptr;
 
   if (browser != nullptr) {
     browser->scrollUp();
@@ -181,7 +181,7 @@ void TabWidget::scrollUpCurrentBrowser() {
 
 void TabWidget::scrollDownCurrentBrowser() {
   TabContent* tab_content = currentWidget();
-  WebBrowser* browser = tab_content != nullptr ? tab_content->webBrowser() : nullptr;
+  WebBrowser* browser = tab_content != nullptr ? tab_content->scrollableWebBrowser() : nullptr;
 
   if (browser != nullptr) {
     browser->scrollDown();

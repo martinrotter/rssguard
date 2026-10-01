@@ -3,6 +3,7 @@
 Released on: 2026-09-XX
 
 Added:
+* Configured keyboard shortcuts now take precedence in the main window and embedded media player. Editable inputs retain typing and standard editing operations; unrelated application commands remain available. Dialogs, popup menus and shortcut recording retain normal handling.
 * Article data can now be copied immediately using the previously selected format.
 * RSS Guard now asks for confirmation before rearranging feeds or subfolders alphabetically. (#2430)
 * Discovered feeds can now be sorted by title or type from the column headers. (#2435)
@@ -10,6 +11,9 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Preview scrolling now works with page JavaScript disabled and repeated commands no longer depend on a blocking JavaScript position read. Commands scroll the active tab's displayed browser. (#2447)
+* Shortcut configuration now detects exact and prefix conflicts, replaces every conflicting staged binding when requested, and restores the previous binding when replacement is declined. Tab and Shift+Tab can be recorded.
+* Lists and trees no longer receive editable-input shortcut protection merely because their model items are editable. Configured commands win over navigation and letter search; unassigned keys retain widget behavior, and focused inline editors retain normal text editing.
 * Using proper newline in "Copy data of selected articles" feature. (#2450)
 * Fetching feed metadata now respects custom HTTP headers configured for the feed. (#2415)
 * Fetching feed metadata now preserves the source URL chosen by the parser, including MediaWiki API URLs.

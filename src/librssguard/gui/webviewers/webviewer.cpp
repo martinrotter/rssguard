@@ -16,6 +16,8 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
+
+#include <cmath>
 #include <functional>
 #include <optional>
 #include <utility>
@@ -35,6 +37,12 @@ WebViewer::WebViewer() {
 }
 
 WebViewer::~WebViewer() {}
+
+void WebViewer::scrollVerticallyBy(double delta) {
+  if (std::isfinite(delta)) {
+    setVerticalScrollBarPosition(verticalScrollBarPosition() + delta);
+  }
+}
 
 namespace {
   bool isGumboVoidTag(GumboTag tag) {

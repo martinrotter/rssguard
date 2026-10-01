@@ -402,8 +402,8 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
   Q_UNUSED(watched)
 
   if (event->type() == QEvent::Type::ShortcutOverride) {
-    // NOTE: If user presses key which is application-wide assigned to some
-    // action, do not propagate the shortcut to application.
+    // Reserve ordinary player keys. Application::notify withholds this event
+    // when an eligible configured main-window shortcut should take priority.
     event->accept();
     return true;
   }
@@ -492,8 +492,10 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       mpv_command_async(m_mpvHandle, 0, args);
     }
 
-    if (event->type() == QEvent::Type::KeyRelease) {
-      // We catch all keypresses (even from surrounding widgets).
+    if (event->type() == QEvent::Type::KeyPress) {
+      // Qt consumes app shortcut presses, including sequence continuations.
+      // Releases must not dispatch a second command. Repeated presses retain
+      // MPV's existing atomic keypress interface.
       QKeyEvent* key_event = dynamic_cast<QKeyEvent*>(event);
       QByteArray byte_named_key;
 

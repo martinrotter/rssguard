@@ -37,6 +37,8 @@ endfunction()
 if(ENABLE_TESTING)
   message(STATUS "Enabling unit tests.")
 
+  add_subdirectory(dynamic-shortcuts)
+
   add_rssguard_test(test_globals
     definitions/test_globals.cpp
   )

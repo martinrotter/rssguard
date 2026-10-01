@@ -29,6 +29,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     virtual ~FeedMessageViewer();
 
     virtual WebBrowser* webBrowser() const;
+    WebBrowser* scrollableWebBrowser() const override;
 
     FeedsView* feedsView() const;
     MessagesView* messagesView() const;

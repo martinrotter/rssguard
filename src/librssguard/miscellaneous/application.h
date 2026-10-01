@@ -12,6 +12,7 @@
 #include <QIcon>
 #include <QList>
 #include <QScopedPointer>
+#include <QSharedPointer>
 #include <QSystemTrayIcon>
 
 #if defined(qApp)
@@ -47,6 +48,7 @@ class ApplicationPaths;
 class GuiNotificationCoordinator;
 class CommandLineController;
 class MemoryDiagnostics;
+class ShortcutPriority;
 
 struct GuiMessage {
   public:
@@ -98,11 +100,13 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     virtual ~Application();
 
     virtual bool event(QEvent* event);
+    bool notify(QObject* receiver, QEvent* event) override;
 
     void updateCliDebugStatus();
     void reactOnForeignNotifications();
     void hideOrShowMainForm();
     void loadDynamicShortcuts();
+    void deactivateShortcutPriority();
     void showSplashMessage(const QString& message);
     void finishSplash(QWidget* main_window = nullptr);
     void offerPolls() const;
@@ -216,6 +220,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
   private slots:
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
+
   private:
     void setupWorkHorsePool();
     void determineFirstRuns();
@@ -230,6 +235,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QScopedPointer<GuiNotificationCoordinator> m_guiNotifications;
     QScopedPointer<CommandLineController> m_commandLine;
     QScopedPointer<MemoryDiagnostics> m_memoryDiagnostics;
+    QSharedPointer<ShortcutPriority> m_shortcutPriority;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.

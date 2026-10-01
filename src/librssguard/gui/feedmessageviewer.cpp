@@ -83,6 +83,10 @@ WebBrowser* FeedMessageViewer::webBrowser() const {
   return m_messagesBrowser->webBrowser();
 }
 
+WebBrowser* FeedMessageViewer::scrollableWebBrowser() const {
+  return m_messagesBrowser->scrollableWebBrowser();
+}
+
 FeedsView* FeedMessageViewer::feedsView() const {
   return m_feedsView;
 }

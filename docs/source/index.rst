@@ -16,6 +16,7 @@ RSS Guard Documentation!
    :caption: Features
 
    features/gui-concepts
+   features/keyboard-shortcuts
    features/article-display
    features/cli
    features/db
