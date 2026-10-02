@@ -384,18 +384,11 @@ void StandardFeedDetails::setExistingFeed(ServiceRoot* account, StandardFeed* fe
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  QList<Category*> cats;
-
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    cats = qlinq::from(categories)
-             .orderBy([](Category* cat) {
-               return cat->title().toLower();
-             })
-             .toList();
-  }
-  else {
-    cats = categories;
-  }
+  QList<Category*> cats = qlinq::from(categories)
+                            .orderBy([](Category* cat) {
+                              return cat->title().toLower();
+                            })
+                            .toList();
 
   m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(),
                                     TextFactory::shorten(root_item->title()),
