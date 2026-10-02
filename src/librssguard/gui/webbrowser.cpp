@@ -52,7 +52,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 
   initializeLayout();
 
-  setFocusProxy(m_txtLocation);
+  setFocusProxy(dynamic_cast<QWidget*>(m_webView));
   setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, dynamic_cast<QWidget*>(m_webView));
 

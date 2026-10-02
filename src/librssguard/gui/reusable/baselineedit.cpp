@@ -83,10 +83,5 @@ void BaseLineEdit::keyPressEvent(QKeyEvent* event) {
     event->accept();
   }
 
-  if (event->key() == Qt::Key::Key_Escape) {
-    submit(QString());
-    event->accept();
-  }
-
   QLineEdit::keyPressEvent(event);
 }
