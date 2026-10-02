@@ -57,6 +57,7 @@ MessagesView::~MessagesView() {
 
 void MessagesView::reloadFontSettings() {
   m_sourceModel->setupFonts();
+  scheduleDelayedItemsLayout();
 }
 
 void MessagesView::setupArticleMarkingPolicy() {
@@ -315,6 +316,11 @@ void MessagesView::createConnections() {
   // Adjust columns when layout gets changed.
   connect(header(), &QHeaderView::geometriesChanged, this, &MessagesView::adjustColumns);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &MessagesView::onSortIndicatorChanged);
+  connect(header(), &QHeaderView::sectionResized, this, [this](int column, int old_size, int new_size) {
+    if (column == MSG_MDL_TITLE_INDEX && old_size != new_size && wordWrap() && !uniformRowHeights()) {
+      scheduleDelayedItemsLayout();
+    }
+  });
 }
 
 void MessagesView::keyboardSearch(const QString& search) {
@@ -354,7 +360,8 @@ void MessagesView::setupAppearance() {
                                          qApp->settings()
                                            ->value(GROUP(Messages), SETTING(Messages::ArticleListPadding))
                                            .toInt(),
-                                         this));
+                                         this,
+                                         MSG_MDL_TITLE_INDEX));
 
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);

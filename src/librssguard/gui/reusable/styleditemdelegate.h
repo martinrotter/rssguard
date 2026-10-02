@@ -18,7 +18,7 @@ class StyledItemDelegate : public QStyledItemDelegate {
     Q_PROPERTY(qreal flashProgress READ flashProgress WRITE setFlashProgress NOTIFY flashProgressChanged)
 
   public:
-    explicit StyledItemDelegate(int height_row, int padding_row, QObject* parent = nullptr);
+    explicit StyledItemDelegate(int height_row, int padding_row, QObject* parent = nullptr, int wrapped_column = -1);
 
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -39,6 +39,7 @@ class StyledItemDelegate : public QStyledItemDelegate {
     qreal m_flashProgress;
     int m_rowHeight;
     int m_rowPadding;
+    int m_wrappedColumn;
 };
 
 #endif // STYLEDITEMDELEGATE_H

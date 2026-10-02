@@ -161,7 +161,6 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     QIcon m_enclosuresIcon;
     QList<QIcon> m_scoreIcons;
     MessageUnreadIcon m_unreadIconType;
-    bool m_multilineListItems;
     int m_additionalArticleId;
     bool m_lazyLoading;
     bool m_showFeedIconInFeedColumn;

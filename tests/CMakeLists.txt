@@ -17,6 +17,8 @@ function(add_rssguard_test TEST_TARGET)
 
     if(TEST_TARGET STREQUAL "test_mediawikiparser")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
+    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate")
+      set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
     add_test(NAME ${TEST_TARGET}
@@ -78,6 +80,16 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_message
     core/test_message.cpp
   )
+
+  add_rssguard_test(test_styleditemdelegate
+    gui/test_styleditemdelegate.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/styleditemdelegate.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/styleditemdelegate.h
+  )
+  if(WIN32)
+    set_tests_properties(test_styleditemdelegate PROPERTIES
+      ENVIRONMENT "QT_QPA_FONTDIR=$ENV{WINDIR}/Fonts")
+  endif()
 
   add_rssguard_test(test_databasequeries
     database/test_databasequeries.cpp

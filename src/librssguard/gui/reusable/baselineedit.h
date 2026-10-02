@@ -4,6 +4,7 @@
 #define BASELINEEDIT_H
 
 #include <QLineEdit>
+#include <QTimer>
 
 class RSSGUARD_DLLSPEC BaseLineEdit : public QLineEdit {
     Q_OBJECT
@@ -20,12 +21,14 @@ class RSSGUARD_DLLSPEC BaseLineEdit : public QLineEdit {
   protected:
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void focusInEvent(QFocusEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
 
   signals:
     void submitted(const QString& text);
 
   private:
     QAction* m_actShowPassword;
+    QTimer m_tmrSelectAll;
 };
 
 #endif // BASELINEEDIT_H

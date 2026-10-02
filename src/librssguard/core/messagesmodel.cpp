@@ -37,7 +37,6 @@ MessagesModel::MessagesModel(QObject* parent)
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
     m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
     m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
-    m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()),
     m_additionalArticleId(0), m_lazyLoading(false),
     m_showFeedIconInFeedColumn(qApp->settings()
                                  ->value(GROUP(Messages), SETTING(Messages::ShowFeedIconInFeedColumn))
@@ -946,30 +945,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
 
       return QVariant();
-    }
-
-    case Qt::ItemDataRole::SizeHintRole: {
-      if (!m_multilineListItems || m_view == nullptr || m_view->isColumnHidden(idx.column()) ||
-          idx.column() != MSG_MDL_TITLE_INDEX) {
-        return {};
-      }
-      else {
-        auto wd = m_view->columnWidth(idx.column());
-        QString str = data(idx, Qt::ItemDataRole::DisplayRole).toString();
-
-        if (str.simplified().isEmpty()) {
-          return {};
-        }
-
-        QFontMetrics fm(data(idx, Qt::ItemDataRole::FontRole).value<QFont>());
-        auto rct =
-          fm.boundingRect(QRect(QPoint(0, 0), QPoint(wd - 5, 100000)),
-                          Qt::TextFlag::TextWordWrap | Qt::AlignmentFlag::AlignLeft | Qt::AlignmentFlag::AlignVCenter,
-                          str)
-            .size();
-
-        return rct;
-      }
     }
 
     case Qt::ItemDataRole::DecorationRole: {

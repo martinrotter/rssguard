@@ -6,13 +6,20 @@
 #include "miscellaneous/iconfactory.h"
 
 #include <QAction>
+#include <QContextMenuEvent>
 #include <QKeyEvent>
-#include <QTimer>
 
 BaseLineEdit::BaseLineEdit(QWidget* parent)
   : QLineEdit(parent), m_actShowPassword(new QAction(qApp->icons()->fromTheme(QSL("dialog-password")),
                                                      tr("Show/hide the password"),
                                                      this)) {
+  m_tmrSelectAll.setSingleShot(true);
+
+  connect(&m_tmrSelectAll, &QTimer::timeout, this, [this]() {
+    if (hasFocus() && !hasSelectedText()) {
+      selectAll();
+    }
+  });
   connect(m_actShowPassword, &QAction::triggered, this, [this]() {
     setEchoMode(echoMode() == QLineEdit::EchoMode::Password ? QLineEdit::EchoMode::Normal
                                                             : QLineEdit::EchoMode::Password);
@@ -30,7 +37,26 @@ BaseLineEdit::~BaseLineEdit() {}
 
 void BaseLineEdit::focusInEvent(QFocusEvent* event) {
   QLineEdit::focusInEvent(event);
-  QTimer::singleShot(100, this, &BaseLineEdit::selectAll);
+
+  if (event->reason() != Qt::PopupFocusReason && !hasSelectedText()) {
+    m_tmrSelectAll.start(100);
+  }
+}
+
+void BaseLineEdit::contextMenuEvent(QContextMenuEvent* event) {
+  if (!hasFocus()) {
+    setFocus(Qt::MouseFocusReason);
+  }
+
+  if (m_tmrSelectAll.isActive()) {
+    m_tmrSelectAll.stop();
+
+    if (!hasSelectedText()) {
+      selectAll();
+    }
+  }
+
+  QLineEdit::contextMenuEvent(event);
 }
 
 void BaseLineEdit::setPasswordMode(bool is_password) {

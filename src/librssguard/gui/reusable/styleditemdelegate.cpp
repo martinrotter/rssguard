@@ -11,10 +11,9 @@
 #include <QPropertyAnimation>
 #include <QTreeView>
 
-StyledItemDelegate::StyledItemDelegate(int height_row, int padding_row, QObject* parent)
-  : QStyledItemDelegate(parent),
-    m_flashColor(qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>()),
-    m_flashProgress(0.0), m_rowHeight(height_row), m_rowPadding(padding_row) {}
+StyledItemDelegate::StyledItemDelegate(int height_row, int padding_row, QObject* parent, int wrapped_column)
+  : QStyledItemDelegate(parent), m_flashProgress(0.0), m_rowHeight(height_row), m_rowPadding(padding_row),
+    m_wrappedColumn(wrapped_column) {}
 
 void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   QStyleOptionViewItem item_option(option);
@@ -65,7 +64,19 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 }
 
 QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
-  auto original_hint = QStyledItemDelegate::sizeHint(option, index);
+  QStyleOptionViewItem size_option(option);
+
+  if (m_rowHeight <= 0 && index.column() == m_wrappedColumn &&
+      size_option.features.testFlag(QStyleOptionViewItem::ViewItemFeature::WrapText)) {
+    const QTreeView* tree = qobject_cast<const QTreeView*>(option.widget);
+
+    if (tree != nullptr) {
+      // QTreeView requests row heights without a column width. Let the style wrap at the actual cell width.
+      size_option.rect = QRect(0, 0, qMax(1, tree->columnWidth(index.column())), 1);
+    }
+  }
+
+  auto original_hint = QStyledItemDelegate::sizeHint(size_option, index);
   QSize new_hint;
 
   if (m_rowHeight <= 0) {
@@ -83,6 +94,7 @@ QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
 }
 
 void StyledItemDelegate::flashItem(const QModelIndex& index, QTreeView* view) {
+  m_flashColor = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>();
   m_flashIndex = index;
 
   QPropertyAnimation* anim = new QPropertyAnimation(this, "flashProgress");
