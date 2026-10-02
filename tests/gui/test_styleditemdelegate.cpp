@@ -153,22 +153,29 @@ void TestStyledItemDelegate::resizesWhenReadStateChanges() {
   view.header()->setStretchLastSection(false);
   view.setItemDelegate(new StyledItemDelegate(0, 0, &view, 1));
   view.resize(500, 300);
-  const int margin = style->pixelMetric(QStyle::PM_FocusFrameHMargin, nullptr, &view) + 1;
+  QStyleOptionViewItem option = view.itemOption();
+  option.rect.setWidth(-1);
+  int read_height = 0;
+  int unread_height = 0;
   int width = 90;
   for (; width <= 250; ++width) {
-    if (textHeight(text, bold, width - 2 * margin) > textHeight(text, regular, width - 2 * margin)) {
+    view.setColumnWidth(1, width);
+    // Use the delegate's resolved font and style, which can differ from a standalone QTextLayout's font fallback.
+    model.setData(title, regular, Qt::ItemDataRole::FontRole);
+    read_height = view.itemDelegate()->sizeHint(option, title).height();
+    model.setData(title, bold, Qt::ItemDataRole::FontRole);
+    unread_height = view.itemDelegate()->sizeHint(option, title).height();
+    if (unread_height > read_height) {
       break;
     }
   }
-  QVERIFY(width <= 250);
-  view.setColumnWidth(1, width);
+  QVERIFY2(width <= 250, "No column width produces a taller unread title with the current font and style");
+  model.setData(title, regular, Qt::ItemDataRole::FontRole);
   view.show();
-  QTRY_VERIFY(view.visualRect(title).height() >= textHeight(text, regular, width - 2 * margin));
-  const int read_height = view.visualRect(title).height();
+  QTRY_COMPARE(view.visualRect(title).height(), read_height);
 
   model.setData(title, bold, Qt::ItemDataRole::FontRole);
-  QTRY_VERIFY(view.visualRect(title).height() > read_height);
-  QVERIFY(view.visualRect(title).height() >= textHeight(text, bold, width - 2 * margin));
+  QTRY_COMPARE(view.visualRect(title).height(), unread_height);
 
   model.setData(title, regular, Qt::ItemDataRole::FontRole);
   QTRY_COMPARE(view.visualRect(title).height(), read_height);
