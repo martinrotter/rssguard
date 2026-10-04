@@ -26,13 +26,16 @@ class SettingsFeedsMessages : public SettingsPanel {
     void updateArticleMarkingPolicyDelay();
 
   private:
-    void changeFont(QLabel& lbl);
+    bool changeFont(QLabel& lbl);
+    void resetUnreadFont(const QLabel& normal_font, QLabel& unread_font);
     MessagesView::ArticleMarkingPolicy selectedArticleMarkingPolicy() const;
 
   private:
     void initializeMessageDateFormats();
 
     Ui::SettingsFeedsMessages* m_ui;
+    bool m_customizeUnreadMessageListFont;
+    bool m_customizeUnreadFeedListFont;
 };
 
 inline QString SettingsFeedsMessages::title() const {

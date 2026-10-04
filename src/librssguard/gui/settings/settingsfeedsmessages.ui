@@ -194,11 +194,11 @@
            <property name="checked">
             <bool>false</bool>
            </property>
-           <layout class="QFormLayout" name="formLayout_3">
+           <layout class="QGridLayout" name="gridLayoutFeedListFont">
             <item row="0" column="0">
-             <widget class="QLabel" name="m_lblFeedListFont">
+             <widget class="QLabel" name="m_lblFeedListFontCaption">
               <property name="text">
-               <string>Font preview</string>
+               <string>Read</string>
               </property>
               <property name="buddy">
                <cstring>m_btnChangeFeedListFont</cstring>
@@ -206,9 +206,50 @@
              </widget>
             </item>
             <item row="0" column="1">
+             <widget class="QLabel" name="m_lblFeedListFont">
+              <property name="text">
+               <string>Font preview</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
              <widget class="QPushButton" name="m_btnChangeFeedListFont">
               <property name="text">
                <string>&amp;Change font</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="m_lblFeedListFontCaptionUnread">
+              <property name="text">
+               <string>Unread</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_btnChangeFeedListFontUnread</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="m_lblFeedListFontUnread">
+              <property name="text">
+               <string>Font preview</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QPushButton" name="m_btnChangeFeedListFontUnread">
+              <property name="text">
+               <string>Change &amp;unread font</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QPushButton" name="m_btnResetFeedListFontUnread">
+              <property name="toolTip">
+               <string>Use the normal font with bold enabled.</string>
+              </property>
+              <property name="text">
+               <string>Reset</string>
               </property>
              </widget>
             </item>
@@ -729,7 +770,7 @@
          </property>
         </widget>
        </item>
-       <item row="17" column="0">
+       <item row="17" column="0" colspan="2">
         <widget class="QGroupBox" name="m_gbArticleListFont">
          <property name="title">
           <string>Article list font</string>
@@ -740,21 +781,62 @@
          <property name="checked">
           <bool>false</bool>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_17">
-          <item>
-           <widget class="QLabel" name="m_lblMessageListFont">
+         <layout class="QGridLayout" name="gridLayoutArticleListFont">
+          <item row="0" column="0">
+           <widget class="QLabel" name="m_lblMessageListFontCaption">
             <property name="text">
-             <string>Font preview</string>
+             <string>Read</string>
             </property>
             <property name="buddy">
              <cstring>m_btnChangeMessageListFont</cstring>
             </property>
            </widget>
           </item>
-          <item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="m_lblMessageListFont">
+            <property name="text">
+             <string>Font preview</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
            <widget class="QPushButton" name="m_btnChangeMessageListFont">
             <property name="text">
              <string>&amp;Change font</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="m_lblMessageListFontCaptionUnread">
+            <property name="text">
+             <string>Unread</string>
+            </property>
+            <property name="buddy">
+             <cstring>m_btnChangeMessageListFontUnread</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="m_lblMessageListFontUnread">
+            <property name="text">
+             <string>Font preview</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="m_btnChangeMessageListFontUnread">
+            <property name="text">
+             <string>Change &amp;unread font</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="m_btnResetMessageListFontUnread">
+            <property name="toolTip">
+             <string>Use the normal font with bold enabled.</string>
+            </property>
+            <property name="text">
+             <string>Reset</string>
             </property>
            </widget>
           </item>
@@ -867,6 +949,8 @@
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_gbFeedListFont</tabstop>
   <tabstop>m_btnChangeFeedListFont</tabstop>
+  <tabstop>m_btnChangeFeedListFontUnread</tabstop>
+  <tabstop>m_btnResetFeedListFontUnread</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cmbCountsAlignment</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
@@ -908,6 +992,8 @@
   <tabstop>m_spinRelativeArticleTime</tabstop>
   <tabstop>m_gbArticleListFont</tabstop>
   <tabstop>m_btnChangeMessageListFont</tabstop>
+  <tabstop>m_btnChangeMessageListFontUnread</tabstop>
+  <tabstop>m_btnResetMessageListFontUnread</tabstop>
   <tabstop>m_tabFeedsMessages</tabstop>
  </tabstops>
  <resources/>

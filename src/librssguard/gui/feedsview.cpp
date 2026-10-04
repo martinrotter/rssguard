@@ -66,6 +66,9 @@ FeedsView::~FeedsView() {
 
 void FeedsView::reloadFontSettings() {
   m_sourceModel->setupFonts();
+  setUniformRowHeights(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt() > 0 ||
+                       m_sourceModel->hasUniformFontHeights());
+  scheduleDelayedItemsLayout();
 }
 
 void FeedsView::setSortingEnabled(bool enable) {
@@ -1095,7 +1098,8 @@ void FeedsView::setupAppearance() {
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
-  setUniformRowHeights(true);
+  setUniformRowHeights(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt() > 0 ||
+                       m_sourceModel->hasUniformFontHeights());
   setAnimated(true);
   setSortingEnabled(true);
   setItemsExpandable(true);

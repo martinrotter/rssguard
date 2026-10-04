@@ -3,6 +3,7 @@
 Released on: 2026-09-XX
 
 Added:
+* Read and unread fonts can now be configured separately for the feed and article lists. Resetting the unread font restores the normal font in bold. (#2443)
 * Default keyboard shortcuts now provide modified reading commands, standard tab controls and Ctrl+K command groups. Saved assignments, including cleared shortcuts, continue to override defaults.
 * Feed/article pane and search focus commands now activate the Feeds tab when invoked from a browser or media-player tab.
 * Preview scrolling now moves by one viewport in the active web/text browser instead of a fixed 50-pixel step.

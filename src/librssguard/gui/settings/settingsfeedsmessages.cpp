@@ -20,7 +20,8 @@
 #include <QStringList>
 
 SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+  : SettingsPanel(settings, parent), m_ui(nullptr), m_customizeUnreadMessageListFont(false),
+    m_customizeUnreadFeedListFont(false) {}
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
   if (m_ui != nullptr) {
@@ -285,11 +286,39 @@ void SettingsFeedsMessages::loadUi() {
   });
 
   connect(m_ui->m_btnChangeFeedListFont, &QPushButton::clicked, this, [&]() {
-    changeFont(*m_ui->m_lblFeedListFont);
+    if (changeFont(*m_ui->m_lblFeedListFont) && !m_customizeUnreadFeedListFont) {
+      resetUnreadFont(*m_ui->m_lblFeedListFont, *m_ui->m_lblFeedListFontUnread);
+    }
+  });
+
+  connect(m_ui->m_btnChangeFeedListFontUnread, &QPushButton::clicked, this, [&]() {
+    if (changeFont(*m_ui->m_lblFeedListFontUnread)) {
+      m_customizeUnreadFeedListFont = true;
+    }
+  });
+
+  connect(m_ui->m_btnResetFeedListFontUnread, &QPushButton::clicked, this, [&]() {
+    m_customizeUnreadFeedListFont = false;
+    resetUnreadFont(*m_ui->m_lblFeedListFont, *m_ui->m_lblFeedListFontUnread);
+    dirtifySettings();
   });
 
   connect(m_ui->m_btnChangeMessageListFont, &QPushButton::clicked, this, [&]() {
-    changeFont(*m_ui->m_lblMessageListFont);
+    if (changeFont(*m_ui->m_lblMessageListFont) && !m_customizeUnreadMessageListFont) {
+      resetUnreadFont(*m_ui->m_lblMessageListFont, *m_ui->m_lblMessageListFontUnread);
+    }
+  });
+
+  connect(m_ui->m_btnChangeMessageListFontUnread, &QPushButton::clicked, this, [&]() {
+    if (changeFont(*m_ui->m_lblMessageListFontUnread)) {
+      m_customizeUnreadMessageListFont = true;
+    }
+  });
+
+  connect(m_ui->m_btnResetMessageListFontUnread, &QPushButton::clicked, this, [&]() {
+    m_customizeUnreadMessageListFont = false;
+    resetUnreadFont(*m_ui->m_lblMessageListFont, *m_ui->m_lblMessageListFontUnread);
+    dirtifySettings();
   });
 
   if (!m_ui->m_spinFeedUpdateTimeout->suffix().startsWith(' ')) {
@@ -327,7 +356,7 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
   }
 }
 
-void SettingsFeedsMessages::changeFont(QLabel& lbl) {
+bool SettingsFeedsMessages::changeFont(QLabel& lbl) {
   bool ok;
   QFont new_font = QFontDialog::getFont(&ok,
                                         lbl.font(),
@@ -339,6 +368,15 @@ void SettingsFeedsMessages::changeFont(QLabel& lbl) {
     lbl.setFont(new_font);
     dirtifySettings();
   }
+
+  return ok;
+}
+
+void SettingsFeedsMessages::resetUnreadFont(const QLabel& normal_font, QLabel& unread_font) {
+  QFont font = normal_font.font();
+
+  font.setBold(true);
+  unread_font.setFont(font);
 }
 
 MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarkingPolicy() const {
@@ -478,6 +516,19 @@ void SettingsFeedsMessages::loadSettings() {
                     ->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString())
                     .toString());
   m_ui->m_lblMessageListFont->setFont(fon2);
+  resetUnreadFont(*m_ui->m_lblMessageListFont, *m_ui->m_lblMessageListFontUnread);
+
+  const QString unread_message_font_description =
+    settings()->value(GROUP(Messages), Messages::ListFontUnread).toString();
+  QFont unread_message_font;
+
+  m_customizeUnreadMessageListFont =
+    !unread_message_font_description.isEmpty() && unread_message_font.fromString(unread_message_font_description);
+
+  if (m_customizeUnreadMessageListFont) {
+    m_ui->m_lblMessageListFontUnread->setFont(unread_message_font);
+  }
+
   m_ui->m_gbArticleListFont
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::CustomizeListFont)).toBool());
 
@@ -487,6 +538,18 @@ void SettingsFeedsMessages::loadSettings() {
   fon3
     .fromString(settings()->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString()).toString());
   m_ui->m_lblFeedListFont->setFont(fon3);
+  resetUnreadFont(*m_ui->m_lblFeedListFont, *m_ui->m_lblFeedListFontUnread);
+
+  const QString unread_feed_font_description = settings()->value(GROUP(Feeds), Feeds::ListFontUnread).toString();
+  QFont unread_feed_font;
+
+  m_customizeUnreadFeedListFont =
+    !unread_feed_font_description.isEmpty() && unread_feed_font.fromString(unread_feed_font_description);
+
+  if (m_customizeUnreadFeedListFont) {
+    m_ui->m_lblFeedListFontUnread->setFont(unread_feed_font);
+  }
+
   m_ui->m_gbFeedListFont->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::CustomizeListFont)).toBool());
 
   onEndLoadSettings();
@@ -631,6 +694,22 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::PreviewerFontStandard, m_ui->m_lblMessagesFont->font().toString());
   settings()->setValue(GROUP(Messages), Messages::ListFont, m_ui->m_lblMessageListFont->font().toString());
   settings()->setValue(GROUP(Feeds), Feeds::ListFont, m_ui->m_lblFeedListFont->font().toString());
+
+  if (m_customizeUnreadMessageListFont) {
+    settings()->setValue(GROUP(Messages),
+                         Messages::ListFontUnread,
+                         m_ui->m_lblMessageListFontUnread->font().toString());
+  }
+  else {
+    settings()->remove(GROUP(Messages), Messages::ListFontUnread);
+  }
+
+  if (m_customizeUnreadFeedListFont) {
+    settings()->setValue(GROUP(Feeds), Feeds::ListFontUnread, m_ui->m_lblFeedListFontUnread->font().toString());
+  }
+  else {
+    settings()->remove(GROUP(Feeds), Feeds::ListFontUnread);
+  }
 
   settings()->setValue(GROUP(Messages), Messages::CustomizeListFont, m_ui->m_gbArticleListFont->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::CustomizeListFont, m_ui->m_gbFeedListFont->isChecked());

@@ -132,6 +132,7 @@ DKEY Feeds::CustomizeListFont = QSL("customize_list_font");
 DVALUE(bool) Feeds::CustomizeListFontDef = false;
 
 DKEY Feeds::ListFont = QSL("list_font");
+DKEY Feeds::ListFontUnread = QSL("list_font_unread");
 
 // Messages.
 DKEY Messages::ID = QSL("messages");
@@ -269,6 +270,7 @@ DKEY Messages::CustomizeListFont = QSL("customize_list_font");
 DVALUE(bool) Messages::CustomizeListFontDef = false;
 
 DKEY Messages::ListFont = QSL("list_font");
+DKEY Messages::ListFontUnread = QSL("list_font_unread");
 
 // Custom skin colors.
 DKEY CustomSkinColors::ID = QSL("custom_skin_colors");

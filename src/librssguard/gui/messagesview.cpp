@@ -57,6 +57,9 @@ MessagesView::~MessagesView() {
 
 void MessagesView::reloadFontSettings() {
   m_sourceModel->setupFonts();
+  const bool fixed_height = qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt() > 0;
+
+  setUniformRowHeights(fixed_height || (!wordWrap() && m_sourceModel->hasUniformFontHeights()));
   scheduleDelayedItemsLayout();
 }
 
@@ -341,7 +344,8 @@ void MessagesView::setupAppearance() {
     setTextElideMode(Qt::TextElideMode::ElideNone);
   }
   else {
-    setUniformRowHeights(true);
+    setUniformRowHeights(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt() > 0 ||
+                         m_sourceModel->hasUniformFontHeights());
     setWordWrap(false);
     setTextElideMode(Qt::TextElideMode::ElideRight);
   }

@@ -88,6 +88,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void setupCountsAlignment();
     void setupBehaviorDuringFetching();
     void setupFonts();
+    bool hasUniformFontHeights() const;
     void informAboutDatabaseCleanup();
 
   public slots:
@@ -162,9 +163,9 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     QList<QString> m_tooltipData;
     QIcon m_countsIcon;
     QFont m_normalFont;
-    QFont m_boldFont;
+    QFont m_unreadFont;
     QFont m_normalStrikedFont;
-    QFont m_boldStrikedFont;
+    QFont m_unreadStrikedFont;
     Qt::AlignmentFlag m_countsAlignment;
 };
 

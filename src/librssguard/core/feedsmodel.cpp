@@ -17,6 +17,7 @@
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QFontMetrics>
 #include <QMimeData>
 #include <QPair>
 #include <QSqlError>
@@ -390,8 +391,9 @@ void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
 
 void FeedsModel::setupFonts() {
   QFont fon;
+  const bool customize_font = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CustomizeListFont)).toBool();
 
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CustomizeListFont)).toBool()) {
+  if (customize_font) {
     fon.fromString(qApp->settings()
                      ->value(GROUP(Feeds), Feeds::ListFont, Application::font("FeedsView").toString())
                      .toString());
@@ -402,14 +404,25 @@ void FeedsModel::setupFonts() {
 
   m_normalFont = fon;
 
-  m_boldFont = m_normalFont;
-  m_boldFont.setBold(true);
+  m_unreadFont = m_normalFont;
+  m_unreadFont.setBold(true);
+
+  const QString unread_font_description = qApp->settings()->value(GROUP(Feeds), Feeds::ListFontUnread).toString();
+  QFont unread_font;
+
+  if (customize_font && !unread_font_description.isEmpty() && unread_font.fromString(unread_font_description)) {
+    m_unreadFont = unread_font;
+  }
 
   m_normalStrikedFont = m_normalFont;
   m_normalStrikedFont.setStrikeOut(true);
 
-  m_boldStrikedFont = m_boldFont;
-  m_boldStrikedFont.setStrikeOut(true);
+  m_unreadStrikedFont = m_unreadFont;
+  m_unreadStrikedFont.setStrikeOut(true);
+}
+
+bool FeedsModel::hasUniformFontHeights() const {
+  return QFontMetrics(m_normalFont).height() == QFontMetrics(m_unreadFont).height();
 }
 
 void FeedsModel::informAboutDatabaseCleanup() {
@@ -562,12 +575,12 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
   switch (role) {
     case Qt::ItemDataRole::FontRole: {
       RootItem* it = itemForIndex(index);
-      bool is_bold = it->countOfUnreadMessages() > 0;
+      bool is_unread = it->countOfUnreadMessages() > 0;
       bool is_striked = it->kind() == RootItem::Kind::Feed && it->toFeed()->isSwitchedOff() &&
                         qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::StrikethroughDisabledFeeds)).toBool();
 
-      return is_bold ? (is_striked ? m_boldStrikedFont : m_boldFont)
-                     : (is_striked ? m_normalStrikedFont : m_normalFont);
+      return is_unread ? (is_striked ? m_unreadStrikedFont : m_unreadFont)
+                       : (is_striked ? m_normalStrikedFont : m_normalFont);
     }
 
     case Qt::ItemDataRole::DecorationRole: {

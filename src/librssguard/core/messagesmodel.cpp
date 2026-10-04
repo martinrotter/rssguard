@@ -25,6 +25,7 @@
 #include <cmath>
 
 #include <QElapsedTimer>
+#include <QFontMetrics>
 #include <QPainter>
 #include <QPainterPath>
 #include <QSqlError>
@@ -339,8 +340,9 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
 
 void MessagesModel::setupFonts() {
   QFont fon;
+  const bool customize_font = qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomizeListFont)).toBool();
 
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomizeListFont)).toBool()) {
+  if (customize_font) {
     fon.fromString(qApp->settings()
                      ->value(GROUP(Messages), Messages::ListFont, Application::font("MessagesView").toString())
                      .toString());
@@ -350,12 +352,24 @@ void MessagesModel::setupFonts() {
   }
 
   m_normalFont = fon;
-  m_boldFont = m_normalFont;
-  m_boldFont.setBold(true);
+  m_unreadFont = m_normalFont;
+  m_unreadFont.setBold(true);
+
+  const QString unread_font_description = qApp->settings()->value(GROUP(Messages), Messages::ListFontUnread).toString();
+  QFont unread_font;
+
+  if (customize_font && !unread_font_description.isEmpty() && unread_font.fromString(unread_font_description)) {
+    m_unreadFont = unread_font;
+  }
+
   m_normalStrikedFont = m_normalFont;
-  m_boldStrikedFont = m_boldFont;
+  m_unreadStrikedFont = m_unreadFont;
   m_normalStrikedFont.setStrikeOut(true);
-  m_boldStrikedFont.setStrikeOut(true);
+  m_unreadStrikedFont.setStrikeOut(true);
+}
+
+bool MessagesModel::hasUniformFontHeights() const {
+  return QFontMetrics(m_normalFont).height() == QFontMetrics(m_unreadFont).height();
 }
 
 void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id) {
@@ -916,7 +930,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return striked ? m_normalStrikedFont : m_normalFont;
       }
       else {
-        return striked ? m_boldStrikedFont : m_boldFont;
+        return striked ? m_unreadStrikedFont : m_unreadFont;
       }
     }
 

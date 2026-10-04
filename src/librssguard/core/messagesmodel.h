@@ -81,6 +81,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     void setupIcons();
     void setupFonts();
+    bool hasUniformFontHeights() const;
     void updateDateFormat();
     void updateFeedIconsDisplay();
     void reloadLazyLoading();
@@ -152,9 +153,9 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QFont m_normalFont;
-    QFont m_boldFont;
+    QFont m_unreadFont;
     QFont m_normalStrikedFont;
-    QFont m_boldStrikedFont;
+    QFont m_unreadStrikedFont;
     QIcon m_favoriteIcon;
     QIcon m_readIcon;
     QIcon m_unreadIcon;

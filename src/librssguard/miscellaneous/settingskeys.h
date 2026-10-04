@@ -146,6 +146,7 @@ namespace Feeds {
   VALUE(bool) CustomizeListFontDef;
 
   KEY ListFont;
+  KEY ListFontUnread;
 } // namespace Feeds
 
 // Messages.
@@ -285,6 +286,7 @@ namespace Messages {
   VALUE(bool) CustomizeListFontDef;
 
   KEY ListFont;
+  KEY ListFontUnread;
 } // namespace Messages
 
 // Custom skin colors.
