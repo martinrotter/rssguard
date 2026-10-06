@@ -63,17 +63,17 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="111"/>
       <source>Initializing application...</source>
-      <translation>Initialisation de l'application...</translation>
+      <translation>Initialisation de l'application…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="136"/>
       <source>Initializing application services...</source>
-      <translation>Initialisation des services de l'application...</translation>
+      <translation>Initialisation des services de l'application…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="169"/>
       <source>Loading appearance...</source>
-      <translation>Chargement de l’apparence...</translation>
+      <translation>Chargement de l’apparence…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="175"/>
@@ -195,7 +195,7 @@
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
-      <translation>...</translation>
+      <translation>…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
@@ -404,17 +404,17 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="145"/>
       <source>Select new &amp;color...</source>
-      <translation>Sélectionner une nouvelle &amp;couleur...</translation>
+      <translation>Sélectionner une nouvelle &amp;couleur…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Load icon from &amp;file...</source>
-      <translation>Charger l'icône depuis &amp;fichier...</translation>
+      <translation>Charger l'icône depuis &amp;fichier…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Download icon from &amp;URL...</source>
-      <translation>Télécharger l'icône à partir d'une &amp;URL...</translation>
+      <translation>Télécharger l'icône à partir d'une &amp;URL…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="164"/>
@@ -427,52 +427,52 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="76"/>
       <source>Shrinking database file...</source>
-      <translation>Rétrécissement du fichier de la base de données...</translation>
+      <translation>Rétrécissement du fichier de la base de données…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="82"/>
       <source>Database file shrinked...</source>
-      <translation>Fichier de base de données rétrécit...</translation>
+      <translation>Fichier de base de données rétréci…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="46"/>
       <source>Recycle bin purged...</source>
-      <translation>Corbeille vidée...</translation>
+      <translation>Corbeille vidée…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="40"/>
       <source>Purging recycle bin...</source>
-      <translation>Vidage de la corbeille...</translation>
+      <translation>Vidage de la corbeille…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="28"/>
       <source>Removing read articles...</source>
-      <translation>Suppression des articles lus...</translation>
+      <translation>Suppression des articles lus…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="34"/>
       <source>Read articles purged...</source>
-      <translation>Articles lus purgés...</translation>
+      <translation>Articles lus purgés…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="52"/>
       <source>Removing old articles...</source>
-      <translation>Suppression des anciens articles...</translation>
+      <translation>Suppression des anciens articles…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="58"/>
       <source>Old articles purged...</source>
-      <translation>Anciens articles purgés...</translation>
+      <translation>Anciens articles purgés…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="64"/>
       <source>Removing important articles...</source>
-      <translation>Suppression des articles importants en cours...</translation>
+      <translation>Suppression des articles importants en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Important articles purged...</source>
-      <translation>Articles importants purgés...</translation>
+      <translation>Articles importants purgés…</translation>
     </message>
   </context>
   <context>
@@ -602,7 +602,7 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="182"/>
       <source>Downloaded %1 kB...</source>
-      <translation>%1 ko téléchargés...</translation>
+      <translation>%1 ko téléchargés…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="193"/>
@@ -2600,7 +2600,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="185"/>
       <source>Cancelling...</source>
-      <translation>Annulation en cours...</translation>
+      <translation>Annulation en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="207"/>
@@ -2844,7 +2844,7 @@ Les pièces jointes fournies par le flux sont séparées de la page Web et peuve
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="51"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours...</translation>
+      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="65"/>
@@ -3673,7 +3673,7 @@ selectionné d&apos;une manière &amp;récursive</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>&amp;Copy article data...</source>
-      <translation>&amp;Copier les données de l'article...</translation>
+      <translation>&amp;Copier les données de l'article…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
@@ -4278,7 +4278,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="39"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours...</translation>
+      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="51"/>
@@ -4424,7 +4424,7 @@ Vous devez redémarrer manuellement.</translation>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="86"/>
       <source>Search settings...</source>
-      <translation>Paramètres de recherche...</translation>
+      <translation>Paramètres de recherche…</translation>
     </message>
   </context>
   <context>
@@ -4563,7 +4563,7 @@ Vous devez redémarrer manuellement.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <source>Parsing data...</source>
-      <translation>Analyse de données en cours...</translation>
+      <translation>Analyse de données en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="173"/>
@@ -4658,7 +4658,7 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="48"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours...</translation>
+      <translation>Flux ajouté, rafraîchissement de l'arborescence des flux en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="64"/>
@@ -5224,7 +5224,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="204"/>
       <source>Yeah.</source>
-      <translation>Ouais.</translation>
+      <translation>Oui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="213"/>
@@ -6637,8 +6637,8 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1319"/>
       <source>Fetched %n article(s)...</source>
       <translation>
-        <numerusform>%n articles obtenus...</numerusform>
-        <numerusform>%n articles obtenus...</numerusform>
+        <numerusform>%n articles obtenus…</numerusform>
+        <numerusform>%n articles obtenus…</numerusform>
       </translation>
     </message>
     <message>
@@ -7296,12 +7296,12 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="230"/>
       <source>Logging in via OAuth 2.0...</source>
-      <translation>Connection en cours via OAuth 2.0...</translation>
+      <translation>Connection en cours via OAuth 2.0…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="231"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation>Rafrachîssement des jetons d&apos;authentification pour &apos;%1&apos; en cours...</translation>
+      <translation>Rafrachîssement des jetons d&apos;authentification pour &apos;%1&apos; en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="97"/>
@@ -7714,7 +7714,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="593"/>
       <source>Print...</source>
-      <translation>Imprimer...</translation>
+      <translation>Imprimer…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="595"/>
@@ -7724,7 +7724,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="596"/>
       <source>Save as...</source>
-      <translation>Enregistrer sous...</translation>
+      <translation>Enregistrer sous…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="598"/>
@@ -7920,7 +7920,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="935"/>
       <source>Downloaded %1 kB...</source>
-      <translation>%1 ko téléchargés...</translation>
+      <translation>%1 ko téléchargés…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
@@ -7995,7 +7995,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="85"/>
       <source>Loading...</source>
-      <translation>Chargement en cours...</translation>
+      <translation>Chargement en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="88"/>
@@ -8010,7 +8010,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="94"/>
       <source>Buffering...</source>
-      <translation>Mise en mémoire tampon...</translation>
+      <translation>Mise en mémoire tampon…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="97"/>
@@ -8093,7 +8093,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="68"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation>Articles importés depuis les flux %1...</translation>
+      <translation>Articles importés depuis les flux %1…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="176"/>
@@ -8179,7 +8179,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="74"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation>Articles importés depuis les flux %1...</translation>
+      <translation>Articles importés depuis les flux %1…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="219"/>
@@ -9124,7 +9124,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="753"/>
       <source>Fixup date/time of articles which are in the future</source>
-      <translation>Retoucher la date/l&apos;heure des articles qui sont dans le turfu</translation>
+      <translation>Retoucher la date/l&apos;heure des articles qui sont dans le futur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
@@ -10049,7 +10049,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Load icon from file...</source>
-      <translation>Charger l&apos;icône depuis un fichier...</translation>
+      <translation>Charger l&apos;icône depuis un fichier…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="24"/>
@@ -10694,8 +10694,8 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="794"/>
       <source>Fetched %n feeds...</source>
       <translation>
-        <numerusform>%n flux récupéré...</numerusform>
-        <numerusform>%n flux récupérés...</numerusform>
+        <numerusform>%n flux récupéré…</numerusform>
+        <numerusform>%n flux récupérés…</numerusform>
       </translation>
     </message>
     <message>
