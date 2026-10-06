@@ -1636,7 +1636,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="62"/>
       <source>Cannot save account properties</source>
-      <translation>Impossible d'enregistrer les propriétés du compte</translation>
+      <translation>Impossible d’enregistrer les propriétés du compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="63"/>
@@ -1656,7 +1656,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation>Changements d'article non synchronisés</translation>
+      <translation>Changements d’article non synchronisés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
@@ -1751,12 +1751,12 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="26"/>
       <source>Perfect!</source>
-      <translation>Parfait !</translation>
+      <translation>Parfait !</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="36"/>
       <source>Hot stuff</source>
-      <translation>Génial</translation>
+      <translation>Le meilleur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="32"/>
@@ -1839,7 +1839,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="293"/>
       <source>Article filter generator</source>
-      <translation>Générateur de filtres d'articles</translation>
+      <translation>Générateur de filtres d’articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
@@ -1907,7 +1907,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept - keep article</source>
-      <translation>Accepter - garder l'article</translation>
+      <translation>Accepter - garder l’article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1915,7 +1915,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore - do not import or update article</source>
-      <translation>Ignorer - ne pas importer ou mettre à jour l'article</translation>
+      <translation>Ignorer - ne pas importer ou mettre à jour l’article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -1923,7 +1923,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge - delete stored or discard new article</source>
-      <translation>Purger - supprimer l'article stocké ou supprimer le nouveau</translation>
+      <translation>Purger - supprimer l’article stocké ou supprimer le nouveau</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
@@ -1935,7 +1935,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="316"/>
       <source>Result used when the article does not match the conditions</source>
-      <translation>Résultat utilisé lorsque l'article ne correspond pas aux conditions</translation>
+      <translation>Résultat utilisé lorsque l’article ne correspond pas aux conditions</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="152"/>
@@ -2005,7 +2005,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="286"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="298"/>
       <source>does not equal</source>
-      <translation>n'est pas égal à</translation>
+      <translation>n’est pas égal à</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="287"/>
@@ -2020,7 +2020,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="289"/>
       <source>matches regular expression</source>
-      <translation>correspond à l'expression régulière</translation>
+      <translation>correspond à l’expression régulière</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="290"/>
@@ -2035,7 +2035,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="294"/>
       <source>is not</source>
-      <translation>n'est pas</translation>
+      <translation>n’est pas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="299"/>
@@ -2080,17 +2080,17 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="360"/>
       <source>Remove action</source>
-      <translation>Supprimer l'action</translation>
+      <translation>Supprimer l’action</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="419"/>
       <source>Enter a label title for &apos;%1&apos;.</source>
-      <translation>Entrez un titre d'étiquette pour &apos;%1&apos;.</translation>
+      <translation>Entrez un titre d’étiquette pour &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
       <source>Label title</source>
-      <translation>Titre de l'étiquette</translation>
+      <translation>Titre de l’étiquette</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
@@ -2120,7 +2120,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="657"/>
       <source>This filter has no result which accepts an article.</source>
-      <translation>Ce filtre n'a pas de résultat qui accepte un article.</translation>
+      <translation>Ce filtre n’a pas de résultat qui accepte un article.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="658"/>
@@ -2130,7 +2130,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="579"/>
       <source>Set article property</source>
-      <translation>Définir la propriété de l'article</translation>
+      <translation>Définir la propriété de l’article</translation>
     </message>
   </context>
   <context>
@@ -2139,7 +2139,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.ui" line="17"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaskauth.h" line="87"/>
       <source>Username</source>
-      <translation>Nom d'utilisateur</translation>
+      <translation>Nom d’utilisateur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.ui" line="30"/>
@@ -2160,7 +2160,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation>Nom d'utilisateur requis.</translation>
+      <translation>Nom d’utilisateur requis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
@@ -2795,7 +2795,7 @@ Les pièces jointes fournies par le flux sont séparées de la page Web et peuve
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="256"/>
       <source>Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</source>
-      <translation>Exclure ce flux des compteurs non lus affichés dans les indicateurs globaux, tels que l'icône de la barre des tâches, la barre des tâches, le badge de l'application et le titre de la fenêtre.</translation>
+      <translation>Exclure ce flux des compteurs non lus affichés dans les indicateurs globaux, tels que l'icône de la barre des tâches, la barre des tâches, le badge de l’application et le titre de la fenêtre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="121"/>
@@ -2825,7 +2825,7 @@ Les pièces jointes fournies par le flux sont séparées de la page Web et peuve
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
       <source>Open source webpage instead of RSS Guard article preview</source>
-      <translation>Ouvrir la page Web source à la place de l'aperçu de l'article RSS Guard</translation>
+      <translation>Ouvrir la page Web source à la place de l’aperçu de l’article RSS Guard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
@@ -3324,7 +3324,7 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>Article viewer toolbars</source>
-      <translation>Barres d'outils du visualiseur d'articles</translation>
+      <translation>Barres d’outils du visualiseur d’articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
@@ -3396,25 +3396,25 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1007"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
       <source>Open feed &amp;homepage</source>
-      <translation>Ouvrir la &amp;page d'accueil</translation>
+      <translation>Ouvrir la &amp;page d’accueil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1010"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Open homepage of feed belonging to current article</source>
-      <translation>Ouvrir la page d'accueil du flux appartenant à l'article actuel</translation>
+      <translation>Ouvrir la page d’accueil du flux appartenant à larticle actuel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1018"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="893"/>
       <source>&amp;Enable/disable selected feeds</source>
-      <translation>Activer/désactiver les flux sélectionnés</translation>
+      <translation>Activer / désactiver les flux sélectionnés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1023"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="894"/>
       <source>Edit &amp;feed of selected article</source>
-      <translation>Modifier le &amp;flux de l'article sélectionné</translation>
+      <translation>Modifier le &amp;flux de l’article sélectionné</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1028"/>
@@ -3685,7 +3685,7 @@ selectionné d&apos;une manière &amp;récursive</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Copy article data (&amp;no dialog)</source>
-      <translation>Copier les données de l'article (&amp;sans dialogue)</translation>
+      <translation>Copier les données de l’article (&amp;sans dialogue)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
@@ -3930,12 +3930,12 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="239"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="239"/>
       <source>Select article filters export file</source>
-      <translation>Sélectionnez le fichier d'exportation des filtres d'articles</translation>
+      <translation>Sélectionnez le fichier d’exportation des filtres d’articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="232"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
-      <translation>Impossible d'importer les filtres, erreur: &apos;%1&apos;.</translation>
+      <translation>Impossible d’importer les filtres, erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
@@ -3988,17 +3988,17 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="746"/>
       <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
-      <translation>Impossible de changer l'affectation du filtre d'article, erreur: &apos;%1&apos;.</translation>
+      <translation>Impossible de changer l’affectation du filtre d'article, erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Assign article filter to folder?</source>
-      <translation>Assigner le filtre d'article au dossier?</translation>
+      <translation>Assigner le filtre d’article au dossier?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Remove article filter from folder?</source>
-      <translation>Supprimer le filtre d'article attribué au dossier?</translation>
+      <translation>Supprimer le filtre d’article attribué au dossier?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="774"/>
@@ -4062,12 +4062,12 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="426"/>
       <source>Are you sure?</source>
-      <translation>Êtes-vous sûr(e)?</translation>
+      <translation>Êtes-vous sûr ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="427"/>
       <source>Do you really want to remove selected filter?</source>
-      <translation>Voulez-vous vraiment supprimer le filtre sélectionné?</translation>
+      <translation>Voulez-vous vraiment supprimer le filtre sélectionné ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
@@ -4387,7 +4387,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="334"/>
       <source>Changed categories of settings:
 %1.</source>
-      <translation>Paramètres de catégories modifiées:
+      <translation>Catégories de paramètres modifiées :
 %1.</translation>
     </message>
     <message>
@@ -4769,7 +4769,7 @@ celle actuellement installée.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="201"/>
       <source>Update file could not be saved. Try again or update manually.</source>
-      <translation>Le fichier de mise à jour n'a pas pu être sauvegardé. Réessayez ou mettez à jour manuellement.</translation>
+      <translation>Le fichier de mise à jour n’a pas pu être sauvegardé. Réessayez ou mettez à jour manuellement.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="202"/>
@@ -4781,12 +4781,12 @@ celle actuellement installée.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <source>Error occurred</source>
-      <translation>Une erreur s'est produite</translation>
+      <translation>Une erreur s’est produite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="213"/>
       <source>Error occurred while downloading the package.</source>
-      <translation>Une erreur s'est produite lors du téléchargement du paquet.</translation>
+      <translation>Une erreur s’est produite lors du téléchargement du paquet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="250"/>
@@ -4855,7 +4855,7 @@ téléchargée.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="138"/>
       <source>No temporary directory is available for the update file.</source>
-      <translation>Aucun répertoire temporaire n'est disponible pour le fichier de mise à jour.</translation>
+      <translation>Aucun répertoire temporaire n’est disponible pour le fichier de mise à jour.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="158"/>
@@ -4931,17 +4931,17 @@ Vous pouvez désormais l&apos;installer.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation>Le premier caractère n'est pas un chiffre.</translation>
+      <translation>Le premier caractère n’est pas un chiffre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation>Le deuxième caractère n'est pas un chiffre.</translation>
+      <translation>Le deuxième caractère n’est pas un chiffre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation>Le troisième caractère n'est pas un espace.</translation>
+      <translation>Le troisième caractère n’est pas un espace.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="359"/>
