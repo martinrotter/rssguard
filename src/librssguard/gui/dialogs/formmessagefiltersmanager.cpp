@@ -782,7 +782,8 @@ bool FormMessageFiltersManager::confirmFeedAssignmentChange(RootItem* item, Qt::
                  tr("Do you want to continue?"),
                  {},
                  QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                 QMessageBox::StandardButton::No);
+                 QMessageBox::StandardButton::Yes,
+                 assigning ? QSL("assign_article_filter_to_folder") : QSL("remove_article_filter_from_folder"));
 
   return response == QMessageBox::StandardButton::Yes;
 }
@@ -817,7 +818,8 @@ bool FormMessageFiltersManager::confirmBulkFeedAssignmentChange(Qt::CheckState s
                  tr("Do you want to continue?"),
                  {},
                  QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                 QMessageBox::StandardButton::No);
+                 QMessageBox::StandardButton::Yes,
+                 assigning ? QSL("assign_article_filter_to_all_feeds") : QSL("remove_article_filter_from_all_feeds"));
 
   return response == QMessageBox::StandardButton::Yes;
 }
