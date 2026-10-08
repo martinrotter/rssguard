@@ -6294,7 +6294,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
       <source>Read</source>
-      <translation>Lesen</translation>
+      <translation>gelesen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
