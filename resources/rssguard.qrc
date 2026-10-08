@@ -23,6 +23,7 @@
 
     <file>scripts/mpv/mpv.conf</file>
     <file>scripts/mpv/input.conf</file>
+    <file>scripts/webengine/image-height-limits.js</file>
 
     <file>graphics/rssguard.ico</file>
     <file>graphics/banner.png</file>

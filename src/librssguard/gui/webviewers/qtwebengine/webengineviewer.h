@@ -7,6 +7,8 @@
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "gui/webviewers/webviewer.h"
 
+#include <functional>
+
 #include <QPrinter>
 #include <QWebEngineFullScreenRequest>
 #include <QWebEngineSettings>
@@ -94,8 +96,6 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
     virtual void setLoadExternalResources(bool load_resources);
 
-    virtual QString imageCssMaxHeight(int height) const;
-
     virtual bool supportsNavigation() const;
     virtual bool supportImagesLoading() const;
 
@@ -140,6 +140,11 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
   private:
     void cachePageContents();
     void notifyZoomFactorChanged();
+    void applyImageHeightLimits(const std::function<void()>& finished = {},
+                                bool inspect_document = false,
+                                const std::function<void()>& cancelled = {});
+    void scheduleImageHeightLimits();
+    void printPreparedPage(QPrinter* printer);
 
     QList<QAction*> advancedActions() const;
     QList<QAction*> diagActions() const;
@@ -151,6 +156,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     QString m_plainText;
     qreal m_lastZoomFactor = DEFAULT_ZOOM_FACTOR;
     quint64 m_contentGeneration = 0;
+    bool m_hasImageHeightLimits = false;
+    bool m_imageHeightLimitsInitialized = false;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;
     QScopedPointer<QAction> m_actionDiagGpu;

@@ -82,7 +82,6 @@ namespace {
       GumboTag m_tag;
       QString m_tagName;
       QList<HtmlAttribute> m_attributes;
-      QStringList m_rawAttributes;
       QString m_replacementHtml;
       bool m_hasReplacementHtml = false;
 
@@ -111,12 +110,9 @@ namespace {
         }
       }
 
-      void appendRawAttribute(const QString& attribute) {
-        const QString trimmed_attr = attribute.trimmed();
-
-        if (!trimmed_attr.isEmpty()) {
-          m_rawAttributes.append(trimmed_attr);
-        }
+      void setAttribute(const QString& name, const QString& value) {
+        removeAttribute(name);
+        m_attributes.append({name, value});
       }
 
       void setReplacementHtml(const QString& html) {
@@ -154,11 +150,6 @@ namespace {
       out += QSL("=\"");
       out += attr.m_value.toHtmlEscaped();
       out += QSL("\"");
-    }
-
-    for (const QString& attr : element.m_rawAttributes) {
-      out += QL1C(' ');
-      out += attr;
     }
 
     out += QSL(">");
@@ -286,16 +277,14 @@ QString WebViewer::convertToHtmlWithoutImages(const QString& html) const {
   return result;
 }
 
+QString WebViewer::imageCssMaxHeight(int height) const {
+  return height > 0 ? QSL("%1=\"%2\"").arg(QString::fromLatin1(ImageMaximumHeightAttribute)).arg(height) : QString();
+}
+
 QString WebViewer::convertToHtmlWithLimitedImages(const QString& html) const {
   const int height = qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
 
   if (!TextFactory::couldBeHtml(html) || height <= 0) {
-    return html;
-  }
-
-  const QString limited_img_attribute = imageCssMaxHeight(height);
-
-  if (limited_img_attribute.isEmpty()) {
     return html;
   }
 
@@ -304,12 +293,9 @@ QString WebViewer::convertToHtmlWithLimitedImages(const QString& html) const {
   QString result;
   GumboNode* root = output->root;
 
-  processGumboNode(root, result, [&limited_img_attribute](HtmlElement element) -> std::optional<HtmlElement> {
+  processGumboNode(root, result, [height](HtmlElement element) -> std::optional<HtmlElement> {
     if (element.m_tag == GUMBO_TAG_IMG) {
-      element.removeAttribute(QSL("style"));
-      element.removeAttribute(QSL("width"));
-      element.removeAttribute(QSL("height"));
-      element.appendRawAttribute(limited_img_attribute);
+      element.setAttribute(QString::fromLatin1(ImageMaximumHeightAttribute), QString::number(height));
     }
 
     return element;

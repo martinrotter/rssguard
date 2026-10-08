@@ -5,12 +5,14 @@
 #include "3rd-party/gumbo/src/gumbo.h"
 #include "definitions/definitions.h"
 #include "gui/webbrowser.h"
+#include "gui/webviewers/qtextbrowser/textbrowserimagehandler.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "network-web/gemini/geminiclient.h"
 #include "network-web/gemini/geminiparser.h"
 #include "network-web/webfactory.h"
 
+#include <algorithm>
 #include <cmath>
 #include <utility>
 
@@ -26,8 +28,157 @@
 #include <QMenu>
 #include <QRegularExpression>
 #include <QScrollBar>
+#include <QTextBlock>
 #include <QTextImageFormat>
 #include <QTimer>
+#include <QUuid>
+
+namespace {
+  struct ImageImportMetadata {
+      QString m_originalAlt;
+      int m_maximumHeight;
+      bool m_hasOriginalAlt;
+  };
+
+  struct ImageHtmlEdit {
+      int m_offset;
+      int m_length;
+      QByteArray m_html;
+  };
+
+  void collectImageImportMetadata(GumboNode* node,
+                                  const QByteArray& html,
+                                  const QString& token_prefix,
+                                  QHash<QString, ImageImportMetadata>& metadata,
+                                  QList<ImageHtmlEdit>& edits) {
+    if (!node || node->type != GUMBO_NODE_ELEMENT) {
+      return;
+    }
+
+    GumboElement& element = node->v.element;
+
+    if (element.tag == GUMBO_TAG_IMG) {
+      const GumboAttribute* cap = gumbo_get_attribute(&element.attributes, WebViewer::ImageMaximumHeightAttribute);
+      bool valid_height = false;
+      const int maximum_height = cap ? QString::fromUtf8(cap->value).toInt(&valid_height) : 0;
+
+      if (valid_height && maximum_height > 0 && element.original_tag.data && element.original_tag.length > 0) {
+        const QString token = token_prefix + QString::number(metadata.size());
+        const GumboAttribute* alt = gumbo_get_attribute(&element.attributes, "alt");
+        QString image_html = QSL("<img");
+
+        for (unsigned int i = 0; i < element.attributes.length; ++i) {
+          const auto* attribute = static_cast<GumboAttribute*>(element.attributes.data[i]);
+          const QString name = QString::fromUtf8(attribute->name);
+
+          if (name == QSL("alt") || name == QLatin1String(WebViewer::ImageMaximumHeightAttribute)) {
+            continue;
+          }
+
+          image_html += QSL(" %1=\"%2\"").arg(name, QString::fromUtf8(attribute->value).toHtmlEscaped());
+        }
+
+        image_html += QSL(" alt=\"%1\">").arg(token);
+
+        // Replace just the original image tag, retaining all other source HTML.
+        const int offset = int(element.original_tag.data - html.constData());
+        const int length = int(element.original_tag.length);
+
+        if (offset >= 0 && length <= html.size() - offset) {
+          metadata.insert(token, {alt ? QString::fromUtf8(alt->value) : QString(), maximum_height, alt != nullptr});
+          edits.append({offset, length, image_html.toUtf8()});
+        }
+      }
+    }
+
+    for (unsigned int i = 0; i < element.children.length; ++i) {
+      collectImageImportMetadata(static_cast<GumboNode*>(element.children.data[i]),
+                                 html,
+                                 token_prefix,
+                                 metadata,
+                                 edits);
+    }
+  }
+
+  QString htmlWithImageImportTokens(const QString& html, QHash<QString, ImageImportMetadata>& metadata) {
+    if (!html.contains(QLatin1String(WebViewer::ImageMaximumHeightAttribute), Qt::CaseInsensitive)) {
+      return html;
+    }
+
+    QByteArray utf8 = html.toUtf8();
+    GumboOutput* output = gumbo_parse(utf8.constData());
+    QList<ImageHtmlEdit> edits;
+    const QString token_prefix = QSL("rssguard-image-cap-%1-").arg(QUuid::createUuid().toString(QUuid::WithoutBraces));
+
+    collectImageImportMetadata(output->root, utf8, token_prefix, metadata, edits);
+    gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+    std::sort(edits.begin(), edits.end(), [](const ImageHtmlEdit& left, const ImageHtmlEdit& right) {
+      return left.m_offset > right.m_offset;
+    });
+
+    for (const ImageHtmlEdit& edit : std::as_const(edits)) {
+      utf8.replace(edit.m_offset, edit.m_length, edit.m_html);
+    }
+
+    return QString::fromUtf8(utf8);
+  }
+
+  void restoreImageImportMetadata(QTextDocument* document, const QHash<QString, ImageImportMetadata>& metadata) {
+    if (metadata.isEmpty()) {
+      return;
+    }
+
+    struct ImageFormatEdit {
+        int m_position;
+        int m_length;
+        QTextImageFormat m_format;
+    };
+
+    QList<ImageFormatEdit> edits;
+
+    for (QTextBlock block = document->begin(); block.isValid(); block = block.next()) {
+      for (auto it = block.begin(); !it.atEnd(); ++it) {
+        const QTextFragment fragment = it.fragment();
+
+        if (!fragment.charFormat().isImageFormat()) {
+          continue;
+        }
+
+        QTextImageFormat format = fragment.charFormat().toImageFormat();
+        const auto image_metadata = metadata.constFind(format.property(QTextFormat::ImageAltText).toString());
+
+        if (image_metadata == metadata.cend()) {
+          continue;
+        }
+
+        if (image_metadata->m_hasOriginalAlt) {
+          format.setProperty(QTextFormat::ImageAltText, image_metadata->m_originalAlt);
+        }
+        else {
+          format.clearProperty(QTextFormat::ImageAltText);
+        }
+
+        format.setProperty(TextBrowserImageHandler::MaximumHeightProperty, image_metadata->m_maximumHeight);
+        edits.append({fragment.position(), fragment.length(), format});
+      }
+    }
+
+    // Restored adjacent images can share a format and merge their fragments.
+    // Finish traversing the original fragments before changing any formats.
+    QTextCursor cursor(document);
+    cursor.beginEditBlock();
+
+    for (const ImageFormatEdit& edit : std::as_const(edits)) {
+      cursor.setPosition(edit.m_position);
+      cursor.setPosition(edit.m_position + edit.m_length, QTextCursor::KeepAnchor);
+      cursor.setCharFormat(edit.m_format);
+    }
+
+    cursor.endEditBlock();
+    document->markContentsDirty(0, document->characterCount());
+  }
+} // namespace
 
 QString TextBrowserImageCache::cacheRootFolder() {
   return qApp->web()->webCacheFolder() + QDir::separator() + QSL("images");
@@ -134,6 +285,9 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   viewport()->setAutoFillBackground(false);
   setDocument(m_document.data());
   setReadOnly(true);
+
+  installImageHandler();
+  connect(m_document.data(), &QTextDocument::documentLayoutChanged, this, &TextBrowserViewer::installImageHandler);
 
   connect(this, &TextBrowserViewer::anchorClicked, this, [this](const QUrl& url) {
     emit linkMouseClicked(url);
@@ -305,10 +459,6 @@ void TextBrowserViewer::reloadPage() {
   QTextBrowser::reload();
 }
 
-QString TextBrowserViewer::imageCssMaxHeight(int height) const {
-  return QSL("height=\"%1\"").arg(height);
-}
-
 void TextBrowserViewer::goBack() {
   QTextBrowser::backward();
 }
@@ -357,12 +507,20 @@ void TextBrowserViewer::setZoomFactor(qreal zoom_factor) {
   const bool changed = !qFuzzyCompare(m_zoomFactor, zoom_factor);
   m_zoomFactor = zoom_factor;
 
+  installImageHandler();
+
+  if (m_imageHandler) {
+    m_imageHandler->setZoomFactor(zoom_factor);
+  }
+
   auto fon = font();
 
   fon.setPointSizeF(m_baseFont.pointSizeF() * zoom_factor);
   setFont(fon);
 
   if (changed) {
+    document()->markContentsDirty(0, document()->characterCount());
+    viewport()->update();
     emit viewerZoomFactorChanged(zoom_factor);
   }
 }
@@ -552,13 +710,34 @@ void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, bool k
 
   document()->setBaseUrl(url);
 
-  QTextBrowser::setHtml(html);
+  QHash<QString, ImageImportMetadata> metadata;
+
+  QTextBrowser::setHtml(htmlWithImageImportTokens(html, metadata));
+  restoreImageImportMetadata(document(), metadata);
 
   setZoomFactor(m_zoomFactor);
   setVerticalScrollBarPosition(keep_scroll ? scroll_position : 0.0);
 
   emit pageTitleChanged(documentTitle());
   emit pageUrlChanged(url);
+}
+
+void TextBrowserViewer::installImageHandler() {
+  auto* layout = document()->documentLayout();
+
+  if (m_imageHandler && m_imageHandler->parent() == layout) {
+    if (layout->handlerForObject(QTextFormat::ImageObject) != m_imageHandler) {
+      layout->registerHandler(QTextFormat::ImageObject, m_imageHandler);
+    }
+
+    return;
+  }
+
+  if (auto* native_handler = layout->handlerForObject(QTextFormat::ImageObject)) {
+    m_imageHandler = new TextBrowserImageHandler(native_handler, layout);
+    m_imageHandler->setZoomFactor(m_zoomFactor);
+    layout->registerHandler(QTextFormat::ImageObject, m_imageHandler);
+  }
 }
 
 void TextBrowserViewer::abortImageDownloading() {

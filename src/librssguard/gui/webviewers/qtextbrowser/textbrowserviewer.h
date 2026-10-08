@@ -22,6 +22,7 @@ class QResizeEvent;
 class WebBrowser;
 
 class TextBrowserViewer;
+class TextBrowserImageHandler;
 
 class RSSGUARD_DLLSPEC TextBrowserImageCache {
   public:
@@ -100,7 +101,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void scrollVerticallyByPage(bool down) override;
     virtual void applyFont(const QFont& fon);
     virtual void reloadPage();
-    virtual QString imageCssMaxHeight(int height) const;
     virtual void goBack();
     virtual void goForward();
     virtual void clearNavigationHistory();
@@ -134,6 +134,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);
     bool loadStaticHtml(const QString& html, const QUrl& url = {});
     void justSetHtml(const QString& html, const QUrl& url = {}, bool keep_scroll = false);
+    void installImageHandler();
 
     void abortImageDownloading();
     bool startImageDownloading();
@@ -152,6 +153,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
     QScopedPointer<TextBrowserDocument> m_document;
+    QPointer<TextBrowserImageHandler> m_imageHandler;
 
     QPointer<TextBrowserImageDownloader> m_imageDownloader;
     QPointer<QThread> m_imageDownloadThread;

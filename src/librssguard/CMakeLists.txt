@@ -433,6 +433,8 @@ list(APPEND SOURCES
 
   gui/webviewers/qtextbrowser/textbrowserviewer.cpp
   gui/webviewers/qtextbrowser/textbrowserviewer.h
+  gui/webviewers/qtextbrowser/textbrowserimagehandler.cpp
+  gui/webviewers/qtextbrowser/textbrowserimagehandler.h
 )
 
 if(WEB_ARTICLE_VIEWER_WEBENGINE)

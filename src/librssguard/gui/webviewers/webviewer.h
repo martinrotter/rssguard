@@ -31,6 +31,8 @@ struct ContextMenuData {
 // Interface for web/article viewers.
 class WebViewer {
   public:
+    static constexpr const char* ImageMaximumHeightAttribute = "data-rssguard-max-height";
+
     enum class LinkNavigationHints {
       None = 0,
       ForceOpenInternal = 1
@@ -75,8 +77,8 @@ class WebViewer {
     virtual void goForward() = 0;
     virtual void clearNavigationHistory() = 0;
 
-    // Returns full HTML attribute which sets "max-height" for the outlying "img".
-    virtual QString imageCssMaxHeight(int height) const = 0;
+    // Returns the per-image height limit consumed by the viewer's renderer.
+    RSSGUARD_DLLSPEC QString imageCssMaxHeight(int height) const;
 
     // Returns current URL.
     virtual QUrl url() const = 0;
@@ -99,7 +101,7 @@ class WebViewer {
     virtual QString htmlForMessage(const Message& message, RootItem* root, Feed* feed) const;
 
     QString convertToHtmlWithoutImages(const QString& html) const;
-    QString convertToHtmlWithLimitedImages(const QString& html) const;
+    RSSGUARD_DLLSPEC QString convertToHtmlWithLimitedImages(const QString& html) const;
 
     // Enables/disables loading of remote resources like images etc.
     virtual bool loadExternalResources() const;
