@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -24,22 +25,28 @@
 #include <QAbstractTextDocumentLayout>
 #include <QBuffer>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QEventLoop>
 #include <QFile>
 #include <QFileInfo>
 #include <QHostAddress>
 #include <QImage>
 #include <QKeyEvent>
+#include <QPageSize>
+#include <QPainter>
 #include <QPdfWriter>
 #include <QProcess>
 #include <QRegularExpression>
+#include <QScrollBar>
 #include <QSignalSpy>
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QTemporaryDir>
 #include <QTest>
 #include <QTextBlock>
+#include <QTextFrame>
 #include <QTextImageFormat>
+#include <QTextLayout>
 #include <QTimer>
 #include <QWheelEvent>
 
@@ -187,6 +194,55 @@ namespace {
            qAbs(actual.height() - expected.height()) <= tolerance;
   }
 
+  qreal laidOutImageWidth(TextBrowserViewer* viewer, const ImageOccurrence& image) {
+    const auto block = viewer->document()->findBlock(image.position);
+    const int position = image.position - block.position();
+    const auto line = block.layout()->lineForTextPosition(position);
+    return line.isValid() ? qAbs(line.cursorToX(position + 1) - line.cursorToX(position)) : -1;
+  }
+
+  struct RestoreCurrentSkin {
+      QString name = qApp->skins()->selectedSkinName();
+      ~RestoreCurrentSkin() {
+        qApp->skins()->setCurrentSkinName(name);
+        qApp->skins()->loadCurrentSkin(false);
+      }
+  };
+
+  class ImagePrintRecorder : public QObject, public QTextObjectInterface {
+      Q_OBJECT
+      Q_INTERFACES(QTextObjectInterface)
+
+    public:
+      struct Record {
+          QSizeF points;
+          QSizeF page;
+          QTextFrameFormat frame;
+          QTextDocument* document;
+      };
+      explicit ImagePrintRecorder(QTextObjectInterface* delegate) : m_delegate(delegate) {}
+      QSizeF intrinsicSize(QTextDocument* document, int position, const QTextFormat& format) override {
+        return m_delegate->intrinsicSize(document, position, format);
+      }
+      void drawObject(QPainter* painter,
+                      const QRectF& rect,
+                      QTextDocument* document,
+                      int position,
+                      const QTextFormat& format) override {
+        const QRectF device_rect = painter->worldTransform().mapRect(rect);
+        records.append({QSizeF(device_rect.width() * 72 / painter->device()->logicalDpiX(),
+                               device_rect.height() * 72 / painter->device()->logicalDpiY()),
+                        document->pageSize(),
+                        document->rootFrame()->frameFormat(),
+                        document});
+        m_delegate->drawObject(painter, rect, document, position, format);
+      }
+      QList<Record> records;
+
+    private:
+      QTextObjectInterface* m_delegate;
+  };
+
   void serveDelayedImage(QTcpServer& server, const QByteArray& png) {
     QObject::connect(&server, &QTcpServer::newConnection, &server, [&server, png]() {
       while (server.hasPendingConnections()) {
@@ -268,13 +324,22 @@ class TestZoom : public QObject {
     void preservesTextImageMetadataAndPrinterState();
     void restoresAdjacentTextImageMetadata();
     void preservesTextImageZoomDuringDelayedDownloads();
+    void preservesTextImageZoomDuringDelayedDownloads_data();
     void respectsHighDpiImageResources();
     void fitsZoomedTextImagesToPercentageMaximumWidth();
     void capsWebImagesWithoutPublisherJavascript_data();
     void capsWebImagesWithoutPublisherJavascript();
     void updatesWebImageCapsWithoutCompounding();
     void capsWebPrintImagesWithoutPublisherJavascript();
+    void capsWebPrintImagesWithoutPublisherJavascript_data();
     void capsImagesAfterWebHistoryNavigation();
+    void generatesWidthFitMarkupForSkinOptIn();
+    void fitsTextImagesToViewport_data();
+    void fitsTextImagesToViewport();
+    void printsTextWidthFitWithPrinterMargins_data();
+    void printsTextWidthFitWithPrinterMargins();
+    void fitsWebImageWidths_data();
+    void fitsWebImageWidths();
 };
 
 void TestZoom::initTestCase() {
@@ -710,12 +775,22 @@ void TestZoom::restoresAdjacentTextImageMetadata() {
   QVERIFY(!text->html().contains(QSL("rssguard-image-cap")));
 }
 
+void TestZoom::preservesTextImageZoomDuringDelayedDownloads_data() {
+  QTest::addColumn<bool>("fit_width");
+  QTest::newRow("height-cap") << false;
+  QTest::newRow("width-fit-without-height-cap") << true;
+}
+
 void TestZoom::preservesTextImageZoomDuringDelayedDownloads() {
   auto browser = createBrowser();
   auto* text = dynamic_cast<TextBrowserViewer*>(browser->viewer());
   if (text == nullptr) {
     QSKIP("QTextBrowser's image downloader is tested in the text variant.");
   }
+  QFETCH(bool, fit_width);
+  browser->resize(260, 600);
+  browser->show();
+  QCoreApplication::processEvents();
   QImage image(400, 200, QImage::Format_RGB32);
   image.fill(Qt::green);
   QByteArray png;
@@ -729,10 +804,12 @@ void TestZoom::preservesTextImageZoomDuringDelayedDownloads() {
   text->setZoomFactor(1.0);
   QSignalSpy requested(&server, &QTcpServer::newConnection);
   QSignalSpy loaded(text, SIGNAL(loadingFinished(bool)));
+  QSignalSpy progressed(text, SIGNAL(loadingProgress(int)));
   QVERIFY(loaded.isValid());
+  QVERIFY(progressed.isValid());
   browser->setHtml(QSL("<img src='http://127.0.0.1:%1/image.png' alt='original delayed image' %2>")
                      .arg(server.serverPort())
-                     .arg(text->imageCssMaxHeight(50)));
+                     .arg(fit_width ? QSL("data-rssguard-fit-width='98'") : text->imageCssMaxHeight(50)));
   text->setZoomFactor(1.75);
   QVERIFY(waitForLoad(loaded));
   QVERIFY(loaded.last().at(0).toBool());
@@ -740,20 +817,191 @@ void TestZoom::preservesTextImageZoomDuringDelayedDownloads() {
   auto images = imageOccurrences(text->document());
   QCOMPARE(images.size(), 1);
   QCOMPARE(images.first().format.stringProperty(QTextFormat::ImageAltText), QSL("original delayed image"));
-  QVERIFY(nearSize(imageGeometry(text, images.first()), QSizeF(175, 87.5)));
+  const QSizeF expected = fit_width ? imageGeometry(text, images.first()) : QSizeF(175, 87.5);
+  QVERIFY(nearSize(imageGeometry(text, images.first()), expected));
+  if (fit_width) {
+    QVERIFY(expected.width() > text->viewport()->width() * 0.9);
+    QVERIFY(expected.width() <= text->viewport()->width() * 0.98 + 1);
+    QVERIFY(nearSize(expected, QSizeF(expected.width(), expected.width() / 2)));
+    QTRY_VERIFY(qAbs(laidOutImageWidth(text, images.first()) - expected.width()) < 1);
+  }
   QCOMPARE(text->zoomFactor(), qreal(1.75));
-  text->setLoadExternalResources(false);
-  QVERIFY(imageOccurrences(text->document()).isEmpty());
-  QVERIFY(text->plainText().contains(QSL("original delayed image")));
-  loaded.clear();
+  for (int reload = 0; reload < 5; ++reload) {
+    text->setLoadExternalResources(false);
+    QVERIFY(imageOccurrences(text->document()).isEmpty());
+    QVERIFY(text->plainText().contains(QSL("original delayed image")));
+    loaded.clear();
+    progressed.clear();
+    text->setLoadExternalResources(true);
+    QElapsedTimer timer;
+    timer.start();
+    const bool finished = waitForLoad(loaded);
+    const qint64 elapsed = timer.elapsed();
+    images = imageOccurrences(text->document());
+    const QSizeF actual = images.isEmpty() ? QSizeF() : imageGeometry(text, images.first());
+    QVERIFY2(finished,
+             qPrintable(QSL("Cached reload %1: wait %2ms, notifications %3, progress %4 (last %5), "
+                            "network requests %6, final image %7×%8")
+                          .arg(reload)
+                          .arg(elapsed)
+                          .arg(loaded.size())
+                          .arg(progressed.size())
+                          .arg(progressed.isEmpty() ? -1 : progressed.last().first().toInt())
+                          .arg(requested.count())
+                          .arg(actual.width())
+                          .arg(actual.height())));
+    QCOMPARE(images.size(), 1);
+    QCOMPARE(images.first().format.stringProperty(QTextFormat::ImageAltText), QSL("original delayed image"));
+    QVERIFY(nearSize(actual, expected));
+    QCOMPARE(text->zoomFactor(), qreal(1.75));
+    QCOMPARE(requested.count(), 1); // Cache hits must complete and keep the zoom without another download.
+  }
+  if (fit_width) {
+    browser->resize(1000, 600);
+    QTRY_VERIFY(nearSize(imageGeometry(text, images.first()), QSizeF(700, 350)));
+    QTRY_VERIFY(qAbs(laidOutImageWidth(text, images.first()) - 700) < 1);
+  }
+}
+
+void TestZoom::fitsTextImagesToViewport_data() {
+  QTest::addColumn<int>("source_width");
+  QTest::addColumn<int>("source_height");
+  QTest::addColumn<QString>("dimensions");
+  QTest::addColumn<int>("maximum_height");
+  QTest::addColumn<QSizeF>("preferred");
+  QTest::newRow("natural") << 400 << 200 << QString() << 0 << QSizeF(400, 200);
+  QTest::newRow("width-only") << 400 << 200 << QSL("width='600'") << 0 << QSizeF(600, 300);
+  QTest::newRow("height-only") << 400 << 200 << QSL("height='300'") << 0 << QSizeF(600, 300);
+  QTest::newRow("authored-stretch") << 400 << 200 << QSL("width='600' height='180'") << 0 << QSizeF(600, 180);
+  QTest::newRow("height-cap-and-width-fit") << 400 << 200 << QSL("width='600' height='180'") << 90 << QSizeF(300, 90);
+  QTest::newRow("small-natural") << 20 << 10 << QString() << 0 << QSizeF(20, 10);
+  QTest::newRow("small-authored") << 400 << 200 << QSL("width='40' height='30'") << 0 << QSizeF(40, 30);
+}
+
+void TestZoom::fitsTextImagesToViewport() {
+  auto browser = createBrowser();
+  auto* text = dynamic_cast<TextBrowserViewer*>(browser->viewer());
+  if (text == nullptr) {
+    QSKIP("Native text width fitting is tested in the text variant.");
+  }
+  QFETCH(int, source_width);
+  QFETCH(int, source_height);
+  QFETCH(QString, dimensions);
+  QFETCH(int, maximum_height);
+  QFETCH(QSizeF, preferred);
   text->setLoadExternalResources(true);
-  QVERIFY(waitForLoad(loaded));
-  images = imageOccurrences(text->document());
+  text->setZoomFactor(1.0);
+  browser->resize(1000, 900);
+  browser->show();
+  QCoreApplication::processEvents();
+  browser->setHtml(QSL("<p><img src='%1' %2 %3 data-rssguard-fit-width='98' alt='original fit image'></p>"
+                       "<p>%4</p>")
+                     .arg(imageData(source_width, source_height),
+                          dimensions,
+                          text->imageCssMaxHeight(maximum_height),
+                          QSL("footer<br>").repeated(10)));
+  const auto images = imageOccurrences(text->document());
   QCOMPARE(images.size(), 1);
-  QCOMPARE(images.first().format.stringProperty(QTextFormat::ImageAltText), QSL("original delayed image"));
-  QVERIFY(nearSize(imageGeometry(text, images.first()), QSizeF(175, 87.5)));
-  QCOMPARE(text->zoomFactor(), qreal(1.75));
-  QCOMPARE(requested.count(), 1); // The downloaded cache remains usable after toggling resource visibility.
+  const auto image = images.first();
+  const auto original_format = image.format;
+  QCOMPARE(image.format.doubleProperty(TextBrowserImageHandler::FitWidthPercentageProperty), qreal(98));
+  QCOMPARE(image.format.intProperty(TextBrowserImageHandler::MaximumHeightProperty), maximum_height);
+  QTRY_VERIFY(nearSize(imageGeometry(text, image), preferred));
+  QTRY_VERIFY(qAbs(laidOutImageWidth(text, image) - preferred.width()) < 1);
+  browser->resize(260, 900);
+  QTRY_VERIFY(laidOutImageWidth(text, image) > 0 &&
+              laidOutImageWidth(text, image) <= text->viewport()->width() * 0.98 + 1);
+  const QSizeF narrow = imageGeometry(text, image);
+  QVERIFY(nearSize(narrow, QSizeF(narrow.width(), narrow.width() * preferred.height() / preferred.width())));
+  if (preferred.width() < 200) {
+    QVERIFY(nearSize(narrow, preferred));
+  }
+  else {
+    QVERIFY(narrow.width() > text->viewport()->width() * 0.9);
+  }
+  text->setZoomFactor(2.0);
+  QTRY_VERIFY(laidOutImageWidth(text, image) <= text->viewport()->width() * 0.98 + 1);
+  QVERIFY(nearSize(imageGeometry(text, image), preferred.width() < 200 ? preferred * 2 : narrow));
+  QCOMPARE(imageOccurrences(text->document()).first().format, original_format);
+  text->setZoomFactor(0.25);
+  QTRY_VERIFY(nearSize(imageGeometry(text, image), preferred * 0.25));
+  QTRY_VERIFY(qAbs(laidOutImageWidth(text, image) - preferred.width() * 0.25) < 1);
+  text->setZoomFactor(1.0);
+  browser->resize(260, 100);
+  QTRY_VERIFY(text->verticalScrollBar()->isVisible());
+  QTRY_VERIFY(laidOutImageWidth(text, image) > 0 &&
+              laidOutImageWidth(text, image) <= text->viewport()->width() * 0.98 + 1);
+  QVERIFY(nearSize(imageGeometry(text, image),
+                   QSizeF(imageGeometry(text, image).width(),
+                          imageGeometry(text, image).width() * preferred.height() / preferred.width())));
+  browser->resize(1000, 900);
+  QTRY_VERIFY(nearSize(imageGeometry(text, image), preferred));
+  QTRY_VERIFY(qAbs(laidOutImageWidth(text, image) - preferred.width()) < 1);
+  QCOMPARE(imageOccurrences(text->document()).first().format, original_format);
+}
+
+void TestZoom::printsTextWidthFitWithPrinterMargins_data() {
+  QTest::addColumn<int>("resolution");
+  QTest::newRow("96-dpi") << 96;
+  QTest::newRow("192-dpi") << 192;
+}
+
+void TestZoom::printsTextWidthFitWithPrinterMargins() {
+  auto browser = createBrowser();
+  auto* text = dynamic_cast<TextBrowserViewer*>(browser->viewer());
+  if (text == nullptr) {
+    QSKIP("Native text width-fit printing is tested in the text variant.");
+  }
+  QFETCH(int, resolution);
+  text->setLoadExternalResources(true);
+  text->setZoomFactor(1.0);
+  browser->resize(260, 400);
+  browser->show();
+  QCoreApplication::processEvents();
+  browser->setHtml(QSL("<img src='%1' width='600' height='180' data-rssguard-fit-width='98' alt='printer fit'>")
+                     .arg(imageData(400, 200)));
+  const auto images = imageOccurrences(text->document());
+  QCOMPARE(images.size(), 1);
+  const QSizeF before_print = imageGeometry(text, images.first());
+  const auto original_format = images.first().format;
+  QSignalSpy changed(qApp->web(), &WebFactory::zoomFactorChanged);
+  auto* layout = text->document()->documentLayout();
+  auto* original_handler = layout->handlerForObject(QTextFormat::ImageObject);
+  auto* original_object = dynamic_cast<QObject*>(original_handler);
+  QVERIFY(original_object != nullptr);
+  ImagePrintRecorder recorder(original_handler);
+  layout->registerHandler(QTextFormat::ImageObject, &recorder);
+  const QString path = QCoreApplication::applicationDirPath() + QSL("/text-width-fit-print-%1.pdf").arg(resolution);
+  {
+    QPdfWriter writer(path);
+    writer.setResolution(resolution);
+    QVERIFY(writer.setPageSize(QPageSize(QSizeF(100, 100), QPageSize::Millimeter)));
+    QVERIFY(writer.setPageMargins(QMarginsF(12, 12, 12, 12), QPageLayout::Millimeter));
+    text->QTextBrowser::print(&writer);
+  }
+  layout->registerHandler(QTextFormat::ImageObject, original_object);
+  QVERIFY(QFileInfo(path).size() > 500);
+  QCOMPARE(recorder.records.size(), 1);
+  const auto record = recorder.records.first();
+  QVERIFY(record.document != text->document());
+  // Qt rounds its two-centimetre print-document margins to whole source-device pixels.
+  const qreal source_dpi = text->viewport()->logicalDpiX();
+  const int qt_margin_pixels = int(2 / 2.54 * source_dpi);
+  const qreal content_mm = 100 - 2 * 12 - 2 * qt_margin_pixels * 25.4 / source_dpi;
+  const qreal expected_width_points = content_mm * 0.98 * 72 / 25.4;
+  QVERIFY2(nearSize(record.points, QSizeF(expected_width_points, expected_width_points * 0.3), 1.6),
+           qPrintable(QSL("Printed %1×%2pt; expected %3×%4pt; clone page %5×%6, margins %7/%8")
+                        .arg(record.points.width())
+                        .arg(record.points.height())
+                        .arg(expected_width_points)
+                        .arg(expected_width_points * 0.3)
+                        .arg(record.page.width())
+                        .arg(record.page.height())
+                        .arg(record.frame.leftMargin())
+                        .arg(record.frame.rightMargin())));
+  QCOMPARE(imageGeometry(text, images.first()), before_print);
+  QCOMPARE(imageOccurrences(text->document()).first().format, original_format);
+  QCOMPARE(changed.count(), 0);
 }
 
 void TestZoom::respectsHighDpiImageResources() {
@@ -792,7 +1040,8 @@ void TestZoom::fitsZoomedTextImagesToPercentageMaximumWidth() {
   QCoreApplication::processEvents();
   text->setLoadExternalResources(true);
   text->setZoomFactor(1.0);
-  browser->setHtml(QSL("<style>img{max-width:50%;}</style><img src='%1'>").arg(imageData(400, 200)));
+  browser->setHtml(QSL("<style>img{max-width:50%;}</style><img src='%1' data-rssguard-fit-width='98'>")
+                     .arg(imageData(400, 200)));
   const auto images = imageOccurrences(text->document());
   QCOMPARE(images.size(), 1);
   QVERIFY(images.first().format.hasProperty(QTextFormat::ImageMaxWidth));
@@ -957,6 +1206,12 @@ void TestZoom::updatesWebImageCapsWithoutCompounding() {
 #endif
 }
 
+void TestZoom::capsWebPrintImagesWithoutPublisherJavascript_data() {
+  QTest::addColumn<bool>("fit_width");
+  QTest::newRow("height-cap") << false;
+  QTest::newRow("width-fit-without-height-cap") << true;
+}
+
 void TestZoom::capsWebPrintImagesWithoutPublisherJavascript() {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   auto browser = createBrowser();
@@ -964,19 +1219,29 @@ void TestZoom::capsWebPrintImagesWithoutPublisherJavascript() {
   if (engine == nullptr) {
     QSKIP("Web printing is tested in the web variant.");
   }
+  QFETCH(bool, fit_width);
   engine->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
   engine->setLoadExternalResources(true);
   engine->setZoomFactor(1.0);
   browser->resize(800, 600);
   browser->show();
   QSignalSpy loaded(engine, SIGNAL(loadingFinished(bool)));
-  browser->setHtml(QSL("<!doctype html><html><head><style>@media print{"
+  const QSizeF screen_size = fit_width ? QSizeF(196, 58.8) : QSizeF(60, 40);
+  const QSizeF print_size = fit_width ? QSizeF(98, 29.4) : QSizeF(40, 40);
+  browser
+    ->setHtml((fit_width
+                 ? QSL("<!doctype html><html><head><style id='rssguard-image-width-fit'>img{max-width:98%;}</style>"
+                       "<style>@media print{#print-container{width:100px !important}}</style></head>"
+                       "<body><div id='print-container' style='width:200px'>"
+                       "<img id='printed' src='%1' style='width:600px;height:180px' "
+                       "data-rssguard-fit-width='98'></div></body></html>")
+                 : QSL("<!doctype html><html><head><style>@media print{"
                        "#printed{width:240px !important;height:240px !important}}"
                        "</style></head><body><img id='printed' src='%1' style='width:120px;height:80px' "
-                       "data-rssguard-max-height='40'></body></html>")
-                     .arg(imageData(400, 200)));
+                       "data-rssguard-max-height='40'></body></html>"))
+                .arg(imageData(400, 200)));
   QVERIFY(waitForLoad(loaded));
-  QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("printed")), QSizeF(60, 40)));
+  QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("printed")), screen_size));
   applicationScript(engine,
                     QSL("window.__rssguardPrintTrace=[];"
                         "function recordImagePrint(stage){var image=document.getElementById('printed');"
@@ -999,20 +1264,21 @@ void TestZoom::capsWebPrintImagesWithoutPublisherJavascript() {
   QTimer::singleShot(30000, &loop, &QEventLoop::quit);
   loop.exec();
   QVERIFY(pdf->startsWith("%PDF"));
-  QFile output(QCoreApplication::applicationDirPath() + QSL("/image-height-print.pdf"));
+  QFile output(QCoreApplication::applicationDirPath() +
+               (fit_width ? QSL("/image-width-fit-print.pdf") : QSL("/image-height-print.pdf")));
   QVERIFY(output.open(QIODevice::WriteOnly));
   QCOMPARE(output.write(*pdf), qint64(pdf->size()));
   output.close();
   const auto printed = applicationScript(engine, QSL("window.__rssguardPrintSize")).toList();
   QCOMPARE(printed.size(), 2);
   const QSizeF actual(printed.at(0).toDouble(), printed.at(1).toDouble());
-  QVERIFY2(nearSize(actual, QSizeF(40, 40)),
+  QVERIFY2(nearSize(actual, print_size),
            qPrintable(QSL("Print geometry %1×%2, trace %3")
                         .arg(actual.width())
                         .arg(actual.height())
                         .arg(applicationScript(engine, QSL("JSON.stringify(window.__rssguardPrintTrace)"))
                                .toString())));
-  QTRY_VERIFY_WITH_TIMEOUT(nearSize(webImageSize(webImageGeometries(engine), QSL("printed")), QSizeF(60, 40)), 10000);
+  QTRY_VERIFY_WITH_TIMEOUT(nearSize(webImageSize(webImageGeometries(engine), QSL("printed")), screen_size), 10000);
 #else
   QSKIP("WebEngine is not available in this build.");
 #endif
@@ -1062,6 +1328,160 @@ void TestZoom::capsImagesAfterWebHistoryNavigation() {
 #endif
 }
 
+void TestZoom::generatesWidthFitMarkupForSkinOptIn() {
+  auto browser = createBrowser();
+  qApp->settings()->setValue(GROUP(Messages), Messages::LimitArticleImagesHeight, 0);
+  qApp->settings()->setValue(GROUP(Messages), Messages::LimitEnclosureImagesHeight, 0);
+  qApp->settings()->setValue(GROUP(Messages), Messages::DisplayEnclosuresInMessage, true);
+  const QString resource = imageData(400, 200);
+  Message message;
+  message.m_contents = QSL("<img src='%1' width='600' height='180' alt='authored article'>").arg(resource);
+  message.m_enclosures.append(QSharedPointer<MessageEnclosure>::create(resource, QSL("image/png")));
+  for (const QString& name : {QSL("minimal-light"), QSL("minimal-dark")}) {
+    bool ok = false;
+    const auto skin = qApp->skins()->skinInfo(name, &ok);
+    QVERIFY(ok);
+    QVERIFY(skin.m_fitImagesToWidth);
+    QVERIFY(skin.m_layoutMarkupWrapper.contains(QSL("rssguard-image-width-fit")));
+    QVERIFY(!skin.m_layoutMarkupWrapper.contains(QSL("height: auto")));
+  }
+  QVERIFY(qApp->skins()->currentSkin().m_fitImagesToWidth);
+  const QString shipped = browser->viewer()->htmlForMessage(message, nullptr, nullptr);
+  QCOMPARE(shipped.count(QSL("data-rssguard-fit-width=\"98\"")), 2);
+  QVERIFY(!shipped.contains(QSL("data-rssguard-max-height=")));
+  QVERIFY(shipped.contains(QSL("width=\"600\"")) && shipped.contains(QSL("height=\"180\"")));
+  QVERIFY(shipped.contains(QSL("id=\"rssguard-image-width-fit\"")));
+  QVERIFY(!shipped.contains(QSL("%image_width_fit%")));
+
+  const QString root = qApp->skins()->customSkinBaseFolder();
+  QVERIFY(QDir().mkpath(root));
+  QTemporaryDir directory(root + QSL("/width-fit-test-XXXXXX"));
+  QVERIFY(directory.isValid());
+  const auto write = [&directory](const QString& name, const QByteArray& contents) {
+    QFile file(directory.filePath(name));
+    return file.open(QIODevice::WriteOnly) && file.write(contents) == contents.size();
+  };
+  QVERIFY(write(QSL("metadata.xml"),
+                "<skin version='1' base='minimal-base'><author><name>Width fit test</name></author></skin>"));
+  QVERIFY(write(QSL("html_style.css"), "img { opacity: 0.4; }"));
+  QVERIFY(write(QSL("qt_style.qss"), "/* Keep the temporary skin's application style unchanged. */"));
+  RestoreCurrentSkin restore;
+  for (bool opt_in : {false, true}) {
+    QVERIFY(write(QSL("html_wrapper.html"),
+                  (QSL("<html><head>%1<style>%style%</style></head><body>%article_body%</body></html>")
+                     .arg(opt_in ? QSL("%image_width_fit%") : QString()))
+                    .toUtf8()));
+    qApp->skins()->setCurrentSkinName(QDir(directory.path()).dirName());
+    qApp->skins()->loadCurrentSkin(false);
+    QCOMPARE(qApp->skins()->currentSkin().m_fitImagesToWidth, opt_in);
+    const QString generated = browser->viewer()->htmlForMessage(message, nullptr, nullptr);
+    QCOMPARE(generated.count(QSL("data-rssguard-fit-width=\"98\"")), opt_in ? 2 : 0);
+    QCOMPARE(generated.contains(QSL("rssguard-image-width-fit")), opt_in);
+    QVERIFY(generated.contains(QSL("opacity: 0.4")));
+    QVERIFY(generated.contains(opt_in ? QSL("width=\"600\"") : QSL("width='600'")));
+    QVERIFY(!generated.contains(QSL("data-rssguard-max-height=")));
+  }
+}
+
+void TestZoom::fitsWebImageWidths_data() {
+  QTest::addColumn<bool>("javascript_enabled");
+  QTest::addColumn<bool>("stylesheet_disabled");
+  QTest::newRow("publisher-javascript-enabled") << true << false;
+  QTest::newRow("publisher-javascript-disabled") << false << false;
+  QTest::newRow("initially-disabled-owned-stylesheet") << true << true;
+}
+
+void TestZoom::fitsWebImageWidths() {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  auto browser = createBrowser();
+  auto* engine = dynamic_cast<WebEngineViewer*>(browser->viewer());
+  if (engine == nullptr) {
+    QSKIP("Web width fitting is tested in the web variant.");
+  }
+  QFETCH(bool, javascript_enabled);
+  QFETCH(bool, stylesheet_disabled);
+  engine->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, javascript_enabled);
+  engine->setLoadExternalResources(true);
+  engine->setZoomFactor(1.0);
+  browser->resize(800, 900);
+  browser->show();
+  const QString html =
+    QSL("<!doctype html><html><head><style id='rssguard-image-width-fit'>img {max-width:98%;}</style>%2"
+        "</head><body style='margin:0'><div id='container' style='width:200px'>"
+        "<img id='natural' src='%1' data-rssguard-fit-width='98'>"
+        "<img id='fixed' src='%1' style='width:600px;height:180px' data-rssguard-fit-width='98'>"
+        "<img id='combined' src='%1' style='width:600px;height:180px' "
+        "data-rssguard-fit-width='98' data-rssguard-max-height='90'>"
+        "<img id='width' src='%1' width='600' data-rssguard-fit-width='98'>"
+        "<img id='height' src='%1' height='300' data-rssguard-fit-width='98'>"
+        "<img id='stricter' src='%1' style='width:600px;height:180px;max-width:60px !important' "
+        "data-rssguard-fit-width='98'>"
+        "<img id='overflow' src='%1' style='width:600px;height:180px;max-width:none !important' "
+        "data-rssguard-fit-width='98'>"
+        "<img id='small' src='%3' data-rssguard-fit-width='98'></div></body></html>")
+      .arg(imageData(400, 200),
+           stylesheet_disabled ? QSL("<script>document.getElementById('rssguard-image-width-fit').sheet.disabled=true;"
+                                     "</script>")
+                               : QString(),
+           imageData(20, 10));
+  QSignalSpy loaded(engine, SIGNAL(loadingFinished(bool)));
+  browser->setHtml(html);
+  QVERIFY(waitForLoad(loaded));
+  if (stylesheet_disabled) {
+    QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
+    QVERIFY(applicationScript(engine, QSL("document.getElementById('rssguard-image-width-fit').sheet.disabled"))
+              .toBool());
+    applicationScript(engine,
+                      QSL("document.getElementById('rssguard-image-width-fit').sheet.disabled=false;"
+                          "window.__rssguardImageLimits.update();"));
+  }
+  QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(196, 58.8)));
+  auto images = webImageGeometries(engine);
+  QVERIFY(nearSize(webImageSize(images, QSL("combined")), QSizeF(196, 58.8)));
+  QVERIFY(nearSize(webImageSize(images, QSL("natural")), QSizeF(196, 98)));
+  QVERIFY(nearSize(webImageSize(images, QSL("width")), QSizeF(196, 98)));
+  QVERIFY(nearSize(webImageSize(images, QSL("height")), QSizeF(196, 98)));
+  QVERIFY(nearSize(webImageSize(images, QSL("small")), QSizeF(20, 10)));
+  QVERIFY(nearSize(webImageSize(images, QSL("stricter")), QSizeF(60, 180)));
+  QVERIFY(nearSize(webImageSize(images, QSL("overflow")), QSizeF(600, 180)));
+  applicationScript(engine, QSL("document.getElementById('container').style.width='100px';"));
+  QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(98, 29.4)));
+  QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("combined")), QSizeF(98, 29.4)));
+  applicationScript(engine, QSL("document.getElementById('container').style.width='800px';"));
+  QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
+  QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("combined")), QSizeF(300, 90)));
+  applicationScript(engine, QSL("document.getElementById('container').style.width='100%';"));
+  browser->resize(500, 900);
+  QTRY_VERIFY(webImageSize(webImageGeometries(engine), QSL("fixed")).width() < 500);
+  const QSizeF fitted = webImageSize(webImageGeometries(engine), QSL("fixed"));
+  const qreal available = applicationScript(engine, QSL("document.getElementById('container').clientWidth")).toReal();
+  QVERIFY(nearSize(fitted, QSizeF(available * 0.98, available * 0.98 * 0.3)));
+  browser->resize(800, 900);
+  QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
+  engine->setZoomFactor(2.0);
+  QTRY_VERIFY(webImageSize(webImageGeometries(engine), QSL("fixed")).width() < 500);
+  images = webImageGeometries(engine);
+  QVERIFY(nearSize(webImageSize(images, QSL("fixed")),
+                   QSizeF(webImageSize(images, QSL("fixed")).width(),
+                          webImageSize(images, QSL("fixed")).width() * 0.3)));
+  engine->setZoomFactor(1.0);
+  QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
+  applicationScript(engine,
+                    QSL("document.getElementById('rssguard-image-width-fit').sheet.disabled=true;"
+                        "document.getElementById('fixed').removeAttribute('data-rssguard-fit-width');"
+                        "window.__rssguardImageLimits.update();"));
+  QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
+  QCOMPARE(applicationScript(engine,
+                             QSL("[document.getElementById('fixed').style.width,"
+                                 "document.getElementById('fixed').style.height,"
+                                 "document.getElementById('rssguard-image-width-fit').sheet.disabled]"))
+             .toList(),
+           QVariantList({QSL("600px"), QSL("180px"), true}));
+#else
+  QSKIP("WebEngine is not available in this build.");
+#endif
+}
+
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   const bool restoring = argc == 4 && QByteArray(argv[1]) == "--zoom-restore-probe";
@@ -1079,6 +1499,7 @@ int main(int argc, char* argv[]) {
     arguments.append(QSL("--force-text-browser"));
   }
   Application application(QSL("rssguard-zoom-test"), argc, argv, arguments);
+  application.setQuitOnLastWindowClosed(false);
   int result;
   if (restoring) {
     auto browser = createBrowser();

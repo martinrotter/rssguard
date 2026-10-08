@@ -108,6 +108,23 @@ For example, article templates can receive values such as:
 
 The wrapper HTML also uses a `%style%` placeholder for injected article CSS.
 
+Add `%image_width_fit%` in the wrapper's `<head>`, before the skin's CSS, to enable
+proportional width fitting for article and image attachment content in both viewers.
+The built-in wrapper includes this placeholder. RSS Guard replaces it with a separate
+stylesheet that caps images at 98% of the available width, and marks generated
+images for proportional sizing. Fitting remains active when image height limits are
+disabled. Skins that provide their own wrapper can omit the placeholder to keep their
+own sizing policy.
+
+When opting in, remove redundant `img` rules for `max-width: 98%` and `height: auto`
+from the skin's CSS. Keep `%image_max_height%` inside the attachment image's `<img>`
+tag; that placeholder supplies both the optional height limit and the width-fitting
+marker. Authored widths and heights are preserved; fitting only shrinks images.
+
+The web viewer uses each image's CSS containing block and keeps publisher CSS
+active, including explicit overrides of the width cap. The text viewer fits marked
+images to the document's content width and supports the HTML/CSS understood by Qt.
+
 In local skin files, `%data%` can be used in stylesheet/resource paths and is replaced with the actual skin folder path.
 
 ## Practical Advice For Skin Authors

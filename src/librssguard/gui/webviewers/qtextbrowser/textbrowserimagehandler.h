@@ -15,6 +15,7 @@ class RSSGUARD_DLLSPEC TextBrowserImageHandler : public QObject, public QTextObj
 
   public:
     static constexpr int MaximumHeightProperty = QTextFormat::UserProperty + 1;
+    static constexpr int FitWidthPercentageProperty = QTextFormat::UserProperty + 2;
 
     explicit TextBrowserImageHandler(QTextObjectInterface* native_handler, QObject* parent);
 
@@ -28,6 +29,8 @@ class RSSGUARD_DLLSPEC TextBrowserImageHandler : public QObject, public QTextObj
                     const QTextFormat& format) override;
 
   private:
+    qreal documentContentWidth(QTextDocument* document, int position, const QTextImageFormat& format) const;
+
     // The native handler and this wrapper are owned by the same document layout.
     QTextObjectInterface* m_nativeHandler;
     qreal m_zoomFactor = 1.0;

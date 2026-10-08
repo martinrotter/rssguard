@@ -7,6 +7,8 @@
 #include <limits>
 
 #include <QPainter>
+#include <QTextDocument>
+#include <QTextFrame>
 #include <QTextImageFormat>
 
 TextBrowserImageHandler::TextBrowserImageHandler(QTextObjectInterface* native_handler, QObject* parent)
@@ -61,7 +63,43 @@ QSizeF TextBrowserImageHandler::intrinsicSize(QTextDocument* document, int posit
   }
 #endif
 
+  const qreal fit_percentage = format.property(FitWidthPercentageProperty).toDouble();
+
+  if (fit_percentage > 0.0 && fit_percentage <= 100.0 && std::isfinite(fit_percentage) && size.width() > 0.0) {
+    const qreal width_limit = documentContentWidth(document, position, preferred_format) * fit_percentage / 100.0;
+
+    if (width_limit > 0.0 && std::isfinite(width_limit)) {
+      size *= std::min(qreal(1.0), width_limit / size.width());
+    }
+  }
+
   return size;
+}
+
+qreal TextBrowserImageHandler::documentContentWidth(QTextDocument* document,
+                                                    int position,
+                                                    const QTextImageFormat& format) const {
+  const qreal page_width = document->pageSize().width();
+
+  if (page_width <= 0.0 || !std::isfinite(page_width)) {
+    return 0.0;
+  }
+
+  QTextImageFormat dpi_probe(format);
+  constexpr qreal probe_width = 1024.0;
+
+  dpi_probe.setWidth(probe_width);
+  dpi_probe.setHeight(1.0);
+
+  // The page width is already in layout units. Frame extents, including the
+  // margins Qt adds to print clones, are still scaled by the paint device's DPI.
+  // Probe native image sizing to obtain that conversion without Qt private APIs.
+  const qreal device_scale = m_nativeHandler->intrinsicSize(document, position, dpi_probe).width() / probe_width;
+  const QTextFrameFormat frame_format = document->rootFrame()->frameFormat();
+  const qreal frame_extents =
+    frame_format.leftMargin() + frame_format.rightMargin() + 2.0 * (frame_format.border() + frame_format.padding());
+
+  return page_width - frame_extents * device_scale;
 }
 
 void TextBrowserImageHandler::drawObject(QPainter* painter,

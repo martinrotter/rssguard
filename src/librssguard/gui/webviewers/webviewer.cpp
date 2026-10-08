@@ -281,10 +281,10 @@ QString WebViewer::imageCssMaxHeight(int height) const {
   return height > 0 ? QSL("%1=\"%2\"").arg(QString::fromLatin1(ImageMaximumHeightAttribute)).arg(height) : QString();
 }
 
-QString WebViewer::convertToHtmlWithLimitedImages(const QString& html) const {
+QString WebViewer::convertToHtmlWithLimitedImages(const QString& html, int fit_width) const {
   const int height = qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
 
-  if (!TextFactory::couldBeHtml(html) || height <= 0) {
+  if (!TextFactory::couldBeHtml(html) || (height <= 0 && (fit_width <= 0 || fit_width > 100))) {
     return html;
   }
 
@@ -293,9 +293,14 @@ QString WebViewer::convertToHtmlWithLimitedImages(const QString& html) const {
   QString result;
   GumboNode* root = output->root;
 
-  processGumboNode(root, result, [height](HtmlElement element) -> std::optional<HtmlElement> {
+  processGumboNode(root, result, [height, fit_width](HtmlElement element) -> std::optional<HtmlElement> {
     if (element.m_tag == GUMBO_TAG_IMG) {
-      element.setAttribute(QString::fromLatin1(ImageMaximumHeightAttribute), QString::number(height));
+      if (height > 0) {
+        element.setAttribute(QString::fromLatin1(ImageMaximumHeightAttribute), QString::number(height));
+      }
+      if (fit_width > 0 && fit_width <= 100) {
+        element.setAttribute(QString::fromLatin1(ImageFitWidthAttribute), QString::number(fit_width));
+      }
     }
 
     return element;

@@ -32,6 +32,8 @@ struct ContextMenuData {
 class WebViewer {
   public:
     static constexpr const char* ImageMaximumHeightAttribute = "data-rssguard-max-height";
+    static constexpr const char* ImageFitWidthAttribute = "data-rssguard-fit-width";
+    static constexpr const char* ImageWidthFitStyleId = "rssguard-image-width-fit";
 
     enum class LinkNavigationHints {
       None = 0,
@@ -101,7 +103,7 @@ class WebViewer {
     virtual QString htmlForMessage(const Message& message, RootItem* root, Feed* feed) const;
 
     QString convertToHtmlWithoutImages(const QString& html) const;
-    RSSGUARD_DLLSPEC QString convertToHtmlWithLimitedImages(const QString& html) const;
+    RSSGUARD_DLLSPEC QString convertToHtmlWithLimitedImages(const QString& html, int fit_width = 0) const;
 
     // Enables/disables loading of remote resources like images etc.
     virtual bool loadExternalResources() const;

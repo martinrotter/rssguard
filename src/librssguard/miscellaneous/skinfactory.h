@@ -84,6 +84,7 @@ struct RSSGUARD_DLLSPEC Skin {
     QStringList m_forcedStyles;
     bool m_forcedSkinColors = false;
     bool m_hasStylePalette = false;
+    bool m_fitImagesToWidth = false;
     QPalette m_stylePalette;
 
     bool hasPalette() const;

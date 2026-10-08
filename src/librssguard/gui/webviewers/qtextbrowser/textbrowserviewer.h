@@ -157,6 +157,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
     QPointer<TextBrowserImageDownloader> m_imageDownloader;
     QPointer<QThread> m_imageDownloadThread;
+    quint64 m_imageDownloadGeneration = 0;
     QHash<QUrl, QImage> m_downloadedImages;
 };
 

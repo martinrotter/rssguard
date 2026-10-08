@@ -140,10 +140,10 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
   private:
     void cachePageContents();
     void notifyZoomFactorChanged();
-    void applyImageHeightLimits(const std::function<void()>& finished = {},
-                                bool inspect_document = false,
-                                const std::function<void()>& cancelled = {});
-    void scheduleImageHeightLimits();
+    void applyImageSizeLimits(const std::function<void()>& finished = {},
+                              bool inspect_document = false,
+                              const std::function<void()>& cancelled = {});
+    void scheduleImageSizeLimits();
     void printPreparedPage(QPrinter* printer);
 
     QList<QAction*> advancedActions() const;
@@ -156,8 +156,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     QString m_plainText;
     qreal m_lastZoomFactor = DEFAULT_ZOOM_FACTOR;
     quint64 m_contentGeneration = 0;
-    bool m_hasImageHeightLimits = false;
-    bool m_imageHeightLimitsInitialized = false;
+    bool m_hasImageSizeLimits = false;
+    bool m_imageSizeLimitsInitialized = false;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;
     QScopedPointer<QAction> m_actionDiagGpu;

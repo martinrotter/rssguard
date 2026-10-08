@@ -37,6 +37,7 @@ namespace {
   struct ImageImportMetadata {
       QString m_originalAlt;
       int m_maximumHeight;
+      qreal m_fitWidthPercentage;
       bool m_hasOriginalAlt;
   };
 
@@ -59,10 +60,16 @@ namespace {
 
     if (element.tag == GUMBO_TAG_IMG) {
       const GumboAttribute* cap = gumbo_get_attribute(&element.attributes, WebViewer::ImageMaximumHeightAttribute);
+      const GumboAttribute* fit = gumbo_get_attribute(&element.attributes, WebViewer::ImageFitWidthAttribute);
       bool valid_height = false;
       const int maximum_height = cap ? QString::fromUtf8(cap->value).toInt(&valid_height) : 0;
+      bool valid_fit = false;
+      const qreal fit_percentage = fit ? QString::fromUtf8(fit->value).toDouble(&valid_fit) : 0.0;
 
-      if (valid_height && maximum_height > 0 && element.original_tag.data && element.original_tag.length > 0) {
+      valid_height = valid_height && maximum_height > 0;
+      valid_fit = valid_fit && std::isfinite(fit_percentage) && fit_percentage > 0.0 && fit_percentage <= 100.0;
+
+      if ((valid_height || valid_fit) && element.original_tag.data && element.original_tag.length > 0) {
         const QString token = token_prefix + QString::number(metadata.size());
         const GumboAttribute* alt = gumbo_get_attribute(&element.attributes, "alt");
         QString image_html = QSL("<img");
@@ -71,7 +78,8 @@ namespace {
           const auto* attribute = static_cast<GumboAttribute*>(element.attributes.data[i]);
           const QString name = QString::fromUtf8(attribute->name);
 
-          if (name == QSL("alt") || name == QLatin1String(WebViewer::ImageMaximumHeightAttribute)) {
+          if (name == QSL("alt") || name == QLatin1String(WebViewer::ImageMaximumHeightAttribute) ||
+              name == QLatin1String(WebViewer::ImageFitWidthAttribute)) {
             continue;
           }
 
@@ -85,7 +93,11 @@ namespace {
         const int length = int(element.original_tag.length);
 
         if (offset >= 0 && length <= html.size() - offset) {
-          metadata.insert(token, {alt ? QString::fromUtf8(alt->value) : QString(), maximum_height, alt != nullptr});
+          metadata.insert(token,
+                          {alt ? QString::fromUtf8(alt->value) : QString(),
+                           valid_height ? maximum_height : 0,
+                           valid_fit ? fit_percentage : 0.0,
+                           alt != nullptr});
           edits.append({offset, length, image_html.toUtf8()});
         }
       }
@@ -101,7 +113,8 @@ namespace {
   }
 
   QString htmlWithImageImportTokens(const QString& html, QHash<QString, ImageImportMetadata>& metadata) {
-    if (!html.contains(QLatin1String(WebViewer::ImageMaximumHeightAttribute), Qt::CaseInsensitive)) {
+    if (!html.contains(QLatin1String(WebViewer::ImageMaximumHeightAttribute), Qt::CaseInsensitive) &&
+        !html.contains(QLatin1String(WebViewer::ImageFitWidthAttribute), Qt::CaseInsensitive)) {
       return html;
     }
 
@@ -159,7 +172,13 @@ namespace {
           format.clearProperty(QTextFormat::ImageAltText);
         }
 
-        format.setProperty(TextBrowserImageHandler::MaximumHeightProperty, image_metadata->m_maximumHeight);
+        if (image_metadata->m_maximumHeight > 0) {
+          format.setProperty(TextBrowserImageHandler::MaximumHeightProperty, image_metadata->m_maximumHeight);
+        }
+
+        if (image_metadata->m_fitWidthPercentage > 0.0) {
+          format.setProperty(TextBrowserImageHandler::FitWidthPercentageProperty, image_metadata->m_fitWidthPercentage);
+        }
         edits.append({fragment.position(), fragment.length(), format});
       }
     }
@@ -741,6 +760,8 @@ void TextBrowserViewer::installImageHandler() {
 }
 
 void TextBrowserViewer::abortImageDownloading() {
+  ++m_imageDownloadGeneration;
+
   if (!m_imageDownloader.isNull()) {
     m_imageDownloader->cancel();
     m_imageDownloader->disconnect(this);
@@ -760,6 +781,7 @@ bool TextBrowserViewer::startImageDownloading() {
 
   emit loadingProgress(0);
 
+  const quint64 generation = ++m_imageDownloadGeneration;
   auto* thread = new QThread(this);
   auto* downloader = new TextBrowserImageDownloader(image_urls, networkProxyForCurrentRoot());
 
@@ -773,32 +795,41 @@ bool TextBrowserViewer::startImageDownloading() {
   connect(downloader,
           &TextBrowserImageDownloader::imageDownloaded,
           this,
-          [this, downloader](const QUrl& image_url, const QImage& image) {
-            if (m_imageDownloader != downloader) {
+          [this, generation](const QUrl& image_url, const QImage& image) {
+            if (m_imageDownloadGeneration != generation) {
               return;
             }
 
             m_downloadedImages.insert(image_url, image);
           });
-  connect(downloader, &TextBrowserImageDownloader::downloadProgress, this, [this, downloader](int progress) {
-    if (m_imageDownloader != downloader) {
+  connect(downloader, &TextBrowserImageDownloader::downloadProgress, this, [this, generation](int progress) {
+    if (m_imageDownloadGeneration != generation) {
       return;
     }
 
     emit loadingProgress(progress);
   });
-  connect(downloader, &TextBrowserImageDownloader::downloadFinished, this, [this, downloader](bool success) {
-    if (m_imageDownloader != downloader) {
+  connect(downloader, &TextBrowserImageDownloader::downloadFinished, this, [this, generation](bool success) {
+    const QPointer<TextBrowserViewer> guard(this);
+
+    if (m_imageDownloadGeneration != generation) {
       return;
     }
 
     reloadHtmlWithCachedImages();
 
-    emit loadingProgress(100);
-    emit loadingFinished(success);
+    if (guard.isNull() || m_imageDownloadGeneration != generation) {
+      return;
+    }
 
     m_imageDownloader = nullptr;
     m_imageDownloadThread = nullptr;
+
+    emit loadingProgress(100);
+
+    if (!guard.isNull() && m_imageDownloadGeneration == generation) {
+      emit loadingFinished(success);
+    }
   });
   connect(thread, &QThread::finished, downloader, &QObject::deleteLater);
   connect(thread, &QThread::finished, thread, &QObject::deleteLater);

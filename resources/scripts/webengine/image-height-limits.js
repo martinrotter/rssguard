@@ -1,9 +1,10 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 (() => {
-  const marker = '@IMAGE_MAXIMUM_HEIGHT_ATTRIBUTE@';
+  const heightMarker = '@IMAGE_MAXIMUM_HEIGHT_ATTRIBUTE@';
+  const widthMarker = '@IMAGE_FIT_WIDTH_ATTRIBUTE@';
   const ready = 'data-rssguard-image-ready';
-  const selector = 'img[' + marker + ']';
+  const selector = 'img[' + heightMarker + '],img[' + widthMarker + ']';
 
   if (window.__rssguardImageLimits) {
     window.__rssguardImageLimits.update();
@@ -166,6 +167,11 @@
     };
   }
 
+  function widthFitRequested(image) {
+    const percentage = Number(image.getAttribute(widthMarker));
+    return Number.isFinite(percentage) && percentage > 0 && percentage <= 100;
+  }
+
   function update() {
     if (updating) {
       return;
@@ -173,7 +179,7 @@
     updating = true;
     try {
       for (const image of trackedImages) {
-        if (!image.isConnected || !image.hasAttribute(marker)) {
+        if (!image.isConnected || !image.matches(selector)) {
           restore(image, states.get(image));
           image.removeAttribute(ready);
           trackedImages.delete(image);
@@ -188,16 +194,44 @@
         image.setAttribute(ready, '');
       }
 
-      const measurements =
-          images.map(image => ({
-                       image,
-                       state: stateFor(image),
-                       size: sizeOf(image),
-                       limit: Number(image.getAttribute(marker))
-                     }));
+      // Suspend only RSS Guard's known fitting rule. Publisher CSS stays
+      // active, including its maximums and deliberately stretched geometry.
+      const fitStyle = document.head &&
+          document.head.querySelector('style#@IMAGE_WIDTH_FIT_STYLE_ID@');
+      const fitSheet = fitStyle && fitStyle.sheet;
+      const wasDisabled = fitSheet && fitSheet.disabled;
+      const fitEnabled =
+          fitSheet && !wasDisabled && images.some(widthFitRequested);
+      let preferred;
+      try {
+        if (fitEnabled) {
+          fitSheet.disabled = true;
+        }
+        preferred = images.map(sizeOf);
+      } finally {
+        if (fitSheet) {
+          fitSheet.disabled = wasDisabled;
+        }
+      }
+      // Let Chromium resolve the effective percentage width against each
+      // actual containing block, rather than guessing from parent elements.
+      const measurements = images.map((image, index) => {
+        const fitted = sizeOf(image);
+        const fitWidth = fitEnabled && widthFitRequested(image);
+        return {
+          image,
+          state: stateFor(image),
+          size: fitWidth ? preferred[index] : fitted,
+          fitted,
+          fitWidth,
+          limit: Number(image.getAttribute(heightMarker)),
+          scale: 1
+        };
+      });
 
-      for (const {image, state, size, limit} of measurements) {
-        if (size.hidden || !Number.isFinite(limit) || limit <= 0) {
+      for (const measurement of measurements) {
+        const {image, state, size, fitted, fitWidth, limit} = measurement;
+        if (size.hidden) {
           continue;
         }
         if (!Number.isFinite(size.width) || !Number.isFinite(size.height) ||
@@ -207,21 +241,27 @@
           }
           continue;
         }
-        if (size.height > limit) {
-          const scale = limit / size.height;
-          apply(image, state, size.width * scale, size.height * scale);
+        if (fitWidth && Number.isFinite(fitted.width) && fitted.width > 0) {
+          measurement.scale = Math.min(1, fitted.width / size.width);
+        }
+        if (Number.isFinite(limit) && limit > 0 && size.height > limit) {
+          measurement.scale = Math.min(measurement.scale, limit / size.height);
+        }
+        if (measurement.scale < 1) {
+          apply(
+              image, state, size.width * measurement.scale,
+              size.height * measurement.scale);
         }
       }
 
       // A publisher maximum that previously lost to its minimum can become
       // binding after the minimum is released. Keep both axes proportional.
-      for (const {image, state, size, limit} of measurements) {
+      for (const {image, state, size, scale} of measurements) {
         if (!state.applied.width) {
           continue;
         }
-        const intendedScale = limit / size.height;
-        const width = size.width * intendedScale;
-        const height = size.height * intendedScale;
+        const width = size.width * scale;
+        const height = size.height * scale;
         const actual = sizeOf(image);
         const constrainedScale =
             Math.min(1, actual.width / width, actual.height / height);
@@ -261,7 +301,7 @@
     attributes: true,
     attributeFilter: [
       'style', 'class', 'id', 'width', 'height', 'src', 'srcset', 'sizes',
-      'hidden', marker
+      'hidden', heightMarker, widthMarker
     ]
   });
   window.addEventListener('resize', schedule);

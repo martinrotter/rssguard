@@ -60,14 +60,14 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   connect(this, &WebEngineViewer::loadStarted, this, [this]() {
     MemoryDiagnostics::webLoadStarted();
     ++m_contentGeneration;
-    m_imageHeightLimitsInitialized = false;
+    m_imageSizeLimitsInitialized = false;
     m_html.clear();
     m_plainText.clear();
   });
   connect(this, &WebEngineViewer::loadFinished, this, [this](bool success) {
     MemoryDiagnostics::webLoadFinished(success);
 
-    applyImageHeightLimits(
+    applyImageSizeLimits(
       [this, success]() {
         if (success) {
           cachePageContents();
@@ -130,7 +130,7 @@ void WebEngineViewer::loadMessage(const Message& message, RootItem* root, Feed* 
 }
 
 void WebEngineViewer::loadUrl(const QUrl& url) {
-  m_hasImageHeightLimits = false;
+  m_hasImageSizeLimits = false;
   if (url.isValid()) {
     QWebEngineView::load(url);
   }
@@ -199,7 +199,7 @@ void WebEngineViewer::cachePageContents() {
 
 void WebEngineViewer::printToPrinter(QPrinter* printer) {
   const QSharedPointer<QPrinter> guarded_printer = currentPrinter();
-  applyImageHeightLimits(
+  applyImageSizeLimits(
     [this, printer, guarded_printer]() {
       Q_UNUSED(guarded_printer)
       printPreparedPage(printer);
@@ -221,7 +221,7 @@ void WebEngineViewer::printPreparedPage(QPrinter* printer) {
     const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
 
     if (!guard.isNull()) {
-      scheduleImageHeightLimits();
+      scheduleImageSizeLimits();
       onPrintingFinished(success);
     }
   });
@@ -240,7 +240,7 @@ void WebEngineViewer::printPreparedPage(QPrinter* printer) {
       if (!guard.isNull()) {
         disconnect(m_printFinishedConnection);
         m_printFinishedConnection = {};
-        scheduleImageHeightLimits();
+        scheduleImageSizeLimits();
         onPrintingFinished(success);
       }
     });
@@ -322,6 +322,7 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
 
   QString display_html = htmlToDisplay(html);
   const QString marker = QLatin1String(ImageMaximumHeightAttribute);
+  const QString width_marker = QLatin1String(ImageFitWidthAttribute);
   const QRegularExpression maximum_height(QSL("\\b%1\\s*=\\s*[\"']([0-9]+)[\"']").arg(marker),
                                           QRegularExpression::CaseInsensitiveOption);
   QSet<int> heights;
@@ -332,12 +333,28 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
       heights.insert(height);
     }
   }
-  m_hasImageHeightLimits = !heights.isEmpty();
+  const QRegularExpression fit_width(QSL("\\b%1\\s*=\\s*[\"']([0-9]+)[\"']").arg(width_marker),
+                                     QRegularExpression::CaseInsensitiveOption);
+  bool has_width_fitting = false;
+  auto width_matches = fit_width.globalMatch(display_html);
+  while (width_matches.hasNext()) {
+    const int percentage = width_matches.next().captured(1).toInt();
+    if (percentage > 0 && percentage <= 100) {
+      has_width_fitting = true;
+      break;
+    }
+  }
+  m_hasImageSizeLimits = !heights.isEmpty() || has_width_fitting;
 
-  if (m_hasImageHeightLimits) {
+  if (m_hasImageSizeLimits) {
     // Bound the pending layout before the first paint. The helper suspends
     // this gate while measuring and reveals each image after applying its cap.
     QString pending_style = QSL("<style id=\"rssguard-image-limit-pending\">");
+    if (has_width_fitting) {
+      pending_style += QSL("img[%1]:not([data-rssguard-image-ready])"
+                           "{visibility:hidden!important;max-width:98%!important;min-width:0!important;}")
+                         .arg(width_marker);
+    }
     for (int height : std::as_const(heights)) {
       pending_style += QSL("img[%1=\"%2\"]:not([data-rssguard-image-ready])"
                            "{visibility:hidden!important;max-height:%2px!important;min-height:0!important;}")
@@ -360,10 +377,10 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
   QWebEngineView::setHtml(display_html, url);
 }
 
-void WebEngineViewer::applyImageHeightLimits(const std::function<void()>& finished,
-                                             bool inspect_document,
-                                             const std::function<void()>& cancelled) {
-  if (!m_hasImageHeightLimits && !inspect_document) {
+void WebEngineViewer::applyImageSizeLimits(const std::function<void()>& finished,
+                                           bool inspect_document,
+                                           const std::function<void()>& cancelled) {
+  if (!m_hasImageSizeLimits && !inspect_document) {
     if (finished) {
       finished();
     }
@@ -376,7 +393,9 @@ void WebEngineViewer::applyImageHeightLimits(const std::function<void()>& finish
       return QString();
     }
     return QString::fromUtf8(source.readAll())
-      .replace(QSL("@IMAGE_MAXIMUM_HEIGHT_ATTRIBUTE@"), QLatin1String(ImageMaximumHeightAttribute));
+      .replace(QSL("@IMAGE_MAXIMUM_HEIGHT_ATTRIBUTE@"), QLatin1String(ImageMaximumHeightAttribute))
+      .replace(QSL("@IMAGE_FIT_WIDTH_ATTRIBUTE@"), QLatin1String(ImageFitWidthAttribute))
+      .replace(QSL("@IMAGE_WIDTH_FIT_STYLE_ID@"), QLatin1String(ImageWidthFitStyleId));
   }();
   const quint64 content_generation = m_contentGeneration;
   const QWeakPointer<bool> lifetime_guard = m_lifetimeGuard.toWeakRef();
@@ -396,16 +415,16 @@ void WebEngineViewer::applyImageHeightLimits(const std::function<void()>& finish
                             }
                             return;
                           }
-                          m_hasImageHeightLimits = result.toBool();
-                          m_imageHeightLimitsInitialized = m_hasImageHeightLimits;
+                          m_hasImageSizeLimits = result.toBool();
+                          m_imageSizeLimitsInitialized = m_hasImageSizeLimits;
                           if (finished) {
                             finished();
                           }
                         });
 }
 
-void WebEngineViewer::scheduleImageHeightLimits() {
-  if (m_hasImageHeightLimits && m_imageHeightLimitsInitialized) {
+void WebEngineViewer::scheduleImageSizeLimits() {
+  if (m_hasImageSizeLimits && m_imageSizeLimitsInitialized) {
     page()->runJavaScript(QSL("if(window.__rssguardImageLimits){window.__rssguardImageLimits.schedule();}"),
                           QWebEngineScript::ApplicationWorld);
   }
@@ -464,7 +483,7 @@ void WebEngineViewer::notifyZoomFactorChanged() {
   if (!qFuzzyCompare(m_lastZoomFactor, zoom_factor)) {
     m_lastZoomFactor = zoom_factor;
     emit viewerZoomFactorChanged(zoom_factor);
-    scheduleImageHeightLimits();
+    scheduleImageSizeLimits();
   }
 }
 
@@ -482,7 +501,7 @@ void WebEngineViewer::printToPdf() {
     return;
   }
 
-  applyImageHeightLimits([this, selected_file]() {
+  applyImageSizeLimits([this, selected_file]() {
     page()->printToPdf(selected_file);
   });
 }

@@ -16,6 +16,8 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Article and attachment images now fit proportionally in the text viewer on all supported Qt versions. Width fitting in the web viewer now preserves authored heights and proportions. (#2461)
+* Cached image reloads in the text viewer now reliably finish after toggling image loading.
 * Images now zoom with text in the text viewer. Article and attachment image height limits now preserve smaller images, authored dimensions and styling in both text and web viewers. (#2461)
 * Viewer zoom now persists across articles and restarts, stays synchronized between open previews and browser tabs, and respects zoom limits in both text and web viewers. (#2461)
 * Textbox context menus now correctly enable Cut, Copy and Delete when opened after focus moves away, including feed and article search fields. Existing partial text selections are preserved.

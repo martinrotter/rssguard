@@ -328,15 +328,19 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                       .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
       if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {
-        const QString image_max_height = forced_enclosure_img_height > 0 && viewer != nullptr
-                                           ? viewer->imageCssMaxHeight(forced_enclosure_img_height)
-                                           : QString();
+        QString image_limits = forced_enclosure_img_height > 0 && viewer != nullptr
+                                 ? viewer->imageCssMaxHeight(forced_enclosure_img_height)
+                                 : QString();
+
+        if (skin.m_fitImagesToWidth) {
+          image_limits += QSL(" %1=\"98\"").arg(QLatin1String(WebViewer::ImageFitWidthAttribute));
+        }
 
         // Add thumbnail image.
         enclosure_images += QString(skin.m_enclosureImageMarkup)
                               .replace(QSL("%enclosure_url%"), enc_url)
                               .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
-                              .replace(QSL("%image_max_height%"), image_max_height);
+                              .replace(QSL("%image_max_height%"), image_limits);
       }
 
       i++;
@@ -365,10 +369,11 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
     blanking = QSL("target=\"_blank\"");
   }
 
-  QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
-                                  : (viewer != nullptr && forced_article_img_height > 0
-                                       ? viewer->convertToHtmlWithLimitedImages(message.m_contents)
-                                       : message.m_contents);
+  QString msg_contents =
+    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
+             : (viewer != nullptr && (forced_article_img_height > 0 || skin.m_fitImagesToWidth)
+                  ? viewer->convertToHtmlWithLimitedImages(message.m_contents, skin.m_fitImagesToWidth ? 98 : 0)
+                  : message.m_contents);
 
   QString date_tooltip = QSL("Received: %1<br/>Published: %2").arg(msg_date_retrieved, msg_date_published);
 
@@ -544,6 +549,10 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       //
       // %style% placeholder is used in main wrapper HTML file to be replaced with custom skin-wide CSS.
       skin.m_layoutMarkupWrapper = loadSkinFile(skin_folder_no_sep, QSL("html_wrapper.html"), real_base_skin_folder);
+      skin.m_fitImagesToWidth = skin.m_layoutMarkupWrapper.contains(QSL("%image_width_fit%"));
+      skin.m_layoutMarkupWrapper.replace(QSL("%image_width_fit%"),
+                                         QSL("<style id=\"%1\">img { max-width: 98%; }</style>")
+                                           .arg(QLatin1String(WebViewer::ImageWidthFitStyleId)));
 
       try {
         auto custom_css = loadSkinFile(skin_folder_no_sep, QSL("html_style.css"), real_base_skin_folder);
