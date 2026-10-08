@@ -16,6 +16,7 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Viewer zoom now persists across articles and restarts, stays synchronized between open previews and browser tabs, and respects zoom limits in both text and web viewers. (#2461)
 * Textbox context menus now correctly enable Cut, Copy and Delete when opened after focus moves away, including feed and article search fields. Existing partial text selections are preserved.
 * Multiline article titles now fit correctly, including bold unread titles, and row heights update when the title column width or list font changes. (#2453)
 * Official macOS packages now provide separate Intel (`mac64intel`) and Apple Silicon (`mac64arm`) builds for both web and text viewers. CI validates packaged architectures, dependencies and macOS requirements, and tests native startup, article rendering and extraction. (#2451)

@@ -8,6 +8,8 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 
+#include <cmath>
+
 #include <QAction>
 #include <QPointer>
 #include <QPrinter>
@@ -121,6 +123,7 @@ class WebViewer {
     virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 
     // Zooming.
+    static qreal normalizedZoomFactor(qreal zoom_factor);
     virtual bool canZoomIn() const;
     virtual bool canZoomOut() const;
     virtual void zoomIn();
@@ -129,6 +132,7 @@ class WebViewer {
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 
   signals:
+    virtual void viewerZoomFactorChanged(qreal zoom_factor) = 0;
     virtual void reloadPageEnabledChanged(bool can_go_forward) = 0;
     virtual void goBackEnabledChanged(bool can_go_back) = 0;
     virtual void goForwardEnabledChanged(bool can_go_forward) = 0;
@@ -194,12 +198,17 @@ Q_DECLARE_INTERFACE(WebViewer, "WebViewer")
 
 typedef WebViewer::LinkNavigationHints LinkNavigationHints;
 
+inline qreal WebViewer::normalizedZoomFactor(qreal zoom_factor) {
+  return std::isfinite(zoom_factor) ? qBound(qreal(MIN_ZOOM_FACTOR), zoom_factor, qreal(MAX_ZOOM_FACTOR))
+                                    : qreal(DEFAULT_ZOOM_FACTOR);
+}
+
 inline void WebViewer::zoomIn() {
-  setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
+  setZoomFactor(normalizedZoomFactor(zoomFactor() + qreal(ZOOM_FACTOR_STEP)));
 }
 
 inline void WebViewer::zoomOut() {
-  setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+  setZoomFactor(normalizedZoomFactor(zoomFactor() - qreal(ZOOM_FACTOR_STEP)));
 }
 
 inline QSharedPointer<QPrinter> WebViewer::currentPrinter() const {
@@ -207,11 +216,13 @@ inline QSharedPointer<QPrinter> WebViewer::currentPrinter() const {
 }
 
 inline bool WebViewer::canZoomIn() const {
-  return zoomFactor() <= double(MAX_ZOOM_FACTOR) - double(ZOOM_FACTOR_STEP);
+  const qreal zoom_factor = zoomFactor();
+  return zoom_factor < qreal(MAX_ZOOM_FACTOR) && !qFuzzyCompare(zoom_factor, qreal(MAX_ZOOM_FACTOR));
 }
 
 inline bool WebViewer::canZoomOut() const {
-  return zoomFactor() >= double(MIN_ZOOM_FACTOR) + double(ZOOM_FACTOR_STEP);
+  const qreal zoom_factor = zoomFactor();
+  return zoom_factor > qreal(MIN_ZOOM_FACTOR) && !qFuzzyCompare(zoom_factor, qreal(MIN_ZOOM_FACTOR));
 }
 
 #endif // WEBVIEWER_H

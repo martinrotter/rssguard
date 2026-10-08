@@ -10,6 +10,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formprogressworker.h"
 #include "gui/messagebox.h"
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
@@ -369,6 +370,11 @@ WebFactory::WebFactory(QObject* parent)
 #endif
     ,
     m_customUserAgent(QString()) {
+  bool valid_zoom;
+  const qreal saved_zoom = qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble(&valid_zoom);
+
+  m_zoomFactor = WebViewer::normalizedZoomFactor(valid_zoom ? saved_zoom : qreal(DEFAULT_ZOOM_FACTOR));
+
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   initializeWebEngineProfile();
   initializeWebEngineAttributeActions();
@@ -841,6 +847,22 @@ WebFactory::~WebFactory() {
   if (m_cookieJar != nullptr && m_cookieJar->parent() == nullptr) {
     m_cookieJar->deleteLater();
   }
+}
+
+qreal WebFactory::zoomFactor() const {
+  return m_zoomFactor;
+}
+
+void WebFactory::setZoomFactor(qreal zoom_factor) {
+  zoom_factor = WebViewer::normalizedZoomFactor(zoom_factor);
+
+  if (qFuzzyCompare(m_zoomFactor, zoom_factor)) {
+    return;
+  }
+
+  m_zoomFactor = zoom_factor;
+  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, zoom_factor);
+  emit zoomFactorChanged(zoom_factor);
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {

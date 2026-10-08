@@ -53,6 +53,10 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     CookieJar* cookieJar() const;
 
+    // Shared zoom preference for all web/article viewers.
+    qreal zoomFactor() const;
+    void setZoomFactor(qreal zoom_factor);
+
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
 
@@ -76,6 +80,9 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     QString defaultUserAgent() const;
     QString customUserAgent() const;
     void setCustomUserAgent(const QString& user_agent);
+
+  signals:
+    void zoomFactorChanged(qreal zoom_factor);
 
   public slots:
     bool openUrlInExternalBrowser(const QUrl& url) const;
@@ -131,6 +138,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QString m_customUserAgent;
     CookieJar* m_cookieJar;
+    qreal m_zoomFactor;
 };
 
 #endif // WEBFACTORY_H

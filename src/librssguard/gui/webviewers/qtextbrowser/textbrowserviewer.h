@@ -116,6 +116,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
 
   signals:
+    void viewerZoomFactorChanged(qreal zoom_factor);
     void reloadPageEnabledChanged(bool can_go_forward);
     void goBackEnabledChanged(bool can_go_back);
     void goForwardEnabledChanged(bool can_go_forward);

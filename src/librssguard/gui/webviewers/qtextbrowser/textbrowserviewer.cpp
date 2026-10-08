@@ -169,7 +169,7 @@ void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
 
   // NOTE: Undo/redo actions are not forwarded because this viewer does not enable navigation anyway.
 
-  installEventFilter(browser);
+  viewport()->installEventFilter(browser);
 }
 
 void TextBrowserViewer::findText(const QString& text, bool backwards) {
@@ -353,12 +353,18 @@ qreal TextBrowserViewer::zoomFactor() const {
 }
 
 void TextBrowserViewer::setZoomFactor(qreal zoom_factor) {
+  zoom_factor = normalizedZoomFactor(zoom_factor);
+  const bool changed = !qFuzzyCompare(m_zoomFactor, zoom_factor);
   m_zoomFactor = zoom_factor;
 
   auto fon = font();
 
   fon.setPointSizeF(m_baseFont.pointSizeF() * zoom_factor);
   setFont(fon);
+
+  if (changed) {
+    emit viewerZoomFactorChanged(zoom_factor);
+  }
 }
 
 void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {

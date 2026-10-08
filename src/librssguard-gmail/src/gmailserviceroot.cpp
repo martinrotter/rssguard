@@ -118,8 +118,6 @@ CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
     m_emailPreview = new EmailPreviewer(this);
   }
 
-  m_emailPreview->webBrowser()->reloadZoomFactor();
-
   return m_emailPreview.data();
 }
 

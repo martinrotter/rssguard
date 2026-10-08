@@ -71,7 +71,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   private slots:
     void updateUrl(const QUrl& url);
-    void onZoomFactorChanged();
+    void onZoomFactorChanged(qreal zoom_factor);
+    void applyZoomFactor(qreal zoom_factor);
 
 #if defined(ENABLE_MEDIAPLAYER)
     void playCurrentSiteInMediaPlayer();
@@ -114,6 +115,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     BaseLineEdit* m_txtLocation;
     QAction* m_actionTxtLocation;
     bool m_clearNavigationHistoryAfterLoad{};
+    bool m_applyingZoomFactor = true;
 
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;

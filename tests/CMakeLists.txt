@@ -14,16 +14,22 @@ function(add_rssguard_test TEST_TARGET)
 
   if(WIN32)
     set(TEST_EXTRA_PATH "")
+    set(TEST_PLATFORM "offscreen")
+
+    if(TEST_TARGET STREQUAL "test_zoom" AND QT_VERSION_MAJOR EQUAL 5)
+      # Qt 5's Windows WebEngine profile cannot initialize with the offscreen plugin.
+      set(TEST_PLATFORM "windows")
+    endif()
 
     if(TEST_TARGET STREQUAL "test_mediawikiparser")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
-    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate")
+    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
     add_test(NAME ${TEST_TARGET}
       COMMAND ${CMAKE_COMMAND} -E env
-        "QT_QPA_PLATFORM=offscreen"
+        "QT_QPA_PLATFORM=${TEST_PLATFORM}"
         "PATH=${TEST_EXTRA_PATH}$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
         $<TARGET_FILE:${TEST_TARGET}>
     )
@@ -80,6 +86,35 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_message
     core/test_message.cpp
   )
+
+  add_rssguard_test(test_zoom
+    gui/test_zoom.cpp
+  )
+  set_tests_properties(test_zoom PROPERTIES
+    ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+    TIMEOUT 120)
+  if(WEB_ARTICLE_VIEWER_WEBENGINE)
+    if(WIN32)
+      if(QT_VERSION_MAJOR EQUAL 5)
+        set(ZOOM_TEST_PLATFORM "windows")
+      else()
+        set(ZOOM_TEST_PLATFORM "offscreen")
+      endif()
+      add_test(NAME test_zoom_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+          "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+          $<TARGET_FILE:test_zoom>)
+    else()
+      add_test(NAME test_zoom_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=offscreen"
+          $<TARGET_FILE:test_zoom>)
+    endif()
+    set_tests_properties(test_zoom_webengine PROPERTIES
+      ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+      TIMEOUT 120)
+  endif()
 
   add_rssguard_test(test_styleditemdelegate
     gui/test_styleditemdelegate.cpp

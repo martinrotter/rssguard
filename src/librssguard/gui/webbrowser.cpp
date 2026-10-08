@@ -18,6 +18,7 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QProgressBar>
+#include <QScopedValueRollback>
 #include <QScrollBar>
 #include <QTimer>
 #include <QToolBar>
@@ -59,6 +60,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   createConnections();
   reloadFontSettings();
   reloadZoomFactor();
+  m_applyingZoomFactor = false;
   setNavigationVisible(true);
 }
 
@@ -70,6 +72,7 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(goBackEnabledChanged(bool)), m_actionGoBack, SLOT(setEnabled(bool)));
   connect(qobj_viewer, SIGNAL(goForwardEnabledChanged(bool)), m_actionGoForward, SLOT(setEnabled(bool)));
   connect(qobj_viewer, SIGNAL(reloadPageEnabledChanged(bool)), m_actionReload, SLOT(setEnabled(bool)));
+  connect(qobj_viewer, SIGNAL(viewerZoomFactorChanged(qreal)), this, SLOT(onZoomFactorChanged(qreal)));
 
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkMouseHighlighted(QUrl)));
   connect(qobj_viewer,
@@ -87,6 +90,8 @@ void WebBrowser::bindWebView() {
 
 void WebBrowser::createConnections() {
   installEventFilter(this);
+
+  connect(qApp->web(), &WebFactory::zoomFactorChanged, this, &WebBrowser::applyZoomFactor);
 
   connect(m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
     m_webView->findText(QString(), {});
@@ -209,7 +214,12 @@ void WebBrowser::reloadFontSettings() {
 }
 
 void WebBrowser::reloadZoomFactor() {
-  m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
+  applyZoomFactor(qApp->web()->zoomFactor());
+}
+
+void WebBrowser::applyZoomFactor(qreal zoom_factor) {
+  QScopedValueRollback<bool> applying_zoom(m_applyingZoomFactor, true);
+  m_webView->setZoomFactor(zoom_factor);
 }
 
 void WebBrowser::setNavigationVisible(bool visible) {
@@ -223,9 +233,10 @@ void WebBrowser::setNavigationVisible(bool visible) {
   m_txtLocation->blockSignals(!visible);
 }
 
-void WebBrowser::onZoomFactorChanged() {
-  auto fact = m_webView->zoomFactor();
-  qApp->settings()->setValue(GROUP(Messages), Messages::Zoom, fact);
+void WebBrowser::onZoomFactorChanged(qreal zoom_factor) {
+  if (!m_applyingZoomFactor) {
+    qApp->web()->setZoomFactor(zoom_factor);
+  }
 }
 
 #if defined(ENABLE_MEDIAPLAYER)
@@ -261,15 +272,11 @@ void WebBrowser::loadUrlOrSearchPhrase(const QString& text) {
 }
 
 void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root, Feed* feed) {
-  reloadZoomFactor();
-
   m_searchWidget->hide();
   m_webView->setHtml(html, url, root, feed);
 }
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root, Feed* feed) {
-  reloadZoomFactor();
-
   m_searchWidget->hide();
   setMediaEnclosures(message.m_enclosures);
   prepareArticleLoad();
@@ -290,14 +297,12 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
     if (Globals::hasFlag(wh_event->modifiers(), Qt::KeyboardModifier::ControlModifier)) {
       if (wh_event->angleDelta().y() > 0 && m_webView->canZoomIn()) {
         m_webView->zoomIn();
-        onZoomFactorChanged();
-        return true;
       }
       else if (wh_event->angleDelta().y() < 0 && m_webView->canZoomOut()) {
         m_webView->zoomOut();
-        onZoomFactorChanged();
-        return true;
       }
+
+      return true;
     }
   }
   else if (event->type() == QEvent::KeyPress) {
@@ -319,19 +324,22 @@ bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
 
     // Zoom with keyboard.
     if ((key_event->modifiers() & Qt::KeyboardModifier::ControlModifier) > 0) {
-      if (key_event->key() == Qt::Key::Key_Plus && m_webView->canZoomIn()) {
-        m_webView->zoomIn();
-        onZoomFactorChanged();
+      if (key_event->key() == Qt::Key::Key_Plus) {
+        if (m_webView->canZoomIn()) {
+          m_webView->zoomIn();
+        }
+
         return true;
       }
-      else if (key_event->key() == Qt::Key::Key_Minus && m_webView->canZoomOut()) {
-        m_webView->zoomOut();
-        onZoomFactorChanged();
+      else if (key_event->key() == Qt::Key::Key_Minus) {
+        if (m_webView->canZoomOut()) {
+          m_webView->zoomOut();
+        }
+
         return true;
       }
       else if (key_event->key() == Qt::Key::Key_0) {
-        m_webView->setZoomFactor(1.0f);
-        onZoomFactorChanged();
+        m_webView->setZoomFactor(qreal(DEFAULT_ZOOM_FACTOR));
         return true;
       }
     }

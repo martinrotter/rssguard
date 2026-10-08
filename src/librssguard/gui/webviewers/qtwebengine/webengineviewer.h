@@ -122,6 +122,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
+    void viewerZoomFactorChanged(qreal zoom_factor);
     void openUrlInNewTab(bool open_externally, const QUrl& url);
     void openViewerInNewTab(WebViewer* viewer);
 
@@ -138,6 +139,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   private:
     void cachePageContents();
+    void notifyZoomFactorChanged();
 
     QList<QAction*> advancedActions() const;
     QList<QAction*> diagActions() const;
@@ -147,6 +149,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     WebBrowser* m_browser;
     QString m_html;
     QString m_plainText;
+    qreal m_lastZoomFactor = DEFAULT_ZOOM_FACTOR;
     quint64 m_contentGeneration = 0;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;

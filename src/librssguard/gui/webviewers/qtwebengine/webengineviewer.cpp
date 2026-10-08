@@ -48,6 +48,11 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   WebEnginePage* page = new WebEnginePage(false, this);
 
   setPage(page);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 8, 0)
+  connect(page, &QWebEnginePage::zoomFactorChanged, this, [this](qreal) {
+    notifyZoomFactorChanged();
+  });
+#endif
   connect(this, &WebEngineViewer::loadStarted, this, [this]() {
     MemoryDiagnostics::webLoadStarted();
     ++m_contentGeneration;
@@ -338,7 +343,19 @@ qreal WebEngineViewer::zoomFactor() const {
 }
 
 void WebEngineViewer::setZoomFactor(qreal zoom_factor) {
-  QWebEngineView::setZoomFactor(zoom_factor);
+  QWebEngineView::setZoomFactor(WebViewer::normalizedZoomFactor(zoom_factor));
+
+  // Older Qt has no notification, and newer Qt does not emit one until the page is initialized.
+  notifyZoomFactorChanged();
+}
+
+void WebEngineViewer::notifyZoomFactorChanged() {
+  const qreal zoom_factor = zoomFactor();
+
+  if (!qFuzzyCompare(m_lastZoomFactor, zoom_factor)) {
+    m_lastZoomFactor = zoom_factor;
+    emit viewerZoomFactorChanged(zoom_factor);
+  }
 }
 
 void WebEngineViewer::printToPdf() {
