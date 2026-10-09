@@ -1398,6 +1398,11 @@ void TestZoom::fitsWebImageWidths() {
   if (engine == nullptr) {
     QSKIP("Web width fitting is tested in the web variant.");
   }
+  const auto hasProportionalViewportFit = [engine]() {
+    const QSizeF size = webImageSize(webImageGeometries(engine), QSL("fixed"));
+    // CSS can constrain width before the queued image helper updates height.
+    return size.width() > 0 && size.width() < 500 && nearSize(size, QSizeF(size.width(), size.width() * 0.3));
+  };
   QFETCH(bool, javascript_enabled);
   QFETCH(bool, stylesheet_disabled);
   engine->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, javascript_enabled);
@@ -1452,18 +1457,14 @@ void TestZoom::fitsWebImageWidths() {
   QVERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("combined")), QSizeF(300, 90)));
   applicationScript(engine, QSL("document.getElementById('container').style.width='100%';"));
   browser->resize(500, 900);
-  QTRY_VERIFY(webImageSize(webImageGeometries(engine), QSL("fixed")).width() < 500);
+  QTRY_VERIFY(hasProportionalViewportFit());
   const QSizeF fitted = webImageSize(webImageGeometries(engine), QSL("fixed"));
   const qreal available = applicationScript(engine, QSL("document.getElementById('container').clientWidth")).toReal();
   QVERIFY(nearSize(fitted, QSizeF(available * 0.98, available * 0.98 * 0.3)));
   browser->resize(800, 900);
   QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
   engine->setZoomFactor(2.0);
-  QTRY_VERIFY(webImageSize(webImageGeometries(engine), QSL("fixed")).width() < 500);
-  images = webImageGeometries(engine);
-  QVERIFY(nearSize(webImageSize(images, QSL("fixed")),
-                   QSizeF(webImageSize(images, QSL("fixed")).width(),
-                          webImageSize(images, QSL("fixed")).width() * 0.3)));
+  QTRY_VERIFY(hasProportionalViewportFit());
   engine->setZoomFactor(1.0);
   QTRY_VERIFY(nearSize(webImageSize(webImageGeometries(engine), QSL("fixed")), QSizeF(600, 180)));
   applicationScript(engine,
