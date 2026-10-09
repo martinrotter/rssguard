@@ -25,6 +25,7 @@
 #endif
 
 #include <QCommandLineParser>
+#include <QLoggingCategory>
 #include <QNetworkAccessManager>
 #include <QSettings>
 
@@ -79,10 +80,12 @@ int main(int argc, char* argv[]) {
 
   std::set_terminate(exception_handler);
 
-  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
+  qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{if-category}[%{category}] "
+                         "%{endif}%{message}"));
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  qputenv("QT_LOGGING_RULES", "qt.webenginecontext=true;qt.webengine.compositor=true");
+  // Application defaults can be overridden by QT_LOGGING_CONF and QT_LOGGING_RULES.
+  QLoggingCategory::setFilterRules(QSL("qt.webenginecontext=true\nqt.webengine.compositor=true"));
 #endif
 
   // NOTE: https://github.com/martinrotter/rssguard/issues/1118
