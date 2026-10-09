@@ -269,6 +269,9 @@ jobs:
 
       - name: Run unit tests
         if: matrix.os == 'ubuntu-24.04'
+        env:
+          # Chromium cannot use its sandbox in this root-run CI container.
+          QTWEBENGINE_DISABLE_SANDBOX: "1"
         run: ctest --test-dir ./rssguard-build --label-exclude benchmark --output-on-failure --no-tests=error
 
       - name: Run benchmarks
