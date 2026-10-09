@@ -272,7 +272,11 @@ jobs:
         env:
           # Chromium cannot use its sandbox in this root-run CI container.
           QTWEBENGINE_DISABLE_SANDBOX: "1"
-        run: ctest --test-dir ./rssguard-build --label-exclude benchmark --output-on-failure --no-tests=error
+          # Qt's WebEngine widget still needs an OpenGL context with Chromium GPU rendering disabled.
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: >-
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24"
+          ctest --test-dir ./rssguard-build --label-exclude benchmark --output-on-failure --no-tests=error
 
       - name: Run benchmarks
         if: matrix.os == 'ubuntu-24.04'

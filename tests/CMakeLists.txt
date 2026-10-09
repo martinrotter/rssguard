@@ -98,12 +98,16 @@ if(ENABLE_TESTING)
     ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
     TIMEOUT 120)
   if(WEB_ARTICLE_VIEWER_WEBENGINE)
-    if(WIN32)
-      if(QT_VERSION_MAJOR EQUAL 5)
+    set(ZOOM_TEST_PLATFORM "offscreen")
+    if(QT_VERSION_MAJOR EQUAL 5)
+      if(WIN32)
         set(ZOOM_TEST_PLATFORM "windows")
-      else()
-        set(ZOOM_TEST_PLATFORM "offscreen")
+      elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+        # Qt 5's WebEngine view needs an X11 OpenGL context; CI provides it through Xvfb.
+        set(ZOOM_TEST_PLATFORM "xcb")
       endif()
+    endif()
+    if(WIN32)
       add_test(NAME test_zoom_webengine
         COMMAND ${CMAKE_COMMAND} -E env
           "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
@@ -112,7 +116,7 @@ if(ENABLE_TESTING)
     else()
       add_test(NAME test_zoom_webengine
         COMMAND ${CMAKE_COMMAND} -E env
-          "QT_QPA_PLATFORM=offscreen"
+          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
           $<TARGET_FILE:test_zoom>)
     endif()
     set_tests_properties(test_zoom_webengine PROPERTIES
