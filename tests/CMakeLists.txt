@@ -75,6 +75,10 @@ if(ENABLE_TESTING)
     miscellaneous/test_settings.cpp
   )
 
+  add_rssguard_test(test_applicationdiagnostics
+    miscellaneous/test_applicationdiagnostics.cpp
+  )
+
   add_rssguard_test(test_httpresponse
     network-web/test_httpresponse.cpp
   )

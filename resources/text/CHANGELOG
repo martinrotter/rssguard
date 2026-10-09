@@ -16,6 +16,7 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Fatal Qt errors now retain Qt's normal crash termination so crash diagnostics can capture them. Windows memory diagnostics now include current and peak GDI/USER object counts, and ProcDump instructions also capture unexpected exits. (#2462)
 * Article and attachment images now fit proportionally in the text viewer on all supported Qt versions. Width fitting in the web viewer now preserves authored heights and proportions. (#2461)
 * Cached image reloads in the text viewer now reliably finish after toggling image loading.
 * Images now zoom with text in the text viewer. Article and attachment image height limits now preserve smaller images, authored dimensions and styling in both text and web viewers. (#2461)

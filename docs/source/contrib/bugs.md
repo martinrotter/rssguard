@@ -178,13 +178,13 @@ A Command Prompt window should open directly in the ProcDump folder.
 Now paste this command into the Command Prompt window and press `Enter`:
 
 ```batch
-procdump64.exe -accepteula -e -mm -n 1 -w rssguard.exe "%USERPROFILE%\Desktop\rssguard-dumps"
+procdump64.exe -accepteula -e -t -mm -n 1 -w rssguard.exe "%USERPROFILE%\Desktop\rssguard-dumps"
 ```
 
 If Windows says that `procdump64.exe` cannot be found, use this command instead:
 
 ```batch
-procdump.exe -accepteula -e -mm -n 1 -w rssguard.exe "%USERPROFILE%\Desktop\rssguard-dumps"
+procdump.exe -accepteula -e -t -mm -n 1 -w rssguard.exe "%USERPROFILE%\Desktop\rssguard-dumps"
 ```
 
 The Command Prompt window should now wait for RSS Guard to start.
@@ -192,10 +192,17 @@ The Command Prompt window should now wait for RSS Guard to start.
 The command means:
 
 * `-accepteula` accepts the Sysinternals license prompt.
-* `-e` creates a dump when RSS Guard crashes with an unhandled error.
+* `-e` creates a dump when RSS Guard encounters an unhandled exception.
+* `-t` also creates a dump when the process exits, including unexpected exits without an unhandled exception.
 * `-mm` creates a small mini dump file.
 * `-n 1` creates one dump file and then stops.
 * `-w rssguard.exe` waits until RSS Guard is started.
+
+Because `-t` also captures a normal exit, keep RSS Guard running until the problem happens. Closing it normally will also produce a dump; tell the developer if that is how the dump was created.mr
+
+Keep `-e` without a following `1`. Using `-e 1` captures first-chance exceptions, including exceptions that RSS Guard or its libraries handle successfully. With `-n 1`, this can stop monitoring before the actual problem happens.
+
+The default `-mm` mini dump is usually enough to start an investigation. If a developer asks for a full memory dump, replace `-mm` with `-ma` in either command. Full dumps can help investigate memory or graphics-resource exhaustion, but are larger and contain more process memory, so review the privacy warning above before sharing one.
 
 ### Reproduce the Crash
 
@@ -217,7 +224,9 @@ If RSS Guard crashes but no dump file appears:
 
 * Make sure ProcDump was still running before you started RSS Guard.
 * Make sure the command contains `-w rssguard.exe`.
+* Make sure the command contains both `-e` and `-t`. With `-e` alone, a process can exit without producing a dump. ProcDump should show `Exception monitor: Unhandled` and `Terminate monitor: Enabled`.
 * Make sure the dump folder exists on your Desktop.
+* If ProcDump reports `Process Exit` followed by `Dump count not reached`, include its complete output and the RSS Guard debug log in your report.
 * Try again, but start Command Prompt as administrator.
 
 To start Command Prompt as administrator:

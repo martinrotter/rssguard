@@ -10,7 +10,6 @@
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
 
-#include <cstdlib>
 #include <iostream>
 
 #include <QCommandLineParser>
@@ -121,9 +120,7 @@ void ApplicationLogManager::performLogging(QtMsgType type, const QMessageLogCont
     manager->displayLogMessageInDialog(console_message);
   }
 
-  if (type == QtMsgType::QtFatalMsg) {
-    std::exit(EXIT_FAILURE);
-  }
+  // Return even for fatal messages so Qt can perform its normal crash termination.
 #else
   Q_UNUSED(type)
   Q_UNUSED(context)

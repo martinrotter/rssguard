@@ -35,6 +35,15 @@ QString signedBytesToMib(qint64 bytes) {
 
 #if defined(Q_OS_WIN)
 
+struct GuiResourceCount {
+  DWORD m_count = 0;
+  bool m_available = false;
+
+  QString formatted() const {
+    return m_available ? QString::number(m_count) : QSL("unavailable");
+  }
+};
+
 struct ProcessSnapshot {
   DWORD m_processId = 0;
   DWORD m_parentProcessId = 0;
@@ -47,7 +56,24 @@ struct ProcessSnapshot {
   quint64 m_peakWorkingSetBytes = 0;
   bool m_memoryAvailable = false;
   bool m_handleCountAvailable = false;
+  GuiResourceCount m_gdiObjects;
+  GuiResourceCount m_peakGdiObjects;
+  GuiResourceCount m_userObjects;
+  GuiResourceCount m_peakUserObjects;
 };
+
+GuiResourceCount queryGuiResourceCount(HANDLE process, DWORD flag, DWORD& query_error) {
+  // Zero is also a valid count for processes without GUI resources.
+  SetLastError(ERROR_SUCCESS);
+  const DWORD count = GetGuiResources(process, flag);
+  const DWORD error = count == 0 ? GetLastError() : ERROR_SUCCESS;
+
+  if (error != ERROR_SUCCESS && query_error == ERROR_SUCCESS) {
+    query_error = error;
+  }
+
+  return {count, error == ERROR_SUCCESS};
+}
 
 QList<ProcessSnapshot> enumerateProcesses() {
   QList<ProcessSnapshot> processes;
@@ -107,6 +133,11 @@ void populateProcessUsage(ProcessSnapshot& process, bool current_process) {
   else if (process.m_queryError == ERROR_SUCCESS) {
     process.m_queryError = GetLastError();
   }
+
+  process.m_gdiObjects = queryGuiResourceCount(handle, GR_GDIOBJECTS, process.m_queryError);
+  process.m_peakGdiObjects = queryGuiResourceCount(handle, GR_GDIOBJECTS_PEAK, process.m_queryError);
+  process.m_userObjects = queryGuiResourceCount(handle, GR_USEROBJECTS, process.m_queryError);
+  process.m_peakUserObjects = queryGuiResourceCount(handle, GR_USEROBJECTS_PEAK, process.m_queryError);
 
   if (!current_process) {
     CloseHandle(handle);
@@ -242,6 +273,14 @@ void MemoryDiagnostics::recordSnapshot(const QString& reason) {
                .arg(own_process != nullptr && own_process->m_handleCountAvailable
                       ? QString::number(own_process->m_handleCount)
                       : QSL("unavailable"))
+          << QSL("self_gdi_objects=%1")
+               .arg(own_process != nullptr ? own_process->m_gdiObjects.formatted() : QSL("unavailable"))
+          << QSL("self_peak_gdi_objects=%1")
+               .arg(own_process != nullptr ? own_process->m_peakGdiObjects.formatted() : QSL("unavailable"))
+          << QSL("self_user_objects=%1")
+               .arg(own_process != nullptr ? own_process->m_userObjects.formatted() : QSL("unavailable"))
+          << QSL("self_peak_user_objects=%1")
+               .arg(own_process != nullptr ? own_process->m_peakUserObjects.formatted() : QSL("unavailable"))
           << QSL("self_threads=%1").arg(own_process != nullptr ? own_process->m_threadCount : 0)
           << QSL("descendants=%1").arg(process_tree.isEmpty() ? 0 : process_tree.size() - 1)
           << QSL("webengine_descendants=%1").arg(web_engine_descendants)
@@ -283,6 +322,10 @@ void MemoryDiagnostics::recordSnapshot(const QString& reason) {
                 .arg(process.m_memoryAvailable ? bytesToMib(process.m_peakWorkingSetBytes) : QSL("unavailable"))
            << QSL("handles=%1")
                 .arg(process.m_handleCountAvailable ? QString::number(process.m_handleCount) : QSL("unavailable"))
+           << QSL("gdi_objects=%1").arg(process.m_gdiObjects.formatted())
+           << QSL("peak_gdi_objects=%1").arg(process.m_peakGdiObjects.formatted())
+           << QSL("user_objects=%1").arg(process.m_userObjects.formatted())
+           << QSL("peak_user_objects=%1").arg(process.m_peakUserObjects.formatted())
            << QSL("threads=%1").arg(process.m_threadCount)
            << QSL("query_error=%1").arg(process.m_queryError);
 
