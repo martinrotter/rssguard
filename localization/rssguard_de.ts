@@ -173,7 +173,7 @@
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="18"/>
       <source>All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</source>
-      <translation>Alle überschüssigen Artikel werden von der Anwendung automatisch entfernt, normalerweise nachdem ein bestimmter Feed abgerufen wurde. Die Artikel werden entweder vollständig aus der internen Datenbank gelöscht (einschließlich der Artikel aus dem Papierkorb) oder nur in den Papierkorb verschoben.</translation>
+      <translation>Alle Artikel, die das definierte Limit überschreiten, werden automatisch gelöscht, normalerweise nach dem Abruf eines Feeds. Die Artikel werden entweder vollständig aus der internen Datenbank gelöscht (einschließlich der Artikel aus dem Papierkorb) oder nur in den Papierkorb verschoben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="24"/>
@@ -8436,7 +8436,7 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
       <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>Hier können Sie eine Liste externer Tools zum Öffnen von URLs definieren. Wenn Sie eine Domain (ohne vorangestelltes &quot;www.&quot;) einrichten, wird das Tool direkt zum Öffnen aller angeklickten Links dieser Domain verwendet. Mehrere Domains können durch Komma &apos;,&apos; getrennt werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
@@ -8980,13 +8980,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="747"/>
       <source>Propagate feed state to parent nodes</source>
-      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+      <translation>Status des Feeds an übergeordnete Knoten weitergeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="748"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
-      <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
+      <translation>Feed-Auswahl in der Mitte der Feed-Liste halten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
@@ -9130,7 +9130,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="548"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="765"/>
       <source>Keep article selection in the middle of the article list viewport</source>
-      <translation>Artikelauswahl in der Mitte des Artikel-Listenfensters behalten</translation>
+      <translation>Artikel-Auswahl in der Mitte der Liste halten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
@@ -10470,7 +10470,7 @@ Diese Einstellung ist hilfreich, wenn das Parsen der XML Rohdaten sehr langsam i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>Falls aktiviert, wird ein erfolgreich heruntergeladener und analysierter Feed als defekt gemeldet. Leere Feeds sind gültig, daher sollten Sie diese Option für Feeds deaktivieren, in denen keine Artikel erwartet werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
