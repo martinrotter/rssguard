@@ -168,7 +168,7 @@
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="12"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</source>
-      <translation>Das hier festgelegte Limit teilt der Funktion %1 mit, einige der neu abgerufenen Artikel zu ignorieren. Diese Befehlslogik wird erst NACH den Artikelfiltern ausgeführt, d. h. selbst wenn ein bestimmter Artikel durch Ihre Artikelfilter akzeptiert wurde, kann er durch diese Funktion anschließend ignoriert und nicht zur Datenbank hinzugefügt werden.</translation>
+      <translation>Durch dieses Limit wird die Funktion %1 einige neu abgerufene Artikel ignorieren. Die Befehlslogik wird erst NACH den Artikelfiltern ausgeführt, d. h. selbst wenn ein bestimmter Artikel durch Ihre Artikelfilter akzeptiert wurde, kann er durch diese Funktion anschließend ignoriert und nicht zur Datenbank hinzugefügt werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="18"/>
@@ -4311,7 +4311,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="56"/>
       <source>Database and/or settings were not copied to restoration directory successfully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successfully.</translation>
+      <translation>Die Datenbank und/oder Einstellungen konnten nicht erfolgreich in das Wiederherstellungsverzeichnis kopiert werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="74"/>
@@ -8422,16 +8422,16 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="28"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</translation>
+      <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) ein Platzhalter für die URL des ausgewählten Artikels ist.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="32"/>
       <source>Placeholders:
  • %1 - title of the selected article,
  • %2 - body of the selected article.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of the selected article,
- • %2 - body of the selected article.</translation>
+      <translation>Platzhalter:
+ • %1 - Titel des ausgewählten Artikels,
+ • %2 - Inhalt des ausgewählten Artikels.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
@@ -8685,7 +8685,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="156"/>
       <source>You did not execute any connection test yet.</source>
-      <translation type="unfinished">You did not execute any connection test yet.</translation>
+      <translation>Es wurde noch kein Verbindungs-Test ausgeführt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
@@ -8794,7 +8794,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="60"/>
       <source>Note that enabling this might have drastic consequences on performance of the article list with many articles.</source>
-      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of the article list with many articles.</translation>
+      <translation>Die Aktivierung dieser Option kann bei einer Artikelübersicht mit vielen Artikeln erhebliche Auswirkungen auf die Leistung haben kann.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="66"/>
