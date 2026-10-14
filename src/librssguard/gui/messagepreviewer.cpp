@@ -311,7 +311,6 @@ void MessagePreviewer::updateButtons() {
 void MessagePreviewer::updateLabels(bool only_clear) {
   for (auto& lbl : m_btnLabels) {
     m_toolBar->removeAction(lbl);
-    // lbl->deleteLater();
   }
 
   m_btnLabels.clear();
@@ -322,22 +321,27 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     m_separator = nullptr;
   }
 
-  if (only_clear) {
+  QList<Message> messages;
+  QList<Label*> labels;
+
+  if (!only_clear && !m_root.isNull()) {
+    messages.append(m_message);
+    labels = m_root.data()->account()->labelsNode()->labels();
+  }
+
+  // Reset the popup target and contents even when there are no labels.
+  m_menuLabels->setMessages(messages);
+  m_menuLabels->setLabels(labels);
+
+  if (labels.isEmpty()) {
     return;
   }
 
-  if (m_root.data() != nullptr && !m_root.data()->account()->labelsNode()->labels().isEmpty()) {
-    m_separator = m_toolBar->addSeparator();
+  m_separator = m_toolBar->addSeparator();
 
-    auto lbls = m_root.data()->account()->labelsNode()->labels();
-
-    m_menuLabels->setMessages({m_message});
-    m_menuLabels->setLabels(lbls);
-
-    for (auto* act : m_menuLabels->labelActions()) {
-      m_toolBar->addAction(act);
-      m_btnLabels.append(act);
-    }
+  for (auto* act : m_menuLabels->labelActions()) {
+    m_toolBar->addAction(act);
+    m_btnLabels.append(act);
   }
 }
 

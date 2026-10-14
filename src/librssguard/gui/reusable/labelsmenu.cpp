@@ -15,10 +15,21 @@ LabelsMenu::LabelsMenu(QWidget* parent) : ScrollableMenu(tr("Labels"), parent) {
 }
 
 void LabelsMenu::setLabels(const QList<Label*>& labels) {
+  for (auto* act : m_labelActions) {
+    act->setEnabled(false);
+    QObject::disconnect(act, nullptr, act, nullptr);
+  }
+
+  if (m_actionsOwner != nullptr) {
+    m_actionsOwner->deleteLater();
+  }
+
+  // QMenu::clear() must only detach these actions, not own their lifetime.
+  m_actionsOwner = new QObject(this);
   m_labelActions.clear();
 
   if (labels.isEmpty()) {
-    QAction* act_not_labels = new QAction(qApp->icons()->fromTheme(QSL("tag")), tr("No labels found"));
+    QAction* act_not_labels = new QAction(qApp->icons()->fromTheme(QSL("tag")), tr("No labels found"), m_actionsOwner);
 
     act_not_labels->setEnabled(false);
     setActions({act_not_labels}, false);
@@ -38,9 +49,8 @@ void LabelsMenu::setLabels(const QList<Label*>& labels) {
   }
 }
 
-void LabelsMenu::changeLabelAssignment(bool assign) {
-  LabelAction* origin = qobject_cast<LabelAction*>(sender());
-  auto lbl = origin->label();
+void LabelsMenu::changeLabelAssignment(LabelAction* origin, bool assign) {
+  auto* lbl = origin != nullptr ? origin->label() : nullptr;
 
   if (origin != nullptr && lbl != nullptr) {
     try {
@@ -74,14 +84,17 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
 }
 
 QAction* LabelsMenu::labelAction(Label* label) {
-  auto* act = new LabelAction(label, this);
+  auto* act = new LabelAction(label, m_actionsOwner);
 
   act->setCheckable(true);
   act->setChecked(act->isCheckable() && qlinq::from(m_messages).all([&](const Message& msg) {
     return msg.m_assignedLabels.contains(label);
   }));
 
-  connect(act, &LabelAction::toggled, this, &LabelsMenu::changeLabelAssignment);
+  // QMenu::removeAction() disconnects signals to the menu itself.
+  connect(act, &QAction::toggled, act, [this, act](bool assign) {
+    changeLabelAssignment(act, assign);
+  });
 
   return act;
 }

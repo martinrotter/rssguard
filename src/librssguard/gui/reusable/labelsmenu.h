@@ -6,6 +6,8 @@
 #include "gui/reusable/scrollablemenu.h"
 #include "services/abstract/label.h"
 
+class LabelAction;
+
 class LabelsMenu : public ScrollableMenu {
     Q_OBJECT
 
@@ -20,13 +22,12 @@ class LabelsMenu : public ScrollableMenu {
   signals:
     void setModelArticleLabelIds(const QList<Message>& msgs);
 
-  private slots:
-    void changeLabelAssignment(bool assign);
-
   private:
+    void changeLabelAssignment(LabelAction* origin, bool assign);
     QAction* labelAction(Label* label);
 
   private:
+    QObject* m_actionsOwner = nullptr;
     QList<Message> m_messages;
     QList<QAction*> m_labelActions;
 };

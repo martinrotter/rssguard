@@ -23,7 +23,7 @@ function(add_rssguard_test TEST_TARGET)
 
     if(TEST_TARGET STREQUAL "test_mediawikiparser")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
-    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom")
+    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR TEST_TARGET STREQUAL "test_labelsmenu")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -137,6 +137,25 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_databasequeries
     database/test_databasequeries.cpp
   )
+
+  # These GUI classes are internal to the library and have no Windows DLL exports.
+  add_rssguard_test(test_labelsmenu
+    gui/test_labelsmenu.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/labelsmenu.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/labelsmenu.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/scrollablemenu.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/scrollablemenu.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/nonclosablemenu.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/reusable/nonclosablemenu.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/messagepreviewer.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/messagepreviewer.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/itemdetails.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/itemdetails.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/tabcontent.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/tabcontent.h
+  )
+  target_include_directories(test_labelsmenu PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  set_tests_properties(test_labelsmenu PROPERTIES TIMEOUT 60)
 
   add_rssguard_test(test_mediawikiparser
     standard/test_mediawikiparser.cpp
