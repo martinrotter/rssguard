@@ -133,6 +133,7 @@ void SettingsGui::loadUi() {
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_btnResetAllCustomSkinColors, &QPushButton::clicked, this, &SettingsGui::resetAllCustomSkinColors);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_displayTaskbarThumbnailButtons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayTaskbarErrorProgress, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnWindow, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
