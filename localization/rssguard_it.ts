@@ -184,7 +184,7 @@
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="187"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>articolo(i) più recente</numerusform>
+        <numerusform>articoli più recenti</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -805,7 +805,7 @@ ID personalizzato elemento: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="212"/>
       <source>file contains invalid JSON: %1</source>
-      <translation type="unfinished">file contains invalid JSON: %1</translation>
+      <translation>file contiene JSON non valido: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="216"/>
@@ -3969,7 +3969,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="605"/>
       <source>The filter can modify article states or remove articles.</source>
-      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+      <translation>Il filtro può modificare gli stati degli articoli o rimuovere gli articoli.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="746"/>
@@ -3984,7 +3984,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>Rimuovere filtro articoli dalla cartella?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="774"/>
@@ -4185,13 +4185,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</source>
-      <translation type="unfinished">Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</translation>
+      <translation>Sposta filtro su. Tieni premuto Maiusc per spostare di cinque posizioni o CTRL per spostare in cima.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</source>
-      <translation type="unfinished">Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</translation>
+      <translation>Sposta filtro giù. Tieni premuto Maiusc per spostare di cinque posizioni o Ctrl per spostare in fondo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
