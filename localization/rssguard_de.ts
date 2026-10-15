@@ -8414,7 +8414,7 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="827"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
+      <translation>Feeds und Verzeichnisse für Konto &apos;%1&apos; nicht geladen: Fehler %2</translation>
     </message>
   </context>
   <context>
@@ -9371,7 +9371,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="240"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="471"/>
       <source>Use monochrome icon</source>
-      <translation>Monochrome Symbol verwenden</translation>
+      <translation>Icon einfarbig verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="316"/>
@@ -9455,7 +9455,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="299"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="477"/>
       <source>Use custom-colored icon also as application icon</source>
-      <translation type="unfinished">Use custom-colored icon also as application icon</translation>
+      <translation>Icon mit Benutzer-definierten Farben auch als Anwendungs-Symbol verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="309"/>
@@ -9465,7 +9465,7 @@ Beschreibung: %3</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="481"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="486"/>
       <source>Display count of unread articles</source>
-      <translation type="unfinished">Display count of unread articles</translation>
+      <translation>Anzahl ungelesener Artikel anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="326"/>
@@ -11596,7 +11596,7 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="438"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>Element-Hintergrund drucken</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
