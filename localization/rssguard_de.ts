@@ -868,7 +868,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="129"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation>Du kannst zur Zeit keine neuen Artikel herunterladen, weil andere kritische Operationen ausgeführt werden.</translation>
+      <translation>Zur Zeit können keine neuen Artikel heruntergeladen werden, weil andere kritische Operationen ausgeführt werden.</translation>
     </message>
   </context>
   <context>
@@ -1272,7 +1272,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation>Möchtest du wirklich alle Artikel der ausgewählten Einträge löschen?</translation>
+      <translation>Sollen wirklich alle Artikel der ausgewählten Einträge gelöscht werden?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
@@ -4510,7 +4510,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="38"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
-      <translation>Du kannst eine Kommandozeile inklusive Interpreter hier eingeben.</translation>
+      <translation>Sie können hier eine Kommandozeile inklusive Interpreter eingeben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="78"/>
@@ -5002,7 +5002,7 @@ Sie können es jetzt installieren.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="17"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit du deine eigene ID nicht angeben musst, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse diese Felder frei und verwende die Standardwerte für die Weiterleitungs-URL.</translation>
+      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit die eigene ID nicht angegeben werden muss, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse diese Felder frei und verwende die Standardwerte für die Weiterleitungs-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="24"/>
@@ -5205,7 +5205,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="204"/>
       <source>You are good to go!</source>
-      <translation>Du bist nun startklar!</translation>
+      <translation>Alles startklar!</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="204"/>
@@ -5255,7 +5255,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="59"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit du deine eigene ID nicht angeben musst, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse alle obigen Felder in ihren Standardwerten, selbst wenn sie leer sind.</translation>
+      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit die eigene ID nicht angegeben werden muss; allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse alle obigen Felder in ihren Standardwerten, selbst wenn sie leer sind.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="66"/>
@@ -7296,7 +7296,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="55"/>
       <source>You can close this window now. Go back to %1.</source>
-      <translation>Du kannst dieses Fenster nun schließen. Gehe zurück zu %1.</translation>
+      <translation>Sie können dieses Fenster jetzt schließen. Zurück zu %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="337"/>
@@ -7305,17 +7305,17 @@ Ablauf des Login tokens: %2</translation>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="355"/>
       <source>After-login action failed</source>
-      <translation type="unfinished">After-login action failed</translation>
+      <translation>Nach-Login - Aktion fehlgeschlagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
       <source>Unknown error.</source>
-      <translation type="unfinished">Unknown error.</translation>
+      <translation>Unbekannter Fehler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="432"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-      <translation>Kann OAuth-Weiterleitungs-Erkennung nicht starten. Vielleicht hast du nicht die notwendige Berechtigung.</translation>
+      <translation>Kann OAuth-Weiterleitungs-Erkennung nicht starten. Vielleicht fehlt die notwendige Berechtigung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="101"/>
@@ -7328,7 +7328,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
       <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization did not finish correctly. Go back to %1 and try again.</translation>
+      <translation>Die Autorisierung wurde nicht korrekt beendet. Gehen Sie zurück zu %1 und versuchen Sie es erneut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
@@ -7409,7 +7409,7 @@ Feedly ist ein sicherer Ort, wo du privat Themen organisieren und nachforschen k
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="143"/>
       <source>Login progressed or was successful</source>
-      <translation type="unfinished">Login progressed or was successful</translation>
+      <translation>Anmeldung erfolgreich</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="149"/>
@@ -7429,7 +7429,7 @@ Feedly ist ein sicherer Ort, wo du privat Themen organisieren und nachforschen k
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="158"/>
       <source>You were logged out or disconnected</source>
-      <translation type="unfinished">You were logged out or disconnected</translation>
+      <translation>Sie wurden abgemeldet oder getrennt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="161"/>
@@ -7478,7 +7478,7 @@ Liste aller unterstützten Leser:</translation>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login failed</source>
-      <translation>Anmelden fehlgeschlagen</translation>
+      <translation>Anmeldung fehlgeschlagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="695"/>
@@ -7865,7 +7865,7 @@ Stapel: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
-      <translation type="unfinished">Login successful</translation>
+      <translation>Anmeldung erfolgreich</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="76"/>
@@ -8113,7 +8113,7 @@ Stapel: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="65"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation>Willst du wirklich deinen Papierkorb leeren?</translation>
+      <translation>Möchten Sie wirklich den Papierkorb leeren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
@@ -9277,7 +9277,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="56"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-      <translation>Du kannst hier Farben überschreiben, welche von deinem Skin definiert wurden. Manche Farben werden dynamisch überall in der Anwendung verwendet.</translation>
+      <translation>Sie können hier einige von Ihrem Skin definierte Farben überschreiben. Einige Farben werden in der gesamten Anwendung dynamisch verwendet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="328"/>
@@ -10043,7 +10043,7 @@ Beschreibung: %3</translation>
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation>Wenn Sie viele Feeds von der gleichen Webseite/Host abrufen, dann kann %1 auf grund zu vieler gleichzeitiger Verbindungen (zeitweise) gebannt sein.</translation>
+      <translation>Wenn Sie viele Feeds von der gleichen Webseite/Host abrufen, dann kann %1 auf Grund zu vieler gleichzeitiger Verbindungen (zeitweise) gebannt sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
