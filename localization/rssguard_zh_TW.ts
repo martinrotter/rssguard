@@ -63,22 +63,22 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="111"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>應用程式初始化中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="136"/>
       <source>Initializing application services...</source>
-      <translation type="unfinished">Initializing application services...</translation>
+      <translation>應用程式服務初始化中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="169"/>
       <source>Loading appearance...</source>
-      <translation type="unfinished">Loading appearance...</translation>
+      <translation>載入外觀中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="175"/>
       <source>Preparing the application...</source>
-      <translation type="unfinished">Preparing the application...</translation>
+      <translation>應用程式準備中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="581"/>
@@ -465,12 +465,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="64"/>
       <source>Removing important articles...</source>
-      <translation type="unfinished">Removing important articles...</translation>
+      <translation>移除重要文章中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Important articles purged...</source>
-      <translation type="unfinished">Important articles purged...</translation>
+      <translation>重要文章清除中……</translation>
     </message>
   </context>
   <context>
@@ -512,7 +512,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="86"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>無法使用資料庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="87"/>
@@ -714,7 +714,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
       <source>article filtering error</source>
-      <translation type="unfinished">article filtering error</translation>
+      <translation>文章篩選錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="415"/>
@@ -748,12 +748,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
       <source>Cannot open feed homepage</source>
-      <translation type="unfinished">Cannot open feed homepage</translation>
+      <translation>無法開啟文源的首頁</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
       <source>The feed does not have a valid homepage URL.</source>
-      <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
+      <translation>此文源的首頁網址無效。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="67"/>
@@ -1355,7 +1355,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="511"/>
       <source>feed</source>
-      <translation type="unfinished">feed</translation>
+      <translation>文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="513"/>
@@ -1370,7 +1370,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="517"/>
       <source>label</source>
-      <translation type="unfinished">label</translation>
+      <translation>標籤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="519"/>
@@ -1380,7 +1380,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="521"/>
       <source>item</source>
-      <translation type="unfinished">item</translation>
+      <translation>項目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
@@ -3387,7 +3387,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1010"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Open homepage of feed belonging to current article</source>
-      <translation type="unfinished">Open homepage of feed belonging to current article</translation>
+      <translation>開啟目前文章的文源的首頁</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1018"/>
@@ -4396,7 +4396,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="86"/>
       <source>Search settings...</source>
-      <translation type="unfinished">Search settings...</translation>
+      <translation>搜尋設定……</translation>
     </message>
   </context>
   <context>
