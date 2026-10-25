@@ -3921,7 +3921,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="232"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot import filters, error: &apos;%1&apos;.</translation>
+      <translation>Kann die Filter nicht importieren, Fehler: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
@@ -3984,7 +3984,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>Zuordnung des Artikelfilters zum Ordner löschen?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="774"/>
@@ -4007,7 +4007,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>Wollen Sie fortfahren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="808"/>
