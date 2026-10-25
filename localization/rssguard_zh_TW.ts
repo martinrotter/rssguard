@@ -478,7 +478,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="159"/>
       <source>this database cannot be used because it comes from too old major app version</source>
-      <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
+      <translation>無法使用此資料庫，因為產生它的主程式版本太老</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="166"/>
@@ -517,7 +517,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="87"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
-      <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
+      <translation>無法啟動應用程式，因為 DB 有後面問題: %1。</translation>
     </message>
   </context>
   <context>
@@ -788,12 +788,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="359"/>
       <source>Some feeds are hidden by current search or filtering.</source>
-      <translation type="unfinished">Some feeds are hidden by current search or filtering.</translation>
+      <translation>有些文源被目前搜尋或篩選隱藏。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="361"/>
       <source>Some articles are hidden by current search or filtering.</source>
-      <translation type="unfinished">Some articles are hidden by current search or filtering.</translation>
+      <translation>有些文章被目前搜尋或篩選隱藏。</translation>
     </message>
   </context>
   <context>
@@ -801,12 +801,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="212"/>
       <source>file contains invalid JSON: %1</source>
-      <translation type="unfinished">file contains invalid JSON: %1</translation>
+      <translation>檔案含有無效的 JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="216"/>
       <source>file does not contain a filter list</source>
-      <translation type="unfinished">file does not contain a filter list</translation>
+      <translation>檔案不含篩選清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="254"/>
@@ -1360,12 +1360,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="513"/>
       <source>category</source>
-      <translation type="unfinished">category</translation>
+      <translation>類別</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="515"/>
       <source>account</source>
-      <translation type="unfinished">account</translation>
+      <translation>帳號</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="517"/>
@@ -1375,7 +1375,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="519"/>
       <source>probe</source>
-      <translation type="unfinished">probe</translation>
+      <translation>探測</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="521"/>
