@@ -1103,7 +1103,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Titles of feeds/folders.</source>
-      <translation type="unfinished">Titles of feeds/folders.</translation>
+      <translation>文源/資料夾的標題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
@@ -1385,32 +1385,32 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;項目:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="566"/>
       <source>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;類型:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
       <source>&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;所選項目:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="589"/>
       <source>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;類型:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="592"/>
       <source>&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;子文源:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="593"/>
       <source>&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;子類別:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="595"/>
@@ -1834,43 +1834,43 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="293"/>
       <source>Article filter generator</source>
-      <translation type="unfinished">Article filter generator</translation>
+      <translation>文章篩選產生器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="294"/>
       <source>Match</source>
-      <translation type="unfinished">Match</translation>
+      <translation>比對</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="295"/>
       <source>all conditions</source>
-      <translation type="unfinished">all conditions</translation>
+      <translation>全部條件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="296"/>
       <source>at least one condition</source>
-      <translation type="unfinished">at least one condition</translation>
+      <translation>至少一條件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="42"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="298"/>
       <source>Conditions</source>
-      <translation type="unfinished">Conditions</translation>
+      <translation>條件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="299"/>
       <source>Add condition</source>
-      <translation type="unfinished">Add condition</translation>
+      <translation>新增條件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="68"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="307"/>
       <source>When conditions match</source>
-      <translation type="unfinished">When conditions match</translation>
+      <translation>符合條件時</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="72"/>
@@ -1878,7 +1878,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="308"/>
       <source>Actions</source>
-      <translation type="unfinished">Actions</translation>
+      <translation>動作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="88"/>
@@ -1886,7 +1886,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="301"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="309"/>
       <source>Add action</source>
-      <translation type="unfinished">Add action</translation>
+      <translation>新增動作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="94"/>
@@ -1902,7 +1902,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept - keep article</source>
-      <translation type="unfinished">Accept - keep article</translation>
+      <translation>接受 - 保留文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1910,7 +1910,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore - do not import or update article</source>
-      <translation type="unfinished">Ignore - do not import or update article</translation>
+      <translation>忽略 - 不匯入或更新文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -1918,30 +1918,30 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge - delete stored or discard new article</source>
-      <translation type="unfinished">Purge - delete stored or discard new article</translation>
+      <translation>清除 - 刪除儲存的或丟棄新的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="318"/>
       <source>When conditions do not match</source>
-      <translation type="unfinished">When conditions do not match</translation>
+      <translation>條件不符合時</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="316"/>
       <source>Result used when the article does not match the conditions</source>
-      <translation type="unfinished">Result used when the article does not match the conditions</translation>
+      <translation>文章不符合條件時所用的結果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="152"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="319"/>
       <source>Generated script</source>
-      <translation type="unfinished">Generated script</translation>
+      <translation>產生的即行碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="93"/>
       <source>Case sensitive</source>
-      <translation type="unfinished">Case sensitive</translation>
+      <translation>須區分大小寫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="105"/>
@@ -2075,27 +2075,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="360"/>
       <source>Remove action</source>
-      <translation type="unfinished">Remove action</translation>
+      <translation>移除動作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="419"/>
       <source>Enter a label title for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a label title for &apos;%1&apos;.</translation>
+      <translation>輸入 &apos;%1&apos; 的標籤標題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
       <source>Label title</source>
-      <translation type="unfinished">Label title</translation>
+      <translation>標籤的標題</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
       <source>Value</source>
-      <translation type="unfinished">Value</translation>
+      <translation>值</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="488"/>
       <source>Enter a valid value for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid value for &apos;%1&apos;.</translation>
+      <translation>輸入 &apos;%1&apos; 的有效值。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="531"/>
@@ -2155,19 +2155,19 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>使用者名稱不可留白。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>確定。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>密碼不可留白。</translation>
     </message>
   </context>
   <context>
@@ -2568,7 +2568,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="173"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>取消</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
@@ -3663,7 +3663,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Copy article data (&amp;no dialog)</source>
-      <translation type="unfinished">Copy article data (&amp;no dialog)</translation>
+      <translation>複製文章資料，但不複製對話(&amp;N)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
