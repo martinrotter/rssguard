@@ -11902,12 +11902,12 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="271"/>
       <source>error during services discovery, %1</source>
-      <translation type="unfinished">error during services discovery, %1</translation>
+      <translation>服務發現期間出錯，%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="275"/>
       <source>unspecified error during services discovery</source>
-      <translation type="unfinished">unspecified error during services discovery</translation>
+      <translation>服務發現期間出現不明錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="563"/>
@@ -11960,16 +11960,16 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="220"/>
       <source>Trigger async fetch</source>
-      <translation type="unfinished">Trigger async fetch</translation>
+      <translation>觸發異步抓取</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="240"/>
       <source>User: %1
 Status: %2
 Supported XEPs: %3</source>
-      <translation type="unfinished">User: %1
-Status: %2
-Supported XEPs: %3</translation>
+      <translation>使用者: %1
+狀態: %2
+支援的 XEP: %3</translation>
     </message>
   </context>
 </TS>
