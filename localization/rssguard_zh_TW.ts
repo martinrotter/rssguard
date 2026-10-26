@@ -230,7 +230,7 @@
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="100"/>
       <source>%n feeds fetched</source>
       <translation>
-        <numerusform>%n 個下載過的文源</numerusform>
+        <numerusform>%n 個文源下載了</numerusform>
       </translation>
     </message>
   </context>
@@ -816,12 +816,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="354"/>
       <source>Cannot start database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot start database transaction when removing article filter.</translation>
+      <translation>若移除文章篩選規則，就無法啟動資料庫交易。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>Cannot commit database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+      <translation>若移除文章篩選規則，就無法提交資料庫交易。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="548"/>
@@ -853,12 +853,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="78"/>
       <source>Not fetched on startup</source>
-      <translation type="unfinished">Not fetched on startup</translation>
+      <translation>啟動時未抓取</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="79"/>
       <source>Fetching of feeds on app startup was skipped because auto-fetching is paused.</source>
-      <translation type="unfinished">Fetching of feeds on app startup was skipped because auto-fetching is paused.</translation>
+      <translation>應用程式啟動時跳過了文源抓取，因為自動抓取被暫停。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="129"/>
@@ -1011,22 +1011,22 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="543"/>
       <source>Cannot parse Feedly collections JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly collections JSON response: %1</translation>
+      <translation>無法解析 Feedly 匯集的 JSON 方式回應: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="548"/>
       <source>Feedly collections response is not a JSON array.</source>
-      <translation type="unfinished">Feedly collections response is not a JSON array.</translation>
+      <translation>Feedly 匯集的回應不是一個 JSON 陣列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="687"/>
       <source>Cannot parse Feedly tags JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly tags JSON response: %1</translation>
+      <translation>無法解析 Feedly 標籤的 JSON 方式回應: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="692"/>
       <source>Feedly tags response is not a JSON array.</source>
-      <translation type="unfinished">Feedly tags response is not a JSON array.</translation>
+      <translation>Feedly 標籤的回應不是一個 JSON 陣列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="746"/>
@@ -1093,7 +1093,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="42"/>
       <source>Counts of unread/all articles.</source>
-      <translation type="unfinished">Counts of unread/all articles.</translation>
+      <translation>未讀/全部文章之數量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1239,7 +1239,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="266"/>
       <source>Do you really want to purge all non-important articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-important articles from selected feeds?</translation>
+      <translation>真的要從所選文源清除所有非重要的文章？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="475"/>
@@ -1415,7 +1415,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="595"/>
       <source>&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
+      <translation>&lt;p&gt;將完全刪除所選項目。&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="601"/>
@@ -1432,22 +1432,22 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="709"/>
       <source>Rearrange subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange subfolders alphabetically</translation>
+      <translation>依字母順序重整下層資料夾</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="710"/>
       <source>Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the subfolders of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>真的想依字母順序重新整理所選項目的下層資料夾嗎？做下去就無法復原。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="729"/>
       <source>Rearrange feeds alphabetically</source>
-      <translation type="unfinished">Rearrange feeds alphabetically</translation>
+      <translation>依字母順序重整文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="730"/>
       <source>Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</source>
-      <translation type="unfinished">Do you really want to rearrange the feeds of selected items alphabetically? This action cannot be undone.</translation>
+      <translation>真的想依字母順序重新整理所選項目的文源嗎？做下去就無法復原。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="755"/>
@@ -1511,12 +1511,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="124"/>
       <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
-      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+      <translation>文章篩選規則 &apos;%1&apos; 一定得傳回有效的 FilteringAction 值。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="234"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
-      <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
+      <translation>文章篩選規則 &apos;%1&apos; 沒定義一個可呼叫的 filterMessage() 函式。</translation>
     </message>
   </context>
   <context>
@@ -1562,7 +1562,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="126"/>
       <source>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</source>
-      <translation type="unfinished">&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</translation>
+      <translation>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;版本號:&lt;/b&gt; %1 (組建於 %2/%3)&lt;br/&gt;&lt;b&gt;修改:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;差異:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (編譯用 %6)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="145"/>
@@ -1631,7 +1631,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="62"/>
       <source>Cannot save account properties</source>
-      <translation type="unfinished">Cannot save account properties</translation>
+      <translation>無法儲存帳號屬性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="63"/>
@@ -3871,26 +3871,26 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="520"/>
       <source>This filter was saved!</source>
-      <translation type="unfinished">This filter was saved!</translation>
+      <translation>儲存了篩選規則！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="528"/>
       <source>There was an error when saving the filter: %1.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+      <translation>儲存篩選規則時出錯: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="533"/>
       <source>There was an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.
+      <translation>儲存篩選規則時出錯: %1。
 
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
+也許是因為篩選規則的標題已被使用。若然，改掉它即可。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="532"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>未儲存篩選規則</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="904"/>
@@ -3937,7 +3937,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="440"/>
       <source>Cannot remove article filter, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot remove article filter, error: &apos;%1&apos;.</translation>
+      <translation>無法移除文章篩選規則，錯誤訊息為: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="465"/>
@@ -4171,13 +4171,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</source>
-      <translation>上移篩選器。按住 Shift，可移五個位置，或按住 Ctrl 移至頂端。</translation>
+      <translation>上移篩選規則。按住 Shift，可移五個位置，或按住 Ctrl 移至頂端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</source>
-      <translation>下移篩選器。按住 Shift，可移五個位置，或按住 Ctrl 移至底端。</translation>
+      <translation>下移篩選規則。按住 Shift，可移五個位置，或按住 Ctrl 移至底端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
