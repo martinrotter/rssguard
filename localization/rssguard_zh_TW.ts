@@ -3965,30 +3965,30 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="746"/>
       <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot change article-filter assignment, error: &apos;%1&apos;.</translation>
+      <translation>無法變更文章篩選規則的指派，錯誤訊息為: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Assign article filter to folder?</source>
-      <translation type="unfinished">Assign article filter to folder?</translation>
+      <translation>指派文章篩選規則到資料夾？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>從資料夾移除文章篩選規則？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="774"/>
       <source>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>文章篩選規則 &apos;%1&apos; 會被指派到資料夾 &apos;%2&apos; 及其子資料夾的 %n 個文源。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="778"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>文章篩選規則 &apos;%1&apos; 會從資料夾 &apos;%2&apos; 及其子資料夾的 %n 個文源移除。</numerusform>
       </translation>
     </message>
     <message>
@@ -3996,30 +3996,30 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>要繼續嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="808"/>
       <source>Assign article filter to all feeds?</source>
-      <translation type="unfinished">Assign article filter to all feeds?</translation>
+      <translation>指派文章篩選規則到所有文源？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="808"/>
       <source>Remove article filter from all feeds?</source>
-      <translation type="unfinished">Remove article filter from all feeds?</translation>
+      <translation>從所有文源移除文章篩選規則？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="809"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>文章篩選規則 &apos;%1&apos; 會被指派到帳號 &apos;%2&apos; 的全部 %n 個文源。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="813"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>文章篩選規則 &apos;%1&apos; 會從帳號 &apos;%2&apos; 的全部 %n 個文源移除。</numerusform>
       </translation>
     </message>
     <message>
@@ -4750,17 +4750,17 @@ currently installed one.</source>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="214"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="214"/>
       <source>Retry download</source>
-      <translation type="unfinished">Retry download</translation>
+      <translation>重試下載</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <source>Error occurred</source>
-      <translation type="unfinished">Error occurred</translation>
+      <translation>發生錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="213"/>
       <source>Error occurred while downloading the package.</source>
-      <translation type="unfinished">Error occurred while downloading the package.</translation>
+      <translation>下載套件時出錯。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="250"/>
@@ -4812,24 +4812,23 @@ currently installed one.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="87"/>
       <source>No releases available.</source>
-      <translation type="unfinished">No releases available.</translation>
+      <translation>無新版本可用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="88"/>
       <source>There are no available releases.</source>
-      <translation type="unfinished">There are no available releases.</translation>
+      <translation>無可用版本。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="101"/>
       <source>This is a new version which can be
 downloaded.</source>
-      <translation type="unfinished">This is a new version which can be
-downloaded.</translation>
+      <translation>這是可下載的新版本。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="138"/>
       <source>No temporary directory is available for the update file.</source>
-      <translation type="unfinished">No temporary directory is available for the update file.</translation>
+      <translation>沒有給更新檔用的暫存目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="158"/>
