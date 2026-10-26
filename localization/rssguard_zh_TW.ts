@@ -9453,13 +9453,13 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="339"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="482"/>
       <source>Display thumbnail buttons</source>
-      <translation type="unfinished">Display thumbnail buttons</translation>
+      <translation>顯示縮圖按鈕</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="346"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="483"/>
       <source>Highlight taskbar when feed fetching fails</source>
-      <translation type="unfinished">Highlight taskbar when feed fetching fails</translation>
+      <translation>文源抓取失敗時高亮度顯示工作列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="356"/>
@@ -9635,7 +9635,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="127"/>
       <source>Ignore all cookies</source>
-      <translation type="unfinished">Ignore all cookies</translation>
+      <translation>忽略所有 cookies</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="41"/>
@@ -9647,7 +9647,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="52"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="133"/>
       <source>Web</source>
-      <translation type="unfinished">Web</translation>
+      <translation>資訊網</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="58"/>
@@ -10734,7 +10734,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="34"/>
       <source>Close this tab</source>
-      <translation type="unfinished">Close this tab</translation>
+      <translation>關閉此分頁</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="35"/>
@@ -10767,7 +10767,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="347"/>
       <source>Web browser</source>
-      <translation type="unfinished">Web browser</translation>
+      <translation>資訊網瀏覽器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="159"/>
@@ -10780,7 +10780,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="459"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
-      <translation type="unfinished">The page cannot be loaded with HTTP/%1 error.</translation>
+      <translation>出現 HTTP/%1 錯誤，此頁無法載入。</translation>
     </message>
   </context>
   <context>
@@ -10923,7 +10923,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="46"/>
       <source>Feed fetching is paused.</source>
-      <translation type="unfinished">Feed fetching is paused.</translation>
+      <translation>暫停抓取文源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="84"/>
@@ -10949,47 +10949,47 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="38"/>
       <source>Stretch last column</source>
-      <translation type="unfinished">Stretch last column</translation>
+      <translation>伸展最後一欄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="47"/>
       <source>Cascading column resizes</source>
-      <translation type="unfinished">Cascading column resizes</translation>
+      <translation>調整串接欄位大小</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="58"/>
       <source>Autosize visible columns</source>
-      <translation type="unfinished">Autosize visible columns</translation>
+      <translation>自動調整可見欄位的大小</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="139"/>
       <source>Visible</source>
-      <translation type="unfinished">Visible</translation>
+      <translation>可見的</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="148"/>
       <source>Autosize column</source>
-      <translation type="unfinished">Autosize column</translation>
+      <translation>自動調整欄位大小</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="155"/>
       <source>Resize mode</source>
-      <translation type="unfinished">Resize mode</translation>
+      <translation>重新調整模式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="160"/>
       <source>Interactive</source>
-      <translation type="unfinished">Interactive</translation>
+      <translation>互動式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="161"/>
       <source>Stretch</source>
-      <translation type="unfinished">Stretch</translation>
+      <translation>伸展</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="162"/>
       <source>Resize to contents</source>
-      <translation type="unfinished">Resize to contents</translation>
+      <translation>依內容多寡重新調整大小</translation>
     </message>
   </context>
   <context>
@@ -11282,7 +11282,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="442"/>
       <source>cannot get list of feeds</source>
-      <translation type="unfinished">cannot get list of feeds</translation>
+      <translation>無法獲得文源清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="447"/>
