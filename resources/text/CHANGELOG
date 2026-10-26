@@ -1,6 +1,6 @@
-5.2.6
+5.3.0
 -----
-Released on: 2026-09-XX
+Released on: 2026-11-XX
 
 Added:
 * Confirmations for assigning or removing article filters for folders or all feeds can now be disabled separately using "Do not show again". (#2457)
@@ -16,6 +16,10 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Fixed feeds failing to update despite successful metadata retrieval by improving default HTTP `Accept` headers and making discovery requests consistent.
+* Improved feed discovery by skipping guessed endpoints once the supplied URL is recognized as a feed.
+* Improved URL-based deduplication of discovered feeds and fixed a memory leak when discarding duplicates.
+* Fixed query-string handling in RSS/RDF, WordPress and sitemap discovery probes.
 * Label assignment and removal now work after paging in the article-list "Labels" and preview "Show all labels" menus, including preview sidebar buttons. Preview label menus reset correctly for accounts without labels, and refreshing them no longer leaks label actions. (#2469)
 * Failed article storage is now reported as a feed update failure instead of appearing successful. (32a001064)
 * Per-feed total and unread article counts now update faster with large article databases. (c7ff70664)

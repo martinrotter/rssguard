@@ -53,6 +53,7 @@ class FEED_PARSER_DLLSPEC FeedParser {
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
+    // Documents start with the base response (after redirects), followed by any crawled documents.
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
                                                bool deep_discovery,
@@ -61,6 +62,9 @@ class FEED_PARSER_DLLSPEC FeedParser {
     // Guesses feed.
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content,
                                            const NetworkResult& network_res = NetworkResult()) const;
+
+    static QString discoverySourceKey(const QString& source,
+                                      StandardFeed::SourceType source_type = StandardFeed::SourceType::Url);
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();
@@ -134,6 +138,7 @@ class FEED_PARSER_DLLSPEC FeedParser {
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:
+    static QString discoveryUrlWithSuffix(const QUrl& url, const QString& suffix);
     static NetworkResult networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url);
 
     void logUnsuccessfulRequest(const NetworkResult& reply) const;

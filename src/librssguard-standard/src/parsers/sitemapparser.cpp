@@ -30,11 +30,22 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
                                                   const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
   QHash<QString, StandardFeed*> feeds;
+  bool base_feed_found = false;
+  auto add_feed = [&feeds](StandardFeed* feed) {
+    const QString key = discoverySourceKey(feed->source(), feed->sourceType());
+
+    if (feeds.contains(key)) {
+      delete feed;
+    }
+    else {
+      feeds.insert(key, feed);
+    }
+  };
 
   if (!base_result.isEmpty()) {
     if (deep_discovery) {
       for (StandardFeed* base_fd : base_result) {
-        feeds.insert(base_fd->source(), base_fd);
+        add_feed(base_fd);
       }
     }
     else {
@@ -64,7 +75,11 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      feeds.insert(document_url, guessed_feed.m_feed);
+      add_feed(guessed_feed.m_feed);
+
+      if (&document == &documents.constFirst()) {
+        base_feed_found = true;
+      }
     }
     catch (const FeedRecognizedButFailedException& ex) {
       // This is index.
@@ -83,10 +98,13 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
 
   // 2.
   // 3.
-  QStringList to_process_robots = {
-    url.toString(QUrl::UrlFormattingOption::StripTrailingSlash).replace(QRegularExpression(QSL("\\/$")), QString()) +
-      QSL("/robots.txt"),
-    url.toString(QUrl::UrlFormattingOption::RemovePath | QUrl::UrlFormattingOption::RemoveQuery) + QSL("/robots.txt")};
+  QStringList to_process_robots;
+
+  if (!base_feed_found) {
+    to_process_robots = {
+      discoveryUrlWithSuffix(url, QSL("/robots.txt")),
+      discoveryUrlWithSuffix(url.adjusted(QUrl::RemovePath | QUrl::RemoveQuery), QSL("/robots.txt"))};
+  }
 
   to_process_robots.removeDuplicates();
 
@@ -121,22 +139,20 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
     }
   }
 
-  // 4.
-  to_process_sitemaps.append(url.toString(QUrl::UrlFormattingOption::StripTrailingSlash)
-                               .replace(QRegularExpression(QSL("\\/$")), QString()) +
-                             QSL("/sitemap.xml"));
+  if (!base_feed_found) {
+    // 4.
+    to_process_sitemaps.append(discoveryUrlWithSuffix(url, QSL("/sitemap.xml")));
 
-  // 5.
-  to_process_sitemaps.append(url.toString(QUrl::UrlFormattingOption::StripTrailingSlash)
-                               .replace(QRegularExpression(QSL("\\/$")), QString()) +
-                             QSL("/sitemap.xml.gz"));
+    // 5.
+    to_process_sitemaps.append(discoveryUrlWithSuffix(url, QSL("/sitemap.xml.gz")));
+  }
 
   while (!to_process_sitemaps.isEmpty()) {
     to_process_sitemaps.removeDuplicates();
 
     QString my_url = to_process_sitemaps.takeFirst();
 
-    if (feeds.contains(my_url)) {
+    if (feeds.contains(discoverySourceKey(my_url))) {
       continue;
     }
 
@@ -157,7 +173,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
       try {
         auto guessed_feed = guessFeed(data, res);
 
-        feeds.insert(my_url, guessed_feed.m_feed);
+        add_feed(guessed_feed.m_feed);
 
         if (!deep_discovery) {
           break;

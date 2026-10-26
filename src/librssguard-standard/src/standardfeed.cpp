@@ -797,23 +797,23 @@ QString StandardFeed::idealHttpAcceptForFeedType(Type type) {
       return QSL("*/*"); /*QSL("application/rss+xml, application/xml;q=0.9, text/xml;q=0.8")*/
 
     case Type::Rdf:
-      return QSL("application/rdf+xml, application/xml;q=0.9, text/xml;q=0.8");
+      return QSL("application/rdf+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1");
 
     case Type::Atom10:
-      return QSL("application/atom+xml, application/xml;q=0.9, text/xml;q=0.8");
+      return QSL("application/atom+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1");
 
     case Type::Json:
     case Type::WordpressJson:
-      return QSL("application/feed+json, application/json;q=0.9");
+      return QSL("application/feed+json, application/json;q=0.9, */*;q=0.1");
 
     case Type::MediaWiki:
       return QSL("application/json, */*;q=0.5");
 
     case Type::Sitemap:
-      return QSL("application/xml, text/xml;q=0.9");
+      return QSL("application/xml, text/xml;q=0.9, */*;q=0.1");
 
     case Type::iCalendar:
-      return QSL("text/calendar, application/ics;q=0.9");
+      return QSL("text/calendar, application/ics;q=0.9, */*;q=0.1");
 
     default:
       return QSL("*/*");

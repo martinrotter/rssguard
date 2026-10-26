@@ -262,6 +262,9 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
       icons_by_host.insert(host, icon);
       feed->setIcon(icon);
     }
+
+    // The model and deferred deletion of duplicates belong to the GUI thread.
+    feed->moveToThread(qApp->thread());
   }
 
   return feeds;
@@ -615,10 +618,15 @@ void FormDiscoverFeeds::startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWi
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =
     [=](QList<StandardFeed*>& res, const QList<StandardFeed*>& interm) -> QList<StandardFeed*> {
     for (StandardFeed* new_fd : interm) {
+      const QString key = FeedParser::discoverySourceKey(new_fd->source(), new_fd->sourceType());
+
       if (!std::any_of(res.cbegin(), res.cend(), [=](const StandardFeed* fd) {
-            return fd->source() == new_fd->source();
+            return FeedParser::discoverySourceKey(fd->source(), fd->sourceType()) == key;
           })) {
         res.append(new_fd);
+      }
+      else {
+        new_fd->deleteLater();
       }
     }
 

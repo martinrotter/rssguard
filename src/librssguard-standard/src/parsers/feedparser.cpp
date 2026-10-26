@@ -102,6 +102,48 @@ GuessedFeedWithIcons FeedParser::guessFeed(const QByteArray& content, const Netw
   return {};
 }
 
+QString FeedParser::discoverySourceKey(const QString& source, StandardFeed::SourceType source_type) {
+  QString normalized_source = source;
+  QUrl url(source);
+
+  if (source_type == StandardFeed::SourceType::Url && url.isValid() &&
+      (url.scheme() == QSL("http") || url.scheme() == QSL("https"))) {
+    url.setFragment({});
+
+    if ((url.scheme() == QSL("http") && url.port() == 80) || (url.scheme() == QSL("https") && url.port() == 443)) {
+      url.setPort(-1);
+    }
+
+    if (url.path().isEmpty()) {
+      url.setPath(QSL("/"));
+    }
+
+    normalized_source = url.toString(QUrl::FullyEncoded);
+  }
+
+  return QString::number(int(source_type)) + QL1C(':') + normalized_source;
+}
+
+QString FeedParser::discoveryUrlWithSuffix(const QUrl& url, const QString& suffix) {
+  QUrl probe_url = url.adjusted(QUrl::StripTrailingSlash | QUrl::RemoveFragment);
+  QString path = probe_url.path(QUrl::FullyEncoded);
+
+  // StripTrailingSlash preserves the root slash.
+  if (path == QSL("/")) {
+    path.clear();
+  }
+
+  path += suffix;
+
+  if (!path.startsWith(QL1C('/'))) {
+    path.prepend(QL1C('/'));
+  }
+
+  probe_url.setPath(path, QUrl::StrictMode);
+
+  return probe_url.toString(QUrl::FullyEncoded);
+}
+
 NetworkResult FeedParser::networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url) {
   NetworkResult result;
 

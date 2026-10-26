@@ -547,7 +547,8 @@ namespace {
 
     const QUrl url = catalogUrl(source);
     const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-    const QList<QPair<QByteArray, QByteArray>> headers = {{HTTP_HEADERS_ACCEPT, QByteArray("application/json")}};
+    const QList<QPair<QByteArray, QByteArray>> headers = {
+      {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::MediaWiki).toLocal8Bit()}};
     QByteArray data;
     const NetworkResult result = NetworkFactory::performNetworkOperation(url.toString(QUrl::FullyEncoded),
                                                                          timeout,

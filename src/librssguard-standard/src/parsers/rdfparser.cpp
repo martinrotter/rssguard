@@ -35,6 +35,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
 
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
+  bool base_feed_found = false;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded RDF feed links from HTML data.
@@ -53,6 +54,11 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
       feeds.append(guessed_feed.m_feed);
+
+      if (&document == &documents.constFirst()) {
+        base_feed_found = true;
+      }
+
       continue;
     }
     catch (...) {
@@ -110,8 +116,12 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
     }
   }
 
+  if (base_feed_found) {
+    return feeds;
+  }
+
   // 3.
-  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/feed");
+  my_url = discoveryUrlWithSuffix(url, QSL("/feed"));
   res = NetworkFactory::performNetworkOperation(my_url,
                                                 timeout,
                                                 {},
@@ -138,7 +148,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
   }
 
   // 4.
-  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/rdf");
+  my_url = discoveryUrlWithSuffix(url, QSL("/rdf"));
   res = NetworkFactory::performNetworkOperation(my_url,
                                                 timeout,
                                                 {},

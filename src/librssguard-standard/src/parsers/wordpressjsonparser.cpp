@@ -66,6 +66,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
       auto guessed_feed = guessFeed(data, res);
 
       feeds.append(guessed_feed.m_feed);
+      return feeds;
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url)
@@ -77,7 +78,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
   }
 
   // 2.
-  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/wp-json/wp/v2/posts");
+  my_url = discoveryUrlWithSuffix(url, QSL("/wp-json/wp/v2/posts"));
   res = NetworkFactory::performNetworkOperation(my_url,
                                                 timeout,
                                                 {},
@@ -104,7 +105,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
   }
 
   // 3.
-  my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/wp-json/wp/v2/pages");
+  my_url = discoveryUrlWithSuffix(url, QSL("/wp-json/wp/v2/pages"));
   res = NetworkFactory::performNetworkOperation(my_url,
                                                 timeout,
                                                 {},
