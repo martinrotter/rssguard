@@ -3947,19 +3947,20 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="600"/>
       <source>Process existing articles?</source>
-      <translation type="unfinished">Process existing articles?</translation>
+      <translation>處理既有的文章？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="601"/>
       <source>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</source>
-      <translation type="unfinished">
-        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+      <translation>
+        <numerusform>真的想對 %n 個勾選的文源，用所選的文章篩選規則處理既存的文章嗎？
+</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="605"/>
       <source>The filter can modify article states or remove articles.</source>
-      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+      <translation>篩選規則會修改文章狀態或移除文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="746"/>
