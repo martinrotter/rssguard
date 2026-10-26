@@ -89,6 +89,9 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
 }
 
 QString StandardFeed::additionalTooltip() const {
+  const bool ignore_all_cookies =
+    qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
+
   QString source_str = tr("Encoding: %1\n"
                           "Type: %2\n"
                           "Post-processing script: %3\n"
@@ -105,7 +108,8 @@ QString StandardFeed::additionalTooltip() const {
                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
                               fetchCommentsEnabled() ? tr("yes") : tr("no"),
                               getHttpDescription(),
-                              ignoreCookies() ? tr("yes") : tr("no"),
+                              ignore_all_cookies ? tr("yes (application setting)")
+                                                 : (ignoreCookies() ? tr("yes") : tr("no")),
                               reportAsBrokenIfEmpty() ? tr("yes") : tr("no"),
                               updateTimeout() > 0 ? tr("%1 ms").arg(updateTimeout()) : tr("application default"),
                               fetchFullArticles() ? tr("yes") : tr("no"),
