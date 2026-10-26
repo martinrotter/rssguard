@@ -31,6 +31,7 @@ void SettingsLocalization::loadUi() {
   m_ui = new Ui::SettingsLocalization();
 
   m_ui->setupUi(this);
+  m_ui->m_scrollAuthors->setVisible(false);
   m_ui->m_lblAuthors->label()->setWordWrap(true);
   m_ui->m_treeLanguages->setColumnCount(3);
   m_ui->m_treeLanguages->setHeaderHidden(false);
@@ -126,6 +127,8 @@ void SettingsLocalization::langMetadataDownloaded(const QUrl& url,
                                       tr("Translations provided by: %1").arg(all_translators),
                                       tr("Big thanks to all translators!"));
       }
+
+      m_ui->m_scrollAuthors->setVisible(true);
 
       for (int i = 0; i < m_ui->m_treeLanguages->topLevelItemCount(); i++) {
         auto* it = m_ui->m_treeLanguages->topLevelItem(i);
