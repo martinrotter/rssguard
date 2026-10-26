@@ -6385,7 +6385,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="388"/>
       <source>Loading of articles failed, maybe articles could not be downloaded.</source>
-      <translation type="unfinished">Loading of articles failed, maybe articles could not be downloaded.</translation>
+      <translation>無法載入文章，也許是因為無法下載它們。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="433"/>
@@ -6429,7 +6429,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>Published</source>
-      <translation type="unfinished">Published</translation>
+      <translation>已發佈</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
@@ -6509,7 +6509,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="620"/>
       <source>Date and time when the article was received.</source>
-      <translation type="unfinished">Date and time when the article was received.</translation>
+      <translation>接收文章的日期與時間。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="621"/>
@@ -6769,20 +6769,20 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="399"/>
       <source>Use source-specific article list columns</source>
-      <translation type="unfinished">Use source-specific article list columns</translation>
+      <translation>使用特定來源的文章清單欄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>Play attachment</source>
-      <translation type="unfinished">Play attachment</translation>
+      <translation>播放附件</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="836"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="837"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="837"/>
       <source>%n selected article(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected article(s)</numerusform>
+      <translation>
+        <numerusform>%n 個所選文章</numerusform>
       </translation>
     </message>
     <message>
@@ -7122,12 +7122,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="90"/>
       <source>Unspecified error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Unspecified error: &apos;%1&apos;.</translation>
+      <translation>不明的錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="91"/>
       <source>Unspecified error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Unspecified error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>不明錯誤。有輸入正確的 Nextcloud 端點(endpoint)與密碼嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="73"/>
@@ -7229,12 +7229,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="174"/>
       <source>Cannot parse Nextcloud folders JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud folders JSON response: %1</translation>
+      <translation>無法解析 Nextcloud 資料夾 JSON 回訊: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="182"/>
       <source>Nextcloud folders response does not contain a JSON array of folders.</source>
-      <translation type="unfinished">Nextcloud folders response does not contain a JSON array of folders.</translation>
+      <translation>Nextcloud 資料夾回訊不含資料夾 JSON 陣列。</translation>
     </message>
   </context>
   <context>
@@ -7284,12 +7284,12 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="355"/>
       <source>After-login action failed</source>
-      <translation type="unfinished">After-login action failed</translation>
+      <translation>事後登入失敗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
       <source>Unknown error.</source>
-      <translation type="unfinished">Unknown error.</translation>
+      <translation>不明錯誤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="432"/>
@@ -8986,7 +8986,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="769"/>
       <source>Use source-specific article list columns</source>
-      <translation type="unfinished">Use source-specific article list columns</translation>
+      <translation>使用特定來源的文章清單欄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="804"/>
