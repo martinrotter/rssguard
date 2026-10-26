@@ -1651,17 +1651,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation type="unfinished">Unsynchronized article changes</translation>
+      <translation>未同步的文章變更</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
       <source>This account has local article changes which could not be synchronized.</source>
-      <translation type="unfinished">This account has local article changes which could not be synchronized.</translation>
+      <translation>此帳號有過去無法同步到本機的文章變更。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="112"/>
       <source>If you continue editing the account, these pending local article changes will be discarded.</source>
-      <translation type="unfinished">If you continue editing the account, these pending local article changes will be discarded.</translation>
+      <translation>如果繼續編輯帳號，這些懸置的文章變更會被丟棄。</translation>
     </message>
   </context>
   <context>
