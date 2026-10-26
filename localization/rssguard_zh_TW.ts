@@ -1978,99 +1978,99 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="236"/>
       <source>The regular expression for &apos;%1&apos; is invalid: %2</source>
-      <translation type="unfinished">The regular expression for &apos;%1&apos; is invalid: %2</translation>
+      <translation>&apos;%1&apos; 的類型式無效: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="283"/>
       <source>contains</source>
-      <translation type="unfinished">contains</translation>
+      <translation>含</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="284"/>
       <source>does not contain</source>
-      <translation type="unfinished">does not contain</translation>
+      <translation>不含</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="285"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="297"/>
       <source>equals</source>
-      <translation type="unfinished">equals</translation>
+      <translation>等於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="286"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="298"/>
       <source>does not equal</source>
-      <translation type="unfinished">does not equal</translation>
+      <translation>不等於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="287"/>
       <source>starts with</source>
-      <translation type="unfinished">starts with</translation>
+      <translation>開頭是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="288"/>
       <source>ends with</source>
-      <translation type="unfinished">ends with</translation>
+      <translation>結尾是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="289"/>
       <source>matches regular expression</source>
-      <translation type="unfinished">matches regular expression</translation>
+      <translation>比對符合類型式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="290"/>
       <source>Text to match</source>
-      <translation type="unfinished">Text to match</translation>
+      <translation>要比對的文字</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="293"/>
       <source>is</source>
-      <translation type="unfinished">is</translation>
+      <translation>是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="294"/>
       <source>is not</source>
-      <translation type="unfinished">is not</translation>
+      <translation>不是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="299"/>
       <source>is greater than</source>
-      <translation type="unfinished">is greater than</translation>
+      <translation>大於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="300"/>
       <source>is at least</source>
-      <translation type="unfinished">is at least</translation>
+      <translation>至少是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="301"/>
       <source>is less than</source>
-      <translation type="unfinished">is less than</translation>
+      <translation>小於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="302"/>
       <source>is at most</source>
-      <translation type="unfinished">is at most</translation>
+      <translation>至多是</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="303"/>
       <source>Number</source>
-      <translation type="unfinished">Number</translation>
+      <translation>數</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="306"/>
       <source>is older than</source>
-      <translation type="unfinished">is older than</translation>
+      <translation>早於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="307"/>
       <source>is newer than</source>
-      <translation type="unfinished">is newer than</translation>
+      <translation>晚於</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="308"/>
       <source>Age in days</source>
-      <translation type="unfinished">Age in days</translation>
+      <translation>天數</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="360"/>
@@ -4024,12 +4024,12 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="894"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool threw an error.</source>
-      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool threw an error.</translation>
+      <translation>未美化即行碼，因為 &apos;clang-format&apos; 工具報錯。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="903"/>
       <source>Beautifier was running for too long</source>
-      <translation type="unfinished">Beautifier was running for too long</translation>
+      <translation>美化器執行過久</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="426"/>
@@ -4129,13 +4129,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="297"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="518"/>
       <source>Create a script with a visual rule builder</source>
-      <translation type="unfinished">Create a script with a visual rule builder</translation>
+      <translation>以可視規則建構器建立即行碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="520"/>
       <source>&amp;Generate</source>
-      <translation type="unfinished">&amp;Generate</translation>
+      <translation>產生(&amp;G)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="307"/>
@@ -4171,13 +4171,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</source>
-      <translation type="unfinished">Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</translation>
+      <translation>上移篩選器。按住 Shift，可移五個位置，或按住 Ctrl 移至頂端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</source>
-      <translation type="unfinished">Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</translation>
+      <translation>下移篩選器。按住 Shift，可移五個位置，或按住 Ctrl 移至底端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
@@ -4292,12 +4292,12 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="51"/>
       <source>You need to restart the application for restoration process to finish.</source>
-      <translation type="unfinished">You need to restart the application for restoration process to finish.</translation>
+      <translation>需重新啟動應用程式，以完成復原。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="56"/>
       <source>Database and/or settings were not copied to restoration directory successfully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successfully.</translation>
+      <translation>資料庫與/或設定未能成功複製到復原目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="74"/>
@@ -4737,12 +4737,12 @@ currently installed one.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="200"/>
       <source>Cannot save update file: &apos;%1&apos;</source>
-      <translation type="unfinished">Cannot save update file: &apos;%1&apos;</translation>
+      <translation>無法儲存更新檔: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="201"/>
       <source>Update file could not be saved. Try again or update manually.</source>
-      <translation type="unfinished">Update file could not be saved. Try again or update manually.</translation>
+      <translation>無法儲存更新檔。再試一次，或手工更新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="202"/>
@@ -5460,7 +5460,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="773"/>
       <source>GReader subscriptions response does not contain a JSON array of subscriptions.</source>
-      <translation type="unfinished">GReader subscriptions response does not contain a JSON array of subscriptions.</translation>
+      <translation>GReader 訂閱的回訊不含訂閱的 JSON 陣列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1298"/>
@@ -6154,7 +6154,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="49"/>
       <source>Attachment %1</source>
-      <translation type="unfinished">Attachment %1</translation>
+      <translation>附件 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="56"/>
@@ -6258,7 +6258,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="21"/>
       <source>Received</source>
-      <translation type="unfinished">Received</translation>
+      <translation>已接收</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="23"/>
@@ -6434,7 +6434,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>Received</source>
-      <translation type="unfinished">Received</translation>
+      <translation>已接收</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="613"/>
