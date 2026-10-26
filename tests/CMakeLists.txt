@@ -23,7 +23,8 @@ function(add_rssguard_test TEST_TARGET)
 
     if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
-    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR TEST_TARGET STREQUAL "test_labelsmenu")
+    elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
+           TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -82,6 +83,16 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_httpresponse
     network-web/test_httpresponse.cpp
   )
+
+  # CookieJar and AutoSaver are internal classes without Windows DLL exports.
+  add_rssguard_test(test_cookies
+    network-web/test_cookies.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/network-web/cookiejar.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/autosaver.cpp
+  )
+  set_tests_properties(test_cookies PROPERTIES
+    ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+    TIMEOUT 60)
 
   add_rssguard_test(test_webfactory
     network-web/test_webfactory.cpp

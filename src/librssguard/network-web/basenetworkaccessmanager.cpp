@@ -92,8 +92,6 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
   // new_request.setMaximumRedirectsAllowed(0);
 
-  new_request.setRawHeader(HTTP_HEADERS_COOKIE, QSL("JSESSIONID= ").toLocal8Bit());
-
   if (!new_request.hasRawHeader(HTTP_HEADERS_ACCEPT_LANGUAGE)) {
     new_request.setRawHeader(HTTP_HEADERS_ACCEPT_LANGUAGE,
                              qApp->localization()->loadedLocale().name().replace(QL1C('_'), QL1C('-')).toLocal8Bit());

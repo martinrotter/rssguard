@@ -30,8 +30,11 @@
        </item>
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbIgnoreAllCookies">
+         <property name="toolTip">
+          <string>&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</string>
+         </property>
          <property name="text">
-          <string>Ignore all cookies</string>
+          <string>Ignore cookies for downloads</string>
          </property>
         </widget>
        </item>

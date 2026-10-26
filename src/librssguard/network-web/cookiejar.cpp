@@ -250,9 +250,10 @@ bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
 }
 
 void CookieJar::updateSettings() {
+  const bool previously_ignored_cookies = m_ignoreAllCookies;
   m_ignoreAllCookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
 
-  if (m_ignoreAllCookies) {
+  if (m_ignoreAllCookies && !previously_ignored_cookies) {
     clearCookies();
   }
 }

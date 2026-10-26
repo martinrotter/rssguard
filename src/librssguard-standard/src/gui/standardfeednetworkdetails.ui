@@ -101,6 +101,9 @@
     </item>
     <item>
      <widget class="QCheckBox" name="m_cbIgnoreCookies">
+      <property name="toolTip">
+       <string>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed's saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</string>
+      </property>
       <property name="text">
        <string>Ignore cookies when downloading this feed</string>
       </property>
