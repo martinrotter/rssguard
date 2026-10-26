@@ -335,6 +335,9 @@
           </item>
           <item>
            <widget class="QCheckBox" name="m_displayTaskbarThumbnailButtons">
+            <property name="toolTip">
+             <string>Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</string>
+            </property>
             <property name="text">
              <string>Display thumbnail buttons</string>
             </property>

@@ -1,0 +1,18 @@
+{
+  "input_sql_operations": 139,
+  "per_file": {
+    "src/librssguard/core/messagesmodelsqllayer.cpp": 1,
+    "src/librssguard/database/databasedriver.cpp": 6,
+    "src/librssguard/database/databasequeries.cpp": 83,
+    "src/librssguard/database/databasequeries.h": 3,
+    "src/librssguard/database/mariadbdriver.cpp": 10,
+    "src/librssguard/database/sqlitedriver.cpp": 18,
+    "src/librssguard/filtering/filteringsystem.cpp": 2,
+    "src/librssguard/filtering/filterobjects.cpp": 2,
+    "src/librssguard-gmail/src/gmailserviceroot.cpp": 1,
+    "src/librssguard-standard/src/quiterssimport.cpp": 5,
+    "src/librssguard-standard/src/rssguard4import.cpp": 8
+  },
+  "unmatched": [],
+  "limitations": "Static input-operation cross-check complements manual whole-file review. It proves coverage of these execution/generation sites, not every possible user SQL text or driver internal SQL."
+}

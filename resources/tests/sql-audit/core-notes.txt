@@ -1,0 +1,60 @@
+DatabaseQueries core SQL inventory
+==================================
+Scope: databasequeries.cpp (all 2283 lines), databasequeries.h (all 425 lines),
+plus source call-site search under src excluding third-party trees.
+86 prepare/direct-exec SQL sites/templates, 9 SQL fragment builders.
+Prepared exec() calls do not create additional SQL templates; execution_lines
+preserves their exact execution sites, including execute_lookup's lambda at 943.
+Every query source expression is preserved for verification.
+
+Dynamic SQL completeness
+------------------------
+Finite structural families: 0/1/many feed selectors; any/specific label EXISTS;
+included/excluded bin articles; Regex/raw SQL probe; read-only cleanup; counts
+grouped/ungrouped; Read/Unread/Starred bags; explicit/automatic IDs; category/feed/
+account reorder tables and up/down directions; custom-id account/feed scope;
+lookup projection NULL/contents; SQLite/MariaDB insert-ignore verbs.
+
+Bounded batch structures: label assignment/deassignment 1..500; existing article
+lookup 1..200 UNION ALL SELECT rows with repeated named bindings; article bulk
+INSERT 1..1000 valid-title rows per execution. All batches repeat until input ends.
+
+Unbounded families: raw SQL probe filters (including arbitrary SQL subqueries,
+operators, functions and expressions); Regex patterns; IN lists used by article
+mark/delete/restore, purge/retention, multi-feed selectors; label list insertion;
+public storeCustomData table string; textual data and numeric literal values.
+It is impossible to list every concrete runtime SQL text or benchmark every raw
+user SQL predicate. This inventory lists every application generator/call site,
+all identified structural branches, and the exact generator grammar instead.
+
+messageTableAttributes contributes a correlated label GROUP_CONCAT SELECT to
+message reads in this file, filterobjects.cpp and MessagesModelSqlLayer. Root
+inventory must expand this projection in those consumers. Universal whereClause
+builders feed ServiceRoot::updateMessagesModel filters at serviceroot.cpp:993..1022,
+which are executed later by MessagesModelSqlLayer; core-fragments.json includes
+their call sites so those runtime SQL families are connected explicitly.
+
+Observed bindings and branch caveats
+----------------------------------
+ReadStatus Unread=0, Read=1, Unknown=256. markMessagesByCondition writes Read=1;
+customIdsOfMessagesFrom* select opposite state (:read=0 for requested Read,
+otherwise 1). Labels/Label omit status predicate for Unknown; others do not.
+Retention binds avoid-starred/read sentinels 1/0 or 2 rather than changing SQL.
+force_insert skips all article lookups. IgnoreContentsChanges switches lookup
+projection from Messages.contents to NULL. Lookups choose first match LIMIT 1
+without ORDER BY candidate. Scalar and bulk writes include FK/index maintenance.
+Updates may execute per row and later assign/deassign labels through separate
+queries. updateMessages finishes with a whole-table missing-custom_id fixup for
+every nonempty updateMessages invocation, even if no row was added/updated.
+Most SQL works on both dialects; REGEXP requires app SQLite regexp extension.
+Ungrouped messageCountsByCondition selecting feed alongside aggregates may fail
+with MariaDB ONLY_FULL_GROUP_BY. Dialect claims describe app paths, not proof
+that arbitrary user predicate syntax is supported on both databases.
+
+benchmark_examples provides concrete SQLite SQL and complete named bindings for
+each site/family, both lookup contents projections and account/feed scopes, max
+lookup/label/insert batches, and optional read-only/opposite-state branches. These
+are ready-to-parse representative inputs, not evidence of runtime execution.
+Adapt IDs and text to the synthetic DB for hit/miss/skew and selectivity coverage.
+
+No benchmarks were run by this inventory worker. Application files unmodified.

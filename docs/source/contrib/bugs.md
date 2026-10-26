@@ -20,6 +20,8 @@ Please include as much of this information as possible:
 
 If the `web` variant crashes while opening an article or reports graphics errors involving `GBM` or `NativePixmap`, first see [Qt WebEngine Graphics Problems](../troubleshooting/webengine.md). These crashes can originate in Qt WebEngine or the graphics driver, and the page describes targeted workarounds and the additional information useful in a report.
 
+If you use StartAllBack on Windows and RSS Guard crashes, see [StartAllBack and Taskbar Thumbnail Buttons](../troubleshooting/startallback.md) for the known incompatibility and workaround.
+
 ## Debug Log
 
 If you report a bug, please almost always attach the RSS Guard debug log.

@@ -1,0 +1,2495 @@
+[
+  {
+    "id": "O001",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 30,
+    "function": "SqliteDriver::databaseDataSize",
+    "sql_template": "PRAGMA page_count;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formdatabasecleanup.cpp",
+        "line": 109,
+        "function": "FormDatabaseCleanup::loadDatabaseInfo"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O002",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 38,
+    "function": "SqliteDriver::databaseDataSize",
+    "sql_template": "PRAGMA page_size;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formdatabasecleanup.cpp",
+        "line": 109,
+        "function": "FormDatabaseCleanup::loadDatabaseInfo"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O003",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 54,
+    "function": "SqliteDriver::version",
+    "sql_template": "SELECT sqlite_version();",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/miscellaneous/application.cpp",
+        "line": 250,
+        "function": "Application::Application"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O004",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 66,
+    "function": "SqliteDriver::saveDatabase",
+    "sql_template": "PRAGMA wal_checkpoint(TRUNCATE);",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/sqlitedriver.cpp",
+        "line": 71,
+        "function": "SqliteDriver::vacuumDatabase"
+      },
+      {
+        "file": "src/librssguard/database/sqlitedriver.cpp",
+        "line": 198,
+        "function": "SqliteDriver::backupDatabase"
+      },
+      {
+        "file": "src/librssguard/miscellaneous/applicationlifecycle.cpp",
+        "line": 61,
+        "function": "ApplicationLifecycle::onAboutToQuit"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O005",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 76,
+    "function": "SqliteDriver::vacuumDatabase",
+    "sql_template": "REINDEX;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasecleaner.cpp",
+        "line": 79,
+        "function": "DatabaseCleaner::purgeDatabaseData"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O006",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 77,
+    "function": "SqliteDriver::vacuumDatabase",
+    "sql_template": "PRAGMA optimize;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasecleaner.cpp",
+        "line": 79,
+        "function": "DatabaseCleaner::purgeDatabaseData"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O007",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 78,
+    "function": "SqliteDriver::vacuumDatabase",
+    "sql_template": "VACUUM;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasecleaner.cpp",
+        "line": 79,
+        "function": "DatabaseCleaner::purgeDatabaseData"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O008",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 143,
+    "function": "SqliteDriver::updateDatabaseSchema",
+    "sql_template": "SELECT inf_value FROM Information WHERE inf_key = 'schema_version'",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 74,
+        "function": "DatabaseDriver::connection"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O009",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 164,
+    "function": "SqliteDriver::updateDatabaseSchema",
+    "sql_template": "PRAGMA optimize;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 74,
+        "function": "DatabaseDriver::connection"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O010",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 177,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA encoding = 'UTF-8';",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O011",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 178,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA page_size = 32768;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O012",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 179,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA cache_size = -65536;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O013",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 180,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA mmap_size = 100000000;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O014",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 181,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA synchronous = OFF;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O015",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 182,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA temp_store = MEMORY;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O016",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 183,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA journal_mode = WAL;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O017",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 184,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA busy_timeout = 5000;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O018",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 43,
+    "function": "MariaDbDriver::testConnection",
+    "sql_template": "SELECT version();",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/settings/settingsdatabase.cpp",
+        "line": 83,
+        "function": "SettingsDatabase::mysqlTestConnection"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O019",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 116,
+    "function": "MariaDbDriver::vacuumDatabase",
+    "sql_template": "OPTIMIZE TABLE Feeds;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasecleaner.cpp",
+        "line": 79,
+        "function": "DatabaseCleaner::purgeDatabaseData"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O020",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 117,
+    "function": "MariaDbDriver::vacuumDatabase",
+    "sql_template": "OPTIMIZE TABLE Messages;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasecleaner.cpp",
+        "line": 79,
+        "function": "DatabaseCleaner::purgeDatabaseData"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O021",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 127,
+    "function": "MariaDbDriver::version",
+    "sql_template": "SELECT VERSION();",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/miscellaneous/application.cpp",
+        "line": 250,
+        "function": "Application::Application"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O022",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 159,
+    "function": "MariaDbDriver::databaseDataSize",
+    "sql_template": "SELECT ROUND(SUM(data_length + index_length), 1) FROM information_schema.tables WHERE table_schema = :db GROUP BY table_schema;",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formdatabasecleanup.cpp",
+        "line": 109,
+        "function": "FormDatabaseCleanup::loadDatabaseInfo"
+      }
+    ],
+    "execution_api": "prepare",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O023",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 175,
+    "function": "MariaDbDriver::setPragmas",
+    "sql_template": "SET NAMES 'utf8mb4';",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      },
+      {
+        "file": "src/librssguard/database/mariadbdriver.cpp",
+        "line": 241,
+        "function": "MariaDbDriver::ensureConnectionUsable"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O024",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 176,
+    "function": "MariaDbDriver::setPragmas",
+    "sql_template": "SET CHARACTER SET utf8mb4;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      },
+      {
+        "file": "src/librssguard/database/mariadbdriver.cpp",
+        "line": 241,
+        "function": "MariaDbDriver::ensureConnectionUsable"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O025",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 202,
+    "function": "MariaDbDriver::afterAddDatabase",
+    "sql_template": "USE %1;",
+    "dynamic_details": "%1 is the configured database name escaped by DatabaseFactory::escapeIdentifier (backticks doubled, enclosed in backticks).",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 68,
+        "function": "DatabaseDriver::connection"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 83,
+        "function": "DatabaseDriver::connection"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O026",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 223,
+    "function": "MariaDbDriver::ensureConnectionUsable",
+    "sql_template": "SELECT 1;",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 86,
+        "function": "DatabaseDriver::connection"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O027",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 132,
+    "function": "DatabaseDriver::updateDatabaseSchema",
+    "sql_template": "SELECT inf_value FROM Information WHERE inf_key = 'schema_version'",
+    "dynamic_details": "Static SQL.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 74,
+        "function": "DatabaseDriver::connection"
+      },
+      {
+        "file": "src/librssguard/database/sqlitedriver.cpp",
+        "line": 161,
+        "function": "SqliteDriver::updateDatabaseSchema"
+      }
+    ],
+    "execution_api": "exec",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O028",
+    "file": "src/librssguard-gmail/src/gmailserviceroot.cpp",
+    "line": 42,
+    "function": "GmailServiceRoot::getAllGmailRecipients",
+    "sql_template": "SELECT msg.author, msg.custom_id FROM Messages msg INNER JOIN (   SELECT author, MAX(id) AS id   FROM Messages   WHERE account_id = :account_id AND author IS NOT NULL AND author <> '' AND custom_id IS NOT NULL     AND custom_id <> ''   GROUP BY author ) latest ON latest.id = msg.id ORDER BY LOWER(msg.author);",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-gmail/src/gui/formaddeditemail.cpp",
+        "line": 46,
+        "function": "FormAddEditEmail::FormAddEditEmail"
+      }
+    ],
+    "execution_api": "prepare",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O029",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 98,
+    "function": "RssGuard4Import::importArticles",
+    "sql_template": "SELECT   Messages.is_read,   Messages.is_important,   Messages.is_deleted,   Messages.is_pdeleted,   Messages.title,   Messages.url,   Messages.author,   Messages.date_created,   Messages.contents,   Messages.enclosures,   Messages.score,   Messages.labels,   Messages.custom_id FROM Messages WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 71,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "prepare",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O030",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 329,
+    "function": "RssGuard4Import::extractFeedsAndCategories",
+    "sql_template": "SELECT  Categories.account_id,   Categories.id,   Categories.parent_id,   Categories.title,   Categories.description,   Categories.icon FROM Categories JOIN Accounts ac ON ac.id = Categories.account_id AND ac.type = 'std-rss' ORDER BY parent_id ASC;",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 52,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O031",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 362,
+    "function": "RssGuard4Import::extractFeedsAndCategories",
+    "sql_template": "SELECT  Feeds.account_id,   Feeds.id,   Feeds.category,   Feeds.custom_data,   Feeds.title,   Feeds.description,   Feeds.icon,   Feeds.source,   Feeds.update_type,   Feeds.update_interval,   Feeds.is_off,   Feeds.is_quiet,   Feeds.is_rtl,   Feeds.add_any_datetime_articles,   Feeds.datetime_to_avoid,   Feeds.keep_article_customize,   Feeds.keep_article_count,   Feeds.keep_unread_articles,   Feeds.keep_starred_articles,   Feeds.recycle_articles FROM Feeds JOIN Accounts ac ON ac.id = Feeds.account_id AND ac.type = 'std-rss' ORDER BY Feeds.ordr ASC;",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 52,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O032",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 447,
+    "function": "RssGuard4Import::extractLabels",
+    "sql_template": "SELECT Labels.id, Labels.name, Labels.color, Labels.account_id FROM Labels JOIN Accounts ac ON ac.id = Labels.account_id AND ac.type = 'std-rss';",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 53,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O033",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 474,
+    "function": "RssGuard4Import::extractFilters",
+    "sql_template": "SELECT name, script FROM MessageFilters;",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 54,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O034",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 493,
+    "function": "RssGuard4Import::extractProbes",
+    "sql_template": "SELECT   Probes.name,   Probes.color,   Probes.fltr FROM Probes JOIN Accounts ac ON ac.id = Probes.account_id AND ac.type = 'std-rss';",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 55,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O035",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 530,
+    "function": "RssGuard4Import::checkIfRssGuard4",
+    "sql_template": "SELECT name FROM sqlite_master WHERE type='table';",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 50,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O036",
+    "file": "src/librssguard-standard/src/rssguard4import.cpp",
+    "line": 543,
+    "function": "RssGuard4Import::checkIfRssGuard4",
+    "sql_template": "SELECT inf_value FROM Information WHERE inf_key = 'schema_version';",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/rssguard4import.cpp",
+        "line": 50,
+        "function": "RssGuard4Import::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-rssguard4-schema-10",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O037",
+    "file": "src/librssguard-standard/src/quiterssimport.cpp",
+    "line": 90,
+    "function": "QuiteRssImport::importArticles",
+    "sql_template": "SELECT guid, description, title, published, author_name, link_href, read, starred, deleted, label FROM news WHERE feedId = :feed_id;",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/quiterssimport.cpp",
+        "line": 65,
+        "function": "QuiteRssImport::import"
+      }
+    ],
+    "execution_api": "prepare",
+    "database_scope": "legacy-quiterss-schema-17",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O038",
+    "file": "src/librssguard-standard/src/quiterssimport.cpp",
+    "line": 295,
+    "function": "QuiteRssImport::extractFeedsAndCategories",
+    "sql_template": "SELECT id,   text,   title,   description,   xmlUrl,   image,   parentId FROM feeds ORDER BY xmlUrl ASC, parentId ASC;",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/quiterssimport.cpp",
+        "line": 50,
+        "function": "QuiteRssImport::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-quiterss-schema-17",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O039",
+    "file": "src/librssguard-standard/src/quiterssimport.cpp",
+    "line": 370,
+    "function": "QuiteRssImport::extractLabels",
+    "sql_template": "SELECT id, name FROM labels;",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/quiterssimport.cpp",
+        "line": 51,
+        "function": "QuiteRssImport::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-quiterss-schema-17",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O040",
+    "file": "src/librssguard-standard/src/quiterssimport.cpp",
+    "line": 406,
+    "function": "QuiteRssImport::checkIfQuiteRss",
+    "sql_template": "SELECT name FROM sqlite_master WHERE type='table';",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/quiterssimport.cpp",
+        "line": 48,
+        "function": "QuiteRssImport::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-quiterss-schema-17",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O041",
+    "file": "src/librssguard-standard/src/quiterssimport.cpp",
+    "line": 428,
+    "function": "QuiteRssImport::checkIfQuiteRss",
+    "sql_template": "SELECT value FROM info WHERE name = \"version\";",
+    "dynamic_details": "Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard-standard/src/quiterssimport.cpp",
+        "line": 48,
+        "function": "QuiteRssImport::import"
+      }
+    ],
+    "execution_api": "exec",
+    "database_scope": "legacy-quiterss-schema-17",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O042",
+    "file": "src/librssguard/filtering/filteringsystem.cpp",
+    "line": 155,
+    "function": "FilteringSystem::duplicateCandidates",
+    "sql_template": "SELECT id, title, url, author, date_created, custom_id FROM Messages WHERE account_id = :account_id AND is_deleted = 0 AND is_pdeleted = 0 ORDER BY id DESC;",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue. Account variant selected by AllFeedsSameAccount; otherwise feed variant. Loaded once per FilteringSystem/feed-fetch or existing-filter run and cached; Q_INVOKABLE isAlreadyInDatabaseWinkler/getArticleFromDatabaseWinkler use the candidates. No SQL LIMIT; rows fully consumed and Jaro-Winkler evaluation follows in C++.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/filtering/filterobjects.cpp",
+        "line": 364,
+        "function": "FilterMessage::winklerDuplicateId"
+      }
+    ],
+    "execution_api": "prepare",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O043",
+    "file": "src/librssguard/filtering/filteringsystem.cpp",
+    "line": 162,
+    "function": "FilteringSystem::duplicateCandidates",
+    "sql_template": "SELECT id, title, url, author, date_created, custom_id FROM Messages WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 ORDER BY id DESC;",
+    "dynamic_details": "Named placeholders are bound with QSqlQuery::bindValue. Account variant selected by AllFeedsSameAccount; otherwise feed variant. Loaded once per FilteringSystem/feed-fetch or existing-filter run and cached; Q_INVOKABLE isAlreadyInDatabaseWinkler/getArticleFromDatabaseWinkler use the candidates. No SQL LIMIT; rows fully consumed and Jaro-Winkler evaluation follows in C++.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/filtering/filterobjects.cpp",
+        "line": 364,
+        "function": "FilterMessage::winklerDuplicateId"
+      }
+    ],
+    "execution_api": "prepare",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O044",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 203,
+    "function": "DatabaseDriver::setSchemaVersion",
+    "sql_template": "INSERT INTO Information VALUES ('schema_version', :schema_version);",
+    "dynamic_details": "empty_table=true during initialization; :schema_version is APP_DB_SCHEMA_VERSION (105), stored as a string; executed at line 209.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 143,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O045",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 204,
+    "function": "DatabaseDriver::setSchemaVersion",
+    "sql_template": "UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';",
+    "dynamic_details": "empty_table=false after upgrading through all migrations; :schema_version is 105; executed at line 209.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 191,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O046",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 118,
+    "function": "DatabaseDriver::setForeignKeyChecksEnabled",
+    "sql_template": "PRAGMA foreign_keys=ON;",
+    "dynamic_details": "Virtual foreignKeysEnable/Disable dispatch to SqliteDriver; SQLite caller is ServiceRoot::onSyncInFinished before/after replacing feeds and labels.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 789,
+        "function": "ServiceRoot::onSyncInFinished"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O047",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 118,
+    "function": "DatabaseDriver::setForeignKeyChecksEnabled",
+    "sql_template": "SET FOREIGN_KEY_CHECKS=1;",
+    "dynamic_details": "Virtual foreignKeysEnable/Disable dispatch to MariaDbDriver.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 789,
+        "function": "ServiceRoot::onSyncInFinished"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O048",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 124,
+    "function": "DatabaseDriver::setForeignKeyChecksDisabled",
+    "sql_template": "PRAGMA foreign_keys=OFF;",
+    "dynamic_details": "Virtual foreignKeysEnable/Disable dispatch to SqliteDriver; SQLite caller is ServiceRoot::onSyncInFinished before/after replacing feeds and labels.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 761,
+        "function": "ServiceRoot::onSyncInFinished"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O049",
+    "file": "src/librssguard/database/databasedriver.cpp",
+    "line": 124,
+    "function": "DatabaseDriver::setForeignKeyChecksDisabled",
+    "sql_template": "SET FOREIGN_KEY_CHECKS=0;",
+    "dynamic_details": "Virtual foreignKeysEnable/Disable dispatch to MariaDbDriver.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 761,
+        "function": "ServiceRoot::onSyncInFinished"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O050",
+    "file": "src/librssguard/database/sqlitedriver.cpp",
+    "line": 176,
+    "function": "SqliteDriver::setPragmas",
+    "sql_template": "PRAGMA foreign_keys=ON;",
+    "dynamic_details": "Virtual foreignKeysEnable return value at line 211; setPragmas runs on schema initialization and each newly opened connection.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 108,
+        "function": "DatabaseDriver::ensureConnectionUsable"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 129,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O051",
+    "file": "src/librssguard/database/mariadbdriver.cpp",
+    "line": 203,
+    "function": "MariaDbDriver::afterAddDatabase",
+    "sql_template": "CREATE DATABASE IF NOT EXISTS %1 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;",
+    "dynamic_details": "Only when initial USE fails; %1=escaped_database_name; query_db.exec(create_db) at line 209.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 68,
+        "function": "DatabaseDriver::connection"
+      },
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 83,
+        "function": "DatabaseDriver::connection"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O052",
+    "file": "src/librssguard/core/messagesmodelsqllayer.cpp",
+    "line": 106,
+    "function": "MessagesModelSqlLayer::fetchMessages",
+    "sql_template": "SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE {filter} {order_by} {limit_offset};",
+    "dynamic_details": "SQL constructed by selectStatement at line 194, executed by fetchMessages at line 106. Projection is DatabaseQueries::messageTableAttributes(), including correlated label GROUP_CONCAT; fields and sorting columns are bounded. Filters are built by DatabaseQueries::whereClause* and supplied by ServiceRoot::loadMessagesForItem (serviceroot.cpp:991-1022). Probes permit arbitrary user-authored WHERE SQL (including subqueries/functions); regex is escaped using doubled single quotes. An optional additional_article_id>0 replaces WHERE with ({filter}) OR Messages.id = {additional_article_id}. orderByClause may be empty or contain up to three unique selected fields ASC/DESC plus id tie-breaker (primary direction); secondary id follows primary direction. Defaults are date_created DESC, title ASC, id DESC (messagesview.cpp:508-510). Restored column profiles/user choices may change ordering. limitOffset: limit>0 and offset>0 -> LIMIT L OFFSET O; limit>0 -> LIMIT L; offset>0 and limit<=0 -> SQLite LIMIT -1 OFFSET O / MariaDB LIMIT 184467440737095 OFFSET O; neither -> empty. Lazy loading defaults false (settingskeys.cpp:165), so initial selection returns ALL matching articles; with lazy loading default batch size=10000 (messagesmodel.h:15), initial offset=0, subsequent offset=current m_messages.size(). fetchAllArticles uses limit=0 and offset=current count.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/core/messagesmodel.cpp",
+        "line": 186,
+        "function": "MessagesModel::fetchMoreArticles"
+      },
+      {
+        "file": "src/librssguard/core/messagesmodel.cpp",
+        "line": 247,
+        "function": "MessagesModel::fetchInitialArticles"
+      }
+    ],
+    "builder_line": 194,
+    "projection": "Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels",
+    "filter_variants": {
+      "empty": "0 > 1",
+      "bin": "Messages.account_id = {account_id} AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0",
+      "important": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.is_important = 1",
+      "unread": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.is_read = 0",
+      "probe-regex": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND (Messages.title REGEXP '{escaped_regex}' OR Messages.contents REGEXP '{escaped_regex}')",
+      "probe-sql": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND ({user_authored_where})",
+      "label": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND EXISTS (SELECT 1 FROM LabelsInMessages WHERE LabelsInMessages.label = {label_id} AND LabelsInMessages.message = Messages.id)",
+      "all-labels": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND EXISTS (SELECT 1 FROM LabelsInMessages WHERE LabelsInMessages.message = Messages.id)",
+      "account": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0",
+      "feeds-empty": "Messages.feed IN (NULL) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0",
+      "feed": "Messages.feed = {feed_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0",
+      "feeds-multiple": "Messages.feed IN ({comma_separated_feed_ids}) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0"
+    },
+    "sort_fields": [
+      "Messages.id",
+      "Messages.is_read",
+      "Messages.is_important",
+      "Messages.is_deleted",
+      "Messages.is_pdeleted",
+      "Messages.feed",
+      "Messages.title",
+      "Messages.url",
+      "Messages.author",
+      "Messages.date_created",
+      "Messages.date_retrieved",
+      "Messages.contents",
+      "Messages.enclosures",
+      "Messages.score",
+      "Messages.account_id",
+      "Messages.custom_id",
+      "Messages.custom_data",
+      "msg_labels"
+    ],
+    "default_order_by": "ORDER BY Messages.date_created DESC, Messages.title ASC, Messages.id DESC",
+    "default_limit": 0,
+    "lazy_batch_size": 10000,
+    "selection_callsites": [
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 993,
+        "variant": "bin"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 996,
+        "variant": "important"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 999,
+        "variant": "unread"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1002,
+        "variant": "probe-regex/probe-sql"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1005,
+        "variant": "label"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1008,
+        "variant": "all-labels"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1011,
+        "variant": "account"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1014,
+        "variant": "empty"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1022,
+        "variant": "feeds-empty/feed/feeds-multiple"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O053",
+    "file": "src/librssguard/filtering/filterobjects.cpp",
+    "line": 490,
+    "function": "FilterMessage::databaseMessage",
+    "sql_template": "SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE {where_clause} ORDER BY Messages.id DESC LIMIT 1;",
+    "dynamic_details": "FilterMessage::duplicateWhereClause (filterobjects.cpp:432-477) appends selected equality predicates for each of SameTitle (title=:title), SameUrl (url=:url), SameAuthor (author=:author), SameDateCreated (date_created=:date_created milliseconds), SameCustomId (custom_id=:custom_id); all 2^5 combinations are possible. Always account_id=:account_id. ExistingArticles and id>0 add id!=:id. Unless AllFeedsSameAccount is selected add feed=:feed. Predicates join with AND. Bindings come from current article and filtering account. getArticleFromDatabase uses duplicateWhereClause; getArticleFromDatabaseWinkler instead uses Messages.id=:message_id. Executed at line 497.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/filtering/filterobjects.cpp",
+        "line": 528,
+        "function": "FilterMessage::getArticleFromDatabaseWinkler"
+      },
+      {
+        "file": "src/librssguard/filtering/filterobjects.cpp",
+        "line": 535,
+        "function": "FilterMessage::getArticleFromDatabase"
+      }
+    ],
+    "where_variants": [
+      "{duplicateWhereClause}",
+      "Messages.id = :message_id"
+    ],
+    "projection": "Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O054",
+    "file": "src/librssguard/filtering/filterobjects.cpp",
+    "line": 543,
+    "function": "FilterMessage::isAlreadyInDatabase",
+    "sql_template": "SELECT COUNT(*) FROM Messages WHERE {duplicateWhereClause};",
+    "dynamic_details": "FilterMessage::duplicateWhereClause (filterobjects.cpp:432-477) appends selected equality predicates for each of SameTitle (title=:title), SameUrl (url=:url), SameAuthor (author=:author), SameDateCreated (date_created=:date_created milliseconds), SameCustomId (custom_id=:custom_id); all 2^5 combinations are possible. Always account_id=:account_id. ExistingArticles and id>0 add id!=:id. Unless AllFeedsSameAccount is selected add feed=:feed. Predicates join with AND. Bindings come from current article and filtering account. Prepared at line 546; executed at line 552. Public Q_INVOKABLE exposed to user-authored JavaScript article filters.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/filtering/filterobjects.h",
+        "line": 108,
+        "function": "Q_INVOKABLE script API"
+      }
+    ],
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O055",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 79,
+    "function": "Label::assignToMessages",
+    "sql_template": "BEGIN",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 60,
+        "function": "Label::assignToMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 58,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O056",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 86,
+    "function": "Label::assignToMessages",
+    "sql_template": "COMMIT",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 60,
+        "function": "Label::assignToMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 58,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O057",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 91,
+    "function": "Label::assignToMessages",
+    "sql_template": "ROLLBACK",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 60,
+        "function": "Label::assignToMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 58,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O058",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 111,
+    "function": "Label::deassignFromMessages",
+    "sql_template": "BEGIN",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 64,
+        "function": "Label::deassignFromMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 61,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O059",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 118,
+    "function": "Label::deassignFromMessages",
+    "sql_template": "COMMIT",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 64,
+        "function": "Label::deassignFromMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 61,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O060",
+    "file": "src/librssguard/services/abstract/label.cpp",
+    "line": 123,
+    "function": "Label::deassignFromMessages",
+    "sql_template": "ROLLBACK",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/services/abstract/label.cpp",
+        "line": 64,
+        "function": "Label::deassignFromMessage"
+      },
+      {
+        "file": "src/librssguard/gui/reusable/labelsmenu.cpp",
+        "line": 61,
+        "function": "LabelsMenu::changeLabelAssignment"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O061",
+    "file": "src/librssguard/miscellaneous/feedreader.cpp",
+    "line": 353,
+    "function": "FeedReader::removeMessageFilter",
+    "sql_template": "BEGIN",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp",
+        "line": 433,
+        "function": "FormMessageFiltersManager::removeSelectedFilter"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O062",
+    "file": "src/librssguard/miscellaneous/feedreader.cpp",
+    "line": 361,
+    "function": "FeedReader::removeMessageFilter",
+    "sql_template": "COMMIT",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp",
+        "line": 433,
+        "function": "FormMessageFiltersManager::removeSelectedFilter"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O063",
+    "file": "src/librssguard/miscellaneous/feedreader.cpp",
+    "line": 366,
+    "function": "FeedReader::removeMessageFilter",
+    "sql_template": "ROLLBACK",
+    "dynamic_details": "Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp",
+        "line": 433,
+        "function": "FormMessageFiltersManager::removeSelectedFilter"
+      }
+    ],
+    "execution_api": "QSqlDatabase",
+    "callers_resolution": "reviewed source call sites; driver calls are virtual dispatch"
+  },
+  {
+    "id": "O064",
+    "file": "resources/sql/db_init.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Information (\n  inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */\n  inf_value    TEXT\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Information (\n  inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */\n  inf_value    TEXT\n);",
+      "mariadb": "CREATE TABLE Information (\n  inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */\n  inf_value    TEXT\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O065",
+    "file": "resources/sql/db_init.sql",
+    "line": 6,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Accounts (\n  id              $$,\n  ordr            INTEGER    NOT NULL CHECK (ordr >= 0),\n  type            TEXT       NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */\n  proxy_type      INTEGER    NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),\n  proxy_host      TEXT,\n  proxy_port      INTEGER,\n  proxy_username  TEXT,\n  proxy_password  TEXT,\n  custom_data     TEXT /* Custom column for (serialized) custom account-specific data. */\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Accounts (\n  id              INTEGER PRIMARY KEY,\n  ordr            INTEGER    NOT NULL CHECK (ordr >= 0),\n  type            TEXT       NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */\n  proxy_type      INTEGER    NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),\n  proxy_host      TEXT,\n  proxy_port      INTEGER,\n  proxy_username  TEXT,\n  proxy_password  TEXT,\n  custom_data     TEXT /* Custom column for (serialized) custom account-specific data. */\n);",
+      "mariadb": "CREATE TABLE Accounts (\n  id              INTEGER AUTO_INCREMENT PRIMARY KEY,\n  ordr            INTEGER    NOT NULL CHECK (ordr >= 0),\n  type            TEXT       NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */\n  proxy_type      INTEGER    NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),\n  proxy_host      TEXT,\n  proxy_port      INTEGER,\n  proxy_username  TEXT,\n  proxy_password  TEXT,\n  custom_data     TEXT /* Custom column for (serialized) custom account-specific data. */\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O066",
+    "file": "resources/sql/db_init.sql",
+    "line": 18,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Categories (\n  id              $$,\n  ordr            INTEGER         NOT NULL CHECK (ordr >= 0),\n  parent_id       INTEGER         NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */\n  title           VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description     TEXT,\n  date_created    BIGINT,\n  icon            ^^,\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Categories (\n  id              INTEGER PRIMARY KEY,\n  ordr            INTEGER         NOT NULL CHECK (ordr >= 0),\n  parent_id       INTEGER         NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */\n  title           VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description     TEXT,\n  date_created    BIGINT,\n  icon            BLOB,\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+      "mariadb": "CREATE TABLE Categories (\n  id              INTEGER AUTO_INCREMENT PRIMARY KEY,\n  ordr            INTEGER         NOT NULL CHECK (ordr >= 0),\n  parent_id       INTEGER         NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */\n  title           VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description     TEXT,\n  date_created    BIGINT,\n  icon            MEDIUMBLOB,\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O067",
+    "file": "resources/sql/db_init.sql",
+    "line": 33,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Feeds (\n  id                        $$,\n  ordr                      INTEGER         NOT NULL CHECK (ordr >= 0),\n  title                     VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description               TEXT,\n  date_created              BIGINT,\n  icon                      ^^,\n  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, root feeds contain -1 here. */\n  source                    TEXT,\n  update_type               INTEGER         NOT NULL CHECK (update_type >= 0),\n  update_interval           INTEGER         NOT NULL DEFAULT 900 CHECK (update_interval >= 1),\n  is_off                    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),\n  is_quiet                  INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),\n  is_rtl                    INTEGER         NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1024),\n  add_any_datetime_articles INTEGER(1)      NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),\n  datetime_to_avoid         BIGINT          NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),\n  keep_article_customize    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (keep_article_customize >= 0 AND keep_article_customize <= 1),\n  keep_article_count        INTEGER         NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),\n  keep_unread_articles      INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),\n  keep_starred_articles     INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),\n  recycle_articles          INTEGER(1)      NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),\n  account_id                INTEGER         NOT NULL,\n  custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */\n  custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */\n  open_articles             INTEGER(1)      NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),\n  exclude_global_unread     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1),\n  \n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Feeds (\n  id                        INTEGER PRIMARY KEY,\n  ordr                      INTEGER         NOT NULL CHECK (ordr >= 0),\n  title                     VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description               TEXT,\n  date_created              BIGINT,\n  icon                      BLOB,\n  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, root feeds contain -1 here. */\n  source                    TEXT,\n  update_type               INTEGER         NOT NULL CHECK (update_type >= 0),\n  update_interval           INTEGER         NOT NULL DEFAULT 900 CHECK (update_interval >= 1),\n  is_off                    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),\n  is_quiet                  INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),\n  is_rtl                    INTEGER         NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1024),\n  add_any_datetime_articles INTEGER(1)      NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),\n  datetime_to_avoid         BIGINT          NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),\n  keep_article_customize    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (keep_article_customize >= 0 AND keep_article_customize <= 1),\n  keep_article_count        INTEGER         NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),\n  keep_unread_articles      INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),\n  keep_starred_articles     INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),\n  recycle_articles          INTEGER(1)      NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),\n  account_id                INTEGER         NOT NULL,\n  custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */\n  custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */\n  open_articles             INTEGER(1)      NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),\n  exclude_global_unread     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1),\n  \n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+      "mariadb": "CREATE TABLE Feeds (\n  id                        INTEGER AUTO_INCREMENT PRIMARY KEY,\n  ordr                      INTEGER         NOT NULL CHECK (ordr >= 0),\n  title                     VARCHAR(400)    NOT NULL CHECK (title != ''),\n  description               TEXT,\n  date_created              BIGINT,\n  icon                      MEDIUMBLOB,\n  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, root feeds contain -1 here. */\n  source                    TEXT,\n  update_type               INTEGER         NOT NULL CHECK (update_type >= 0),\n  update_interval           INTEGER         NOT NULL DEFAULT 900 CHECK (update_interval >= 1),\n  is_off                    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),\n  is_quiet                  INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),\n  is_rtl                    INTEGER         NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1024),\n  add_any_datetime_articles INTEGER(1)      NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),\n  datetime_to_avoid         BIGINT          NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),\n  keep_article_customize    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (keep_article_customize >= 0 AND keep_article_customize <= 1),\n  keep_article_count        INTEGER         NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),\n  keep_unread_articles      INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),\n  keep_starred_articles     INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),\n  recycle_articles          INTEGER(1)      NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),\n  account_id                INTEGER         NOT NULL,\n  custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */\n  custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */\n  open_articles             INTEGER(1)      NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),\n  exclude_global_unread     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1),\n  \n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O068",
+    "file": "resources/sql/db_init.sql",
+    "line": 63,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Messages (\n  id              $$,\n  is_read         INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),\n  is_important    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),\n  is_deleted      INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),\n  is_pdeleted     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),\n  feed            INTEGER         NOT NULL,\n  title           VARCHAR(500)    NOT NULL CHECK (title != '') ~~,\n  url             VARCHAR(1200)   ~~,\n  author          VARCHAR(400)    ~~,\n  date_created    BIGINT          NOT NULL CHECK (date_created >= 0),\n  contents        **,\n  enclosures      TEXT,\n  score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n  date_retrieved  BIGINT          NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0),\n\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */\n  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Messages (\n  id              INTEGER PRIMARY KEY,\n  is_read         INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),\n  is_important    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),\n  is_deleted      INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),\n  is_pdeleted     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),\n  feed            INTEGER         NOT NULL,\n  title           VARCHAR(500)    NOT NULL CHECK (title != '') COLLATE NOCASE,\n  url             VARCHAR(1200)   COLLATE NOCASE,\n  author          VARCHAR(400)    COLLATE NOCASE,\n  date_created    BIGINT          NOT NULL CHECK (date_created >= 0),\n  contents        TEXT,\n  enclosures      TEXT,\n  score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n  date_retrieved  BIGINT          NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0),\n\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */\n  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE\n);",
+      "mariadb": "CREATE TABLE Messages (\n  id              INTEGER AUTO_INCREMENT PRIMARY KEY,\n  is_read         INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),\n  is_important    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),\n  is_deleted      INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),\n  is_pdeleted     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),\n  feed            INTEGER         NOT NULL,\n  title           VARCHAR(500)    NOT NULL CHECK (title != '') ,\n  url             VARCHAR(1200)   ,\n  author          VARCHAR(400)    ,\n  date_created    BIGINT          NOT NULL CHECK (date_created >= 0),\n  contents        MEDIUMTEXT,\n  enclosures      TEXT,\n  score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),\n  account_id      INTEGER         NOT NULL,\n  custom_id       VARCHAR(250),\n  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */\n  date_retrieved  BIGINT          NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0),\n\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */\n  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O069",
+    "file": "resources/sql/db_init.sql",
+    "line": 86,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE MessageFilters (\n  id                  $$,\n  name                VARCHAR(400)    NOT NULL UNIQUE CHECK (name != ''),\n  script              TEXT            NOT NULL CHECK (script != ''),\n  is_enabled          INTEGER         NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),\n  ordr                INTEGER         NOT NULL CHECK (ordr >= 0)\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE MessageFilters (\n  id                  INTEGER PRIMARY KEY,\n  name                VARCHAR(400)    NOT NULL UNIQUE CHECK (name != ''),\n  script              TEXT            NOT NULL CHECK (script != ''),\n  is_enabled          INTEGER         NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),\n  ordr                INTEGER         NOT NULL CHECK (ordr >= 0)\n);",
+      "mariadb": "CREATE TABLE MessageFilters (\n  id                  INTEGER AUTO_INCREMENT PRIMARY KEY,\n  name                VARCHAR(400)    NOT NULL UNIQUE CHECK (name != ''),\n  script              TEXT            NOT NULL CHECK (script != ''),\n  is_enabled          INTEGER         NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),\n  ordr                INTEGER         NOT NULL CHECK (ordr >= 0)\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O070",
+    "file": "resources/sql/db_init.sql",
+    "line": 94,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE MessageFiltersInFeeds (\n  filter      INTEGER         NOT NULL,\n  feed        INTEGER         NOT NULL,\n  \n  UNIQUE (filter, feed),\n  FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE MessageFiltersInFeeds (\n  filter      INTEGER         NOT NULL,\n  feed        INTEGER         NOT NULL,\n  \n  UNIQUE (filter, feed),\n  FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */\n);",
+      "mariadb": "CREATE TABLE MessageFiltersInFeeds (\n  filter      INTEGER         NOT NULL,\n  feed        INTEGER         NOT NULL,\n  \n  UNIQUE (filter, feed),\n  FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,\n  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O071",
+    "file": "resources/sql/db_init.sql",
+    "line": 103,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Labels (\n  id                  $$,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                ^^,   \n  custom_id           VARCHAR(200),\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Labels (\n  id                  INTEGER PRIMARY KEY,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                BLOB,   \n  custom_id           VARCHAR(200),\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+      "mariadb": "CREATE TABLE Labels (\n  id                  INTEGER AUTO_INCREMENT PRIMARY KEY,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                MEDIUMBLOB,   \n  custom_id           VARCHAR(200),\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O072",
+    "file": "resources/sql/db_init.sql",
+    "line": 114,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE LabelsInMessages (\n  message     INTEGER       NOT NULL,\n  label       INTEGER       NOT NULL,\n\n  UNIQUE (message, label),\n  FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,\n  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE LabelsInMessages (\n  message     INTEGER       NOT NULL,\n  label       INTEGER       NOT NULL,\n\n  UNIQUE (message, label),\n  FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,\n  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */\n);",
+      "mariadb": "CREATE TABLE LabelsInMessages (\n  message     INTEGER       NOT NULL,\n  label       INTEGER       NOT NULL,\n\n  UNIQUE (message, label),\n  FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,\n  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O073",
+    "file": "resources/sql/db_init.sql",
+    "line": 123,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE TABLE Probes (\n  id                  $$,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                ^^,\n  type                INTEGER         NOT NULL CHECK (type >= 0),\n  fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression or SQL WHERE clause. */\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE TABLE Probes (\n  id                  INTEGER PRIMARY KEY,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                BLOB,\n  type                INTEGER         NOT NULL CHECK (type >= 0),\n  fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression or SQL WHERE clause. */\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);",
+      "mariadb": "CREATE TABLE Probes (\n  id                  INTEGER AUTO_INCREMENT PRIMARY KEY,\n  name                VARCHAR(200)    NOT NULL CHECK (name != ''),\n  icon                MEDIUMBLOB,\n  type                INTEGER         NOT NULL CHECK (type >= 0),\n  fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression or SQL WHERE clause. */\n  account_id          INTEGER         NOT NULL,\n  \n  UNIQUE (account_id, name),\n  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE\n);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O074",
+    "file": "resources/sql/db_init.sql",
+    "line": 136,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Probes1 ON Probes (account_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Probes1 ON Probes (account_id);",
+      "mariadb": "CREATE INDEX idx_Probes1 ON Probes (account_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O075",
+    "file": "resources/sql/db_init.sql",
+    "line": 139,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);",
+      "mariadb": "CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O076",
+    "file": "resources/sql/db_init.sql",
+    "line": 141,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);",
+      "mariadb": "CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O077",
+    "file": "resources/sql/db_init.sql",
+    "line": 143,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter, feed);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter, feed);",
+      "mariadb": "CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter, feed);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O078",
+    "file": "resources/sql/db_init.sql",
+    "line": 146,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Labels1 ON Labels (account_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Labels1 ON Labels (account_id);",
+      "mariadb": "CREATE INDEX idx_Labels1 ON Labels (account_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O079",
+    "file": "resources/sql/db_init.sql",
+    "line": 148,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Labels2 ON Labels (custom_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Labels2 ON Labels (custom_id);",
+      "mariadb": "CREATE INDEX idx_Labels2 ON Labels (custom_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O080",
+    "file": "resources/sql/db_init.sql",
+    "line": 151,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Lim1 ON LabelsInMessages (message);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Lim1 ON LabelsInMessages (message);",
+      "mariadb": "CREATE INDEX idx_Lim1 ON LabelsInMessages (message);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O081",
+    "file": "resources/sql/db_init.sql",
+    "line": 153,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Lim2 ON LabelsInMessages (label);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Lim2 ON LabelsInMessages (label);",
+      "mariadb": "CREATE INDEX idx_Lim2 ON LabelsInMessages (label);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O082",
+    "file": "resources/sql/db_init.sql",
+    "line": 155,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Lim3 ON LabelsInMessages (label, message);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Lim3 ON LabelsInMessages (label, message);",
+      "mariadb": "CREATE INDEX idx_Lim3 ON LabelsInMessages (label, message);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O083",
+    "file": "resources/sql/db_init.sql",
+    "line": 158,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Categories1 ON Categories (account_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Categories1 ON Categories (account_id);",
+      "mariadb": "CREATE INDEX idx_Categories1 ON Categories (account_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O084",
+    "file": "resources/sql/db_init.sql",
+    "line": 160,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Categories2 ON Categories (account_id, parent_id, ordr);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Categories2 ON Categories (account_id, parent_id, ordr);",
+      "mariadb": "CREATE INDEX idx_Categories2 ON Categories (account_id, parent_id, ordr);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O085",
+    "file": "resources/sql/db_init.sql",
+    "line": 163,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Feeds1 ON Feeds (account_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Feeds1 ON Feeds (account_id);",
+      "mariadb": "CREATE INDEX idx_Feeds1 ON Feeds (account_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O086",
+    "file": "resources/sql/db_init.sql",
+    "line": 165,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);",
+      "mariadb": "CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O087",
+    "file": "resources/sql/db_init.sql",
+    "line": 168,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);",
+      "mariadb": "CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O088",
+    "file": "resources/sql/db_init.sql",
+    "line": 170,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);",
+      "mariadb": "CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O089",
+    "file": "resources/sql/db_init.sql",
+    "line": 172,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);",
+      "mariadb": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O090",
+    "file": "resources/sql/db_init.sql",
+    "line": 174,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);",
+      "mariadb": "CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O091",
+    "file": "resources/sql/db_init.sql",
+    "line": 176,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages5 ON Messages (feed, account_id);",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages5 ON Messages (feed, account_id);",
+      "mariadb": "CREATE INDEX idx_Messages5 ON Messages (feed, account_id);"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O092",
+    "file": "resources/sql/db_init_mysql.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 140,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "current-schema-initialization"
+  },
+  {
+    "id": "O093",
+    "file": "resources/sql/db_update_100_101.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "ALTER TABLE Categories ADD COLUMN custom_data TEXT;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "ALTER TABLE Categories ADD COLUMN custom_data TEXT;",
+      "mariadb": "ALTER TABLE Categories ADD COLUMN custom_data TEXT;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O094",
+    "file": "resources/sql/db_update_101_102.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "ALTER TABLE Feeds ADD COLUMN open_articles INTEGER(1) NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1);",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "ALTER TABLE Feeds ADD COLUMN open_articles INTEGER(1) NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1);",
+      "mariadb": "ALTER TABLE Feeds ADD COLUMN open_articles INTEGER(1) NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1);"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O095",
+    "file": "resources/sql/db_update_102_103.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "ALTER TABLE Messages ADD COLUMN date_retrieved BIGINT NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0);",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "ALTER TABLE Messages ADD COLUMN date_retrieved BIGINT NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0);",
+      "mariadb": "ALTER TABLE Messages ADD COLUMN date_retrieved BIGINT NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0);"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O096",
+    "file": "resources/sql/db_update_102_103.sql",
+    "line": 3,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "UPDATE Messages SET date_retrieved = date_created;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "UPDATE Messages SET date_retrieved = date_created;",
+      "mariadb": "UPDATE Messages SET date_retrieved = date_created;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O097",
+    "file": "resources/sql/db_update_103_104.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "ALTER TABLE Feeds ADD COLUMN exclude_global_unread INTEGER(1) NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1);",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "ALTER TABLE Feeds ADD COLUMN exclude_global_unread INTEGER(1) NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1);",
+      "mariadb": "ALTER TABLE Feeds ADD COLUMN exclude_global_unread INTEGER(1) NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1);"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O098",
+    "file": "resources/sql/db_update_104_105.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);",
+      "mariadb": "CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O099",
+    "file": "resources/sql/db_update_mysql_100_101.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O100",
+    "file": "resources/sql/db_update_mysql_101_102.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O101",
+    "file": "resources/sql/db_update_mysql_102_103.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O102",
+    "file": "resources/sql/db_update_mysql_103_104.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O103",
+    "file": "resources/sql/db_update_mysql_104_105.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "USE ##;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "USE `{escaped_database_name}`;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O104",
+    "file": "resources/sql/db_update_mysql_104_105.sql",
+    "line": 3,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "DROP INDEX idx_Messages3 ON Messages;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "mariadb": "DROP INDEX idx_Messages3 ON Messages;"
+    },
+    "database_scope": "historical-migration"
+  },
+  {
+    "id": "O105",
+    "file": "resources/sql/db_update_sqlite_104_105.sql",
+    "line": 1,
+    "function": "DatabaseDriver::updateDatabaseSchema via prepareScript",
+    "sql_template": "DROP INDEX idx_Messages3;",
+    "dynamic_details": "Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",
+    "dialects": [
+      "sqlite"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasedriver.cpp",
+        "line": 181,
+        "function": "DatabaseDriver::updateDatabaseSchema"
+      }
+    ],
+    "dialect_sql": {
+      "sqlite": "DROP INDEX idx_Messages3;"
+    },
+    "database_scope": "historical-migration"
+  }
+]

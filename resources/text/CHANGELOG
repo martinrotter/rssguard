@@ -3,6 +3,7 @@
 Released on: 2026-11-XX
 
 Added:
+* Documented the StartAllBack incompatibility with Windows taskbar thumbnail buttons, including a settings tooltip and instructions to disable the buttons to avoid crashes. (#2462)
 * Batch feed editing can now fetch a separate icon for each feed in the background, with progress and cancellation. Failed fetches preserve existing icons, and fetched icons are applied only when the dialog is saved.
 * Confirmations for assigning or removing article filters for folders or all feeds can now be disabled separately using "Do not show again". (#2457)
 * Read and unread fonts can now be configured separately for the feed and article lists. Resetting the unread font restores the normal font in bold. (#2443)

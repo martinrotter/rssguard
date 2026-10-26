@@ -1,0 +1,407 @@
+[
+  {
+    "id": "CORE-FRAGMENT-01",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 51,
+    "function": "DatabaseQueries::messageTableAttributes",
+    "sql_template": "Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels",
+    "dynamic_details": "initMessageTableAttributes() at cpp:21 constructs 18 projections; correlated Labels GROUP_CONCAT expression at cpp:41.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/core/messagesmodelsqllayer.cpp",
+        "line": 13,
+        "function": null,
+        "source": "DatabaseQueries::messageTableAttributes()"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 763,
+        "function": "DatabaseQueries::getUndeletedMessagesForFeed",
+        "source": "messageTableAttributes()"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 783,
+        "function": "DatabaseQueries::getUndeletedMessagesForAccount",
+        "source": "messageTableAttributes()"
+      },
+      {
+        "file": "src/librssguard/filtering/filterobjects.cpp",
+        "line": 491,
+        "function": null,
+        "source": "DatabaseQueries::messageTableAttributes()"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-02",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 98,
+    "function": "DatabaseQueries::whereClauseBin",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0",
+    "dynamic_details": "Numeric account_id interpolation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 467,
+        "function": "DatabaseQueries::markBinReadUnread",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 512,
+        "function": "DatabaseQueries::restoreBin",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 714,
+        "function": "DatabaseQueries::getMessageCountsForBin",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1392,
+        "function": "DatabaseQueries::cleanBin",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1395,
+        "function": "DatabaseQueries::cleanBin",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1624,
+        "function": "DatabaseQueries::customIdsOfMessagesFromBin",
+        "source": "whereClauseBin(account_id)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 993,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseBin(accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-03",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 102,
+    "function": "DatabaseQueries::whereClauseImportantArticles",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.is_important = 1",
+    "dynamic_details": "Numeric account_id interpolation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 449,
+        "function": "DatabaseQueries::markImportantMessagesReadUnread",
+        "source": "whereClauseImportantArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 702,
+        "function": "DatabaseQueries::getImportantMessageCounts",
+        "source": "whereClauseImportantArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1469,
+        "function": "DatabaseQueries::cleanImportantMessages",
+        "source": "whereClauseImportantArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1610,
+        "function": "DatabaseQueries::customIdsOfImportantMessages",
+        "source": "whereClauseImportantArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 996,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseImportantArticles(accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-04",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 110,
+    "function": "DatabaseQueries::whereClauseUnreadArticles",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.is_read = 0",
+    "dynamic_details": "Numeric account_id interpolation.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 453,
+        "function": "DatabaseQueries::markUnreadMessagesRead",
+        "source": "whereClauseUnreadArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 708,
+        "function": "DatabaseQueries::getUnreadMessageCounts",
+        "source": "whereClauseUnreadArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1473,
+        "function": "DatabaseQueries::cleanUnreadMessages",
+        "source": "whereClauseUnreadArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1616,
+        "function": "DatabaseQueries::customIdsOfUnreadMessages",
+        "source": "whereClauseUnreadArticles(account_id)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 999,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseUnreadArticles(accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-05",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 118,
+    "function": "DatabaseQueries::whereClauseProbe",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND (Messages.title REGEXP '{escaped_regex}' OR Messages.contents REGEXP '{escaped_regex}')\nOR branch:\nMessages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND ({user_sql_predicate})",
+    "dynamic_details": "Regex filter is quote escaped by DatabaseFactory::escapeQuery; SQL filter is arbitrary raw SQL in parentheses. Search::Type::Regex=0, SqlWhereClause=1.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 433,
+        "function": "DatabaseQueries::markProbeReadUnread",
+        "source": "whereClauseProbe(probe, probe->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1489,
+        "function": "DatabaseQueries::cleanProbedMessages",
+        "source": "whereClauseProbe(probe, probe->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1632,
+        "function": "DatabaseQueries::customIdsOfMessagesFromProbe",
+        "source": "whereClauseProbe(probe, probe->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1002,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseProbe(item->toProbe(), accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-06",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 135,
+    "function": "DatabaseQueries::whereClauseLabel",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND EXISTS (SELECT 1 FROM LabelsInMessages WHERE LabelsInMessages.label = {label_id} AND LabelsInMessages.message = Messages.id)",
+    "dynamic_details": "label_id > 0 adds label equality; label_id <= 0 omits it, yielding any-label EXISTS predicate.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 148,
+        "function": "DatabaseQueries::whereClauseLabels",
+        "source": "whereClauseLabel(0, account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 443,
+        "function": "DatabaseQueries::markLabelledMessagesReadUnread",
+        "source": "whereClauseLabel(label->id(), label->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 720,
+        "function": "DatabaseQueries::getMessageCountsForLabel",
+        "source": "whereClauseLabel(label->id(), account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1485,
+        "function": "DatabaseQueries::cleanLabelledMessages",
+        "source": "whereClauseLabel(label->id(), label->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1566,
+        "function": "DatabaseQueries::customIdsOfMessagesFromLabels",
+        "source": "whereClauseLabel(0, account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1580,
+        "function": "DatabaseQueries::customIdsOfMessagesFromLabel",
+        "source": "whereClauseLabel(label->id(), label->account()->accountId())"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1005,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseLabel(item->id(), accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-07",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 147,
+    "function": "DatabaseQueries::whereClauseLabels",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND EXISTS (SELECT 1 FROM LabelsInMessages WHERE LabelsInMessages.message = Messages.id)",
+    "dynamic_details": "Delegates whereClauseLabel(0, account_id).",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 439,
+        "function": "DatabaseQueries::markAllLabelledMessagesReadUnread",
+        "source": "whereClauseLabels(account_id)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1008,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseLabels(accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-08",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 151,
+    "function": "DatabaseQueries::whereClauseAccount",
+    "sql_template": "Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0",
+    "dynamic_details": "including_deleted true omits is_deleted predicate, giving Messages.account_id = {account_id} AND Messages.is_pdeleted = 0",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 471,
+        "function": "DatabaseQueries::markAccountReadUnread",
+        "source": "whereClauseAccount(true, account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 783,
+        "function": "DatabaseQueries::getUndeletedMessagesForAccount",
+        "source": "whereClauseAccount(false, account_id)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1602,
+        "function": "DatabaseQueries::customIdsOfMessagesFromAccount",
+        "source": "whereClauseAccount(false, account_id)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1011,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseAccount(false, accountId())"
+      }
+    ],
+    "kind": "sql_fragment"
+  },
+  {
+    "id": "CORE-FRAGMENT-09",
+    "file": "src/librssguard/database/databasequeries.cpp",
+    "line": 158,
+    "function": "DatabaseQueries::whereClauseFeeds",
+    "sql_template": "{feed_selector} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0",
+    "dynamic_details": "feed_selector = Messages.feed IN (NULL) for 0 ids, Messages.feed = numeric id for 1, Messages.feed IN (comma-separated ids) for 2+. IN list has no cap.",
+    "dialects": [
+      "sqlite",
+      "mariadb"
+    ],
+    "callers": [
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 463,
+        "function": "DatabaseQueries::markFeedsReadUnread",
+        "source": "whereClauseFeeds(ids)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 660,
+        "function": "DatabaseQueries::getMessageCountsForFeeds",
+        "source": "whereClauseFeeds(ids)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 696,
+        "function": "DatabaseQueries::getMessageCountsForFeed",
+        "source": "whereClauseFeeds({QString::number(feed_id)})"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 763,
+        "function": "DatabaseQueries::getUndeletedMessagesForFeed",
+        "source": "whereClauseFeeds({QString::number(feed_id)})"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1481,
+        "function": "DatabaseQueries::cleanFeeds",
+        "source": "whereClauseFeeds(feed_ids)"
+      },
+      {
+        "file": "src/librssguard/database/databasequeries.cpp",
+        "line": 1594,
+        "function": "DatabaseQueries::customIdsOfMessagesFromFeeds",
+        "source": "whereClauseFeeds(ids)"
+      },
+      {
+        "file": "src/librssguard/services/abstract/serviceroot.cpp",
+        "line": 1022,
+        "function": null,
+        "source": "DatabaseQueries::whereClauseFeeds(feed_ids)"
+      }
+    ],
+    "kind": "sql_fragment"
+  }
+]

@@ -1,0 +1,141 @@
+Review of first-finding measurement and proposed minimal A/B experiment
+====================================================================
+Review only: no DB queries executed and no production changes applied here.
+Scope is the stopped query O052/hot-feed-default-all, preserving all 18 columns,
+the full result, existing default ordering and correlated label GROUP_CONCAT.
+Lazy loading stays optional and its default stays false. No LIMIT experiment.
+
+Observed evidence
+-----------------
+results.json reports 235,454 returned rows and 358,153,351 text characters.
+Repeated full-consumption times were 2,716.6908 / 2,875.1975 / 2,113.7737 ms;
+median 2,716.6908 ms. This spread requires an interleaved comparison instead of
+comparing a new candidate to only that historical median.
+Existing plan uses idx_Messages3(feed,is_deleted,is_pdeleted,is_read), followed
+by USE TEMP B-TREE FOR ORDER BY, plus indexed per-row label lookups.
+qt_benchmark.cpp currently consumes every QVariant but only records counts and
+total string lengths. Those counters cannot prove value or ordering equivalence.
+The timing excludes Message::fromSqlQuery, QList retention, worker and GUI work.
+
+Minimal read A/B
+----------------
+1. Keep the exact original SQL and connection PRAGMAs as the production baseline.
+   Confirm the existing original query plan and capture an untimed result digest
+   before adding an experimental index. Record the exact source/query snapshot.
+2. Measure absent-index baseline write controls described below before creating
+   the candidate, so index-maintenance effects are separable from read changes.
+3. Create one experimental index on the existing synthetic huge.db; do not clone
+   the 3.55 GB fixture and do not add ANALYZE or VACUUM. Record index-build time,
+   disk/WAL peak and schema/index bytes. A proposed index is:
+
+   CREATE INDEX idx_Messages_feed_display
+   ON Messages (feed, date_created DESC, title ASC, id DESC)
+   WHERE is_deleted = 0 AND is_pdeleted = 0;
+
+   title inherits Messages.title's NOCASE collation. Keep id DESC explicitly,
+   because SQLite's implicit rowid suffix would otherwise not provide the same
+   mixed-direction tie ordering. The index should not include bodies or labels.
+4. With the index present, run control A as original SQL plus ONLY the hint
+   FROM Messages INDEXED BY idx_Messages3. Run B as the exact original SQL so the
+   candidate receives normal optimizer selection. Check A's plan is the same
+   original idx_Messages3 + temporary sort and B actually chooses the new index
+   without a temporary ORDER BY tree. If B does not choose it, do not silently
+   substitute INDEXED BY candidate and call that an app-query speedup.
+5. Warm A and B once, excluded from statistics. Interleave six measured pairs
+   with balanced orders AB, BA, AB, BA, AB, BA, using the same Qt QSQLITE engine,
+   forwardOnly=true and same complete row/value-consumption logic for both.
+   Do not hash or retain Message objects inside these existing SQL timers.
+   Record every sample, medians and paired deltas/ratios, first-row/exec and total
+   consumption times, exact plan, row count and retrieved character count.
+   State that OS cache is uncontrolled; this is not a cold-disk experiment.
+6. Separately verify equality. Remove the experimental index, checkpoint only
+   after all statements/connections are closed, and validate the original schema
+   and unchanged data. Baseline schema/index removal restores logical contents;
+   newly allocated pages may remain free and the DB file may stay larger. Report
+   this rather than running VACUUM to recover space and alter the aged fixture.
+
+Result equivalence with bounded memory
+-------------------------------------
+Use a separate untimed streaming pass over A and B. For each result row, serialize
+row position, all 18 QVariant values, column count/names and null/type information
+with QDataStream at an explicitly fixed version. Feed the row bytes into SHA-256
+using QCryptographicHash, discarding the row buffer afterward. This retains only
+one row, and catches any changed ID sequence, values, multiplicity or NULL state.
+Compare row counts and full ordered digests, plus first/last ID and key samples.
+Compare the pre-index unmodified baseline digest, forced-old-index A digest and
+candidate-original-SQL B digest. The two counters in results.json are secondary
+sanity checks, not a substitute for this comparison.
+
+Do not move GROUP_CONCAT into a broad label aggregation or replace it by joins
+without separate proof: joins can duplicate message rows or change NULL/empty
+behavior and label concatenation order. The current correlated projection can
+stay byte-for-byte unchanged for an index-only proposal.
+
+The synthetic title generator uses unique report titles with mostly unique
+publication timestamps. Add a small rolled-back correctness microfixture with
+equal dates, equal titles under NOCASE (e.g. Alpha/alpha), descending-ID ties,
+unlabelled, singly labelled and multiply labelled messages, and excluded deleted
+and permanently deleted rows. Re-run full ordered equality for that microfixture.
+These are boundary checks of this proposed first-query fix, not a resumed audit.
+
+Index/write tradeoff
+-------------------
+No SQL hint can disable maintenance of an installed index. Measure write control
+A before CREATE INDEX and write B afterward, on the same bounded workload. Each
+operation runs in an isolated transaction/savepoint and is rolled back, retaining
+the huge fixture's committed state and avoiding the need for a second huge DB.
+Run the same input IDs/rows/bindings and verify affected rows. Record transaction
+begin, SQL work, rollback separately. A rolled-back SQL-write benchmark measures
+execution/maintenance cost, not durable commit latency; label it that way.
+
+A minimal useful set is one application-sized batch for each of:
+- 1,000 visible inserts (candidate index entries added), and 1,000 deleted inserts
+  (candidate predicate evaluation but no entries);
+- 1,000 real message updates changing title/date_created/feed, using the same
+  application UPDATE shape and representative bodies/enclosures;
+- 1,000 read-status-only updates (the partial index omits is_read);
+- 1,000 visible-to-deleted transitions and their restore branch (index membership
+  changes), with exact original row states restored by rollback.
+
+Prepare the deterministic input set outside timed sections. Use a few repeats;
+report medians and raw values rather than one timing. Validate unchanged counts
+and row digests afterward. If time is limited, visible inserts plus title/date
+updates and delete/restore cover the most direct costs; explain omitted controls.
+Extra writes are tradeoff experiments for this index proposal, not evidence that
+the corresponding later inventory query families have passed the full audit.
+
+Measure actual index bytes with dbstat if this Qt SQLite build enables it. If it
+does not, record before/after PRAGMA page_count and freelist_count; the difference
+in allocated pages (page_count-freelist_count)*page_size is an approximate extra
+allocation, including index/bookkeeping, not the same as file growth. Also record
+actual DB/WAL byte growth: the existing fixture has 2,129 free 32 KiB pages, which
+can absorb roughly 66.5 MiB before the DB file grows. CREATE INDEX itself has a
+one-time cost relevant to app startup/migration and existing user DBs.
+
+Space is tight: do not duplicate huge.db or commit a large message mutation.
+Checkpoint between completed bounded experiments, keep statements/connections
+closed during checkpoint, and guard available space before index creation and
+at sampled build/write checkpoints. The original metadata remains the original
+fixture record; experimental schema mutations need a separate journal/report.
+
+Interpretation and next action
+------------------------------
+An ordering index can remove temporary sorting while forcing table/body fetches
+in a less-local order. With 235k complete bodies, it may reduce first-row latency
+without materially improving, or even worsening, full-consumption time. Report
+the measured behavior and reject an ineffective index proposal. If the result
+remains seconds, do not introduce LIMIT or change lazy-loading policy to mask it.
+
+Small C++ changes require a distinct measurement path that calls the actual
+Message::fromSqlQuery and retains its QList, or a faithful standalone extraction
+of that conversion/container code. The current value-discarding SQL harness
+cannot substantiate a reserve/move/conversion claim. Production already uses
+forwardOnly and numeric field indices. A count-before-reserve change would add
+another SQL query, so measure the complete two-query operation before proposing
+it. An explicit noexcept Message move constructor could avoid custom-copy costs
+when appending temporary Messages, but that is an unmeasured hypothesis until
+tested using the real retained-message path and semantic checks.
+
+Proposed-fix.sql/write_findings.py still contain the earlier default-lazy-loading
+recommendation. Root should rewrite those final report artifacts to reflect the
+user's current instruction and candidate measurements before presenting approval.

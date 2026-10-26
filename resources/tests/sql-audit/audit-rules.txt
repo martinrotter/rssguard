@@ -1,0 +1,26 @@
+Current user rules for this audit
+================================
+
+Inventory every application SQL execution site, dynamic generator and structural
+variant. Arbitrary user-written SQL is an infinite family; list its execution
+path and generator instead of claiming to enumerate every concrete string.
+
+Benchmark the huge current-schema fixtures systematically. Stop at the first
+potentially slow query family. Investigate and measure proposed improvements to
+that family before presenting anything for approval.
+
+Lazy loading stays optional and off by default. Preserve full-result behavior,
+all columns, native ordering and label strings. Propose SQL-only changes or small
+C++ refactorings that are demonstrated speedups.
+
+Every proposal must be tested and measured on BOTH SQLite and MariaDB in the same
+review cycle before approval is requested. Use comparable logical datasets and
+record each engine's settings/version. Compare baseline versus candidate within
+each backend, retaining that backend's existing collation and behavior.
+
+The supplied portable MariaDB binaries are C:/Programy/MariaDB (11.8.8). The
+isolated audit server uses 127.0.0.1:33316 and a separate workspace data directory:
+C:/Projekty/Moje/rssguard/benchmark-results/sql-audit-20261014/maria/data.
+
+No application query/schema/settings changes have been approved yet. Existing
+SQLite-only proposal artifacts are preliminary until the MariaDB trial passes.

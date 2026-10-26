@@ -1,0 +1,487 @@
+﻿id,source,function,scope,sqlite_sql_template,dynamic_details,call_sites
+O052,src/librssguard/core/messagesmodelsqllayer.cpp:106,MessagesModelSqlLayer::fetchMessages,current-schema-runtime,"SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE {filter} {order_by} {limit_offset};","SQL constructed by selectStatement at line 194, executed by fetchMessages at line 106. Projection is DatabaseQueries::messageTableAttributes(), including correlated label GROUP_CONCAT; fields and sorting columns are bounded. Filters are built by DatabaseQueries::whereClause* and supplied by ServiceRoot::loadMessagesForItem (serviceroot.cpp:991-1022). Probes permit arbitrary user-authored WHERE SQL (including subqueries/functions); regex is escaped using doubled single quotes. An optional additional_article_id>0 replaces WHERE with ({filter}) OR Messages.id = {additional_article_id}. orderByClause may be empty or contain up to three unique selected fields ASC/DESC plus id tie-breaker (primary direction); secondary id follows primary direction. Defaults are date_created DESC, title ASC, id DESC (messagesview.cpp:508-510). Restored column profiles/user choices may change ordering. limitOffset: limit>0 and offset>0 -> LIMIT L OFFSET O; limit>0 -> LIMIT L; offset>0 and limit<=0 -> SQLite LIMIT -1 OFFSET O / MariaDB LIMIT 184467440737095 OFFSET O; neither -> empty. Lazy loading defaults false (settingskeys.cpp:165), so initial selection returns ALL matching articles; with lazy loading default batch size=10000 (messagesmodel.h:15), initial offset=0, subsequent offset=current m_messages.size(). fetchAllArticles uses limit=0 and offset=current count.","src/librssguard/core/messagesmodel.cpp:186
+src/librssguard/core/messagesmodel.cpp:247"
+O046,src/librssguard/database/databasedriver.cpp:118,DatabaseDriver::setForeignKeyChecksEnabled,current-schema-runtime,PRAGMA foreign_keys=ON;,Virtual foreignKeysEnable/Disable dispatch to SqliteDriver; SQLite caller is ServiceRoot::onSyncInFinished before/after replacing feeds and labels.,src/librssguard/services/abstract/serviceroot.cpp:789
+O048,src/librssguard/database/databasedriver.cpp:124,DatabaseDriver::setForeignKeyChecksDisabled,current-schema-runtime,PRAGMA foreign_keys=OFF;,Virtual foreignKeysEnable/Disable dispatch to SqliteDriver; SQLite caller is ServiceRoot::onSyncInFinished before/after replacing feeds and labels.,src/librssguard/services/abstract/serviceroot.cpp:761
+O027,src/librssguard/database/databasedriver.cpp:132,DatabaseDriver::updateDatabaseSchema,current-schema-runtime,SELECT inf_value FROM Information WHERE inf_key = 'schema_version',Static SQL.,"src/librssguard/database/databasedriver.cpp:74
+src/librssguard/database/sqlitedriver.cpp:161"
+O044,src/librssguard/database/databasedriver.cpp:203,DatabaseDriver::setSchemaVersion,current-schema-runtime,"INSERT INTO Information VALUES ('schema_version', :schema_version);","empty_table=true during initialization; :schema_version is APP_DB_SCHEMA_VERSION (105), stored as a string; executed at line 209.",src/librssguard/database/databasedriver.cpp:143
+O045,src/librssguard/database/databasedriver.cpp:204,DatabaseDriver::setSchemaVersion,current-schema-runtime,UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';,empty_table=false after upgrading through all migrations; :schema_version is 105; executed at line 209.,src/librssguard/database/databasedriver.cpp:191
+CORE-001,src/librssguard/database/databasequeries.cpp:87,DatabaseQueries::loadFeedCustomData,current-schema-runtime,SELECT custom_data FROM Feeds WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,src/librssguard-standard/src/parsers/mediawikiparser.cpp:1004
+CORE-002,src/librssguard/database/databasequeries.cpp:196,DatabaseQueries::deassignLabelFromMessages,current-schema-runtime,DELETE FROM LabelsInMessages WHERE label = :label AND message IN (%1);,"message_ids is a numeric comma-separated list, 1..500 per batch; no statement for an empty messages list. :label = label->id().",src/librssguard/services/abstract/label.cpp:116
+CORE-003,src/librssguard/database/databasequeries.cpp:222,DatabaseQueries::assignLabelToMessages,current-schema-runtime,"%1 INTO LabelsInMessages (message, label) VALUES %2;","Finite dialect verb: SQLite INSERT OR IGNORE / MariaDB INSERT IGNORE. Values are 1..500 literal numeric (message_id, label_id) pairs per batch. No statement for empty messages.",src/librssguard/services/abstract/label.cpp:84
+CORE-004,src/librssguard/database/databasequeries.cpp:231,DatabaseQueries::setLabelsForMessage,current-schema-runtime,DELETE FROM LabelsInMessages WHERE LabelsInMessages.message = :message;,"Always DELETE bindings :message = msg.m_id; if labels nonempty, generate one INSERT with one numeric (msg.m_id, label->id()) tuple per label, no batch cap.",src/librssguard/database/databasequeries.cpp:1326
+CORE-005,src/librssguard/database/databasequeries.cpp:249,DatabaseQueries::setLabelsForMessage,current-schema-runtime,"INSERT INTO LabelsInMessages (message, label) VALUES {comma_separated_numeric_pairs};","Always DELETE bindings :message = msg.m_id; if labels nonempty, generate one INSERT with one numeric (msg.m_id, label->id()) tuple per label, no batch cap.",src/librssguard/database/databasequeries.cpp:1326
+CORE-006,src/librssguard/database/databasequeries.cpp:257,DatabaseQueries::getLabelsForAccount,current-schema-runtime,SELECT * FROM Labels WHERE account_id = :account_id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/database/databasequeries.h:408
+CORE-007,src/librssguard/database/databasequeries.cpp:277,DatabaseQueries::updateLabel,current-schema-runtime,"UPDATE Labels SET name = :name, icon = :icon WHERE id = :id;",Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:110
+CORE-008,src/librssguard/database/databasequeries.cpp:290,DatabaseQueries::deleteLabel,current-schema-runtime,DELETE FROM Labels WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/label.cpp:43
+CORE-009,src/librssguard/database/databasequeries.cpp:304,DatabaseQueries::createLabel,current-schema-runtime,"INSERT INTO Labels (id, name, icon, custom_id, account_id) VALUES (:id, :name, :icon, :custom_id, :account_id);",INSERT branch with explicit :id iff new_label_id > 0; otherwise auto id. Both followed by whole-Labels custom_id fixup. Fields bound from label and account_id.,"src/librssguard/database/databasequeries.cpp:1557
+src/librssguard/filtering/filterobjects.cpp:787
+src/librssguard/services/abstract/labelsnode.cpp:97
+src/librssguard-standard/src/quiterssimport.cpp:141
+src/librssguard-standard/src/rssguard4import.cpp:165"
+CORE-010,src/librssguard/database/databasequeries.cpp:309,DatabaseQueries::createLabel,current-schema-runtime,"INSERT INTO Labels (name, icon, custom_id, account_id) VALUES (:name, :icon, :custom_id, :account_id);",INSERT branch with explicit :id iff new_label_id > 0; otherwise auto id. Both followed by whole-Labels custom_id fixup. Fields bound from label and account_id.,"src/librssguard/database/databasequeries.cpp:1557
+src/librssguard/filtering/filterobjects.cpp:787
+src/librssguard/services/abstract/labelsnode.cpp:97
+src/librssguard-standard/src/quiterssimport.cpp:141
+src/librssguard-standard/src/rssguard4import.cpp:165"
+CORE-011,src/librssguard/database/databasequeries.cpp:328,DatabaseQueries::createLabel,current-schema-runtime,UPDATE Labels SET custom_id = id WHERE custom_id IS NULL OR custom_id = '';,INSERT branch with explicit :id iff new_label_id > 0; otherwise auto id. Both followed by whole-Labels custom_id fixup. Fields bound from label and account_id.,"src/librssguard/database/databasequeries.cpp:1557
+src/librssguard/filtering/filterobjects.cpp:787
+src/librssguard/services/abstract/labelsnode.cpp:97
+src/librssguard-standard/src/quiterssimport.cpp:141
+src/librssguard-standard/src/rssguard4import.cpp:165"
+CORE-012,src/librssguard/database/databasequeries.cpp:335,DatabaseQueries::updateProbe,current-schema-runtime,"UPDATE Probes SET name = :name, type = :type, fltr = :fltr, icon = :icon WHERE id = :id AND account_id = :account_id;",Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:138
+CORE-013,src/librssguard/database/databasequeries.cpp:350,DatabaseQueries::createProbe,current-schema-runtime,"INSERT INTO Probes (name, type, icon, fltr, account_id) VALUES (:name, :type, :icon, :fltr, :account_id);",Static SQL; parameter values supplied by bindValue.,"src/librssguard/services/abstract/searchsnode.cpp:61
+src/librssguard-standard/src/rssguard4import.cpp:191"
+CORE-014,src/librssguard/database/databasequeries.cpp:368,DatabaseQueries::getProbesForAccount,current-schema-runtime,SELECT * FROM Probes WHERE account_id = :account_id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/database/databasequeries.h:409
+CORE-015,src/librssguard/database/databasequeries.cpp:390,DatabaseQueries::deleteProbe,current-schema-runtime,DELETE FROM Probes WHERE id = :id AND account_id = :account_id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/search.cpp:45
+CORE-016,src/librssguard/database/databasequeries.cpp:403,DatabaseQueries::customIdsOfMessagesByCondition,current-schema-runtime,SELECT custom_id FROM Messages WHERE {where_clause};,"where_clause composed by 8 public callers; dynamic_variants enumerates each family. Bindings iterated from supplied QVariantMap. Every status binding is 0 for target Read, 1 otherwise (opposite current state). Optional Unknown status only for Labels/Label variants.","src/librssguard/database/databasequeries.cpp:1574
+src/librssguard/database/databasequeries.cpp:1588
+src/librssguard/database/databasequeries.cpp:1596
+src/librssguard/database/databasequeries.cpp:1604
+src/librssguard/database/databasequeries.cpp:1612
+src/librssguard/database/databasequeries.cpp:1618
+src/librssguard/database/databasequeries.cpp:1626
+src/librssguard/database/databasequeries.cpp:1634"
+CORE-017,src/librssguard/database/databasequeries.cpp:427,DatabaseQueries::markMessagesByCondition,current-schema-runtime,UPDATE Messages SET is_read = :read WHERE {where_clause};,"where_clause is generated by 9 public callers. dynamic_variants enumerates all families. :read = 1 for Read, 0 otherwise. Raw numeric ID list has no batch cap. Probe predicates can be arbitrary SQL.","src/librssguard/database/databasequeries.cpp:433
+src/librssguard/database/databasequeries.cpp:439
+src/librssguard/database/databasequeries.cpp:443
+src/librssguard/database/databasequeries.cpp:449
+src/librssguard/database/databasequeries.cpp:453
+src/librssguard/database/databasequeries.cpp:459
+src/librssguard/database/databasequeries.cpp:463
+src/librssguard/database/databasequeries.cpp:467
+src/librssguard/database/databasequeries.cpp:471"
+CORE-018,src/librssguard/database/databasequeries.cpp:477,DatabaseQueries::markMessageImportant,current-schema-runtime,UPDATE Messages SET is_important = :important WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/core/messagesmodel.cpp:1182
+CORE-019,src/librssguard/database/databasequeries.cpp:487,DatabaseQueries::switchMessagesImportance,current-schema-runtime,UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);,"ids.join("", "") inserted directly as numeric IN list, no batch cap.","src/librssguard/core/messagesmodel.cpp:1226
+src/librssguard/gui/messagepreviewer.cpp:275"
+CORE-020,src/librssguard/database/databasequeries.cpp:495,DatabaseQueries::permanentlyDeleteMessages,current-schema-runtime,UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);,"ids.join("", "") inserted directly as numeric IN list, no batch cap.",src/librssguard/core/messagesmodel.cpp:1276
+CORE-021,src/librssguard/database/databasequeries.cpp:503,DatabaseQueries::deleteOrRestoreMessagesToFromBin,current-schema-runtime,"UPDATE Messages SET is_deleted = %2, is_pdeleted = %3 WHERE id IN (%1);","is_deleted = deleted ? 1 : 0; is_pdeleted always 0. ids.join("", "") is unbounded numeric IN list.","src/librssguard/core/messagesmodel.cpp:1271
+src/librssguard/core/messagesmodel.cpp:1444"
+CORE-022,src/librssguard/database/databasequeries.cpp:512,DatabaseQueries::restoreBin,current-schema-runtime,UPDATE Messages SET is_deleted = 0 WHERE Messages.account_id = {account_id} AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0;,whereClauseBin(account_id) expanded using numeric account id.,src/librssguard/services/abstract/recyclebin.cpp:81
+CORE-023,src/librssguard/database/databasequeries.cpp:542,DatabaseQueries::removeUnwantedArticlesFromFeed,current-schema-runtime,SELECT Messages.id FROM Messages WHERE   Messages.feed = :feed AND   Messages.is_deleted = 0 AND   Messages.is_pdeleted = 0 AND   Messages.is_important != :is_important AND   Messages.is_read != :is_read ORDER BY Messages.date_created DESC LIMIT 2000000000 OFFSET :offset;,"recycle_dont_purge selects recycle SELECT/UPDATE vs purge SELECT/DELETE. Controls inherit feed or app limit settings. :feed = feed->id(), :offset = amount_to_keep (>0), :is_important = dont_remove_starred ? 1 : 2, :is_read = dont_remove_unread ? 0 : 2. Returned ID list expanded into a single unbounded UPDATE/DELETE; no mutation emitted if no ids returned.",src/librssguard/services/abstract/feed.cpp:316
+CORE-024,src/librssguard/database/databasequeries.cpp:554,DatabaseQueries::removeUnwantedArticlesFromFeed,current-schema-runtime,"SELECT Messages.id FROM Messages WHERE   Messages.feed = :feed AND   (Messages.is_deleted = 1 OR Messages.is_important != :is_important) AND   (Messages.is_deleted = 1 OR Messages.is_read != :is_read) ORDER BY Messages.is_deleted ASC, Messages.date_created DESC LIMIT 2000000000 OFFSET :offset;","recycle_dont_purge selects recycle SELECT/UPDATE vs purge SELECT/DELETE. Controls inherit feed or app limit settings. :feed = feed->id(), :offset = amount_to_keep (>0), :is_important = dont_remove_starred ? 1 : 2, :is_read = dont_remove_unread ? 0 : 2. Returned ID list expanded into a single unbounded UPDATE/DELETE; no mutation emitted if no ids returned.",src/librssguard/services/abstract/feed.cpp:316
+CORE-025,src/librssguard/database/databasequeries.cpp:585,DatabaseQueries::removeUnwantedArticlesFromFeed,current-schema-runtime,UPDATE Messages SET is_deleted = 1 WHERE Messages.id IN (%1);,"recycle_dont_purge selects recycle SELECT/UPDATE vs purge SELECT/DELETE. Controls inherit feed or app limit settings. :feed = feed->id(), :offset = amount_to_keep (>0), :is_important = dont_remove_starred ? 1 : 2, :is_read = dont_remove_unread ? 0 : 2. Returned ID list expanded into a single unbounded UPDATE/DELETE; no mutation emitted if no ids returned.",src/librssguard/services/abstract/feed.cpp:316
+CORE-026,src/librssguard/database/databasequeries.cpp:592,DatabaseQueries::removeUnwantedArticlesFromFeed,current-schema-runtime,DELETE FROM Messages WHERE Messages.id IN (%1);,"recycle_dont_purge selects recycle SELECT/UPDATE vs purge SELECT/DELETE. Controls inherit feed or app limit settings. :feed = feed->id(), :offset = amount_to_keep (>0), :is_important = dont_remove_starred ? 1 : 2, :is_read = dont_remove_unread ? 0 : 2. Returned ID list expanded into a single unbounded UPDATE/DELETE; no mutation emitted if no ids returned.",src/librssguard/services/abstract/feed.cpp:316
+CORE-027,src/librssguard/database/databasequeries.cpp:616,DatabaseQueries::purgeFeedArticles,current-schema-runtime,DELETE FROM Messages WHERE feed IN (%1) AND is_important = 0;,feeds_ids joined into one unbounded numeric IN list; empty feeds produces no SQL.,src/librssguard/core/feedsmodel.cpp:557
+CORE-028,src/librssguard/database/databasequeries.cpp:624,DatabaseQueries::purgeMessagesByCondition,current-schema-runtime,DELETE FROM Messages WHERE {where_clause};,All 6 public caller predicates appear in dynamic_variants; epoch and IDs interpolated as numeric literals.,"src/librssguard/database/databasequeries.cpp:629
+src/librssguard/database/databasequeries.cpp:633
+src/librssguard/database/databasequeries.cpp:637
+src/librssguard/database/databasequeries.cpp:645
+src/librssguard/database/databasequeries.cpp:649
+src/librssguard/database/databasequeries.cpp:653"
+CORE-029,src/librssguard/database/databasequeries.cpp:670,DatabaseQueries::messageCountsByCondition,current-schema-runtime,"SELECT feed, COUNT(*), SUM(NOT is_read) FROM Messages WHERE {where_clause} {group_by};",where_clause composed by 6 public callers; GROUP BY feed only in getMessageCountsForFeeds. Other variants select feed alongside aggregate without GROUP BY; MariaDB execution depends on sql_mode (ONLY_FULL_GROUP_BY may reject). Optional binding map is supported but current callers supply no bindings.,"src/librssguard/database/databasequeries.cpp:660
+src/librssguard/database/databasequeries.cpp:696
+src/librssguard/database/databasequeries.cpp:702
+src/librssguard/database/databasequeries.cpp:708
+src/librssguard/database/databasequeries.cpp:714
+src/librssguard/database/databasequeries.cpp:720"
+CORE-030,src/librssguard/database/databasequeries.cpp:728,DatabaseQueries::getMessageCountsForAllLabels,current-schema-runtime,"SELECT lim.label, COUNT(*), SUM(NOT m.is_read) FROM LabelsInMessages lim JOIN Messages m   ON m.id = lim.message WHERE  m.account_id = :account_id AND m.is_deleted = 0 AND m.is_pdeleted = 0 GROUP BY lim.label;",Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/labelsnode.cpp:44
+CORE-031,src/librssguard/database/databasequeries.cpp:760,DatabaseQueries::getUndeletedMessagesForFeed,current-schema-runtime,"SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE Messages.feed = {feed_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0;","Full 18-attribute projection from messageTableAttributes, including correlated label GROUP_CONCAT subquery. Single-feed predicate expanded. No LIMIT.",src/librssguard/filtering/messagesforfiltersmodel.cpp:244
+CORE-032,src/librssguard/database/databasequeries.cpp:780,DatabaseQueries::getUndeletedMessagesForAccount,current-schema-runtime,"SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE Messages.account_id = {account_id} AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0;","Full 18-attribute projection from messageTableAttributes, including correlated label GROUP_CONCAT subquery. Account undeleted predicate expanded. No LIMIT.",
+CORE-033,src/librssguard/database/databasequeries.cpp:797,DatabaseQueries::highestPrimaryIdFeeds,current-schema-runtime,SELECT MAX(id) FROM Feeds;,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:758
+CORE-034,src/librssguard/database/databasequeries.cpp:806,DatabaseQueries::highestPrimaryIdLabels,current-schema-runtime,SELECT MAX(id) FROM Labels;,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:759
+CORE-035,src/librssguard/database/databasequeries.cpp:832,DatabaseQueries::bagOfMessages,current-schema-runtime,SELECT custom_id FROM Messages WHERE feed = :feed AND %1;,"bag enum gives is_read = 0 (Unread), is_important = 1 (Starred), is_read = 1 (Read/default). :feed = feed->id(). No deleted/pdeleted predicates and no LIMIT.","src/librssguard/core/feeddownloader.cpp:133
+src/librssguard/core/feeddownloader.cpp:135
+src/librssguard/core/feeddownloader.cpp:137
+src/librssguard-xmpp/src/xmppfeed.cpp:50
+src/librssguard-xmpp/src/xmppfeed.cpp:51"
+CORE-036,src/librssguard/database/databasequeries.cpp:1008,DatabaseQueries::updateMessages,current-schema-runtime,"SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, Messages.is_important, {contents_column}, Messages.feed, Messages.title, Messages.author FROM ({requested_rows}) AS requested JOIN Messages ON Messages.id = (  SELECT candidate.id FROM Messages AS candidate WHERE candidate.id = requested.lookup_id LIMIT 1) ORDER BY requested.message_index;",See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-037,src/librssguard/database/databasequeries.cpp:1039,DatabaseQueries::updateMessages,current-schema-runtime,"SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, Messages.is_important, {contents_column}, Messages.feed, Messages.title, Messages.author FROM ({requested_rows}) AS requested JOIN Messages ON Messages.id = (  SELECT candidate.id FROM Messages AS candidate WHERE candidate.custom_id = requested.custom_id AND {scope_condition} LIMIT 1) ORDER BY requested.message_index;",See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-038,src/librssguard/database/databasequeries.cpp:1070,DatabaseQueries::updateMessages,current-schema-runtime,"SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, Messages.is_important, {contents_column}, Messages.feed, Messages.title, Messages.author FROM ({requested_rows}) AS requested JOIN Messages ON Messages.id = (  SELECT candidate.id FROM Messages AS candidate WHERE candidate.feed = :feed AND candidate.title = requested.title AND candidate.url = requested.url AND candidate.author = requested.author LIMIT 1) ORDER BY requested.message_index;",See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-039,src/librssguard/database/databasequeries.cpp:1170,DatabaseQueries::updateMessages,current-schema-runtime,"UPDATE Messages SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = :is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed, custom_data = :custom_data WHERE id = :id;",See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-040,src/librssguard/database/databasequeries.cpp:1272,DatabaseQueries::updateMessages,current-schema-runtime,"INSERT INTO Messages (feed, title, is_read, is_important, is_deleted, url, author, score, date_created, date_retrieved, contents, enclosures, custom_id, custom_data, account_id) VALUES {rows};",See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-041,src/librssguard/database/databasequeries.cpp:1370,DatabaseQueries::updateMessages,current-schema-runtime,UPDATE Messages SET custom_id = id WHERE custom_id IS NULL OR custom_id = '';,See generator_details. force_insert skips lookups; updates reexecute one prepared statement per changed row. Insert batches contain at most 1000 valid-title rows. Entire Messages custom_id fixup runs for every nonempty updateMessages invocation.,"src/librssguard/core/messagesmodel.cpp:1122
+src/librssguard/services/abstract/serviceroot.cpp:1301
+src/librssguard-standard/src/quiterssimport.cpp:126
+src/librssguard-standard/src/rssguard4import.cpp:148"
+CORE-042,src/librssguard/database/databasequeries.cpp:1392,DatabaseQueries::cleanBin,current-schema-runtime,UPDATE Messages SET is_pdeleted = 1 WHERE Messages.account_id = {account_id} AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND is_read = 1;,clear_only_read gives extra AND is_read = 1; whereClauseBin(account_id) expanded.,src/librssguard/services/abstract/recyclebin.cpp:54
+CORE-043,src/librssguard/database/databasequeries.cpp:1395,DatabaseQueries::cleanBin,current-schema-runtime,UPDATE Messages SET is_pdeleted = 1 WHERE Messages.account_id = {account_id} AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0;,clear_only_read gives extra AND is_read = 1; whereClauseBin(account_id) expanded.,src/librssguard/services/abstract/recyclebin.cpp:54
+CORE-044,src/librssguard/database/databasequeries.cpp:1412,DatabaseQueries::deleteAccount,current-schema-runtime,DELETE FROM Accounts WHERE id = :account_id;,The loop currently has exactly one query: DELETE FROM Accounts WHERE id = :account_id. Foreign-key cascades emit engine work.,src/librssguard/services/abstract/serviceroot.cpp:64
+CORE-045,src/librssguard/database/databasequeries.cpp:1427,DatabaseQueries::deleteAccountData,current-schema-runtime,DELETE FROM Messages WHERE account_id = :account_id;,Messages DELETE only if delete_messages_too; Feeds and Categories always deleted by account; Labels DELETE only if delete_labels_too. Includes FK cascades.,"src/librssguard/services/abstract/serviceroot.cpp:330
+src/librssguard/services/abstract/serviceroot.cpp:763"
+CORE-046,src/librssguard/database/databasequeries.cpp:1433,DatabaseQueries::deleteAccountData,current-schema-runtime,DELETE FROM Feeds WHERE account_id = :account_id;,Messages DELETE only if delete_messages_too; Feeds and Categories always deleted by account; Labels DELETE only if delete_labels_too. Includes FK cascades.,"src/librssguard/services/abstract/serviceroot.cpp:330
+src/librssguard/services/abstract/serviceroot.cpp:763"
+CORE-047,src/librssguard/database/databasequeries.cpp:1438,DatabaseQueries::deleteAccountData,current-schema-runtime,DELETE FROM Categories WHERE account_id = :account_id;,Messages DELETE only if delete_messages_too; Feeds and Categories always deleted by account; Labels DELETE only if delete_labels_too. Includes FK cascades.,"src/librssguard/services/abstract/serviceroot.cpp:330
+src/librssguard/services/abstract/serviceroot.cpp:763"
+CORE-048,src/librssguard/database/databasequeries.cpp:1444,DatabaseQueries::deleteAccountData,current-schema-runtime,DELETE FROM Labels WHERE account_id = :account_id;,Messages DELETE only if delete_messages_too; Feeds and Categories always deleted by account; Labels DELETE only if delete_labels_too. Includes FK cascades.,"src/librssguard/services/abstract/serviceroot.cpp:330
+src/librssguard/services/abstract/serviceroot.cpp:763"
+CORE-049,src/librssguard/database/databasequeries.cpp:1464,DatabaseQueries::cleanMessagesByCondition,current-schema-runtime,UPDATE Messages SET is_deleted = 1 WHERE ({where_clause}){read_only};,where_clause composed by 5 public callers; append AND is_read = 1 iff clean_read_only. cleanUnreadMessages always supplies false; cleanFeeds returns early on empty IDs. dynamic_variants enumerates all branches.,"src/librssguard/database/databasequeries.cpp:1469
+src/librssguard/database/databasequeries.cpp:1473
+src/librssguard/database/databasequeries.cpp:1481
+src/librssguard/database/databasequeries.cpp:1485
+src/librssguard/database/databasequeries.cpp:1489"
+CORE-050,src/librssguard/database/databasequeries.cpp:1495,DatabaseQueries::purgeLeftoverMessageFilterAssignments,current-schema-runtime,DELETE FROM MessageFiltersInFeeds WHERE feed NOT IN (SELECT id FROM Feeds);,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:786
+CORE-051,src/librssguard/database/databasequeries.cpp:1503,DatabaseQueries::purgeLeftoverLabelAssignments,current-schema-runtime,DELETE FROM LabelsInMessages WHERE   label NOT IN (SELECT id FROM Labels) OR   message NOT IN (SELECT id FROM Messages);,Static SQL; parameter values supplied by bindValue.,src/librssguard/services/abstract/serviceroot.cpp:787
+CORE-052,src/librssguard/database/databasequeries.cpp:1645,DatabaseQueries::createOverwriteCategory,current-schema-runtime,SELECT MAX(ordr) FROM Categories WHERE account_id = :account_id AND parent_id = :parent_id;,MAX sort-order SELECT only for new category/moving category. INSERT only for new category; account_id inserted as numeric literal. UPDATE always. Existing moving category calls moveItem first.,"src/librssguard/database/databasequeries.cpp:1521
+src/librssguard/services/abstract/gui/formcategorydetails.cpp:146
+src/librssguard-standard/src/quiterssimport.cpp:222
+src/librssguard-standard/src/rssguard4import.cpp:267
+src/librssguard-standard/src/standardcategory.cpp:35
+src/librssguard-standard/src/standardserviceroot.cpp:157
+src/librssguard-standard/src/standardserviceroot.cpp:667"
+CORE-053,src/librssguard/database/databasequeries.cpp:1664,DatabaseQueries::createOverwriteCategory,current-schema-runtime,"INSERT INTO Categories (parent_id, ordr, title, date_created, account_id) VALUES (0, 0, 'new', 0, %1);",MAX sort-order SELECT only for new category/moving category. INSERT only for new category; account_id inserted as numeric literal. UPDATE always. Existing moving category calls moveItem first.,"src/librssguard/database/databasequeries.cpp:1521
+src/librssguard/services/abstract/gui/formcategorydetails.cpp:146
+src/librssguard-standard/src/quiterssimport.cpp:222
+src/librssguard-standard/src/rssguard4import.cpp:267
+src/librssguard-standard/src/standardcategory.cpp:35
+src/librssguard-standard/src/standardserviceroot.cpp:157
+src/librssguard-standard/src/standardserviceroot.cpp:667"
+CORE-054,src/librssguard/database/databasequeries.cpp:1685,DatabaseQueries::createOverwriteCategory,current-schema-runtime,"UPDATE Categories SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = :date_created, icon = :icon, account_id = :account_id, custom_id = :custom_id, custom_data = :custom_data WHERE id = :id;",MAX sort-order SELECT only for new category/moving category. INSERT only for new category; account_id inserted as numeric literal. UPDATE always. Existing moving category calls moveItem first.,"src/librssguard/database/databasequeries.cpp:1521
+src/librssguard/services/abstract/gui/formcategorydetails.cpp:146
+src/librssguard-standard/src/quiterssimport.cpp:222
+src/librssguard-standard/src/rssguard4import.cpp:267
+src/librssguard-standard/src/standardcategory.cpp:35
+src/librssguard-standard/src/standardserviceroot.cpp:157
+src/librssguard-standard/src/standardserviceroot.cpp:667"
+CORE-055,src/librssguard/database/databasequeries.cpp:1726,DatabaseQueries::createOverwriteFeed,current-schema-runtime,SELECT MAX(ordr) FROM Feeds WHERE account_id = :account_id AND category = :category;,MAX sort-order SELECT only for new/moving feed. INSERT for new feed has explicit numeric id iff new_feed_id > 0; otherwise auto id. account_id numeric literal. UPDATE always. Moving feed also calls moveItem.,"src/librssguard/database/databasequeries.cpp:1536
+src/librssguard/gui/feedsview.cpp:317
+src/librssguard/services/abstract/gui/formfeeddetails.cpp:98
+src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp:77
+src/librssguard-standard/src/gui/formdiscoverfeeds.cpp:701
+src/librssguard-standard/src/gui/formstandardfeeddetails.cpp:214
+src/librssguard-standard/src/quiterssimport.cpp:270
+src/librssguard-standard/src/rssguard4import.cpp:307
+src/librssguard-standard/src/standardfeed.cpp:339
+src/librssguard-standard/src/standardfeed.cpp:546
+src/librssguard-standard/src/standardserviceroot.cpp:164
+src/librssguard-standard/src/standardserviceroot.cpp:717"
+CORE-056,src/librssguard/database/databasequeries.cpp:1746,DatabaseQueries::createOverwriteFeed,current-schema-runtime,"INSERT INTO Feeds (id, title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) VALUES (%2, 'new', 0, 0, 0, 0, 1, %1, 'new');",MAX sort-order SELECT only for new/moving feed. INSERT for new feed has explicit numeric id iff new_feed_id > 0; otherwise auto id. account_id numeric literal. UPDATE always. Moving feed also calls moveItem.,"src/librssguard/database/databasequeries.cpp:1536
+src/librssguard/gui/feedsview.cpp:317
+src/librssguard/services/abstract/gui/formfeeddetails.cpp:98
+src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp:77
+src/librssguard-standard/src/gui/formdiscoverfeeds.cpp:701
+src/librssguard-standard/src/gui/formstandardfeeddetails.cpp:214
+src/librssguard-standard/src/quiterssimport.cpp:270
+src/librssguard-standard/src/rssguard4import.cpp:307
+src/librssguard-standard/src/standardfeed.cpp:339
+src/librssguard-standard/src/standardfeed.cpp:546
+src/librssguard-standard/src/standardserviceroot.cpp:164
+src/librssguard-standard/src/standardserviceroot.cpp:717"
+CORE-057,src/librssguard/database/databasequeries.cpp:1753,DatabaseQueries::createOverwriteFeed,current-schema-runtime,"INSERT INTO Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');",MAX sort-order SELECT only for new/moving feed. INSERT for new feed has explicit numeric id iff new_feed_id > 0; otherwise auto id. account_id numeric literal. UPDATE always. Moving feed also calls moveItem.,"src/librssguard/database/databasequeries.cpp:1536
+src/librssguard/gui/feedsview.cpp:317
+src/librssguard/services/abstract/gui/formfeeddetails.cpp:98
+src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp:77
+src/librssguard-standard/src/gui/formdiscoverfeeds.cpp:701
+src/librssguard-standard/src/gui/formstandardfeeddetails.cpp:214
+src/librssguard-standard/src/quiterssimport.cpp:270
+src/librssguard-standard/src/rssguard4import.cpp:307
+src/librssguard-standard/src/standardfeed.cpp:339
+src/librssguard-standard/src/standardfeed.cpp:546
+src/librssguard-standard/src/standardserviceroot.cpp:164
+src/librssguard-standard/src/standardserviceroot.cpp:717"
+CORE-058,src/librssguard/database/databasequeries.cpp:1779,DatabaseQueries::createOverwriteFeed,current-schema-runtime,"UPDATE Feeds SET title = :title, ordr = :ordr, description = :description, date_created = :date_created, icon = :icon, category = :category, source = :source, update_type = :update_type, update_interval = :update_interval, is_off = :is_off, is_quiet = :is_quiet, is_rtl = :is_rtl, add_any_datetime_articles = :add_any_datetime_articles, datetime_to_avoid = :datetime_to_avoid, keep_article_customize = :keep_article_customize, keep_article_count = :keep_article_count, keep_unread_articles = :keep_unread_articles, keep_starred_articles = :keep_starred_articles, recycle_articles = :recycle_articles, account_id = :account_id, custom_id = :custom_id, open_articles = :open_articles, exclude_global_unread = :exclude_global_unread, custom_data = :custom_data WHERE id = :id;",MAX sort-order SELECT only for new/moving feed. INSERT for new feed has explicit numeric id iff new_feed_id > 0; otherwise auto id. account_id numeric literal. UPDATE always. Moving feed also calls moveItem.,"src/librssguard/database/databasequeries.cpp:1536
+src/librssguard/gui/feedsview.cpp:317
+src/librssguard/services/abstract/gui/formfeeddetails.cpp:98
+src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp:77
+src/librssguard-standard/src/gui/formdiscoverfeeds.cpp:701
+src/librssguard-standard/src/gui/formstandardfeeddetails.cpp:214
+src/librssguard-standard/src/quiterssimport.cpp:270
+src/librssguard-standard/src/rssguard4import.cpp:307
+src/librssguard-standard/src/standardfeed.cpp:339
+src/librssguard-standard/src/standardfeed.cpp:546
+src/librssguard-standard/src/standardserviceroot.cpp:164
+src/librssguard-standard/src/standardserviceroot.cpp:717"
+CORE-059,src/librssguard/database/databasequeries.cpp:1853,DatabaseQueries::storeCustomData,current-schema-runtime,UPDATE %1 SET custom_data = :custom_data WHERE id = :id;,"Runtime table identifier arg(table); observed callers restrict table to Categories and Feeds, but public method accepts arbitrary QString. :id = item_id; :custom_data = serialized QVariantHash.","src/librssguard/database/databasequeries.cpp:78
+src/librssguard/database/databasequeries.cpp:82"
+CORE-060,src/librssguard/database/databasequeries.cpp:1868,DatabaseQueries::createOverwriteAccount,current-schema-runtime,SELECT MAX(ordr) FROM Accounts;,"SELECT MAX(ordr) only for new account with sortOrder < 0. INSERT only for accountId <= 0, :type = account->code(). UPDATE always.",src/librssguard/services/abstract/serviceroot.cpp:418
+CORE-061,src/librssguard/database/databasequeries.cpp:1877,DatabaseQueries::createOverwriteAccount,current-schema-runtime,"INSERT INTO Accounts (ordr, type) VALUES (0, :type);","SELECT MAX(ordr) only for new account with sortOrder < 0. INSERT only for accountId <= 0, :type = account->code(). UPDATE always.",src/librssguard/services/abstract/serviceroot.cpp:418
+CORE-062,src/librssguard/database/databasequeries.cpp:1888,DatabaseQueries::createOverwriteAccount,current-schema-runtime,"UPDATE Accounts SET proxy_type = :proxy_type, proxy_host = :proxy_host, proxy_port = :proxy_port,     proxy_username = :proxy_username, proxy_password = :proxy_password, ordr = :ordr,     custom_data = :custom_data WHERE id = :id","SELECT MAX(ordr) only for new account with sortOrder < 0. INSERT only for accountId <= 0, :type = account->code(). UPDATE always.",src/librssguard/services/abstract/serviceroot.cpp:418
+CORE-063,src/librssguard/database/databasequeries.cpp:1914,DatabaseQueries::deleteFeed,current-schema-runtime,DELETE FROM Feeds WHERE id = :feed;,Static SQL; parameter values supplied by bindValue.,"src/librssguard-greader/src/greaderfeed.cpp:40
+src/librssguard-nextcloud/src/nextcloudfeed.cpp:27
+src/librssguard-standard/src/standardfeed.cpp:602
+src/librssguard-ttrss/src/ttrssfeed.cpp:42
+src/librssguard-xmpp/src/xmppfeed.cpp:161"
+CORE-064,src/librssguard/database/databasequeries.cpp:1925,DatabaseQueries::deleteCategory,current-schema-runtime,DELETE FROM Categories WHERE id = :category;,Static SQL; parameter values supplied by bindValue.,src/librssguard-standard/src/standardcategory.cpp:80
+CORE-065,src/librssguard/database/databasequeries.cpp:1992,DatabaseQueries::moveItem,current-schema-runtime,UPDATE Accounts SET ordr = ordr + 1 WHERE ordr < :move_high AND ordr >= :move_low;,"Finite table/parent pairs: Accounts (no parent/account scope), Feeds/category, Categories/parent_id. Up/down reordering selects +1 or -1 neighbor UPDATE. Final UPDATE sets moved item order by id. :account_id = account id, :category = parent id, :move_low/:move_high = min/max of old and new order; final :id accountId for root or item id; :ordr = move_index.","src/librssguard/core/feedsmodel.cpp:494
+src/librssguard/core/feedsproxymodel.cpp:328
+src/librssguard/database/databasequeries.cpp:1402
+src/librssguard/database/databasequeries.cpp:1679
+src/librssguard/database/databasequeries.cpp:1773
+src/librssguard/database/databasequeries.cpp:1910
+src/librssguard/database/databasequeries.cpp:1921"
+CORE-066,src/librssguard/database/databasequeries.cpp:1996,DatabaseQueries::moveItem,current-schema-runtime,UPDATE Accounts SET ordr = ordr - 1 WHERE ordr > :move_low AND ordr <= :move_high;,"Finite table/parent pairs: Accounts (no parent/account scope), Feeds/category, Categories/parent_id. Up/down reordering selects +1 or -1 neighbor UPDATE. Final UPDATE sets moved item order by id. :account_id = account id, :category = parent id, :move_low/:move_high = min/max of old and new order; final :id accountId for root or item id; :ordr = move_index.","src/librssguard/core/feedsmodel.cpp:494
+src/librssguard/core/feedsproxymodel.cpp:328
+src/librssguard/database/databasequeries.cpp:1402
+src/librssguard/database/databasequeries.cpp:1679
+src/librssguard/database/databasequeries.cpp:1773
+src/librssguard/database/databasequeries.cpp:1910
+src/librssguard/database/databasequeries.cpp:1921"
+CORE-067,src/librssguard/database/databasequeries.cpp:2002,DatabaseQueries::moveItem,current-schema-runtime,UPDATE %1 SET ordr = ordr + 1 WHERE account_id = :account_id AND %2 = :category AND ordr < :move_high AND ordr >= :move_low;,"Finite table/parent pairs: Accounts (no parent/account scope), Feeds/category, Categories/parent_id. Up/down reordering selects +1 or -1 neighbor UPDATE. Final UPDATE sets moved item order by id. :account_id = account id, :category = parent id, :move_low/:move_high = min/max of old and new order; final :id accountId for root or item id; :ordr = move_index.","src/librssguard/core/feedsmodel.cpp:494
+src/librssguard/core/feedsproxymodel.cpp:328
+src/librssguard/database/databasequeries.cpp:1402
+src/librssguard/database/databasequeries.cpp:1679
+src/librssguard/database/databasequeries.cpp:1773
+src/librssguard/database/databasequeries.cpp:1910
+src/librssguard/database/databasequeries.cpp:1921"
+CORE-068,src/librssguard/database/databasequeries.cpp:2007,DatabaseQueries::moveItem,current-schema-runtime,UPDATE %1 SET ordr = ordr - 1 WHERE account_id = :account_id AND %2 = :category AND ordr > :move_low AND ordr <= :move_high;,"Finite table/parent pairs: Accounts (no parent/account scope), Feeds/category, Categories/parent_id. Up/down reordering selects +1 or -1 neighbor UPDATE. Final UPDATE sets moved item order by id. :account_id = account id, :category = parent id, :move_low/:move_high = min/max of old and new order; final :id accountId for root or item id; :ordr = move_index.","src/librssguard/core/feedsmodel.cpp:494
+src/librssguard/core/feedsproxymodel.cpp:328
+src/librssguard/database/databasequeries.cpp:1402
+src/librssguard/database/databasequeries.cpp:1679
+src/librssguard/database/databasequeries.cpp:1773
+src/librssguard/database/databasequeries.cpp:1910
+src/librssguard/database/databasequeries.cpp:1921"
+CORE-069,src/librssguard/database/databasequeries.cpp:2020,DatabaseQueries::moveItem,current-schema-runtime,UPDATE %1 SET ordr = :ordr WHERE id = :id;,"Finite table/parent pairs: Accounts (no parent/account scope), Feeds/category, Categories/parent_id. Up/down reordering selects +1 or -1 neighbor UPDATE. Final UPDATE sets moved item order by id. :account_id = account id, :category = parent id, :move_low/:move_high = min/max of old and new order; final :id accountId for root or item id; :ordr = move_index.","src/librssguard/core/feedsmodel.cpp:494
+src/librssguard/core/feedsproxymodel.cpp:328
+src/librssguard/database/databasequeries.cpp:1402
+src/librssguard/database/databasequeries.cpp:1679
+src/librssguard/database/databasequeries.cpp:1773
+src/librssguard/database/databasequeries.cpp:1910
+src/librssguard/database/databasequeries.cpp:1921"
+CORE-070,src/librssguard/database/databasequeries.cpp:2084,DatabaseQueries::moveMessageFilter,current-schema-runtime,UPDATE MessageFilters SET ordr = ordr + 1 WHERE ordr < :move_high AND ordr >= :move_low;,"Neighbor UPDATE uses +1 if old order > target, -1 otherwise. :move_low/:move_high = min/max old/target. Final UPDATE by :id sets :ordr = move_index.","src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:296
+src/librssguard/miscellaneous/feedreader.cpp:358"
+CORE-071,src/librssguard/database/databasequeries.cpp:2088,DatabaseQueries::moveMessageFilter,current-schema-runtime,UPDATE MessageFilters SET ordr = ordr - 1 WHERE ordr > :move_low AND ordr <= :move_high;,"Neighbor UPDATE uses +1 if old order > target, -1 otherwise. :move_low/:move_high = min/max old/target. Final UPDATE by :id sets :ordr = move_index.","src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:296
+src/librssguard/miscellaneous/feedreader.cpp:358"
+CORE-072,src/librssguard/database/databasequeries.cpp:2097,DatabaseQueries::moveMessageFilter,current-schema-runtime,UPDATE MessageFilters SET ordr = :ordr WHERE id = :id;,"Neighbor UPDATE uses +1 if old order > target, -1 otherwise. :move_low/:move_high = min/max old/target. Final UPDATE by :id sets :ordr = move_index.","src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:296
+src/librssguard/miscellaneous/feedreader.cpp:358"
+CORE-073,src/librssguard/database/databasequeries.cpp:2134,DatabaseQueries::addMessageFilter,current-schema-runtime,SELECT COUNT(*) FROM MessageFilters;,Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:335
+CORE-074,src/librssguard/database/databasequeries.cpp:2139,DatabaseQueries::addMessageFilter,current-schema-runtime,"INSERT INTO MessageFilters (name, script, ordr) VALUES (:name, :script, :ordr);",Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:335
+CORE-075,src/librssguard/database/databasequeries.cpp:2158,DatabaseQueries::removeMessageFilter,current-schema-runtime,DELETE FROM MessageFilters WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:359
+CORE-076,src/librssguard/database/databasequeries.cpp:2167,DatabaseQueries::getMessageFilters,current-schema-runtime,"SELECT id, name, script, is_enabled, ordr FROM MessageFilters;",Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:317
+CORE-077,src/librssguard/database/databasequeries.cpp:2187,DatabaseQueries::assignMessageFilterToFeed,current-schema-runtime,SELECT COUNT(*) FROM MessageFiltersInFeeds WHERE filter = :filter AND feed = :feed;,Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:396
+CORE-078,src/librssguard/database/databasequeries.cpp:2204,DatabaseQueries::assignMessageFilterToFeed,current-schema-runtime,"INSERT INTO MessageFiltersInFeeds (filter, feed) VALUES (:filter, :feed);",Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:396
+CORE-079,src/librssguard/database/databasequeries.cpp:2216,DatabaseQueries::updateMessageFilter,current-schema-runtime,"UPDATE MessageFilters SET name = :name, script = :script, is_enabled = :is_enabled, ordr = :ordr WHERE id = :id;",Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:390
+CORE-080,src/librssguard/database/databasequeries.cpp:2231,DatabaseQueries::removeMessageFilterFromFeed,current-schema-runtime,DELETE FROM MessageFiltersInFeeds WHERE filter = :filter AND feed = :feed;,Static SQL; parameter values supplied by bindValue.,src/librssguard/miscellaneous/feedreader.cpp:404
+CORE-081,src/librssguard/database/databasequeries.cpp:2244,DatabaseQueries::messageFiltersInFeeds,current-schema-runtime,"SELECT filter, feed FROM MessageFiltersInFeeds WHERE feed IN (SELECT id FROM Feeds WHERE account_id = :account_id);",Static SQL; parameter values supplied by bindValue.,src/librssguard/database/databasequeries.h:323
+CORE-082,src/librssguard/database/databasequeries.cpp:2260,DatabaseQueries::storeNewOauthTokens,current-schema-runtime,SELECT custom_data FROM Accounts WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,"src/librssguard-feedly/src/feedlynetwork.cpp:777
+src/librssguard-gmail/src/gmailnetworkfactory.cpp:138
+src/librssguard-greader/src/greadernetwork.cpp:1339"
+CORE-083,src/librssguard/database/databasequeries.cpp:2274,DatabaseQueries::storeNewOauthTokens,current-schema-runtime,UPDATE Accounts SET custom_data = :custom_data WHERE id = :id;,Static SQL; parameter values supplied by bindValue.,"src/librssguard-feedly/src/feedlynetwork.cpp:777
+src/librssguard-gmail/src/gmailnetworkfactory.cpp:138
+src/librssguard-greader/src/greadernetwork.cpp:1339"
+CORE-084,src/librssguard/database/databasequeries.h:250,DatabaseQueries::getAccounts,current-schema-runtime,SELECT * FROM Accounts WHERE type = '%1';,"Plugin code is interpolated as '%1' via arg(code), not bindValue. Observed callers invoke service-entrypoint code() for all compiled services; result selects all account attributes.","src/librssguard-feedly/src/feedlyentrypoint.cpp:27
+src/librssguard-gmail/src/gmailentrypoint.cpp:29
+src/librssguard-greader/src/greaderentrypoint.cpp:27
+src/librssguard-nextcloud/src/nextcloudserviceentrypoint.cpp:28
+src/librssguard-standard/src/standardserviceentrypoint.cpp:48
+src/librssguard-ttrss/src/ttrssserviceentrypoint.cpp:51
+src/librssguard-xmpp/src/xmppentrypoint.cpp:26"
+CORE-085,src/librssguard/database/databasequeries.h:281,DatabaseQueries::getCategories,current-schema-runtime,SELECT * FROM Categories WHERE account_id = :account_id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/database/databasequeries.h:406
+CORE-086,src/librssguard/database/databasequeries.h:325,DatabaseQueries::getFeeds,current-schema-runtime,SELECT * FROM Feeds WHERE account_id = :account_id;,Static SQL; parameter values supplied by bindValue.,src/librssguard/database/databasequeries.h:407
+O001,src/librssguard/database/sqlitedriver.cpp:30,SqliteDriver::databaseDataSize,current-schema-runtime,PRAGMA page_count;,Static SQL.,src/librssguard/gui/dialogs/formdatabasecleanup.cpp:109
+O002,src/librssguard/database/sqlitedriver.cpp:38,SqliteDriver::databaseDataSize,current-schema-runtime,PRAGMA page_size;,Static SQL.,src/librssguard/gui/dialogs/formdatabasecleanup.cpp:109
+O003,src/librssguard/database/sqlitedriver.cpp:54,SqliteDriver::version,current-schema-runtime,SELECT sqlite_version();,Static SQL.,src/librssguard/miscellaneous/application.cpp:250
+O004,src/librssguard/database/sqlitedriver.cpp:66,SqliteDriver::saveDatabase,current-schema-runtime,PRAGMA wal_checkpoint(TRUNCATE);,Static SQL.,"src/librssguard/database/sqlitedriver.cpp:71
+src/librssguard/database/sqlitedriver.cpp:198
+src/librssguard/miscellaneous/applicationlifecycle.cpp:61"
+O005,src/librssguard/database/sqlitedriver.cpp:76,SqliteDriver::vacuumDatabase,current-schema-runtime,REINDEX;,Static SQL.,src/librssguard/database/databasecleaner.cpp:79
+O006,src/librssguard/database/sqlitedriver.cpp:77,SqliteDriver::vacuumDatabase,current-schema-runtime,PRAGMA optimize;,Static SQL.,src/librssguard/database/databasecleaner.cpp:79
+O007,src/librssguard/database/sqlitedriver.cpp:78,SqliteDriver::vacuumDatabase,current-schema-runtime,VACUUM;,Static SQL.,src/librssguard/database/databasecleaner.cpp:79
+O008,src/librssguard/database/sqlitedriver.cpp:143,SqliteDriver::updateDatabaseSchema,current-schema-runtime,SELECT inf_value FROM Information WHERE inf_key = 'schema_version',Static SQL.,src/librssguard/database/databasedriver.cpp:74
+O009,src/librssguard/database/sqlitedriver.cpp:164,SqliteDriver::updateDatabaseSchema,current-schema-runtime,PRAGMA optimize;,Static SQL.,src/librssguard/database/databasedriver.cpp:74
+O050,src/librssguard/database/sqlitedriver.cpp:176,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA foreign_keys=ON;,Virtual foreignKeysEnable return value at line 211; setPragmas runs on schema initialization and each newly opened connection.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O010,src/librssguard/database/sqlitedriver.cpp:177,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA encoding = 'UTF-8';,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O011,src/librssguard/database/sqlitedriver.cpp:178,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA page_size = 32768;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O012,src/librssguard/database/sqlitedriver.cpp:179,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA cache_size = -65536;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O013,src/librssguard/database/sqlitedriver.cpp:180,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA mmap_size = 100000000;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O014,src/librssguard/database/sqlitedriver.cpp:181,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA synchronous = OFF;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O015,src/librssguard/database/sqlitedriver.cpp:182,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA temp_store = MEMORY;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O016,src/librssguard/database/sqlitedriver.cpp:183,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA journal_mode = WAL;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O017,src/librssguard/database/sqlitedriver.cpp:184,SqliteDriver::setPragmas,current-schema-runtime,PRAGMA busy_timeout = 5000;,Static SQL.,"src/librssguard/database/databasedriver.cpp:108
+src/librssguard/database/databasedriver.cpp:129"
+O042,src/librssguard/filtering/filteringsystem.cpp:155,FilteringSystem::duplicateCandidates,current-schema-runtime,"SELECT id, title, url, author, date_created, custom_id FROM Messages WHERE account_id = :account_id AND is_deleted = 0 AND is_pdeleted = 0 ORDER BY id DESC;",Named placeholders are bound with QSqlQuery::bindValue. Account variant selected by AllFeedsSameAccount; otherwise feed variant. Loaded once per FilteringSystem/feed-fetch or existing-filter run and cached; Q_INVOKABLE isAlreadyInDatabaseWinkler/getArticleFromDatabaseWinkler use the candidates. No SQL LIMIT; rows fully consumed and Jaro-Winkler evaluation follows in C++.,src/librssguard/filtering/filterobjects.cpp:364
+O043,src/librssguard/filtering/filteringsystem.cpp:162,FilteringSystem::duplicateCandidates,current-schema-runtime,"SELECT id, title, url, author, date_created, custom_id FROM Messages WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 ORDER BY id DESC;",Named placeholders are bound with QSqlQuery::bindValue. Account variant selected by AllFeedsSameAccount; otherwise feed variant. Loaded once per FilteringSystem/feed-fetch or existing-filter run and cached; Q_INVOKABLE isAlreadyInDatabaseWinkler/getArticleFromDatabaseWinkler use the candidates. No SQL LIMIT; rows fully consumed and Jaro-Winkler evaluation follows in C++.,src/librssguard/filtering/filterobjects.cpp:364
+O053,src/librssguard/filtering/filterobjects.cpp:490,FilterMessage::databaseMessage,current-schema-runtime,"SELECT Messages.id, Messages.is_read, Messages.is_important, Messages.is_deleted, Messages.is_pdeleted, Messages.feed, Messages.title, Messages.url, Messages.author, Messages.date_created, Messages.date_retrieved, Messages.contents, Messages.enclosures, Messages.score, Messages.account_id, Messages.custom_id, Messages.custom_data, (SELECT GROUP_CONCAT(Labels.custom_id) FROM LabelsInMessages lim JOIN Labels ON lim.label = Labels.id WHERE lim.message = Messages.id) AS msg_labels FROM Messages WHERE {where_clause} ORDER BY Messages.id DESC LIMIT 1;","FilterMessage::duplicateWhereClause (filterobjects.cpp:432-477) appends selected equality predicates for each of SameTitle (title=:title), SameUrl (url=:url), SameAuthor (author=:author), SameDateCreated (date_created=:date_created milliseconds), SameCustomId (custom_id=:custom_id); all 2^5 combinations are possible. Always account_id=:account_id. ExistingArticles and id>0 add id!=:id. Unless AllFeedsSameAccount is selected add feed=:feed. Predicates join with AND. Bindings come from current article and filtering account. getArticleFromDatabase uses duplicateWhereClause; getArticleFromDatabaseWinkler instead uses Messages.id=:message_id. Executed at line 497.","src/librssguard/filtering/filterobjects.cpp:528
+src/librssguard/filtering/filterobjects.cpp:535"
+O054,src/librssguard/filtering/filterobjects.cpp:543,FilterMessage::isAlreadyInDatabase,current-schema-runtime,SELECT COUNT(*) FROM Messages WHERE {duplicateWhereClause};,"FilterMessage::duplicateWhereClause (filterobjects.cpp:432-477) appends selected equality predicates for each of SameTitle (title=:title), SameUrl (url=:url), SameAuthor (author=:author), SameDateCreated (date_created=:date_created milliseconds), SameCustomId (custom_id=:custom_id); all 2^5 combinations are possible. Always account_id=:account_id. ExistingArticles and id>0 add id!=:id. Unless AllFeedsSameAccount is selected add feed=:feed. Predicates join with AND. Bindings come from current article and filtering account. Prepared at line 546; executed at line 552. Public Q_INVOKABLE exposed to user-authored JavaScript article filters.",src/librssguard/filtering/filterobjects.h:108
+O061,src/librssguard/miscellaneous/feedreader.cpp:353,FeedReader::removeMessageFilter,current-schema-runtime,BEGIN,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:433
+O062,src/librssguard/miscellaneous/feedreader.cpp:361,FeedReader::removeMessageFilter,current-schema-runtime,COMMIT,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:433
+O063,src/librssguard/miscellaneous/feedreader.cpp:366,FeedReader::removeMessageFilter,current-schema-runtime,ROLLBACK,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp:433
+O055,src/librssguard/services/abstract/label.cpp:79,Label::assignToMessages,current-schema-runtime,BEGIN,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:60
+src/librssguard/gui/reusable/labelsmenu.cpp:58"
+O056,src/librssguard/services/abstract/label.cpp:86,Label::assignToMessages,current-schema-runtime,COMMIT,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:60
+src/librssguard/gui/reusable/labelsmenu.cpp:58"
+O057,src/librssguard/services/abstract/label.cpp:91,Label::assignToMessages,current-schema-runtime,ROLLBACK,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:60
+src/librssguard/gui/reusable/labelsmenu.cpp:58"
+O058,src/librssguard/services/abstract/label.cpp:111,Label::deassignFromMessages,current-schema-runtime,BEGIN,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:64
+src/librssguard/gui/reusable/labelsmenu.cpp:61"
+O059,src/librssguard/services/abstract/label.cpp:118,Label::deassignFromMessages,current-schema-runtime,COMMIT,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:64
+src/librssguard/gui/reusable/labelsmenu.cpp:61"
+O060,src/librssguard/services/abstract/label.cpp:123,Label::deassignFromMessages,current-schema-runtime,ROLLBACK,Implicit Qt SQL driver statement from QSqlDatabase::transaction/commit/rollback; rollback only on exception. SQLite statement shown; MariaDB equivalent is driver-managed transaction operation.,"src/librssguard/services/abstract/label.cpp:64
+src/librssguard/gui/reusable/labelsmenu.cpp:61"
+O064,resources/sql/db_init.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Information (
+  inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */
+  inf_value    TEXT
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O065,resources/sql/db_init.sql:6,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Accounts (
+  id              INTEGER PRIMARY KEY,
+  ordr            INTEGER    NOT NULL CHECK (ordr >= 0),
+  type            TEXT       NOT NULL CHECK (type != ''), /* ID of the account type. Each account defines its own, for example 'ttrss'. */
+  proxy_type      INTEGER    NOT NULL DEFAULT 0 CHECK (proxy_type >= 0),
+  proxy_host      TEXT,
+  proxy_port      INTEGER,
+  proxy_username  TEXT,
+  proxy_password  TEXT,
+  custom_data     TEXT /* Custom column for (serialized) custom account-specific data. */
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O066,resources/sql/db_init.sql:18,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Categories (
+  id              INTEGER PRIMARY KEY,
+  ordr            INTEGER         NOT NULL CHECK (ordr >= 0),
+  parent_id       INTEGER         NOT NULL CHECK (parent_id >= -1), /* Root categories contain -1 here. */
+  title           VARCHAR(400)    NOT NULL CHECK (title != ''),
+  description     TEXT,
+  date_created    BIGINT,
+  icon            BLOB,
+  account_id      INTEGER         NOT NULL,
+  custom_id       VARCHAR(250),
+  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
+
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O067,resources/sql/db_init.sql:33,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Feeds (
+  id                        INTEGER PRIMARY KEY,
+  ordr                      INTEGER         NOT NULL CHECK (ordr >= 0),
+  title                     VARCHAR(400)    NOT NULL CHECK (title != ''),
+  description               TEXT,
+  date_created              BIGINT,
+  icon                      BLOB,
+  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, root feeds contain -1 here. */
+  source                    TEXT,
+  update_type               INTEGER         NOT NULL CHECK (update_type >= 0),
+  update_interval           INTEGER         NOT NULL DEFAULT 900 CHECK (update_interval >= 1),
+  is_off                    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_off >= 0 AND is_off <= 1),
+  is_quiet                  INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_quiet >= 0 AND is_quiet <= 1),
+  is_rtl                    INTEGER         NOT NULL DEFAULT 0 CHECK (is_rtl >= 0 AND is_rtl <= 1024),
+  add_any_datetime_articles INTEGER(1)      NOT NULL DEFAULT 0 CHECK (add_any_datetime_articles >= 0 AND add_any_datetime_articles <= 1),
+  datetime_to_avoid         BIGINT          NOT NULL DEFAULT 0 CHECK (datetime_to_avoid >= 0),
+  keep_article_customize    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (keep_article_customize >= 0 AND keep_article_customize <= 1),
+  keep_article_count        INTEGER         NOT NULL DEFAULT 0 CHECK (keep_article_count >= 0),
+  keep_unread_articles      INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_unread_articles >= 0 AND keep_unread_articles <= 1),
+  keep_starred_articles     INTEGER(1)      NOT NULL DEFAULT 1 CHECK (keep_starred_articles >= 0 AND keep_starred_articles <= 1),
+  recycle_articles          INTEGER(1)      NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),
+  account_id                INTEGER         NOT NULL,
+  custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
+  custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */
+  open_articles             INTEGER(1)      NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),
+  exclude_global_unread     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1),
+  
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O068,resources/sql/db_init.sql:63,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Messages (
+  id              INTEGER PRIMARY KEY,
+  is_read         INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
+  is_important    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
+  is_deleted      INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
+  is_pdeleted     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
+  feed            INTEGER         NOT NULL,
+  title           VARCHAR(500)    NOT NULL CHECK (title != '') COLLATE NOCASE,
+  url             VARCHAR(1200)   COLLATE NOCASE,
+  author          VARCHAR(400)    COLLATE NOCASE,
+  date_created    BIGINT          NOT NULL CHECK (date_created >= 0),
+  contents        TEXT,
+  enclosures      TEXT,
+  score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
+  account_id      INTEGER         NOT NULL,
+  custom_id       VARCHAR(250),
+  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
+  date_retrieved  BIGINT          NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0),
+
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */
+  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O069,resources/sql/db_init.sql:86,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE MessageFilters (
+  id                  INTEGER PRIMARY KEY,
+  name                VARCHAR(400)    NOT NULL UNIQUE CHECK (name != ''),
+  script              TEXT            NOT NULL CHECK (script != ''),
+  is_enabled          INTEGER         NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),
+  ordr                INTEGER         NOT NULL CHECK (ordr >= 0)
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O070,resources/sql/db_init.sql:94,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE MessageFiltersInFeeds (
+  filter      INTEGER         NOT NULL,
+  feed        INTEGER         NOT NULL,
+  
+  UNIQUE (filter, feed),
+  FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O071,resources/sql/db_init.sql:103,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Labels (
+  id                  INTEGER PRIMARY KEY,
+  name                VARCHAR(200)    NOT NULL CHECK (name != ''),
+  icon                BLOB,   
+  custom_id           VARCHAR(200),
+  account_id          INTEGER         NOT NULL,
+  
+  UNIQUE (account_id, name),
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O072,resources/sql/db_init.sql:114,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE LabelsInMessages (
+  message     INTEGER       NOT NULL,
+  label       INTEGER       NOT NULL,
+
+  UNIQUE (message, label),
+  FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,
+  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O073,resources/sql/db_init.sql:123,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE TABLE Probes (
+  id                  INTEGER PRIMARY KEY,
+  name                VARCHAR(200)    NOT NULL CHECK (name != ''),
+  icon                BLOB,
+  type                INTEGER         NOT NULL CHECK (type >= 0),
+  fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression or SQL WHERE clause. */
+  account_id          INTEGER         NOT NULL,
+  
+  UNIQUE (account_id, name),
+  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O074,resources/sql/db_init.sql:136,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Probes1 ON Probes (account_id);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O075,resources/sql/db_init.sql:139,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O076,resources/sql/db_init.sql:141,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O077,resources/sql/db_init.sql:143,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter, feed);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O078,resources/sql/db_init.sql:146,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Labels1 ON Labels (account_id);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O079,resources/sql/db_init.sql:148,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Labels2 ON Labels (custom_id);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O080,resources/sql/db_init.sql:151,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Lim1 ON LabelsInMessages (message);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O081,resources/sql/db_init.sql:153,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Lim2 ON LabelsInMessages (label);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O082,resources/sql/db_init.sql:155,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Lim3 ON LabelsInMessages (label, message);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O083,resources/sql/db_init.sql:158,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Categories1 ON Categories (account_id);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O084,resources/sql/db_init.sql:160,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Categories2 ON Categories (account_id, parent_id, ordr);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O085,resources/sql/db_init.sql:163,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,CREATE INDEX idx_Feeds1 ON Feeds (account_id);,"Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O086,resources/sql/db_init.sql:165,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O087,resources/sql/db_init.sql:168,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O088,resources/sql/db_init.sql:170,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O089,resources/sql/db_init.sql:172,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O090,resources/sql/db_init.sql:174,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O091,resources/sql/db_init.sql:176,DatabaseDriver::updateDatabaseSchema via prepareScript,current-schema-initialization,"CREATE INDEX idx_Messages5 ON Messages (feed, account_id);","Initialization only. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:140
+O093,resources/sql/db_update_100_101.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,ALTER TABLE Categories ADD COLUMN custom_data TEXT;,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O094,resources/sql/db_update_101_102.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,ALTER TABLE Feeds ADD COLUMN open_articles INTEGER(1) NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1);,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O095,resources/sql/db_update_102_103.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,ALTER TABLE Messages ADD COLUMN date_retrieved BIGINT NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0);,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O096,resources/sql/db_update_102_103.sql:3,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,UPDATE Messages SET date_retrieved = date_created;,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O097,resources/sql/db_update_103_104.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,ALTER TABLE Feeds ADD COLUMN exclude_global_unread INTEGER(1) NOT NULL DEFAULT 0 CHECK (exclude_global_unread >= 0 AND exclude_global_unread <= 1);,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O098,resources/sql/db_update_104_105.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,"CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);","Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O105,resources/sql/db_update_sqlite_104_105.sql:1,DatabaseDriver::updateDatabaseSchema via prepareScript,historical-migration,DROP INDEX idx_Messages3;,"Historical migration; requires its matching pre-migration schema, not schema 105. SQL resources split on -- ! newline; !! directives include common resource. Driver expands $$ primary key, ^^ blob, ** contents text, ~~ collation, ## escaped DB name, §§1/§§0 foreign-key commands before execution.",src/librssguard/database/databasedriver.cpp:181
+O028,src/librssguard-gmail/src/gmailserviceroot.cpp:42,GmailServiceRoot::getAllGmailRecipients,current-schema-runtime,"SELECT msg.author, msg.custom_id FROM Messages msg INNER JOIN (   SELECT author, MAX(id) AS id   FROM Messages   WHERE account_id = :account_id AND author IS NOT NULL AND author <> '' AND custom_id IS NOT NULL     AND custom_id <> ''   GROUP BY author ) latest ON latest.id = msg.id ORDER BY LOWER(msg.author);",Named placeholders are bound with QSqlQuery::bindValue.,src/librssguard-gmail/src/gui/formaddeditemail.cpp:46
+O037,src/librssguard-standard/src/quiterssimport.cpp:90,QuiteRssImport::importArticles,legacy-quiterss-schema-17,"SELECT guid, description, title, published, author_name, link_href, read, starred, deleted, label FROM news WHERE feedId = :feed_id;","Named placeholders are bound with QSqlQuery::bindValue. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/quiterssimport.cpp:65
+O038,src/librssguard-standard/src/quiterssimport.cpp:295,QuiteRssImport::extractFeedsAndCategories,legacy-quiterss-schema-17,"SELECT id,   text,   title,   description,   xmlUrl,   image,   parentId FROM feeds ORDER BY xmlUrl ASC, parentId ASC;","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/quiterssimport.cpp:50
+O039,src/librssguard-standard/src/quiterssimport.cpp:370,QuiteRssImport::extractLabels,legacy-quiterss-schema-17,"SELECT id, name FROM labels;","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/quiterssimport.cpp:51
+O040,src/librssguard-standard/src/quiterssimport.cpp:406,QuiteRssImport::checkIfQuiteRss,legacy-quiterss-schema-17,SELECT name FROM sqlite_master WHERE type='table';,"Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/quiterssimport.cpp:48
+O041,src/librssguard-standard/src/quiterssimport.cpp:428,QuiteRssImport::checkIfQuiteRss,legacy-quiterss-schema-17,"SELECT value FROM info WHERE name = ""version"";","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/quiterssimport.cpp:48
+O029,src/librssguard-standard/src/rssguard4import.cpp:98,RssGuard4Import::importArticles,legacy-rssguard4-schema-10,"SELECT   Messages.is_read,   Messages.is_important,   Messages.is_deleted,   Messages.is_pdeleted,   Messages.title,   Messages.url,   Messages.author,   Messages.date_created,   Messages.contents,   Messages.enclosures,   Messages.score,   Messages.labels,   Messages.custom_id FROM Messages WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;","Named placeholders are bound with QSqlQuery::bindValue. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:71
+O030,src/librssguard-standard/src/rssguard4import.cpp:329,RssGuard4Import::extractFeedsAndCategories,legacy-rssguard4-schema-10,"SELECT  Categories.account_id,   Categories.id,   Categories.parent_id,   Categories.title,   Categories.description,   Categories.icon FROM Categories JOIN Accounts ac ON ac.id = Categories.account_id AND ac.type = 'std-rss' ORDER BY parent_id ASC;","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:52
+O031,src/librssguard-standard/src/rssguard4import.cpp:362,RssGuard4Import::extractFeedsAndCategories,legacy-rssguard4-schema-10,"SELECT  Feeds.account_id,   Feeds.id,   Feeds.category,   Feeds.custom_data,   Feeds.title,   Feeds.description,   Feeds.icon,   Feeds.source,   Feeds.update_type,   Feeds.update_interval,   Feeds.is_off,   Feeds.is_quiet,   Feeds.is_rtl,   Feeds.add_any_datetime_articles,   Feeds.datetime_to_avoid,   Feeds.keep_article_customize,   Feeds.keep_article_count,   Feeds.keep_unread_articles,   Feeds.keep_starred_articles,   Feeds.recycle_articles FROM Feeds JOIN Accounts ac ON ac.id = Feeds.account_id AND ac.type = 'std-rss' ORDER BY Feeds.ordr ASC;","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:52
+O032,src/librssguard-standard/src/rssguard4import.cpp:447,RssGuard4Import::extractLabels,legacy-rssguard4-schema-10,"SELECT Labels.id, Labels.name, Labels.color, Labels.account_id FROM Labels JOIN Accounts ac ON ac.id = Labels.account_id AND ac.type = 'std-rss';","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:53
+O033,src/librssguard-standard/src/rssguard4import.cpp:474,RssGuard4Import::extractFilters,legacy-rssguard4-schema-10,"SELECT name, script FROM MessageFilters;","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:54
+O034,src/librssguard-standard/src/rssguard4import.cpp:493,RssGuard4Import::extractProbes,legacy-rssguard4-schema-10,"SELECT   Probes.name,   Probes.color,   Probes.fltr FROM Probes JOIN Accounts ac ON ac.id = Probes.account_id AND ac.type = 'std-rss';","Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:55
+O035,src/librssguard-standard/src/rssguard4import.cpp:530,RssGuard4Import::checkIfRssGuard4,legacy-rssguard4-schema-10,SELECT name FROM sqlite_master WHERE type='table';,"Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:50
+O036,src/librssguard-standard/src/rssguard4import.cpp:543,RssGuard4Import::checkIfRssGuard4,legacy-rssguard4-schema-10,SELECT inf_value FROM Information WHERE inf_key = 'schema_version';,"Static SQL. Executed against the separately opened import source DB, not the current-schema application DB.",src/librssguard-standard/src/rssguard4import.cpp:50

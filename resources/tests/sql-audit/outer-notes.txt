@@ -1,0 +1,20 @@
+Outer inventory scope: all first-party src except DatabaseQueries .cpp/.h (owned by other agents); all resources/sql statements.
+Searches: first-party SqlQuery/QSqlQuery/QSqlDatabase/QSqlTableModel/QSqlQueryModel/sqlite3_/mysql_/mariadb_, .exec/.prepare/execBatch/setQuery, transaction/commit/rollback, SQL keywords.
+No QSqlTableModel or QSqlQueryModel instantiated; includes in standardserviceroot/ttrssserviceroot unused. DatabaseWorker routes callbacks and emits no SQL directly. DatabaseCleaner delegates query SQL to DatabaseQueries and maintenance SQL to drivers. SqlQuery wrapper executes/logs supplied statements only.
+All database-using service/plugins and GUI files other than the direct sites listed call DatabaseQueries methods; their callsites are captured by the DatabaseQueries inventory. Current database schema is 105.
+Excluded: vendored **/3rd-party/**, developer benchmark/generator files under resources/tests, comments and disabled block-commented transaction code in DatabaseQueries::storeMessages. Legacy source import queries ARE included, with separate schema scope because current-schema DB cannot execute them.
+Dynamic family coverage describes generators and full bounded choices, rather than enumerating infinite numeric/list values or every arbitrary user-supplied SQL WHERE clause. A finite benchmark cannot test every possible user-authored clause; representative clauses must be reported as samples.
+Application-authored SQL and Qt transaction operations are inventoried. Qt driver internal metadata/protocol statements are not authored in this repo and require runtime tracing of the exact deployed Qt plugin to enumerate exhaustively. QSqlDatabase connection APIs do not provide application SQL strings.
+Resource include directives are not SQL statements; all their included statements are inventoried in the common resource with both dialect expansions:
+resources/sql/db_init_mysql.sql:3 includes db_init.sql
+resources/sql/db_init_sqlite.sql:1 includes db_init.sql
+resources/sql/db_update_mysql_100_101.sql:3 includes db_update_100_101.sql
+resources/sql/db_update_mysql_101_102.sql:3 includes db_update_101_102.sql
+resources/sql/db_update_mysql_102_103.sql:3 includes db_update_102_103.sql
+resources/sql/db_update_mysql_103_104.sql:3 includes db_update_103_104.sql
+resources/sql/db_update_mysql_104_105.sql:5 includes db_update_104_105.sql
+resources/sql/db_update_sqlite_100_101.sql:1 includes db_update_100_101.sql
+resources/sql/db_update_sqlite_101_102.sql:1 includes db_update_101_102.sql
+resources/sql/db_update_sqlite_102_103.sql:1 includes db_update_102_103.sql
+resources/sql/db_update_sqlite_103_104.sql:1 includes db_update_103_104.sql
+resources/sql/db_update_sqlite_104_105.sql:3 includes db_update_104_105.sql
