@@ -373,14 +373,20 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                             const QList<QPair<QByteArray, QByteArray>>& http_headers,
                                                             const QNetworkProxy& custom_proxy,
                                                             NetworkFactory::Http2Status http2_status,
-                                                            bool ignore_cookies) {
-  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+                                                            bool ignore_cookies,
+                                                            QList<IconLocation>* icon_candidates,
+                                                            int timeout) {
+  if (timeout <= 0) {
+    timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  }
   QByteArray feed_contents;
   NetworkResult network_result;
 
   if (source_type == StandardFeed::SourceType::Url) {
     QString host = QUrl(source).host();
-    account->spaceHost(host, source);
+    if (account != nullptr) {
+      account->spaceHost(host, source);
+    }
 
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
@@ -509,12 +515,23 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     throw ApplicationException(tr("feed format not recognized"));
   }
 
+  if (icon_candidates != nullptr) {
+    *icon_candidates = icon_possible_locations;
+  }
+
   if (fetch_icons) {
-    const QPixmap icon_data =
-      FeedParser::fetchFeedIcon(icon_possible_locations, source_type, source, http_headers, custom_proxy, nullptr);
+    const QImage icon_data = FeedParser::fetchFeedIcon(icon_possible_locations,
+                                                       source_type,
+                                                       source,
+                                                       http_headers,
+                                                       custom_proxy,
+                                                       nullptr,
+                                                       timeout,
+                                                       http2_status,
+                                                       ignore_cookies);
 
     if (!icon_data.isNull()) {
-      feed->setIcon(icon_data);
+      feed->setIcon(QPixmap::fromImage(icon_data));
     }
   }
 

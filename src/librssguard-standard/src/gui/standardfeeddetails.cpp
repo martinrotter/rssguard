@@ -135,48 +135,6 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onPostProcessScriptChanged({});
 }
 
-void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
-                                        const QString& source,
-                                        const QString& post_process_script,
-                                        StandardServiceRoot* account,
-                                        NetworkFactory::NetworkAuthentication protection,
-                                        const QString& username,
-                                        const QString& password,
-                                        const QList<QPair<QByteArray, QByteArray>>& headers,
-                                        const QNetworkProxy& custom_proxy,
-                                        bool ignore_cookies) {
-  try {
-    auto metadata = StandardFeed::guessFeed(source_type,
-                                            source,
-                                            post_process_script,
-                                            account,
-                                            protection,
-                                            true,
-                                            username,
-                                            password,
-                                            headers,
-                                            custom_proxy,
-                                            NetworkFactory::Http2Status::DontSet,
-                                            ignore_cookies);
-
-    // Icon or whole feed was guessed.
-    m_ui.m_btnIcon->setIcon(metadata.first->icon());
-    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Ok, tr("Icon fetched successfully."));
-
-    // Remove temporary feed object.
-    metadata.first->deleteLater();
-  }
-  catch (const ScriptException& ex) {
-    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Script failed: %1").arg(ex.message()));
-  }
-  catch (const NetworkException& ex) {
-    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Network error: %1").arg(ex.message()));
-  }
-  catch (const ApplicationException& ex) {
-    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
-  }
-}
-
 void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                     const QString& source,
                                     const QString& post_process_script,

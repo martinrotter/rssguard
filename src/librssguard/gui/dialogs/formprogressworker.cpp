@@ -29,6 +29,7 @@ FormProgressWorker::~FormProgressWorker() {
 void FormProgressWorker::requestCancellation() {
   m_wasCanceled = true;
   m_btnCancel->setEnabled(false);
+  m_ui->m_lbl->setText(tr("Canceling… Waiting for active tasks to finish."));
   emit cancelRequested();
 }
 
@@ -50,7 +51,9 @@ void FormProgressWorker::setProgress(int progress) {
 }
 
 void FormProgressWorker::setLabel(const QString& label) {
-  m_ui->m_lbl->setText(label);
+  if (!m_wasCanceled) {
+    m_ui->m_lbl->setText(label);
+  }
 }
 
 void FormProgressWorker::onFinished() {

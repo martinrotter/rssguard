@@ -247,6 +247,20 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                          const QNetworkProxy& custom_proxy,
                                                          Http2Status http2_status) {
+  QImage image;
+  const auto result = downloadIcon(urls, timeout, image, additional_headers, custom_proxy, http2_status);
+  output = QPixmap::fromImage(image);
+  return result;
+}
+
+QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocation>& urls,
+                                                         int timeout,
+                                                         QImage& output,
+                                                         const QList<QPair<QByteArray, QByteArray>>& additional_headers,
+                                                         const QNetworkProxy& custom_proxy,
+                                                         Http2Status http2_status,
+                                                         CookiePolicy cookie_policy) {
+  output = {};
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const auto& url : urls) {
@@ -274,14 +288,15 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                {},
                                                {},
                                                custom_proxy,
-                                               http2_status)
+                                               http2_status,
+                                               cookie_policy)
                          .m_networkError;
 
       if (network_result == QNetworkReply::NetworkError::NoError) {
-        QPixmap icon_pixmap;
+        QImage icon_image;
 
-        icon_pixmap.loadFromData(icon_data);
-        output = icon_pixmap;
+        icon_image.loadFromData(icon_data);
+        output = icon_image;
 
         if (!output.isNull()) {
           if (output.width() > 64) {
@@ -324,14 +339,15 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                  {},
                                                  {},
                                                  custom_proxy,
-                                                 http2_status)
+                                                 http2_status,
+                                                 cookie_policy)
                            .m_networkError;
 
         if (network_result == QNetworkReply::NetworkError::NoError) {
-          QPixmap icon_pixmap;
+          QImage icon_image;
 
-          icon_pixmap.loadFromData(icon_data);
-          output = icon_pixmap;
+          icon_image.loadFromData(icon_data);
+          output = icon_image;
 
           if (!output.isNull()) {
             if (output.width() > 64) {

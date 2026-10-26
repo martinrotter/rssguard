@@ -8,6 +8,7 @@
 
 #include <QCoreApplication>
 #include <QHttpPart>
+#include <QImage>
 #include <QNetworkCookie>
 #include <QNetworkProxy>
 #include <QNetworkReply>
@@ -76,6 +77,14 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                     const QNetworkProxy& custom_proxy =
                                                       QNetworkProxy::ProxyType::DefaultProxy,
                                                     Http2Status http2_status = Http2Status::DontSet);
+    // Image-only variant for background workers.
+    static QNetworkReply::NetworkError downloadIcon(const QList<IconLocation>& urls,
+                                                    int timeout,
+                                                    QImage& output,
+                                                    const QList<QPair<QByteArray, QByteArray>>& additional_headers,
+                                                    const QNetworkProxy& custom_proxy,
+                                                    Http2Status http2_status = Http2Status::DontSet,
+                                                    CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  const QByteArray& input_data,

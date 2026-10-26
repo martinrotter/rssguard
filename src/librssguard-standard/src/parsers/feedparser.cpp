@@ -15,6 +15,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QRegularExpression>
+#include <QScopedPointer>
 
 FeedParser::FeedParser() : FeedParser({}, DataType::Xml) {}
 
@@ -102,12 +103,15 @@ GuessedFeedWithIcons FeedParser::guessFeed(const QByteArray& content, const Netw
   return {};
 }
 
-QPixmap FeedParser::fetchFeedIcon(const QList<IconLocation>& candidates,
-                                  StandardFeed::SourceType source_type,
-                                  const QString& source,
-                                  const QList<QPair<QByteArray, QByteArray>>& headers,
-                                  const QNetworkProxy& proxy,
-                                  QHash<QByteArray, QPixmap>* cache) {
+QImage FeedParser::fetchFeedIcon(const QList<IconLocation>& candidates,
+                                 StandardFeed::SourceType source_type,
+                                 const QString& source,
+                                 const QList<QPair<QByteArray, QByteArray>>& headers,
+                                 const QNetworkProxy& proxy,
+                                 QHash<QByteArray, QImage>* cache,
+                                 int timeout,
+                                 NetworkFactory::Http2Status http2_status,
+                                 bool ignore_cookies) {
   QList<IconLocation> locations = candidates;
 
   if (locations.isEmpty() && source_type == StandardFeed::SourceType::Url && !source.isEmpty()) {
@@ -134,8 +138,15 @@ QPixmap FeedParser::fetchFeedIcon(const QList<IconLocation>& candidates,
     }
   }
 
-  QPixmap icon;
-  const auto error = NetworkFactory::downloadIcon(locations, DOWNLOAD_TIMEOUT, icon, headers, proxy);
+  QImage icon;
+  const auto error = NetworkFactory::downloadIcon(locations,
+                                                  timeout > 0 ? timeout : DOWNLOAD_TIMEOUT,
+                                                  icon,
+                                                  headers,
+                                                  proxy,
+                                                  http2_status,
+                                                  ignore_cookies ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                                 : NetworkFactory::CookiePolicy::UseSharedCookieJar);
 
   if (error != QNetworkReply::NetworkError::NoError || icon.isNull()) {
     return {};
@@ -146,6 +157,35 @@ QPixmap FeedParser::fetchFeedIcon(const QList<IconLocation>& candidates,
   }
 
   return icon;
+}
+
+QImage FeedParser::fetchFeedIconForSource(const FeedIconRequest& request, StandardServiceRoot* account) {
+  QList<IconLocation> candidates;
+  const auto metadata = StandardFeed::guessFeed(request.m_sourceType,
+                                                request.m_source,
+                                                request.m_postProcessScript,
+                                                account,
+                                                request.m_protection,
+                                                false,
+                                                request.m_username,
+                                                request.m_password,
+                                                request.m_headers,
+                                                request.m_proxy,
+                                                request.m_http2Status,
+                                                request.m_ignoreCookies,
+                                                &candidates,
+                                                request.m_timeout);
+  // The temporary feed is created and destroyed on this worker, never passed to the GUI.
+  const QScopedPointer<StandardFeed> feed(metadata.first);
+  return fetchFeedIcon(candidates,
+                       request.m_sourceType,
+                       request.m_source,
+                       request.m_headers,
+                       request.m_proxy,
+                       nullptr,
+                       request.m_timeout,
+                       request.m_http2Status,
+                       request.m_ignoreCookies);
 }
 
 QString FeedParser::discoverySourceKey(const QString& source, StandardFeed::SourceType source_type) {

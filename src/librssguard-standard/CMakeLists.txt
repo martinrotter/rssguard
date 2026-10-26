@@ -3,6 +3,7 @@ set(PLUGIN_TARGET "rssguard-standard")
 
 set(SOURCES
   src/definitions.h
+  src/gui/feediconselection.h
   src/gui/formdiscoverfeeds.cpp
   src/gui/formdiscoverfeeds.h
   src/gui/formeditstandardaccount.cpp

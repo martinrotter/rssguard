@@ -12,10 +12,10 @@
 
 #include <QByteArray>
 #include <QHash>
+#include <QImage>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QPixmap>
 #include <QPointer>
 #include <QString>
 #include <QUrl>
@@ -33,6 +33,21 @@ struct GuessedFeedWithIcons {
 struct DocumentWithUrl {
     QByteArray m_documentData;
     QUrl m_documentUrl;
+};
+
+// All values are resolved on the GUI thread before starting an icon fetch.
+struct FeedIconRequest {
+    StandardFeed::SourceType m_sourceType = StandardFeed::SourceType::Url;
+    QString m_source;
+    QString m_postProcessScript;
+    NetworkFactory::NetworkAuthentication m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
+    QString m_username;
+    QString m_password;
+    QList<QPair<QByteArray, QByteArray>> m_headers;
+    QNetworkProxy m_proxy;
+    NetworkFactory::Http2Status m_http2Status = NetworkFactory::Http2Status::DontSet;
+    bool m_ignoreCookies = false;
+    int m_timeout = -1;
 };
 
 #if defined(rssguard_standard_EXPORTS)
@@ -68,12 +83,17 @@ class FEED_PARSER_DLLSPEC FeedParser {
     static QString discoverySourceKey(const QString& source,
                                       StandardFeed::SourceType source_type = StandardFeed::SourceType::Url);
 
-    static QPixmap fetchFeedIcon(const QList<IconLocation>& candidates,
-                                 StandardFeed::SourceType source_type,
-                                 const QString& source,
-                                 const QList<QPair<QByteArray, QByteArray>>& headers,
-                                 const QNetworkProxy& proxy,
-                                 QHash<QByteArray, QPixmap>* cache);
+    static QImage fetchFeedIcon(const QList<IconLocation>& candidates,
+                                StandardFeed::SourceType source_type,
+                                const QString& source,
+                                const QList<QPair<QByteArray, QByteArray>>& headers,
+                                const QNetworkProxy& proxy,
+                                QHash<QByteArray, QImage>* cache,
+                                int timeout = -1,
+                                NetworkFactory::Http2Status http2_status = NetworkFactory::Http2Status::DontSet,
+                                bool ignore_cookies = false);
+
+    static QImage fetchFeedIconForSource(const FeedIconRequest& request, StandardServiceRoot* account);
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();

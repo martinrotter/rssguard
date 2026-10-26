@@ -8,11 +8,14 @@
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 
+#include <exception>
 #include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/gui/reusable/networkproxydetails.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/network-web/networkfactory.h>
@@ -40,6 +43,7 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
   activateTab(0);
 
   m_standardFeedDetails->setNetworkDetails(m_networkDetails);
+  initializeIconFetching();
 
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata,
           &QPushButton::clicked,
@@ -71,18 +75,189 @@ void FormStandardFeedDetails::guessFeed() {
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
-  m_standardFeedDetails->guessIconOnly(m_standardFeedDetails->sourceType(),
-                                       m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
-                                       m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
-                                       qobject_cast<StandardServiceRoot*>(m_serviceRoot),
-                                       m_networkDetails->m_ui.m_wdgAuthentication->authenticationType(),
-                                       m_networkDetails->m_ui.m_wdgAuthentication->username(),
-                                       m_networkDetails->m_ui.m_wdgAuthentication->password(),
-                                       StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
-                                       m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
-                                         ? m_serviceRoot->networkProxy()
-                                         : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
-                                       m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
+  struct IconJob {
+      FeedIconRequest m_request;
+      QString m_title;
+      QImage m_icon;
+      QString m_error;
+  };
+
+  QList<QSharedPointer<IconJob>> jobs;
+  const auto selected_feeds = feeds<StandardFeed>();
+  for (StandardFeed* feed : selected_feeds) {
+    auto job = QSharedPointer<IconJob>::create();
+    job->m_request = iconRequest(feed);
+    job->m_title = feed->title();
+    jobs.append(job);
+  }
+  if (jobs.isEmpty()) {
+    return;
+  }
+
+  FormProgressWorker progress(this);
+  auto* account = qobject_cast<StandardServiceRoot*>(m_serviceRoot);
+  const int result = progress.doWork<QSharedPointer<IconJob>>(
+    tr("Fetching feed icons"),
+    true,
+    jobs,
+    [account](QSharedPointer<IconJob> job) {
+      try {
+        job->m_icon = FeedParser::fetchFeedIconForSource(job->m_request, account);
+        if (job->m_icon.isNull()) {
+          job->m_error = tr("No usable icon found.");
+        }
+      }
+      catch (const ApplicationException& ex) {
+        job->m_error = ex.message();
+      }
+      catch (const std::exception& ex) {
+        job->m_error = QString::fromUtf8(ex.what());
+      }
+      catch (...) {
+        job->m_error = tr("Icon fetching failed.");
+      }
+    },
+    [count = jobs.size()](int processed) {
+      return tr("Processed %1 of %2 feeds.").arg(processed).arg(count);
+    });
+
+  if (result != QDialog::DialogCode::Accepted) {
+    // Keep the previous selection, including any earlier successful fetch.
+    return;
+  }
+
+  QHash<int, QIcon> icons;
+  QStringList errors;
+  for (int i = 0; i < jobs.size(); ++i) {
+    const auto& job = jobs.at(i);
+    if (!job->m_icon.isNull()) {
+      icons.insert(i, QIcon(QPixmap::fromImage(job->m_icon)));
+    }
+    else {
+      errors.append(tr("%1: %2").arg(job->m_title, job->m_error));
+    }
+  }
+
+  if (m_isBatchEdit) {
+    m_iconSelection.selectIndividual(icons);
+    m_standardFeedDetails->m_ui.m_btnIcon->setIcon(qApp->icons()->fromTheme(QSL("view-list-icons")), false);
+    m_standardFeedDetails->m_ui.m_btnIcon->setToolTip(tr("Individual icons are ready for %1 feeds.").arg(icons.size()));
+  }
+  else if (icons.contains(0)) {
+    m_standardFeedDetails->m_ui.m_btnIcon->setIcon(icons.value(0));
+  }
+
+  const QString summary = tr("Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.")
+                            .arg(icons.size())
+                            .arg(jobs.size());
+  m_standardFeedDetails->m_ui.m_lblFetchMetadata->setText(errors.isEmpty() ? WidgetWithStatus::StatusType::Ok
+                                                                           : WidgetWithStatus::StatusType::Warning,
+                                                          errors.isEmpty()
+                                                            ? summary
+                                                            : summary + QSL("\n\n") + errors.join(QL1C('\n')));
+}
+
+FeedIconRequest FormStandardFeedDetails::iconRequest(StandardFeed* feed) const {
+  const auto& general = m_standardFeedDetails->m_ui;
+  const auto& network = m_networkDetails->m_ui;
+  const auto* auth = network.m_wdgAuthentication;
+  FeedIconRequest request;
+  request.m_sourceType =
+    isChangeAllowed(general.m_mcbSourceType) ? m_standardFeedDetails->sourceType() : feed->sourceType();
+  request.m_source =
+    isChangeAllowed(general.m_mcbSource) ? general.m_txtSource->textEdit()->toPlainText() : feed->source();
+  request.m_postProcessScript = isChangeAllowed(general.m_mcbPostProcessScript)
+                                  ? general.m_txtPostProcessScript->textEdit()->toPlainText()
+                                  : feed->postProcessScript();
+  request.m_protection = isChangeAllowed(auth->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")))
+                           ? auth->authenticationType()
+                           : feed->protection();
+  const bool credentials = isChangeAllowed(auth->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")));
+  request.m_username = credentials ? auth->username() : feed->username();
+  request.m_password = credentials ? auth->password() : feed->password();
+  request.m_headers =
+    StandardFeed::httpHeadersToList(isChangeAllowed(network.m_mcbHttpHeaders) ? m_networkDetails->httpHeaders()
+                                                                              : feed->httpHeaders());
+  if (isChangeAllowed(network.m_mcbNetworkProxy)) {
+    request.m_proxy =
+      network.m_wdgNetworkProxy->useAccountProxy() ? m_serviceRoot->networkProxy() : network.m_wdgNetworkProxy->proxy();
+  }
+  else {
+    request.m_proxy = feed->useAccountProxy() ? m_serviceRoot->networkProxy() : feed->networkProxy();
+  }
+  request.m_http2Status =
+    isChangeAllowed(network.m_mcbEnableHttp2) ? m_networkDetails->http2Status() : feed->http2Status();
+  request.m_ignoreCookies =
+    isChangeAllowed(network.m_mcbIgnoreCookies) ? network.m_cbIgnoreCookies->isChecked() : feed->ignoreCookies();
+  request.m_timeout =
+    isChangeAllowed(network.m_mcbUpdateTimeout) ? network.m_spinUpdateTimeout->value() : feed->updateTimeout();
+  if (request.m_timeout <= 0) {
+    request.m_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  }
+  return request;
+}
+
+void FormStandardFeedDetails::initializeIconFetching() {
+  const auto& general = m_standardFeedDetails->m_ui;
+  const auto& network = m_networkDetails->m_ui;
+  connect(general.m_btnIcon, &ColorIconToolButton::iconChanged, this, [this]() {
+    const bool was_individual = m_iconSelection.isIndividual();
+    m_iconSelection.selectShared();
+    m_standardFeedDetails->m_ui.m_btnIcon->setToolTip(tr("Select icon for your feed."));
+    if (was_individual) {
+      m_standardFeedDetails->m_ui.m_lblFetchMetadata
+        ->setText(WidgetWithStatus::StatusType::Information,
+                  tr("The selected icon will be applied to all selected feeds."));
+    }
+  });
+
+  for (QPlainTextEdit* text :
+       {general.m_txtSource->textEdit(), general.m_txtPostProcessScript->textEdit(), network.m_txtHttpHeaders}) {
+    connect(text, &QPlainTextEdit::textChanged, this, &FormStandardFeedDetails::invalidateFetchedIcons);
+  }
+  for (QComboBox* combo : {general.m_cmbSourceType,
+                           network.m_cmbEnableHttp2,
+                           network.m_wdgAuthentication->findChild<QComboBox*>(QSL("m_cbAuthType"))}) {
+    connect(combo,
+            qOverload<int>(&QComboBox::currentIndexChanged),
+            this,
+            &FormStandardFeedDetails::invalidateFetchedIcons);
+  }
+  for (QLineEdit* edit : network.m_wdgAuthentication->findChildren<QLineEdit*>()) {
+    connect(edit, &QLineEdit::textChanged, this, &FormStandardFeedDetails::invalidateFetchedIcons);
+  }
+  connect(network.m_wdgNetworkProxy,
+          &NetworkProxyDetails::changed,
+          this,
+          &FormStandardFeedDetails::invalidateFetchedIcons);
+  connect(network.m_spinUpdateTimeout,
+          qOverload<int>(&QSpinBox::valueChanged),
+          this,
+          &FormStandardFeedDetails::invalidateFetchedIcons);
+  connect(network.m_cbIgnoreCookies, &QCheckBox::toggled, this, &FormStandardFeedDetails::invalidateFetchedIcons);
+  for (MultiFeedEditCheckBox* checkbox :
+       {general.m_mcbSourceType,
+        general.m_mcbSource,
+        general.m_mcbPostProcessScript,
+        network.m_mcbHttpHeaders,
+        network.m_mcbNetworkProxy,
+        network.m_mcbEnableHttp2,
+        network.m_mcbIgnoreCookies,
+        network.m_mcbUpdateTimeout,
+        network.m_wdgAuthentication->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")),
+        network.m_wdgAuthentication->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication"))}) {
+    connect(checkbox, &QCheckBox::toggled, this, &FormStandardFeedDetails::invalidateFetchedIcons);
+  }
+}
+
+void FormStandardFeedDetails::invalidateFetchedIcons() {
+  if (m_iconSelection.isIndividual()) {
+    m_iconSelection.invalidate();
+    m_standardFeedDetails->m_ui.m_btnIcon->setToolTip(tr("Fetch icons again after changing feed settings."));
+    m_standardFeedDetails->m_ui.m_lblFetchMetadata
+      ->setText(WidgetWithStatus::StatusType::Warning,
+                tr("Feed settings changed. Fetch icons again to apply individual icons."));
+  }
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
@@ -100,6 +275,7 @@ void FormStandardFeedDetails::apply() {
 
   QList<StandardFeed*> fds = feeds<StandardFeed>();
 
+  int feed_index = 0;
   for (StandardFeed* std_feed : std::as_const(fds)) {
     // Setup data for the feed.
     if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbTitle)) {
@@ -110,8 +286,11 @@ void FormStandardFeedDetails::apply() {
       std_feed->setDescription(m_standardFeedDetails->m_ui.m_txtDescription->lineEdit()->text());
     }
 
-    if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbIcon)) {
-      std_feed->setIcon(m_standardFeedDetails->m_ui.m_btnIcon->icon());
+    const auto icon = m_iconSelection.iconForFeed(feed_index++,
+                                                  m_standardFeedDetails->m_ui.m_btnIcon->icon(),
+                                                  isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbIcon));
+    if (icon.has_value()) {
+      std_feed->setIcon(icon.value());
     }
 
     if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbSource)) {
@@ -226,6 +405,7 @@ void FormStandardFeedDetails::loadFeedData() {
   FormFeedDetails::loadFeedData();
 
   if (m_isBatchEdit) {
+    m_standardFeedDetails->m_actionFetchIcon->setText(tr("Fetch icons for each feed"));
     // We hook batch selectors.
     m_standardFeedDetails->m_ui.m_mcbDescription->addActionWidget(m_standardFeedDetails->m_ui.m_txtDescription);
     m_standardFeedDetails->m_ui.m_mcbIcon->addActionWidget(m_standardFeedDetails->m_ui.m_btnIcon);

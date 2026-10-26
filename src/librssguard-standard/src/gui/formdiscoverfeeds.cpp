@@ -243,21 +243,21 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
                                                                 bool deep_discovery,
                                                                 const QList<DocumentWithUrl>& documents) {
   const auto discovered = parser->discoverFeeds(m_serviceRoot, url, deep_discovery, documents);
-  QHash<QByteArray, QPixmap> icon_cache;
+  QHash<QByteArray, QImage> icon_cache;
   QList<StandardFeed*> feeds;
   feeds.reserve(discovered.size());
 
   for (const GuessedFeedWithIcons& found : discovered) {
     StandardFeed* feed = found.m_feed;
-    const QPixmap icon = FeedParser::fetchFeedIcon(found.m_icons,
-                                                   feed->sourceType(),
-                                                   feed->source(),
-                                                   {},
-                                                   m_serviceRoot->networkProxy(),
-                                                   &icon_cache);
+    const QImage icon = FeedParser::fetchFeedIcon(found.m_icons,
+                                                  feed->sourceType(),
+                                                  feed->source(),
+                                                  {},
+                                                  m_serviceRoot->networkProxy(),
+                                                  &icon_cache);
 
     if (!icon.isNull()) {
-      feed->setIcon(icon);
+      feed->setIcon(QPixmap::fromImage(icon));
     }
 
     // The model and deferred deletion of duplicates belong to the GUI thread.

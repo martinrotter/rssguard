@@ -146,7 +146,9 @@ class StandardFeed : public Feed {
                                                            QNetworkProxy::ProxyType::DefaultProxy,
                                                          NetworkFactory::Http2Status http2_status =
                                                            NetworkFactory::Http2Status::DontSet,
-                                                         bool ignore_cookies = false);
+                                                         bool ignore_cookies = false,
+                                                         QList<IconLocation>* icon_candidates = nullptr,
+                                                         int timeout = -1);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);

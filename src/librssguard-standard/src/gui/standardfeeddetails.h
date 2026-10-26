@@ -27,17 +27,6 @@ class StandardFeedDetails : public QWidget {
     void setNetworkDetails(StandardFeedNetworkDetails* network_details);
 
   private slots:
-    void guessIconOnly(StandardFeed::SourceType source_type,
-                       const QString& source,
-                       const QString& post_process_script,
-                       StandardServiceRoot* account,
-                       NetworkFactory::NetworkAuthentication protection,
-                       const QString& username,
-                       const QString& password,
-                       const QList<QPair<QByteArray, QByteArray>>& headers = {},
-                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy,
-                       bool ignore_cookies = false);
-
     void guessFeed(StandardFeed::SourceType source_type,
                    const QString& source,
                    const QString& post_process_script,

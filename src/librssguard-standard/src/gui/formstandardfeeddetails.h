@@ -3,6 +3,9 @@
 #ifndef FORMSSFEEDDETAILS_H
 #define FORMSSFEEDDETAILS_H
 
+#include "src/gui/feediconselection.h"
+#include "src/parsers/feedparser.h"
+
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
 class StandardFeedDetails;
@@ -23,11 +26,14 @@ class FormStandardFeedDetails : public FormFeedDetails {
     void guessFeed();
     void guessIconOnly();
     void onTitleChanged(const QString& title);
+    void invalidateFetchedIcons();
 
     virtual void apply();
 
   private:
     virtual void loadFeedData();
+    FeedIconRequest iconRequest(StandardFeed* feed) const;
+    void initializeIconFetching();
 
   private:
     StandardFeedDetails* m_standardFeedDetails;
@@ -35,6 +41,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
     StandardFeedNetworkDetails* m_networkDetails;
     RootItem* m_parentToSelect;
     QString m_urlToProcess;
+    FeedIconSelection m_iconSelection;
 };
 
 #endif // FORMSSFEEDDETAILS_H
