@@ -168,12 +168,12 @@
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="12"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</source>
-      <translation>Das hier festgelegte Limit teilt der Funktion %1 mit, einige der neu abgerufenen Artikel zu ignorieren. Diese Befehlslogik wird erst NACH den Artikelfiltern ausgeführt, d. h. selbst wenn ein bestimmter Artikel durch Ihre Artikelfilter akzeptiert wurde, kann er durch diese Funktion anschließend ignoriert und nicht zur Datenbank hinzugefügt werden.</translation>
+      <translation>Durch dieses Limit wird die Funktion %1 einige neu abgerufene Artikel ignorieren. Die Befehlslogik wird erst NACH den Artikelfiltern ausgeführt, d. h. selbst wenn ein bestimmter Artikel durch Ihre Artikelfilter akzeptiert wurde, kann er durch diese Funktion anschließend ignoriert und nicht zur Datenbank hinzugefügt werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="18"/>
       <source>All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</source>
-      <translation>Alle überschüssigen Artikel werden von der Anwendung automatisch entfernt, normalerweise nachdem ein bestimmter Feed abgerufen wurde. Die Artikel werden entweder vollständig aus der internen Datenbank gelöscht (einschließlich der Artikel aus dem Papierkorb) oder nur in den Papierkorb verschoben.</translation>
+      <translation>Alle Artikel, die das definierte Limit überschreiten, werden automatisch gelöscht, normalerweise nach dem Abruf eines Feeds. Die Artikel werden entweder vollständig aus der internen Datenbank gelöscht (einschließlich der Artikel aus dem Papierkorb) oder nur in den Papierkorb verschoben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="24"/>
@@ -868,7 +868,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="129"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation>Du kannst zur Zeit keine neuen Artikel herunterladen, weil andere kritische Operationen ausgeführt werden.</translation>
+      <translation>Zur Zeit können keine neuen Artikel heruntergeladen werden, weil andere kritische Operationen ausgeführt werden.</translation>
     </message>
   </context>
   <context>
@@ -1272,7 +1272,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
       <source>Do you really want to clean all articles from selected items?</source>
-      <translation>Möchtest du wirklich alle Artikel der ausgewählten Einträge löschen?</translation>
+      <translation>Sollen wirklich alle Artikel der ausgewählten Einträge gelöscht werden?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="255"/>
@@ -3899,7 +3899,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="532"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>Der Filter wurde nicht gespeichert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="904"/>
@@ -3921,7 +3921,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="232"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot import filters, error: &apos;%1&apos;.</translation>
+      <translation>Kann die Filter nicht importieren, Fehler: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
@@ -3984,7 +3984,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="772"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>Zuordnung des Artikelfilters zum Ordner löschen?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="774"/>
@@ -4007,7 +4007,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="817"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>Wollen Sie fortfahren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="808"/>
@@ -4311,7 +4311,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="56"/>
       <source>Database and/or settings were not copied to restoration directory successfully.</source>
-      <translation type="unfinished">Database and/or settings were not copied to restoration directory successfully.</translation>
+      <translation>Die Datenbank und/oder Einstellungen konnten nicht erfolgreich in das Wiederherstellungsverzeichnis kopiert werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="74"/>
@@ -4510,7 +4510,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="38"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
-      <translation>Du kannst eine Kommandozeile inklusive Interpreter hier eingeben.</translation>
+      <translation>Sie können hier eine Kommandozeile inklusive Interpreter eingeben.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="78"/>
@@ -5002,7 +5002,7 @@ Sie können es jetzt installieren.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="17"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit du deine eigene ID nicht angeben musst, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse diese Felder frei und verwende die Standardwerte für die Weiterleitungs-URL.</translation>
+      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit die eigene ID nicht angegeben werden muss, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse diese Felder frei und verwende die Standardwerte für die Weiterleitungs-URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="24"/>
@@ -5205,7 +5205,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="204"/>
       <source>You are good to go!</source>
-      <translation>Du bist nun startklar!</translation>
+      <translation>Alles startklar!</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="204"/>
@@ -5255,7 +5255,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="59"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave all above fields to their default values even if they are empty.</source>
-      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit du deine eigene ID nicht angeben musst, allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse alle obigen Felder in ihren Standardwerten, selbst wenn sie leer sind.</translation>
+      <translation>Wir haben einige vorkonfigurierte OAuth Token, damit die eigene ID nicht angegeben werden muss; allerdings ist es empfohlen, eine eigene zu erstellen, da unsere Token quotiert sind. Um die vorkonfigurierten Token zu verwenden, lasse alle obigen Felder in ihren Standardwerten, selbst wenn sie leer sind.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="66"/>
@@ -7296,7 +7296,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="55"/>
       <source>You can close this window now. Go back to %1.</source>
-      <translation>Du kannst dieses Fenster nun schließen. Gehe zurück zu %1.</translation>
+      <translation>Sie können dieses Fenster jetzt schließen. Zurück zu %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="337"/>
@@ -7305,17 +7305,17 @@ Ablauf des Login tokens: %2</translation>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="355"/>
       <source>After-login action failed</source>
-      <translation type="unfinished">After-login action failed</translation>
+      <translation>Nach-Login - Aktion fehlgeschlagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
       <source>Unknown error.</source>
-      <translation type="unfinished">Unknown error.</translation>
+      <translation>Unbekannter Fehler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="432"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-      <translation>Kann OAuth-Weiterleitungs-Erkennung nicht starten. Vielleicht hast du nicht die notwendige Berechtigung.</translation>
+      <translation>Kann OAuth-Weiterleitungs-Erkennung nicht starten. Vielleicht fehlt die notwendige Berechtigung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="101"/>
@@ -7328,7 +7328,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
       <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization did not finish correctly. Go back to %1 and try again.</translation>
+      <translation>Die Autorisierung wurde nicht korrekt beendet. Gehen Sie zurück zu %1 und versuchen Sie es erneut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
@@ -7409,7 +7409,7 @@ Feedly ist ein sicherer Ort, wo du privat Themen organisieren und nachforschen k
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="143"/>
       <source>Login progressed or was successful</source>
-      <translation type="unfinished">Login progressed or was successful</translation>
+      <translation>Anmeldung erfolgreich</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="149"/>
@@ -7429,7 +7429,7 @@ Feedly ist ein sicherer Ort, wo du privat Themen organisieren und nachforschen k
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="158"/>
       <source>You were logged out or disconnected</source>
-      <translation type="unfinished">You were logged out or disconnected</translation>
+      <translation>Sie wurden abgemeldet oder getrennt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="161"/>
@@ -7478,7 +7478,7 @@ Liste aller unterstützten Leser:</translation>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login failed</source>
-      <translation>Anmelden fehlgeschlagen</translation>
+      <translation>Anmeldung fehlgeschlagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="695"/>
@@ -7865,7 +7865,7 @@ Stapel: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
-      <translation type="unfinished">Login successful</translation>
+      <translation>Anmeldung erfolgreich</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="76"/>
@@ -8113,7 +8113,7 @@ Stapel: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="65"/>
       <source>Do you really want to empty your recycle bin?</source>
-      <translation>Willst du wirklich deinen Papierkorb leeren?</translation>
+      <translation>Möchten Sie wirklich den Papierkorb leeren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="17"/>
@@ -8414,7 +8414,7 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="827"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
+      <translation>Feeds und Verzeichnisse für Konto &apos;%1&apos; nicht geladen: Fehler %2</translation>
     </message>
   </context>
   <context>
@@ -8422,21 +8422,21 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="28"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</translation>
+      <translation>Beachten Sie, dass &quot;%1&quot; (ohne Anführungszeichen) ein Platzhalter für die URL des ausgewählten Artikels ist.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="32"/>
       <source>Placeholders:
  • %1 - title of the selected article,
  • %2 - body of the selected article.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of the selected article,
- • %2 - body of the selected article.</translation>
+      <translation>Platzhalter:
+ • %1 - Titel des ausgewählten Artikels,
+ • %2 - Inhalt des ausgewählten Artikels.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
       <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>Hier können Sie eine Liste externer Tools zum Öffnen von URLs definieren. Wenn Sie eine Domain (ohne vorangestelltes &quot;www.&quot;) einrichten, wird das Tool direkt zum Öffnen aller angeklickten Links dieser Domain verwendet. Mehrere Domains können durch Komma &apos;,&apos; getrennt werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
@@ -8685,7 +8685,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="156"/>
       <source>You did not execute any connection test yet.</source>
-      <translation type="unfinished">You did not execute any connection test yet.</translation>
+      <translation>Es wurde noch kein Verbindungs-Test ausgeführt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
@@ -8794,7 +8794,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="60"/>
       <source>Note that enabling this might have drastic consequences on performance of the article list with many articles.</source>
-      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of the article list with many articles.</translation>
+      <translation>Die Aktivierung dieser Option kann bei einer Artikelübersicht mit vielen Artikeln erhebliche Auswirkungen auf die Leistung haben kann.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="66"/>
@@ -8980,13 +8980,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="747"/>
       <source>Propagate feed state to parent nodes</source>
-      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+      <translation>Status des Feeds an übergeordnete Knoten weitergeben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="748"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
-      <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
+      <translation>Feed-Auswahl in der Mitte der Feed-Liste halten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
@@ -9130,7 +9130,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="548"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="765"/>
       <source>Keep article selection in the middle of the article list viewport</source>
-      <translation>Artikelauswahl in der Mitte des Artikel-Listenfensters behalten</translation>
+      <translation>Artikel-Auswahl in der Mitte der Liste halten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
@@ -9277,7 +9277,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="56"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-      <translation>Du kannst hier Farben überschreiben, welche von deinem Skin definiert wurden. Manche Farben werden dynamisch überall in der Anwendung verwendet.</translation>
+      <translation>Sie können hier einige von Ihrem Skin definierte Farben überschreiben. Einige Farben werden in der gesamten Anwendung dynamisch verwendet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="328"/>
@@ -9371,7 +9371,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="240"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="471"/>
       <source>Use monochrome icon</source>
-      <translation>Monochrome Symbol verwenden</translation>
+      <translation>Icon einfarbig verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="316"/>
@@ -9455,7 +9455,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="299"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="477"/>
       <source>Use custom-colored icon also as application icon</source>
-      <translation type="unfinished">Use custom-colored icon also as application icon</translation>
+      <translation>Icon mit Benutzer-definierten Farben auch als Anwendungs-Symbol verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="309"/>
@@ -9465,7 +9465,7 @@ Beschreibung: %3</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="481"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="486"/>
       <source>Display count of unread articles</source>
-      <translation type="unfinished">Display count of unread articles</translation>
+      <translation>Anzahl ungelesener Artikel anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="326"/>
@@ -10043,7 +10043,7 @@ Beschreibung: %3</translation>
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation>Wenn Sie viele Feeds von der gleichen Webseite/Host abrufen, dann kann %1 auf grund zu vieler gleichzeitiger Verbindungen (zeitweise) gebannt sein.</translation>
+      <translation>Wenn Sie viele Feeds von der gleichen Webseite/Host abrufen, dann kann %1 auf Grund zu vieler gleichzeitiger Verbindungen (zeitweise) gebannt sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
@@ -10470,7 +10470,7 @@ Diese Einstellung ist hilfreich, wenn das Parsen der XML Rohdaten sehr langsam i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>Falls aktiviert, wird ein erfolgreich heruntergeladener und analysierter Feed als defekt gemeldet. Leere Feeds sind gültig, daher sollten Sie diese Option für Feeds deaktivieren, in denen keine Artikel erwartet werden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -11596,7 +11596,7 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="438"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>Element-Hintergrund drucken</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
