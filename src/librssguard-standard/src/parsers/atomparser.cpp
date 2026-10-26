@@ -26,10 +26,10 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
 
 AtomParser::~AtomParser() {}
 
-QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> AtomParser::discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
@@ -37,7 +37,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
   }
 
   QString my_url = url.toString();
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded ATOM feed links from HTML data.
@@ -68,7 +68,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
       // 1.
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
       continue;
     }
     catch (...) {
@@ -114,7 +114,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
@@ -141,7 +141,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
@@ -168,7 +168,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
@@ -205,7 +205,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (...) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
@@ -247,7 +247,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (...) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
@@ -279,7 +279,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
       try {
         auto guessed_feed = guessFeed(data, res);
 
-        feeds.append(guessed_feed.m_feed);
+        feeds.append(guessed_feed);
       }
       catch (...) {
         qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";

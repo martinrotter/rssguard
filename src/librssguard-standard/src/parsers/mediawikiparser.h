@@ -20,10 +20,10 @@ class MEDIAWIKI_PARSER_DLLSPEC MediaWikiParser : public FeedParser {
                              std::function<QByteArray(const QUrl&)> resource_handler = {},
                              std::function<void()> request_pause = {});
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const override;
+    virtual QList<GuessedFeedWithIcons> discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const override;
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const override;
     virtual void commitCustomDatabaseData() override;
 

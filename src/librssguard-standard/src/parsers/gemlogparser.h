@@ -19,10 +19,10 @@ class GemlogParser : public FeedParser {
     explicit GemlogParser(const QString& data);
     virtual ~GemlogParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const;
+    virtual QList<GuessedFeedWithIcons> discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const;
 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 

@@ -11,9 +11,11 @@
 #include <librssguard/miscellaneous/domdocument.h>
 
 #include <QByteArray>
+#include <QHash>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QPixmap>
 #include <QPointer>
 #include <QString>
 #include <QUrl>
@@ -52,12 +54,12 @@ class FEED_PARSER_DLLSPEC FeedParser {
     explicit FeedParser(QString data, DataType data_type = DataType::Xml);
     virtual ~FeedParser();
 
-    // Returns list of absolute URLs of discovered feeds from provided base URL.
+    // Returns discovered feeds with their icon candidates from the provided base URL.
     // Documents start with the base response (after redirects), followed by any crawled documents.
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents = {}) const;
+    virtual QList<GuessedFeedWithIcons> discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents = {}) const;
 
     // Guesses feed.
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content,
@@ -65,6 +67,13 @@ class FEED_PARSER_DLLSPEC FeedParser {
 
     static QString discoverySourceKey(const QString& source,
                                       StandardFeed::SourceType source_type = StandardFeed::SourceType::Url);
+
+    static QPixmap fetchFeedIcon(const QList<IconLocation>& candidates,
+                                 StandardFeed::SourceType source_type,
+                                 const QString& source,
+                                 const QList<QPair<QByteArray, QByteArray>>& headers,
+                                 const QNetworkProxy& proxy,
+                                 QHash<QByteArray, QPixmap>* cache);
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();

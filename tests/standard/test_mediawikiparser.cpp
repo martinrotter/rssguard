@@ -324,13 +324,16 @@ void TestMediaWikiParser::directApiDiscovery() {
                         "srnamespace=0&srsort=last_edit_desc&srprop=snippet%7Ctimestamp%7Cwordcount&srlimit=5"));
   const QByteArray data(R"({"query":{"search":[]}})");
   MediaWikiParser parser({});
-  const QList<StandardFeed*> feeds = parser.discoverFeeds(nullptr, source, false, {{data, source}});
+  const QList<GuessedFeedWithIcons> feeds = parser.discoverFeeds(nullptr, source, false, {{data, source}});
 
   QCOMPARE(feeds.size(), 1);
-  QCOMPARE(feeds.first()->source(), source.toString(QUrl::FullyEncoded));
-  qDeleteAll(feeds);
+  const QScopedPointer<StandardFeed> feed(feeds.first().m_feed);
+  QCOMPARE(feed->source(), source.toString(QUrl::FullyEncoded));
+  QCOMPARE(feeds.first().m_icons.size(), 1);
+  QCOMPARE(feeds.first().m_icons.first().m_url, source.toString());
+  QVERIFY(!feeds.first().m_icons.first().m_isDirect);
 
-  const QList<StandardFeed*> invalid =
+  const QList<GuessedFeedWithIcons> invalid =
     parser.discoverFeeds(nullptr, source, false, {{QByteArray(R"({"query":{"categorymembers":[]}})"), source}});
   QVERIFY(invalid.isEmpty());
 }

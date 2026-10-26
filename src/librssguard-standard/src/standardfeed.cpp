@@ -509,21 +509,11 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     throw ApplicationException(tr("feed format not recognized"));
   }
 
-  if (source_type == SourceType::Url && icon_possible_locations.isEmpty()) {
-    // We have no source for feed icon, we use the URL of the feed file itself.
-    icon_possible_locations.append({source, false});
-  }
-
   if (fetch_icons) {
-    // Try to obtain icon.
-    QPixmap icon_data;
+    const QPixmap icon_data =
+      FeedParser::fetchFeedIcon(icon_possible_locations, source_type, source, http_headers, custom_proxy, nullptr);
 
-    if (NetworkFactory::downloadIcon(icon_possible_locations,
-                                     DOWNLOAD_TIMEOUT,
-                                     icon_data,
-                                     http_headers,
-                                     custom_proxy) == QNetworkReply::NetworkError::NoError) {
-      // Icon for feed was downloaded and is stored now in icon_data.
+    if (!icon_data.isNull()) {
       feed->setIcon(icon_data);
     }
   }

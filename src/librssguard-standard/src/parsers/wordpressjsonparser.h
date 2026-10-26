@@ -14,10 +14,10 @@ class WordpressJsonParser : public FeedParser {
     explicit WordpressJsonParser(const QString& data, const QUrl& source_url = {});
     virtual ~WordpressJsonParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const;
+    virtual QList<GuessedFeedWithIcons> discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const;
 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 

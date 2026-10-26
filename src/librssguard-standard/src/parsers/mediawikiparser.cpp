@@ -839,12 +839,12 @@ MediaWikiParser::MediaWikiParser(const QString& data,
   }
 }
 
-QList<StandardFeed*> MediaWikiParser::discoverFeeds(ServiceRoot* root,
-                                                    const QUrl& url,
-                                                    bool deep_discovery,
-                                                    const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> MediaWikiParser::discoverFeeds(ServiceRoot* root,
+                                                           const QUrl& url,
+                                                           bool deep_discovery,
+                                                           const QList<DocumentWithUrl>& documents) const {
   Q_UNUSED(deep_discovery)
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
   QSet<QString> seen_sources;
 
   for (const DocumentWithUrl& document : documents) {
@@ -869,7 +869,8 @@ QList<StandardFeed*> MediaWikiParser::discoverFeeds(ServiceRoot* root,
     }
 
     seen_sources.insert(source_key);
-    feeds.append(preparedFeed(candidate->m_source, candidate->m_siteName));
+    feeds.append(GuessedFeedWithIcons{preparedFeed(candidate->m_source, candidate->m_siteName),
+                                      {{document_url.toString(), false}}});
   }
 
   return feeds;

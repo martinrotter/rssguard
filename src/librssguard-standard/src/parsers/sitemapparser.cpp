@@ -24,18 +24,18 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 
 SitemapParser::~SitemapParser() {}
 
-QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
-                                                  const QUrl& url,
-                                                  bool deep_discovery,
-                                                  const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> SitemapParser::discoverFeeds(ServiceRoot* root,
+                                                         const QUrl& url,
+                                                         bool deep_discovery,
+                                                         const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
-  QHash<QString, StandardFeed*> feeds;
+  QHash<QString, GuessedFeedWithIcons> feeds;
   bool base_feed_found = false;
-  auto add_feed = [&feeds](StandardFeed* feed) {
-    const QString key = discoverySourceKey(feed->source(), feed->sourceType());
+  auto add_feed = [&feeds](const GuessedFeedWithIcons& feed) {
+    const QString key = discoverySourceKey(feed.m_feed->source(), feed.m_feed->sourceType());
 
     if (feeds.contains(key)) {
-      delete feed;
+      delete feed.m_feed;
     }
     else {
       feeds.insert(key, feed);
@@ -44,7 +44,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
 
   if (!base_result.isEmpty()) {
     if (deep_discovery) {
-      for (StandardFeed* base_fd : base_result) {
+      for (const GuessedFeedWithIcons& base_fd : std::as_const(base_result)) {
         add_feed(base_fd);
       }
     }
@@ -75,7 +75,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      add_feed(guessed_feed.m_feed);
+      add_feed(guessed_feed);
 
       if (&document == &documents.constFirst()) {
         base_feed_found = true;
@@ -173,7 +173,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
       try {
         auto guessed_feed = guessFeed(data, res);
 
-        add_feed(guessed_feed.m_feed);
+        add_feed(guessed_feed);
 
         if (!deep_discovery) {
           break;

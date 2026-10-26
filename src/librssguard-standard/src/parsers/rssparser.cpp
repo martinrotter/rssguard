@@ -21,10 +21,10 @@ RssParser::RssParser(const QString& data)
 
 RssParser::~RssParser() {}
 
-QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
-                                              const QUrl& url,
-                                              bool deep_discovery,
-                                              const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> RssParser::discoverFeeds(ServiceRoot* root,
+                                                     const QUrl& url,
+                                                     bool deep_discovery,
+                                                     const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
@@ -32,7 +32,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
   }
 
   QString my_url = url.toString();
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
   bool base_feed_found = false;
 
   // 1. Test direct URL for a feed.
@@ -54,7 +54,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
       // 1.
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
 
       if (&document == &documents.constFirst()) {
         base_feed_found = true;
@@ -104,7 +104,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
@@ -138,7 +138,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RSS feed file.";
@@ -165,7 +165,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RSS feed file.";

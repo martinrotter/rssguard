@@ -242,29 +242,27 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
                                                                 const QUrl& url,
                                                                 bool deep_discovery,
                                                                 const QList<DocumentWithUrl>& documents) {
-  auto feeds = parser->discoverFeeds(m_serviceRoot, url, deep_discovery, documents);
-  QPixmap icon;
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  const auto discovered = parser->discoverFeeds(m_serviceRoot, url, deep_discovery, documents);
+  QHash<QByteArray, QPixmap> icon_cache;
+  QList<StandardFeed*> feeds;
+  feeds.reserve(discovered.size());
 
-  QHash<QString, QPixmap> icons_by_host;
+  for (const GuessedFeedWithIcons& found : discovered) {
+    StandardFeed* feed = found.m_feed;
+    const QPixmap icon = FeedParser::fetchFeedIcon(found.m_icons,
+                                                   feed->sourceType(),
+                                                   feed->source(),
+                                                   {},
+                                                   m_serviceRoot->networkProxy(),
+                                                   &icon_cache);
 
-  for (Feed* feed : std::as_const(feeds)) {
-    QString host = QUrl(feed->source()).host();
-
-    if (icons_by_host.contains(host)) {
-      feed->setIcon(icons_by_host.value(host));
-    }
-    else if (NetworkFactory::downloadIcon({{feed->source(), false}},
-                                          timeout,
-                                          icon,
-                                          {},
-                                          m_serviceRoot->networkProxy()) == QNetworkReply::NetworkError::NoError) {
-      icons_by_host.insert(host, icon);
+    if (!icon.isNull()) {
       feed->setIcon(icon);
     }
 
     // The model and deferred deletion of duplicates belong to the GUI thread.
     feed->moveToThread(qApp->thread());
+    feeds.append(feed);
   }
 
   return feeds;

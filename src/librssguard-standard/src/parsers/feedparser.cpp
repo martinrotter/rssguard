@@ -50,10 +50,10 @@ FeedParser::~FeedParser() {}
 
 void FeedParser::commitCustomDatabaseData() {}
 
-QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> FeedParser::discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const {
   Q_UNUSED(root)
   Q_UNUSED(deep_discovery)
 
@@ -64,7 +64,7 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
       local_documents.append({{}, url});
     }
 
-    QList<StandardFeed*> feeds;
+    QList<GuessedFeedWithIcons> feeds;
 
     for (const DocumentWithUrl& document : std::as_const(local_documents)) {
       const QUrl document_url = document.m_documentUrl.isValid() ? document.m_documentUrl : url;
@@ -83,7 +83,7 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
           guessed_feed.m_feed->setSourceType(StandardFeed::SourceType::LocalFile);
           guessed_feed.m_feed->setSource(file_path);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(file_path)
@@ -100,6 +100,52 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
 
 GuessedFeedWithIcons FeedParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   return {};
+}
+
+QPixmap FeedParser::fetchFeedIcon(const QList<IconLocation>& candidates,
+                                  StandardFeed::SourceType source_type,
+                                  const QString& source,
+                                  const QList<QPair<QByteArray, QByteArray>>& headers,
+                                  const QNetworkProxy& proxy,
+                                  QHash<QByteArray, QPixmap>* cache) {
+  QList<IconLocation> locations = candidates;
+
+  if (locations.isEmpty() && source_type == StandardFeed::SourceType::Url && !source.isEmpty()) {
+    locations.append({source, false});
+  }
+
+  if (locations.isEmpty()) {
+    return {};
+  }
+
+  QJsonArray key_parts;
+
+  for (const IconLocation& location : std::as_const(locations)) {
+    key_parts.append(QJsonArray{location.m_isDirect, location.m_url});
+  }
+
+  const QByteArray key = QJsonDocument(key_parts).toJson(QJsonDocument::JsonFormat::Compact);
+
+  if (cache != nullptr) {
+    const auto cached = cache->constFind(key);
+
+    if (cached != cache->cend()) {
+      return cached.value();
+    }
+  }
+
+  QPixmap icon;
+  const auto error = NetworkFactory::downloadIcon(locations, DOWNLOAD_TIMEOUT, icon, headers, proxy);
+
+  if (error != QNetworkReply::NetworkError::NoError || icon.isNull()) {
+    return {};
+  }
+
+  if (cache != nullptr) {
+    cache->insert(key, icon);
+  }
+
+  return icon;
 }
 
 QString FeedParser::discoverySourceKey(const QString& source, StandardFeed::SourceType source_type) {

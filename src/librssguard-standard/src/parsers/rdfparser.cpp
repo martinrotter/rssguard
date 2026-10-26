@@ -20,10 +20,10 @@ RdfParser::RdfParser(const QString& data)
 
 RdfParser::~RdfParser() {}
 
-QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
-                                              const QUrl& url,
-                                              bool deep_discovery,
-                                              const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> RdfParser::discoverFeeds(ServiceRoot* root,
+                                                     const QUrl& url,
+                                                     bool deep_discovery,
+                                                     const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
@@ -34,7 +34,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Rdf).toLocal8Bit()}};
 
   QString my_url = url.toString();
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
   bool base_feed_found = false;
 
   // 1. Test direct URL for a feed.
@@ -53,7 +53,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
       // 1.
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
 
       if (&document == &documents.constFirst()) {
         base_feed_found = true;
@@ -103,7 +103,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
@@ -137,7 +137,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RDF feed file.";
@@ -164,7 +164,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RDF feed file.";

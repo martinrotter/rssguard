@@ -21,7 +21,7 @@ function(add_rssguard_test TEST_TARGET)
       set(TEST_PLATFORM "windows")
     endif()
 
-    if(TEST_TARGET STREQUAL "test_mediawikiparser")
+    if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR TEST_TARGET STREQUAL "test_labelsmenu")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
@@ -164,6 +164,15 @@ if(ENABLE_TESTING)
   target_include_directories(test_mediawikiparser PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard-standard)
   set_target_properties(test_mediawikiparser PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src/librssguard-standard)
+
+  add_rssguard_test(test_feedicons
+    standard/test_feedicons.cpp
+  )
+  target_link_libraries(test_feedicons PRIVATE rssguard-standard)
+  target_include_directories(test_feedicons PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard-standard)
+  set_target_properties(test_feedicons PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/src/librssguard-standard)
+  set_tests_properties(test_feedicons PROPERTIES TIMEOUT 60)
 endif()
 
 if(ENABLE_BENCHMARKS)

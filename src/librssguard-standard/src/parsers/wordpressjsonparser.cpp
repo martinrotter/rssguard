@@ -31,15 +31,15 @@ bool WordpressJsonParser::isWordpressItem(const QJsonObject& item) const {
          item[QSL("content")].isObject();
 }
 
-QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
-                                                        const QUrl& url,
-                                                        bool deep_discovery,
-                                                        const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
+                                                               const QUrl& url,
+                                                               bool deep_discovery,
+                                                               const QList<DocumentWithUrl>& documents) const {
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Json).toLocal8Bit()}};
 
   QString my_url = url.toString();
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
 
   // 1. Test direct JSON parsing endpoint.
   // 2. Test "URL/wp-json/wp/v2/posts" endpoint.
@@ -65,7 +65,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
       return feeds;
     }
     catch (...) {
@@ -94,7 +94,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "was not recognized as a WordPress REST API posts feed.";
@@ -121,7 +121,7 @@ QList<StandardFeed*> WordpressJsonParser::discoverFeeds(ServiceRoot* root,
     try {
       auto guessed_feed = guessFeed(data, res);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "was not recognized as a WordPress REST API pages feed.";

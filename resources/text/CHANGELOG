@@ -16,6 +16,8 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Feed discovery now uses the same icon candidates and fallback as metadata fetching, so feeds hosted by services such as FeedBurner use the publisher's icon. (#2480)
+* Fixed discovery reusing the wrong icon for different feeds hosted on the same domain. Failed or invalid icon downloads are no longer cached. (#2480)
 * Fixed feeds failing to update despite successful metadata retrieval by improving default HTTP `Accept` headers and making discovery requests consistent.
 * Improved feed discovery by skipping guessed endpoints once the supplied URL is recognized as a feed.
 * Improved URL-based deduplication of discovered feeds and fixed a memory leak when discarding duplicates.

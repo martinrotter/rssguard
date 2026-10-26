@@ -22,10 +22,10 @@ JsonParser::JsonParser(const QString& data) : FeedParser(data, DataType::Json) {
 
 JsonParser::~JsonParser() {}
 
-QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root,
-                                               const QUrl& url,
-                                               bool deep_discovery,
-                                               const QList<DocumentWithUrl>& documents) const {
+QList<GuessedFeedWithIcons> JsonParser::discoverFeeds(ServiceRoot* root,
+                                                      const QUrl& url,
+                                                      bool deep_discovery,
+                                                      const QList<DocumentWithUrl>& documents) const {
   auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
@@ -35,7 +35,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root,
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Json).toLocal8Bit()}};
 
-  QList<StandardFeed*> feeds;
+  QList<GuessedFeedWithIcons> feeds;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded JSON feed links from HTML data.
@@ -49,7 +49,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root,
       // 1.
       auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      feeds.append(guessed_feed.m_feed);
+      feeds.append(guessed_feed);
       continue;
     }
     catch (...) {
@@ -94,7 +94,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root,
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.m_feed);
+          feeds.append(guessed_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
