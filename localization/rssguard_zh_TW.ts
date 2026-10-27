@@ -2725,9 +2725,9 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <source>When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
 
 Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</source>
-      <translation type="unfinished">When enabled, selecting an article loads its source webpage in RSS Guard instead of the article contents supplied by the feed. The webpage can contain different text, images, media, or formatting.
+      <translation>若啟用，會在 RSS Guard 載入所選文章的來源網頁，而不是載入文源提供的文章內容。網頁會包括文字、圖像、影音或格式。
 
-Attachments supplied by the feed are separate from the webpage and might not appear in it. Playable attachments remain available from the media player button&apos;s menu when media player support is enabled.</translation>
+文源提供的附件會與網頁分離，可能不會出現於網頁。若有啟用媒體播放器支援，媒體播放器按鈕的功能表會有可播放的附件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="226"/>
@@ -7680,7 +7680,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="595"/>
       <source>Load external images</source>
-      <translation type="unfinished">Load external images</translation>
+      <translation>載入外部圖像</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="596"/>
@@ -7695,7 +7695,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
       <source>Play link in media player</source>
-      <translation type="unfinished">Play link in media player</translation>
+      <translation>於媒體播放器播放連結</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
@@ -7710,7 +7710,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="679"/>
       <source>Printing is finished on printer %1.</source>
-      <translation type="unfinished">Printing is finished on printer %1.</translation>
+      <translation>印表機 %1 的列印結束。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="685"/>
@@ -7720,7 +7720,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="686"/>
       <source>Printing failed.</source>
-      <translation type="unfinished">Printing failed.</translation>
+      <translation>列印失敗。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="445"/>
@@ -7740,12 +7740,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="514"/>
       <source>Plain text files (*.txt)</source>
-      <translation type="unfinished">Plain text files (*.txt)</translation>
+      <translation>純文字檔 (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="523"/>
       <source>Save contents in HTML or TXT format</source>
-      <translation type="unfinished">Save contents in HTML or TXT format</translation>
+      <translation>以 HTML 或 TXT 格式儲存內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="600"/>
