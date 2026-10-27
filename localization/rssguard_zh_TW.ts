@@ -7918,12 +7918,12 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="191"/>
       <source>Cannot parse Nextcloud feeds JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud feeds JSON response: %1</translation>
+      <translation>無法解析 Nextcloud 文源的 JSON 方式回應: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="197"/>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
-      <translation type="unfinished">Nextcloud feeds response does not contain a JSON array of feeds.</translation>
+      <translation>Nextcloud 文源回訊不含文源 JSON 陣列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/commandlinecontroller.cpp" line="86"/>
@@ -8327,7 +8327,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="156"/>
       <source>This is not supported (yet).</source>
-      <translation type="unfinished">This is not supported (yet).</translation>
+      <translation>(尚)未支援此。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="194"/>
@@ -8371,12 +8371,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="716"/>
       <source>unknown synchronization error</source>
-      <translation type="unfinished">unknown synchronization error</translation>
+      <translation>不明的同步錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="738"/>
       <source>no feed tree obtained</source>
-      <translation type="unfinished">no feed tree obtained</translation>
+      <translation>未取得文源樹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="819"/>
