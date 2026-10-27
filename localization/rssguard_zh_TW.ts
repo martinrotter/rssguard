@@ -2787,13 +2787,13 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="256"/>
       <source>Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</source>
-      <translation type="unfinished">Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</translation>
+      <translation>此文源不計入未讀數。未讀數顯示於全局指示器，像系統匣、工作列、應用程式圖示的角標與視窗標題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="121"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="258"/>
       <source>Exclude this feed from global unread counters</source>
-      <translation type="unfinished">Exclude this feed from global unread counters</translation>
+      <translation>此文源不計入全局未讀計數器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="151"/>
@@ -2811,13 +2811,13 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="251"/>
       <source>Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation type="unfinished">Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</translation>
+      <translation>為此文源的文章選擇自動下載的策略。預設的自動下載策略是說，此文源的新文章會依據應用程式設定的時間間隔而下載。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="253"/>
       <source>Open source webpage instead of RSS Guard article preview</source>
-      <translation type="unfinished">Open source webpage instead of RSS Guard article preview</translation>
+      <translation>開啟來源網頁，而不是 RSS Guard 文章預覽</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
@@ -3309,7 +3309,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>Article viewer toolbars</source>
-      <translation type="unfinished">Article viewer toolbars</translation>
+      <translation>文章檢視工具列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
@@ -3381,7 +3381,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1007"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
       <source>Open feed &amp;homepage</source>
-      <translation type="unfinished">Open feed &amp;homepage</translation>
+      <translation>開啟文源首頁(&amp;H)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1010"/>
@@ -3441,7 +3441,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1058"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="901"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>清除網頁快取(&amp;W)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1063"/>
@@ -3453,7 +3453,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1068"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="903"/>
       <source>Toggle ar&amp;ticles read/unread</source>
-      <translation type="unfinished">Toggle ar&amp;ticles read/unread</translation>
+      <translation>切換文章已讀/未讀(&amp;T)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
@@ -3465,25 +3465,25 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>Mark all articles (without article filters) from selected items as read.</source>
-      <translation type="unfinished">Mark all articles (without article filters) from selected items as read.</translation>
+      <translation>所選項目的所有文章(不施加篩選規則)都標示成已讀。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>Mark all articles (without article filters) from selected items as unread.</source>
-      <translation type="unfinished">Mark all articles (without article filters) from selected items as unread.</translation>
+      <translation>所選項目的所有文章(不施加篩選規則)都標示成未讀。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="423"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>Deletes all articles from selected items.</source>
-      <translation type="unfinished">Deletes all articles from selected items.</translation>
+      <translation>刪除所選項目的所有文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="470"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Marks all articles in all items read. This does not take article filters into account.</source>
-      <translation type="unfinished">Marks all articles in all items read. This does not take article filters into account.</translation>
+      <translation>標示所有文章成已讀。不考慮文章篩選規則。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
@@ -3495,7 +3495,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Deletes all articles from all items.</source>
-      <translation type="unfinished">Deletes all articles from all items.</translation>
+      <translation>刪除所有項目的所有文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="659"/>
@@ -3651,7 +3651,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>&amp;Copy article data...</source>
-      <translation type="unfinished">&amp;Copy article data...</translation>
+      <translation>複製文章資料(&amp;C)……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
