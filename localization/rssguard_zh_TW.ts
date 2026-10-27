@@ -2105,17 +2105,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="532"/>
       <source>&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;For newly downloaded articles, both &lt;b&gt;Ignore&lt;/b&gt; and &lt;b&gt;Purge&lt;/b&gt; discard the article. Purge additionally deletes an article which is already stored.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;For newly downloaded articles, both &lt;b&gt;Ignore&lt;/b&gt; and &lt;b&gt;Purge&lt;/b&gt; discard the article. Purge additionally deletes an article which is already stored.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;建立通用的文章篩選規則，而不寫 JavaScript。&lt;/b&gt;為比對符合與不符合的文章選出動作與決定。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;全部條件&lt;/b&gt;要求必須符合每一條件； &lt;b&gt;至少一條件&lt;/b&gt; 符合其中之一。&lt;/li&gt;&lt;li&gt;在套用決定之前，每一比對結果能改變文章屬性或標籤。&lt;/li&gt;&lt;li&gt;新下載的文章，會&lt;b&gt;忽略&lt;/b&gt;與&lt;b&gt;清除&lt;/b&gt; 丟棄文章。清除會額外刪除已經儲存的文章。&lt;/li&gt;&lt;li&gt;產生的即行碼會維持可編輯、可測試，而且可用進階的 JavaScript 功能擴充。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;請參閱 &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; 以得完整的寫即行碼的參考。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="656"/>
       <source>Filter discards every article</source>
-      <translation type="unfinished">Filter discards every article</translation>
+      <translation>篩選規則釘器每一文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="657"/>
       <source>This filter has no result which accepts an article.</source>
-      <translation type="unfinished">This filter has no result which accepts an article.</translation>
+      <translation>此篩選規則沒有接受文章的決定。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="658"/>
