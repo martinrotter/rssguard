@@ -2120,12 +2120,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="658"/>
       <source>During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</source>
-      <translation type="unfinished">During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</translation>
+      <translation>自動抓取文源期間，每篇新下載的文章會因為既忽略又清除而被丟棄。真的要生成這個篩選規則嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="579"/>
       <source>Set article property</source>
-      <translation type="unfinished">Set article property</translation>
+      <translation>設定文章屬性</translation>
     </message>
   </context>
   <context>
@@ -2150,7 +2150,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation type="unfinished">operation was cancelled</translation>
+      <translation>操作被取消</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
@@ -2291,7 +2291,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
       <source>Cannot save folder properties</source>
-      <translation type="unfinished">Cannot save folder properties</translation>
+      <translation>無法儲存資料夾屬性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
@@ -2438,7 +2438,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="105"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>資料庫清理失敗。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="110"/>
@@ -2485,7 +2485,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all important articles</source>
-      <translation type="unfinished">Remove all important articles</translation>
+      <translation>移除所有重要文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -2532,7 +2532,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URLs</source>
-      <translation type="unfinished">URLs</translation>
+      <translation>URLs</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
@@ -2573,7 +2573,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
       <source>Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</source>
-      <translation type="unfinished">Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</translation>
+      <translation>深入發掘 (蒐集所有超連結。若網站較大，會花費一些時間)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="54"/>
@@ -2588,12 +2588,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="115"/>
       <source>Enter feed URLs, one URL per line</source>
-      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+      <translation>輸入文源 URL，一行一個 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="185"/>
       <source>Cancelling...</source>
-      <translation type="unfinished">Cancelling...</translation>
+      <translation>取消中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="207"/>
@@ -2612,12 +2612,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="648"/>
       <source>All URLs are valid.</source>
-      <translation type="unfinished">All URLs are valid.</translation>
+      <translation>所有 URL 皆有效。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="651"/>
       <source>One or more URLs are invalid.</source>
-      <translation type="unfinished">One or more URLs are invalid.</translation>
+      <translation>一或多個 URL無效。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="702"/>
@@ -2718,7 +2718,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="210"/>
       <source>About source webpages</source>
-      <translation type="unfinished">About source webpages</translation>
+      <translation>關於來源網頁</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="211"/>
