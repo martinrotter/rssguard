@@ -85,7 +85,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_logManager.reset(new ApplicationLogManager(this));
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
-  qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
   m_lifecycle.reset(new ApplicationLifecycle(this));
@@ -105,6 +104,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
   m_settings = Settings::setupSettings(m_paths.data(), this);
   m_paths->setSettings(m_settings);
+  updateCliDebugStatus();
 
   TextFactory::initializeSecretEncryptionKey(m_settings->pathName());
 
@@ -236,7 +236,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QTimer::singleShot(30000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   setupWorkHorsePool();
-  updateCliDebugStatus();
 
 #if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   QSslSocket::setActiveBackend(QSL("openssl"));

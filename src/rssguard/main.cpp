@@ -78,6 +78,7 @@ int main(int argc, char* argv[]) {
 #endif
   */
 
+  qInstallMessageHandler(Application::performLogging);
   std::set_terminate(exception_handler);
 
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{if-category}[%{category}] "

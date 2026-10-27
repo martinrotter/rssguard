@@ -2,12 +2,16 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/memorydiagnostics.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <mutex>
 
 #include <QCoreApplication>
+#include <QDir>
 #include <QProcess>
 #include <QRegularExpression>
+#include <QSettings>
+#include <QTemporaryDir>
 #include <QTest>
 
 #if defined(Q_OS_WIN)
@@ -80,9 +84,66 @@ class TestApplicationDiagnostics : public QObject {
     Q_OBJECT
 
   private slots:
+    void startupLogging_data();
+    void startupLogging();
     void fatalMessageHandlerReturns();
     void recordsGuiResourceCountsAndPeaks();
 };
+
+void TestApplicationDiagnostics::startupLogging_data() {
+  QTest::addColumn<QStringList>("options");
+  QTest::addColumn<QVariant>("disable_debug");
+  QTest::addColumn<bool>("verbose");
+
+  QTest::newRow("default") << QStringList() << QVariant() << false;
+  QTest::newRow("saved-disabled") << QStringList() << QVariant(true) << false;
+  QTest::newRow("saved-enabled") << QStringList() << QVariant(false) << true;
+  QTest::newRow("debug-short") << QStringList{QStringLiteral("-g")} << QVariant() << true;
+  QTest::newRow("debug-override") << QStringList{QStringLiteral("--debug")} << QVariant(true) << true;
+  QTest::newRow("memory-diagnostics") << QStringList{QStringLiteral("--memory-diagnostics")} << QVariant(true) << true;
+}
+
+void TestApplicationDiagnostics::startupLogging() {
+  QFETCH(QStringList, options);
+  QFETCH(QVariant, disable_debug);
+  QFETCH(bool, verbose);
+
+  QTemporaryDir directory;
+  QVERIFY(directory.isValid());
+  const QString config_directory = directory.filePath(QSL(APP_CFG_PATH));
+  QVERIFY(QDir().mkpath(config_directory));
+  QSettings settings(QDir(config_directory).filePath(QSL(APP_CFG_FILE)), QSettings::IniFormat);
+  settings.setValue(GROUP(General) + QSL("/") + General::ShowSplashScreen, false);
+  settings.setValue(GROUP(General) + QSL("/") + General::UpdateOnStartup, false);
+  settings.setValue(GROUP(GUI) + QSL("/") + GUI::UseToastNotifications, false);
+  if (disable_debug.isValid()) {
+    settings.setValue(GROUP(General) + QSL("/") + General::DisableDebugOutput, disable_debug);
+  }
+  settings.sync();
+  QCOMPARE(settings.status(), QSettings::NoError);
+
+  QStringList arguments{QStringLiteral("--startup-log-probe"),
+                        QStringLiteral("--data"),
+                        directory.path(),
+                        QStringLiteral("--force-text-browser")};
+  arguments.append(options);
+  QProcess child;
+  child.start(QCoreApplication::applicationFilePath(), arguments);
+  QVERIFY2(child.waitForStarted(), qPrintable(child.errorString()));
+  QVERIFY2(child.waitForFinished(), qPrintable(child.errorString()));
+  const QByteArray output = child.readAllStandardError();
+  QCOMPARE(child.exitStatus(), QProcess::NormalExit);
+  QVERIFY2(child.exitCode() == 0, output.constData());
+  QVERIFY2(!output.contains("bootstrap-debug-probe"), output.constData());
+  QVERIFY2(!output.contains("bootstrap-info-probe"), output.constData());
+  QVERIFY2(!output.contains("Initializing settings in"), output.constData());
+  QVERIFY2(output.contains("bootstrap-warning-probe"), output.constData());
+  QCOMPARE(output.contains("Starting to load active localization."), verbose);
+  QCOMPARE(output.contains("initialized-debug-probe"), verbose);
+  QCOMPARE(output.contains("initialized-info-probe"), verbose);
+  QVERIFY2(output.contains("initialized-warning-probe"), output.constData());
+  QVERIFY2(output.contains("initialized-critical-probe"), output.constData());
+}
 
 void TestApplicationDiagnostics::fatalMessageHandlerReturns() {
   QProcess child;
@@ -135,6 +196,23 @@ void TestApplicationDiagnostics::recordsGuiResourceCountsAndPeaks() {
 }
 
 int main(int argc, char* argv[]) {
+  if (argc > 1 && QByteArray(argv[1]) == "--startup-log-probe") {
+    qInstallMessageHandler(Application::performLogging);
+    qDebug("bootstrap-debug-probe");
+    qInfo("bootstrap-info-probe");
+    qWarning("bootstrap-warning-probe");
+    QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+    QStringList arguments{QString::fromLocal8Bit(argv[0])};
+    for (int i = 2; i < argc; ++i) {
+      arguments.append(QString::fromLocal8Bit(argv[i]));
+    }
+    Application application(QStringLiteral("rssguard-startup-log-test"), argc, argv, arguments);
+    qDebug("initialized-debug-probe");
+    qInfo("initialized-info-probe");
+    qWarning("initialized-warning-probe");
+    qCritical("initialized-critical-probe");
+    return 0;
+  }
   QCoreApplication application(argc, argv);
   if (application.arguments().contains(QStringLiteral("--fatal-handler-probe"))) {
     Application::performLogging(QtFatalMsg, QMessageLogContext(), QStringLiteral("fatal-handler-probe"));

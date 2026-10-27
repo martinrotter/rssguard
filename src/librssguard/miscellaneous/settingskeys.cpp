@@ -501,7 +501,7 @@ DVALUE(char*) GUI::StyleDef = APP_STYLE_DEFAULT;
 DKEY General::ID = QSL("main");
 
 DKEY General::DisableDebugOutput = QSL("disable_debug_output");
-DVALUE(bool) General::DisableDebugOutputDef = false;
+DVALUE(bool) General::DisableDebugOutputDef = true;
 
 DKEY General::UpdateOnStartup = QSL("update_on_start");
 DVALUE(bool) General::UpdateOnStartupDef = false;

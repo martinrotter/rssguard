@@ -22,7 +22,7 @@
 ApplicationLogManager* ApplicationLogManager::s_instance = nullptr;
 
 ApplicationLogManager::ApplicationLogManager(Application* application)
-  : QObject(), m_application(application), m_fileLog(nullptr), m_disableDebug(false), m_logForm(nullptr) {
+  : QObject(), m_application(application), m_fileLog(nullptr), m_disableDebug(true), m_logForm(nullptr) {
   s_instance = this;
 }
 
@@ -101,7 +101,7 @@ void ApplicationLogManager::performLogging(QtMsgType type, const QMessageLogCont
 #ifndef QT_NO_DEBUG_OUTPUT
   ApplicationLogManager* manager = s_instance;
 
-  if (manager != nullptr && manager->m_disableDebug &&
+  if ((manager == nullptr || manager->m_disableDebug) &&
       (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
     return;
   }
