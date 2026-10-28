@@ -38,6 +38,7 @@
 #include <QScopedValueRollback>
 #include <QSignalBlocker>
 #include <QSortFilterProxyModel>
+#include <QTextDocument>
 
 namespace {
 
@@ -66,6 +67,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   });
 
   m_msgProxyModel->setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
+  m_msgProxyModel->setSortRole(MessagesForFiltersModel::SortRole);
   m_msgProxyModel->setSourceModel(m_msgModel);
   m_ui.m_treeExistingMessages->setModel(m_msgProxyModel);
 
@@ -157,13 +159,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           this,
           &FormMessageFiltersManager::displaySelectedMessageDetails);
 
-  m_ui.m_lblRunSummary->hide();
   m_ui.m_cmbResultValues->setEnabled(false);
   connect(m_msgModel, &MessagesForFiltersModel::scriptLogged, m_ui.m_txtErrors, &QTextEdit::append);
-  connect(m_msgModel, &MessagesForFiltersModel::summaryChanged, this, [this](const QString& summary) {
-    m_ui.m_lblRunSummary->setText(summary);
-    m_ui.m_lblRunSummary->setVisible(!summary.isEmpty());
-  });
   connect(m_msgModel, &MessagesForFiltersModel::resultsChanged, this, [this](bool preview) {
     QSignalBlocker blocker(m_ui.m_cmbResultValues);
     m_ui.m_cmbResultValues->setItemText(1, preview ? tr("Expected stored values") : tr("Stored values"));
@@ -594,6 +591,15 @@ void FormMessageFiltersManager::showFilteringResults() {
   }
   else {
     m_ui.m_twMessages->setCurrentIndex(0);
+  }
+
+  const QString summary = m_msgModel->summaryText();
+  if (!summary.isEmpty()) {
+    m_ui.m_txtErrors->setTextColor(m_defaultTextColor);
+    if (!m_ui.m_txtErrors->document()->isEmpty()) {
+      m_ui.m_txtErrors->append(QString());
+    }
+    m_ui.m_txtErrors->append(Qt::convertFromPlainText(summary));
   }
 }
 

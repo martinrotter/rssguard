@@ -13,7 +13,7 @@ Use the dialog to create, enable, order, and assign filters to feeds within an a
 
 The **Existing articles** table separates the **Filter decision** from the **Database outcome**. Accepting an article does not necessarily update its stored row. For example, a filter can return `Accept` after changing only the score, while the database outcome is **Skipped: no update trigger**. Label changes are reported separately because they can be saved without updating the article row.
 
-After testing, use **Show values** to switch between the script result and the expected stored values. Expected stored values include local read/star preservation and retain the stored article when its row would be skipped. Changed values are highlighted, tooltips compare them with the original article, and the detail tabs show metadata and contents. Script output displays `app.log(...)` messages and errors for both Test and Process checked feeds.
+After testing, use **Show values** to switch between the script result and the expected stored values. Expected stored values include local read/star preservation and retain the stored article when its row would be skipped. Changed values are highlighted, tooltips compare them with the original article, and the detail tabs show metadata and contents. The **Output** tab displays `app.log(...)` messages and errors for both Test and Process checked feeds, followed by the run summary.
 
 Processing leaves its per-article results visible and shows a completion summary. An incomplete run retains confirmed results and identifies errors or articles that were not processed. A successful update can also be reported as subsequently removed by feed cleanup. An **Updated** result means the writer successfully performed the update; it does not claim that every stored value changed. Changing the selected feed or starting another run replaces the displayed results.
 
@@ -212,7 +212,7 @@ Here is the complete reference documentation of the functions and properties ava
 
 | Name(Parameters)                              | Return value | Description |
 | :---                                          | :---         | :--- |
-| `log(String message)`                         | `void`       | Prints a message to RSS Guard's log and to the `Script output` box in the dialog. |
+| `log(String message)`                         | `void`       | Prints a message to RSS Guard's log and to the `Output` box in the dialog. |
 | `showNotification(String title, String text)` | `void`       | Displays a desktop notification with the given title and text. |
 
 ### `run`

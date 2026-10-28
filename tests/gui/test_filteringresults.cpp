@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
 #include "services/abstract/labelsnode.h"
 
 #include <memory>
@@ -12,8 +13,10 @@
 #include <QDir>
 #include <QSettings>
 #include <QSignalSpy>
+#include <QSortFilterProxyModel>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTreeView>
 
 namespace {
 
@@ -65,6 +68,8 @@ class TestFilteringResults : public QObject {
     void previewShowsEffectiveValues_data();
     void previewShowsEffectiveValues();
     void enclosureSnapshotsRemainIndependent();
+    void sortingTracksFilteredValues_data();
+    void sortingTracksFilteredValues();
     void repeatedTestsKeepSnapshotsIndependent_data();
     void repeatedTestsKeepSnapshotsIndependent();
     void expectedBodiesKeepFreshValues_data();
@@ -172,6 +177,7 @@ void TestFilteringResults::previewShowsEffectiveValues() {
   const Message original = seedArticle(m_feed, QSL("preview-values"), true);
   MessagesForFiltersModel model(qApp);
   model.setMessages({original});
+  QVERIFY(!model.index(0, MFM_MODEL_DATABASE).data(Qt::BackgroundRole).isValid());
   MessageFilter filter;
   setScript(filter,
             QSL("msg.isRead = true; msg.isImportant = false; msg.score = 17; %1 msg.overwrite = %2;")
@@ -198,11 +204,94 @@ void TestFilteringResults::previewShowsEffectiveValues() {
   QCOMPARE(expected->m_title, title_change ? QSL("Changed title") : original.m_title);
   QVERIFY(!model.data(model.index(0, MFM_MODEL_DATABASE), Qt::DisplayRole).toString().isEmpty());
   QVERIFY(!model.summaryText().isEmpty());
+  QCOMPARE(model.index(0, MFM_MODEL_DATABASE).data(Qt::BackgroundRole).value<QColor>(),
+           qApp->skins()->colorForModel(title_change || overwrite ? SkinEnums::PaletteColors::Allright
+                                                                  : SkinEnums::PaletteColors::FgError).value<QColor>());
   const Message stored = storedArticle(original.m_id);
   QVERIFY(!stored.m_isRead);
   QVERIFY(stored.m_isImportant);
   QCOMPARE(stored.m_score, 0.0);
   QCOMPARE(stored.m_title, original.m_title);
+}
+
+void TestFilteringResults::sortingTracksFilteredValues_data() {
+  QTest::addColumn<int>("column");
+  QTest::addColumn<bool>("descending");
+  for (int column : {MFM_MODEL_ISREAD, MFM_MODEL_ISIMPORTANT, MFM_MODEL_ISDELETED, MFM_MODEL_SCORE}) {
+    for (bool descending : {false, true}) {
+      QTest::newRow(qPrintable(QSL("column%1-descending%2").arg(column).arg(descending))) << column << descending;
+    }
+  }
+}
+
+void TestFilteringResults::sortingTracksFilteredValues() {
+  QFETCH(int, column);
+  QFETCH(bool, descending);
+  QList<Message> messages;
+  const QList<int> scores{2, 10, 1, 3};
+  for (int i = 0; i < scores.size(); ++i) {
+    Message message = seedArticle(m_feed, QSL("sorting-%1").arg(i), i % 2 != 0);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      SqlQuery query(db);
+      query.prepare(QSL("UPDATE Messages SET is_read = :state, is_important = :state, is_deleted = :state, "
+                         "score = :score WHERE id = :id;"));
+      query.bindValue(QSL(":state"), i % 2);
+      query.bindValue(QSL(":score"), scores.at(i));
+      query.bindValue(QSL(":id"), message.m_id);
+      query.exec();
+    });
+    messages.append(storedArticle(message.m_id));
+  }
+
+  MessagesForFiltersModel model(qApp);
+  model.setMessages(messages);
+  QSortFilterProxyModel proxy;
+  proxy.setSortCaseSensitivity(Qt::CaseInsensitive);
+  proxy.setSortRole(MessagesForFiltersModel::SortRole);
+  proxy.setSourceModel(&model);
+  QTreeView view;
+  view.setSortingEnabled(true);
+  view.setModel(&proxy);
+  view.sortByColumn(column, descending ? Qt::DescendingOrder : Qt::AscendingOrder);
+
+  const auto verify_order = [&](bool filtered) {
+    QList<QVariant> expected;
+    if (column == MFM_MODEL_SCORE) {
+      for (double value : filtered ? QList<double>{90, 97, 98, 99} : QList<double>{1, 2, 3, 10}) {
+        expected.append(value);
+      }
+    }
+    else {
+      expected = {false, false, true, true};
+    }
+    for (int row = 0; row < expected.size(); ++row) {
+      const QModelIndex visible = view.model()->index(row, column);
+      const QVariant actual = visible.data(MessagesForFiltersModel::SortRole);
+      QCOMPARE(actual, expected.at(descending ? expected.size() - row - 1 : row));
+      const int source_row = proxy.mapToSource(proxy.index(row, column)).row();
+      if (column != MFM_MODEL_SCORE) {
+        const bool original = source_row % 2 != 0;
+        const bool displayed = filtered ? !original : original;
+        QCOMPARE(actual.toBool(), displayed);
+        QCOMPARE(visible.data(Qt::DisplayRole).toString(), MessagesForFiltersModel::tr(displayed ? "true" : "false"));
+      }
+    }
+  };
+  verify_order(false);
+
+  MessageFilter filter;
+  setScript(filter,
+            QSL("msg.isRead = !msg.isRead; msg.isImportant = !msg.isImportant; "
+                "msg.isDeleted = !msg.isDeleted; msg.score = 100 - msg.score;"));
+  for (int run = 0; run < 2; ++run) {
+    model.testFilter(&filter, m_account.get());
+    QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+    verify_order(true);
+    model.setShowStoredValues(true);
+    verify_order(false);
+    model.setShowStoredValues(false);
+    verify_order(true);
+  }
 }
 
 void TestFilteringResults::enclosureSnapshotsRemainIndependent() {
@@ -416,6 +505,12 @@ void TestFilteringResults::processingRetainsAcceptedIgnoredAndPurgedResults() {
   QCOMPARE(model.resultForRow(rowForId(model, ignored.m_id))->m_decision.value(),
            FilterMessage::FilteringAction::Ignore);
   QVERIFY(model.resultForRow(rowForId(model, purged.m_id))->m_purged);
+  for (const Message& article : {accepted, ignored, purged}) {
+    const auto expected_color = article.m_id == accepted.m_id ? SkinEnums::PaletteColors::Allright
+                                                            : SkinEnums::PaletteColors::FgError;
+    QCOMPARE(model.index(rowForId(model, article.m_id), MFM_MODEL_DATABASE).data(Qt::BackgroundRole).value<QColor>(),
+             qApp->skins()->colorForModel(expected_color).value<QColor>());
+  }
   QCOMPARE(logs.count(), 3);
   QVERIFY(!model.summaryText().isEmpty());
   QVERIFY(storedArticle(accepted.m_id).m_isRead);
@@ -443,6 +538,8 @@ void TestFilteringResults::processingFailureRetainsEarlierFeedResults() {
   QVERIFY(completed->m_saveResult.has_value());
   QCOMPARE(completed->m_saveResult->m_outcome, MessageWriteOutcome::Updated);
   QVERIFY(!model.resultForRow(rowForId(model, second.m_id))->m_error.isEmpty());
+  QCOMPARE(model.index(rowForId(model, second.m_id), MFM_MODEL_DATABASE).data(Qt::BackgroundRole).value<QColor>(),
+           qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>());
   QVERIFY(storedArticle(first.m_id).m_isRead);
   QVERIFY(!storedArticle(second.m_id).m_isRead);
 }
@@ -458,6 +555,8 @@ void TestFilteringResults::labelsOnlyChangesAndNoOpsAreReported() {
   QVERIFY(model.resultForRow(0)->m_saveResult.has_value());
   QCOMPARE(model.resultForRow(0)->m_saveResult->m_decision.m_action, MessageSaveAction::Skip);
   QVERIFY(model.resultForRow(0)->m_saveResult->m_labelsChanged);
+  QCOMPARE(model.index(0, MFM_MODEL_DATABASE).data(Qt::BackgroundRole).value<QColor>(),
+           qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>());
   QList<Message> batch{original};
   batch.first().m_assignedLabels.append(m_label);
   batch.first().m_assignedLabelsByFilter.append(m_label);

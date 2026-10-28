@@ -44,6 +44,10 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     Q_OBJECT
 
   public:
+    enum DataRole {
+      SortRole = Qt::UserRole + 1
+    };
+
     explicit MessagesForFiltersModel(Application* app, QObject* parent = nullptr);
 
     virtual int rowCount(const QModelIndex& parent) const;

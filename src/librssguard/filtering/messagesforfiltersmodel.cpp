@@ -185,6 +185,33 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
         }
       }
 
+      else if (index.column() == MFM_MODEL_DATABASE) {
+        const auto& row = m_messages[index.row()];
+        if (!row.m_error.isEmpty() || row.m_purged || row.m_decision == FilterMessage::FilteringAction::Purge) {
+          return m_colorError;
+        }
+        if (row.m_saveResult) {
+          const auto& saved = *row.m_saveResult;
+          if (!saved.m_error.isEmpty() || saved.m_removedByCleanup) {
+            return m_colorError;
+          }
+          switch (saved.m_outcome) {
+            case MessageWriteOutcome::Inserted:
+            case MessageWriteOutcome::Updated:
+              return m_colorOk;
+            case MessageWriteOutcome::Skipped:
+              return saved.m_labelsChanged ? m_colorOk : m_colorError;
+            case MessageWriteOutcome::Failed:
+              return m_colorError;
+            case MessageWriteOutcome::NotAttempted:
+              break;
+          }
+        }
+        else if (row.m_decision == FilterMessage::FilteringAction::Ignore) {
+          return m_colorError;
+        }
+      }
+
       break;
     }
 
@@ -220,10 +247,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
       break;
     }
 
+    case SortRole:
     case Qt::ItemDataRole::DisplayRole: {
       if (m_showStoredValues && !m_messages[index.row()].m_hasStoredValues && index.column() != MFM_MODEL_RESULT &&
           index.column() != MFM_MODEL_DATABASE && index.column() != MFM_MODEL_TITLE) {
-        return QSL("—");
+        return role == SortRole ? QVariant() : QVariant(QSL("—"));
       }
       switch (index.column()) {
         case MFM_MODEL_RESULT:
@@ -234,13 +262,16 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
           return databaseOutcome(m_messages[index.row()], false);
 
         case MFM_MODEL_ISREAD:
-          return msg->m_isRead ? m_txtTrue : m_txtFalse;
+          return role == SortRole ? QVariant(msg->m_isRead)
+                                  : QVariant(msg->m_isRead ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_ISIMPORTANT:
-          return msg->m_isImportant ? m_txtTrue : m_txtFalse;
+          return role == SortRole ? QVariant(msg->m_isImportant)
+                                  : QVariant(msg->m_isImportant ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_ISDELETED:
-          return msg->m_isDeleted ? m_txtTrue : m_txtFalse;
+          return role == SortRole ? QVariant(msg->m_isDeleted)
+                                  : QVariant(msg->m_isDeleted ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_TITLE:
           return msg->m_title;
