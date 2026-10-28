@@ -5,6 +5,7 @@
 
 #include "core/feedsmodel.h"
 #include "core/message.h"
+#include "database/messageupdateresult.h"
 #include "definitions/typedefs.h"
 #include "exceptions/applicationexception.h"
 #include "services/abstract/rootitem.h"
@@ -199,8 +200,12 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // and from model.
     void completelyRemoveAllData();
 
-    // Returns counts of updated messages <unread, all>.
-    UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool recalculate_counts);
+    // Returns confirmed writes and per-input outcomes, including cleanup. Failures
+    // retain partial results; callers must inspect the report or throwIfFailed().
+    MessageUpdateReport updateMessages(QList<Message>& messages,
+                                       Feed* feed,
+                                       bool recalculate_counts,
+                                       MessageUpdateDetail detail = MessageUpdateDetail::Summary);
 
     // Removes all/read only messages from given underlying feeds.
     void cleanFeeds(const QList<Feed*>& items, bool clean_read_only);

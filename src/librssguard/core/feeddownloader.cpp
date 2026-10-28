@@ -448,6 +448,12 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     tmr.restart();
     auto updated_messages = acc->updateMessages(msgs, feed, update_feed_list);
+    updated_messages.throwIfFailed();
+
+    qDebugNN << LOGSEC_FEEDDOWNLOADER
+             << "Article write outcomes:" << updated_messages.count(MessageWriteOutcome::Inserted) << "inserted,"
+             << updated_messages.count(MessageWriteOutcome::Updated) << "updated,"
+             << updated_messages.count(MessageWriteOutcome::Skipped) << "skipped.";
 
     // Persist progress only after article storage succeeds. All earlier cancellation
     // returns and exceptions discard the callback together with its proposed state.

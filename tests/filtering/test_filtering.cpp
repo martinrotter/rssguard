@@ -328,8 +328,12 @@ void TestFiltering::workflowsShareSavePolicy() {
   filtering->setMessage(nullptr);
 
   // Both callers now enter persistence without workflow-specific overrides.
+  const auto preview = DatabaseQueries::previewMessageUpdates(&m_database, &m_settings, incoming, m_feed);
+  QCOMPARE(preview.size(), 1);
   const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, incoming, m_feed, false, false);
+  QVERIFY2(updated.succeeded(), qPrintable(updated.m_error));
   const bool saved = overwrite || title_changed || (body_changed && !ignore_body);
+  QCOMPARE(preview.first().m_decision.m_action, saved ? MessageSaveAction::Update : MessageSaveAction::Skip);
   QCOMPARE(updated.m_all.size(), saved ? 1 : 0);
   QCOMPARE(incoming.first().m_id, seed.first().m_id);
   const Message stored = storedMessage(seed.first().m_id);
@@ -337,6 +341,10 @@ void TestFiltering::workflowsShareSavePolicy() {
   QCOMPARE(stored.m_score, saved && states_changed ? 17.0 : 0.0);
   QCOMPARE(stored.m_contents, saved && body_changed ? QSL("Replacement body") : original.m_contents);
   QCOMPARE(stored.m_title, saved && title_changed ? QSL("Replacement title") : original.m_title);
+  QCOMPARE(preview.first().m_expectedStored.m_isRead, stored.m_isRead);
+  QCOMPARE(preview.first().m_expectedStored.m_score, stored.m_score);
+  QCOMPARE(preview.first().m_expectedStored.m_contents, stored.m_contents);
+  QCOMPARE(preview.first().m_expectedStored.m_title, stored.m_title);
   QCOMPARE(updated.m_unread.size(), saved && !stored.m_isRead ? 1 : 0);
 }
 

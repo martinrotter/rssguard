@@ -272,6 +272,9 @@
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
               <widget class="QPushButton" name="m_btnTest">
+               <property name="toolTip">
+                <string>Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</string>
+               </property>
                <property name="text">
                 <string>&amp;Test</string>
                </property>
@@ -279,6 +282,9 @@
              </item>
              <item>
               <widget class="QPushButton" name="m_btnRunOnMessages">
+               <property name="toolTip">
+                <string>Run the selected filter on undeleted articles in checked feeds and show actual saving results.</string>
+               </property>
                <property name="text">
                 <string>Process checked feeds</string>
                </property>
@@ -344,6 +350,22 @@
         <number>6</number>
        </property>
        <item>
+        <widget class="QLabel" name="m_lblRunSummary">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::TextFormat::PlainText</enum>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextInteractionFlag::TextSelectableByMouse</set>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QTabWidget" name="m_twMessages">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -371,6 +393,47 @@
            <property name="bottomMargin">
             <number>6</number>
            </property>
+           <item>
+            <layout class="QHBoxLayout" name="m_resultValuesLayout">
+             <item>
+              <widget class="QLabel" name="m_lblResultValues">
+               <property name="text">
+                <string>Show values</string>
+               </property>
+               <property name="buddy">
+                <cstring>m_cmbResultValues</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="m_cmbResultValues">
+               <property name="toolTip">
+                <string>Compare the script result with the values expected to be saved under the current settings. A preview does not simulate script side effects or later feed cleanup.</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Script result</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Expected stored values</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <spacer name="m_resultValuesSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size><width>40</width><height>20</height></size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
            <item>
             <widget class="QTreeView" name="m_treeExistingMessages">
              <property name="sizePolicy">

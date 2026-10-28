@@ -37,8 +37,7 @@ MessagesModel::MessagesModel(QObject* parent)
   : QAbstractTableModel(parent), m_canFetchMoreArticles(false), m_view(nullptr),
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
     m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
-    m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
-    m_additionalArticleId(0), m_lazyLoading(false),
+    m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot), m_additionalArticleId(0), m_lazyLoading(false),
     m_showFeedIconInFeedColumn(qApp->settings()
                                  ->value(GROUP(Messages), SETTING(Messages::ShowFeedIconInFeedColumn))
                                  .toBool()) {
@@ -1119,7 +1118,8 @@ void MessagesModel::updateSourceArticle(const Message& msg) {
   QList<Message> msgs = {msg};
 
   try {
-    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feedById(msg.m_feedId), true, false);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feedById(msg.m_feedId), true, false)
+      .throwIfFailed();
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Failed to update source article:" << QUOTE_W_SPACE_DOT(ex.message());

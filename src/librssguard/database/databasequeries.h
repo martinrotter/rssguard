@@ -4,6 +4,7 @@
 #define DATABASEQUERIES_H
 
 #include "database/databasefactory.h"
+#include "database/messageupdateresult.h"
 #include "definitions/typedefs.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
@@ -162,14 +163,23 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
+    // Read-only prediction of the same matching and saving rules used below.
+    static QList<MessageSavePreview> previewMessageUpdates(DatabaseFactory* db_factory,
+                                                           Settings* settings,
+                                                           const QList<Message>& messages,
+                                                           Feed* feed);
+
     // force_update is for explicit source-article updates and retains state preservation.
     // Article filters use Message::m_overwrite to additionally replace read/star states.
-    static UpdatedArticles updateMessages(DatabaseFactory* db_factory,
-                                          Settings* settings,
-                                          QList<Message>& messages,
-                                          Feed* feed,
-                                          bool force_update,
-                                          bool force_insert);
+    // Returns confirmed progress even after failure. Call throwIfFailed() when
+    // callers require the previous exception-propagating behavior.
+    static MessageUpdateReport updateMessages(DatabaseFactory* db_factory,
+                                              Settings* settings,
+                                              QList<Message>& messages,
+                                              Feed* feed,
+                                              bool force_update,
+                                              bool force_insert,
+                                              MessageUpdateDetail detail = MessageUpdateDetail::Summary);
 
     // Delete account.
     static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
@@ -241,8 +251,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void markMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, RootItem::ReadStatus read);
     static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);
     static void cleanMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, bool clean_read_only);
-
-    static QString unnulifyString(const QString& str);
 
     explicit DatabaseQueries() = default;
 };

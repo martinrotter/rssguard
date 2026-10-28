@@ -12,6 +12,7 @@
 #include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
+#include "services/abstract/labelsnode.h"
 
 #include <QDateTime>
 #include <QSet>
@@ -879,419 +880,673 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-struct UpdateMessageInfo {
-    Message m_newMessage;
-    bool m_existingMessageImportant;
-};
+namespace {
 
-struct ExistingMessageInfo {
-    int m_id;
-    qint64 m_created;
-    bool m_isRead;
-    bool m_isImportant;
-    QString m_contents;
-    int m_feedId;
-    QString m_title;
-    QString m_author;
-    bool m_isPdeleted;
-};
-
-UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
-                                                Settings* settings,
-                                                QList<Message>& messages,
-                                                Feed* feed,
-                                                bool force_update,
-                                                bool force_insert) {
-  if (messages.isEmpty()) {
-    return {};
+  QString unnulifyString(const QString& str) {
+    return str.isNull() ? QSL("") : str;
   }
 
-  UpdatedArticles updated_messages;
-  int account_id = feed->account()->accountId();
-  auto feed_id = feed->id();
-  QVector<Message*> msgs_to_insert;
-  QVector<UpdateMessageInfo> msgs_to_update;
-  QSet<int> skipped_message_ids;
+  struct ExistingMessageInfo {
+      int m_id;
+      qint64 m_created;
+      bool m_isRead;
+      bool m_isImportant;
+      QString m_contents;
+      int m_feedId;
+      QString m_title;
+      QString m_author;
+      bool m_isPdeleted;
+  };
 
-  msgs_to_insert.reserve(messages.size());
-  msgs_to_update.reserve(messages.size());
+  struct MessageSavePolicy {
+      bool m_syncable;
+      bool m_ignoreContentsChanges;
+      bool m_markUnreadOnUpdated;
+      bool m_forceUpdate;
+      int m_feedId;
+  };
 
-  if (!force_insert) {
-    const bool is_syncable = feed->account()->isSyncable();
-    const bool ignore_contents_changes =
-      settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool();
-    const bool mark_unread_on_updated =
-      settings->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool();
+  MessageSavePolicy messageSavePolicy(Settings* settings, Feed* feed, bool force_update) {
+    return {feed->account()->isSyncable(),
+            settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool(),
+            settings->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool(),
+            force_update,
+            feed->id()};
+  }
 
-    db_factory->worker()->read([&](const QSqlDatabase& db) {
-      constexpr int lookup_batch_size = 200;
-      QVector<int> direct_id_indices;
-      QVector<int> custom_id_indices;
-      QVector<int> anonymous_indices;
+  QHash<int, ExistingMessageInfo> findExistingMessages(const QSqlDatabase& db,
+                                                       const QList<Message>& messages,
+                                                       Feed* feed,
+                                                       const MessageSavePolicy& policy) {
+    const bool is_syncable = policy.m_syncable;
+    const bool ignore_contents_changes = policy.m_ignoreContentsChanges;
+    const int account_id = feed->account()->accountId();
+    const int feed_id = feed->id();
+    constexpr int lookup_batch_size = 200;
+    QVector<int> direct_id_indices;
+    QVector<int> custom_id_indices;
+    QVector<int> anonymous_indices;
 
-      direct_id_indices.reserve(messages.size());
-      custom_id_indices.reserve(messages.size());
-      anonymous_indices.reserve(messages.size());
+    direct_id_indices.reserve(messages.size());
+    custom_id_indices.reserve(messages.size());
+    anonymous_indices.reserve(messages.size());
 
-      for (int i = 0; i < messages.size(); ++i) {
-        const Message& message = messages.at(i);
+    for (int i = 0; i < messages.size(); ++i) {
+      const Message& message = messages.at(i);
 
-        if (message.m_id > 0) {
-          direct_id_indices.append(i);
-        }
-        else if (!message.m_customId.isEmpty()) {
-          custom_id_indices.append(i);
-        }
-        else {
-          anonymous_indices.append(i);
-        }
+      if (message.m_id > 0) {
+        direct_id_indices.append(i);
       }
+      else if (!message.m_customId.isEmpty()) {
+        custom_id_indices.append(i);
+      }
+      else {
+        anonymous_indices.append(i);
+      }
+    }
 
-      QHash<int, ExistingMessageInfo> existing_messages;
-      existing_messages.reserve(messages.size());
+    QHash<int, ExistingMessageInfo> existing_messages;
+    existing_messages.reserve(messages.size());
 
-      const QString contents_column = ignore_contents_changes ? QSL("NULL") : QSL("Messages.contents");
-      const auto lookup_query = [&contents_column](const QStringList& requested_rows, const QString& join_condition) {
-        return QSL("SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, "
-                   "Messages.is_important, %1, Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted "
-                   "FROM (%2) AS requested "
-                   "JOIN Messages ON Messages.id = ("
-                   "  SELECT candidate.id FROM Messages AS candidate WHERE %3 LIMIT 1"
-                   ") "
-                   "ORDER BY requested.message_index;")
-          .arg(contents_column, requested_rows.join(QSL(" UNION ALL ")), join_condition);
-      };
+    const QString contents_column = ignore_contents_changes ? QSL("NULL") : QSL("Messages.contents");
+    const auto lookup_query = [&contents_column](const QStringList& requested_rows, const QString& join_condition) {
+      return QSL("SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, "
+                 "Messages.is_important, %1, Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted "
+                 "FROM (%2) AS requested "
+                 "JOIN Messages ON Messages.id = ("
+                 "  SELECT candidate.id FROM Messages AS candidate WHERE %3 LIMIT 1"
+                 ") "
+                 "ORDER BY requested.message_index;")
+        .arg(contents_column, requested_rows.join(QSL(" UNION ALL ")), join_condition);
+    };
 
-      const auto execute_lookup = [&existing_messages](SqlQuery& query, const QString& lookup_description) {
-        if (!query.exec(false)) {
-          const QSqlError lookup_error = query.lastError();
-
-          if (lookup_error.isValid()) {
-            qWarningNN << LOGSEC_DB << "Failed to batch-check existing articles by" << lookup_description << ":"
-                       << QUOTE_W_SPACE_DOT(lookup_error.text());
-          }
-
-          query.finish();
-
-          if (lookup_error.isValid()) {
-            THROW_EX(SqlException, lookup_error);
-          }
-
-          return;
-        }
-
-        while (query.next()) {
-          const int message_index = query.value(0).toInt();
-
-          // Match the first database row, like the original individual SELECT queries did.
-          if (existing_messages.contains(message_index)) {
-            continue;
-          }
-
-          ExistingMessageInfo existing_message;
-
-          existing_message.m_id = query.value(1).toInt();
-          existing_message.m_created = query.value(2).value<qint64>();
-          existing_message.m_isRead = query.value(3).toBool();
-          existing_message.m_isImportant = query.value(4).toBool();
-          existing_message.m_contents = query.value(5).toString();
-          existing_message.m_feedId = query.value(6).toInt();
-          existing_message.m_title = query.value(7).toString();
-          existing_message.m_author = query.value(8).toString();
-          existing_message.m_isPdeleted = query.value(9).toBool();
-
-          existing_messages.insert(message_index, existing_message);
-        }
-
+    const auto execute_lookup = [&existing_messages](SqlQuery& query, const QString& lookup_description) {
+      if (!query.exec(false)) {
         const QSqlError lookup_error = query.lastError();
+
+        if (lookup_error.isValid()) {
+          qWarningNN << LOGSEC_DB << "Failed to batch-check existing articles by" << lookup_description << ":"
+                     << QUOTE_W_SPACE_DOT(lookup_error.text());
+        }
 
         query.finish();
 
         if (lookup_error.isValid()) {
-          qWarningNN << LOGSEC_DB << "Failed while retrieving existing articles by" << lookup_description << ":"
-                     << QUOTE_W_SPACE_DOT(lookup_error.text());
           THROW_EX(SqlException, lookup_error);
         }
-      };
 
-      for (int batch_start = 0; batch_start < direct_id_indices.size(); batch_start += lookup_batch_size) {
-        const int batch_end = std::min(batch_start + lookup_batch_size, int(direct_id_indices.size()));
-        QStringList requested_rows;
-
-        requested_rows.reserve(batch_end - batch_start);
-
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
-
-          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
-                                    ":lookup_id_%1 AS lookup_id")
-                                  .arg(placeholder));
-        }
-
-        SqlQuery query(db);
-        query.prepare(lookup_query(requested_rows, QSL("candidate.id = requested.lookup_id")));
-
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
-          const int message_index = direct_id_indices.at(i);
-
-          query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
-          query.bindValue(QSL(":lookup_id_%1").arg(placeholder), messages.at(message_index).m_id);
-        }
-
-        execute_lookup(query, QSL("primary ID"));
+        return;
       }
 
-      for (int batch_start = 0; batch_start < custom_id_indices.size(); batch_start += lookup_batch_size) {
-        const int batch_end = std::min(batch_start + lookup_batch_size, int(custom_id_indices.size()));
-        QStringList requested_rows;
+      while (query.next()) {
+        const int message_index = query.value(0).toInt();
 
-        requested_rows.reserve(batch_end - batch_start);
-
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
-
-          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
-                                    ":custom_id_%1 AS custom_id")
-                                  .arg(placeholder));
+        // Match the first database row, like the original individual SELECT queries did.
+        if (existing_messages.contains(message_index)) {
+          continue;
         }
 
-        const QString scope_condition =
-          is_syncable ? QSL("candidate.account_id = :scope_id") : QSL("candidate.feed = :scope_id");
-        SqlQuery query(db);
+        ExistingMessageInfo existing_message;
 
-        query.prepare(lookup_query(requested_rows,
-                                   QSL("candidate.custom_id = requested.custom_id AND %1").arg(scope_condition)));
-        query.bindValue(QSL(":scope_id"), is_syncable ? account_id : feed_id);
+        existing_message.m_id = query.value(1).toInt();
+        existing_message.m_created = query.value(2).value<qint64>();
+        existing_message.m_isRead = query.value(3).toBool();
+        existing_message.m_isImportant = query.value(4).toBool();
+        existing_message.m_contents = query.value(5).toString();
+        existing_message.m_feedId = query.value(6).toInt();
+        existing_message.m_title = query.value(7).toString();
+        existing_message.m_author = query.value(8).toString();
+        existing_message.m_isPdeleted = query.value(9).toBool();
 
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
-          const int message_index = custom_id_indices.at(i);
-
-          query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
-          query.bindValue(QSL(":custom_id_%1").arg(placeholder), unnulifyString(messages.at(message_index).m_customId));
-        }
-
-        execute_lookup(query, is_syncable ? QSL("account-wide custom ID") : QSL("feed-specific custom ID"));
+        existing_messages.insert(message_index, existing_message);
       }
 
-      for (int batch_start = 0; batch_start < anonymous_indices.size(); batch_start += lookup_batch_size) {
-        const int batch_end = std::min(batch_start + lookup_batch_size, int(anonymous_indices.size()));
-        QStringList requested_rows;
+      const QSqlError lookup_error = query.lastError();
 
-        requested_rows.reserve(batch_end - batch_start);
+      query.finish();
 
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
+      if (lookup_error.isValid()) {
+        qWarningNN << LOGSEC_DB << "Failed while retrieving existing articles by" << lookup_description << ":"
+                   << QUOTE_W_SPACE_DOT(lookup_error.text());
+        THROW_EX(SqlException, lookup_error);
+      }
+    };
 
-          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
-                                    ":title_%1 AS title, :url_%1 AS url, :author_%1 AS author")
-                                  .arg(placeholder));
-        }
+    for (int batch_start = 0; batch_start < direct_id_indices.size(); batch_start += lookup_batch_size) {
+      const int batch_end = std::min(batch_start + lookup_batch_size, int(direct_id_indices.size()));
+      QStringList requested_rows;
 
-        SqlQuery query(db);
+      requested_rows.reserve(batch_end - batch_start);
 
-        query.prepare(lookup_query(requested_rows,
-                                   QSL("candidate.feed = :feed AND candidate.title = requested.title AND "
-                                       "candidate.url = requested.url AND candidate.author = requested.author")));
-        query.bindValue(QSL(":feed"), feed_id);
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
 
-        for (int i = batch_start; i < batch_end; ++i) {
-          const int placeholder = i - batch_start;
-          const int message_index = anonymous_indices.at(i);
-          const Message& message = messages.at(message_index);
-
-          query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
-          query.bindValue(QSL(":title_%1").arg(placeholder), unnulifyString(message.m_title));
-          query.bindValue(QSL(":url_%1").arg(placeholder), unnulifyString(message.m_url));
-          query.bindValue(QSL(":author_%1").arg(placeholder), unnulifyString(message.m_author));
-        }
-
-        execute_lookup(query, QSL("feed, title, URL and author"));
+        requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                  ":lookup_id_%1 AS lookup_id")
+                                .arg(placeholder));
       }
 
-      qDebugNN << LOGSEC_DB << "Batch article lookup matched" << NONQUOTE_W_SPACE(existing_messages.size()) << "of"
-               << NONQUOTE_W_SPACE(messages.size()) << "incoming articles.";
+      SqlQuery query(db);
+      query.prepare(lookup_query(requested_rows, QSL("candidate.id = requested.lookup_id")));
 
-      for (int i = 0; i < messages.size(); ++i) {
-        Message& message = messages[i];
-        const auto existing_message = existing_messages.constFind(i);
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
+        const int message_index = direct_id_indices.at(i);
 
-        // Now, check if this message is already in the DB.
-        if (existing_message != existing_messages.constEnd()) {
-          message.m_id = existing_message->m_id;
-
-          // Permanent deletion is authoritative for every account. Keep matching
-          // these records so they cannot be mistaken for new articles and reinserted.
-          if (existing_message->m_isPdeleted) {
-            skipped_message_ids.insert(message.m_id);
-            continue;
-          }
-
-          // Message is already in the DB.
-          //
-          // Now, we update it if at least one of next conditions is true:
-          //   1) FOR SYNCHRONIZED SERVICES:
-          //        Message has custom ID AND (its date OR read status OR starred status are changed
-          //        or message was moved from other feed to current feed - this can particularly happen in Gmail feeds).
-          //
-          //   2) FOR NON-SYNCHRONIZED SERVICES (RSS/ATOM/JSON):
-          //        Message has custom ID/GUID and its title or author or contents are changed.
-          //
-          //   3) FOR ALL SERVICES:
-          //        Message has its date fetched from feed AND its date is different
-          //        from date in DB or content is changed. Date/time is considered different
-          //        when the difference is larger than MSG_DATETIME_DIFF_THRESSHOLD
-          //
-          //   4) FOR ALL SERVICES:
-          //        An operation forces an update (for example full-content extraction),
-          //        or a filter explicitly requests a full overwrite with msg.overwrite.
-          bool cond_1 = !message.m_customId.isEmpty() && is_syncable &&
-                        (message.m_created.toMSecsSinceEpoch() != existing_message->m_created ||
-                         message.m_isRead != existing_message->m_isRead ||
-                         message.m_isImportant != existing_message->m_isImportant ||
-                         (message.m_feedId != existing_message->m_feedId && message.m_feedId == feed_id) ||
-                         message.m_title != existing_message->m_title ||
-                         (!ignore_contents_changes && message.m_contents != existing_message->m_contents));
-          bool cond_2 =
-            !message.m_customId.isEmpty() && !is_syncable &&
-            (message.m_title != existing_message->m_title || message.m_author != existing_message->m_author ||
-             (!ignore_contents_changes && message.m_contents != existing_message->m_contents));
-          bool cond_3 = (message.m_createdFromFeed &&
-                         std::abs(message.m_created.toMSecsSinceEpoch() - existing_message->m_created) >
-                           MSG_DATETIME_DIFF_THRESSHOLD) ||
-                        (!ignore_contents_changes && message.m_contents != existing_message->m_contents);
-
-          if (cond_1 || cond_2 || cond_3 || force_update || message.m_overwrite) {
-            if (!message.m_overwrite && !is_syncable && !mark_unread_on_updated) {
-              // Fetching and manual filtering share local read-state preservation.
-              // Only an explicit overwrite bypasses it.
-              message.m_isRead = existing_message->m_isRead;
-            }
-
-            // Message exists and is changed, update it.
-            UpdateMessageInfo x;
-
-            x.m_existingMessageImportant = existing_message->m_isImportant;
-            x.m_newMessage = message;
-
-            msgs_to_update.append(x);
-          }
-        }
-        else {
-          msgs_to_insert.append(&message);
-        }
+        query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
+        query.bindValue(QSL(":lookup_id_%1").arg(placeholder), messages.at(message_index).m_id);
       }
-    });
+
+      execute_lookup(query, QSL("primary ID"));
+    }
+
+    for (int batch_start = 0; batch_start < custom_id_indices.size(); batch_start += lookup_batch_size) {
+      const int batch_end = std::min(batch_start + lookup_batch_size, int(custom_id_indices.size()));
+      QStringList requested_rows;
+
+      requested_rows.reserve(batch_end - batch_start);
+
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
+
+        requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                  ":custom_id_%1 AS custom_id")
+                                .arg(placeholder));
+      }
+
+      const QString scope_condition =
+        is_syncable ? QSL("candidate.account_id = :scope_id") : QSL("candidate.feed = :scope_id");
+      SqlQuery query(db);
+
+      query.prepare(lookup_query(requested_rows,
+                                 QSL("candidate.custom_id = requested.custom_id AND %1").arg(scope_condition)));
+      query.bindValue(QSL(":scope_id"), is_syncable ? account_id : feed_id);
+
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
+        const int message_index = custom_id_indices.at(i);
+
+        query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
+        query.bindValue(QSL(":custom_id_%1").arg(placeholder), unnulifyString(messages.at(message_index).m_customId));
+      }
+
+      execute_lookup(query, is_syncable ? QSL("account-wide custom ID") : QSL("feed-specific custom ID"));
+    }
+
+    for (int batch_start = 0; batch_start < anonymous_indices.size(); batch_start += lookup_batch_size) {
+      const int batch_end = std::min(batch_start + lookup_batch_size, int(anonymous_indices.size()));
+      QStringList requested_rows;
+
+      requested_rows.reserve(batch_end - batch_start);
+
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
+
+        requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                  ":title_%1 AS title, :url_%1 AS url, :author_%1 AS author")
+                                .arg(placeholder));
+      }
+
+      SqlQuery query(db);
+
+      query.prepare(lookup_query(requested_rows,
+                                 QSL("candidate.feed = :feed AND candidate.title = requested.title AND "
+                                     "candidate.url = requested.url AND candidate.author = requested.author")));
+      query.bindValue(QSL(":feed"), feed_id);
+
+      for (int i = batch_start; i < batch_end; ++i) {
+        const int placeholder = i - batch_start;
+        const int message_index = anonymous_indices.at(i);
+        const Message& message = messages.at(message_index);
+
+        query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
+        query.bindValue(QSL(":title_%1").arg(placeholder), unnulifyString(message.m_title));
+        query.bindValue(QSL(":url_%1").arg(placeholder), unnulifyString(message.m_url));
+        query.bindValue(QSL(":author_%1").arg(placeholder), unnulifyString(message.m_author));
+      }
+
+      execute_lookup(query, QSL("feed, title, URL and author"));
+    }
+
+    qDebugNN << LOGSEC_DB << "Batch article lookup matched" << NONQUOTE_W_SPACE(existing_messages.size()) << "of"
+             << NONQUOTE_W_SPACE(messages.size()) << "incoming articles.";
+    return existing_messages;
   }
-  else {
-    // We insert everything no matter what.
-    for (Message& message : messages) {
-      msgs_to_insert.append(&message);
+
+  MessageSaveDecision decideMessageSave(const Message& incoming,
+                                        const ExistingMessageInfo* stored,
+                                        const MessageSavePolicy& policy) {
+    if (stored == nullptr) {
+      return incoming.m_title.isEmpty()
+               ? MessageSaveDecision{MessageSaveAction::Skip, MessageSaveReason::InvalidArticle}
+               : MessageSaveDecision{MessageSaveAction::Insert, MessageSaveReason::NewArticle};
+    }
+    if (stored->m_isPdeleted) {
+      return {MessageSaveAction::Skip, MessageSaveReason::PermanentlyDeleted};
+    }
+
+    // These are the existing update conditions, shared by preview and persistence.
+    const bool body_changed = !policy.m_ignoreContentsChanges && incoming.m_contents != stored->m_contents;
+    const bool synchronized_update =
+      !incoming.m_customId.isEmpty() && policy.m_syncable &&
+      (incoming.m_created.toMSecsSinceEpoch() != stored->m_created || incoming.m_isRead != stored->m_isRead ||
+       incoming.m_isImportant != stored->m_isImportant ||
+       (incoming.m_feedId != stored->m_feedId && incoming.m_feedId == policy.m_feedId) ||
+       incoming.m_title != stored->m_title || body_changed);
+    const bool local_content_update =
+      !incoming.m_customId.isEmpty() && !policy.m_syncable &&
+      (incoming.m_title != stored->m_title || incoming.m_author != stored->m_author || body_changed);
+    const bool date_or_body_update =
+      (incoming.m_createdFromFeed &&
+       std::abs(incoming.m_created.toMSecsSinceEpoch() - stored->m_created) > MSG_DATETIME_DIFF_THRESSHOLD) ||
+      body_changed;
+
+    if (!synchronized_update && !local_content_update && !date_or_body_update && !policy.m_forceUpdate &&
+        !incoming.m_overwrite) {
+      return {MessageSaveAction::Skip, MessageSaveReason::NoUpdateTrigger};
+    }
+
+    MessageSaveDecision result{MessageSaveAction::Update,
+                               incoming.m_overwrite   ? MessageSaveReason::ExplicitOverwrite
+                               : policy.m_forceUpdate ? MessageSaveReason::ForcedUpdate
+                                                      : MessageSaveReason::OrdinaryUpdate};
+    result.m_preserveReadState = !incoming.m_overwrite && !policy.m_syncable && !policy.m_markUnreadOnUpdated;
+    result.m_preserveImportantState = !incoming.m_overwrite && !policy.m_syncable && !incoming.m_isImportant;
+    return result;
+  }
+
+  Message prepareMessageForUpdate(const Message& incoming,
+                                  const ExistingMessageInfo& stored,
+                                  const MessageSaveDecision& decision) {
+    Message result(incoming);
+    result.m_id = stored.m_id;
+    if (decision.m_preserveReadState) {
+      result.m_isRead = stored.m_isRead;
+    }
+    if (decision.m_preserveImportantState) {
+      result.m_isImportant = stored.m_isImportant;
+    }
+    return result;
+  }
+
+  QStringList messageIds(const QList<Message>& messages) {
+    QSet<int> unique;
+    QStringList ids;
+    for (const auto& message : messages) {
+      if (message.m_id > 0 && !unique.contains(message.m_id)) {
+        unique.insert(message.m_id);
+        ids.append(QString::number(message.m_id));
+      }
+    }
+    return ids;
+  }
+
+  QHash<int, QSet<int>> readMessageLabels(const QSqlDatabase& db, const QStringList& ids) {
+    QHash<int, QSet<int>> result;
+    constexpr int batch_size = 500;
+    for (int offset = 0; offset < ids.size(); offset += batch_size) {
+      SqlQuery query(db);
+      query.exec(QSL("SELECT message, label FROM LabelsInMessages WHERE message IN (%1);")
+                   .arg(ids.mid(offset, batch_size).join(QSL(","))));
+      while (query.next()) {
+        result[query.value(0).toInt()].insert(query.value(1).toInt());
+      }
+    }
+    return result;
+  }
+
+  QSet<int> projectedMessageLabels(QSet<int> stored, const Message& incoming, bool online_labels) {
+    if (online_labels) {
+      stored.clear();
+      for (Label* label : incoming.m_assignedLabels) {
+        stored.insert(label->id());
+      }
+    }
+    for (Label* label : incoming.m_assignedLabelsByFilter) {
+      stored.insert(label->id());
+    }
+    for (Label* label : incoming.m_deassignedLabelsByFilter) {
+      stored.remove(label->id());
+    }
+    return stored;
+  }
+
+  QHash<int, Message> readMessageSnapshots(const QSqlDatabase& db,
+                                           const QStringList& ids,
+                                           const QHash<int, Label*>& labels,
+                                           const QHash<int, QSet<int>>& stored_labels) {
+    QHash<int, Message> result;
+    constexpr int batch_size = 200;
+    for (int offset = 0; offset < ids.size(); offset += batch_size) {
+      SqlQuery query(db);
+      query.exec(QSL("SELECT %1 FROM Messages WHERE Messages.id IN (%2);")
+                   .arg(DatabaseQueries::messageTableAttributes().join(QSL(", ")),
+                        ids.mid(offset, batch_size).join(QSL(","))));
+      while (query.next()) {
+        Message message = Message::fromSqlQuery(query, {});
+        for (int id : stored_labels.value(message.m_id)) {
+          if (labels.contains(id)) {
+            message.m_assignedLabels.append(labels.value(id));
+          }
+        }
+        result.insert(message.m_id, message);
+      }
+    }
+    return result;
+  }
+
+  Message expectedStoredUpdate(const Message& incoming, const Message& stored) {
+    // Overlay precisely the writable SQL fields. In particular, an existing
+    // custom ID/account ID is not replaced merely because a script assigned it.
+    Message result(stored);
+    result.m_title = incoming.m_title;
+    result.m_isRead = incoming.m_isRead;
+    result.m_isImportant = incoming.m_isImportant;
+    result.m_isDeleted = incoming.m_isDeleted;
+    result.m_url = incoming.m_url;
+    result.m_author = incoming.m_author;
+    result.m_score = incoming.m_score;
+    // Preview the SQL timestamp round trip, including invalid dates becoming
+    // the epoch, without changing the incoming date or update detection.
+    result.m_created = TextFactory::parseDateTime(incoming.m_created.toMSecsSinceEpoch());
+    result.m_retrieved = TextFactory::parseDateTime(incoming.m_retrieved.toMSecsSinceEpoch());
+    result.m_contents = incoming.m_contents;
+    result.m_enclosures = incoming.m_enclosures;
+    result.m_feedId = incoming.m_feedId;
+    result.m_customData = incoming.m_customData;
+    if (result.m_customId.isEmpty()) {
+      result.m_customId = QString::number(result.m_id);
+    }
+    return result;
+  }
+
+} // namespace
+
+QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory* db_factory,
+                                                                 Settings* settings,
+                                                                 const QList<Message>& messages,
+                                                                 Feed* feed) {
+  if (messages.isEmpty()) {
+    return {};
+  }
+  const auto policy = messageSavePolicy(settings, feed, false);
+  const bool online_labels =
+    Globals::hasFlag(feed->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Synchronised);
+  QHash<int, Label*> labels;
+  if (feed->account()->labelsNode() != nullptr) {
+    for (Label* label : feed->account()->labelsNode()->labels()) {
+      labels.insert(label->id(), label);
+    }
+  }
+  for (const Message& message : messages) {
+    for (const auto& list :
+         {message.m_assignedLabels, message.m_assignedLabelsByFilter, message.m_deassignedLabelsByFilter}) {
+      for (Label* label : list) {
+        labels.insert(label->id(), label);
+      }
     }
   }
 
-  if (!msgs_to_update.isEmpty()) {
-    db_factory->worker()->write([&](const QSqlDatabase& db) {
-      SqlQuery query_update(db);
+  return db_factory->worker()->read<QList<MessageSavePreview>>([&](const QSqlDatabase& db) {
+    const auto existing = findExistingMessages(db, messages, feed, policy);
+    QStringList ids;
+    for (const auto& stored : existing) {
+      ids.append(QString::number(stored.m_id));
+    }
+    ids.removeDuplicates();
+    const auto stored_labels = readMessageLabels(db, ids);
+    const auto snapshots = readMessageSnapshots(db, ids, labels, stored_labels);
+    QList<MessageSavePreview> results;
+    results.reserve(messages.size());
 
-      // Used to update existing messages.
-      query_update
-        .prepare(QSL("UPDATE Messages "
-                     "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = "
-                     ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
-                     "date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed, "
-                     "custom_data = :custom_data "
-                     "WHERE id = :id AND is_pdeleted = 0;"));
+    for (int index = 0; index < messages.size(); ++index) {
+      const Message& incoming = messages.at(index);
+      const auto stored = existing.constFind(index);
+      MessageSavePreview result;
+      result.m_inputIndex = index;
+      result.m_id = stored == existing.constEnd() ? 0 : stored->m_id;
+      result.m_decision =
+        decideMessageSave(incoming, stored == existing.constEnd() ? nullptr : &stored.value(), policy);
+      result.m_hasStoredMessage = snapshots.contains(result.m_id);
+      if (stored != existing.constEnd() && !result.m_hasStoredMessage) {
+        // A record may disappear between the matching and snapshot queries.
+        result.m_decision = {MessageSaveAction::Skip, MessageSaveReason::MissingArticle};
+      }
+      if (result.m_hasStoredMessage && snapshots.value(result.m_id).m_isPdeleted) {
+        result.m_decision = {MessageSaveAction::Skip, MessageSaveReason::PermanentlyDeleted};
+      }
 
-      for (int i = 0; i < msgs_to_update.size(); i++) {
-        auto message_update_info = msgs_to_update[i];
-        auto message_update = message_update_info.m_newMessage;
+      if (result.m_decision.m_action == MessageSaveAction::Update) {
+        result.m_expectedStored =
+          expectedStoredUpdate(prepareMessageForUpdate(incoming, stored.value(), result.m_decision),
+                               snapshots.value(result.m_id));
+      }
+      else if (result.m_decision.m_action == MessageSaveAction::Insert) {
+        result.m_expectedStored = incoming;
+        // The generated database ID is unknown until insertion succeeds.
+        result.m_expectedStored.m_id = 0;
+        result.m_expectedStored.m_isPdeleted = false;
+        result.m_expectedStored.m_feedId = feed->id();
+        result.m_expectedStored.m_accountId = feed->account()->accountId();
+        if (!result.m_expectedStored.m_retrieved.isValid()) {
+          result.m_expectedStored.m_retrieved = QDateTime::currentDateTimeUtc();
+        }
+        result.m_expectedStored.m_created =
+          TextFactory::parseDateTime(result.m_expectedStored.m_created.toMSecsSinceEpoch());
+        result.m_expectedStored.m_retrieved =
+          TextFactory::parseDateTime(result.m_expectedStored.m_retrieved.toMSecsSinceEpoch());
+      }
+      else if (result.m_hasStoredMessage) {
+        result.m_expectedStored = snapshots.value(result.m_id);
+      }
+      // The existing final fixup also repairs active rows skipped by update detection.
+      if (result.m_hasStoredMessage && !result.m_expectedStored.m_isPdeleted &&
+          result.m_expectedStored.m_customId.isEmpty()) {
+        result.m_expectedStored.m_customId = QString::number(result.m_id);
+      }
 
-        query_update.bindValue(QSL(":title"), unnulifyString(message_update.m_title));
-        query_update.bindValue(QSL(":is_read"), int(message_update.m_isRead));
-        query_update.bindValue(QSL(":is_important"),
-                               (feed->account()->isSyncable() || message_update.m_overwrite ||
-                                message_update.m_isImportant)
-                                 ? int(message_update.m_isImportant)
-                                 : message_update_info.m_existingMessageImportant);
-        query_update.bindValue(QSL(":is_deleted"), int(message_update.m_isDeleted));
-        query_update.bindValue(QSL(":url"), unnulifyString(message_update.m_url));
-        query_update.bindValue(QSL(":author"), unnulifyString(message_update.m_author));
-        query_update.bindValue(QSL(":date_created"), message_update.m_created.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":date_retrieved"), message_update.m_retrieved.toMSecsSinceEpoch());
-        query_update.bindValue(QSL(":contents"), unnulifyString(message_update.m_contents));
-        query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message_update.m_enclosures));
-        query_update.bindValue(QSL(":feed"), message_update.m_feedId);
-        query_update.bindValue(QSL(":custom_data"), unnulifyString(message_update.m_customData));
-        query_update.bindValue(QSL(":score"), message_update.m_score);
-        query_update.bindValue(QSL(":id"), message_update.m_id);
-
-        query_update.exec();
-
-        if (query_update.numRowsAffected() == 0) {
-          // Deletion can happen after the reader lookup. Some drivers also return
-          // zero for an unchanged row, which must retain normal update bookkeeping.
-          SqlQuery still_updatable(db);
-          still_updatable.prepare(QSL("SELECT id FROM Messages WHERE id = :id AND is_pdeleted = 0;"));
-          still_updatable.bindValue(QSL(":id"), message_update.m_id);
-          still_updatable.exec();
-
-          if (!still_updatable.next()) {
-            skipped_message_ids.insert(message_update.m_id);
-            query_update.finish();
-            continue;
+      if (result.m_decision.m_reason != MessageSaveReason::PermanentlyDeleted &&
+          result.m_decision.m_reason != MessageSaveReason::MissingArticle &&
+          result.m_decision.m_reason != MessageSaveReason::InvalidArticle) {
+        const QSet<int> before = stored_labels.value(result.m_id);
+        const QSet<int> after = projectedMessageLabels(before, incoming, online_labels);
+        result.m_labelsChanged = before != after;
+        result.m_expectedStored.m_assignedLabels.clear();
+        for (int id : after) {
+          if (labels.contains(id)) {
+            result.m_expectedStored.m_assignedLabels.append(labels.value(id));
           }
         }
-
-        qDebugNN << LOGSEC_DB << "Overwriting message with title" << QUOTE_W_SPACE(message_update.m_title) << "URL"
-                 << QUOTE_W_SPACE(message_update.m_url) << "in DB.";
-
-        if (!message_update.m_isRead && !message_update.m_isDeleted) {
-          updated_messages.m_unread.append(message_update);
-        }
-
-        updated_messages.m_all.append(message_update);
-        message_update.m_insertedUpdated = true;
-
-        query_update.finish();
       }
-    });
+      results.append(result);
+    }
+    return results;
+  });
+}
+
+MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
+                                                    Settings* settings,
+                                                    QList<Message>& messages,
+                                                    Feed* feed,
+                                                    bool force_update,
+                                                    bool force_insert,
+                                                    MessageUpdateDetail detail) {
+  MessageUpdateReport report;
+  if (messages.isEmpty()) {
+    return report;
   }
 
-  if (!msgs_to_insert.isEmpty()) {
-    // QMutexLocker lck(db_mutex);
+  report.m_results.reserve(messages.size());
+  for (int i = 0; i < messages.size(); ++i) {
+    MessageWriteResult result;
+    result.m_inputIndex = i;
+    report.m_results.append(result);
+  }
 
-    /*if (!db.transaction()) {
-      qFatal("transaction failed");
-    }*/
+  const int account_id = feed->account()->accountId();
+  const int feed_id = feed->id();
+  QList<int> inserts;
+  QList<QPair<int, Message>> updates;
+  QSet<int> skipped_message_ids;
+  QHash<int, QSet<int>> labels_before;
+  QSet<int> labels_processed;
+  bool labels_before_loaded = false;
+  const auto verify_label_changes = [&]() {
+    const auto labels_after = db_factory->worker()->read<QHash<int, QSet<int>>>([&](const QSqlDatabase& db) {
+      return readMessageLabels(db, messageIds(messages));
+    });
+    QSet<int> reported_changes;
+    for (auto& receipt : report.m_results) {
+      if (!labels_processed.contains(receipt.m_inputIndex)) {
+        continue;
+      }
+      receipt.m_labelsChecked = true;
+      receipt.m_labelsChanged = false;
+      if (receipt.m_id > 0 && !skipped_message_ids.contains(receipt.m_id) &&
+          labels_before.value(receipt.m_id) != labels_after.value(receipt.m_id) &&
+          !reported_changes.contains(receipt.m_id)) {
+        receipt.m_labelsChanged = true;
+        reported_changes.insert(receipt.m_id);
+      }
+    }
+  };
+  int active_input = -1;
+  QList<int> active_insert_batch;
 
-    QString bulk_insert = QSL("INSERT INTO Messages "
-                              "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
-                              "date_retrieved, contents, enclosures, custom_id, custom_data, account_id) "
-                              "VALUES %1;");
-
-    db_factory->worker()->write([&](const QSqlDatabase& db) {
-      for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
-        QStringList vals;
-        int batch_length = std::min(1000, int(msgs_to_insert.size()) - i);
-        const QDateTime retrieval_time = QDateTime::currentDateTimeUtc();
-
-        for (int l = i; l < (i + batch_length); l++) {
-          Message* msg = msgs_to_insert[l];
-
-          if (msg->m_title.isEmpty()) {
-            qCriticalNN << LOGSEC_DB << "Message" << QUOTE_W_SPACE(msg->m_customId)
-                        << "will not be inserted to DB because it does not meet DB constraints.";
-
-            continue;
+  try {
+    const auto policy = messageSavePolicy(settings, feed, force_update);
+    const auto existing = force_insert
+                            ? QHash<int, ExistingMessageInfo>()
+                            : db_factory->worker()->read<QHash<int, ExistingMessageInfo>>([&](const QSqlDatabase& db) {
+                                return findExistingMessages(db, messages, feed, policy);
+                              });
+    for (int index = 0; index < messages.size(); ++index) {
+      Message& message = messages[index];
+      auto& receipt = report.m_results[index];
+      const auto stored = existing.constFind(index);
+      receipt.m_decision =
+        decideMessageSave(message, stored == existing.constEnd() ? nullptr : &stored.value(), policy);
+      if (stored != existing.constEnd()) {
+        message.m_id = stored->m_id;
+        receipt.m_id = stored->m_id;
+      }
+      switch (receipt.m_decision.m_action) {
+        case MessageSaveAction::Skip:
+          receipt.m_outcome = MessageWriteOutcome::Skipped;
+          if (receipt.m_decision.m_reason == MessageSaveReason::PermanentlyDeleted) {
+            skipped_message_ids.insert(receipt.m_id);
           }
+          break;
+        case MessageSaveAction::Insert:
+          inserts.append(index);
+          break;
+        case MessageSaveAction::Update: {
+          Message prepared = prepareMessageForUpdate(message, stored.value(), receipt.m_decision);
+          // Preserve the existing caller-visible adjustment of read state.
+          message.m_isRead = prepared.m_isRead;
+          updates.append(qMakePair(index, prepared));
+          break;
+        }
+      }
+    }
 
-          if (!msg->m_retrieved.isValid()) {
-            msg->m_retrieved = retrieval_time;
+    if (detail == MessageUpdateDetail::Detailed) {
+      labels_before = db_factory->worker()->read<QHash<int, QSet<int>>>([&](const QSqlDatabase& db) {
+        return readMessageLabels(db, messageIds(messages));
+      });
+      labels_before_loaded = true;
+    }
+
+    if (!updates.isEmpty()) {
+      db_factory->worker()->write([&](const QSqlDatabase& db) {
+        SqlQuery query_update(db);
+        query_update.prepare(QSL("UPDATE Messages "
+                                 "SET title = :title, is_read = :is_read, is_important = :is_important, "
+                                 "is_deleted = :is_deleted, url = :url, author = :author, score = :score, "
+                                 "date_created = :date_created, date_retrieved = :date_retrieved, "
+                                 "contents = :contents, enclosures = :enclosures, feed = :feed, "
+                                 "custom_data = :custom_data WHERE id = :id AND is_pdeleted = 0;"));
+        for (auto& update : updates) {
+          active_input = update.first;
+          Message& message_update = update.second;
+          auto& receipt = report.m_results[active_input];
+          query_update.bindValue(QSL(":title"), unnulifyString(message_update.m_title));
+          query_update.bindValue(QSL(":is_read"), int(message_update.m_isRead));
+          query_update.bindValue(QSL(":is_important"), int(message_update.m_isImportant));
+          query_update.bindValue(QSL(":is_deleted"), int(message_update.m_isDeleted));
+          query_update.bindValue(QSL(":url"), unnulifyString(message_update.m_url));
+          query_update.bindValue(QSL(":author"), unnulifyString(message_update.m_author));
+          query_update.bindValue(QSL(":date_created"), message_update.m_created.toMSecsSinceEpoch());
+          query_update.bindValue(QSL(":date_retrieved"), message_update.m_retrieved.toMSecsSinceEpoch());
+          query_update.bindValue(QSL(":contents"), unnulifyString(message_update.m_contents));
+          query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message_update.m_enclosures));
+          query_update.bindValue(QSL(":feed"), message_update.m_feedId);
+          query_update.bindValue(QSL(":custom_data"), unnulifyString(message_update.m_customData));
+          query_update.bindValue(QSL(":score"), message_update.m_score);
+          query_update.bindValue(QSL(":id"), message_update.m_id);
+          query_update.exec();
+
+          if (query_update.numRowsAffected() == 0) {
+            // Some drivers return zero for a valid no-op update. Distinguish it
+            // from a record deleted after the initial matching snapshot.
+            SqlQuery current(db);
+            current.prepare(QSL("SELECT is_pdeleted FROM Messages WHERE id = :id;"));
+            current.bindValue(QSL(":id"), message_update.m_id);
+            current.exec();
+            const bool exists = current.next();
+            if (!exists || current.value(0).toBool()) {
+              receipt.m_outcome = MessageWriteOutcome::Skipped;
+              receipt.m_decision = {MessageSaveAction::Skip,
+                                    exists ? MessageSaveReason::PermanentlyDeleted : MessageSaveReason::MissingArticle};
+              skipped_message_ids.insert(message_update.m_id);
+              query_update.finish();
+              active_input = -1;
+              continue;
+            }
           }
+          message_update.m_insertedUpdated = true;
+          messages[active_input].m_insertedUpdated = true;
+          receipt.m_outcome = MessageWriteOutcome::Updated;
+          report.m_all.append(message_update);
+          if (!message_update.m_isRead && !message_update.m_isDeleted) {
+            report.m_unread.append(message_update);
+          }
+          query_update.finish();
+          active_input = -1;
+        }
+      });
+    }
 
-          vals.append(QSL("\n(:feed, ':title', :is_read, :is_important, :is_deleted, "
+    if (!inserts.isEmpty()) {
+      QString bulk_insert = QSL("INSERT INTO Messages "
+                                "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
+                                "date_retrieved, contents, enclosures, custom_id, custom_data, account_id) "
+                                "VALUES %1;");
+
+      db_factory->worker()->write([&](const QSqlDatabase& db) {
+        for (int i = 0; i < inserts.size(); i += 1000) {
+          active_insert_batch.clear();
+          QStringList vals;
+          int batch_length = std::min(1000, int(inserts.size()) - i);
+          const QDateTime retrieval_time = QDateTime::currentDateTimeUtc();
+
+          for (int l = i; l < (i + batch_length); l++) {
+            Message* msg = &messages[inserts.at(l)];
+
+            if (msg->m_title.isEmpty()) {
+              qCriticalNN << LOGSEC_DB << "Message" << QUOTE_W_SPACE(msg->m_customId)
+                          << "will not be inserted to DB because it does not meet DB constraints.";
+
+              continue;
+            }
+
+            if (!msg->m_retrieved.isValid()) {
+              msg->m_retrieved = retrieval_time;
+            }
+
+            active_insert_batch.append(inserts.at(l));
+            vals
+              .append(QSL("\n(:feed, ':title', :is_read, :is_important, :is_deleted, "
                           "':url', ':author', :score, :date_created, :date_retrieved, ':contents', ':enclosures', "
                           "':custom_id', ':custom_data', :account_id)")
                         .replace(QSL(":feed"), QString::number(feed_id))
@@ -1310,138 +1565,128 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
                         .replace(QSL(":custom_data"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customData)))
                         .replace(QSL(":score"), QString::number(msg->m_score))
                         .replace(QSL(":account_id"), QString::number(account_id)));
-        }
-
-        if (!vals.isEmpty()) {
-          QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-          SqlQuery bulk_query(db);
-
-          bulk_query.exec(final_bulk);
-
-          // OK, we bulk-inserted many messages but the thing is that they do not
-          // have their DB IDs fetched in objects, therefore labels cannot be assigned etc.
-          //
-          // We can calculate real IDs because of how "auto-increment" algorithms work.
-          //   https://www.sqlite.org/autoinc.html
-          //   https://mariadb.com/kb/en/auto_increment
-          int first_msg_id = bulk_query.lastInsertId().toInt();
-
-          if (db.driverName() == QSL(APP_DB_SQLITE_DRIVER)) {
-            first_msg_id -= vals.size() - 1;
           }
 
-          int inserted_index = 0;
+          if (!vals.isEmpty()) {
+            QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
+            SqlQuery bulk_query(db);
 
-          for (int l = i; l < (i + batch_length); l++) {
-            Message* msg = msgs_to_insert[l];
+            bulk_query.exec(final_bulk);
 
-            if (msg->m_title.isEmpty()) {
-              continue;
+            // OK, we bulk-inserted many messages but the thing is that they do not
+            // have their DB IDs fetched in objects, therefore labels cannot be assigned etc.
+            //
+            // We can calculate real IDs because of how "auto-increment" algorithms work.
+            //   https://www.sqlite.org/autoinc.html
+            //   https://mariadb.com/kb/en/auto_increment
+            int first_msg_id = bulk_query.lastInsertId().toInt();
+
+            if (db.driverName() == QSL(APP_DB_SQLITE_DRIVER)) {
+              first_msg_id -= vals.size() - 1;
             }
 
-            msg->m_insertedUpdated = true;
-            msg->m_id = first_msg_id + inserted_index++;
+            int inserted_index = 0;
 
-            if (!msg->m_isRead && !msg->m_isDeleted) {
-              updated_messages.m_unread.append(*msg);
+            for (int l = i; l < (i + batch_length); l++) {
+              Message* msg = &messages[inserts.at(l)];
+
+              if (msg->m_title.isEmpty()) {
+                continue;
+              }
+
+              msg->m_insertedUpdated = true;
+              msg->m_id = first_msg_id + inserted_index++;
+              auto& receipt = report.m_results[inserts.at(l)];
+              receipt.m_id = msg->m_id;
+              receipt.m_outcome = MessageWriteOutcome::Inserted;
+
+              if (!msg->m_isRead && !msg->m_isDeleted) {
+                report.m_unread.append(*msg);
+              }
+
+              report.m_all.append(*msg);
             }
 
-            updated_messages.m_all.append(*msg);
+            bulk_query.finish();
+            active_insert_batch.clear();
           }
-
-          bulk_query.finish();
         }
+      });
+    }
+
+    const bool uses_online_labels =
+      Globals::hasFlag(feed->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Synchronised);
+    for (int index = 0; index < messages.size(); ++index) {
+      Message& message = messages[index];
+      auto& receipt = report.m_results[index];
+      if (skipped_message_ids.contains(message.m_id) ||
+          receipt.m_decision.m_reason == MessageSaveReason::InvalidArticle) {
+        labels_processed.insert(index);
+        continue;
       }
+      if (!message.m_customId.isEmpty() || message.m_id > 0) {
+        active_input = index;
+        if (uses_online_labels) {
+          db_factory->worker()->write([&](const QSqlDatabase& db) {
+            SqlQuery updatable(db);
+            updatable.prepare(QSL("SELECT id FROM Messages WHERE id = :id AND is_pdeleted = 0;"));
+            updatable.bindValue(QSL(":id"), message.m_id);
+            updatable.exec();
+            if (updatable.next()) {
+              setLabelsForMessage(db, message.m_assignedLabels, message);
+            }
+          });
+        }
+        for (Label* label : std::as_const(message.m_assignedLabelsByFilter)) {
+          label->assignToMessage(message, false, true);
+        }
+        for (Label* label : std::as_const(message.m_deassignedLabelsByFilter)) {
+          label->deassignFromMessage(message, false, true);
+        }
+        active_input = -1;
+      }
+      labels_processed.insert(index);
+    }
+
+    if (detail == MessageUpdateDetail::Detailed) {
+      verify_label_changes();
+    }
+
+    db_factory->worker()->write([&](const QSqlDatabase& db) {
+      SqlQuery fixup(db);
+      fixup.exec(QSL("UPDATE Messages SET custom_id = id "
+                     "WHERE (custom_id IS NULL OR custom_id = '') AND is_pdeleted = 0;"));
     });
-
-    /*
-    if (!db.commit()) {
-      qFatal("transaction failed");
-    }*/
   }
-
-  const bool uses_online_labels =
-    Globals::hasFlag(feed->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Synchronised);
-
-  for (Message& message : messages) {
-    if (skipped_message_ids.contains(message.m_id)) {
-      continue;
+  catch (...) {
+    report.captureFailure();
+    // Earlier label operations may have committed before a later operation failed.
+    // Verify completed articles without masking the original failure. The current
+    // article remains unconfirmed if only part of its label operations succeeded.
+    if (labels_before_loaded && !labels_processed.isEmpty()) {
+      try {
+        verify_label_changes();
+      }
+      catch (...) {
+        // No confirmed label result is available if verification itself fails.
+      }
     }
-
-    if (!message.m_customId.isEmpty() || message.m_id > 0) {
-      // bool lbls_changed = false;
-
-      if (uses_online_labels) {
-        // Store all labels obtained from server.
-        db_factory->worker()->write([&](const QSqlDatabase& db) {
-          // The row may have been permanently deleted since the article write.
-          SqlQuery updatable(db);
-          updatable.prepare(QSL("SELECT id FROM Messages WHERE id = :id AND is_pdeleted = 0;"));
-          updatable.bindValue(QSL(":id"), message.m_id);
-          updatable.exec();
-
-          if (updatable.next()) {
-            setLabelsForMessage(db, message.m_assignedLabels, message);
-          }
-        });
-        // lbls_changed = true;
+    if (active_input >= 0) {
+      auto& receipt = report.m_results[active_input];
+      receipt.m_error = report.m_error;
+      if (receipt.m_outcome == MessageWriteOutcome::NotAttempted) {
+        receipt.m_outcome = MessageWriteOutcome::Failed;
       }
-
-      // Adjust labels tweaked by filters.
-      for (Label* assigned_by_filter : std::as_const(message.m_assignedLabelsByFilter)) {
-        assigned_by_filter->assignToMessage(message, false, true);
-        // lbls_changed = true;
-      }
-
-      for (Label* removed_by_filter : std::as_const(message.m_deassignedLabelsByFilter)) {
-        removed_by_filter->deassignFromMessage(message, false, true);
-        // lbls_changed = true;
-      }
-
-      // NOTE: This is likely not needed at all
-      // as this feature was semi-broken anyway, it was trigerred
-      // even when labels were added (via article filtering or on service server)
-      // and the same labels were already assigned in local DB.
-      // In other words, label assignment differences were not correctly
-      // taken into account.
-      /*
-      if (lbls_changed && !message.m_insertedUpdated) {
-        // This article was not inserted/updated in DB because its contents did not change
-        // but its assigned labels were changed. Therefore we must count article
-        // as updated.
-        if (!message.m_isRead) {
-          updated_messages.m_unread.append(message);
-        }
-
-        updated_messages.m_all.append(message);
-      }
-      */
     }
-    else {
-      qWarningNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
-                 << "because we don't have ID or custom ID.";
+    for (int index : active_insert_batch) {
+      auto& receipt = report.m_results[index];
+      if (receipt.m_outcome == MessageWriteOutcome::NotAttempted) {
+        receipt.m_outcome = MessageWriteOutcome::Failed;
+        receipt.m_error = report.m_error;
+      }
     }
   }
-
-  db_factory->worker()->write([&](const QSqlDatabase& db) {
-    SqlQuery fixup_custom_ids_query(db);
-
-    fixup_custom_ids_query.exec(QSL("UPDATE Messages "
-                                    "SET custom_id = id "
-                                    "WHERE (custom_id IS NULL OR custom_id = '') AND is_pdeleted = 0;"),
-                                false);
-
-    QSqlError fixup_custom_ids_error = fixup_custom_ids_query.lastError();
-
-    if (fixup_custom_ids_error.isValid()) {
-      qCriticalNN << LOGSEC_DB
-                  << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(fixup_custom_ids_error.text());
-    }
-
-    fixup_custom_ids_query.finish();
-  });
-
-  return updated_messages;
+  return report;
 }
 
 void DatabaseQueries::cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
@@ -2335,8 +2580,4 @@ void DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString&
   q.bindValue(QSL(":id"), account_id);
 
   q.exec();
-}
-
-QString DatabaseQueries::unnulifyString(const QString& str) {
-  return str.isNull() ? QSL("") : str;
 }

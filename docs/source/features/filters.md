@@ -8,10 +8,20 @@ Use the dialog to create, enable, order, and assign filters to feeds within an a
 
 <img alt="Article filters dialog" src="images/filters-dialog.png" width="600px">
 
-* **Test** runs the selected filter against the loaded stored articles. It displays the result without saving the test articles.
-* **Process checked feeds** runs the selected filter against undeleted articles in the checked feeds. Accepted results follow the same saving policy as regular fetching.
+* **Test** runs the selected filter against the loaded stored articles and previews the local database write. It does not save the test articles.
+* **Process checked feeds** runs the selected filter against undeleted articles in the checked feeds and reports the actual saving results. Accepted results follow the same saving policy as regular fetching.
 
-The **Existing articles** table shows the filtering decision and highlights changed values. Its tooltips compare original and filtered values; the detail tabs show metadata and contents. **Script output** displays `app.log(...)` messages and errors.
+The **Existing articles** table separates the **Filter decision** from the **Database outcome**. Accepting an article does not necessarily update its stored row. For example, a filter can return `Accept` after changing only the score, while the database outcome is **Skipped: no update trigger**. Label changes are reported separately because they can be saved without updating the article row.
+
+After testing, use **Show values** to switch between the script result and the expected stored values. Expected stored values include local read/star preservation and retain the stored article when its row would be skipped. Changed values are highlighted, tooltips compare them with the original article, and the detail tabs show metadata and contents. Script output displays `app.log(...)` messages and errors for both Test and Process checked feeds.
+
+Processing leaves its per-article results visible and shows a completion summary. An incomplete run retains confirmed results and identifies errors or articles that were not processed. A successful update can also be reported as subsequently removed by feed cleanup. An **Updated** result means the writer successfully performed the update; it does not claim that every stored value changed. Changing the selected feed or starting another run replaces the displayed results.
+
+```{attention}
+New in 5.3.0: Test now previews the same local saving decisions used by actual processing, including `msg.overwrite`, both article-update settings, and permanent-deletion protection. The preview applies to the currently loaded articles and the current database state. Processing checked feeds covers all their undeleted articles and may therefore process more articles than a test.
+
+This is a preview of local saving, not a simulation of a later live fetch. Fetching starts with incoming data and runs the enabled assigned filter chain; Test uses stored articles and the selected filter. Later database changes, feed cleanup, script side effects, and earlier purges during a real run can change the eventual outcome. Test does not simulate those effects on later articles.
+```
 
 ```{attention}
 Testing does not save changes to the test articles, but it still executes the script. Network requests, external programs, notifications, and actions such as creating account labels can have effects. Inspect unfamiliar scripts before running them.

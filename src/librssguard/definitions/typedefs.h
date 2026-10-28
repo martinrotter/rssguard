@@ -13,11 +13,6 @@ struct ArticleCounts {
     int m_unread = -1;
 };
 
-struct UpdatedArticles {
-    QList<Message> m_unread;
-    QList<Message> m_all;
-};
-
 struct IconLocation {
     QString m_url;
 
