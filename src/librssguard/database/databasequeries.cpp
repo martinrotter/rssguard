@@ -949,18 +949,23 @@ namespace {
     existing_messages.reserve(messages.size());
 
     const QString contents_column = ignore_contents_changes ? QSL("NULL") : QSL("Messages.contents");
-    const auto lookup_query = [&contents_column](const QStringList& requested_rows, const QString& join_condition) {
-      return QSL("SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, "
-                 "Messages.is_important, %1, Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted "
+    const QString lookup_columns =
+      QSL("Messages.id, Messages.date_created, Messages.is_read, Messages.is_important, %1, "
+          "Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted")
+        .arg(contents_column);
+    const auto lookup_query = [&lookup_columns](const QStringList& requested_rows, const QString& join_condition) {
+      return QSL("SELECT requested.message_index, %1 "
                  "FROM (%2) AS requested "
                  "JOIN Messages ON Messages.id = ("
                  "  SELECT candidate.id FROM Messages AS candidate WHERE %3 LIMIT 1"
                  ") "
                  "ORDER BY requested.message_index;")
-        .arg(contents_column, requested_rows.join(QSL(" UNION ALL ")), join_condition);
+        .arg(lookup_columns, requested_rows.join(QSL(" UNION ALL ")), join_condition);
     };
 
-    const auto execute_lookup = [&existing_messages](SqlQuery& query, const QString& lookup_description) {
+    const auto execute_lookup = [&existing_messages](SqlQuery& query,
+                                                      const QString& lookup_description,
+                                                      const QHash<int, QList<int>>* inputs_by_id = nullptr) {
       if (!query.exec(false)) {
         const QSqlError lookup_error = query.lastError();
 
@@ -979,10 +984,11 @@ namespace {
       }
 
       while (query.next()) {
-        const int message_index = query.value(0).toInt();
+        // Direct lookups return a database ID; other lookups return an input index.
+        const int lookup_key = query.value(0).toInt();
 
         // Match the first database row, like the original individual SELECT queries did.
-        if (existing_messages.contains(message_index)) {
+        if (inputs_by_id == nullptr && existing_messages.contains(lookup_key)) {
           continue;
         }
 
@@ -998,7 +1004,17 @@ namespace {
         existing_message.m_author = query.value(8).toString();
         existing_message.m_isPdeleted = query.value(9).toBool();
 
-        existing_messages.insert(message_index, existing_message);
+        if (inputs_by_id == nullptr) {
+          existing_messages.insert(lookup_key, existing_message);
+        }
+        else {
+          // Repeated IDs still have independent decisions and receipts for every input.
+          for (int message_index : inputs_by_id->value(lookup_key)) {
+            if (!existing_messages.contains(message_index)) {
+              existing_messages.insert(message_index, existing_message);
+            }
+          }
+        }
       }
 
       const QSqlError lookup_error = query.lastError();
@@ -1014,30 +1030,25 @@ namespace {
 
     for (int batch_start = 0; batch_start < direct_id_indices.size(); batch_start += lookup_batch_size) {
       const int batch_end = std::min(batch_start + lookup_batch_size, int(direct_id_indices.size()));
-      QStringList requested_rows;
-
-      requested_rows.reserve(batch_end - batch_start);
+      QHash<int, QList<int>> inputs_by_id;
+      QStringList ids;
+      inputs_by_id.reserve(batch_end - batch_start);
+      ids.reserve(batch_end - batch_start);
 
       for (int i = batch_start; i < batch_end; ++i) {
-        const int placeholder = i - batch_start;
-
-        requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
-                                  ":lookup_id_%1 AS lookup_id")
-                                .arg(placeholder));
+        const int message_index = direct_id_indices.at(i);
+        const int id = messages.at(message_index).m_id;
+        if (!inputs_by_id.contains(id)) {
+          ids.append(QString::number(id));
+        }
+        inputs_by_id[id].append(message_index);
       }
 
       SqlQuery query(db);
-      query.prepare(lookup_query(requested_rows, QSL("candidate.id = requested.lookup_id")));
-
-      for (int i = batch_start; i < batch_end; ++i) {
-        const int placeholder = i - batch_start;
-        const int message_index = direct_id_indices.at(i);
-
-        query.bindValue(QSL(":message_index_%1").arg(placeholder), message_index);
-        query.bindValue(QSL(":lookup_id_%1").arg(placeholder), messages.at(message_index).m_id);
-      }
-
-      execute_lookup(query, QSL("primary ID"));
+      // IDs are positive integers, and the first column keeps the shared decoder's layout.
+      query.prepare(QSL("SELECT Messages.id, %1 FROM Messages WHERE Messages.id IN (%2);")
+                      .arg(lookup_columns, ids.join(QL1C(','))));
+      execute_lookup(query, QSL("primary ID"), &inputs_by_id);
     }
 
     for (int batch_start = 0; batch_start < custom_id_indices.size(); batch_start += lookup_batch_size) {
@@ -1216,12 +1227,14 @@ namespace {
                                            const QHash<int, Label*>& labels,
                                            const QHash<int, QSet<int>>& stored_labels) {
     QHash<int, Message> result;
+    auto columns = DatabaseQueries::messageTableAttributes();
+    // Labels were already read in bulk; fromSqlQuery receives no label map here.
+    columns[MSG_DB_LABELS_IDS] = QSL("NULL AS msg_labels");
     constexpr int batch_size = 200;
     for (int offset = 0; offset < ids.size(); offset += batch_size) {
       SqlQuery query(db);
       query.exec(QSL("SELECT %1 FROM Messages WHERE Messages.id IN (%2);")
-                   .arg(DatabaseQueries::messageTableAttributes().join(QSL(", ")),
-                        ids.mid(offset, batch_size).join(QSL(","))));
+                   .arg(columns.join(QSL(", ")), ids.mid(offset, batch_size).join(QSL(","))));
       while (query.next()) {
         Message message = Message::fromSqlQuery(query, {});
         for (int id : stored_labels.value(message.m_id)) {
@@ -1288,7 +1301,18 @@ QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory
   }
 
   return db_factory->worker()->read<QList<MessageSavePreview>>([&](const QSqlDatabase& db) {
-    const auto existing = findExistingMessages(db, messages, feed, policy);
+    auto existing = findExistingMessages(db, messages, feed, policy);
+    QVector<MessageSaveDecision> decisions(messages.size());
+    for (int index = 0; index < messages.size(); ++index) {
+      const auto stored = existing.constFind(index);
+      decisions[index] =
+        decideMessageSave(messages.at(index), stored == existing.constEnd() ? nullptr : &stored.value(), policy);
+    }
+    // Decisions no longer need comparison bodies. Retain only the metadata needed
+    // for preservation while the full expected-value snapshots are loaded.
+    for (auto stored = existing.begin(); stored != existing.end(); ++stored) {
+      stored->m_contents.clear();
+    }
     QStringList ids;
     for (const auto& stored : existing) {
       ids.append(QString::number(stored.m_id));
@@ -1305,8 +1329,7 @@ QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory
       MessageSavePreview result;
       result.m_inputIndex = index;
       result.m_id = stored == existing.constEnd() ? 0 : stored->m_id;
-      result.m_decision =
-        decideMessageSave(incoming, stored == existing.constEnd() ? nullptr : &stored.value(), policy);
+      result.m_decision = decisions.at(index);
       result.m_hasStoredMessage = snapshots.contains(result.m_id);
       if (stored != existing.constEnd() && !result.m_hasStoredMessage) {
         // A record may disappear between the matching and snapshot queries.

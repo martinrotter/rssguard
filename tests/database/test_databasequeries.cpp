@@ -125,6 +125,9 @@ class TestDatabaseQueries : public QObject {
     void forcedImportDoesNotOverwritePermanentRecord();
     void partialWriteFailureRetainsReceipts();
     void receiptsKeepInputPositions();
+    void directIdLookupKeepsInputsAcrossBatches();
+    void previewKeepsBodiesAndLabels_data();
+    void previewKeepsBodiesAndLabels();
     void previewRespectsStoredIdentity();
     void previewRoundTripsInvalidDates();
 
@@ -922,6 +925,168 @@ void TestDatabaseQueries::receiptsKeepInputPositions() {
   QCOMPARE(duplicate_report.m_results.at(0).m_id, duplicate_report.m_results.at(1).m_id);
   QCOMPARE(duplicate_report.count(MessageWriteOutcome::Updated), 2);
   QCOMPARE(storedMessage(batch.first().m_id).m_title, duplicates.last().m_title);
+}
+
+void TestDatabaseQueries::directIdLookupKeepsInputsAcrossBatches() {
+  QList<Message> seed;
+  for (int i = 0; i < 3; ++i) {
+    seed.append(makeMessage(QSL("direct-batch"),
+                            i,
+                            m_feed->id(),
+                            m_account->accountId(),
+                            QSL("direct-batch-%1").arg(i)));
+  }
+  seed[0].m_isRead = true;
+  seed[0].m_isImportant = true;
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true).throwIfFailed();
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(seed.last().m_id)});
+  });
+  const auto deleted_before = storedRow(seed.last().m_id);
+
+  QList<Message> batch;
+  for (int i = 0; i < 205; ++i) {
+    Message incoming = seed.at(i % 2);
+    if (i == 1 || i == 200) {
+      incoming = seed.last();
+      incoming.m_overwrite = true;
+    }
+    incoming.m_title = QSL("Direct replacement %1").arg(i);
+    incoming.m_isRead = false;
+    incoming.m_isImportant = false;
+    if (i == 0) {
+      // A valid direct ID takes precedence over a different existing custom ID.
+      incoming.m_customId = seed.at(1).m_customId;
+    }
+    if (i == 203) {
+      // A missing direct ID must not fall back to this existing custom ID.
+      incoming.m_id = 2000000000;
+      incoming.m_customId = seed.first().m_customId;
+      incoming.m_title.clear();
+    }
+    batch.append(incoming);
+    if (i == 50) {
+      // Interleaving another lookup kind must not shift direct-ID input positions.
+      Message custom_lookup = seed.at(1);
+      custom_lookup.m_id = 0;
+      custom_lookup.m_title = QSL("Custom replacement between direct inputs");
+      batch.append(custom_lookup);
+    }
+  }
+
+  const auto preview = DatabaseQueries::previewMessageUpdates(&m_database, &m_settings, batch, m_feed);
+  QCOMPARE(preview.size(), batch.size());
+  QHash<int, QString> last_titles;
+  for (int i = 0; i < batch.size(); ++i) {
+    const auto& incoming = batch.at(i);
+    const auto& result = preview.at(i);
+    QCOMPARE(result.m_inputIndex, i);
+    if (incoming.m_title.isEmpty()) {
+      QCOMPARE(result.m_id, 0);
+      QCOMPARE(result.m_decision.m_reason, MessageSaveReason::InvalidArticle);
+      QVERIFY(!result.m_hasStoredMessage);
+    }
+    else if (incoming.m_id == seed.last().m_id) {
+      QCOMPARE(result.m_id, incoming.m_id);
+      QCOMPARE(result.m_decision.m_reason, MessageSaveReason::PermanentlyDeleted);
+    }
+    else {
+      const int expected_id = incoming.m_id > 0 ? incoming.m_id : seed.at(1).m_id;
+      QCOMPARE(result.m_id, expected_id);
+      QCOMPARE(result.m_decision.m_action, MessageSaveAction::Update);
+      QCOMPARE(result.m_expectedStored.m_isRead, expected_id == seed.first().m_id);
+      QCOMPARE(result.m_expectedStored.m_isImportant, expected_id == seed.first().m_id);
+      last_titles.insert(expected_id, incoming.m_title);
+    }
+  }
+
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.m_results.size(), batch.size());
+  QCOMPARE(report.count(MessageWriteOutcome::Updated), batch.size() - 3);
+  QCOMPARE(report.count(MessageWriteOutcome::Skipped), 3);
+  for (int i = 0; i < batch.size(); ++i) {
+    QCOMPARE(report.m_results.at(i).m_inputIndex, i);
+    QCOMPARE(report.m_results.at(i).m_id, preview.at(i).m_id);
+    QCOMPARE(report.m_results.at(i).m_decision.m_reason, preview.at(i).m_decision.m_reason);
+  }
+  for (auto expected = last_titles.constBegin(); expected != last_titles.constEnd(); ++expected) {
+    QCOMPARE(storedMessage(expected.key()).m_title, expected.value());
+  }
+  QCOMPARE(storedMessage(seed.first().m_id).m_customId, seed.first().m_customId);
+  QCOMPARE(storedRow(seed.last().m_id), deleted_before);
+}
+
+void TestDatabaseQueries::previewKeepsBodiesAndLabels_data() {
+  QTest::addColumn<bool>("ignore_body");
+  QTest::newRow("compare-body") << false;
+  QTest::newRow("ignore-body") << true;
+}
+
+void TestDatabaseQueries::previewKeepsBodiesAndLabels() {
+  QFETCH(bool, ignore_body);
+  m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, ignore_body);
+  QList<Message> seed;
+  for (int i = 0; i < 2; ++i) {
+    Message message = makeMessage(QSL("preview-labels"),
+                                    i,
+                                    m_feed->id(),
+                                    m_account->accountId(),
+                                    QSL("preview-labels-%1").arg(i));
+    message.m_contents = QString(8192, QL1C('a'));
+    seed.append(message);
+  }
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true).throwIfFailed();
+  Label retained(QSL("Retained preview label %1").arg(ignore_body), QIcon());
+  Label removed(QSL("Removed preview label %1").arg(ignore_body), QIcon());
+  retained.setCustomId(QSL("preview-retained-%1").arg(ignore_body));
+  removed.setCustomId(QSL("preview-removed-%1").arg(ignore_body));
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    for (Label* label : {&retained, &removed}) {
+      SqlQuery create_label(db);
+      create_label.prepare(QSL("INSERT INTO Labels (name, icon, custom_id, account_id) "
+                               "VALUES (:name, '', :custom_id, :account_id);"));
+      create_label.bindValue(QSL(":name"), label->title());
+      create_label.bindValue(QSL(":custom_id"), label->customId());
+      create_label.bindValue(QSL(":account_id"), m_account->accountId());
+      create_label.exec();
+      label->setId(create_label.lastInsertId().toInt());
+      DatabaseQueries::assignLabelToMessages(m_database.driver(), db, label, seed);
+    }
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(seed.last().m_id)});
+  });
+  const auto active_before = storedRow(seed.first().m_id);
+  const auto deleted_before = storedRow(seed.last().m_id);
+  QList<Message> incoming = seed;
+  for (Message& message : incoming) {
+    message.m_contents = QString(8192, QL1C('b'));
+    message.m_assignedLabels = {&retained, &removed};
+  }
+  const auto unchanged_labels = DatabaseQueries::previewMessageUpdates(&m_database, &m_settings, incoming, m_feed);
+  for (const auto& result : unchanged_labels) {
+    QVERIFY(!result.m_labelsChanged);
+    QCOMPARE(result.m_expectedStored.m_assignedLabels.size(), 2);
+    QVERIFY(result.m_expectedStored.m_assignedLabels.contains(&retained));
+    QVERIFY(result.m_expectedStored.m_assignedLabels.contains(&removed));
+  }
+
+  for (Message& message : incoming) {
+    message.m_deassignedLabelsByFilter = {&removed};
+  }
+  const auto preview = DatabaseQueries::previewMessageUpdates(&m_database, &m_settings, incoming, m_feed);
+  QCOMPARE(preview.first().m_decision.m_action, ignore_body ? MessageSaveAction::Skip : MessageSaveAction::Update);
+  QCOMPARE(preview.first().m_expectedStored.m_contents,
+           ignore_body ? seed.first().m_contents : incoming.first().m_contents);
+  QVERIFY(preview.first().m_labelsChanged);
+  QCOMPARE(preview.first().m_expectedStored.m_assignedLabels, QList<Label*>({&retained}));
+  QCOMPARE(preview.last().m_decision.m_reason, MessageSaveReason::PermanentlyDeleted);
+  QCOMPARE(preview.last().m_expectedStored.m_contents, seed.last().m_contents);
+  QVERIFY(!preview.last().m_labelsChanged);
+  QCOMPARE(preview.last().m_expectedStored.m_assignedLabels.size(), 2);
+  QVERIFY(preview.last().m_expectedStored.m_assignedLabels.contains(&retained));
+  QVERIFY(preview.last().m_expectedStored.m_assignedLabels.contains(&removed));
+  QCOMPARE(storedRow(seed.first().m_id), active_before);
+  QCOMPARE(storedRow(seed.last().m_id), deleted_before);
 }
 
 void TestDatabaseQueries::previewRespectsStoredIdentity() {
