@@ -65,6 +65,7 @@ class FormMessageFiltersManager : public QDialog {
     void updateFilterOptions(MessageFilter* filter);
     bool confirmFeedAssignmentChange(RootItem* item, Qt::CheckState state);
     bool confirmBulkFeedAssignmentChange(Qt::CheckState state);
+    void showFilteringResults();
 
     RootItem* selectedCategoryFeed() const;
 

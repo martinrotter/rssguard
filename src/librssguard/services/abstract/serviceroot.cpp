@@ -29,6 +29,7 @@
 #include <utility>
 
 #include <QAction>
+#include <QSet>
 #include <QThreadPool>
 #include <QtConcurrent>
 
@@ -1289,59 +1290,64 @@ FeedFetchResult ServiceRoot::obtainNewMessagesForUpdate(Feed* feed,
   return {obtainNewMessages(feed, stated_messages, tagged_messages), {}};
 }
 
-UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool recalculate_counts) {
-  UpdatedArticles updated_messages;
-  if (!messages.isEmpty()) {
-    qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
+MessageUpdateReport ServiceRoot::updateMessages(QList<Message>& messages,
+                                                Feed* feed,
+                                                bool recalculate_counts,
+                                                MessageUpdateDetail detail) {
+  MessageUpdateReport report;
+  try {
+    if (!messages.isEmpty()) {
+      qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
+      report =
+        DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), messages, feed, false, false, detail);
+      if (!report.succeeded()) {
+        return report;
+      }
+    }
+    else {
+      qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
+    }
 
-    updated_messages =
-      DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), messages, feed, false, false);
+    const auto removed_ids = feed->removeUnwantedArticles();
+    const QSet<int> removed_id_set(removed_ids.cbegin(), removed_ids.cend());
+    for (auto& article : report.m_results) {
+      article.m_removedByCleanup = removed_id_set.contains(article.m_id);
+    }
+
+    if (recalculate_counts && (!removed_ids.isEmpty() || !report.m_all.isEmpty() || report.labelChanges() > 0)) {
+      feed->updateCounts();
+      if (recycleBin() != nullptr) {
+        recycleBin()->updateCounts();
+      }
+      if (importantNode() != nullptr) {
+        importantNode()->updateCounts();
+      }
+      if (unreadNode() != nullptr) {
+        unreadNode()->updateCounts();
+      }
+      if (labelsNode() != nullptr) {
+        labelsNode()->updateCounts();
+      }
+      if (probesNode() != nullptr) {
+        probesNode()->updateCounts();
+      }
+    }
+
+    report.m_all = qlinq::from(report.m_all)
+                     .where([&](const Message& msg) {
+                       return !removed_id_set.contains(msg.m_id);
+                     })
+                     .toList();
+    report.m_unread = qlinq::from(report.m_unread)
+                        .where([&](const Message& msg) {
+                          return !removed_id_set.contains(msg.m_id);
+                        })
+                        .toList();
   }
-  else {
-    qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
+  catch (...) {
+    report.captureFailure();
   }
 
-  auto removed_ids = feed->removeUnwantedArticles();
-
-  if (recalculate_counts &&
-      (!removed_ids.isEmpty() || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {
-    // Something was added or updated in the DB, update numbers.
-    feed->updateCounts();
-
-    if (recycleBin() != nullptr) {
-      recycleBin()->updateCounts();
-    }
-
-    if (importantNode() != nullptr) {
-      importantNode()->updateCounts();
-    }
-
-    if (unreadNode() != nullptr) {
-      unreadNode()->updateCounts();
-    }
-
-    if (labelsNode() != nullptr) {
-      labelsNode()->updateCounts();
-    }
-
-    if (probesNode() != nullptr) {
-      probesNode()->updateCounts();
-    }
-  }
-
-  updated_messages.m_all = qlinq::from(updated_messages.m_all)
-                             .where([&](const Message& msg) {
-                               return !removed_ids.contains(msg.m_id);
-                             })
-                             .toList();
-
-  updated_messages.m_unread = qlinq::from(updated_messages.m_unread)
-                                .where([&](const Message& msg) {
-                                  return !removed_ids.contains(msg.m_id);
-                                })
-                                .toList();
-
-  // NOTE: Do not update model items here. We update only once when all feeds are fetched
-  // or separately in downloader, if user has this enabled.
-  return updated_messages;
+  // Model items are refreshed by the downloader or the manual-processing UI.
+  return report;
 }

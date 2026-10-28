@@ -19,8 +19,8 @@
 #include <librssguard/miscellaneous/thread.h>
 #include <librssguard/services/abstract/labelsnode.h>
 
-#include <QSqlError>
 #include <QScopeGuard>
+#include <QSqlError>
 #include <QStack>
 #include <QtConcurrentMap>
 
@@ -123,7 +123,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   }
 
   try {
-    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true).throwIfFailed();
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());

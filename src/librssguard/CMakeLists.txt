@@ -25,6 +25,7 @@ set(SOURCES
   database/databasefactory.h
   database/databasequeries.cpp
   database/databasequeries.h
+  database/messageupdateresult.h
   database/databaseworker.cpp
   database/databaseworker.h
   database/mariadbdriver.cpp

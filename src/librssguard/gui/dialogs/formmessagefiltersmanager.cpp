@@ -36,6 +36,7 @@
 #include <QMenu>
 #include <QProcess>
 #include <QScopedValueRollback>
+#include <QSignalBlocker>
 #include <QSortFilterProxyModel>
 
 namespace {
@@ -96,6 +97,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
 
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_RESULT,
                                                               QHeaderView::ResizeMode::ResizeToContents);
+  m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_DATABASE,
+                                                              QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISREAD,
                                                               QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISIMPORTANT,
@@ -153,6 +156,31 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           &QItemSelectionModel::currentRowChanged,
           this,
           &FormMessageFiltersManager::displaySelectedMessageDetails);
+
+  m_ui.m_lblRunSummary->hide();
+  m_ui.m_cmbResultValues->setEnabled(false);
+  connect(m_msgModel, &MessagesForFiltersModel::scriptLogged, m_ui.m_txtErrors, &QTextEdit::append);
+  connect(m_msgModel, &MessagesForFiltersModel::summaryChanged, this, [this](const QString& summary) {
+    m_ui.m_lblRunSummary->setText(summary);
+    m_ui.m_lblRunSummary->setVisible(!summary.isEmpty());
+  });
+  connect(m_msgModel, &MessagesForFiltersModel::resultsChanged, this, [this](bool preview) {
+    QSignalBlocker blocker(m_ui.m_cmbResultValues);
+    m_ui.m_cmbResultValues->setItemText(1, preview ? tr("Expected stored values") : tr("Stored values"));
+    m_ui.m_cmbResultValues->setEnabled(preview);
+    m_ui.m_cmbResultValues->setCurrentIndex(preview || m_msgModel->summaryText().isEmpty() ? 0 : 1);
+    if (m_msgProxyModel->rowCount() > 0) {
+      m_ui.m_treeExistingMessages->setCurrentIndex(m_msgProxyModel->index(0, 0));
+    }
+    displaySelectedMessageDetails(m_ui.m_treeExistingMessages->currentIndex(), {});
+  });
+  connect(m_ui.m_cmbResultValues,
+          static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+          this,
+          [this](int index) {
+            m_msgModel->setShowStoredValues(index == 1);
+            displaySelectedMessageDetails(m_ui.m_treeExistingMessages->currentIndex(), {});
+          });
 
   connect(m_ui.m_searchWidget, &SearchTextWidget::searchCancelled, this, [this]() {
     m_ui.m_txtScript->find(QString());
@@ -307,31 +335,34 @@ void FormMessageFiltersManager::openDocs() {
 
 void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex& current, const QModelIndex& previous) {
   Q_UNUSED(previous)
-
-  QModelIndex idx = m_msgProxyModel->mapToSource(current);
-
-  if (!idx.isValid()) {
-    // NOTE: No need to clear, widget is hidden.
-    // Nothing selected, just clear.
-    /*
-    m_ui.m_tbMessageUrl->clear();
-    m_ui.m_tbMessageContents->clear();
-    m_ui.m_tbMessageDbId->clear();
-    m_ui.m_tbMessageCustomId->clear();
-    m_ui.m_tbMessageAuthor->clear();
-    */
-  }
-  else {
-    const Message* msg = m_msgModel->messageForRow(idx.row());
-
-    m_ui.m_tbMessageUrl->setText(msg->m_url);
-    m_ui.m_tbMessageContents->setPlainText(msg->m_contents);
-    m_ui.m_tbMessageDbId->setText(QString::number(msg->m_id));
-    m_ui.m_tbMessageCustomId->setText(msg->m_customId);
-    m_ui.m_tbMessageAuthor->setText(msg->m_author);
+  const QModelIndex index = m_msgProxyModel->mapToSource(current);
+  m_ui.m_tbMessageUrl->clear();
+  m_ui.m_tbMessageContents->clear();
+  m_ui.m_tbMessageDbId->clear();
+  m_ui.m_tbMessageCustomId->clear();
+  m_ui.m_tbMessageAuthor->clear();
+  const bool show_stored = m_ui.m_cmbResultValues->currentIndex() == 1;
+  const bool show_details = index.isValid() && (!show_stored || m_msgModel->hasStoredValuesForRow(index.row()));
+  m_ui.m_twDetails->setVisible(show_details);
+  if (!show_details) {
+    return;
   }
 
-  m_ui.m_twDetails->setVisible(idx.isValid());
+  try {
+    const Message message = m_msgModel->messageDetailsForRow(index.row());
+    if (show_stored && !m_msgModel->isPreview() && message.m_id <= 0) {
+      m_ui.m_twDetails->hide();
+      return;
+    }
+    m_ui.m_tbMessageUrl->setText(message.m_url);
+    m_ui.m_tbMessageContents->setPlainText(message.m_contents);
+    m_ui.m_tbMessageDbId->setText(QString::number(message.m_id));
+    m_ui.m_tbMessageCustomId->setText(message.m_customId);
+    m_ui.m_tbMessageAuthor->setText(message.m_author);
+  }
+  catch (const ApplicationException& error) {
+    m_ui.m_tbMessageContents->setPlainText(error.message());
+  }
 }
 
 ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
@@ -551,39 +582,18 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   m_ui.m_txtErrors->clear();
   m_ui.m_txtErrors->setTextColor(m_defaultTextColor);
+  m_msgModel->testFilter(selectedFilter(), selectedAccount());
+  showFilteringResults();
+}
 
-  // Perform per-message filtering.
-  auto* selected_fd_cat = selectedCategoryFeed();
-  FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
-                            selected_fd_cat != nullptr && selected_fd_cat->kind() == RootItem::Kind::Feed
-                              ? selected_fd_cat->toFeed()
-                              : nullptr,
-                            selectedAccount(),
-                            qApp->applicationPaths(),
-                            qApp->database(),
-                            qApp->icons(),
-                            qApp->localization(),
-                            qApp->guiNotifications());
-
-  filtering.filterRun().setTotalCountOfFilters(1);
-  filtering.filterRun().setIndexOfCurrentFilter(0);
-
-  connect(&filtering.filterApp(), &FilterApp::logged, this, [this](const QString& message) {
-    m_ui.m_txtErrors->append(message);
-  });
-
-  auto* fltr = selectedFilter();
-
-  // Test real messages.
-  try {
-    m_msgModel->testFilter(fltr, &filtering);
-  }
-  catch (const FilteringException& ex) {
+void FormMessageFiltersManager::showFilteringResults() {
+  if (!m_msgModel->lastError().isEmpty()) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
-    m_ui.m_txtErrors->append(ex.message());
-
-    // See output.
+    m_ui.m_txtErrors->append(m_msgModel->lastError());
     m_ui.m_twMessages->setCurrentIndex(1);
+  }
+  else {
+    m_ui.m_twMessages->setCurrentIndex(0);
   }
 }
 
@@ -610,18 +620,10 @@ void FormMessageFiltersManager::processCheckedFeeds() {
     return;
   }
 
-  try {
-    m_msgModel->processFeeds(filter, selectedAccount(), checked);
-  }
-  catch (const ApplicationException& ex) {
-    m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
-    m_ui.m_txtErrors->append(ex.message());
-
-    // See output.
-    m_ui.m_twMessages->setCurrentIndex(1);
-  }
-
-  onFeedChanged();
+  m_ui.m_txtErrors->clear();
+  m_ui.m_txtErrors->setTextColor(m_defaultTextColor);
+  m_msgModel->processFeeds(filter, selectedAccount(), checked);
+  showFilteringResults();
 }
 
 void FormMessageFiltersManager::checkAllFeeds() {

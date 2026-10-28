@@ -24,7 +24,8 @@ function(add_rssguard_test TEST_TARGET)
     if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
-           TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies")
+           TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
+           TEST_TARGET STREQUAL "test_filteringresults")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -160,6 +161,21 @@ if(ENABLE_TESTING)
     ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/applicationpaths.cpp
   )
   set_tests_properties(test_filtering PROPERTIES TIMEOUT 60)
+
+  add_rssguard_test(test_filteringresults
+    gui/test_filteringresults.cpp
+    filtering/guinotificationstub.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/messagesforfiltersmodel.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/messagesforfiltersmodel.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filterobjects.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filterobjects.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filteringsystem.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filteringsystem.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/applicationpaths.cpp
+  )
+  set_tests_properties(test_filteringresults PROPERTIES
+    ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+    TIMEOUT 120)
 
   # These GUI classes are internal to the library and have no Windows DLL exports.
   add_rssguard_test(test_labelsmenu

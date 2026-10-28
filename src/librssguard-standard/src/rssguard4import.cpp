@@ -21,8 +21,8 @@
 #include <librssguard/services/abstract/labelsnode.h>
 #include <librssguard/services/abstract/searchsnode.h>
 
-#include <QSqlError>
 #include <QScopeGuard>
+#include <QSqlError>
 #include <QStack>
 #include <QtConcurrentMap>
 
@@ -145,7 +145,7 @@ void RssGuard4Import::importArticles(StandardFeed* feed, const QMap<QString, Lab
   }
 
   try {
-    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true).throwIfFailed();
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());
