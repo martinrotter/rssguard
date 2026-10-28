@@ -60,6 +60,7 @@ class FilterMessage : public FilterMechanism {
     Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
     Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
     Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
+    Q_PROPERTY(bool overwrite READ overwrite WRITE setOverwrite)
 
   public:
     enum class FilteringAction {
@@ -179,6 +180,9 @@ class FilterMessage : public FilterMechanism {
 
     bool isDeleted() const;
     void setIsDeleted(bool is_deleted);
+
+    bool overwrite() const;
+    void setOverwrite(bool overwrite);
 
     double score() const;
     void setScore(double score);

@@ -447,7 +447,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list);
+    auto updated_messages = acc->updateMessages(msgs, feed, update_feed_list);
 
     // Persist progress only after article storage succeeds. All earlier cancellation
     // returns and exceptions discard the callback together with its proposed state.

@@ -203,6 +203,14 @@ void FilterMessage::setIsDeleted(bool is_deleted) {
   m_message->m_isDeleted = is_deleted;
 }
 
+bool FilterMessage::overwrite() const {
+  return m_message->m_overwrite;
+}
+
+void FilterMessage::setOverwrite(bool overwrite) {
+  m_message->m_overwrite = overwrite;
+}
+
 double FilterMessage::score() const {
   return m_message->m_score;
 }

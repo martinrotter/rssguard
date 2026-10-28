@@ -1289,22 +1289,13 @@ FeedFetchResult ServiceRoot::obtainNewMessagesForUpdate(Feed* feed,
   return {obtainNewMessages(feed, stated_messages, tagged_messages), {}};
 }
 
-UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
-                                            Feed* feed,
-                                            bool force_update,
-                                            bool recalculate_counts,
-                                            bool preserve_existing_read_state) {
+UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool recalculate_counts) {
   UpdatedArticles updated_messages;
   if (!messages.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(qApp->database(),
-                                                       qApp->settings(),
-                                                       messages,
-                                                       feed,
-                                                       force_update,
-                                                       false,
-                                                       preserve_existing_read_state);
+    updated_messages =
+      DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), messages, feed, false, false);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());

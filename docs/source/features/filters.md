@@ -1,119 +1,138 @@
 Article Filtering
 =================
-Sometimes you need to automatically tweak an incoming article, mark it as important, remove ads from its contents, or simply reject it. That is where the article-filtering feature comes in.
+Article filters are JavaScript programs that can change incoming articles, assign labels, extract contents, or reject articles. They can also run on articles already stored in RSS Guard.
 
-Article filters are meant for advanced users. They are powerful, but they can slow down feed updates, fetch extra data, launch external tools, or make changes that are synchronized back to some online services.
+## Article filters dialog
 
-## `Article filters` dialog
-The dialog shown below lets you:
-* create, remove, enable, disable, and reorder filters
-* assign a filter to multiple feeds within the selected account
-* test a filter on already stored articles
-* run a filter on checked feeds and save the accepted changes back to the database
+Use the dialog to create, enable, order, and assign filters to feeds within an account.
 
-<img alt="alt-img" src="images/filters-dialog.png" width="600px">
+<img alt="Article filters dialog" src="images/filters-dialog.png" width="600px">
 
-Filters run in ascending sort order. Only enabled filters are executed.
+* **Test** runs the selected filter against the loaded stored articles. It displays the result without saving the test articles.
+* **Process checked feeds** runs the selected filter against undeleted articles in the checked feeds. Accepted results follow the same saving policy as regular fetching.
 
-The right-hand side of the dialog has two main uses:
-* `Test`
-  Runs the selected filter against the currently loaded existing articles without permanently saving any changes.
-* `Process checked feeds`
-  Runs the selected filter on undeleted articles from all checked feeds and writes accepted changes back to the database.
+The **Existing articles** table shows the filtering decision and highlights changed values. Its tooltips compare original and filtered values; the detail tabs show metadata and contents. **Script output** displays `app.log(...)` messages and errors.
 
-The `Existing articles` table is especially useful during testing:
-* `Result` shows whether a message was accepted, ignored, or purged
-* changed values in columns like `Read`, `Important`, `Trash`, `Title`, `Date`, and `Score` are highlighted
-* tooltips show the original value and the filtered value
-* the lower detail tabs let you inspect article metadata and contents
-
-The `Script output` tab shows messages written by `app.log(...)`, and also shows script errors when testing from the dialog.
+```{attention}
+Testing does not save changes to the test articles, but it still executes the script. Network requests, external programs, notifications, and actions such as creating account labels can have effects. Inspect unfamiliar scripts before running them.
+```
 
 ### Visual filter generator
 
-Select `Generate` next to `Beautify` to create a new filter script without writing JavaScript. The generator replaces the script in the editor only when you select `Generate` in its dialog. Cancelling it leaves the current script unchanged.
+Choose **Generate** next to **Beautify** to build a script from conditions, actions, and a result. Conditions can require all or any matches. The matching and non-matching branches have independent actions and results; no conditions means the matching branch applies to every article. The non-matching result defaults to **Accept**.
 
-Add one or more conditions and choose whether **all** conditions or **at least one** condition must match. The **When conditions match** and **When conditions do not match** tabs each provide their own actions and result. With no conditions, the rule applies the matching tab's actions and result to every article. The available conditions cover article, feed, and account properties such as title, author, URL, contents, read state, score, dates, and attachments. Text conditions can be case-sensitive and can use a regular expression.
-
-The non-matching result defaults to **Accept**. If none of the applicable outcomes accepts articles, the generator warns before creating the script because that filter would discard every newly downloaded article.
-
-In either outcome, the generator can change writable article properties, assign or remove labels, convert article categories to labels, or accept, ignore, or purge the article. The generated script is ordinary JavaScript: you can inspect, test, beautify, and modify it afterwards.
-
-```{note}
-The visual generator intentionally exposes only safe, common operations. Use handwritten scripts for advanced tasks such as duplicate detection, full-content downloading, notifications, external tools, or filesystem access.
-```
+Actions can set writable article properties, manage labels, and choose a filtering decision. To request an explicit overwrite, add **Set article property** for `overwrite` and set it to `true` in the appropriate branch. It is opt-in; the generator does not enable it automatically.
 
 ```{warning}
-The generator does not import or edit existing scripts. Generating a new script overwrites the editor contents, so copy any handwritten changes you want to keep first.
+Generating replaces the editor contents; it does not import or modify an existing script. Cancelling leaves the editor unchanged. The generator warns if neither reachable outcome accepts articles. Use handwritten JavaScript for database lookups, full-content extraction, notifications, and external tools.
 ```
 
-```{warning}
-During normal feed fetching, a JavaScript error in a filter stops the update of that feed and marks it with a filtering error. In the testing dialog, the error is shown to you directly.
-```
+## Writing and running filters
 
-```{warning}
-Feed-level article ignoring and article-count limits run **after** article filters. So even if your filter accepts an article, a later cleanup or ignore rule may still prevent it from being kept.
-```
-
-## How filters are applied
-Each enabled filter is run on each article in order.
-
-For newly downloaded articles:
-* `Accept`
-  Keeps the article and continues to the next filter.
-* `Ignore`
-  Drops the article from this fetch run. Later filters do not run for that article.
-* `Purge`
-  Behaves like `Ignore` for a newly downloaded article.
-
-For existing articles processed from the dialog:
-* `Accept`
-  Keeps the article and saves its changed fields.
-* `Ignore`
-  Skips saving changes for that article.
-* `Purge`
-  Permanently removes the article from the database.
-
-This means `Ignore` and `Purge` are very different when you run a filter on already stored messages.
-
-## Writing an article filter
-Article filters are small `JavaScript` snippets. Each script must provide a function with this prototype:
+Each script defines a function that returns a [`FilteringAction`](#filteringaction-enum):
 
 ```js
-function filterMessage() { }
+function filterMessage() {
+  return Msg.Accept;
+}
 ```
 
-The function must return one of the values from the [`FilteringAction`](#filteringaction-enum) enumeration.
+During fetching, enabled filters run in ascending sort order on each incoming article. `Accept` continues to the next filter; other decisions stop that article's chain. The decision table below describes both fetching and manual processing.
 
-The built-in JavaScript environment is based on Qt's `QJSEngine` and includes a useful set of helper objects exposed by RSS Guard.
-
-Each article is available via the global `msg` object. Other globals provide access to the current feed, account, helper functions, run metadata, application logging, and process launching.
+The JavaScript engine is Qt's `QJSEngine`. The global `msg` object is the current article; the other [global objects](#global-variables) provide feed/account information and helpers. Special [user-data placeholders](userdata.md#data-placeholder), such as `%data%`, can be used in scripts.
 
 ```{warning}
-Values that change while filtering, such as `msg.title`, `msg.contents`, `run.indexOfCurrentFilter`, or `run.numberOfAcceptedMessages`, should be read inside `filterMessage()`. Code outside `filterMessage()` is useful for constants and helper functions, but it is prepared once for the current filtering run and should not cache per-article state.
+Read changing values such as `msg.title` and `run.indexOfCurrentFilter` inside `filterMessage()`. Code outside that function is prepared once for the filtering run and should contain constants or helpers, not cached per-article state. An uncaught script error stops fetching that feed; the testing dialog displays the error directly.
 ```
 
-```{note}
-Some attributes such as `read`, `unread`, and `starred` states are synchronized back to your account's server. So, for example, marking an article as important in a filter may trigger a matching state change on services that support it.
-```
+### Saving accepted articles
+
+A fetching filter starts with the incoming article, not a copy of the stored article. For local feeds, incoming read/star/trash flags normally start as `false`, and the score starts at zero. Manual processing and testing start with stored article values instead.
+
+During both fetching and **Process checked feeds**, accepting an existing article does not force a database update. RSS Guard uses its existing identity, content, state, and date checks. Changing a script property alone does not introduce a new update trigger: for example, changing only local read state, score, or attachments can be skipped in either workflow. New accepted articles are inserted normally.
+
+#### Explicit overwrite
 
 ```{attention}
-Special [placeholders](userdata.md#data-placeholder) can be used in article filters. This is especially useful for loading helper files, keyword lists, or calling external tools from your user-data folder.
+New in 5.3.0: set **`msg.overwrite = true`** to force saving an accepted article even when ordinary update detection would skip it. This addresses filters whose changes were not saved when an article was fetched again ([#2490](https://github.com/martinrotter/rssguard/issues/2490)). Existing scripts retain ordinary fetching behavior until they opt in.
 ```
 
-## Power-user tips
-* Keep filters cheap first, expensive filters later.
-  A fast duplicate or keyword check near the top can save time before you do heavier work like full-content extraction.
-* Prefer returning early.
-  If a message should obviously be ignored, do that early and skip unnecessary processing.
-* Use `Test` before `Process checked feeds`.
-  This makes it much easier to catch a bad regular expression or an accidental `Purge`.
-* Use `app.log(...)` while developing.
-  It is much easier to debug a filter when it prints intermediate values into the `Script output` tab.
-* Be careful with `fetchFullContents(...)`.
-  It may issue extra network requests, slow down updates, and substantially increase database size.
-* Be careful with external executables.
-  They can be extremely useful, but they can also be slow or platform-specific.
+```js
+function filterMessage() {
+  msg.isRead = true;
+  msg.overwrite = true;
+  return Msg.Accept;
+}
+```
+
+`overwrite` defaults to `false` at the start of each article-processing pass. Successive filters share its current value; a later filter can set it back to `false`. It is a temporary saving instruction, never stored in the database or synchronized to the service. Setting it on a detached article returned by a database lookup does not affect `msg`.
+
+When `overwrite` is true, the writer saves the incoming read and starred states, including `false`, instead of applying local state preservation. It also bypasses body-change suppression and the ordinary date-based update gate. It does not override `Ignore`/`Purge`, change article matching, or bypass later feed-level ignoring and cleanup.
+
+```{attention}
+An overwrite saves the **complete set of fields supported by the existing article writer**, not just properties assigned by your script. Incoming read/star/trash states, score, contents, attachments, and dates can replace stored values. Use `getArticleFromDatabase()` and explicitly copy any stored values you need to preserve before enabling overwrite. Ordinary updates also use this writer; `overwrite = false` does not prohibit saving or enable field-by-field merging.
+```
+
+For example, a local feed with stable custom IDs can preserve selected stored state while explicitly marking an article read:
+
+```js
+function filterMessage() {
+  const previous = msg.getArticleFromDatabase(Msg.SameCustomId);
+  if (previous !== null) {
+    msg.isImportant = previous.isImportant;
+    msg.isDeleted = previous.isDeleted;
+    msg.score = previous.score;
+  }
+  msg.isRead = true;
+  msg.overwrite = true;
+  return Msg.Accept;
+}
+```
+
+This example preserves only the three copied properties. It still uses the incoming body, attachments, and dates. Temporary data such as `rawContents` does not gain database storage, and `overwrite` does not replace label associations wholesale: use the label methods for those changes.
+
+#### Shared saving policy and settings
+
+The existing preferences have clearer labels; saved preferences retain their meaning:
+
+| Setting | Ordinary saving in either workflow | With `msg.overwrite = true` |
+| :--- | :--- | :--- |
+| **Ignore body-only changes from feeds** | Body differences alone do not trigger an update. An update triggered for another reason can still save the new body. | The explicit overwrite triggers saving regardless. |
+| **Preserve read state on feed updates** | Keep the stored read state during local article updates, including manual filtering. When disabled, use the resulting article's read state. Synchronized accounts retain their existing state handling. | Save the filter's final read state. |
+
+```{attention}
+Changed in 5.3.0: **Process checked feeds no longer implicitly forces an update or bypasses local read-state preservation.** A manual filter that changes only read state, score, attachments, or similar fields must set `msg.overwrite = true` to guarantee saving. The same flag also allows clearing a stored local star. Returning `Accept` alone follows ordinary update detection in both workflows.
+```
+
+The workflows retain different inputs and purposes: fetching processes incoming data through the enabled assigned filter chain; manual processing applies the selected filter to stored undeleted articles. Manual duplicate checks exclude the current article, and manual `Purge` physically removes it. Manual processing does not generate normal new-article fetch notifications. These differences do not change the shared saving policy. The overwrite flag controls local persistence; it does not add new remote synchronization operations.
+
+Label assignments are processed separately and can be saved without an article-row update. They do not require `overwrite`.
+
+#### Deleted articles and side effects
+
+```{attention}
+A matching **permanently deleted** database record is protected during article updates, including its label associations. Neither `overwrite` nor a forced update can alter or restore it, for local or synchronized accounts. Ordinary recycle-bin articles are different: the existing writer can restore them when an eligible update saves `isDeleted = false`.
+```
+
+Emptying the recycle bin marks records permanently deleted while retaining them for matching. Physically purging records removes that protection, so a later fetch can insert an article again. Matching still relies on the existing identifiers; this protection cannot recognize a different identity as the same article.
+
+Filters run before this persistence check, so their other effects are not undone when a permanently deleted match is skipped. Feed-level ignore rules and article-count cleanup also run after filtering and may prevent an accepted article from being retained. Normal fetch notifications exclude saved articles in trash and permanently deleted records; script calls to `app.showNotification()` are independent.
+
+```{attention}
+Supported changes can be pushed to an online service even if a filter returns `Ignore` or `Purge`. Current automatic handling pushes transitions to read/starred and processes label changes separately; `overwrite` does not introduce reverse transitions or broader remote synchronization. Local saving decisions do not undo service requests or other script side effects.
+```
+
+### Database lookups
+
+Exact `isAlreadyInDatabase()` and `getArticleFromDatabase()` include recycled and permanently deleted records. Their Winkler variants search only undeleted records. Choose exact matching when you need to recover stored state for the same article custom ID; similarity matching is intended for finding similar articles.
+
+Lookup criteria are combined with bitwise OR. Without `AllFeedsSameAccount`, the search is limited to the current feed; with it, the search includes the current account's feeds. During manual processing/testing, the current stored article is excluded from duplicate matching. The current `msg` already contains its stored values in that mode.
+
+Returned articles are detached copies. Modifying them does not save them or modify the incoming article; copy the desired properties to `msg`. The API exposes recycle-bin state as `isDeleted`, but does not expose the internal permanent-deletion flag.
+
+### Practical guidance
+
+Run cheap rejection/duplicate checks before expensive extraction or external commands. Use `app.log(...)` and the testing table to inspect results. Downloads can slow fetching and enlarge the database; external tools may also depend on your operating system.
 
 ## Global variables
 
@@ -157,7 +176,8 @@ Here is the complete reference documentation of the functions and properties ava
 | `createdIsMadeup`  | `Boolean`                 | No        | No           | Is `true` if the message timestamp was synthesized instead of taken from the source feed. |
 | `isRead`           | `Boolean`                 | No        | Yes          | Is the message read? |
 | `isImportant`      | `Boolean`                 | No        | Yes          | Is the message important? |
-| `isDeleted`        | `Boolean`                 | No        | No           | Is the message placed in the recycle bin? |
+| `isDeleted`        | `Boolean`                 | No        | No           | Recycle-bin state. This is not the permanent-deletion flag. |
+| `overwrite`        | `Boolean`                 | No        | No           | Defaults to `false` per article pass. Set to `true` to force saving the accepted full article result and its read/star states; cannot override permanent deletion. See [Explicit overwrite](#explicit-overwrite). |
 
 #### Functions
 
@@ -166,23 +186,15 @@ Here is the complete reference documentation of the functions and properties ava
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds a multimedia attachment to the article. |
 | `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one attachment from the article according to the index, starting from zero. |
 | `removeAllEnclosures()`                                                       | `void`       | Removes all attachments from the article. |
-| `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches fuller article contents for the article, in plain text or HTML form by using the [article extractor](extractor). [^1] |
+| `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches full contents through the [article extractor](extractor), in plain text or HTML. Returns whether nonempty contents were obtained. Does not enable overwrite. |
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Checks if a matching message is already stored in the database. |
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Checks if a similar message is already stored in the database by using Jaro-Winkler similarity. |
-| `getArticleFromDatabase(DuplicityCheck criteria)`                             | `FilterMessage` or `null` | Returns the newest matching stored article. |
-| `getArticleFromDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `FilterMessage` or `null` | Returns the newest stored article matching the Jaro-Winkler similarity threshold. |
+| `getArticleFromDatabase(DuplicityCheck criteria)`                             | `FilterMessage` or `null` | Returns a detached copy of the matching article with the highest local ID. See [Database lookups](#database-lookups) for scope and deletion handling. |
+| `getArticleFromDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `FilterMessage` or `null` | Returns a detached copy of the undeleted matching article with the highest local ID, using Jaro-Winkler similarity. |
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns a label to the message. The `String` value is the `customId` property of the `Label` type. |
 | `deassignLabel(String label_id)`                                              | `Boolean`    | Removes a label from the message. The `String` value is the `customId` property of the `Label` type. |
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from the message. |
-| `exportCategoriesToLabels(Boolean assign_to_message)`                         | `void`       | Creates RSS Guard labels for all categories of this message and can optionally assign them to the article. [^2] |
-
-[^1]: Fetching fuller contents may issue extra network requests, can slow down feed fetching, and can increase database size significantly. See the [article extractor CLI](extractor) if you want to call the extractor directly from a filter or another script.
-[^2]: This is intended mainly for newly fetched articles. When processing already stored articles from the dialog, this helper may not have anything useful to export.
-
-```{warning}
-Articles returned by `getArticleFromDatabase*()` are detached copies. You can inspect or modify them and copy their
-properties to `msg`, but changes made directly to a returned article are not written back to the database.
-```
+| `exportCategoriesToLabels(Boolean assign_to_message)`                         | `void`       | Creates labels for incoming article categories and optionally assigns them. Does nothing in existing-article processing mode. |
 
 ### `app`
 
@@ -267,10 +279,9 @@ External processes launched through `fs` use the RSS Guard user-data folder as t
 
 | Enumerant name | Integer value | Description |
 | :---           | :---          | :--- |
-| `Accept`       | 1             | Message is accepted and will be added or updated in the DB. |
-| `Ignore`       | 2             | Message is ignored and will **NOT** be added or updated in the DB. An already existing message will not be purged from the DB. |
-| `Purge`        | 4             | An existing message is purged from the DB completely. Behaves like `Ignore` when there is a new incoming message. |
-
+| `Accept`       | 1             | Keep the article and continue its filter chain. Persistence follows [Saving accepted articles](#saving-accepted-articles). |
+| `Ignore`       | 2             | Stop the chain and skip saving this article. An existing stored article is retained unchanged. |
+| `Purge`        | 4             | During fetching, behaves like `Ignore`, including for a fetched article that already exists locally. During manual processing, physically removes the current stored article. |
 #### `DuplicityCheck` enum
 
 | Enumerant name        | Integer value | Description |
@@ -310,11 +321,10 @@ Represents an article attachment (called an enclosure in feed formats and the fi
 | `title`    | `String` | Yes       | Label name. |
 | `customId` | `String` | Yes       | Service-specific ID of the label. Useful when assigning or removing labels from messages. |
 
-```{attention}
-The `msg` attributes are synchronized with the service even if you return `Purge` or `Ignore`. In other words, even if the filter ignores the article, you can still tweak its synchronized properties and those changes may still be pushed back to the service.
-```
 
 ## Examples
+
+Examples use the saving rules above. Examples that enable `overwrite` intentionally opt into full-row replacement; adapt their state preservation to your needs.
 
 ```js
 /*
@@ -337,12 +347,13 @@ function filterMessage() {
 
 ```js
 /*
- * Mark matching articles as important and raise their score.
+ * Mark matching articles as important and raise their score on every fetch.
  */
 function filterMessage() {
   if (/stock|crypto|market/i.test(msg.title)) {
     msg.isImportant = true;
     msg.score = 80;
+    msg.overwrite = true;
   }
 
   return Msg.Accept;
@@ -445,7 +456,7 @@ function filterMessage() {
 
 ```js
 /*
- * Purge articles that were received by RSS Guard more than 2 days ago.
+ * During manual processing, purge articles received more than 2 days ago.
  * This differs from msg.created, which is the publication date from the feed.
  */
 function filterMessage() {
@@ -542,6 +553,7 @@ function filterMessage() {
   } catch (e) {
     app.log('Keywords file missing -> default score 0.');
     msg.score = 0;
+    msg.overwrite = true;
     return Msg.Accept;
   }
 
@@ -555,6 +567,7 @@ function filterMessage() {
   }
 
   msg.score = Math.min(totalScore, 100);
+  msg.overwrite = true;
 
   if (msg.score >= 70) {
     msg.isImportant = true;
@@ -653,6 +666,7 @@ function filterMessage() {
 
   if (day === 0 || day === 6) {
     msg.score = Math.min(msg.score + 15, 100);
+    msg.overwrite = true;
   }
 
   return Msg.Accept;

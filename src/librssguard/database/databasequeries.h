@@ -49,11 +49,15 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString whereClauseFeeds(const QStringList& feed_ids);
 
     // Labels.
-    static void deassignLabelFromMessages(const QSqlDatabase& db, Label* label, const QList<Message>& messages);
+    static void deassignLabelFromMessages(const QSqlDatabase& db,
+                                          Label* label,
+                                          const QList<Message>& messages,
+                                          bool skip_permanently_deleted = false);
     static void assignLabelToMessages(const DatabaseDriver* driver,
                                       const QSqlDatabase& db,
                                       Label* label,
-                                      const QList<Message>& messages);
+                                      const QList<Message>& messages,
+                                      bool skip_permanently_deleted = false);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabelsForAccount(IconFactory* icons, const QSqlDatabase& db, int account_id);
     static void updateLabel(IconFactory* icons, const QSqlDatabase& db, Label* label);
@@ -158,13 +162,14 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
+    // force_update is for explicit source-article updates and retains state preservation.
+    // Article filters use Message::m_overwrite to additionally replace read/star states.
     static UpdatedArticles updateMessages(DatabaseFactory* db_factory,
                                           Settings* settings,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,
-                                          bool force_insert,
-                                          bool preserve_existing_read_state = true);
+                                          bool force_insert);
 
     // Delete account.
     static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);

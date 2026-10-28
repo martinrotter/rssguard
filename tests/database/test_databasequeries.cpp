@@ -8,6 +8,7 @@
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
+#include "services/abstract/label.h"
 #include "services/abstract/serviceroot.h"
 
 #include <cstdlib>
@@ -17,10 +18,12 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QIcon>
 #include <QLoggingCategory>
 #include <QSettings>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QTemporaryDir>
 #include <QTest>
 
@@ -110,8 +113,21 @@ class TestDatabaseQueries : public QObject {
     void matchesCustomIdsAcrossSynchronizedAccount();
     void loadsFeedCustomDataWithoutReloading();
     void articleWriteErrorsPropagate();
+    void init();
+    void overwriteAndOrdinaryPolicies_data();
+    void overwriteAndOrdinaryPolicies();
+    void permanentDeletionWins_data();
+    void permanentDeletionWins();
+    void notificationsExcludeTrash_data();
+    void notificationsExcludeTrash();
+    void deletionDuringWriteIsNotReported();
+    void guardedLabelWritesPreservePermanentDeletion();
+    void forcedImportDoesNotOverwritePermanentRecord();
 
   private:
+    Message storedMessage(int id);
+    QVariantList storedRow(int id);
+
     DatabaseFactory& m_database;
     Settings& m_settings;
     std::unique_ptr<TestServiceRoot> m_account;
@@ -290,11 +306,8 @@ void TestDatabaseQueries::updatesExistingArticles() {
   seeded_messages.reserve(update_only_article_count);
 
   for (int i = 0; i < update_only_article_count; ++i) {
-    seeded_messages.append(makeMessage(QSL("update-only"),
-                                       i,
-                                       m_feed->id(),
-                                       m_account->accountId(),
-                                       QSL("update-only-%1").arg(i)));
+    seeded_messages
+      .append(makeMessage(QSL("update-only"), i, m_feed->id(), m_account->accountId(), QSL("update-only-%1").arg(i)));
   }
 
   const UpdatedArticles seeded =
@@ -325,18 +338,16 @@ void TestDatabaseQueries::updatesExistingArticles() {
     QCOMPARE(incoming_messages.at(i).m_id, seeded_messages.at(i).m_id);
   }
 
-  const int stored_articles =
-    m_database.worker()->read<int>([](const QSqlDatabase& database) {
-      return scalarQuery(database,
-                         QSL("SELECT COUNT(*) FROM Messages "
-                             "WHERE custom_id LIKE 'update-only-%';"));
-    });
-  const int changed_articles =
-    m_database.worker()->read<int>([](const QSqlDatabase& database) {
-      return scalarQuery(database,
-                         QSL("SELECT COUNT(*) FROM Messages "
-                             "WHERE contents LIKE 'update-only changed contents %';"));
-    });
+  const int stored_articles = m_database.worker()->read<int>([](const QSqlDatabase& database) {
+    return scalarQuery(database,
+                       QSL("SELECT COUNT(*) FROM Messages "
+                           "WHERE custom_id LIKE 'update-only-%';"));
+  });
+  const int changed_articles = m_database.worker()->read<int>([](const QSqlDatabase& database) {
+    return scalarQuery(database,
+                       QSL("SELECT COUNT(*) FROM Messages "
+                           "WHERE contents LIKE 'update-only changed contents %';"));
+  });
 
   QCOMPARE(stored_articles, update_only_article_count);
   QCOMPARE(changed_articles, update_only_article_count);
@@ -452,6 +463,331 @@ void TestDatabaseQueries::articleWriteErrorsPropagate() {
   drop_trigger();
 }
 
+void TestDatabaseQueries::init() {
+  m_account->setSyncable(false);
+  m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, false);
+  m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, false);
+}
+
+Message TestDatabaseQueries::storedMessage(int id) {
+  return m_database.worker()->read<Message>([id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.prepare(QSL("SELECT %1 FROM Messages WHERE id = :id;")
+                    .arg(DatabaseQueries::messageTableAttributes().join(QSL(", "))));
+    query.bindValue(QSL(":id"), id);
+    query.exec();
+    return query.next() ? Message::fromSqlQuery(query, {}) : Message();
+  });
+}
+
+QVariantList TestDatabaseQueries::storedRow(int id) {
+  return m_database.worker()->read<QVariantList>([id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.prepare(QSL("SELECT * FROM Messages WHERE id = :id;"));
+    query.bindValue(QSL(":id"), id);
+    query.exec();
+    QVariantList values;
+    if (query.next()) {
+      for (int i = 0; i < query.record().count(); ++i) {
+        values.append(query.value(i));
+      }
+    }
+    return values;
+  });
+}
+
+void TestDatabaseQueries::overwriteAndOrdinaryPolicies_data() {
+  QTest::addColumn<bool>("syncable");
+  QTest::addColumn<bool>("ignore_body");
+  QTest::addColumn<bool>("mark_unread");
+  QTest::addColumn<bool>("overwrite");
+  QTest::addColumn<QString>("change");
+  const QStringList changes{QSL("unchanged"),
+                            QSL("states"),
+                            QSL("body"),
+                            QSL("title"),
+                            QSL("date-small"),
+                            QSL("date-threshold"),
+                            QSL("date-large"),
+                            QSL("date-backwards"),
+                            QSL("made-up-date"),
+                            QSL("forced")};
+  for (bool syncable : {false, true}) {
+    for (bool ignore : {false, true}) {
+      for (bool mark : {false, true}) {
+        for (bool overwrite : {false, true}) {
+          for (const QString& change : changes) {
+            QTest::newRow(qPrintable(QSL("%1-sync%2-ignore%3-mark%4-overwrite%5")
+                                       .arg(change)
+                                       .arg(syncable)
+                                       .arg(ignore)
+                                       .arg(mark)
+                                       .arg(overwrite)))
+              << syncable << ignore << mark << overwrite << change;
+          }
+        }
+      }
+    }
+  }
+}
+
+void TestDatabaseQueries::overwriteAndOrdinaryPolicies() {
+  QFETCH(bool, syncable);
+  QFETCH(bool, ignore_body);
+  QFETCH(bool, mark_unread);
+  QFETCH(bool, overwrite);
+  QFETCH(QString, change);
+  m_account->setSyncable(syncable);
+  m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, ignore_body);
+  m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, mark_unread);
+  const QString key = QSL("policy-%1").arg(QString::fromLatin1(QTest::currentDataTag()));
+  Message original = makeMessage(key, 0, m_feed->id(), m_account->accountId(), key);
+  original.m_isRead = original.m_isImportant = true;
+  original.m_score = 42;
+  QList<Message> seed{original};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true);
+  Message incoming = original;
+  incoming.m_overwrite = overwrite;
+  incoming.m_retrieved = original.m_retrieved.addSecs(90);
+  bool ordinary_update = false;
+  const bool forced = change == QL1S("forced");
+  if (change == QL1S("states") || forced) {
+    incoming.m_isRead = incoming.m_isImportant = false;
+    incoming.m_score = 0;
+    ordinary_update = syncable || forced;
+  }
+  else if (change == QL1S("body")) {
+    incoming.m_contents = QSL("New body");
+    ordinary_update = !ignore_body;
+  }
+  else if (change == QL1S("title")) {
+    incoming.m_title = QSL("New title");
+    ordinary_update = true;
+  }
+  else if (change.startsWith(QL1S("date-")) || change == QL1S("made-up-date")) {
+    qint64 delta = 1;
+    if (change == QL1S("date-threshold")) {
+      delta = MSG_DATETIME_DIFF_THRESSHOLD;
+    }
+    else if (change == QL1S("date-large")) {
+      delta = MSG_DATETIME_DIFF_THRESSHOLD + 1;
+    }
+    else if (change == QL1S("date-backwards")) {
+      delta = -MSG_DATETIME_DIFF_THRESSHOLD - 1;
+    }
+    else if (change == QL1S("made-up-date")) {
+      delta = 60000;
+    }
+    incoming.m_created = original.m_created.addMSecs(delta);
+    incoming.m_createdFromFeed = change != QL1S("made-up-date");
+    ordinary_update = syncable || change == QL1S("date-large") || change == QL1S("date-backwards");
+  }
+  QList<Message> batch{incoming};
+  const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, forced, false);
+  const bool saved = overwrite || ordinary_update;
+  QCOMPARE(updated.m_all.size(), saved ? 1 : 0);
+  QCOMPARE(batch.first().m_id, seed.first().m_id);
+  const Message stored = storedMessage(seed.first().m_id);
+  QCOMPARE(stored.m_title, saved ? incoming.m_title : original.m_title);
+  QCOMPARE(stored.m_contents, saved ? incoming.m_contents : original.m_contents);
+  QCOMPARE(stored.m_created, saved ? incoming.m_created : original.m_created);
+  QCOMPARE(stored.m_retrieved, saved ? incoming.m_retrieved : original.m_retrieved);
+  QCOMPARE(stored.m_score, saved ? incoming.m_score : original.m_score);
+  const bool expected_read = saved && (syncable || overwrite || mark_unread) ? incoming.m_isRead : original.m_isRead;
+  const bool expected_star =
+    saved && (syncable || overwrite || incoming.m_isImportant) ? incoming.m_isImportant : original.m_isImportant;
+  QCOMPARE(stored.m_isRead, expected_read);
+  QCOMPARE(stored.m_isImportant, expected_star);
+  QCOMPARE(updated.m_unread.size(), saved && !expected_read ? 1 : 0);
+  QVERIFY(!stored.m_overwrite);
+}
+
+void TestDatabaseQueries::permanentDeletionWins_data() {
+  QTest::addColumn<QString>("lookup");
+  QTest::addColumn<bool>("syncable");
+  QTest::addColumn<bool>("trashed");
+  QTest::addColumn<int>("mode");
+  for (const QString& lookup : {QSL("custom"), QSL("primary"), QSL("attributes")}) {
+    for (bool syncable : {false, true}) {
+      for (bool trashed : {false, true}) {
+        for (int mode : {0, 1, 2}) {
+          QTest::newRow(qPrintable(QSL("%1-sync%2-trash%3-mode%4").arg(lookup).arg(syncable).arg(trashed).arg(mode)))
+            << lookup << syncable << trashed << mode;
+        }
+      }
+    }
+  }
+}
+
+void TestDatabaseQueries::permanentDeletionWins() {
+  QFETCH(QString, lookup);
+  QFETCH(bool, syncable);
+  QFETCH(bool, trashed);
+  QFETCH(int, mode);
+  m_account->setSyncable(syncable);
+  const QString key = QSL("permanent-%1").arg(QString::fromLatin1(QTest::currentDataTag()));
+  Message original = makeMessage(key, 0, m_feed->id(), m_account->accountId(), key);
+  original.m_isDeleted = trashed;
+  original.m_isRead = original.m_isImportant = true;
+  original.m_score = 42;
+  QList<Message> seed{original};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true);
+  const int id = seed.first().m_id;
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(id)});
+    if (lookup != QL1S("custom")) {
+      SqlQuery query(db);
+      query.exec(QSL("UPDATE Messages SET custom_id = '' WHERE id = %1;").arg(id));
+    }
+  });
+  const QVariantList before = storedRow(id);
+  QVERIFY(!before.isEmpty());
+  Message incoming = original;
+  incoming.m_overwrite = mode == 1;
+  incoming.m_isPdeleted = incoming.m_isRead = incoming.m_isImportant = false;
+  incoming.m_isDeleted = !trashed;
+  incoming.m_score = 0;
+  incoming.m_contents = QSL("Replacement body");
+  incoming.m_created = incoming.m_created.addDays(1);
+  incoming.m_retrieved = incoming.m_retrieved.addDays(1);
+  if (lookup == QL1S("primary")) {
+    incoming.m_id = id;
+  }
+  else if (lookup == QL1S("attributes")) {
+    incoming.m_customId.clear();
+  }
+  // Both label passes must be skipped, not just the article UPDATE.
+  Label unused_label(QSL("Unused"), QIcon());
+  incoming.m_assignedLabelsByFilter.append(&unused_label);
+  incoming.m_deassignedLabelsByFilter.append(&unused_label);
+  QList<Message> batch{incoming};
+  const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, mode == 2, false);
+  QVERIFY(updated.m_all.isEmpty());
+  QVERIFY(updated.m_unread.isEmpty());
+  QCOMPARE(batch.first().m_id, id);
+  QCOMPARE(storedRow(id), before);
+}
+
+void TestDatabaseQueries::notificationsExcludeTrash_data() {
+  QTest::addColumn<bool>("new_article");
+  QTest::addColumn<bool>("trashed");
+  QTest::addColumn<bool>("read");
+  QTest::addColumn<bool>("syncable");
+  for (bool fresh : {false, true}) {
+    for (bool trash : {false, true}) {
+      for (bool read : {false, true}) {
+        for (bool syncable : {false, true}) {
+          QTest::newRow(qPrintable(QSL("new%1-trash%2-read%3-sync%4").arg(fresh).arg(trash).arg(read).arg(syncable)))
+            << fresh << trash << read << syncable;
+        }
+      }
+    }
+  }
+}
+
+void TestDatabaseQueries::notificationsExcludeTrash() {
+  QFETCH(bool, new_article);
+  QFETCH(bool, trashed);
+  QFETCH(bool, read);
+  QFETCH(bool, syncable);
+  m_account->setSyncable(syncable);
+  const QString key = QSL("notification-%1").arg(QString::fromLatin1(QTest::currentDataTag()));
+  Message original = makeMessage(key, 0, m_feed->id(), m_account->accountId(), key);
+  original.m_isDeleted = !trashed;
+  QList<Message> seed{original};
+  if (!new_article) {
+    DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true);
+  }
+  Message incoming = original;
+  incoming.m_overwrite = true;
+  incoming.m_isRead = read;
+  incoming.m_isDeleted = trashed;
+  QList<Message> batch{incoming};
+  const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  QCOMPARE(updated.m_all.size(), 1);
+  QCOMPARE(updated.m_unread.size(), !read && !trashed ? 1 : 0);
+  QCOMPARE(storedMessage(batch.first().m_id).m_isDeleted, trashed);
+  if (!new_article) {
+    QCOMPARE(batch.first().m_id, seed.first().m_id);
+  }
+}
+
+void TestDatabaseQueries::deletionDuringWriteIsNotReported() {
+  QList<Message> batch{makeMessage(QSL("late-delete"), 0, m_feed->id(), m_account->accountId(), QSL("late-delete"))};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true);
+  const int id = batch.first().m_id;
+  m_database.worker()->write([id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TEMP TRIGGER delete_before_article_update BEFORE UPDATE ON Messages "
+                   "WHEN OLD.id = %1 AND NEW.is_pdeleted = 0 BEGIN "
+                   "UPDATE Messages SET is_pdeleted = 1 WHERE id = OLD.id; SELECT RAISE(IGNORE); END;")
+                 .arg(id));
+  });
+  batch.first().m_title = QSL("Must not be saved");
+  batch.first().m_overwrite = true;
+  const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER delete_before_article_update;"));
+  });
+  QVERIFY(updated.m_all.isEmpty());
+  QVERIFY(updated.m_unread.isEmpty());
+  const Message stored = storedMessage(id);
+  QVERIFY(stored.m_isPdeleted);
+  QVERIFY(stored.m_title != batch.first().m_title);
+}
+
+void TestDatabaseQueries::guardedLabelWritesPreservePermanentDeletion() {
+  QList<Message> batch{makeMessage(QSL("label-guard"), 0, m_feed->id(), m_account->accountId(), QSL("label-live")),
+                       makeMessage(QSL("label-guard"), 1, m_feed->id(), m_account->accountId(), QSL("label-deleted"))};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true);
+  Label label(QSL("Guarded label"), QIcon());
+  label.setCustomId(QSL("guarded-label"));
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    SqlQuery create_label(db);
+    create_label.prepare(QSL("INSERT INTO Labels (name, icon, custom_id, account_id) "
+                             "VALUES ('Guarded label', '', 'guarded-label', :account_id);"));
+    create_label.bindValue(QSL(":account_id"), m_account->accountId());
+    create_label.exec();
+    label.setId(create_label.lastInsertId().toInt());
+    DatabaseQueries::assignLabelToMessages(m_database.driver(), db, &label, batch);
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(batch.last().m_id)});
+    DatabaseQueries::deassignLabelFromMessages(db, &label, batch, true);
+  });
+  const auto has_label = [&](int id) {
+    return m_database.worker()->read<int>([&](const QSqlDatabase& db) {
+      return scalarQuery(db,
+                         QSL("SELECT COUNT(*) FROM LabelsInMessages WHERE label = %1 AND message = %2;")
+                           .arg(label.id())
+                           .arg(id));
+    });
+  };
+  QCOMPARE(has_label(batch.first().m_id), 0);
+  QCOMPARE(has_label(batch.last().m_id), 1);
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deassignLabelFromMessages(db, &label, batch);
+    DatabaseQueries::assignLabelToMessages(m_database.driver(), db, &label, batch, true);
+  });
+  QCOMPARE(has_label(batch.first().m_id), 1);
+  QCOMPARE(has_label(batch.last().m_id), 0);
+}
+
+void TestDatabaseQueries::forcedImportDoesNotOverwritePermanentRecord() {
+  QList<Message> seed{makeMessage(QSL("import"), 0, m_feed->id(), m_account->accountId(), QSL("import-permanent"))};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true);
+  const int id = seed.first().m_id;
+  m_database.worker()->write([id](const QSqlDatabase& db) {
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(id)});
+  });
+  const auto before = storedRow(id);
+  QList<Message> imported{seed.first()};
+  imported.first().m_contents = QSL("Imported body");
+  imported.first().m_overwrite = true;
+  const auto updated = DatabaseQueries::updateMessages(&m_database, &m_settings, imported, m_feed, false, true);
+  QCOMPARE(updated.m_all.size(), 1);
+  QVERIFY(imported.first().m_id != id);
+  QCOMPARE(storedRow(id), before);
+}
 int main(int argc, char* argv[]) {
   QCoreApplication application(argc, argv);
   QTemporaryDir data_directory;

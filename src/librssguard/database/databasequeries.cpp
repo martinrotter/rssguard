@@ -14,6 +14,7 @@
 #include "services/abstract/category.h"
 
 #include <QDateTime>
+#include <QSet>
 #include <QSqlDriver>
 #include <QUrl>
 #include <QVariant>
@@ -178,7 +179,10 @@ QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids) {
     .arg(filter_clause);
 }
 
-void DatabaseQueries::deassignLabelFromMessages(const QSqlDatabase& db, Label* label, const QList<Message>& messages) {
+void DatabaseQueries::deassignLabelFromMessages(const QSqlDatabase& db,
+                                                Label* label,
+                                                const QList<Message>& messages,
+                                                bool skip_permanently_deleted) {
   constexpr int batch_size = 500;
 
   for (int offset = 0; offset < messages.size(); offset += batch_size) {
@@ -193,9 +197,13 @@ void DatabaseQueries::deassignLabelFromMessages(const QSqlDatabase& db, Label* l
 
     SqlQuery q(db);
 
+    const QString eligible_ids =
+      skip_permanently_deleted
+        ? QSL("SELECT id FROM Messages WHERE id IN (%1) AND is_pdeleted = 0").arg(message_ids.join(QSL(", ")))
+        : message_ids.join(QSL(", "));
     q.prepare(QSL("DELETE FROM LabelsInMessages "
                   "WHERE label = :label AND message IN (%1);")
-                .arg(message_ids.join(QSL(", "))));
+                .arg(eligible_ids));
     q.bindValue(QSL(":label"), label->id());
     q.exec();
   }
@@ -204,23 +212,37 @@ void DatabaseQueries::deassignLabelFromMessages(const QSqlDatabase& db, Label* l
 void DatabaseQueries::assignLabelToMessages(const DatabaseDriver* driver,
                                             const QSqlDatabase& db,
                                             Label* label,
-                                            const QList<Message>& messages) {
+                                            const QList<Message>& messages,
+                                            bool skip_permanently_deleted) {
   constexpr int batch_size = 500;
 
   for (int offset = 0; offset < messages.size(); offset += batch_size) {
     const int count = std::min(batch_size, int(messages.size()) - offset);
     QStringList values;
+    QStringList message_ids;
 
     values.reserve(count);
 
     for (int i = offset; i < offset + count; ++i) {
       values.append(QSL("(%1, %2)").arg(messages.at(i).m_id).arg(label->id()));
+      if (skip_permanently_deleted) {
+        message_ids.append(QString::number(messages.at(i).m_id));
+      }
     }
 
     SqlQuery q(db);
 
-    q.exec(QSL("%1 INTO LabelsInMessages (message, label) VALUES %2;")
-             .arg(driver->insertIgnore(), values.join(QSL(", "))));
+    if (skip_permanently_deleted) {
+      q.prepare(QSL("%1 INTO LabelsInMessages (message, label) "
+                    "SELECT id, :label FROM Messages WHERE id IN (%2) AND is_pdeleted = 0;")
+                  .arg(driver->insertIgnore(), message_ids.join(QSL(", "))));
+      q.bindValue(QSL(":label"), label->id());
+      q.exec();
+    }
+    else {
+      q.exec(QSL("%1 INTO LabelsInMessages (message, label) VALUES %2;")
+               .arg(driver->insertIgnore(), values.join(QSL(", "))));
+    }
   }
 }
 
@@ -871,6 +893,7 @@ struct ExistingMessageInfo {
     int m_feedId;
     QString m_title;
     QString m_author;
+    bool m_isPdeleted;
 };
 
 UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
@@ -878,8 +901,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
-                                                bool force_insert,
-                                                bool preserve_existing_read_state) {
+                                                bool force_insert) {
   if (messages.isEmpty()) {
     return {};
   }
@@ -889,6 +911,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
   auto feed_id = feed->id();
   QVector<Message*> msgs_to_insert;
   QVector<UpdateMessageInfo> msgs_to_update;
+  QSet<int> skipped_message_ids;
 
   msgs_to_insert.reserve(messages.size());
   msgs_to_update.reserve(messages.size());
@@ -930,7 +953,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
       const QString contents_column = ignore_contents_changes ? QSL("NULL") : QSL("Messages.contents");
       const auto lookup_query = [&contents_column](const QStringList& requested_rows, const QString& join_condition) {
         return QSL("SELECT requested.message_index, Messages.id, Messages.date_created, Messages.is_read, "
-                   "Messages.is_important, %1, Messages.feed, Messages.title, Messages.author "
+                   "Messages.is_important, %1, Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted "
                    "FROM (%2) AS requested "
                    "JOIN Messages ON Messages.id = ("
                    "  SELECT candidate.id FROM Messages AS candidate WHERE %3 LIMIT 1"
@@ -975,6 +998,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
           existing_message.m_feedId = query.value(6).toInt();
           existing_message.m_title = query.value(7).toString();
           existing_message.m_author = query.value(8).toString();
+          existing_message.m_isPdeleted = query.value(9).toBool();
 
           existing_messages.insert(message_index, existing_message);
         }
@@ -1097,6 +1121,13 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         if (existing_message != existing_messages.constEnd()) {
           message.m_id = existing_message->m_id;
 
+          // Permanent deletion is authoritative for every account. Keep matching
+          // these records so they cannot be mistaken for new articles and reinserted.
+          if (existing_message->m_isPdeleted) {
+            skipped_message_ids.insert(message.m_id);
+            continue;
+          }
+
           // Message is already in the DB.
           //
           // Now, we update it if at least one of next conditions is true:
@@ -1113,8 +1144,8 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
           //        when the difference is larger than MSG_DATETIME_DIFF_THRESSHOLD
           //
           //   4) FOR ALL SERVICES:
-          //        Message update is forced, we want to overwrite message as some arbitrary atribute was changed,
-          //        this particularly happens when manual message filter execution happens.
+          //        An operation forces an update (for example full-content extraction),
+          //        or a filter explicitly requests a full overwrite with msg.overwrite.
           bool cond_1 = !message.m_customId.isEmpty() && is_syncable &&
                         (message.m_created.toMSecsSinceEpoch() != existing_message->m_created ||
                          message.m_isRead != existing_message->m_isRead ||
@@ -1131,11 +1162,10 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
                            MSG_DATETIME_DIFF_THRESSHOLD) ||
                         (!ignore_contents_changes && message.m_contents != existing_message->m_contents);
 
-          if (cond_1 || cond_2 || cond_3 || force_update) {
-            if (preserve_existing_read_state && !is_syncable && !mark_unread_on_updated) {
-              // Feed is not syncable, thus we got RSS/JSON/whatever.
-              // Article is only updated, so we now prefer to keep original read state
-              // pretty much the same way starred state is kept.
+          if (cond_1 || cond_2 || cond_3 || force_update || message.m_overwrite) {
+            if (!message.m_overwrite && !is_syncable && !mark_unread_on_updated) {
+              // Fetching and manual filtering share local read-state preservation.
+              // Only an explicit overwrite bypasses it.
               message.m_isRead = existing_message->m_isRead;
             }
 
@@ -1172,7 +1202,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
                      ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
                      "date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed, "
                      "custom_data = :custom_data "
-                     "WHERE id = :id;"));
+                     "WHERE id = :id AND is_pdeleted = 0;"));
 
       for (int i = 0; i < msgs_to_update.size(); i++) {
         auto message_update_info = msgs_to_update[i];
@@ -1181,7 +1211,8 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         query_update.bindValue(QSL(":title"), unnulifyString(message_update.m_title));
         query_update.bindValue(QSL(":is_read"), int(message_update.m_isRead));
         query_update.bindValue(QSL(":is_important"),
-                               (feed->account()->isSyncable() || message_update.m_isImportant)
+                               (feed->account()->isSyncable() || message_update.m_overwrite ||
+                                message_update.m_isImportant)
                                  ? int(message_update.m_isImportant)
                                  : message_update_info.m_existingMessageImportant);
         query_update.bindValue(QSL(":is_deleted"), int(message_update.m_isDeleted));
@@ -1197,10 +1228,26 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         query_update.bindValue(QSL(":id"), message_update.m_id);
 
         query_update.exec();
+
+        if (query_update.numRowsAffected() == 0) {
+          // Deletion can happen after the reader lookup. Some drivers also return
+          // zero for an unchanged row, which must retain normal update bookkeeping.
+          SqlQuery still_updatable(db);
+          still_updatable.prepare(QSL("SELECT id FROM Messages WHERE id = :id AND is_pdeleted = 0;"));
+          still_updatable.bindValue(QSL(":id"), message_update.m_id);
+          still_updatable.exec();
+
+          if (!still_updatable.next()) {
+            skipped_message_ids.insert(message_update.m_id);
+            query_update.finish();
+            continue;
+          }
+        }
+
         qDebugNN << LOGSEC_DB << "Overwriting message with title" << QUOTE_W_SPACE(message_update.m_title) << "URL"
                  << QUOTE_W_SPACE(message_update.m_url) << "in DB.";
 
-        if (!message_update.m_isRead) {
+        if (!message_update.m_isRead && !message_update.m_isDeleted) {
           updated_messages.m_unread.append(message_update);
         }
 
@@ -1295,7 +1342,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
             msg->m_insertedUpdated = true;
             msg->m_id = first_msg_id + inserted_index++;
 
-            if (!msg->m_isRead) {
+            if (!msg->m_isRead && !msg->m_isDeleted) {
               updated_messages.m_unread.append(*msg);
             }
 
@@ -1317,25 +1364,37 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
     Globals::hasFlag(feed->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Synchronised);
 
   for (Message& message : messages) {
+    if (skipped_message_ids.contains(message.m_id)) {
+      continue;
+    }
+
     if (!message.m_customId.isEmpty() || message.m_id > 0) {
       // bool lbls_changed = false;
 
       if (uses_online_labels) {
         // Store all labels obtained from server.
         db_factory->worker()->write([&](const QSqlDatabase& db) {
-          setLabelsForMessage(db, message.m_assignedLabels, message);
+          // The row may have been permanently deleted since the article write.
+          SqlQuery updatable(db);
+          updatable.prepare(QSL("SELECT id FROM Messages WHERE id = :id AND is_pdeleted = 0;"));
+          updatable.bindValue(QSL(":id"), message.m_id);
+          updatable.exec();
+
+          if (updatable.next()) {
+            setLabelsForMessage(db, message.m_assignedLabels, message);
+          }
         });
         // lbls_changed = true;
       }
 
       // Adjust labels tweaked by filters.
       for (Label* assigned_by_filter : std::as_const(message.m_assignedLabelsByFilter)) {
-        assigned_by_filter->assignToMessage(message, false);
+        assigned_by_filter->assignToMessage(message, false, true);
         // lbls_changed = true;
       }
 
       for (Label* removed_by_filter : std::as_const(message.m_deassignedLabelsByFilter)) {
-        removed_by_filter->deassignFromMessage(message, false);
+        removed_by_filter->deassignFromMessage(message, false, true);
         // lbls_changed = true;
       }
 
@@ -1369,7 +1428,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
 
     fixup_custom_ids_query.exec(QSL("UPDATE Messages "
                                     "SET custom_id = id "
-                                    "WHERE custom_id IS NULL OR custom_id = '';"),
+                                    "WHERE (custom_id IS NULL OR custom_id = '') AND is_pdeleted = 0;"),
                                 false);
 
     QSqlError fixup_custom_ids_error = fixup_custom_ids_query.lastError();

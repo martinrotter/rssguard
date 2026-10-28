@@ -27,10 +27,14 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     virtual void updateCounts();
 
   public slots:
-    void assignToMessage(const Message& msg, bool reload_feeds_model = true);
-    void deassignFromMessage(const Message& msg, bool reload_feeds_model = true);
-    void assignToMessages(const QList<Message>& messages, bool reload_feeds_model = true);
-    void deassignFromMessages(const QList<Message>& messages, bool reload_feeds_model = true);
+    void assignToMessage(const Message& msg, bool reload_feeds_model = true, bool skip_permanently_deleted = false);
+    void deassignFromMessage(const Message& msg, bool reload_feeds_model = true, bool skip_permanently_deleted = false);
+    void assignToMessages(const QList<Message>& messages,
+                          bool reload_feeds_model = true,
+                          bool skip_permanently_deleted = false);
+    void deassignFromMessages(const QList<Message>& messages,
+                              bool reload_feeds_model = true,
+                              bool skip_permanently_deleted = false);
 
   private:
     int m_totalCount{};

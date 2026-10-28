@@ -2,6 +2,7 @@
 
 #include "core/message.h"
 
+#include <QDataStream>
 #include <QTest>
 
 class TestMessage : public QObject {
@@ -11,6 +12,7 @@ class TestMessage : public QObject {
     void serializesEnclosures();
     void rejectsInvalidEnclosureData();
     void comparesStableIdentifiers();
+    void overwriteIsTransientButCopied();
 };
 
 void TestMessage::serializesEnclosures() {
@@ -50,6 +52,37 @@ void TestMessage::comparesStableIdentifiers() {
   first.m_id = second.m_id = 0;
   first.m_customId = second.m_customId = QStringLiteral("remote-id");
   QVERIFY(first == second);
+}
+
+void TestMessage::overwriteIsTransientButCopied() {
+  Message source;
+  QVERIFY(!source.m_overwrite);
+  source.m_overwrite = true;
+  source.m_customId = QStringLiteral("overwrite-test");
+  source.m_isRead = true;
+  QVERIFY(Message(source).m_overwrite);
+  Message assigned;
+  assigned = source;
+  QVERIFY(assigned.m_overwrite);
+
+  QByteArray bytes;
+  QDataStream output(&bytes, QIODevice::WriteOnly);
+  output << source;
+  Message without_flag = source;
+  without_flag.m_overwrite = false;
+  QByteArray original_format;
+  QDataStream expected(&original_format, QIODevice::WriteOnly);
+  expected << without_flag;
+  QCOMPARE(bytes, original_format);
+
+  Message restored;
+  restored.m_overwrite = true;
+  QDataStream input(bytes);
+  input >> restored;
+  QCOMPARE(input.status(), QDataStream::Ok);
+  QVERIFY(!restored.m_overwrite);
+  QVERIFY(restored.m_isRead);
+  QCOMPARE(restored.m_customId, source.m_customId);
 }
 
 QTEST_APPLESS_MAIN(TestMessage)

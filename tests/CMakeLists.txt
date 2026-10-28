@@ -149,6 +149,18 @@ if(ENABLE_TESTING)
     database/test_databasequeries.cpp
   )
 
+  # Exercise the actual JavaScript wrappers and persistence using an isolated DB.
+  add_rssguard_test(test_filtering
+    filtering/test_filtering.cpp
+    filtering/guinotificationstub.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filterobjects.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filterobjects.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filteringsystem.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/filtering/filteringsystem.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/applicationpaths.cpp
+  )
+  set_tests_properties(test_filtering PROPERTIES TIMEOUT 60)
+
   # These GUI classes are internal to the library and have no Windows DLL exports.
   add_rssguard_test(test_labelsmenu
     gui/test_labelsmenu.cpp
