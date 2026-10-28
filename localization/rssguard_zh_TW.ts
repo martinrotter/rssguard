@@ -7861,22 +7861,22 @@ stack: %3</source>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="197"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="197"/>
       <source>Cannot read downloaded file data.</source>
-      <translation type="unfinished">Cannot read downloaded file data.</translation>
+      <translation>無法讀取下載的檔案資料。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="201"/>
       <source>Cannot write downloaded file data.</source>
-      <translation type="unfinished">Cannot write downloaded file data.</translation>
+      <translation>無法寫入下載的檔案資料。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="895"/>
       <source>Cannot create temporary file for download.</source>
-      <translation type="unfinished">Cannot create temporary file for download.</translation>
+      <translation>無法建立下載用的暫存檔。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="899"/>
       <source>Download file</source>
-      <translation type="unfinished">Download file</translation>
+      <translation>下載檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="935"/>
@@ -7886,34 +7886,34 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
       <source>Failed to download file &apos;%1&apos;.</source>
-      <translation type="unfinished">Failed to download file &apos;%1&apos;.</translation>
+      <translation>無法下載檔案 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="958"/>
       <source>Select file destination</source>
-      <translation type="unfinished">Select file destination</translation>
+      <translation>選擇檔案目的地</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="972"/>
       <source>Cannot open file &apos;%1&apos; for writing.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writing.</translation>
+      <translation>無法開啟檔案 &apos;%1&apos; 供寫入。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="981"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="989"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="989"/>
       <source>Cannot download file</source>
-      <translation type="unfinished">Cannot download file</translation>
+      <translation>無法下載檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="982"/>
       <source>File cannot be downloaded because some network error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some network error happened.</translation>
+      <translation>無法下載檔案，因為發生某種網路錯誤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="990"/>
       <source>File cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some general error happened.</translation>
+      <translation>無法下載檔案，因為發生某個一般錯誤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="191"/>
