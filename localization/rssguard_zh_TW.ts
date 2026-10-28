@@ -5445,17 +5445,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="753"/>
       <source>Cannot parse GReader labels JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader labels JSON response: %1</translation>
+      <translation>無法解析 GReader 標籤的 JSON 方式回應: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="759"/>
       <source>GReader labels response does not contain a JSON array of labels.</source>
-      <translation type="unfinished">GReader labels response does not contain a JSON array of labels.</translation>
+      <translation>GReader 標籤的回訊不含標籤的 JSON 陣列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="767"/>
       <source>Cannot parse GReader subscriptions JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader subscriptions JSON response: %1</translation>
+      <translation>無法解析 GReader 訂閱的 JSON 方式回應: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="773"/>
@@ -6159,7 +6159,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/message.cpp" line="56"/>
       <source>%1 (%2)</source>
-      <translation type="unfinished">%1 (%2)</translation>
+      <translation>%1 (%2)</translation>
     </message>
   </context>
   <context>
@@ -7307,7 +7307,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
       <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization did not finish correctly. Go back to %1 and try again.</translation>
+      <translation>授權未正確結束。請回到 %1，再試一次。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
@@ -7670,12 +7670,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="390"/>
       <source>Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</source>
-      <translation type="unfinished">Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</translation>
+      <translation>無法下載圖像 &apos;%1&apos;，錯誤為 &apos;%2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="593"/>
       <source>Print...</source>
-      <translation type="unfinished">Print...</translation>
+      <translation>列印……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="595"/>
