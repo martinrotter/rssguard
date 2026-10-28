@@ -248,7 +248,7 @@ void SettingsFeedsMessages::loadUi() {
           &QComboBox::currentTextChanged,
           this,
           &SettingsFeedsMessages::dirtifySettings);
-  connect(m_ui->m_cbUnreadWhenUpdated, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbPreserveReadStateOnUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkArticleListLazyLoading, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesDateTimeFormatForDatesOnly,
@@ -390,8 +390,8 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::PropagateFeedListStates)).toBool());
   m_ui->m_checkArticleListLazyLoading
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListLazyLoading)).toBool());
-  m_ui->m_cbUnreadWhenUpdated
-    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool());
+  m_ui->m_cbPreserveReadStateOnUpdate
+    ->setChecked(!settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool());
   m_ui->m_cmbArticleMarkingPolicy
     ->setCurrentIndex(m_ui->m_cmbArticleMarkingPolicy->findData(settings()
                                                                   ->value(GROUP(Messages),
@@ -562,7 +562,10 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleListLazyLoading,
                        m_ui->m_checkArticleListLazyLoading->isChecked());
-  settings()->setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, m_ui->m_cbUnreadWhenUpdated->isChecked());
+  // Keep the existing preference key and invert only the checkbox presentation.
+  settings()->setValue(GROUP(Messages),
+                       Messages::MarkUnreadOnUpdated,
+                       !m_ui->m_cbPreserveReadStateOnUpdate->isChecked());
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleMarkOnSelection,
                        m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());

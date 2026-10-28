@@ -41,6 +41,11 @@ FilteringSystem::FilteringSystem(FiteringUseCase mode,
 }
 
 void FilteringSystem::setMessage(Message* message) {
+  if (message != nullptr) {
+    // Reset once per article pass; successive filters share the final flag value.
+    message->m_overwrite = false;
+  }
+
   m_filterMessage.setMessage(message);
 }
 

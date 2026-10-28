@@ -2,7 +2,10 @@
 -----
 Released on: 2026-11-XX
 
+Article filtering now supports explicit full-article overwrites with `msg.overwrite = true`. Use this opt-in flag when filter changes must be saved even if an existing article would otherwise be skipped; it also allows replacing stored read and starred states. Regular fetching and "Process checked feeds" now share the same saving policy: manual processing no longer implicitly forces updates or bypasses read-state preservation. Existing fetching behavior remains the default; manual filters that need guaranteed saving must opt in. Overwrites save the complete writable article, so scripts must preserve any stored values they need. Permanently deleted records remain protected. See the updated article-filter documentation for examples and the clarified settings. (#2490)
+
 Added:
+* Added the transient `msg.overwrite` article-filter property, also available in the visual generator, with one saving policy for fetching and manual processing. Reorganized the filtering documentation with overwrite, deletion, settings, and API guidance. (#2490)
 * Documented the StartAllBack incompatibility with Windows taskbar thumbnail buttons, including a settings tooltip and instructions to disable the buttons to avoid crashes. (#2462)
 * Batch feed editing can now fetch a separate icon for each feed in the background, with progress and cancellation. Failed fetches preserve existing icons, and fetched icons are applied only when the dialog is saved.
 * Confirmations for assigning or removing article filters for folders or all feeds can now be disabled separately using "Do not show again". (#2457)
@@ -18,6 +21,8 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Permanently deleted article records and their label associations can no longer be modified by article updates, including explicit filter overwrites. Trashed and permanently deleted articles no longer generate normal unread-fetch notifications. (#2490)
+* Clarified the article-update settings as "Ignore body-only changes from feeds" and "Preserve read state on feed updates", with explanatory tooltips and existing preferences preserved. (#2490)
 * Debug and informational logging is now disabled by default, including early startup. Saved logging preferences and explicit debug or memory diagnostics options still enable it. (#2496)
 * Feed discovery now uses the same icon candidates and fallback as metadata fetching, so feeds hosted by services such as FeedBurner use the publisher's icon. (#2480)
 * Fixed discovery reusing the wrong icon for different feeds hosted on the same domain. Failed or invalid icon downloads are no longer cached. (#2480)

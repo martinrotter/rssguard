@@ -56,15 +56,15 @@ void Label::updateCounts() {
   setCountOfUnreadMessages(ac.m_unread);
 }
 
-void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
-  assignToMessages({msg}, reload_feeds_model);
+void Label::assignToMessage(const Message& msg, bool reload_feeds_model, bool skip_permanently_deleted) {
+  assignToMessages({msg}, reload_feeds_model, skip_permanently_deleted);
 }
 
-void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model) {
-  deassignFromMessages({msg}, reload_feeds_model);
+void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model, bool skip_permanently_deleted) {
+  deassignFromMessages({msg}, reload_feeds_model, skip_permanently_deleted);
 }
 
-void Label::assignToMessages(const QList<Message>& messages, bool reload_feeds_model) {
+void Label::assignToMessages(const QList<Message>& messages, bool reload_feeds_model, bool skip_permanently_deleted) {
   if (messages.isEmpty()) {
     return;
   }
@@ -81,7 +81,11 @@ void Label::assignToMessages(const QList<Message>& messages, bool reload_feeds_m
     }
 
     try {
-      DatabaseQueries::assignLabelToMessages(database->driver(), transaction_db, this, messages);
+      DatabaseQueries::assignLabelToMessages(database->driver(),
+                                             transaction_db,
+                                             this,
+                                             messages,
+                                             skip_permanently_deleted);
 
       if (!transaction_db.commit()) {
         THROW_EX(SqlException, transaction_db.lastError());
@@ -98,7 +102,9 @@ void Label::assignToMessages(const QList<Message>& messages, bool reload_feeds_m
   }
 }
 
-void Label::deassignFromMessages(const QList<Message>& messages, bool reload_feeds_model) {
+void Label::deassignFromMessages(const QList<Message>& messages,
+                                 bool reload_feeds_model,
+                                 bool skip_permanently_deleted) {
   if (messages.isEmpty()) {
     return;
   }
@@ -113,7 +119,7 @@ void Label::deassignFromMessages(const QList<Message>& messages, bool reload_fee
     }
 
     try {
-      DatabaseQueries::deassignLabelFromMessages(transaction_db, this, messages);
+      DatabaseQueries::deassignLabelFromMessages(transaction_db, this, messages, skip_permanently_deleted);
 
       if (!transaction_db.commit()) {
         THROW_EX(SqlException, transaction_db.lastError());

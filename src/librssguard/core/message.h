@@ -120,6 +120,10 @@ class RSSGUARD_DLLSPEC Message {
     // from the feed, otherwise is false
     bool m_createdFromFeed = false;
 
+    // Transient filtering instruction: force saving the complete writable article
+    // and its incoming read/star states. Never overrides permanent deletion.
+    bool m_overwrite = false;
+
     // Notice if the article was actually inserted/updated into DB when feed was fetched.
     bool m_insertedUpdated = false;
 };

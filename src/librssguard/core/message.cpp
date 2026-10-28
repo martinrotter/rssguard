@@ -114,6 +114,7 @@ Message::Message(const Message& other) {
   m_created = other.m_created;
   m_retrieved = other.m_retrieved;
   m_createdFromFeed = other.m_createdFromFeed;
+  m_overwrite = other.m_overwrite;
   m_insertedUpdated = other.m_insertedUpdated;
 
   m_enclosures = other.m_enclosures;
@@ -276,6 +277,8 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   my_obj.m_isPdeleted = is_pdeleted;
   my_obj.m_score = score;
   my_obj.m_rtlBehavior = is_rtl;
+  // Processing instructions must not survive persistent state-cache loading.
+  my_obj.m_overwrite = false;
 
   return in;
 }

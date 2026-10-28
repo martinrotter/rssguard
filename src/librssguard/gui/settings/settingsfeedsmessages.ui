@@ -395,8 +395,11 @@
        </item>
        <item row="2" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cmbIgnoreContentsChanges">
+         <property name="toolTip">
+          <string>Body differences alone do not trigger an article update during fetching or manual filter processing. If another change triggers an update, the new body is saved too. Article filters can request an update explicitly with msg.overwrite = true.</string>
+         </property>
          <property name="text">
-          <string>Ignore changes in article body when new articles are being fetched</string>
+          <string>Ignore body-only changes from feeds</string>
          </property>
         </widget>
        </item>
@@ -557,9 +560,12 @@
         </widget>
        </item>
        <item row="3" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbUnreadWhenUpdated">
+        <widget class="QCheckBox" name="m_cbPreserveReadStateOnUpdate">
+         <property name="toolTip">
+          <string>Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article's read state. Synchronized accounts use the service's state. Article filters can override preservation with msg.overwrite = true.</string>
+         </property>
          <property name="text">
-          <string>Mark existing article unread when its updated version is fetched from the feed</string>
+          <string>Preserve read state on feed updates</string>
          </property>
         </widget>
        </item>
@@ -964,7 +970,7 @@
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>
-  <tabstop>m_cbUnreadWhenUpdated</tabstop>
+  <tabstop>m_cbPreserveReadStateOnUpdate</tabstop>
   <tabstop>m_cbFixupArticleDatetime</tabstop>
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>

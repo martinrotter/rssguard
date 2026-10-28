@@ -298,8 +298,9 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
 
       filtering.pushMessageStatesToServices(read_msgs, important_msgs, it, account);
 
-      // Update messages in DB and reload selection.
-      it->account()->updateMessages(msgs, it->toFeed(), true, true, false);
+      // Use the same saving policy as fetching. Scripts can explicitly request
+      // full-row saving with msg.overwrite; acceptance alone does not force it.
+      it->account()->updateMessages(msgs, it->toFeed(), true);
     }
   }
 }
