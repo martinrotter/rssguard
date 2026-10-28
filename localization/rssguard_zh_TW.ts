@@ -7804,37 +7804,37 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/gemlogparser.cpp" line="73"/>
       <source>not a Gemlog</source>
-      <translation type="unfinished">not a Gemlog</translation>
+      <translation>不是一個 Gemlog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppentrypoint.cpp" line="39"/>
       <source>Plugin for XMPP which is able to get articles via PubSub real-time push notifications.</source>
-      <translation type="unfinished">Plugin for XMPP which is able to get articles via PubSub real-time push notifications.</translation>
+      <translation>XMPP 的外掛能通過 PubSub 即時取得文章，並推送通知。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="690"/>
       <source>network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">network error: &apos;%1&apos;.</translation>
+      <translation>網路錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="694"/>
       <source>file error: &apos;%1&apos;.</source>
-      <translation type="unfinished">file error: &apos;%1&apos;.</translation>
+      <translation>檔案錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="699"/>
       <source>client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">client error: &apos;%1 - %2&apos;.</translation>
+      <translation>客戶端錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="706"/>
       <source>auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>授權錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="709"/>
       <source>error: &apos;%1&apos;.</source>
-      <translation type="unfinished">error: &apos;%1&apos;.</translation>
+      <translation>錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="179"/>
@@ -7844,17 +7844,17 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
-      <translation type="unfinished">Login successful</translation>
+      <translation>登入成功</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="76"/>
       <source>All files (*)</source>
-      <translation type="unfinished">All files (*)</translation>
+      <translation>所有檔案(*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="91"/>
       <source>%1 files (%2)</source>
-      <translation type="unfinished">%1 files (%2)</translation>
+      <translation>%1 檔案 (%2)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="190"/>
