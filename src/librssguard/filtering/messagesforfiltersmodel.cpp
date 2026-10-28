@@ -608,10 +608,11 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
         }
         row.m_original = snapshotForFiltering(restored.value(stored_id));
         row.m_compact = false;
+        // Ordinary rows were reset above; only reloaded rows need new snapshots.
+        row.m_filtered = snapshotForFiltering(row.m_original);
+        row.m_expectedStored = snapshotForFiltering(row.m_original);
       }
       row.m_hasStoredValues = true;
-      row.m_filtered = snapshotForFiltering(row.m_original);
-      row.m_expectedStored = snapshotForFiltering(row.m_original);
       const int feed_id = row.m_original.m_feedId;
       if (!feeds.contains(feed_id)) {
         throw ApplicationException(tr("The feed for article '%1' is no longer available.").arg(row.m_original.m_title));

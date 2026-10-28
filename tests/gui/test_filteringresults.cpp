@@ -65,6 +65,10 @@ class TestFilteringResults : public QObject {
     void previewShowsEffectiveValues_data();
     void previewShowsEffectiveValues();
     void enclosureSnapshotsRemainIndependent();
+    void repeatedTestsKeepSnapshotsIndependent_data();
+    void repeatedTestsKeepSnapshotsIndependent();
+    void expectedBodiesKeepFreshValues_data();
+    void expectedBodiesKeepFreshValues();
     void mixedFeedsUseTheirOwnContextAndForwardLogs();
     void processingRetainsAcceptedIgnoredAndPurgedResults();
     void processingFailureRetainsEarlierFeedResults();
@@ -226,6 +230,145 @@ void TestFilteringResults::enclosureSnapshotsRemainIndependent() {
   model.setShowStoredValues(false);
   QCOMPARE(model.constMessageForRow(0)->m_enclosures.first()->mimeType(), QSL("audio/mpeg"));
   QCOMPARE(storedArticle(original.m_id).m_enclosures.first()->mimeType(), QSL("audio/mpeg"));
+}
+
+void TestFilteringResults::repeatedTestsKeepSnapshotsIndependent_data() {
+  QTest::addColumn<bool>("compact");
+  QTest::addColumn<bool>("overwrite");
+  for (bool compact : {false, true}) {
+    for (bool overwrite : {false, true}) {
+      QTest::newRow(qPrintable(QSL("compact%1-overwrite%2").arg(compact).arg(overwrite))) << compact << overwrite;
+    }
+  }
+}
+
+void TestFilteringResults::repeatedTestsKeepSnapshotsIndependent() {
+  QFETCH(bool, compact);
+  QFETCH(bool, overwrite);
+  Message original = seedArticle(m_feed, QSL("repeated-snapshot"));
+  MessagesForFiltersModel model(qApp);
+  MessageFilter filter;
+  if (compact) {
+    // Retained Process results deliberately omit bodies and enclosures. Test must
+    // reload the saved payload before creating its independent snapshots.
+    setScript(filter,
+              QSL("msg.contents = 'Processed contents';"
+                  "msg.enclosures[0].url = 'https://example.com/processed.mp3';"
+                  "msg.overwrite = true;"));
+    model.processFeeds(&filter, m_account.get(), {m_feed});
+    QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+    QCOMPARE(model.rowCount({}), 1);
+    QVERIFY(model.resultForRow(0)->m_compact);
+    QVERIFY(model.resultForRow(0)->m_original.m_contents.isEmpty());
+    QVERIFY(model.resultForRow(0)->m_original.m_enclosures.isEmpty());
+    original = storedArticle(original.m_id);
+  }
+  else {
+    model.setMessages({original});
+  }
+
+  const QString original_url = original.m_enclosures.first()->url();
+  const QString filtered_url = original_url + QSL("?test");
+  setScript(filter,
+            QSL("msg.contents += ' tested';"
+                "msg.enclosures[0].url += '?test';"
+                "msg.enclosures[0].mimeType = 'audio/ogg';"
+                "msg.overwrite = %1;")
+              .arg(overwrite ? QSL("true") : QSL("false")));
+
+  for (int pass = 0; pass < 2; ++pass) {
+    model.testFilter(&filter, m_account.get());
+    QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+    const auto* row = model.resultForRow(0);
+    QVERIFY(row != nullptr);
+    QVERIFY(!row->m_compact);
+    QVERIFY(row->m_saveResult.has_value());
+    QCOMPARE(row->m_original.m_enclosures.size(), 1);
+    QCOMPARE(row->m_filtered.m_enclosures.size(), 1);
+    QCOMPARE(row->m_expectedStored.m_enclosures.size(), 1);
+    QCOMPARE(row->m_saveResult->m_decision.m_action,
+             overwrite ? MessageSaveAction::Update : MessageSaveAction::Skip);
+    QCOMPARE(row->m_original.m_contents, original.m_contents);
+    QCOMPARE(row->m_original.m_enclosures.first()->url(), original_url);
+    QCOMPARE(row->m_original.m_enclosures.first()->mimeType(), QSL("audio/mpeg"));
+    QCOMPARE(row->m_filtered.m_contents, original.m_contents + QSL(" tested"));
+    QCOMPARE(row->m_filtered.m_enclosures.first()->url(), filtered_url);
+    QCOMPARE(row->m_filtered.m_enclosures.first()->mimeType(), QSL("audio/ogg"));
+    QCOMPARE(row->m_expectedStored.m_contents,
+             overwrite ? original.m_contents + QSL(" tested") : original.m_contents);
+    QCOMPARE(row->m_expectedStored.m_enclosures.first()->url(), overwrite ? filtered_url : original_url);
+    QCOMPARE(row->m_expectedStored.m_enclosures.first()->mimeType(),
+             overwrite ? QSL("audio/ogg") : QSL("audio/mpeg"));
+
+    // Even an expected full overwrite must not share mutable enclosure objects
+    // with the script output or the immutable input used by the next Test.
+    row->m_expectedStored.m_enclosures.first()->setUrl(QSL("https://example.com/expected-only"));
+    QCOMPARE(row->m_filtered.m_enclosures.first()->url(), filtered_url);
+    QCOMPARE(row->m_original.m_enclosures.first()->url(), original_url);
+    QCOMPARE(storedArticle(original.m_id).m_contents, original.m_contents);
+    QCOMPARE(storedArticle(original.m_id).m_enclosures.first()->url(), original_url);
+  }
+}
+
+void TestFilteringResults::expectedBodiesKeepFreshValues_data() {
+  QTest::addColumn<QString>("loaded_body");
+  QTest::addColumn<QString>("stored_body");
+  QTest::newRow("equal-text") << QSL("Same body") << QSL("Same body");
+  QTest::newRow("changed-text") << QSL("Loaded body") << QSL("New database body");
+  QTest::newRow("changed-to-empty") << QSL("Loaded body") << QSL("");
+  QTest::newRow("null-to-empty") << QString() << QSL("");
+  QTest::newRow("empty-to-null") << QSL("") << QString();
+  QTest::newRow("equal-null") << QString() << QString();
+}
+
+void TestFilteringResults::expectedBodiesKeepFreshValues() {
+  QFETCH(QString, loaded_body);
+  QFETCH(QString, stored_body);
+  const int id = seedArticle(m_feed, QSL("fresh-preview-body")).m_id;
+  const auto store_body = [id](const QString& body) {
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      SqlQuery query(db);
+      query.prepare(QSL("UPDATE Messages SET contents = :contents WHERE id = :id;"));
+      query.bindValue(QSL(":contents"), body);
+      query.bindValue(QSL(":id"), id);
+      query.exec();
+    });
+  };
+  store_body(loaded_body);
+  const Message original = storedArticle(id);
+  MessagesForFiltersModel model(qApp);
+  model.setMessages({original});
+
+  // The expected values must come from the current database even though the
+  // filter continues to start from its originally loaded input snapshot.
+  store_body(stored_body);
+  const Message stored = storedArticle(id);
+  qApp->settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, true);
+  MessageFilter filter;
+  setScript(filter, {});
+
+  for (int pass = 0; pass < 2; ++pass) {
+    model.testFilter(&filter, m_account.get());
+    QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+    const auto* row = model.resultForRow(0);
+    QVERIFY(row != nullptr);
+    QVERIFY(row->m_saveResult.has_value());
+    QCOMPARE(row->m_saveResult->m_decision.m_action, MessageSaveAction::Skip);
+    QCOMPARE(row->m_expectedStored.m_contents, stored.m_contents);
+    QCOMPARE(row->m_expectedStored.m_contents.isNull(), stored.m_contents.isNull());
+
+    // Equal QString values may share storage, but modifying the displayed
+    // prediction must remain isolated from the input, script output and DB.
+    model.setShowStoredValues(true);
+    model.messageForRow(0)->m_contents += QSL(" display-only");
+    QCOMPARE(row->m_original.m_contents, original.m_contents);
+    QCOMPARE(row->m_original.m_contents.isNull(), original.m_contents.isNull());
+    QCOMPARE(row->m_filtered.m_contents, original.m_contents);
+    QCOMPARE(row->m_filtered.m_contents.isNull(), original.m_contents.isNull());
+    const Message unchanged = storedArticle(id);
+    QCOMPARE(unchanged.m_contents, stored.m_contents);
+    QCOMPARE(unchanged.m_contents.isNull(), stored.m_contents.isNull());
+  }
 }
 
 void TestFilteringResults::mixedFeedsUseTheirOwnContextAndForwardLogs() {
