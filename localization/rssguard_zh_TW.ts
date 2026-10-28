@@ -3657,7 +3657,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Choose the format and copy selected article data to the clipboard</source>
-      <translation type="unfinished">Choose the format and copy selected article data to the clipboard</translation>
+      <translation>選擇格式，並複製所選文章資料到剪貼簿</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
@@ -3669,7 +3669,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>Copy selected article data using the saved format without opening the dialog</source>
-      <translation type="unfinished">Copy selected article data using the saved format without opening the dialog</translation>
+      <translation>使用儲存的格式、不開對話框，複製所選文章資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="878"/>
@@ -3781,7 +3781,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="465"/>
       <source>Stopping feed fetching</source>
-      <translation type="unfinished">Stopping feed fetching</translation>
+      <translation>停止文源抓取</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="495"/>
@@ -3801,12 +3801,12 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="883"/>
       <source>Cookies deleted</source>
-      <translation type="unfinished">Cookies deleted</translation>
+      <translation>Cookies 已刪除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="883"/>
       <source>Stored cookies were deleted.</source>
-      <translation type="unfinished">Stored cookies were deleted.</translation>
+      <translation>儲存的 cookies 已刪除。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="889"/>
@@ -3907,22 +3907,22 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="239"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="239"/>
       <source>Select article filters export file</source>
-      <translation type="unfinished">Select article filters export file</translation>
+      <translation>選文章衰選規則匯出檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="232"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot import filters, error: &apos;%1&apos;.</translation>
+      <translation>無法匯入篩選規則，錯誤為: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
       <source>Replace existing script?</source>
-      <translation type="unfinished">Replace existing script?</translation>
+      <translation>取代既有的即行碼？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="378"/>
       <source>The current article filter script will be replaced by the generated script.</source>
-      <translation type="unfinished">The current article filter script will be replaced by the generated script.</translation>
+      <translation>目前的文章篩選規則會被產生的即行碼取代。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="405"/>
