@@ -8381,7 +8381,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="819"/>
       <source>unknown data returned from sync-in</source>
-      <translation type="unfinished">unknown data returned from sync-in</translation>
+      <translation>未知的資料從同步輸入傳回</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="826"/>
@@ -8391,7 +8391,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="827"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
+      <translation>未下載帳號 &apos;%1&apos; 的文源 &amp; 資料夾，錯誤為: %2</translation>
     </message>
   </context>
   <context>
@@ -8399,21 +8399,21 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="28"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</translation>
+      <translation>注意，&quot;%1&quot; (不包括雙引號) 存放所選文章的 URL 的變元空位。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="32"/>
       <source>Placeholders:
  • %1 - title of the selected article,
  • %2 - body of the selected article.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of the selected article,
- • %2 - body of the selected article.</translation>
+      <translation>變元空位: 
+ • %1 - 所選文章的標題，
+ • %2 - 所選文章的正文。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
       <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>可在此頁設定能開啟 URL 的外部工具清單。如果設定了網域 (沒有起首的 &quot;www.&quot;)，則點了該網域的連結，工具就會直接開啟連結。可用 &apos;,&apos;分隔多個網域。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
@@ -8483,7 +8483,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果消勾，就會使用系統預設的電子郵件客戶端。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="42"/>
@@ -8612,7 +8612,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="26"/>
       <source>Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</source>
-      <translation type="unfinished">Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</translation>
+      <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽文源或文章時的速度。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="104"/>
@@ -8662,7 +8662,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="156"/>
       <source>You did not execute any connection test yet.</source>
-      <translation type="unfinished">You did not execute any connection test yet.</translation>
+      <translation>您尚未進行連線測試。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
@@ -8759,9 +8759,9 @@ File filter for external e-mail selection dialog.</extracomment>
       <source>If enabled then %1 loads articles into article list on demand as you scroll through the list.
 
 This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll through the list.
+      <translation>如啟用，則捲動列表時，%1 會將想閱讀的文章載入到文章清單。
 
-This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+如果有數十萬篇文章，這可以大大加速程式，但會擋到文章清單篩選，因為沒有載入全部文章，篩選卻可能關閉了。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
@@ -8771,7 +8771,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="60"/>
       <source>Note that enabling this might have drastic consequences on performance of the article list with many articles.</source>
-      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of the article list with many articles.</translation>
+      <translation>注意，啟用此，對大量文章的清單可能會有很大的效能問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="66"/>
