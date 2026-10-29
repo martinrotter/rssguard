@@ -11293,7 +11293,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="450"/>
       <source>cannot get list of feeds: %1</source>
-      <translation type="unfinished">cannot get list of feeds: %1</translation>
+      <translation>無法獲得文源清單: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="457"/>
@@ -11303,7 +11303,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="464"/>
       <source>cannot get list of labels: %1</source>
-      <translation type="unfinished">cannot get list of labels: %1</translation>
+      <translation>無法獲得標籤清單: %1</translation>
     </message>
   </context>
   <context>
@@ -11349,7 +11349,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>Play current URL in media player</source>
-      <translation type="unfinished">Play current URL in media player</translation>
+      <translation>於媒體播放器中播放目前 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
@@ -11431,32 +11431,32 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="86"/>
       <source>View source</source>
-      <translation type="unfinished">View source</translation>
+      <translation>檢視原始碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="331"/>
       <source>Save page to PDF file</source>
-      <translation type="unfinished">Save page to PDF file</translation>
+      <translation>儲存頁面成 PDF 檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="334"/>
       <source>PDF files (*.pdf)</source>
-      <translation type="unfinished">PDF files (*.pdf)</translation>
+      <translation>PDF 檔 (*.pdf)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="348"/>
       <source>Save complete page to file</source>
-      <translation type="unfinished">Save complete page to file</translation>
+      <translation>儲存完整網頁成檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="351"/>
       <source>Mime HTML files (*.mhtml)</source>
-      <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
+      <translation>Mime HTML 檔 (*.mhtml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="404"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>進階設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="407"/>
@@ -11476,7 +11476,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="421"/>
       <source>Diagnostics</source>
-      <translation type="unfinished">Diagnostics</translation>
+      <translation>診斷</translation>
     </message>
   </context>
   <context>
@@ -11484,142 +11484,142 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="383"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JS 已啟用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JS 可開啟彈出窗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="390"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JS 可存取剪貼簿</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="394"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>超連結可取得焦點</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="397"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>已啟用本機儲存庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="401"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>本機內容可存取遠端 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="404"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>已啟用 XSS (跨網站指令碼) 審查</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="407"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>已啟用空間導覽</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="411"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>本機內容能存取本機檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="414"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>已啟用超連結審查</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="417"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>動畫式捲動</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="420"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>已啟用錯誤訊息頁面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="423"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>已啟用外掛</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="428"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>已啟用螢幕截圖</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="431"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>已啟用 WebGL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="435"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>加速 2D 畫布</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="438"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>列印元素背景</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>允許執行不安全的內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="446"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>允許不安全來源的網站的地理定位</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="452"/>
       <source>JS can activate windows</source>
-      <translation type="unfinished">JS can activate windows</translation>
+      <translation>JS 能使用視窗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="455"/>
       <source>Show scrollbars</source>
-      <translation type="unfinished">Show scrollbars</translation>
+      <translation>顯示捲軸</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="459"/>
       <source>Media playback with gestures</source>
-      <translation type="unfinished">Media playback with gestures</translation>
+      <translation>用手勢播放多媒體</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="463"/>
       <source>WebRTC uses only public interfaces</source>
-      <translation type="unfinished">WebRTC uses only public interfaces</translation>
+      <translation>WebRTC 只使用公開的介面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="466"/>
       <source>JS can paste from clipboard</source>
-      <translation type="unfinished">JS can paste from clipboard</translation>
+      <translation>JS 可取剪貼簿內容來貼上</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="469"/>
       <source>DNS prefetch enabled</source>
-      <translation type="unfinished">DNS prefetch enabled</translation>
+      <translation>已啟用 DNS 預取</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="474"/>
       <source>PDF viewer enabled</source>
-      <translation type="unfinished">PDF viewer enabled</translation>
+      <translation>已啟用 PDF 檢視器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="480"/>
       <source>Force dark mode</source>
-      <translation type="unfinished">Force dark mode</translation>
+      <translation>強制深色模式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="486"/>
       <source>Printing - print headers/footers.</source>
-      <translation type="unfinished">Printing - print headers/footers.</translation>
+      <translation>列印 - 印頁首/頁尾。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="525"/>
@@ -11634,27 +11634,27 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="543"/>
       <source>File download</source>
-      <translation type="unfinished">File download</translation>
+      <translation>檔案下載</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="544"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
-      <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
+      <translation>有提供下載檔案 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="546"/>
       <source>Copy file URL</source>
-      <translation type="unfinished">Copy file URL</translation>
+      <translation>複製檔案 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="1084"/>
       <source>Navigate to website(s) manually</source>
-      <translation type="unfinished">Navigate to website(s) manually</translation>
+      <translation>動手轉至網站</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="1085"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
+      <translation>%1 無法啟動瀏覽器到指定網址，必須自己到瀏覽器中開啟下面網址。</translation>
     </message>
   </context>
   <context>
@@ -11662,12 +11662,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="257"/>
       <source>Resume automatic feed fetching</source>
-      <translation type="unfinished">Resume automatic feed fetching</translation>
+      <translation>暫停自動從文源下載</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="258"/>
       <source>Pause automatic feed fetching</source>
-      <translation type="unfinished">Pause automatic feed fetching</translation>
+      <translation>暫停自動從文源下載</translation>
     </message>
   </context>
   <context>
@@ -11680,7 +11680,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="30"/>
       <source>Extra nodes</source>
-      <translation type="unfinished">Extra nodes</translation>
+      <translation>額外節點</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="50"/>
@@ -11700,7 +11700,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="88"/>
       <source>JID</source>
-      <translation type="unfinished">JID</translation>
+      <translation>JID</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="101"/>
@@ -11730,7 +11730,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="41"/>
       <source>URL of your XMPP server</source>
-      <translation type="unfinished">URL of your XMPP server</translation>
+      <translation>XMPP 伺服器的 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="43"/>
@@ -11760,22 +11760,22 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="97"/>
       <source>Network error, have you entered correct host, username and password?</source>
-      <translation type="unfinished">Network error, have you entered correct host, username and password?</translation>
+      <translation>網路出錯，輸入的主機、使用者名稱、密碼正確嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="102"/>
       <source>File error: &apos;%1&apos;.</source>
-      <translation type="unfinished">File error: &apos;%1&apos;.</translation>
+      <translation>檔案錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="103"/>
       <source>File error</source>
-      <translation type="unfinished">File error</translation>
+      <translation>檔案錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="109"/>
       <source>Client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Client error: &apos;%1 - %2&apos;.</translation>
+      <translation>客戶端錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
