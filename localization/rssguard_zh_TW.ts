@@ -11710,12 +11710,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="23"/>
       <source>IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</source>
-      <translation type="unfinished">IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</translation>
+      <translation>用於發現的額外服務的 ID (含 PubSub 節點)，每行一個 ID，例如，news.movim.eu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="26"/>
       <source>Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</source>
-      <translation type="unfinished">Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</translation>
+      <translation>支援四種節點 (各以一行書寫): &lt;ul&gt;&lt;li&gt;PubSub 服務目錄，例如，&apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP 目錄，例如，&apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;直接聊天室 (私密聊天、群組聊天) 例如，&apos;chatroom@conference.movim.eu&apos; 或 &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub 服務，或 試探 PEP 的下層 PubSub 節點，若存在，則將聊天室加入目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="39"/>
@@ -11780,27 +11780,27 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
       <source>Client error</source>
-      <translation type="unfinished">Client error</translation>
+      <translation>客戶端錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="118"/>
       <source>Auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>認證錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="119"/>
       <source>Auth error</source>
-      <translation type="unfinished">Auth error</translation>
+      <translation>認證錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="123"/>
       <source>Generic error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Generic error: &apos;%1&apos;.</translation>
+      <translation>一般錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="124"/>
       <source>Generic error</source>
-      <translation type="unfinished">Generic error</translation>
+      <translation>一般錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="202"/>
@@ -11838,22 +11838,22 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="42"/>
       <source>Single-user chats</source>
-      <translation type="unfinished">Single-user chats</translation>
+      <translation>單一使用者聊天</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="45"/>
       <source>Multi-user chats</source>
-      <translation type="unfinished">Multi-user chats</translation>
+      <translation>群聊</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="48"/>
       <source>PubSub services</source>
-      <translation type="unfinished">PubSub services</translation>
+      <translation>PubSub 服務</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="51"/>
       <source>PubSub PEPs</source>
-      <translation type="unfinished">PubSub PEPs</translation>
+      <translation>PubSub PEPs</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="54"/>
@@ -11867,8 +11867,8 @@ Last login on: %4</source>
       <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="287"/>
       <source>Type: %1
 Service: %2</source>
-      <translation type="unfinished">Type: %1
-Service: %2</translation>
+      <translation>類型: %1
+服務: %2</translation>
     </message>
   </context>
   <context>
@@ -11877,12 +11877,12 @@ Service: %2</translation>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="164"/>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="605"/>
       <source>XMPP connection was closed during services discovery</source>
-      <translation type="unfinished">XMPP connection was closed during services discovery</translation>
+      <translation>於發現服務期間，XMPP 連線被關閉</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="191"/>
       <source>disconnected</source>
-      <translation type="unfinished">disconnected</translation>
+      <translation>連線已中斷</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="194"/>
@@ -11955,7 +11955,7 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="200"/>
       <source>&amp;Reconnect</source>
-      <translation type="unfinished">&amp;Reconnect</translation>
+      <translation>重新連線(&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="220"/>
