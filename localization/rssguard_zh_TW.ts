@@ -8980,7 +8980,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="767"/>
       <source>Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</source>
-      <translation type="unfinished">Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</translation>
+      <translation>分別記住後面的文章清單欄位：文源、資料夾、帳號、標籤、搜尋文件夾、未讀文章、重要文章和資源回收筒。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
@@ -9004,7 +9004,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="828"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="784"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
-      <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
+      <translation>於 &quot;文源&quot; 欄顯示文源圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
@@ -9173,7 +9173,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="72"/>
       <source>Show splash screen during application startup</source>
-      <translation type="unfinished">Show splash screen during application startup</translation>
+      <translation>於應用程式啟動時，顯示啟動畫面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="51"/>
@@ -9675,7 +9675,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.h" line="31"/>
       <source>Network &amp; web</source>
-      <translation type="unfinished">Network &amp; web</translation>
+      <translation>網路 &amp; 網頁</translation>
     </message>
   </context>
   <context>
@@ -10148,16 +10148,16 @@ Ignore cookies: %7
 Report empty feed as broken: %8
 Feed timeout: %9
 Fetch full articles: %10 (plain text only: %11)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
-HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Feed timeout: %9
-Fetch full articles: %10 (plain text only: %11)</translation>
+      <translation>編碼：%1
+類型：%2
+用於後處理的即行碼：%3
+使用原始 XML 格式儲存：%4
+抓取文章評論：%5
+HTTP/2：%6
+忽略 cookie：%7
+將空置的文源報為損壞：%8
+文源超時：%9
+抓取完整文章：%10 (僅純文字：%11)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="510"/>
@@ -10415,7 +10415,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Report feed as broken when it contains no articles</source>
-      <translation type="unfinished">Report feed as broken when it contains no articles</translation>
+      <translation>文源不含文章時，報為損壞</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="125"/>
