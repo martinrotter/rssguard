@@ -579,7 +579,7 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   m_ui.m_txtErrors->clear();
   m_ui.m_txtErrors->setTextColor(m_defaultTextColor);
-  m_msgModel->testFilter(selectedFilter(), selectedAccount());
+  m_msgModel->testFilter(selectedFilter(), selectedAccount(), m_ui.m_cbForceOverwrite->isChecked());
   showFilteringResults();
 }
 
@@ -628,7 +628,8 @@ void FormMessageFiltersManager::processCheckedFeeds() {
 
   m_ui.m_txtErrors->clear();
   m_ui.m_txtErrors->setTextColor(m_defaultTextColor);
-  m_msgModel->processFeeds(filter, selectedAccount(), checked);
+  m_msgModel->processFeeds(filter, selectedAccount(), checked, m_ui.m_cbForceOverwrite->isChecked());
+  m_ui.m_cbForceOverwrite->setChecked(false);
   showFilteringResults();
 }
 

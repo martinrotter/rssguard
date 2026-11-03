@@ -57,8 +57,11 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
   public:
-    void processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked);
-    void testFilter(MessageFilter* filter, ServiceRoot* account);
+    void processFeeds(MessageFilter* filter,
+                      ServiceRoot* account,
+                      const QList<RootItem*>& checked,
+                      bool force_overwrite = false);
+    void testFilter(MessageFilter* filter, ServiceRoot* account, bool force_overwrite = false);
 
     // Enclosures are mutable QObjects, so ordinary Message copies are not snapshots.
     static Message snapshotForFiltering(const Message& message);

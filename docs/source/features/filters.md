@@ -11,6 +11,8 @@ Use the dialog to create, enable, order, and assign filters to feeds within an a
 * **Test** runs the selected filter against the loaded stored articles and previews the local database write. It does not save the test articles.
 * **Process checked feeds** runs the selected filter against undeleted articles in the checked feeds and reports the actual saving results. Accepted results follow the same saving policy as regular fetching.
 
+**Force overwrite of accepted articles** starts unchecked, so both actions honor the script's final `msg.overwrite` value. Select it to request an [explicit overwrite](#explicit-overwrite) after the script returns `Msg.Accept`. **Test** previews the overwrite and **Process checked feeds** saves the accepted article with its final read and starred states. The checkbox stays selected after **Test** and clears after **Process checked feeds** runs. During regular fetching, the script controls `msg.overwrite`.
+
 The **Existing articles** table separates the **Filter decision** from the **Database outcome**. Accepting an article does not necessarily update its stored row. For example, a filter can return `Accept` after changing only the score, while the database outcome is **Skipped: no update trigger**. Label changes are reported separately because they can be saved without updating the article row.
 
 After testing, use **Show values** to switch between the script result and the expected stored values. Expected stored values include local read/star preservation and retain the stored article when its row would be skipped. Changed values are highlighted, tooltips compare them with the original article, and the detail tabs show metadata and contents. The **Output** tab displays `app.log(...)` messages and errors for both Test and Process checked feeds, followed by the run summary.
@@ -59,7 +61,7 @@ Read changing values such as `msg.title` and `run.indexOfCurrentFilter` inside `
 
 A fetching filter starts with the incoming article, not a copy of the stored article. For local feeds, incoming read/star/trash flags normally start as `false`, and the score starts at zero. Manual processing and testing start with stored article values instead.
 
-During both fetching and **Process checked feeds**, accepting an existing article does not force a database update. RSS Guard uses its existing identity, content, state, and date checks. Changing a script property alone does not introduce a new update trigger: for example, changing only local read state, score, or attachments can be skipped in either workflow. New accepted articles are inserted normally.
+By default, RSS Guard uses its identity, content, state, and date checks to decide whether to update an accepted article during fetching or **Process checked feeds**. Changing a script property alone does not introduce a new update trigger: for example, changing only local read state, score, or attachments can be skipped in either workflow. New accepted articles are inserted normally.
 
 #### Explicit overwrite
 
@@ -105,13 +107,13 @@ This example preserves only the three copied properties. It still uses the incom
 
 The existing preferences have clearer labels; saved preferences retain their meaning:
 
-| Setting | Ordinary saving in either workflow | With `msg.overwrite = true` |
+| Setting | Ordinary saving in either workflow | With an explicit overwrite |
 | :--- | :--- | :--- |
 | **Ignore body-only changes from feeds** | Body differences alone do not trigger an update. An update triggered for another reason can still save the new body. | The explicit overwrite triggers saving regardless. |
 | **Preserve read state on feed updates** | Keep the stored read state during local article updates, including manual filtering. When disabled, use the resulting article's read state. Synchronized accounts retain their existing state handling. | Save the filter's final read state. |
 
 ```{attention}
-Changed in 5.3.0: **Process checked feeds no longer implicitly forces an update or bypasses local read-state preservation.** A manual filter that changes only read state, score, attachments, or similar fields must set `msg.overwrite = true` to guarantee saving. The same flag also allows clearing a stored local star. Returning `Accept` alone follows ordinary update detection in both workflows.
+Changed in 5.3.0: **Process checked feeds no longer implicitly forces an update or bypasses local read-state preservation.** To save read-state, score or attachment edits that ordinary detection would skip, set `msg.overwrite = true` in the script or select **Force overwrite of accepted articles** for a manual run. Either option also allows clearing a stored local star.
 ```
 
 The workflows retain different inputs and purposes: fetching processes incoming data through the enabled assigned filter chain; manual processing applies the selected filter to stored undeleted articles. Manual duplicate checks exclude the current article, and manual `Purge` physically removes it. Manual processing does not generate normal new-article fetch notifications. These differences do not change the shared saving policy. The overwrite flag controls local persistence; it does not add new remote synchronization operations.
