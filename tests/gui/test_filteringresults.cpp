@@ -163,55 +163,76 @@ Message TestFilteringResults::storedArticle(int id) const {
 void TestFilteringResults::previewShowsEffectiveValues_data() {
   QTest::addColumn<bool>("title_change");
   QTest::addColumn<bool>("overwrite");
+  QTest::addColumn<bool>("force_overwrite");
   for (bool title_change : {false, true}) {
     for (bool overwrite : {false, true}) {
       QTest::newRow(qPrintable(QSL("title%1-overwrite%2").arg(title_change).arg(overwrite)))
-        << title_change << overwrite;
+        << title_change << overwrite << false;
     }
   }
+  QTest::newRow("force-overwrite-accepted") << false << false << true;
 }
 
 void TestFilteringResults::previewShowsEffectiveValues() {
   QFETCH(bool, title_change);
   QFETCH(bool, overwrite);
+  QFETCH(bool, force_overwrite);
+  const bool will_overwrite = overwrite || force_overwrite;
   const Message original = seedArticle(m_feed, QSL("preview-values"), true);
   MessagesForFiltersModel model(qApp);
   model.setMessages({original});
   QVERIFY(!model.index(0, MFM_MODEL_DATABASE).data(Qt::BackgroundRole).isValid());
   MessageFilter filter;
   setScript(filter,
-            QSL("msg.isRead = true; msg.isImportant = false; msg.score = 17; %1 msg.overwrite = %2;")
+            QSL("if (msg.overwrite) throw new Error('Overwrite visible to running script');"
+                "msg.isRead = true; msg.isImportant = false; msg.score = 17; %1 msg.overwrite = %2;")
               .arg(title_change ? QSL("msg.title = 'Changed title';") : QString(),
                    overwrite ? QSL("true") : QSL("false")));
-  model.testFilter(&filter, m_account.get());
+  model.testFilter(&filter, m_account.get(), force_overwrite);
   QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
   QVERIFY(model.isPreview());
   const auto* row = model.resultForRow(0);
   QVERIFY(row != nullptr);
   QCOMPARE(row->m_decision.value(), FilterMessage::FilteringAction::Accept);
   QVERIFY(row->m_saveResult.has_value());
-  QCOMPARE(row->m_saveResult->m_decision.m_action,
-           title_change || overwrite ? MessageSaveAction::Update : MessageSaveAction::Skip);
+  const auto predicted = *row->m_saveResult;
+  QCOMPARE(predicted.m_decision.m_action,
+           title_change || will_overwrite ? MessageSaveAction::Update : MessageSaveAction::Skip);
+  if (will_overwrite) {
+    QCOMPARE(predicted.m_decision.m_reason, MessageSaveReason::ExplicitOverwrite);
+  }
   model.setShowStoredValues(false);
   QVERIFY(model.constMessageForRow(0)->m_isRead);
   QVERIFY(!model.constMessageForRow(0)->m_isImportant);
   QCOMPARE(model.constMessageForRow(0)->m_score, 17.0);
   model.setShowStoredValues(true);
-  const Message* expected = model.constMessageForRow(0);
-  QCOMPARE(expected->m_isRead, overwrite);
-  QCOMPARE(expected->m_isImportant, !overwrite);
-  QCOMPARE(expected->m_score, overwrite || title_change ? 17.0 : 0.0);
-  QCOMPARE(expected->m_title, title_change ? QSL("Changed title") : original.m_title);
+  const Message expected = *model.constMessageForRow(0);
+  QCOMPARE(expected.m_isRead, will_overwrite);
+  QCOMPARE(expected.m_isImportant, !will_overwrite);
+  QCOMPARE(expected.m_score, will_overwrite || title_change ? 17.0 : 0.0);
+  QCOMPARE(expected.m_title, title_change ? QSL("Changed title") : original.m_title);
   QVERIFY(!model.data(model.index(0, MFM_MODEL_DATABASE), Qt::DisplayRole).toString().isEmpty());
   QVERIFY(!model.summaryText().isEmpty());
   QCOMPARE(model.index(0, MFM_MODEL_DATABASE).data(Qt::BackgroundRole).value<QColor>(),
-           qApp->skins()->colorForModel(title_change || overwrite ? SkinEnums::PaletteColors::Allright
-                                                                  : SkinEnums::PaletteColors::FgError).value<QColor>());
+           qApp->skins()->colorForModel(title_change || will_overwrite ? SkinEnums::PaletteColors::Allright
+                                                                       : SkinEnums::PaletteColors::FgError).value<QColor>());
   const Message stored = storedArticle(original.m_id);
   QVERIFY(!stored.m_isRead);
   QVERIFY(stored.m_isImportant);
   QCOMPARE(stored.m_score, 0.0);
   QCOMPARE(stored.m_title, original.m_title);
+
+  model.processFeeds(&filter, m_account.get(), {m_feed}, force_overwrite);
+  QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+  const auto& actual = model.resultForRow(0)->m_saveResult;
+  QVERIFY(actual.has_value());
+  QCOMPARE(actual->m_outcome, predicted.m_outcome);
+  QCOMPARE(actual->m_decision.m_reason, predicted.m_decision.m_reason);
+  const Message processed = storedArticle(original.m_id);
+  QCOMPARE(processed.m_isRead, expected.m_isRead);
+  QCOMPARE(processed.m_isImportant, expected.m_isImportant);
+  QCOMPARE(processed.m_score, expected.m_score);
+  QCOMPARE(processed.m_title, expected.m_title);
 }
 
 void TestFilteringResults::sortingTracksFilteredValues_data() {
@@ -487,12 +508,20 @@ void TestFilteringResults::processingRetainsAcceptedIgnoredAndPurgedResults() {
   const Message ignored = seedArticle(m_feed, QSL("ignore"));
   const Message purged = seedArticle(m_feed, QSL("purge"));
   MessagesForFiltersModel model(qApp);
-  QSignalSpy logs(&model, &MessagesForFiltersModel::scriptLogged);
   MessageFilter filter;
   setScript(filter,
-            QSL("app.log(msg.title); if (msg.title === 'ignore') return Msg.Ignore;"
-                "if (msg.title === 'purge') return Msg.Purge; msg.isRead = true; msg.overwrite = true;"));
-  model.processFeeds(&filter, m_account.get(), {m_feed});
+            QSL("app.log(msg.title); msg.isRead = true; if (msg.title === 'ignore') return Msg.Ignore;"
+                "if (msg.title === 'purge') return Msg.Purge;"));
+  model.setMessages({accepted, ignored, purged});
+  model.testFilter(&filter, m_account.get(), true);
+  QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+  QVERIFY(!model.resultForRow(1)->m_saveResult.has_value());
+  QVERIFY(!model.resultForRow(2)->m_saveResult.has_value());
+  QVERIFY(!model.hasStoredValuesForRow(2));
+  QCOMPARE(storedArticle(purged.m_id).m_id, purged.m_id);
+
+  QSignalSpy logs(&model, &MessagesForFiltersModel::scriptLogged);
+  model.processFeeds(&filter, m_account.get(), {m_feed}, true);
   QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
   QVERIFY(!model.isPreview());
   QCOMPARE(model.rowCount({}), 3);

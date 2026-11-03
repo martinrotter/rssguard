@@ -112,7 +112,7 @@ QString MessagesForFiltersModel::databaseOutcome(const MessageBackupAndOriginal&
     }
     if (detailed) {
       if (saved.m_decision.m_reason == MessageSaveReason::ExplicitOverwrite) {
-        text += tr("\nThe filter explicitly requested a full article overwrite.");
+        text += tr("\nA full article overwrite was requested.");
       }
       if (saved.m_decision.m_preserveReadState) {
         text += tr("\nThe stored read state is preserved.");
@@ -466,7 +466,8 @@ void MessagesForFiltersModel::refreshStoredRows(int first_row, int count) {
 
 void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
                                            ServiceRoot* account,
-                                           const QList<RootItem*>& checked) {
+                                           const QList<RootItem*>& checked,
+                                           bool force_overwrite) {
   if (filter == nullptr || account == nullptr) {
     return;
   }
@@ -536,6 +537,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
         if (*row.m_decision == FilterMessage::FilteringAction::Accept) {
           accepted_rows.append(active_row);
           accepted.append(message);
+          accepted.last().m_overwrite = message.m_overwrite || force_overwrite;
         }
       }
       active_row = -1;
@@ -584,7 +586,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
   finishRun(completed_feeds, requested_feeds);
 }
 
-void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* account) {
+void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* account, bool force_overwrite) {
   if (filter == nullptr || account == nullptr) {
     return;
   }
@@ -674,6 +676,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
         if (*row.m_decision == FilterMessage::FilteringAction::Accept) {
           accepted_rows.append(row_index);
           accepted.append(row.m_filtered);
+          accepted.last().m_overwrite = row.m_filtered.m_overwrite || force_overwrite;
         }
       }
       active_row = -1;

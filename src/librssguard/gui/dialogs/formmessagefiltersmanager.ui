@@ -269,6 +269,16 @@
             </layout>
            </item>
            <item>
+            <widget class="QCheckBox" name="m_cbForceOverwrite">
+             <property name="toolTip">
+              <string>Request a full overwrite for every article the filter accepts, including its read and starred states. Test previews the result. Process checked feeds applies it and clears this option.</string>
+             </property>
+             <property name="text">
+              <string>Force overwrite of accepted articles</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
               <widget class="QPushButton" name="m_btnTest">
@@ -653,6 +663,7 @@
   <tabstop>m_btnUncheckAll</tabstop>
   <tabstop>m_txtTitle</tabstop>
   <tabstop>m_txtScript</tabstop>
+  <tabstop>m_cbForceOverwrite</tabstop>
   <tabstop>m_btnTest</tabstop>
   <tabstop>m_btnRunOnMessages</tabstop>
   <tabstop>m_btnBeautify</tabstop>
