@@ -47,6 +47,7 @@ void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
   m_showStoredValues = false;
   for (const Message& msg : messages) {
     MessageBackupAndOriginal row;
+    row.m_storedId = msg.m_id;
     row.m_original = snapshotForFiltering(msg);
     row.m_filtered = snapshotForFiltering(msg);
     row.m_expectedStored = snapshotForFiltering(msg);
@@ -371,16 +372,6 @@ namespace {
     return result;
   }
 
-  int storedIdentity(const MessageBackupAndOriginal& row) {
-    if (row.m_saveResult && row.m_saveResult->m_id > 0 &&
-        (row.m_saveResult->m_outcome == MessageWriteOutcome::Inserted ||
-         row.m_saveResult->m_outcome == MessageWriteOutcome::Updated ||
-         row.m_saveResult->m_outcome == MessageWriteOutcome::Skipped)) {
-      return row.m_saveResult->m_id;
-    }
-    return row.m_original.m_id;
-  }
-
 } // namespace
 
 std::unique_ptr<FilteringSystem> MessagesForFiltersModel::createFilteringSystem(Feed* feed, ServiceRoot* account) {
@@ -448,18 +439,22 @@ std::optional<Message> MessagesForFiltersModel::storedMessage(int id) const {
   return messages.contains(id) ? std::optional<Message>(messages.value(id)) : std::nullopt;
 }
 
-void MessagesForFiltersModel::refreshStoredRows(int first_row, int count) {
-  QList<int> ids;
-  for (int i = first_row; i < first_row + count; ++i) {
-    ids.append(storedIdentity(m_messages[i]));
+void MessagesForFiltersModel::refreshStoredRows(const QList<int>& rows, bool full) {
+  if (rows.isEmpty()) {
+    return;
   }
-  const auto stored = storedMessages(ids, false);
-  for (int i = first_row; i < first_row + count; ++i) {
+  QList<int> ids;
+  ids.reserve(rows.size());
+  for (int i : rows) {
+    ids.append(m_messages.at(i).m_storedId);
+  }
+  const auto stored = storedMessages(ids, full);
+  for (int i : rows) {
     auto& row = m_messages[i];
-    const int stored_id = storedIdentity(row);
-    row.m_hasStoredValues = stored.contains(stored_id);
+    const auto current = stored.constFind(row.m_storedId);
+    row.m_hasStoredValues = current != stored.constEnd();
     if (row.m_hasStoredValues) {
-      row.m_expectedStored = stored.value(stored_id);
+      row.m_expectedStored = full ? snapshotForFiltering(current.value()) : current.value();
     }
   }
 }
@@ -480,8 +475,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
   int completed_feeds = 0;
   int requested_feeds = 0;
   int active_row = -1;
-  int active_feed_start = 0;
-  int active_feed_count = 0;
+  QList<int> active_feed_rows;
   for (const auto* item : checked) {
     requested_feeds += item->kind() == RootItem::Kind::Feed;
   }
@@ -491,6 +485,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
       if (item->kind() != RootItem::Kind::Feed) {
         continue;
       }
+      active_feed_rows.clear();
       auto filtering = createFilteringSystem(item->toFeed(), account);
       const auto labels =
         account->labelsNode() != nullptr ? account->labelsNode()->getHashedLabels() : QHash<QString, Label*>();
@@ -498,15 +493,16 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
         return DatabaseQueries::getUndeletedMessagesForFeed(db, item->id(), labels);
       });
       const int first_row = m_messages.size();
-      active_feed_start = first_row;
-      active_feed_count = messages.size();
+      active_feed_rows.reserve(messages.size());
       for (const auto& message : messages) {
         MessageBackupAndOriginal row;
+        row.m_storedId = message.m_id;
         row.m_original = compactMessage(message);
         row.m_filtered = row.m_original;
         row.m_expectedStored = row.m_original;
         row.m_compact = true;
         m_messages.append(row);
+        active_feed_rows.append(m_messages.size() - 1);
       }
 
       QList<Message> read_messages, important_messages, accepted;
@@ -555,12 +551,15 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
         }
         auto& row = m_messages[accepted_rows[receipt.m_inputIndex]];
         row.m_saveResult = receipt;
+        if (receipt.m_outcome == MessageWriteOutcome::Inserted) {
+          row.m_storedId = receipt.m_id;
+        }
         if (saved_messages.contains(receipt.m_id)) {
           row.m_expectedStored = saved_messages.value(receipt.m_id);
         }
       }
       m_error = report.m_error;
-      refreshStoredRows(first_row, messages.size());
+      refreshStoredRows(active_feed_rows, false);
       if (!report.succeeded()) {
         break;
       }
@@ -577,7 +576,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* filter,
       m_messages[active_row].m_error = m_error;
     }
     try {
-      refreshStoredRows(active_feed_start, active_feed_count);
+      refreshStoredRows(active_feed_rows, false);
     }
     catch (...) {
       emit scriptLogged(tr("Could not refresh stored values after the incomplete run."));
@@ -606,14 +605,11 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
 
   try {
     QList<int> compact_ids;
-    QHash<int, int> compact_id_by_row;
     // Clear the entire previous result before any reload or feed lookup can fail.
     for (int i = 0; i < m_messages.size(); ++i) {
       auto& row = m_messages[i];
       if (row.m_compact) {
-        const int stored_id = storedIdentity(row);
-        compact_ids.append(stored_id);
-        compact_id_by_row.insert(i, stored_id);
+        compact_ids.append(row.m_storedId);
       }
       row.m_decision.reset();
       row.m_saveResult.reset();
@@ -628,10 +624,9 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
       active_row = i;
       auto& row = m_messages[i];
       if (row.m_compact) {
-        const int stored_id = compact_id_by_row.value(i);
-        if (!restored.contains(stored_id)) {
+        if (!restored.contains(row.m_storedId)) {
           MessageWriteResult missing;
-          missing.m_id = stored_id;
+          missing.m_id = row.m_storedId;
           missing.m_outcome = MessageWriteOutcome::Skipped;
           missing.m_labelsChecked = true;
           row.m_hasStoredValues = false;
@@ -639,7 +634,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
           row.m_saveResult = missing;
           continue;
         }
-        row.m_original = snapshotForFiltering(restored.value(stored_id));
+        row.m_original = snapshotForFiltering(restored.value(row.m_storedId));
         row.m_compact = false;
         // Ordinary rows were reset above; only reloaded rows need new snapshots.
         row.m_filtered = snapshotForFiltering(row.m_original);
@@ -659,18 +654,21 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
     for (int feed_id : feed_order) {
       auto filtering = createFilteringSystem(feeds.value(feed_id), account);
       QList<Message> accepted;
-      QList<int> accepted_rows;
+      QList<int> accepted_rows, ignored_rows;
       QList<Message> read_messages, important_messages;
       for (int row_index : rows_by_feed.value(feed_id)) {
         active_row = row_index;
         auto& row = m_messages[row_index];
         filtering->setMessage(&row.m_filtered);
         row.m_decision = filtering->filterMessage(*filter);
-        if (*row.m_decision == FilterMessage::FilteringAction::Purge) {
-          row.m_hasStoredValues = false;
-        }
         if (*row.m_decision == FilterMessage::FilteringAction::Accept) {
           filtering->filterRun().incrementNumberOfAcceptedMessages();
+        }
+        else {
+          row.m_hasStoredValues = false;
+          if (*row.m_decision == FilterMessage::FilteringAction::Ignore) {
+            ignored_rows.append(row_index);
+          }
         }
         filtering->compareAndWriteArticleStates(&row.m_original, &row.m_filtered, read_messages, important_messages);
         if (*row.m_decision == FilterMessage::FilteringAction::Accept) {
@@ -681,6 +679,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, ServiceRoot* acc
       }
       active_row = -1;
       filtering->setMessage(nullptr);
+      refreshStoredRows(ignored_rows, true);
       const auto previews = DatabaseQueries::previewMessageUpdates(m_application->database(),
                                                                    m_application->settings(),
                                                                    accepted,
@@ -729,7 +728,10 @@ void MessagesForFiltersModel::finishRun(int completed_feeds, int requested_feeds
       failed += saved.m_outcome == MessageWriteOutcome::Failed;
       pending += saved.m_outcome == MessageWriteOutcome::NotAttempted;
       labels += saved.m_labelsChecked && saved.m_labelsChanged;
-      unconfirmed_labels += !saved.m_labelsChecked;
+      if (saved.m_outcome == MessageWriteOutcome::Inserted || saved.m_outcome == MessageWriteOutcome::Updated ||
+          saved.m_outcome == MessageWriteOutcome::Skipped) {
+        unconfirmed_labels += !saved.m_labelsChecked;
+      }
     }
     else if (row.m_purged || (m_preview && row.m_decision == FilterMessage::FilteringAction::Purge)) {
       ++purged;
@@ -757,13 +759,18 @@ void MessagesForFiltersModel::finishRun(int completed_feeds, int requested_feeds
                 .arg(ignored)
                 .arg(purged);
   m_summary += m_preview ? tr(" Labels would change on %1 articles.").arg(labels)
-                         : tr(" Labels changed on %1 articles.").arg(labels);
+                         : tr(" Label changes confirmed on %n article(s).", nullptr, labels);
   if (unconfirmed_labels > 0) {
-    m_summary += tr(" Label results remain unconfirmed for %1 articles.").arg(unconfirmed_labels);
+    m_summary += tr(" Label changes could not be confirmed for %n article(s).", nullptr, unconfirmed_labels);
   }
   if (!m_error.isEmpty()) {
-    m_summary +=
-      tr(" Run incomplete: %1 failed or unconfirmed, %2 not attempted. %3").arg(failed).arg(pending).arg(m_error);
+    m_summary += tr(" Run incomplete.");
+    if (failed > 0) {
+      m_summary += tr(" Processing failed for %n article(s).", nullptr, failed);
+    }
+    if (pending > 0) {
+      m_summary += tr(" %n article(s) not attempted.", nullptr, pending);
+    }
   }
   endResetModel();
   emit summaryChanged(m_summary);
