@@ -29,6 +29,8 @@ class FilteringSystem;
 class Application;
 
 struct MessageBackupAndOriginal {
+    // Process can reinsert the original article under a new database ID.
+    int m_storedId = 0;
     Message m_original;
     Message m_filtered;
     Message m_expectedStored;
@@ -90,7 +92,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     std::unique_ptr<FilteringSystem> createFilteringSystem(Feed* feed, ServiceRoot* account);
     std::optional<Message> storedMessage(int id) const;
     QHash<int, Message> storedMessages(const QList<int>& ids, bool full) const;
-    void refreshStoredRows(int first_row, int count);
+    void refreshStoredRows(const QList<int>& rows, bool full);
     void finishRun(int completed_feeds, int requested_feeds);
 
   private:

@@ -47,6 +47,19 @@ namespace {
     return -1;
   }
 
+  void testWhileMessagesUnavailable(MessagesForFiltersModel& model, MessageFilter& filter, ServiceRoot* account) {
+    // Restore the table before assertions so a failure cannot poison subsequent tests.
+    qApp->database()->worker()->write([](const QSqlDatabase& db) {
+      SqlQuery query(db);
+      query.exec(QSL("ALTER TABLE Messages RENAME TO unavailable_test_messages;"));
+    });
+    model.testFilter(&filter, account);
+    qApp->database()->worker()->write([](const QSqlDatabase& db) {
+      SqlQuery query(db);
+      query.exec(QSL("ALTER TABLE unavailable_test_messages RENAME TO Messages;"));
+    });
+  }
+
   void prepareProfile(const QString& profile) {
     QDir().mkpath(profile + QDir::separator() + QSL(APP_CFG_PATH));
     QSettings settings(profile + QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE),
@@ -74,10 +87,12 @@ class TestFilteringResults : public QObject {
     void repeatedTestsKeepSnapshotsIndependent();
     void expectedBodiesKeepFreshValues_data();
     void expectedBodiesKeepFreshValues();
+    void ignoredPreviewReadsCurrentStoredValues();
     void mixedFeedsUseTheirOwnContextAndForwardLogs();
     void processingRetainsAcceptedIgnoredAndPurgedResults();
     void processingFailureRetainsEarlierFeedResults();
     void labelsOnlyChangesAndNoOpsAreReported();
+    void labelFailureRetainsConfirmedArticleUpdate();
     void cleanupIsReportedAfterWriting();
     void purgePreviewHasNoStoredDetails();
     void failedReloadClearsPreviousResults();
@@ -481,6 +496,38 @@ void TestFilteringResults::expectedBodiesKeepFreshValues() {
   }
 }
 
+void TestFilteringResults::ignoredPreviewReadsCurrentStoredValues() {
+  const Message changed = seedArticle(m_feed, QSL("changed-while-loaded"));
+  const Message removed = seedArticle(m_feed, QSL("removed-while-loaded"));
+  MessagesForFiltersModel model(qApp);
+  model.setMessages({changed, removed});
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.prepare(QSL("UPDATE Messages SET is_read = 1, contents = 'Current body' WHERE id = :id;"));
+    query.bindValue(QSL(":id"), changed.m_id);
+    query.exec();
+    DatabaseQueries::purgeMessage(db, removed.m_id);
+  });
+
+  MessageFilter filter;
+  setScript(filter, QSL("msg.contents += ' (script)'; return Msg.Ignore;"));
+  model.testFilter(&filter, m_account.get());
+  QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
+  QCOMPARE(model.resultForRow(0)->m_decision.value(), FilterMessage::FilteringAction::Ignore);
+  QCOMPARE(model.resultForRow(1)->m_decision.value(), FilterMessage::FilteringAction::Ignore);
+  QVERIFY(!model.messageDetailsForRow(0).m_isRead);
+  QCOMPARE(model.messageDetailsForRow(0).m_contents, changed.m_contents + QSL(" (script)"));
+
+  model.setShowStoredValues(true);
+  QVERIFY(model.hasStoredValuesForRow(0));
+  QVERIFY(model.messageDetailsForRow(0).m_isRead);
+  QCOMPARE(model.messageDetailsForRow(0).m_contents, QSL("Current body"));
+  QVERIFY(!model.hasStoredValuesForRow(1));
+  QCOMPARE(model.messageDetailsForRow(1).m_id, 0);
+  QCOMPARE(storedArticle(changed.m_id).m_contents, QSL("Current body"));
+  QCOMPARE(storedArticle(removed.m_id).m_id, 0);
+}
+
 void TestFilteringResults::mixedFeedsUseTheirOwnContextAndForwardLogs() {
   const Message first = seedArticle(m_feed, QSL("first-context"));
   const Message second = seedArticle(m_secondFeed, QSL("second-context"));
@@ -623,6 +670,40 @@ void TestFilteringResults::labelsOnlyChangesAndNoOpsAreReported() {
   QCOMPARE(m_label->countOfAllMessages(), 1);
 }
 
+void TestFilteringResults::labelFailureRetainsConfirmedArticleUpdate() {
+  const Message original = seedArticle(m_feed, QSL("partial-label-update"));
+  MessageFilter filter;
+  setScript(filter, QSL("msg.title = 'Committed title'; msg.assignLabel('filter-label');"));
+  qApp->database()->worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TEMP TRIGGER reject_filter_label BEFORE INSERT ON LabelsInMessages "
+                   "BEGIN SELECT RAISE(ABORT, 'simulated label write failure'); END;"));
+  });
+  MessagesForFiltersModel model(qApp);
+  model.processFeeds(&filter, m_account.get(), {m_feed});
+  qApp->database()->worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER reject_filter_label;"));
+  });
+
+  QVERIFY2(model.lastError().contains(QL1S("simulated label write failure")), qPrintable(model.lastError()));
+  QCOMPARE(model.rowCount({}), 1);
+  const auto& receipt = model.resultForRow(0)->m_saveResult;
+  QVERIFY(receipt.has_value());
+  QCOMPARE(receipt->m_outcome, MessageWriteOutcome::Updated);
+  QCOMPARE(receipt->m_error, model.lastError());
+  QVERIFY(!receipt->m_labelsChecked);
+  const Message stored = storedArticle(original.m_id);
+  QCOMPARE(stored.m_title, QSL("Committed title"));
+  QVERIFY(stored.m_assignedLabels.isEmpty());
+
+  const QString summary = model.summaryText();
+  QVERIFY(summary.contains(MessagesForFiltersModel::tr(" Label changes could not be confirmed for %n article(s).",
+                                                      nullptr, 1)));
+  QVERIFY(summary.contains(MessagesForFiltersModel::tr(" Run incomplete.")));
+  QVERIFY(!summary.contains(model.lastError()));
+}
+
 void TestFilteringResults::cleanupIsReportedAfterWriting() {
   Message older = seedArticle(m_feed, QSL("older"));
   Message newer = seedArticle(m_feed, QSL("newer"));
@@ -692,17 +773,7 @@ void TestFilteringResults::failedReloadClearsPreviousResults() {
   QVERIFY(model.resultForRow(0)->m_saveResult.has_value());
   QVERIFY(model.resultForRow(1)->m_saveResult.has_value());
 
-  // Temporarily make the genuine batch hydration query fail. Restore the table
-  // before assertions so a regression does not poison subsequent fixture tests.
-  qApp->database()->worker()->write([](const QSqlDatabase& db) {
-    SqlQuery query(db);
-    query.exec(QSL("ALTER TABLE Messages RENAME TO unavailable_test_messages;"));
-  });
-  model.testFilter(&filter, m_account.get());
-  qApp->database()->worker()->write([](const QSqlDatabase& db) {
-    SqlQuery query(db);
-    query.exec(QSL("ALTER TABLE unavailable_test_messages RENAME TO Messages;"));
-  });
+  testWhileMessagesUnavailable(model, filter, m_account.get());
   QVERIFY(!model.lastError().isEmpty());
   for (int row = 0; row < model.rowCount({}); ++row) {
     QVERIFY(!model.resultForRow(row)->m_decision.has_value());
@@ -743,6 +814,9 @@ void TestFilteringResults::reinsertedArticleUsesReceiptIdentity() {
   QCOMPARE(model.messageDetailsForRow(0).m_contents, QSL("Reinserted contents"));
 
   setScript(filter, {});
+  testWhileMessagesUnavailable(model, filter, m_account.get());
+  QVERIFY(!model.lastError().isEmpty());
+  QVERIFY(!model.resultForRow(0)->m_saveResult.has_value());
   model.testFilter(&filter, m_account.get());
   QVERIFY2(model.lastError().isEmpty(), qPrintable(model.lastError()));
   QCOMPARE(model.resultForRow(0)->m_original.m_id, inserted_id);

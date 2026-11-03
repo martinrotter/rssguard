@@ -586,7 +586,7 @@ void FormMessageFiltersManager::testFilter() {
 void FormMessageFiltersManager::showFilteringResults() {
   if (!m_msgModel->lastError().isEmpty()) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
-    m_ui.m_txtErrors->append(m_msgModel->lastError());
+    m_ui.m_txtErrors->append(Qt::convertFromPlainText(m_msgModel->lastError()));
     m_ui.m_twMessages->setCurrentIndex(1);
   }
   else {

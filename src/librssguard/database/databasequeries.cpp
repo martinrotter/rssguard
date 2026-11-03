@@ -1437,38 +1437,41 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
   QList<int> active_insert_batch;
 
   try {
-    const auto policy = messageSavePolicy(settings, feed, force_update);
-    const auto existing = force_insert
-                            ? QHash<int, ExistingMessageInfo>()
-                            : db_factory->worker()->read<QHash<int, ExistingMessageInfo>>([&](const QSqlDatabase& db) {
-                                return findExistingMessages(db, messages, feed, policy);
-                              });
-    for (int index = 0; index < messages.size(); ++index) {
-      Message& message = messages[index];
-      auto& receipt = report.m_results[index];
-      const auto stored = existing.constFind(index);
-      receipt.m_decision =
-        decideMessageSave(message, stored == existing.constEnd() ? nullptr : &stored.value(), policy);
-      if (stored != existing.constEnd()) {
-        message.m_id = stored->m_id;
-        receipt.m_id = stored->m_id;
-      }
-      switch (receipt.m_decision.m_action) {
-        case MessageSaveAction::Skip:
-          receipt.m_outcome = MessageWriteOutcome::Skipped;
-          if (receipt.m_decision.m_reason == MessageSaveReason::PermanentlyDeleted) {
-            skipped_message_ids.insert(receipt.m_id);
+    // Release the stored comparison bodies before writing the prepared articles.
+    {
+      const auto policy = messageSavePolicy(settings, feed, force_update);
+      const auto existing = force_insert
+                              ? QHash<int, ExistingMessageInfo>()
+                              : db_factory->worker()->read<QHash<int, ExistingMessageInfo>>([&](const QSqlDatabase& db) {
+                                  return findExistingMessages(db, messages, feed, policy);
+                                });
+      for (int index = 0; index < messages.size(); ++index) {
+        Message& message = messages[index];
+        auto& receipt = report.m_results[index];
+        const auto stored = existing.constFind(index);
+        receipt.m_decision =
+          decideMessageSave(message, stored == existing.constEnd() ? nullptr : &stored.value(), policy);
+        if (stored != existing.constEnd()) {
+          message.m_id = stored->m_id;
+          receipt.m_id = stored->m_id;
+        }
+        switch (receipt.m_decision.m_action) {
+          case MessageSaveAction::Skip:
+            receipt.m_outcome = MessageWriteOutcome::Skipped;
+            if (receipt.m_decision.m_reason == MessageSaveReason::PermanentlyDeleted) {
+              skipped_message_ids.insert(receipt.m_id);
+            }
+            break;
+          case MessageSaveAction::Insert:
+            inserts.append(index);
+            break;
+          case MessageSaveAction::Update: {
+            Message prepared = prepareMessageForUpdate(message, stored.value(), receipt.m_decision);
+            // Preserve the existing caller-visible adjustment of read state.
+            message.m_isRead = prepared.m_isRead;
+            updates.append(qMakePair(index, prepared));
+            break;
           }
-          break;
-        case MessageSaveAction::Insert:
-          inserts.append(index);
-          break;
-        case MessageSaveAction::Update: {
-          Message prepared = prepareMessageForUpdate(message, stored.value(), receipt.m_decision);
-          // Preserve the existing caller-visible adjustment of read state.
-          message.m_isRead = prepared.m_isRead;
-          updates.append(qMakePair(index, prepared));
-          break;
         }
       }
     }
