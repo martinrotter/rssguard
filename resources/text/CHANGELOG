@@ -22,7 +22,7 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
-* Database cleanup now checkpoints SQLite after optimization so the database file shrinks on disk immediately, and reports an error if another connection blocks the checkpoint. (#2504)
+* Database cleanup now checkpoints SQLite after optimization and reports blocked checkpoints. Added help explaining why SQLite database files on Windows can remain larger than the displayed data size. (#2504)
 * Feed refreshes now retry articles after parsing or storage fails, even when the server uses ETags. A 304 response without an ETag keeps the last successful validator.
 * Article inserts now preserve literal text such as `:score` and use the actual database IDs for notifications and labels. Large refreshes batch database writes and find articles without feed-supplied IDs faster. SQLite reuses reader connections for article lookups and live feed counts. MariaDB 10.6.1 or newer groups inserts within the server's packet limit.
 * Standard RSS feeds release their parsed documents before saving articles. The downloader also releases unread articles after delivering the refresh notification.
