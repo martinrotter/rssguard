@@ -76,11 +76,14 @@ void SqliteDriver::vacuumDatabase() {
     query_vacuum.exec(QSL("REINDEX;"));
     query_vacuum.exec(QSL("PRAGMA optimize;"));
     query_vacuum.exec(QSL("VACUUM;"));
-  });
-}
 
-QString SqliteDriver::ddlFilePrefix() const {
-  return QSL("sqlite");
+    // VACUUM writes to the WAL; checkpoint again to shrink the database file on disk.
+    query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"));
+
+    if (!query_vacuum.next() || query_vacuum.value(0).toInt() != 0) {
+      throw ApplicationException(tr("Database checkpoint failed or was blocked by another connection."));
+    }
+  });
 }
 
 QString SqliteDriver::insertIgnore() const {

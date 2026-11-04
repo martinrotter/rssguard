@@ -26,7 +26,7 @@ function(add_rssguard_test TEST_TARGET)
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
-           TEST_TARGET STREQUAL "test_filteringresults")
+           TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -147,9 +147,22 @@ if(ENABLE_TESTING)
       ENVIRONMENT "QT_QPA_FONTDIR=$ENV{WINDIR}/Fonts")
   endif()
 
+  add_rssguard_test(test_sqlitevacuum database/test_sqlitevacuum.cpp)
+  set_tests_properties(test_sqlitevacuum PROPERTIES TIMEOUT 60)
+
   add_rssguard_test(test_databasequeries
     database/test_databasequeries.cpp
   )
+
+  # Driver classes are internal and have no Windows DLL exports.
+  add_rssguard_test(test_databasescripts
+    database/test_databasescripts.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/database/sqlitedriver.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/database/sqlitedriver.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/database/mariadbdriver.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/database/mariadbdriver.h
+  )
+  set_tests_properties(test_databasescripts PROPERTIES TIMEOUT 120)
 
   add_rssguard_test(test_mariadbinserts database/test_mariadbinserts.cpp)
   set_tests_properties(test_mariadbinserts PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 120)

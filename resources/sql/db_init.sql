@@ -1,3 +1,8 @@
+#if ENGINE == MARIADB
+USE ##;
+-- !
+#endif
+
 CREATE TABLE Information (
   inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */
   inf_value    TEXT
@@ -174,3 +179,9 @@ CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);
 CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);
 -- !
 CREATE INDEX idx_Messages5 ON Messages (feed, account_id);
+-- !
+#if ENGINE == SQLITE
+CREATE INDEX IF NOT EXISTS idx_Messages6 ON Messages (feed, url);
+#elif ENGINE == MARIADB
+CREATE INDEX /*M! IF NOT EXISTS */ idx_Messages6 ON Messages (feed, url(128));
+#endif

@@ -28,9 +28,10 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
 
     // API.
     virtual QString location() const = 0;
+
+    // Stable, untranslated name, also used as the upper-cased SQL preprocessor ENGINE.
     virtual QString humanDriverType() const = 0;
     virtual QString qtDriverCode() const = 0;
-    virtual QString ddlFilePrefix() const = 0;
     virtual DriverType driverType() const = 0;
     virtual QString autoIncrementPrimaryKey() const = 0;
     virtual QString blob() const = 0;

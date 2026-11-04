@@ -1,30 +1,11 @@
 <RCC>
   <qresource prefix="/">
     <file>sql/db_init.sql</file>
-    <file>sql/db_init_mysql.sql</file>
-    <file>sql/db_init_sqlite.sql</file>
-
     <file>sql/db_update_100_101.sql</file>
-    <file>sql/db_update_mysql_100_101.sql</file>
-    <file>sql/db_update_sqlite_100_101.sql</file>
-
     <file>sql/db_update_101_102.sql</file>
-    <file>sql/db_update_mysql_101_102.sql</file>
-    <file>sql/db_update_sqlite_101_102.sql</file>
-    
     <file>sql/db_update_102_103.sql</file>
-    <file>sql/db_update_mysql_102_103.sql</file>
-    <file>sql/db_update_sqlite_102_103.sql</file>
-
     <file>sql/db_update_103_104.sql</file>
-    <file>sql/db_update_mysql_103_104.sql</file>
-    <file>sql/db_update_sqlite_103_104.sql</file>
-
     <file>sql/db_update_104_105.sql</file>
-    <file>sql/db_update_mysql_104_105.sql</file>
-    <file>sql/db_update_sqlite_104_105.sql</file>
-
-    <file>sql/db_update_mysql_105_106.sql</file>
-    <file>sql/db_update_sqlite_105_106.sql</file>
+    <file>sql/db_update_105_106.sql</file>
   </qresource>
 </RCC>
