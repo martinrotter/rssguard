@@ -23,5 +23,8 @@
     <file>sql/db_update_104_105.sql</file>
     <file>sql/db_update_mysql_104_105.sql</file>
     <file>sql/db_update_sqlite_104_105.sql</file>
+
+    <file>sql/db_update_mysql_105_106.sql</file>
+    <file>sql/db_update_sqlite_105_106.sql</file>
   </qresource>
 </RCC>

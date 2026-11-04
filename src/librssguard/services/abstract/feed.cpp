@@ -325,8 +325,8 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 }
 
 void Feed::updateCounts() {
-  auto fc = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
-    return DatabaseQueries::getMessageCountsForFeed(db, id());
+  auto fc = qApp->database()->worker()->readForArticleUpdate<ArticleCounts>([feed_id = id()](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForFeed(db, feed_id);
   });
 
   setCountOfAllMessages(fc.m_total);

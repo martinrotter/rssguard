@@ -19,7 +19,7 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
 void UnreadNode::updateCounts() {
   int account_id = account()->accountId();
 
-  m_totalCount = m_unreadCount = qApp->database()->worker()->read<int>([&](const QSqlDatabase& db) {
+  m_totalCount = m_unreadCount = qApp->database()->worker()->readForArticleUpdate<int>([account_id](const QSqlDatabase& db) {
     return DatabaseQueries::getUnreadMessageCounts(db, account_id).m_total;
   });
 }

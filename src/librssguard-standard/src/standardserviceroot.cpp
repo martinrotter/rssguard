@@ -51,6 +51,7 @@
 #include <QAction>
 #include <QElapsedTimer>
 #include <QMenu>
+#include <QPointer>
 #include <QSqlTableModel>
 #include <QStack>
 #include <QThread>
@@ -319,14 +320,17 @@ QList<Message> StandardServiceRoot::obtainNewMessagesImpl(Feed* feed, std::funct
     headers << StandardFeed::httpHeadersToList(f->httpHeaders());
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
-    if (f->type() != StandardFeed::Type::MediaWiki && !f->lastEtag().isEmpty()) {
-      headers.append({QSL("If-None-Match").toLocal8Bit(), f->lastEtag().toLocal8Bit()});
+    const QString requested_source = f->source();
+    const auto requested_type = f->type();
+    const auto validator = f->httpValidator();
+    if (requested_type != StandardFeed::Type::MediaWiki && !validator.value.isEmpty()) {
+      headers.append({QSL("If-None-Match").toLocal8Bit(), validator.value.toLocal8Bit()});
 
-      qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(f->lastEtag());
+      qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(validator.value);
     }
 
     auto network_result =
-      NetworkFactory::performNetworkOperation(f->source(),
+      NetworkFactory::performNetworkOperation(requested_source,
                                               download_timeout,
                                               {},
                                               feed_contents,
@@ -357,12 +361,17 @@ QList<Message> StandardServiceRoot::obtainNewMessagesImpl(Feed* feed, std::funct
         source_url = network_result.m_url;
       }
 
-      if (f->type() == StandardFeed::Type::MediaWiki) {
-        // Article JSON must be requested again even when the catalog did not change.
-        f->setLastEtag({});
-      }
-      else {
-        f->setLastEtag(network_result.m_headers.value(QSL("etag")));
+      const QString etag = network_result.m_headers.value(QSL("etag"));
+      if (after_messages_stored && requested_type != StandardFeed::Type::MediaWiki && etag != validator.value &&
+          (network_result.m_httpCode != HTTP_CODE_NOT_MODIFIED || !etag.isEmpty())) {
+        // A failed parse or write must retry the last successfully stored version.
+        *after_messages_stored =
+          [feed = QPointer<StandardFeed>(f), requested_source, requested_type, revision = validator.revision, etag]() {
+            if (feed && feed->source() == requested_source && feed->type() == requested_type &&
+                feed->sourceType() == StandardFeed::SourceType::Url) {
+              feed->setLastEtag(etag, revision);
+            }
+          };
       }
 
       if (network_result.m_httpCode == HTTP_CODE_NOT_MODIFIED && feed_contents.trimmed().isEmpty()) {
@@ -552,7 +561,8 @@ QList<Message> StandardServiceRoot::obtainNewMessagesImpl(Feed* feed, std::funct
     }
   }
 
-  if (after_messages_stored != nullptr) {
+  // Only MediaWiki stages a parser checkpoint. Other parsers can release their documents before storage.
+  if (after_messages_stored != nullptr && f->type() == StandardFeed::Type::MediaWiki) {
     *after_messages_stored = [parser]() {
       parser->commitCustomDatabaseData();
     };

@@ -108,7 +108,11 @@ class TestDatabaseQueries : public QObject {
   private slots:
     void initTestCase();
     void cleanupTestCase();
+    void sqliteSaveLooksUpArticlesOnReaderPool();
+    void nestedPooledReadReusesConnectionAndPropagatesErrors();
     void updatesMixedArticleBatch();
+    void anonymousMatchesKeepEarliestExactArticle_data();
+    void anonymousMatchesKeepEarliestExactArticle();
     void updatesExistingArticles();
     void matchesCustomIdsAcrossSynchronizedAccount();
     void loadsFeedCustomDataWithoutReloading();
@@ -123,6 +127,10 @@ class TestDatabaseQueries : public QObject {
     void deletionDuringWriteIsNotReported();
     void guardedLabelWritesPreservePermanentDeletion();
     void forcedImportDoesNotOverwritePermanentRecord();
+    void boundInsertPreservesLiteralsAndGeneratedIds();
+    void partialInsertFailureRollsBackOnlyFailedBatch();
+    void failedCommitDoesNotPublishUpdates();
+    void partialWriteFailureRetainsReceipts_data();
     void partialWriteFailureRetainsReceipts();
     void receiptsKeepInputPositions();
     void directIdLookupKeepsInputsAcrossBatches();
@@ -176,6 +184,58 @@ void TestDatabaseQueries::cleanupTestCase() {
   m_account.reset();
   m_feed = nullptr;
   m_secondFeed = nullptr;
+}
+
+void TestDatabaseQueries::sqliteSaveLooksUpArticlesOnReaderPool() {
+  QList<Message> batch{makeMessage(QSL("pool"), 0, m_feed->id(), m_account->accountId(), QSL("pool-guid"))};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true).throwIfFailed();
+  const int stored_id = batch.first().m_id;
+  batch.first().m_id = 0;
+
+  // A lookup on the writer would see no articles. A lookup stolen by this thread would open "dbreader".
+  m_database.driver()->removeConnection(CONNECTION_READ);
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TEMP TABLE Messages AS SELECT * FROM main.Messages WHERE 0;"));
+  });
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  m_database.worker()->write([stored_id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TABLE temp.Messages;"));
+    query.prepare(QSL("DELETE FROM Messages WHERE id = :id;"));
+    query.bindValue(QSL(":id"), stored_id);
+    query.exec();
+  });
+
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.count(MessageWriteOutcome::Skipped), 1);
+  QCOMPARE(report.m_results.first().m_id, stored_id);
+  QVERIFY(!QSqlDatabase::contains(CONNECTION_READ));
+}
+
+void TestDatabaseQueries::nestedPooledReadReusesConnectionAndPropagatesErrors() {
+  auto* worker = m_database.worker();
+  QThread* outer_thread = nullptr;
+  QThread* nested_thread = nullptr;
+  QString outer_connection;
+  QString nested_connection;
+  worker->readForArticleUpdate([&](const QSqlDatabase& db) {
+    outer_thread = QThread::currentThread();
+    outer_connection = db.connectionName();
+    worker->readForArticleUpdate([&](const QSqlDatabase& nested_db) {
+      nested_thread = QThread::currentThread();
+      nested_connection = nested_db.connectionName();
+    });
+  });
+  QVERIFY(outer_thread != QThread::currentThread());
+  QCOMPARE(nested_thread, outer_thread);
+  QVERIFY(outer_connection.startsWith(CONNECTION_READ + QL1C('_')));
+  QCOMPARE(nested_connection, outer_connection);
+
+  QVERIFY_EXCEPTION_THROWN(worker->readForArticleUpdate([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("SELECT * FROM nonexistent_reader_pool_test_table;"));
+  }), SqlException);
 }
 
 void TestDatabaseQueries::updatesMixedArticleBatch() {
@@ -305,6 +365,35 @@ void TestDatabaseQueries::updatesMixedArticleBatch() {
   QCOMPARE(state.m_updatedDirectCount, existing_per_lookup);
   QCOMPARE(state.m_updatedCustomCount, existing_per_lookup);
   QCOMPARE(state.m_updatedAnonymousCount, existing_per_lookup);
+}
+
+void TestDatabaseQueries::anonymousMatchesKeepEarliestExactArticle_data() {
+  QTest::addColumn<QString>("url");
+  QTest::newRow("shared-url") << QSL("https://example.org/shared");
+  QTest::newRow("empty-url") << QSL("");
+}
+
+void TestDatabaseQueries::anonymousMatchesKeepEarliestExactArticle() {
+  QFETCH(QString, url);
+  Message incoming = makeMessage(QSL("anonymous-match"), 1, m_feed->id(), m_account->accountId(), {});
+  incoming.m_url = url;
+  QList<Message> seed{incoming, incoming, incoming, incoming};
+  seed[0].m_title += QSL(" other");
+  seed[1].m_author += QSL(" other");
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true).throwIfFailed();
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::permanentlyDeleteMessages(db, {QString::number(seed.at(2).m_id)});
+  });
+
+  incoming.m_overwrite = true;
+  incoming.m_contents = QSL("Must not revive the first exact match");
+  QList<Message> batch{incoming};
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  report.throwIfFailed();
+  QCOMPARE(report.m_results.size(), 1);
+  QCOMPARE(report.m_results.first().m_id, seed.at(2).m_id);
+  QCOMPARE(report.m_results.first().m_decision.m_reason, MessageSaveReason::PermanentlyDeleted);
+  QCOMPARE(storedMessage(seed.at(3).m_id).m_contents, seed.at(3).m_contents);
 }
 
 void TestDatabaseQueries::updatesExistingArticles() {
@@ -842,43 +931,167 @@ void TestDatabaseQueries::forcedImportDoesNotOverwritePermanentRecord() {
   QVERIFY(imported.first().m_id != id);
   QCOMPARE(storedRow(id), before);
 }
-void TestDatabaseQueries::partialWriteFailureRetainsReceipts() {
+void TestDatabaseQueries::boundInsertPreservesLiteralsAndGeneratedIds() {
   QList<Message> batch;
-  for (int i = 0; i < 3; ++i) {
+  for (int i = 0; i < 2; ++i) {
+    auto message = makeMessage(QSL("bound-insert"), i, m_feed->id(), m_account->accountId(),
+                               QSL("bound-literal-%1:account_id").arg(i));
+    message.m_title = QSL("O'Reilly :score %1");
+    message.m_contents = QSL("Literal :enclosures, :custom_id and :account_id.");
+    message.m_customData = QSL("Apostrophe ' and :score");
+    batch.append(message);
+  }
+  // Deliberately introduce a gap between IDs generated by the two inserts.
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TEMP TRIGGER insert_gap AFTER INSERT ON Messages "
+                   "WHEN NEW.custom_id LIKE 'bound-literal-%' BEGIN "
+                   "INSERT INTO Messages(feed,account_id,date_created,title) "
+                   "VALUES (NEW.feed,NEW.account_id,NEW.date_created,'trigger-generated'); END;"));
+  });
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true);
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER insert_gap;"));
+  });
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.count(MessageWriteOutcome::Inserted), 2);
+  QVERIFY(batch.at(1).m_id > batch.at(0).m_id + 1);
+  for (int i = 0; i < batch.size(); ++i) {
+    const auto stored = storedMessage(report.m_results.at(i).m_id);
+    QCOMPARE(stored.m_id, batch.at(i).m_id);
+    QCOMPARE(stored.m_title, batch.at(i).m_title);
+    QCOMPARE(stored.m_contents, batch.at(i).m_contents);
+    QCOMPARE(stored.m_customId, batch.at(i).m_customId);
+    QCOMPARE(stored.m_customData, batch.at(i).m_customData);
+  }
+}
+
+void TestDatabaseQueries::partialInsertFailureRollsBackOnlyFailedBatch() {
+  QList<Message> batch;
+  for (int i = 0; i <= 2000; ++i) {
+    batch.append(makeMessage(QSL("atomic-insert"), i, m_feed->id(), m_account->accountId(),
+                             QSL("atomic-insert-%1").arg(i)));
+  }
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TEMP TRIGGER fail_insert_batch BEFORE INSERT ON Messages "
+                   "WHEN NEW.custom_id = 'atomic-insert-1001' BEGIN SELECT RAISE(ABORT, 'insert failed'); END;"));
+  });
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true);
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER fail_insert_batch;"));
+  });
+  QVERIFY(!report.succeeded());
+  QCOMPARE(report.count(MessageWriteOutcome::Inserted), 1000);
+  QCOMPARE(report.count(MessageWriteOutcome::Failed), 1000);
+  QCOMPARE(report.count(MessageWriteOutcome::NotAttempted), 1);
+  QCOMPARE(report.m_all.size(), 1000);
+  for (int i = 1000; i < batch.size(); ++i) {
+    QCOMPARE(batch.at(i).m_id, 0);
+    QVERIFY(!batch.at(i).m_insertedUpdated);
+    QCOMPARE(report.m_results.at(i).m_id, 0);
+  }
+  const int stored = m_database.worker()->read<int>([](const QSqlDatabase& db) {
+    return scalarQuery(db, QSL("SELECT COUNT(*) FROM Messages WHERE custom_id LIKE 'atomic-insert-%';"));
+  });
+  QCOMPARE(stored, 1000);
+  QCOMPARE(storedMessage(batch.at(999).m_id).m_customId, batch.at(999).m_customId);
+}
+
+void TestDatabaseQueries::failedCommitDoesNotPublishUpdates() {
+  QList<Message> batch;
+  for (int i = 0; i < 2; ++i) {
+    batch.append(makeMessage(QSL("commit-failure"), i, m_feed->id(), m_account->accountId(),
+                             QSL("commit-failure-%1").arg(i)));
+  }
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true).throwIfFailed();
+  const auto old = batch;
+  for (auto& message : batch) {
+    message.m_title += QSL(" changed");
+    message.m_insertedUpdated = false;
+  }
+  // Both UPDATE statements succeed. SQLite rejects the deferred constraint at COMMIT.
+  const int foreign_keys = m_database.worker()->write<int>([](const QSqlDatabase& db) {
+    const int previous = scalarQuery(db, QSL("PRAGMA foreign_keys;"));
+    SqlQuery query(db);
+    query.exec(QSL("PRAGMA foreign_keys=ON;"));
+    query.exec(QSL("CREATE TEMP TABLE commit_parent (id INTEGER PRIMARY KEY);"));
+    query.exec(QSL("CREATE TEMP TABLE commit_child (id INTEGER REFERENCES commit_parent(id) "
+                   "DEFERRABLE INITIALLY DEFERRED);"));
+    query.exec(QSL("CREATE TEMP TRIGGER fail_at_commit AFTER UPDATE ON Messages "
+                   "WHEN NEW.custom_id = 'commit-failure-1' BEGIN INSERT INTO commit_child VALUES (42); END;"));
+    return previous;
+  });
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, true, false);
+  m_database.worker()->write([foreign_keys](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER fail_at_commit;"));
+    query.exec(QSL("DROP TABLE commit_child;"));
+    query.exec(QSL("DROP TABLE commit_parent;"));
+    if (!foreign_keys) {
+      query.exec(QSL("PRAGMA foreign_keys=OFF;"));
+    }
+  });
+  QVERIFY(!report.succeeded());
+  QVERIFY(report.m_all.isEmpty());
+  QVERIFY(report.m_unread.isEmpty());
+  QCOMPARE(report.count(MessageWriteOutcome::Failed), 2);
+  for (int i = 0; i < batch.size(); ++i) {
+    QVERIFY(!batch.at(i).m_insertedUpdated);
+    QCOMPARE(storedMessage(batch.at(i).m_id).m_title, old.at(i).m_title);
+  }
+}
+
+void TestDatabaseQueries::partialWriteFailureRetainsReceipts_data() {
+  QTest::addColumn<QString>("conflict");
+  QTest::newRow("statement-aborted") << QSL("ABORT");
+  QTest::newRow("transaction-rolled-back") << QSL("ROLLBACK");
+}
+
+void TestDatabaseQueries::partialWriteFailureRetainsReceipts() {
+  QFETCH(QString, conflict);
+  QList<Message> batch;
+  // One complete 128-row transaction, a successful update in the next one, then an error.
+  for (int i = 0; i < 131; ++i) {
     batch.append(makeMessage(QSL("partial-report"),
                              i,
                              m_feed->id(),
                              m_account->accountId(),
-                             QSL("partial-report-%1").arg(i)));
+                             QSL("partial-report-%1-%2").arg(conflict).arg(i)));
   }
   DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true).throwIfFailed();
   for (auto& message : batch) {
     message.m_title += QSL(" updated");
   }
-  m_database.worker()->write([](const QSqlDatabase& db) {
+  m_database.worker()->write([&](const QSqlDatabase& db) {
     SqlQuery query(db);
-    query.exec(QSL("CREATE TEMP TRIGGER fail_second_report_update BEFORE UPDATE ON Messages "
-                   "WHEN OLD.custom_id = 'partial-report-1' BEGIN "
-                   "SELECT RAISE(ABORT, 'second update failed'); END;"));
+    query.exec(QSL("CREATE TEMP TRIGGER fail_partial_report_update BEFORE UPDATE ON Messages "
+                   "WHEN OLD.id = %1 BEGIN SELECT RAISE(%2, 'simulated update failure'); END;")
+                 .arg(batch.at(129).m_id)
+                 .arg(conflict));
   });
   const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
   m_database.worker()->write([](const QSqlDatabase& db) {
     SqlQuery query(db);
-    query.exec(QSL("DROP TRIGGER fail_second_report_update;"));
+    query.exec(QSL("DROP TRIGGER fail_partial_report_update;"));
   });
 
   QVERIFY(!report.succeeded());
-  QVERIFY(report.m_error.contains(QL1S("second update failed")));
+  QVERIFY(report.m_error.contains(QL1S("simulated update failure")));
   QVERIFY_EXCEPTION_THROWN(report.throwIfFailed(), SqlException);
-  QCOMPARE(report.m_results.size(), 3);
-  QCOMPARE(report.m_results.at(0).m_outcome, MessageWriteOutcome::Updated);
-  QCOMPARE(report.m_results.at(1).m_outcome, MessageWriteOutcome::Failed);
-  QCOMPARE(report.m_results.at(2).m_outcome, MessageWriteOutcome::NotAttempted);
-  QCOMPARE(report.m_all.size(), 1);
-  QCOMPARE(report.m_all.first().m_id, batch.first().m_id);
-  QCOMPARE(storedMessage(batch.at(0).m_id).m_title, batch.at(0).m_title);
-  QVERIFY(storedMessage(batch.at(1).m_id).m_title != batch.at(1).m_title);
-  QVERIFY(storedMessage(batch.at(2).m_id).m_title != batch.at(2).m_title);
+  QCOMPARE(report.count(MessageWriteOutcome::Updated), 129);
+  QCOMPARE(report.m_results.at(129).m_outcome, MessageWriteOutcome::Failed);
+  QCOMPARE(report.m_results.at(130).m_outcome, MessageWriteOutcome::NotAttempted);
+  QCOMPARE(report.m_all.size(), 129);
+  for (int i : {0, 127, 128}) {
+    QCOMPARE(report.m_all.at(i).m_id, batch.at(i).m_id);
+    QCOMPARE(storedMessage(batch.at(i).m_id).m_title, batch.at(i).m_title);
+  }
+  for (int i : {129, 130}) {
+    QVERIFY(storedMessage(batch.at(i).m_id).m_title != batch.at(i).m_title);
+  }
 }
 
 void TestDatabaseQueries::receiptsKeepInputPositions() {
