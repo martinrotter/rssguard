@@ -1003,7 +1003,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="47"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation>察覺要下載太多文章。Feeldly 會產生一文源的全部文章永久快取，最後可能會有成千上萬篇不會去讀的文章。</translation>
+      <translation>察覺下載過多文章。因為 Feeldly 對文源的全部文章產生永久快取，而最後可能會有成千上萬篇從未讀過的文章。</translation>
     </message>
   </context>
   <context>
@@ -6375,7 +6375,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="280"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
-      <translation>%2 毫秒額外載入了 %1 篇文章 (%3 毫秒清除暫存；%4 毫秒傳送資料庫資料、%5 毫秒填入動態資料)</translation>
+      <translation>%2 毫秒額外載入了 %1 篇文章 (%3 毫秒清除快取；%4 毫秒傳送資料庫資料、%5 毫秒填入動態資料)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="333"/>
@@ -8381,7 +8381,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="819"/>
       <source>unknown data returned from sync-in</source>
-      <translation type="unfinished">unknown data returned from sync-in</translation>
+      <translation>未知的資料從同步輸入傳回</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="826"/>
@@ -8391,7 +8391,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="827"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
+      <translation>未下載帳號 &apos;%1&apos; 的文源 &amp; 資料夾，錯誤為: %2</translation>
     </message>
   </context>
   <context>
@@ -8399,21 +8399,21 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="28"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
-      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</translation>
+      <translation>注意，&quot;%1&quot; (不包括雙引號) 存放所選文章的 URL 的變元空位。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="32"/>
       <source>Placeholders:
  • %1 - title of the selected article,
  • %2 - body of the selected article.</source>
-      <translation type="unfinished">Placeholders:
- • %1 - title of the selected article,
- • %2 - body of the selected article.</translation>
+      <translation>變元空位: 
+ • %1 - 所選文章的標題，
+ • %2 - 所選文章的正文。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
       <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>可在此頁設定能開啟 URL 的外部工具清單。如果設定了網域 (沒有起首的 &quot;www.&quot;)，則點了該網域的連結，工具就會直接開啟連結。可用 &apos;,&apos;分隔多個網域。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="46"/>
@@ -8483,7 +8483,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;如果消勾，就會使用系統預設的電子郵件客戶端。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="42"/>
@@ -8612,7 +8612,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="26"/>
       <source>Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</source>
-      <translation type="unfinished">Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</translation>
+      <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽文源或文章時的速度。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="104"/>
@@ -8662,7 +8662,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="156"/>
       <source>You did not execute any connection test yet.</source>
-      <translation type="unfinished">You did not execute any connection test yet.</translation>
+      <translation>您尚未進行連線測試。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
@@ -8759,9 +8759,9 @@ File filter for external e-mail selection dialog.</extracomment>
       <source>If enabled then %1 loads articles into article list on demand as you scroll through the list.
 
 This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll through the list.
+      <translation>如啟用，則捲動列表時，%1 會將想閱讀的文章載入到文章清單。
 
-This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+如果有數十萬篇文章，這可以大大加速程式，但會擋到文章清單篩選，因為沒有載入全部文章，篩選卻可能關閉了。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
@@ -8771,7 +8771,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="60"/>
       <source>Note that enabling this might have drastic consequences on performance of the article list with many articles.</source>
-      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of the article list with many articles.</translation>
+      <translation>注意，啟用此，對大量文章的清單可能會有很大的效能問題。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="66"/>
@@ -8856,19 +8856,19 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="729"/>
       <source>Connection timeout is time interval which is reserved for downloading new articles for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new articles for the feed. If this time interval elapses, then download process is aborted.</translation>
+      <translation>為下載新文章而留有一段時間。如果超過這段時間，就算連線逾時，會中斷下載。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="131"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="732"/>
       <source>Only auto-fetch articles if network is connected</source>
-      <translation type="unfinished">Only auto-fetch articles if network is connected</translation>
+      <translation>只在網路連線時才自動下載文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="733"/>
       <source>Only auto-fetch articles if Game Mode is not active</source>
-      <translation type="unfinished">Only auto-fetch articles if Game Mode is not active</translation>
+      <translation>只在未啟動遊戲模式時才自動下載文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="146"/>
@@ -8950,13 +8950,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="746"/>
       <source>Also always show article counts from labels and important articles</source>
-      <translation type="unfinished">Also always show article counts from labels and important articles</translation>
+      <translation>也要在標籤和重要文章中顯示文章數量</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="747"/>
       <source>Propagate feed state to parent nodes</source>
-      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+      <translation>將文源狀態傳到上層節點</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
@@ -8968,19 +8968,19 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="757"/>
       <source>Limit height of embedded attachment images</source>
-      <translation type="unfinished">Limit height of embedded attachment images</translation>
+      <translation>限制嵌入的附件圖像的高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="758"/>
       <source>Limit height of article images</source>
-      <translation type="unfinished">Limit height of article images</translation>
+      <translation>限制文章圖像高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="767"/>
       <source>Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</source>
-      <translation type="unfinished">Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</translation>
+      <translation>分別記住後面的文章清單欄位：文源、資料夾、帳號、標籤、搜尋文件夾、未讀文章、重要文章和資源回收筒。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
@@ -8992,7 +8992,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="804"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="782"/>
       <source>Use article lazy loading</source>
-      <translation type="unfinished">Use article lazy loading</translation>
+      <translation>啟用文章的延遲載入</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="821"/>
@@ -9004,7 +9004,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="828"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="784"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
-      <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
+      <translation>於 &quot;文源&quot; 欄顯示文源圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
@@ -9173,7 +9173,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="72"/>
       <source>Show splash screen during application startup</source>
-      <translation type="unfinished">Show splash screen during application startup</translation>
+      <translation>於應用程式啟動時，顯示啟動畫面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="51"/>
@@ -9395,7 +9395,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="470"/>
       <source>Monochrome icon</source>
-      <translation type="unfinished">Monochrome icon</translation>
+      <translation>單色圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="250"/>
@@ -9653,19 +9653,19 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="58"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="130"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
-      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
+      <translation>於應用程式內開啟超連結 (不使用外部瀏覽器來開啟)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="66"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="132"/>
       <source>WebEngine</source>
-      <translation type="unfinished">WebEngine</translation>
+      <translation>網頁呈現引擎</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="72"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="131"/>
       <source>Flags</source>
-      <translation type="unfinished">Flags</translation>
+      <translation>旗標</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -9675,7 +9675,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.h" line="31"/>
       <source>Network &amp; web</source>
-      <translation type="unfinished">Network &amp; web</translation>
+      <translation>網路 &amp; 網頁</translation>
     </message>
   </context>
   <context>
@@ -10084,12 +10084,12 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="107"/>
       <source>%1 ms</source>
-      <translation type="unfinished">%1 ms</translation>
+      <translation>%1 毫秒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="107"/>
       <source>application default</source>
-      <translation type="unfinished">application default</translation>
+      <translation>應用程式預設</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="286"/>
@@ -10148,16 +10148,16 @@ Ignore cookies: %7
 Report empty feed as broken: %8
 Feed timeout: %9
 Fetch full articles: %10 (plain text only: %11)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
-HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Feed timeout: %9
-Fetch full articles: %10 (plain text only: %11)</translation>
+      <translation>編碼：%1
+類型：%2
+用於後處理的即行碼：%3
+使用原始 XML 格式儲存：%4
+抓取文章評論：%5
+HTTP/2：%6
+忽略 cookie：%7
+將空置的文源報為損壞：%8
+文源超時：%9
+抓取完整文章：%10 (僅純文字：%11)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="510"/>
@@ -10415,7 +10415,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Report feed as broken when it contains no articles</source>
-      <translation type="unfinished">Report feed as broken when it contains no articles</translation>
+      <translation>文源不含文章時，報為損壞</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="125"/>
@@ -10444,7 +10444,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>啟用後，如果成功下載並解析了一個沒有文章的文源，則會將其報為損壞。空置的文源仍為有效，因此，對於預期沒有文章的文源，請讓此功能維持停用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -10477,7 +10477,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="43"/>
       <source>Connection timeout reserved for downloading this feed. Set to 0 to use the application-wide timeout.</source>
-      <translation type="unfinished">Connection timeout reserved for downloading this feed. Set to 0 to use the application-wide timeout.</translation>
+      <translation>保留下載此文源的連線超時。將其設為 0 以使用整個應用程式的超時設定。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="49"/>
@@ -10492,7 +10492,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>Ignore cookies when downloading this feed</source>
-      <translation type="unfinished">Ignore cookies when downloading this feed</translation>
+      <translation>下載此文源時忽略 cookie</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="114"/>
@@ -10502,7 +10502,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="138"/>
       <source>Extra domains</source>
-      <translation type="unfinished">Extra domains</translation>
+      <translation>額外網域</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="162"/>
@@ -10524,9 +10524,9 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <source>Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
 
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</source>
-      <translation type="unfinished">Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
+      <translation>如果設定了代理，這些網域的資源 (如圖像、CSS 等) 也會通過代理下載。每行輸入一個網域名。
 
-This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</translation>
+此功能僅適用於本應用的 &quot;web&quot; 版。&quot;文字&quot; 版不需要，因為文字版會全自動代理解析。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="46"/>
@@ -10615,7 +10615,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="485"/>
       <source>feed is working, but is empty</source>
-      <translation type="unfinished">feed is working, but is empty</translation>
+      <translation>文源運作正常，但空無內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="682"/>
@@ -11288,22 +11288,22 @@ Last login on: %4</source>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="447"/>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="462"/>
       <source>API returned status %1</source>
-      <translation type="unfinished">API returned status %1</translation>
+      <translation>API 傳回的狀態: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="450"/>
       <source>cannot get list of feeds: %1</source>
-      <translation type="unfinished">cannot get list of feeds: %1</translation>
+      <translation>無法獲得文源清單: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="457"/>
       <source>cannot get list of labels</source>
-      <translation type="unfinished">cannot get list of labels</translation>
+      <translation>無法獲得標籤清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="464"/>
       <source>cannot get list of labels: %1</source>
-      <translation type="unfinished">cannot get list of labels: %1</translation>
+      <translation>無法獲得標籤清單: %1</translation>
     </message>
   </context>
   <context>
@@ -11349,7 +11349,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
       <source>Play current URL in media player</source>
-      <translation type="unfinished">Play current URL in media player</translation>
+      <translation>於媒體播放器中播放目前 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="356"/>
@@ -11360,7 +11360,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="414"/>
       <source>Enter URL or search phrase here</source>
-      <translation type="unfinished">Enter URL or search phrase here</translation>
+      <translation>於此输入 URL 或搜尋片語</translation>
     </message>
   </context>
   <context>
@@ -11368,42 +11368,42 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="95"/>
       <source>Proxy &apos;%1&apos; authentication</source>
-      <translation type="unfinished">Proxy &apos;%1&apos; authentication</translation>
+      <translation>代理伺服器 &apos;%1&apos; 身份驗證</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="109"/>
       <source>PDF printing done</source>
-      <translation type="unfinished">PDF printing done</translation>
+      <translation>已列印 PDF 檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="110"/>
       <source>PDF printing to file &apos;%1&apos; has finished.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; has finished.</translation>
+      <translation>已完成列印出 PDF 檔 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="112"/>
       <source>Open destination folder</source>
-      <translation type="unfinished">Open destination folder</translation>
+      <translation>開啟目標資料夾</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="118"/>
       <source>PDF printing failed</source>
-      <translation type="unfinished">PDF printing failed</translation>
+      <translation>列印 PDF 檔失敗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="119"/>
       <source>PDF printing to file &apos;%1&apos; failed.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; failed.</translation>
+      <translation>未完成列印 PDF 檔 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="128"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>網站警示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="129"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>URL %1 回報此重要訊息: %2</translation>
     </message>
   </context>
   <context>
@@ -11411,72 +11411,72 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="35"/>
       <source>Print to PDF</source>
-      <translation type="unfinished">Print to PDF</translation>
+      <translation>列印成 PDF</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="37"/>
       <source>Save complete webpage</source>
-      <translation type="unfinished">Save complete webpage</translation>
+      <translation>儲存完整網頁</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="40"/>
       <source>GPU</source>
-      <translation type="unfinished">GPU</translation>
+      <translation>圖形處理器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="85"/>
       <source>Reload (bypass cache)</source>
-      <translation type="unfinished">Reload (bypass cache)</translation>
+      <translation>充新載入 (跳過快取)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="86"/>
       <source>View source</source>
-      <translation type="unfinished">View source</translation>
+      <translation>檢視原始碼</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="331"/>
       <source>Save page to PDF file</source>
-      <translation type="unfinished">Save page to PDF file</translation>
+      <translation>儲存頁面成 PDF 檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="334"/>
       <source>PDF files (*.pdf)</source>
-      <translation type="unfinished">PDF files (*.pdf)</translation>
+      <translation>PDF 檔 (*.pdf)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="348"/>
       <source>Save complete page to file</source>
-      <translation type="unfinished">Save complete page to file</translation>
+      <translation>儲存完整網頁成檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="351"/>
       <source>Mime HTML files (*.mhtml)</source>
-      <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
+      <translation>Mime HTML 檔 (*.mhtml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="404"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>進階設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="407"/>
       <source>Extra actions</source>
-      <translation type="unfinished">Extra actions</translation>
+      <translation>更多動作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="410"/>
       <source>Page actions</source>
-      <translation type="unfinished">Page actions</translation>
+      <translation>頁面動作</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="417"/>
       <source>Web attributes</source>
-      <translation type="unfinished">Web attributes</translation>
+      <translation>網路屬性</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="421"/>
       <source>Diagnostics</source>
-      <translation type="unfinished">Diagnostics</translation>
+      <translation>診斷</translation>
     </message>
   </context>
   <context>
@@ -11484,177 +11484,177 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="383"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JS 已啟用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="386"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JS 可開啟彈出窗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="390"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JS 可存取剪貼簿</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="394"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>超連結可取得焦點</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="397"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>已啟用本機儲存庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="401"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>本機內容可存取遠端 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="404"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>已啟用 XSS (跨網站指令碼) 審查</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="407"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>已啟用空間導覽</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="411"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>本機內容能存取本機檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="414"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>已啟用超連結審查</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="417"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>動畫式捲動</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="420"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>已啟用錯誤訊息頁面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="423"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>已啟用外掛</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="428"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>已啟用螢幕截圖</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="431"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>已啟用 WebGL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="435"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>加速 2D 畫布</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="438"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>列印元素背景</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>允許執行不安全的內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="446"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>允許不安全來源的網站的地理定位</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="452"/>
       <source>JS can activate windows</source>
-      <translation type="unfinished">JS can activate windows</translation>
+      <translation>JS 能使用視窗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="455"/>
       <source>Show scrollbars</source>
-      <translation type="unfinished">Show scrollbars</translation>
+      <translation>顯示捲軸</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="459"/>
       <source>Media playback with gestures</source>
-      <translation type="unfinished">Media playback with gestures</translation>
+      <translation>用手勢播放多媒體</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="463"/>
       <source>WebRTC uses only public interfaces</source>
-      <translation type="unfinished">WebRTC uses only public interfaces</translation>
+      <translation>WebRTC 只使用公開的介面</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="466"/>
       <source>JS can paste from clipboard</source>
-      <translation type="unfinished">JS can paste from clipboard</translation>
+      <translation>JS 可取剪貼簿內容來貼上</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="469"/>
       <source>DNS prefetch enabled</source>
-      <translation type="unfinished">DNS prefetch enabled</translation>
+      <translation>已啟用 DNS 預取</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="474"/>
       <source>PDF viewer enabled</source>
-      <translation type="unfinished">PDF viewer enabled</translation>
+      <translation>已啟用 PDF 檢視器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="480"/>
       <source>Force dark mode</source>
-      <translation type="unfinished">Force dark mode</translation>
+      <translation>強制深色模式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="486"/>
       <source>Printing - print headers/footers.</source>
-      <translation type="unfinished">Printing - print headers/footers.</translation>
+      <translation>列印 - 印頁首/頁尾。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="525"/>
       <source>Web cache cleared</source>
-      <translation type="unfinished">Web cache cleared</translation>
+      <translation>已清除網頁快取</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="526"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
-      <translation type="unfinished">Web cache was cleared. List of visited links was cleared too.</translation>
+      <translation>已清除網頁快取。也會一併清除查閱過的連結清單。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="543"/>
       <source>File download</source>
-      <translation type="unfinished">File download</translation>
+      <translation>檔案下載</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="544"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
-      <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
+      <translation>有提供下載檔案 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="546"/>
       <source>Copy file URL</source>
-      <translation type="unfinished">Copy file URL</translation>
+      <translation>複製檔案 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="1084"/>
       <source>Navigate to website(s) manually</source>
-      <translation type="unfinished">Navigate to website(s) manually</translation>
+      <translation>動手轉至網站</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="1085"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
+      <translation>%1 無法啟動瀏覽器到指定網址，必須自己到瀏覽器中開啟下面網址。</translation>
     </message>
   </context>
   <context>
@@ -11662,12 +11662,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="257"/>
       <source>Resume automatic feed fetching</source>
-      <translation type="unfinished">Resume automatic feed fetching</translation>
+      <translation>暫停自動從文源下載</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="258"/>
       <source>Pause automatic feed fetching</source>
-      <translation type="unfinished">Pause automatic feed fetching</translation>
+      <translation>暫停自動從文源下載</translation>
     </message>
   </context>
   <context>
@@ -11680,7 +11680,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="30"/>
       <source>Extra nodes</source>
-      <translation type="unfinished">Extra nodes</translation>
+      <translation>額外節點</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="50"/>
@@ -11700,7 +11700,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="88"/>
       <source>JID</source>
-      <translation type="unfinished">JID</translation>
+      <translation>JID</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="101"/>
@@ -11710,12 +11710,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="23"/>
       <source>IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</source>
-      <translation type="unfinished">IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</translation>
+      <translation>用於發現的額外服務的 ID (含 PubSub 節點)，每行一個 ID，例如，news.movim.eu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="26"/>
       <source>Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</source>
-      <translation type="unfinished">Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</translation>
+      <translation>支援四種節點 (各以一行書寫): &lt;ul&gt;&lt;li&gt;PubSub 服務目錄，例如，&apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP 目錄，例如，&apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;直接聊天室 (私密聊天、群組聊天) 例如，&apos;chatroom@conference.movim.eu&apos; 或 &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub 服務，或 試探 PEP 的下層 PubSub 節點，若存在，則將聊天室加入目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="39"/>
@@ -11730,7 +11730,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="41"/>
       <source>URL of your XMPP server</source>
-      <translation type="unfinished">URL of your XMPP server</translation>
+      <translation>XMPP 伺服器的 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="43"/>
@@ -11760,47 +11760,47 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="97"/>
       <source>Network error, have you entered correct host, username and password?</source>
-      <translation type="unfinished">Network error, have you entered correct host, username and password?</translation>
+      <translation>網路出錯，輸入的主機、使用者名稱、密碼正確嗎？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="102"/>
       <source>File error: &apos;%1&apos;.</source>
-      <translation type="unfinished">File error: &apos;%1&apos;.</translation>
+      <translation>檔案錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="103"/>
       <source>File error</source>
-      <translation type="unfinished">File error</translation>
+      <translation>檔案錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="109"/>
       <source>Client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Client error: &apos;%1 - %2&apos;.</translation>
+      <translation>客戶端錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
       <source>Client error</source>
-      <translation type="unfinished">Client error</translation>
+      <translation>客戶端錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="118"/>
       <source>Auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>認證錯誤: &apos;%1 - %2&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="119"/>
       <source>Auth error</source>
-      <translation type="unfinished">Auth error</translation>
+      <translation>認證錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="123"/>
       <source>Generic error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Generic error: &apos;%1&apos;.</translation>
+      <translation>一般錯誤: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="124"/>
       <source>Generic error</source>
-      <translation type="unfinished">Generic error</translation>
+      <translation>一般錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="202"/>
@@ -11838,22 +11838,22 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="42"/>
       <source>Single-user chats</source>
-      <translation type="unfinished">Single-user chats</translation>
+      <translation>單一使用者聊天</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="45"/>
       <source>Multi-user chats</source>
-      <translation type="unfinished">Multi-user chats</translation>
+      <translation>群聊</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="48"/>
       <source>PubSub services</source>
-      <translation type="unfinished">PubSub services</translation>
+      <translation>PubSub 服務</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="51"/>
       <source>PubSub PEPs</source>
-      <translation type="unfinished">PubSub PEPs</translation>
+      <translation>PubSub PEPs</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="54"/>
@@ -11867,8 +11867,8 @@ Last login on: %4</source>
       <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="287"/>
       <source>Type: %1
 Service: %2</source>
-      <translation type="unfinished">Type: %1
-Service: %2</translation>
+      <translation>類型: %1
+服務: %2</translation>
     </message>
   </context>
   <context>
@@ -11877,12 +11877,12 @@ Service: %2</translation>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="164"/>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="605"/>
       <source>XMPP connection was closed during services discovery</source>
-      <translation type="unfinished">XMPP connection was closed during services discovery</translation>
+      <translation>於發現服務期間，XMPP 連線被關閉</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="191"/>
       <source>disconnected</source>
-      <translation type="unfinished">disconnected</translation>
+      <translation>連線已中斷</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="194"/>
@@ -11955,7 +11955,7 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="200"/>
       <source>&amp;Reconnect</source>
-      <translation type="unfinished">&amp;Reconnect</translation>
+      <translation>重新連線(&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="220"/>
