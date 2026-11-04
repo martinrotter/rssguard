@@ -21,6 +21,7 @@
 #include "services/abstract/labelsnode.h"
 
 #include <algorithm>
+#include <utility>
 
 #include <QBitArray>
 #include <QDebug>
@@ -555,7 +556,7 @@ void FeedDownloader::finalizeUpdate() {
   {
     QMutexLocker lck(&m_mutexResults);
     m_results.setFeedRequestCount(int(m_feeds.size()));
-    results = m_results;
+    results = std::move(m_results);
   }
 
   m_feeds.clear();

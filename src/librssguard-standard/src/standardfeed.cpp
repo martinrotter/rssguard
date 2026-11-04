@@ -324,6 +324,8 @@ void StandardFeed::fetchMetadataForItself() {
                               ignoreCookies());
 
     // Copy metadata to our object.
+    const QString previous_source = source();
+    const Type previous_type = type();
     setTitle(metadata.first->title());
     setDescription(metadata.first->description());
     setType(metadata.first->type());
@@ -335,6 +337,10 @@ void StandardFeed::fetchMetadataForItself() {
     }
     else if (metadata.second.m_url.isValid()) {
       setSource(metadata.second.m_url.toString());
+    }
+
+    if (source() != previous_source || type() != previous_type) {
+      setLastEtag({});
     }
 
     metadata.first->deleteLater();
@@ -702,12 +708,18 @@ void StandardFeed::setDateTimeFormat(const QString& dt_format) {
   m_dateTimeFormat = dt_format;
 }
 
-QString StandardFeed::lastEtag() const {
-  return m_lastEtag;
+StandardFeed::HttpValidator StandardFeed::httpValidator() const {
+  QMutexLocker lock(&m_validatorMutex);
+  return m_validator;
 }
 
-void StandardFeed::setLastEtag(const QString& etag) {
-  m_lastEtag = etag;
+void StandardFeed::setLastEtag(const QString& etag, std::optional<quint64> expected_revision) {
+  QMutexLocker lock(&m_validatorMutex);
+  if (!expected_revision || *expected_revision == m_validator.revision) {
+    // A purge or edit must invalidate a pending first fetch even when the old ETag was empty.
+    ++m_validator.revision;
+    m_validator.value = etag;
+  }
 }
 
 StandardFeed::Type StandardFeed::type() const {

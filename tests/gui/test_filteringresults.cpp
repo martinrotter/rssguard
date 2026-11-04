@@ -3,19 +3,26 @@
 #include "database/databasequeries.h"
 #include "filtering/messagesforfiltersmodel.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/skinfactory.h"
+#include "services/abstract/importantnode.h"
 #include "services/abstract/labelsnode.h"
+#include "services/abstract/recyclebin.h"
+#include "services/abstract/unreadnode.h"
 
 #include <memory>
+#include <utility>
 
 #include <QDir>
+#include <QScopeGuard>
 #include <QSettings>
 #include <QSignalSpy>
 #include <QSortFilterProxyModel>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTimer>
 #include <QTreeView>
 
 namespace {
@@ -29,8 +36,10 @@ namespace {
       QList<Message> obtainNewMessages(Feed*,
                                        const QHash<BagOfMessages, QStringList>&,
                                        const QHash<QString, QStringList>&) override {
-        return {};
+        return std::exchange(nextFetch, {});
       }
+
+      QList<Message> nextFetch;
   };
 
   void setScript(MessageFilter& filter, const QString& body) {
@@ -93,7 +102,9 @@ class TestFilteringResults : public QObject {
     void processingFailureRetainsEarlierFeedResults();
     void labelsOnlyChangesAndNoOpsAreReported();
     void labelFailureRetainsConfirmedArticleUpdate();
+    void liveCountsReuseDatabaseReaders();
     void cleanupIsReportedAfterWriting();
+    void completedFetchReleasesUnreadResults();
     void purgePreviewHasNoStoredDetails();
     void failedReloadClearsPreviousResults();
     void reinsertedArticleUsesReceiptIdentity();
@@ -702,6 +713,59 @@ void TestFilteringResults::labelFailureRetainsConfirmedArticleUpdate() {
                                                       nullptr, 1)));
   QVERIFY(summary.contains(MessagesForFiltersModel::tr(" Run incomplete.")));
   QVERIFY(!summary.contains(model.lastError()));
+}
+
+void TestFilteringResults::completedFetchReleasesUnreadResults() {
+  Message msg;
+  msg.m_title = msg.m_customId = QSL("unread-notification");
+  msg.m_enclosures.append(QSharedPointer<MessageEnclosure>::create(QSL("https://example.invalid/audio"),
+                                                                   QSL("audio/mpeg")));
+  const auto enclosure = msg.m_enclosures.first().toWeakRef();
+  m_account->nextFetch.append(msg);
+  msg.m_enclosures.clear();
+
+  std::optional<FeedDownloadResults> delivered;
+  FeedReader reader(qApp);
+  // A scheduled refresh consults the main window. This fixture drives every refresh explicitly.
+  for (auto* timer : reader.findChildren<QTimer*>(QString(), Qt::FindDirectChildrenOnly)) {
+    timer->stop();
+  }
+  const auto stop_reader = qScopeGuard([&reader]() { reader.quit(); });
+  connect(&reader, &FeedReader::feedUpdatesFinished, this, [&](const FeedDownloadResults& results) {
+    delivered = results;
+  });
+  reader.updateFeeds({m_feed}, true);
+  QTRY_VERIFY(delivered.has_value());
+  // The receiver owns a usable copy until it releases the notification.
+  QVERIFY(!enclosure.isNull());
+  delivered.reset();
+  // Let the worker finish emitting and release any queued signal arguments.
+  QMetaObject::invokeMethod(reader.feedDownloader(), []() {}, Qt::BlockingQueuedConnection);
+  QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
+  QVERIFY(enclosure.isNull());
+}
+
+void TestFilteringResults::liveCountsReuseDatabaseReaders() {
+  const Message visible = seedArticle(m_feed, QSL("visible"), true);
+  m_label->assignToMessage(visible, false);
+  Message trashed = visible;
+  trashed.m_id = 0;
+  trashed.m_title = trashed.m_customId = QSL("trashed");
+  trashed.m_isDeleted = true;
+  QList<Message> batch{trashed};
+
+  qApp->database()->driver()->removeConnection(CONNECTION_READ);
+  const auto report = m_account->updateMessages(batch, m_feed, true);
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.count(MessageWriteOutcome::Inserted), 1);
+  QCOMPARE(m_feed->countOfAllMessages(), 1);
+  QCOMPARE(m_feed->countOfUnreadMessages(), 1);
+  QCOMPARE(m_account->recycleBin()->countOfAllMessages(), 1);
+  QCOMPARE(m_account->importantNode()->countOfAllMessages(), 1);
+  QCOMPARE(m_account->unreadNode()->countOfAllMessages(), 1);
+  QCOMPARE(m_label->countOfAllMessages(), 1);
+  QCOMPARE(m_label->countOfUnreadMessages(), 1);
+  QVERIFY(!QSqlDatabase::contains(CONNECTION_READ));
 }
 
 void TestFilteringResults::cleanupIsReportedAfterWriting() {

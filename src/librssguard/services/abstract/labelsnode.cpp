@@ -40,7 +40,7 @@ void LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
 void LabelsNode::updateCounts() {
   int account_id = account()->accountId();
 
-  auto acc = qApp->database()->worker()->read<QMap<int, ArticleCounts>>([&](const QSqlDatabase& db) {
+  auto acc = qApp->database()->worker()->readForArticleUpdate<QMap<int, ArticleCounts>>([account_id](const QSqlDatabase& db) {
     return DatabaseQueries::getMessageCountsForAllLabels(db, account_id);
   });
 

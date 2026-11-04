@@ -35,6 +35,11 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     T read(const std::function<T(const QSqlDatabase&)>& func);
     void read(const DbReadFn& func);
 
+    // SQLite article lookups and count refreshes reuse connections on the database reader pool.
+    template <typename T>
+    T readForArticleUpdate(const std::function<T(const QSqlDatabase&)>& func);
+    void readForArticleUpdate(const DbReadFn& func);
+
     template <typename T>
     T write(const std::function<T(const QSqlDatabase&)>& func);
     void write(const DbWriteFn& func);
@@ -49,6 +54,13 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     QThread m_writeThread;
     QSqlDatabase m_dbWriter;
 };
+
+template <typename T>
+inline T DatabaseWorker::readForArticleUpdate(const std::function<T(const QSqlDatabase&)>& func) {
+  std::optional<T> result;
+  readForArticleUpdate([&](const QSqlDatabase& db) { result.emplace(func(db)); });
+  return std::move(result.value());
+}
 
 template <typename T>
 inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func) {

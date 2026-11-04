@@ -4,6 +4,9 @@
 
 #include "database/databasedriver.h"
 
+#include <future>
+#include <memory>
+
 DatabaseWorker::DatabaseWorker(DatabaseDriver* driver) : QObject(), m_driver(driver) {
   moveToThread(&m_writeThread);
   m_writeThread.start();
@@ -59,6 +62,23 @@ void DatabaseWorker::read(const DbReadFn& func) {
   if (eptr) {
     std::rethrow_exception(eptr);
   }
+}
+
+void DatabaseWorker::readForArticleUpdate(const DbReadFn& func) {
+  if (m_driver->driverType() != DatabaseDriver::DriverType::SQLite) {
+    read(func);
+    return;
+  }
+  if (m_readThreadPool.contains(QThread::currentThread())) {
+    func(connectionForReading());
+    return;
+  }
+
+  // A waiting QFuture can execute the read on the calling feed thread, opening a cold SQLite connection.
+  auto task = std::make_shared<std::packaged_task<void()>>([&]() { func(connectionForReading()); });
+  auto finished = task->get_future();
+  m_readThreadPool.start([task]() { (*task)(); });
+  finished.get();
 }
 
 void DatabaseWorker::write(const DbWriteFn& func) {

@@ -6,9 +6,12 @@
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/feed.h>
 
+#include <optional>
+
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QMetaType>
+#include <QMutex>
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
@@ -91,8 +94,12 @@ class StandardFeed : public Feed {
     bool ignoreCookies() const;
     void setIgnoreCookies(bool ignore_cookies);
 
-    QString lastEtag() const;
-    void setLastEtag(const QString& etag);
+    struct HttpValidator {
+        QString value;
+        quint64 revision = 0;
+    };
+    HttpValidator httpValidator() const;
+    void setLastEtag(const QString& etag, std::optional<quint64> expected_revision = {});
 
     QString dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
@@ -189,7 +196,8 @@ class StandardFeed : public Feed {
     NetworkFactory::NetworkAuthentication m_protection = NetworkFactory::NetworkAuthentication::NoAuthentication;
     QString m_username;
     QString m_password;
-    QString m_lastEtag;
+    mutable QMutex m_validatorMutex;
+    HttpValidator m_validator;
     bool m_dontUseRawXmlSaving;
     QVariantHash m_httpHeaders;
     NetworkFactory::Http2Status m_http2Status;

@@ -18,7 +18,7 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
 
 void ImportantNode::updateCounts() {
   int account_id = account()->accountId();
-  auto ac = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
+  auto ac = qApp->database()->worker()->readForArticleUpdate<ArticleCounts>([account_id](const QSqlDatabase& db) {
     return DatabaseQueries::getImportantMessageCounts(db, account_id);
   });
 

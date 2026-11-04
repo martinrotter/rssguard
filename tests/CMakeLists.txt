@@ -21,7 +21,8 @@ function(add_rssguard_test TEST_TARGET)
       set(TEST_PLATFORM "windows")
     endif()
 
-    if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons")
+    if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons" OR
+       TEST_TARGET STREQUAL "test_feedvalidators")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
@@ -150,6 +151,9 @@ if(ENABLE_TESTING)
     database/test_databasequeries.cpp
   )
 
+  add_rssguard_test(test_mariadbinserts database/test_mariadbinserts.cpp)
+  set_tests_properties(test_mariadbinserts PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 120)
+
   # Exercise the actual JavaScript wrappers and persistence using an isolated DB.
   add_rssguard_test(test_filtering
     filtering/test_filtering.cpp
@@ -195,6 +199,14 @@ if(ENABLE_TESTING)
   )
   target_include_directories(test_labelsmenu PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_labelsmenu PROPERTIES TIMEOUT 60)
+
+  add_rssguard_test(test_feedvalidators
+    standard/test_feedvalidators.cpp
+  )
+  add_dependencies(test_feedvalidators rssguard-standard)
+  target_compile_definitions(test_feedvalidators PRIVATE TEST_STANDARD_PLUGIN="$<TARGET_FILE:rssguard-standard>")
+  target_include_directories(test_feedvalidators PRIVATE ${CMAKE_SOURCE_DIR}/src)
+  set_tests_properties(test_feedvalidators PROPERTIES TIMEOUT 60)
 
   add_rssguard_test(test_mediawikiparser
     standard/test_mediawikiparser.cpp

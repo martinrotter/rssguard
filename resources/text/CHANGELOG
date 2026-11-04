@@ -22,6 +22,9 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Feed refreshes now retry articles after parsing or storage fails, even when the server uses ETags. A 304 response without an ETag keeps the last successful validator.
+* Article inserts now preserve literal text such as `:score` and use the actual database IDs for notifications and labels. Large refreshes batch database writes and find articles without feed-supplied IDs faster. SQLite reuses reader connections for article lookups and live feed counts. MariaDB 10.6.1 or newer groups inserts within the server's packet limit.
+* Standard RSS feeds release their parsed documents before saving articles. The downloader also releases unread articles after delivering the refresh notification.
 * Article-filter test snapshots now isolate mutable attachments, and tests spanning multiple feeds use each article's actual feed context. (#2490)
 * Permanently deleted article records and their label associations can no longer be modified by article updates, including explicit filter overwrites. Trashed and permanently deleted articles no longer generate normal unread-fetch notifications. (#2490)
 * Clarified the article-update settings as "Ignore body-only changes from feeds" and "Preserve read state on feed updates", with explanatory tooltips and existing preferences preserved. (#2490)
