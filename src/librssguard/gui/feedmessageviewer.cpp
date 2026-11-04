@@ -299,6 +299,10 @@ void FeedMessageViewer::openHomepageOfSelectedArticleFeed() {
 
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* selected_item, Feed* feed) {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
+    if (selected_item != nullptr) {
+      m_messagesBrowser->show();
+    }
+
     m_messagesBrowser->loadMessage(message, selected_item, feed);
   }
   else if (m_articleViewerAlwaysVisible) {

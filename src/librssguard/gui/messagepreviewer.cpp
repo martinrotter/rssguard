@@ -171,6 +171,7 @@ void MessagePreviewer::showItemDetails(RootItem* item) {
 }
 
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed* feed) {
+  // The owner controls visibility, so loading a background tab must not show it.
   m_toolBar->setVisible(m_toolbarVisible);
 
   bool same_message = message.m_id == m_message.m_id && message.m_contents == m_message.m_contents && m_root == root;
@@ -182,7 +183,6 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed*
   if (!m_root.isNull()) {
     updateButtons();
     updateLabels(false);
-    show();
 
     if (!same_message) {
       Feed* article_feed = feed;
