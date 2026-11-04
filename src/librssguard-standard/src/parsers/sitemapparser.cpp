@@ -101,7 +101,7 @@ QList<GuessedFeedWithIcons> SitemapParser::discoverFeeds(ServiceRoot* root,
   QStringList to_process_robots;
 
   if (!base_feed_found) {
-    to_process_robots = {
+    to_process_robots = QStringList{
       discoveryUrlWithSuffix(url, QSL("/robots.txt")),
       discoveryUrlWithSuffix(url.adjusted(QUrl::RemovePath | QUrl::RemoveQuery), QSL("/robots.txt"))};
   }
