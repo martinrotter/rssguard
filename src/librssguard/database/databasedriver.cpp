@@ -133,8 +133,7 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
     qWarningNN << LOGSEC_DB << "Database is not initialized. Initializing now.";
 
     try {
-      const QStringList statements =
-        prepareScript(APP_SQL_PATH, QSL(APP_DB_INIT_FILE_PATTERN).arg(ddlFilePrefix()), database_name);
+      const QStringList statements = prepareScript(APP_SQL_PATH, QSL(APP_DB_INIT_FILE_PATTERN), database_name);
 
       for (const QString& statement : statements) {
         query_db.exec(statement);
@@ -170,12 +169,11 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
     if (installed_db_schema < current_version) {
       try {
         while (installed_db_schema != current_version) {
-          const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                       QSL(APP_DB_UPDATE_FILE_PATTERN)
-                                                         .arg(ddlFilePrefix(),
-                                                              QString::number(installed_db_schema),
-                                                              QString::number(installed_db_schema + 1)),
-                                                       database_name);
+          const QStringList statements =
+            prepareScript(APP_SQL_PATH,
+                          QSL(APP_DB_UPDATE_FILE_PATTERN)
+                            .arg(QString::number(installed_db_schema), QString::number(installed_db_schema + 1)),
+                          database_name);
 
           for (const QString& statement : statements) {
             query_db.exec(statement);
@@ -213,25 +211,87 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
                                           const QString& sql_file,
                                           const QString& database_name) {
   static QRegularExpression comment_splitter = QRegularExpression(QSL(APP_DB_COMMENT_SPLIT));
+  static QRegularExpression condition(QSL("^#(if|elif)\\s+ENGINE\\s*==\\s*([A-Z][A-Z0-9_]*)$"));
 
-  QStringList statements;
-  QString next_file = base_sql_folder + QDir::separator() + sql_file;
-  QString sql_script = QString::fromUtf8(IOFactory::readFile(next_file));
-  QStringList new_statements = sql_script.split(comment_splitter, SPLIT_BEHAVIOR::SkipEmptyParts);
+  struct Conditional {
+      bool m_parentActive;
+      bool m_branchTaken;
+      bool m_elseSeen;
+      int m_line;
+  };
 
-  for (int i = 0; i < new_statements.size(); i++) {
-    if (new_statements.at(i).startsWith(QSL(APP_DB_INCLUDE_PLACEHOLDER))) {
-      // We include another file.
-      QString included_file_name = new_statements.at(i).mid(QSL(APP_DB_INCLUDE_PLACEHOLDER).size() + 1).simplified();
+  const QString engine = humanDriverType().toUpper();
+  const QString sql_script = QString::fromUtf8(IOFactory::readFile(base_sql_folder + QDir::separator() + sql_file));
+  const QStringList lines = sql_script.split(QL1C('\n'));
+  QList<Conditional> conditionals;
+  QString active_sql;
+  bool active = true;
+  const auto fail = [&](const QString& error, int line) {
+    throw ApplicationException(tr("Invalid SQL preprocessor directive: %1").arg(error), sql_file, line);
+  };
 
-      QString included_file = base_sql_folder + QDir::separator() + included_file_name;
-      QString included_sql_script = QString::fromUtf8(IOFactory::readFile(included_file));
-      QStringList included_statements = included_sql_script.split(comment_splitter, SPLIT_BEHAVIOR::SkipEmptyParts);
+  // Directives occupy whole lines and are checked even inside inactive branches.
+  // SQL is split only afterwards, preserving semicolons within triggers/procedures.
+  for (int i = 0; i < lines.size(); ++i) {
+    const QString directive = lines.at(i).trimmed();
 
-      statements << included_statements;
+    if (!directive.startsWith(QL1C('#'))) {
+      if (active) {
+        active_sql += lines.at(i) + QL1C('\n');
+      }
+      continue;
+    }
+
+    const auto match = condition.match(directive);
+
+    if (match.hasMatch()) {
+      const QString expected_engine = match.captured(2);
+      if (expected_engine != QSL("SQLITE") && expected_engine != QSL("MARIADB")) {
+        fail(tr("unknown engine '%1'").arg(expected_engine), i + 1);
+      }
+      const bool matches = engine == expected_engine;
+
+      if (match.captured(1) == QSL("if")) {
+        conditionals.append({active, matches, false, i + 1});
+        active = active && matches;
+      }
+      else {
+        if (conditionals.isEmpty() || conditionals.last().m_elseSeen) {
+          fail(tr("unexpected #elif"), i + 1);
+        }
+        auto& conditional = conditionals.last();
+        active = conditional.m_parentActive && !conditional.m_branchTaken && matches;
+        conditional.m_branchTaken = conditional.m_branchTaken || matches;
+      }
+    }
+    else if (directive == QSL("#else")) {
+      if (conditionals.isEmpty() || conditionals.last().m_elseSeen) {
+        fail(tr("unexpected #else"), i + 1);
+      }
+      auto& conditional = conditionals.last();
+      active = conditional.m_parentActive && !conditional.m_branchTaken;
+      conditional.m_branchTaken = true;
+      conditional.m_elseSeen = true;
+    }
+    else if (directive == QSL("#endif")) {
+      if (conditionals.isEmpty()) {
+        fail(tr("unexpected #endif"), i + 1);
+      }
+      active = conditionals.takeLast().m_parentActive;
     }
     else {
-      statements << new_statements.at(i);
+      fail(directive, i + 1);
+    }
+  }
+
+  if (!conditionals.isEmpty()) {
+    fail(tr("missing #endif"), conditionals.last().m_line);
+  }
+
+  QStringList statements;
+  for (const QString& statement : active_sql.split(comment_splitter, SPLIT_BEHAVIOR::SkipEmptyParts)) {
+    if (!statement.trimmed().isEmpty()) {
+      statements.append(statement.trimmed());
     }
   }
 

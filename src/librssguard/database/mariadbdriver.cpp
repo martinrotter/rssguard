@@ -14,10 +14,6 @@
 
 MariaDbDriver::MariaDbDriver(QObject* parent) : DatabaseDriver(parent) {}
 
-QString MariaDbDriver::ddlFilePrefix() const {
-  return QSL("mysql");
-}
-
 QString MariaDbDriver::insertIgnore() const {
   return QSL("INSERT IGNORE");
 }
