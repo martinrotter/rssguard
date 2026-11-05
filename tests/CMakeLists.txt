@@ -49,6 +49,11 @@ endfunction()
 if(ENABLE_TESTING)
   message(STATUS "Enabling unit tests.")
 
+  add_test(NAME test_article_extractor COMMAND "${GO_EXECUTABLE}" test -count=1 ./...)
+  set_tests_properties(test_article_extractor PROPERTIES
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/resources/scripts/standalone/article-extractor"
+    TIMEOUT 120)
+
   add_subdirectory(dynamic-shortcuts)
 
   add_rssguard_test(test_globals

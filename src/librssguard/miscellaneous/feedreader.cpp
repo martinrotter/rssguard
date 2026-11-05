@@ -35,7 +35,11 @@
 #include <QThread>
 #include <QTimer>
 
+#if defined(Q_OS_WIN)
+#define ARTICLE_EXTRACTOR_NAME "rssguard-article-extractor.exe"
+#else
 #define ARTICLE_EXTRACTOR_NAME "rssguard-article-extractor"
+#endif
 
 FeedReader::FeedReader(Application* application)
   : QObject(application), m_application(application), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr),

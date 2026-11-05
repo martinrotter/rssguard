@@ -25,7 +25,6 @@
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
-#   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
 #   ENABLE_TESTING - Enables unit tests.
 #   ENABLE_BENCHMARKS - Enables benchmarks.
 #   BUILD_XMPP_PLUGIN - Builds XMPP plugin. This only works for Qt 6.
@@ -50,7 +49,7 @@
 #   - supports Windows, Linux, *BSD, macOS, OS/2,
 #   - Qt 5.15.0 or newer is required,
 #   - Qt 6.5.0 or newer is required,
-#   - Go compiler is required for building rssguard-article-extractor,
+#   - Go 1.26.0 or newer is required for building rssguard-article-extractor,
 #   - cmake 3.21.1 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
@@ -126,7 +125,6 @@ option(LOAD_PLUGINS_FROM_PARENT "Force loading of plugin libraries from parent f
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`." ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates." OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
-option(RUN_GO_MOD_TIDY "Runs 'go mod tidy' when bundling Go-based plugins." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_TESTING "Enable unit tests." OFF)
 option(ENABLE_PACKAGE_SMOKE_TEST "Build the macOS CI package smoke-test executable." OFF)

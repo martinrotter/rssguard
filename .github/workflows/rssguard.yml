@@ -7,6 +7,8 @@ on:
     tags: ["*"]
 
 env:
+  GO_VERSION: "1.27.3"
+  GOTOOLCHAIN: local
   ACTIONS_RUNNER_DEBUG: true
   ACTIONS_STEP_DEBUG: true
   SIGN_DEVELOPMENT_BUILDS: "false"
@@ -39,6 +41,35 @@ jobs:
       - name: Test macOS package validation
         run: python3 -m unittest discover -s ./resources/scripts/github-actions/tests -v
 
+  check-article-extractor:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-2022]
+    defaults:
+      run:
+        working-directory: resources/scripts/standalone/article-extractor
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: resources/scripts/standalone/article-extractor/go.sum
+      - name: Check formatting and module manifests
+        shell: bash
+        run: |
+          test -z "$(gofmt -l .)"
+          go mod tidy -diff
+      - name: Test article extractor
+        run: go test -count=1 ./...
+      - name: Vet article extractor
+        run: go vet ./...
+      - name: Test article extractor build rules
+        run: python build_test.py
+      - name: Check known vulnerabilities
+        if: matrix.os == 'ubuntu-latest'
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
+
   source-tarball:
     name: create-source-tarball
     runs-on: ubuntu-latest
@@ -50,6 +81,12 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: resources/scripts/standalone/article-extractor/go.sum
 
       - name: Determine version and tarball name
         run: |
@@ -94,6 +131,7 @@ jobs:
   build-rssguard:
     needs:
       - check-build-script
+      - check-article-extractor
       - source-tarball
     name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}; webengine_viewer = ${{ matrix.webengine_viewer }}"
     runs-on: "${{ matrix.os }}"
@@ -164,6 +202,12 @@ jobs:
           fetch-depth: 0
           submodules: true
 
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: resources/scripts/standalone/article-extractor/go.sum
+
       - name: Prepare environment and compile application
         run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_qt5 }}" "${{ matrix.webengine_viewer }}"
         env:
@@ -185,7 +229,7 @@ jobs:
           path: |
             ./rssguard-build/app/rssguard.exe
             ./rssguard-build/app/rssguard.dll
-            ./rssguard-build/app/rssguard-article-extractor
+            ./rssguard-build/app/rssguard-article-extractor.exe
             ./rssguard-build/app/plugins/rssguard-*.dll
 
       - name: Sign Windows binaries
@@ -208,7 +252,7 @@ jobs:
           $files = @(
             Get-Item -LiteralPath "./rssguard-build/app/rssguard.exe"
             Get-Item -LiteralPath "./rssguard-build/app/rssguard.dll"
-            Get-Item -LiteralPath "./rssguard-build/app/rssguard-article-extractor"
+            Get-Item -LiteralPath "./rssguard-build/app/rssguard-article-extractor.exe"
             Get-ChildItem -Path "./rssguard-build/app/plugins" -Filter "rssguard-*.dll" -File
           )
 

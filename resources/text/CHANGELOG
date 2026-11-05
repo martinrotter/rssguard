@@ -22,6 +22,8 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Updated the article extractor's Go dependencies and pinned the CI compiler. Added Go regression tests, vulnerability checks, and reliable rebuilds after source, dependency, or compiler changes. Windows packages now consistently use `rssguard-article-extractor.exe`.
+* Article extraction now resolves links after redirects, shares page cookies with image downloads, and keeps private headers on their configured origin. Embedded images are cached and no longer overridden by responsive alternatives. Fixed special characters in proxy credentials, malformed-input and empty-result errors, and combined plain-text/image flags. Added download, input, output, and network-time limits.
 * Opening articles in background tabs no longer briefly draws their toolbars and loading indicators over the Feeds tab.
 * Database cleanup now checkpoints SQLite after optimization and reports blocked checkpoints. Added help explaining why SQLite database files on Windows can remain larger than the displayed data size. (#2504)
 * Feed refreshes now retry articles after parsing or storage fails, even when the server uses ETags. A 304 response without an ETag keeps the last successful validator.

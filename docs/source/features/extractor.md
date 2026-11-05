@@ -25,6 +25,7 @@ The URL is required. If you do not pass HTML through standard input, the extract
 | `-b`   | Embed remote images as `data:` URLs in the HTML output. |
 
 Without `-t`, the extractor writes extracted HTML.
+When `-t` and `-b` are combined, the output remains plain text and images are not downloaded.
 
 ## Optional JSON Input
 You can pass extra settings as JSON through standard input. If you do not pass JSON, the extractor uses its defaults.
@@ -52,6 +53,8 @@ Use `headers` when a site needs a specific user agent, language, cookie, authori
 
 If `User-Agent` is not provided, RSS Guard's extractor uses its built-in default browser-like user agent.
 
+Configured headers apply to the supplied URL's origin (scheme, hostname, and port). Only `User-Agent`, `Accept`, and `Accept-Language` are forwarded to other origins, including image hosts and redirect destinations. This prevents configured cookies, authorization, and other private headers from being sent to unrelated sites. Cookies set by websites are shared between page and image downloads using normal cookie domain, path, and security rules. Updated cookies take precedence over the same cookie supplied in `headers`.
+
 ### `html`
 Use `html` when you already have the page contents. When `html` is non-empty, the extractor does **not** download the URL. It cleans up the supplied HTML instead.
 
@@ -65,6 +68,25 @@ Supported proxy types:
 * `socks5`
 
 `address` must contain host and port, for example `127.0.0.1:8080`.
+Usernames and passwords may contain special characters; pass them as JSON strings without URL-encoding them.
+
+## Redirects and Images
+Relative links and images are resolved against the final page URL after redirects. With supplied `html`, they use the URL argument instead.
+
+With `-b`, each image URL is downloaded at most once per invocation. Successfully embedded images have their `srcset` alternatives and associated `<picture>` sources removed so a browser uses the embedded image. Failed or oversized images keep their original URLs and responsive alternatives. Image embedding is best effort; the result may still require a network connection for images that could not be embedded or other resources.
+
+## Limits
+Page and image requests share a 25-second network deadline. A timeout fails the invocation without writing partial article output. The limits below also apply:
+
+| Resource | Limit |
+| :--- | :--- |
+| JSON input | 16 MiB |
+| Supplied or downloaded HTML | 10 MiB |
+| Each downloaded image | 5 MiB |
+| Embedded image data, including repeated occurrences | 20 MiB |
+| Extracted output | 32 MiB |
+
+Oversized input, pages, or output fail with an error. Images exceeding the individual or total embedding limit remain remote.
 
 ## Examples
 ### Extract HTML From a URL
@@ -123,7 +145,7 @@ printf '{"proxy":{"type":"socks5","address":"127.0.0.1:1080","username":"user","
 ## Errors
 If extraction succeeds, the cleaned article is written to standard output.
 
-If extraction fails, an error is written to standard error. Common causes are an invalid URL, a network failure, an invalid proxy, or a page that cannot be parsed.
+If extraction fails, an error is written to standard error and the exit code is nonzero. Common causes are an invalid URL, malformed JSON, a network failure, an invalid proxy, a size limit, an empty extraction result, or a page that cannot be parsed. The URL must be an absolute HTTP or HTTPS URL, even when supplying HTML. Empty or whitespace-only stdin uses the defaults.
 
 When `-b` is used, individual image download failures are not fatal. If an image cannot be downloaded, its original `src` value is left unchanged.
 
@@ -167,4 +189,21 @@ const extracted = fs.runExecutableGetOutput(
 );
 ```
 
-For most ordinary filters, prefer `msg.fetchFullContents(...)` because it uses RSS Guard's configured extractor path and feed settings automatically. Call the extractor manually when you need direct control over arguments or want to pass a custom `html` string.
+For most ordinary filters, prefer `msg.fetchFullContents(...)` because it uses the bundled extractor with RSS Guard's user agent, language, and applicable proxy settings. Call the extractor manually when you need custom headers, direct control over arguments, or want to pass a custom `html` string.
+
+## Building and Testing
+Go 1.26.0 or newer is required. CI uses Go 1.27.3. CMake builds the complete Go package and tracks source, module manifest, vendor, and compiler changes. Windows builds install `rssguard-article-extractor.exe`.
+
+Run these commands in `resources/scripts/standalone/article-extractor`:
+
+```sh
+go test -count=1 ./...
+go vet ./...
+go mod tidy -diff
+go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
+python build_test.py
+```
+
+The CMake build-rule tests need CMake and Ninja. The Go tests are also registered with CTest when `ENABLE_TESTING` is enabled. Run vulnerability checks with a scanner built using the same or a newer Go compiler than the code being checked.
+
+Dependency maintenance is separate from building: use `go get` for deliberate updates, run `go mod tidy`, and regenerate an existing vendor directory with `go mod vendor`. CMake no longer runs `go mod tidy` or changes the module manifests while building. Source release archives include vendored dependencies.

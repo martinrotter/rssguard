@@ -1,11 +1,11 @@
 package main
 
 import (
-	"flag"
+	"bytes"
+	"context"
 	"io"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"strings"
 	"sync/atomic"
 	"testing"
@@ -116,56 +116,11 @@ func TestMainEmbedsRemoteImagesAsBase64(t *testing.T) {
 
 func runMain(t *testing.T, args []string, stdin string) string {
 	t.Helper()
-
-	oldArgs := os.Args
-	oldStdin := os.Stdin
-	oldStdout := os.Stdout
-	oldFlagCommandLine := flag.CommandLine
-
-	stdinFile, err := os.CreateTemp(t.TempDir(), "stdin-*.json")
-	if err != nil {
+	var output, stderr bytes.Buffer
+	if err := run(context.Background(), args[1:], strings.NewReader(stdin), &output, &stderr); err != nil {
 		t.Fatal(err)
 	}
-
-	if _, err := stdinFile.WriteString(stdin); err != nil {
-		t.Fatal(err)
-	}
-
-	if _, err := stdinFile.Seek(0, io.SeekStart); err != nil {
-		t.Fatal(err)
-	}
-
-	stdoutReader, stdoutWriter, err := os.Pipe()
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	os.Args = args
-	os.Stdin = stdinFile
-	os.Stdout = stdoutWriter
-	flag.CommandLine = flag.NewFlagSet(args[0], flag.ExitOnError)
-
-	defer func() {
-		os.Args = oldArgs
-		os.Stdin = oldStdin
-		os.Stdout = oldStdout
-		flag.CommandLine = oldFlagCommandLine
-		stdinFile.Close()
-		stdoutReader.Close()
-	}()
-
-	main()
-
-	if err := stdoutWriter.Close(); err != nil {
-		t.Fatal(err)
-	}
-
-	output, err := io.ReadAll(stdoutReader)
-	if err != nil {
-		t.Fatal(err)
-	}
-
-	return string(output)
+	return output.String()
 }
 
 func assertContains(t *testing.T, haystack string, needle string) {

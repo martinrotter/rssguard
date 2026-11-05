@@ -10,3 +10,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+  - package-ecosystem: gomod
+    directory: "/resources/scripts/standalone/article-extractor"
+    schedule:
+      interval: weekly
+    groups:
+      extractor-dependencies:
+        patterns: ["*"]
