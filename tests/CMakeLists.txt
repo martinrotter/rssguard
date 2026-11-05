@@ -27,7 +27,8 @@ function(add_rssguard_test TEST_TARGET)
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
            TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum" OR
-           TEST_TARGET STREQUAL "test_articlepreview")
+           TEST_TARGET STREQUAL "test_articlepreview" OR TEST_TARGET STREQUAL "test_externaltool" OR
+           TEST_TARGET STREQUAL "test_externaltoolsettings")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -75,6 +76,23 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_iconfactory
     miscellaneous/test_iconfactory.cpp
   )
+
+  # ExternalTool is internal and has no Windows DLL exports.
+  add_rssguard_test(test_externaltool
+    miscellaneous/test_externaltool.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/externaltool.cpp
+  )
+
+  add_rssguard_test(test_externaltoolsettings
+    gui/test_externaltoolsettings.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/settings/settingsbrowsermail.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/settings/settingsbrowsermail.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/settings/settingspanel.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/gui/settings/settingspanel.h
+    ${CMAKE_SOURCE_DIR}/src/librssguard/miscellaneous/externaltool.cpp
+  )
+  target_include_directories(test_externaltoolsettings PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  set_tests_properties(test_externaltoolsettings PROPERTIES TIMEOUT 60)
 
   add_rssguard_test(test_iofactory
     miscellaneous/test_iofactory.cpp

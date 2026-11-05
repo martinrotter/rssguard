@@ -6,6 +6,7 @@
 #include <optional>
 
 #include <QByteArray>
+#include <QIcon>
 #include <QList>
 #include <QMetaType>
 #include <QString>
@@ -17,13 +18,19 @@ class Settings;
 class ExternalTool {
   public:
     explicit ExternalTool() = default;
-    ExternalTool(const ExternalTool& other);
-    explicit ExternalTool(QString name, QString executable, QString parameters, QStringList domains);
+    ExternalTool(const ExternalTool& other) = default;
+    explicit ExternalTool(QString name,
+                          QString executable,
+                          QString parameters,
+                          QStringList domains,
+                          QByteArray icon_data = {});
 
     QString executable() const;
     QString parameters() const;
     QString name() const;
     QStringList domains() const;
+    QByteArray iconData() const;
+    QIcon icon() const;
 
     bool run(const QString& link);
 
@@ -40,6 +47,7 @@ class ExternalTool {
     QString m_executable;
     QString m_parameters;
     QStringList m_domains;
+    QByteArray m_iconData;
 
     void sanitizeParameters();
 };

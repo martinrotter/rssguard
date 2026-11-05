@@ -9,7 +9,7 @@
 #include "network-web/networkfactory.h"
 
 #include <QContextMenuEvent>
-#include <QFileIconProvider>
+#include <QFileInfo>
 
 MessageTextBrowser::MessageTextBrowser(QWidget* parent) : QTextBrowser(parent) {
   setAutoFillBackground(true);
@@ -63,7 +63,6 @@ void MessageTextBrowser::contextMenuEvent(QContextMenuEvent* event) {
   auto anchor = anchorAt(event->pos());
 
   if (!anchor.isEmpty()) {
-    QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
     auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
@@ -72,7 +71,7 @@ void MessageTextBrowser::contextMenuEvent(QContextMenuEvent* event) {
     for (const ExternalTool& tool : qAsConst(tools)) {
       QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
 
-      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
+      act_tool->setIcon(tool.icon());
       act_tool->setToolTip(tool.executable());
       act_tool->setData(QVariant::fromValue(tool));
       menu_ext_tools->addAction(act_tool);

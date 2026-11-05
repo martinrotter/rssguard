@@ -24,6 +24,8 @@ class SettingsBrowserMail : public SettingsPanel {
   private slots:
     void addExternalTool();
     void editSelectedExternalTool();
+    void chooseSelectedExternalToolIcon();
+    void resetSelectedExternalToolIcon();
     void deleteSelectedExternalTool();
     void changeDefaultBrowserArguments(int index);
     void selectBrowserExecutable();
@@ -35,7 +37,9 @@ class SettingsBrowserMail : public SettingsPanel {
 
   private:
     QVector<ExternalTool> externalTools() const;
+    ExternalTool externalTool(const QTreeWidgetItem* item) const;
     void setExternalTools(const QList<ExternalTool>& list);
+    void updateExternalToolIcon(QTreeWidgetItem* item);
 
     Ui::SettingsBrowserMail* m_ui;
 };

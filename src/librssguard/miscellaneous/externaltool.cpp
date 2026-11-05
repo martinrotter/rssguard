@@ -3,6 +3,7 @@
 #include "miscellaneous/externaltool.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
@@ -11,6 +12,8 @@
 #include <utility>
 
 #include <QDir>
+#include <QFileIconProvider>
+#include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
 
@@ -18,12 +21,13 @@ void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);
 }
 
-ExternalTool::ExternalTool(const ExternalTool& other)
-  : ExternalTool(other.name(), other.executable(), other.parameters(), other.domains()) {}
-
-ExternalTool::ExternalTool(QString name, QString executable, QString parameters, QStringList domains)
+ExternalTool::ExternalTool(QString name,
+                           QString executable,
+                           QString parameters,
+                           QStringList domains,
+                           QByteArray icon_data)
   : m_name(std::move(name)), m_executable(std::move(executable)), m_parameters(std::move(parameters)),
-    m_domains(std::move(domains)) {
+    m_domains(std::move(domains)), m_iconData(std::move(icon_data)) {
   sanitizeParameters();
 }
 
@@ -34,6 +38,7 @@ QByteArray ExternalTool::toString() {
   obj[QSL("exe")] = executable();
   obj[QSL("params")] = parameters();
   obj[QSL("domain")] = domains().join(QL1C(','));
+  obj[QSL("icon")] = QString::fromLatin1(m_iconData);
 
   return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
 }
@@ -65,7 +70,8 @@ ExternalTool ExternalTool::fromString(const QByteArray& str) {
   ExternalTool tool(obj[QSL("name")].toString(),
                     obj[QSL("exe")].toString(),
                     obj[QSL("params")].toString(),
-                    obj[QSL("domain")].toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts));
+                    obj[QSL("domain")].toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts),
+                    obj[QSL("icon")].toString().toLatin1());
 
   return tool;
 }
@@ -104,6 +110,16 @@ QStringList ExternalTool::domains() const {
 
 QString ExternalTool::name() const {
   return m_name;
+}
+
+QByteArray ExternalTool::iconData() const {
+  return m_iconData;
+}
+
+QIcon ExternalTool::icon() const {
+  const QIcon custom_icon = IconFactory::fromByteArray(m_iconData);
+
+  return custom_icon.isNull() ? QFileIconProvider().icon(QFileInfo(m_executable)) : custom_icon;
 }
 
 bool ExternalTool::run(const QString& link) {

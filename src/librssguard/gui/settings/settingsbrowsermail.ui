@@ -320,6 +320,19 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="m_btnToolIcon">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Choose an image for the selected tool, or restore its automatic icon.</string>
+           </property>
+           <property name="text">
+            <string>Change &amp;icon...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="m_btnDeleteTool">
            <property name="enabled">
             <bool>false</bool>
@@ -381,6 +394,7 @@
   <tabstop>m_listTools</tabstop>
   <tabstop>m_btnAddTool</tabstop>
   <tabstop>m_btnEditTool</tabstop>
+  <tabstop>m_btnToolIcon</tabstop>
   <tabstop>m_btnDeleteTool</tabstop>
  </tabstops>
  <resources/>

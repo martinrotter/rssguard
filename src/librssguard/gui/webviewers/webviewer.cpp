@@ -23,7 +23,7 @@
 #include <utility>
 
 #include <QClipboard>
-#include <QFileIconProvider>
+#include <QFileInfo>
 #include <QList>
 #include <QPrintDialog>
 #include <QPrinter>
@@ -445,7 +445,6 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
 
   // Tools.
   if (m_contextMenuData.m_linkUrl.isValid()) {
-    QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(QObject::tr("Open with external tool"), specific_menu);
     auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
@@ -457,7 +456,7 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
                       .fileName(),
                     menu_ext_tools);
 
-      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
+      act_tool->setIcon(tool.icon());
       act_tool->setToolTip(tool.executable());
       act_tool->setData(QVariant::fromValue(tool));
       menu_ext_tools->addAction(act_tool);

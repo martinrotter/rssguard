@@ -5,6 +5,7 @@
 #include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/messagebox.h"
 #include "gui/reusable/networkproxydetails.h"
 #include "gui/webbrowser.h"
 #include "gui/webviewers/webviewer.h"
@@ -15,7 +16,9 @@
 #include "miscellaneous/settingskeys.h"
 #include "network-web/webfactory.h"
 
+#include <QImageReader>
 #include <QInputDialog>
+#include <QMenu>
 #include <QNetworkProxy>
 
 SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
@@ -42,7 +45,12 @@ void SettingsBrowserMail::loadUi() {
 
   m_ui->m_btnAddTool->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui->m_btnEditTool->setIcon(qApp->icons()->fromTheme(QSL("document-edit")));
+  m_ui->m_btnToolIcon->setIcon(qApp->icons()->fromTheme(QSL("image-x-generic")));
   m_ui->m_btnDeleteTool->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
+  auto* icon_menu = new QMenu(m_ui->m_btnToolIcon);
+  icon_menu->addAction(tr("Choose image..."), this, &SettingsBrowserMail::chooseSelectedExternalToolIcon);
+  icon_menu->addAction(tr("Use automatic icon"), this, &SettingsBrowserMail::resetSelectedExternalToolIcon);
+  m_ui->m_btnToolIcon->setMenu(icon_menu);
   m_ui->m_listTools->setHeaderLabels({tr("Name"), tr("Executable"), tr("Parameters"), tr("Domain")});
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_listTools->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
@@ -81,8 +89,15 @@ void SettingsBrowserMail::loadUi() {
 
             m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
+            m_ui->m_btnToolIcon->setEnabled(current != nullptr);
           });
-  connect(m_ui->m_listTools, &QTreeWidget::itemChanged, this, &SettingsBrowserMail::dirtifySettings);
+  connect(m_ui->m_listTools, &QTreeWidget::itemChanged, this, [this](QTreeWidgetItem* item, int column) {
+    if (column == 1) {
+      updateExternalToolIcon(item);
+    }
+
+    dirtifySettings();
+  });
 
   SettingsPanel::loadUi();
 }
@@ -125,13 +140,22 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 
   for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
     auto* it = m_ui->m_listTools->topLevelItem(i);
-    list.append(ExternalTool(it->text(0),
-                             it->text(1),
-                             it->text(2),
-                             it->text(3).split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts)));
+    list.append(externalTool(it));
   }
 
   return list;
+}
+
+ExternalTool SettingsBrowserMail::externalTool(const QTreeWidgetItem* item) const {
+  return ExternalTool(item->text(0),
+                      item->text(1),
+                      item->text(2),
+                      item->text(3).split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts),
+                      item->data(0, Qt::ItemDataRole::UserRole).toByteArray());
+}
+
+void SettingsBrowserMail::updateExternalToolIcon(QTreeWidgetItem* item) {
+  item->setIcon(0, externalTool(item).icon());
 }
 
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
@@ -141,6 +165,8 @@ void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
                           {tool.name(), tool.executable(), tool.parameters(), tool.domains().join(QL1C(','))});
 
     item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
+    item->setData(0, Qt::ItemDataRole::UserRole, tool.iconData());
+    item->setIcon(0, tool.icon());
 
     m_ui->m_listTools->addTopLevelItem(item);
   }
@@ -239,6 +265,7 @@ void SettingsBrowserMail::addExternalTool() {
     new QTreeWidgetItem(m_ui->m_listTools, {QFileInfo(exec).baseName(), QDir::toNativeSeparators(exec), QSL("")});
 
   item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
+  updateExternalToolIcon(item);
   m_ui->m_listTools->addTopLevelItem(item);
 }
 
@@ -279,4 +306,55 @@ void SettingsBrowserMail::deleteSelectedExternalTool() {
     m_ui->m_listTools
       ->takeTopLevelItem(m_ui->m_listTools->indexOfTopLevelItem(m_ui->m_listTools->selectedItems().first()));
   }
+}
+
+void SettingsBrowserMail::chooseSelectedExternalToolIcon() {
+  auto* item = m_ui->m_listTools->currentItem();
+
+  if (item == nullptr) {
+    return;
+  }
+
+  QStringList formats;
+
+  for (const auto& format : QImageReader::supportedImageFormats()) {
+    formats.append(QSL("*.%1").arg(QString::fromLatin1(format)));
+  }
+
+  const QString file = FileDialog::openFileName(this,
+                                                tr("Select external tool icon"),
+                                                qApp->homeFolder(),
+                                                {},
+                                                tr("Images (%1)").arg(formats.join(QL1C(' '))),
+                                                nullptr,
+                                                GENERAL_REMEMBERED_PATH);
+
+  if (file.isEmpty()) {
+    return;
+  }
+
+  // Store a small, self-contained image instead of a dependency on the source file.
+  const QPixmap pixmap = QIcon(file).pixmap(128, 128);
+
+  if (pixmap.isNull()) {
+    MsgBox::show(this,
+                 QMessageBox::Icon::Warning,
+                 tr("Invalid icon"),
+                 tr("The selected file could not be loaded as an image."));
+    return;
+  }
+
+  item->setData(0, Qt::ItemDataRole::UserRole, IconFactory::toByteArray(QIcon(pixmap)));
+  updateExternalToolIcon(item);
+}
+
+void SettingsBrowserMail::resetSelectedExternalToolIcon() {
+  auto* item = m_ui->m_listTools->currentItem();
+
+  if (item == nullptr || item->data(0, Qt::ItemDataRole::UserRole).toByteArray().isEmpty()) {
+    return;
+  }
+
+  item->setData(0, Qt::ItemDataRole::UserRole, QByteArray());
+  updateExternalToolIcon(item);
 }

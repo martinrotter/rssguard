@@ -26,7 +26,7 @@
 #include "services/abstract/serviceroot.h"
 
 #include <QClipboard>
-#include <QFileIconProvider>
+#include <QFileInfo>
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QMenu>
@@ -657,7 +657,6 @@ void MessagesView::initializeContextMenu() {
   }
 
   // External tools.
-  QFileIconProvider icon_provider;
   QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), m_contextMenu);
   auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
@@ -669,7 +668,7 @@ void MessagesView::initializeContextMenu() {
                     .fileName(),
                   menu_ext_tools);
 
-    act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
+    act_tool->setIcon(tool.icon());
     act_tool->setToolTip(tool.executable());
     act_tool->setData(QVariant::fromValue(tool));
     menu_ext_tools->addAction(act_tool);

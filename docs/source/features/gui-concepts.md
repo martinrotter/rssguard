@@ -21,3 +21,9 @@ Each "account" offers account-specific actions that are accessible in the releva
 <img alt="alt-img" src="images/account-menu.png">
 
 Available actions and setup fields depend on the selected service. See [Supported Feed Readers](../supported-readers) for the available account types. To keep subscriptions directly in RSS Guard, start with [Standard RSS, Atom, JSON and other feeds](../services/standard).
+
+## External tool icons
+
+In **Tools → Settings → External apps & tools → External tools**, select a tool and click **Change icon…** next to **Edit tool path**. Choose **Choose image…** to assign a custom icon, or **Use automatic icon** to restore the icon detected from the executable. The list previews the result; **Apply** or **OK** saves it.
+
+Custom icons appear in the article list's **Open with external tool** menu and in link menus in both article viewers. The image is stored in your settings, so moving or deleting the original image does not remove the icon. Changing a tool's executable keeps its custom icon until you select **Use automatic icon**. Existing tools keep automatic icons until you choose an override. See [Flatpak setup](../troubleshooting/flatpak#adding-external-tools) if you use the Flatpak package. This feature addresses [#2492](https://github.com/martinrotter/rssguard/issues/2492).
