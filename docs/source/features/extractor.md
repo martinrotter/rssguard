@@ -53,7 +53,7 @@ Use `headers` when a site needs a specific user agent, language, cookie, authori
 
 If `User-Agent` is not provided, RSS Guard's extractor uses its built-in default browser-like user agent.
 
-Configured headers apply to the supplied URL's origin (scheme, hostname, and port). Only `User-Agent`, `Accept`, and `Accept-Language` are forwarded to other origins, including image hosts and redirect destinations. This prevents configured cookies, authorization, and other private headers from being sent to unrelated sites. Cookies set by websites are shared between page and image downloads using normal cookie domain, path, and security rules. Updated cookies take precedence over the same cookie supplied in `headers`.
+Configured headers apply to the supplied URL's origin (scheme, hostname, and port). Only `User-Agent`, `Accept`, and `Accept-Language` are forwarded to other origins, including image hosts and redirect destinations. This prevents configured cookies, authorization, and other private headers from being sent to unrelated sites. Cookies set by websites are shared between page and image downloads using normal cookie domain, path, and security rules. Server updates and deletions also apply to cookies supplied in `headers`.
 
 ### `html`
 Use `html` when you already have the page contents. When `html` is non-empty, the extractor does **not** download the URL. It cleans up the supplied HTML instead.
@@ -86,7 +86,7 @@ Page and image requests share a 25-second network deadline. A timeout fails the 
 | Embedded image data, including repeated occurrences | 20 MiB |
 | Extracted output | 32 MiB |
 
-Oversized input, pages, or output fail with an error. Images exceeding the individual or total embedding limit remain remote.
+Oversized input, pages, or output fail with an error. The HTML limit applies after decompression, both before and after conversion to UTF-8. Images exceeding the individual or total embedding limit remain remote.
 
 ## Examples
 ### Extract HTML From a URL

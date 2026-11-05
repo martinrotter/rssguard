@@ -1,302 +1,466 @@
 ; For license of this file, see <project-root-folder>/LICENSE.md.
-
-;--------------------------------
-; Unicode baby.
 Unicode True
-
-;--------------------------------
-; Do necessary inclusions.
 !include NSIS.definitions.nsh
 !include MUI2.nsh
 !include nsProcess.nsh
 !include LogicLib.nsh
+!include FileFunc.nsh
+!include NSIS.payload.nsh
 
-;--------------------------------
-; Basic values definitions.
-
-; Name and file.
+!define INSTALL_NAME "${APP_NAME} ${APP_VERSION_MAJOR}"
+!define UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${INSTALL_NAME}"
+!define OWNERSHIP_FILE ".rssguard-install.ini"
 Name "${APP_NAME}"
-
-; Set custom branding text.
 BrandingText "${APP_NAME}"
-
-; Set compression.
 SetCompressor /SOLID /FINAL lzma
-
-; Default installation folder.
-InstallDir "C:\${APP_NAME} ${APP_VERSION_MAJOR}"
-InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation"
-
-; Require administrator access.
+; These are needed before extraction; keep them ahead of the solid-compressed payload.
+ReserveFile /plugin System.dll
+ReserveFile /plugin nsProcess.dll
+InstallDir "C:\${INSTALL_NAME}"
+InstallDirRegKey HKLM "${UNINSTALL_KEY}" "InstallLocation"
 RequestExecutionLevel admin
 
-;--------------------------------
-; Interface Settings
+VIProductVersion "${APP_VERSION}.0"
+VIFileVersion "${APP_VERSION}.0"
+VIAddVersionKey /LANG=1033 "ProductName" "${APP_NAME}"
+VIAddVersionKey /LANG=1033 "ProductVersion" "${APP_VERSION}"
+VIAddVersionKey /LANG=1033 "FileVersion" "${APP_VERSION}"
+VIAddVersionKey /LANG=1033 "FileDescription" "${APP_NAME} installer"
+VIAddVersionKey /LANG=1033 "CompanyName" "${APP_AUTHOR}"
+VIAddVersionKey /LANG=1033 "LegalCopyright" "${APP_AUTHOR}"
 
-; Show "are you sure" dialog when cancelling installation.
+Var RegisteredOwner
+Var LocalOwner
+Var UninstallResult
+Var InstalledVersion
+Var InstalledSize
+
 !define MUI_ABORTWARNING
-
-;--------------------------------
-; Pages
-
-; Pages for installator.
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "${LICENSE_FILE}"
+!define MUI_PAGE_CUSTOMFUNCTION_LEAVE ValidateInstallDir
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
-
-; Start menu folder page configuration.
-!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
-!define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${APP_NAME}" 
-!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-
 !insertmacro MUI_PAGE_INSTFILES
-
-; Offer user to launch the application right when it is installed.
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "Start ${APP_NAME} now"
-!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchApplication"
-
+!define MUI_FINISHPAGE_RUN_FUNCTION LaunchApplication
+!define MUI_FINISHPAGE_SHOWREADME "${APP_DOCUMENTATION}"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Open documentation"
+!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !insertmacro MUI_PAGE_FINISH
-
-; Pages for uninstallator.
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
+!insertmacro MUI_LANGUAGE English
 
-;--------------------------------
-; Languages.
-
-!insertmacro MUI_LANGUAGE "English"
-
-;--------------------------------
-; Helper macros.
-
-!macro ExecWaitJob _exec
-StrCpy $9 0
-System::Call 'kernel32::CreateIoCompletionPort(i -1,i0,i0,i0)i.r1'
-${IfThen} $1 != 0 ${|} IntOp $9 $9 + 1 ${|}
-System::Call 'kernel32::CreateJobObject(i0,i0)i.r2'
-${IfThen} $2 != 0 ${|} IntOp $9 $9 + 1 ${|}
-System::Call '*(i 0,i $1)i.r0'
-System::Call 'kernel32::SetInformationJobObject(i $2,i 7,i $0,i 8)i.r3'
-${IfThen} $3 != 0 ${|} IntOp $9 $9 + 1 ${|}
-System::Free $0
-System::Call '*(i,i,i,i)i.r0'
-System::Alloc 72
-pop $4
-System::Call "*$4(i 72)"
-System::Call 'kernel32::CreateProcess(i0,t ${_exec},i0,i0,i0,i 0x01000004,i0,i0,i $4,i $0)i.r3'
-${IfThen} $3 != 0 ${|} IntOp $9 $9 + 1 ${|}
-System::Free $4
-System::Call "*$0(i.r3,i.r4,i,i)"
-System::Free $0
-System::Call 'kernel32::AssignProcessToJobObject(i $2,i $3)i.r0'
-${IfThen} $0 != 0 ${|} IntOp $9 $9 + 1 ${|}
-System::Call 'kernel32::ResumeThread(i $4)i.r0'
-${IfThen} $0 != -1 ${|} IntOp $9 $9 + 1 ${|}
-System::Call 'kernel32::CloseHandle(i $3)'
-System::Call 'kernel32::CloseHandle(i $4)'
-!define __ExecWaitJob__ ExecWaitJob${__LINE__}
-${__ExecWaitJob__}ioportwait:
-System::Call 'kernel32::GetQueuedCompletionStatus(i $1,*i.r3,*i,*i.r4,i -1)i.r0'
-${IfThen} $0 = 0 ${|} StrCpy $9 0 ${|}
-${IfThen} $3 != 4 ${|} goto ${__ExecWaitJob__}ioportwait ${|}
-System::Call 'kernel32::CloseHandle(i $2)'
-System::Call 'kernel32::CloseHandle(i $1)'
-!undef __ExecWaitJob__
-${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${|}
+!macro Fail Message
+  SetErrorLevel 2
+  MessageBox MB_OK|MB_ICONSTOP "${Message}" /SD IDOK
+  Quit
 !macroend
 
-; If you are using solid compression, files that are required before
-; the actual installation should be stored first in the data block,
-; because this will make your installer start faster.
-!insertmacro MUI_RESERVEFILE_LANGDLL
+!macro CheckErrors Message
+  ${If} ${Errors}
+    !insertmacro Fail "${Message}"
+  ${EndIf}
+!macroend
 
-;--------------------------------
-; Sections.
+!macro AddSectionSize Section
+  SectionGetFlags ${Section} $0
+  IntOp $0 $0 & ${SF_SELECTED}
+  ${If} $0 != 0
+    SectionGetSize ${Section} $0
+    IntOp $InstalledSize $InstalledSize + $0
+  ${EndIf}
+!macroend
 
-; Installer sections.
+!macro InstallPlugin FileName Label
+  ClearErrors
+  SetOutPath "$INSTDIR\plugins"
+  !insertmacro CheckErrors "Cannot create the service-plugin directory."
+  File "${FileName}"
+  !insertmacro CheckErrors "Cannot install the ${Label} plugin."
+!macroend
+
 Section "!Core" Core
-  IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
-  
-Uninstall:
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES Continue IDNO QuitMe
+  SectionIn RO
+  Call ValidateInstallDir ; /S and /D= bypass the directory page.
+  Call CheckRunning
+  Call FindRegisteredOwner
+  Call FindLocalOwner
+  !insertmacro CheckPayloadDirectories ""
+  ${If} $RegisteredOwner == 1
+  ${OrIf} $LocalOwner == 1
+    StrCpy $InstalledVersion ""
+    ${If} $RegisteredOwner == 1
+      ReadRegStr $InstalledVersion HKLM "${UNINSTALL_KEY}" DisplayVersion
+    ${EndIf}
+    ${If} $InstalledVersion == "5.0.0"
+    ${OrIf} $InstalledVersion == "5.0.1"
+      !insertmacro Fail "This older uninstaller can delete user data. Back up your data* folders and follow the manual upgrade instructions before installing."
+    ${EndIf}
+    ${If} $LocalOwner != 1
+      IfFileExists "$INSTDIR\${EXE_NAME}" 0 invalid_install
+      IfFileExists "$INSTDIR\rssguard.dll" 0 invalid_install
+    ${EndIf}
+    ; Check the executable too: an unsafe old version must not be hidden by newer registry metadata.
+    IfFileExists "$INSTDIR\${EXE_NAME}" 0 check_uninstaller
+    ClearErrors
+    GetDLLVersion "$INSTDIR\${EXE_NAME}" $0 $1
+    ${If} ${Errors}
+      ${If} $LocalOwner != 1
+        !insertmacro Fail "Cannot identify the installed RSS Guard version. Finish removing the old installation before retrying."
+      ${EndIf}
+    ${ElseIf} $0 = 0x00050000
+    ${AndIf} $1 < 0x00020000
+      !insertmacro Fail "RSS Guard 5.0.0 and 5.0.1 require a manual upgrade to protect user data."
+    ${EndIf}
+check_uninstaller:
+    IfFileExists "$INSTDIR\Uninstall.exe" 0 install_files
+    ${If} $LocalOwner == 1
+      ; A failed write can leave a damaged recovery uninstaller. Regenerate it before copying.
+      ClearErrors
+      GetDLLVersion "$INSTDIR\Uninstall.exe" $0 $1
+      ${If} ${Errors}
+        Call PrepareRecovery
+      ${EndIf}
+    ${EndIf}
+    ; _?= prevents the uninstaller from relaunching and hiding its actual exit code.
+    InitPluginsDir
+    ClearErrors
+    CopyFiles /SILENT "$INSTDIR\Uninstall.exe" "$PLUGINSDIR"
+    !insertmacro CheckErrors "Cannot prepare the old uninstaller. The upgrade has stopped."
+    Call PrepareRecovery
+    SetOutPath "$TEMP"
+    ClearErrors
+    ExecWait '"$PLUGINSDIR\Uninstall.exe" /S _?=$INSTDIR' $UninstallResult
+    ${If} ${Errors}
+      StrCpy $UninstallResult "launch failed"
+    ${EndIf}
+    ; Legacy cleanup can remove both the record and uninstaller, including on partial failure.
+    Call PrepareRecovery
+    ${If} $UninstallResult == "launch failed"
+      !insertmacro Fail "Cannot start the old uninstaller. The upgrade has stopped."
+    ${ElseIf} $UninstallResult != 0
+      !insertmacro Fail "The old uninstaller failed or was cancelled (exit code $UninstallResult). The upgrade has stopped."
+    ${EndIf}
+    ; Older uninstallers did not report deletion failures reliably.
+    IfFileExists "$INSTDIR\${EXE_NAME}" invalid_install
+    IfFileExists "$INSTDIR\rssguard.dll" invalid_install
+    Goto copy_files
+  ${EndIf}
 
-QuitMe:
-  SetErrorLevel 1
-  Quit
-
-Continue:
-  !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
-  
-NotInstalled:
-  SetOutPath "$INSTDIR"
-  
-  ; Install core application files.
-  File /r /x "rssguard-*.*" "${BINARY_TREE}\"
-  File "${BINARY_TREE}\rssguard-article-extractor.exe"
-
-  ; Create uninstaller.
-  WriteUninstaller "$INSTDIR\Uninstall.exe"
-
-  ; Add to Add/Remove programs.
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayName" "${APP_NAME}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayVersion" "${APP_VERSION}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation" "$INSTDIR"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
-
-  ; Open documentation.
-  ExecShell "open" "https://rssguard.readthedocs.io/en/stable"
+  ; Fresh installs may reuse retained data*, but must not adopt unrelated files.
+  FindFirst $0 $1 "$INSTDIR\*"
+fresh_entry:
+  StrCmp $1 "" fresh_done
+  StrCmp $1 "." fresh_next
+  StrCmp $1 ".." fresh_next
+  StrCpy $2 $1 4
+  StrCmp $2 "data" 0 fresh_invalid
+  IfFileExists "$INSTDIR\$1\*" 0 fresh_invalid
+fresh_next:
+  ClearErrors
+  FindNext $0 $1
+  IfErrors fresh_done
+  Goto fresh_entry
+fresh_invalid:
+  FindClose $0
+invalid_install:
+  !insertmacro Fail "The selected folder is not a complete registered RSS Guard installation, or its old files could not be removed. Choose an empty folder (data* folders may remain), or finish uninstalling the old copy."
+fresh_done:
+  FindClose $0
+install_files:
+  Call PrepareRecovery
+copy_files:
+  !insertmacro CheckPayloadDirectories ""
+  ClearErrors
+  !insertmacro InstallCoreFiles
 SectionEnd
 
-SectionGroup /e "Plugins"
-  Section "Feedly" PluginFeedly
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_FEEDLY}"
+SectionGroup /e Plugins
+  Section Feedly PluginFeedly
+    !insertmacro InstallPlugin "${PLUGIN_FEEDLY}" Feedly
   SectionEnd
-
-  Section "Gmail" PluginGmail
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_GMAIL}"
+  Section Gmail PluginGmail
+    !insertmacro InstallPlugin "${PLUGIN_GMAIL}" Gmail
   SectionEnd
-
   Section "Google Reader API" PluginGreader
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_GREADER}"
+    !insertmacro InstallPlugin "${PLUGIN_GREADER}" "Google Reader"
   SectionEnd
-
   Section "Nextcloud News" PluginNextcloud
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_NEXTCLOUD}"
+    !insertmacro InstallPlugin "${PLUGIN_NEXTCLOUD}" Nextcloud
   SectionEnd
-
   Section "RSS/ATOM/JSON" PluginStandard
     SectionIn RO
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_STANDARD}"
+    !insertmacro InstallPlugin "${PLUGIN_STANDARD}" "RSS/ATOM/JSON"
   SectionEnd
-
   Section "Tiny Tiny RSS" PluginTtrss
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_TTRSS}"
+    !insertmacro InstallPlugin "${PLUGIN_TTRSS}" "Tiny Tiny RSS"
   SectionEnd
-
 !if ${PLUGIN_XMPP_ENABLED} == 1
-  Section "XMPP" PluginXmpp
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_XMPP}"
+  Section XMPP PluginXmpp
+    !insertmacro InstallPlugin "${PLUGIN_XMPP}" XMPP
   SectionEnd
 !endif
 SectionGroupEnd
 
 Section "Desktop Icon" DesktopIcon
-  CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
+  ClearErrors
+  CreateShortCut "$DESKTOP\${INSTALL_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
+  !insertmacro CheckErrors "Cannot create the desktop shortcut."
 SectionEnd
-
 Section "Start Menu Shortcuts" StartMenuShortcuts
-  CreateDirectory "$SMPROGRAMS\${APP_NAME}"
-  CreateShortCut "$SMPROGRAMS\${APP_NAME}\${APP_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
-  CreateShortCut "$SMPROGRAMS\${APP_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+  ClearErrors
+  CreateDirectory "$SMPROGRAMS\${INSTALL_NAME}"
+  !insertmacro CheckErrors "Cannot create the Start Menu folder."
+  CreateShortCut "$SMPROGRAMS\${INSTALL_NAME}\${INSTALL_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
+  !insertmacro CheckErrors "Cannot create the application shortcut."
+  CreateShortCut "$SMPROGRAMS\${INSTALL_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+  !insertmacro CheckErrors "Cannot create Start Menu shortcuts."
 SectionEnd
 
-LangString DESC_Core ${LANG_ENGLISH} "Core installation files for ${APP_NAME}."
-LangString DESC_DesktopIcon ${LANG_ENGLISH} "Desktop icon for ${APP_NAME}."
-LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${APP_NAME}."
+Section -Finalize Finalize
+  SectionIn RO
+  ClearErrors
+  StrCpy $InstalledSize 0
+  !insertmacro AddSectionSize ${Core}
+  !insertmacro AddSectionSize ${PluginFeedly}
+  !insertmacro AddSectionSize ${PluginGmail}
+  !insertmacro AddSectionSize ${PluginGreader}
+  !insertmacro AddSectionSize ${PluginNextcloud}
+  !insertmacro AddSectionSize ${PluginStandard}
+  !insertmacro AddSectionSize ${PluginTtrss}
+!if ${PLUGIN_XMPP_ENABLED} == 1
+  !insertmacro AddSectionSize ${PluginXmpp}
+!endif
+  ; Registration describes a completed installation, not an unfinished extraction.
+  WriteRegStr HKLM "${UNINSTALL_KEY}" DisplayName "${INSTALL_NAME}"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" DisplayIcon "$INSTDIR\${EXE_NAME}"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" DisplayVersion "${APP_VERSION}"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" InstallLocation "$INSTDIR"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" UninstallString '$\"$INSTDIR\Uninstall.exe$\"'
+  WriteRegStr HKLM "${UNINSTALL_KEY}" QuietUninstallString '$\"$INSTDIR\Uninstall.exe$\" /S'
+  WriteRegStr HKLM "${UNINSTALL_KEY}" Publisher "${APP_AUTHOR}"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" URLInfoAbout "${APP_URL}"
+  WriteRegStr HKLM "${UNINSTALL_KEY}" HelpLink "${APP_DOCUMENTATION}"
+  WriteRegDWORD HKLM "${UNINSTALL_KEY}" NoModify 1
+  WriteRegDWORD HKLM "${UNINSTALL_KEY}" NoRepair 1
+  WriteRegDWORD HKLM "${UNINSTALL_KEY}" EstimatedSize $InstalledSize
+  !insertmacro CheckErrors "Cannot register the completed installation in Installed Apps."
+SectionEnd
 
+LangString DESC_Core ${LANG_ENGLISH} "Core application files for ${APP_NAME}."
+LangString DESC_DesktopIcon ${LANG_ENGLISH} "Shared desktop shortcut for ${INSTALL_NAME}."
+LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Shared Start Menu shortcuts for ${INSTALL_NAME}."
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${Core} $(DESC_Core)
   !insertmacro MUI_DESCRIPTION_TEXT ${DesktopIcon} $(DESC_DesktopIcon)
   !insertmacro MUI_DESCRIPTION_TEXT ${StartMenuShortcuts} $(DESC_StartMenuShortcuts)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
-; Uninstaller section.
-Section "Uninstall"
-exeTest:
-	${nsProcess::FindProcess} "${EXE_NAME}" $R0
-	StrCmp $R0 0 0 notRunning
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "${APP_NAME} (${EXE_NAME}) is still running.$\n$\nQuit it or kill it manually first and then proceed." /SD IDCANCEL IDOK exeTest IDCANCEL quitMe
-
-quitMe:
-  SetErrorLevel 1
-  Quit
-
-notRunning:
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES continue IDNO quitMe
-
-continue:
-  ; Here remove all files, but skip "data" folder.
-  Push "$INSTDIR"
-  Push "data"
-  Call un.RmDirsButOne
-  
-  ; Remove top-level files.
-  Delete "$INSTDIR\*"
-   
-  ; Remove directory itself if empty.
+Section Uninstall
+  Call un.ValidateInstallDir
+  Call un.FindRegisteredOwner
+  Call un.FindLocalOwner
+  ${If} $RegisteredOwner != 1
+  ${AndIf} $LocalOwner != 1
+    IfFileExists "$INSTDIR\${EXE_NAME}" 0 invalid_uninstall
+    IfFileExists "$INSTDIR\rssguard.dll" 0 invalid_uninstall
+  ${EndIf}
+  Call un.CheckRunning
+  !insertmacro CheckPayloadDirectories "un."
+  !insertmacro RemoveInstalledFiles
+  ; Keep local proof until all payload files are gone. The global entry, if owned, remains on error.
+  ClearErrors
+  Delete "$INSTDIR\${OWNERSHIP_FILE}"
+  !insertmacro CheckErrors "Cannot remove the installation ownership record. Retry uninstallation."
+  ${If} $RegisteredOwner == 1
+    ClearErrors
+    Delete "$DESKTOP\${INSTALL_NAME}.lnk"
+    Delete "$SMPROGRAMS\${INSTALL_NAME}\${INSTALL_NAME}.lnk"
+    Delete "$SMPROGRAMS\${INSTALL_NAME}\Uninstall.lnk"
+    !insertmacro CheckErrors "Cannot remove shortcuts. Retry uninstallation."
+    RMDir "$SMPROGRAMS\${INSTALL_NAME}"
+    ClearErrors
+    DeleteRegKey HKLM "${UNINSTALL_KEY}"
+    !insertmacro CheckErrors "Cannot remove the Installed Apps entry. Retry uninstallation."
+  ${EndIf}
+  ; Self-cleanup is best effort. Unknown files and user data keep the folder alive.
+  Delete "$INSTDIR\Uninstall.exe"
+  SetOutPath "$TEMP"
   RMDir "$INSTDIR"
-    
-  RMDir /r "$SMPROGRAMS\${APP_NAME}"
-  Delete "$DESKTOP\${APP_NAME}.lnk"
-  DeleteRegKey HKCU "Software\${APP_NAME}"
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}"
+  ClearErrors
+  Goto uninstall_done
+invalid_uninstall:
+  !insertmacro Fail "This uninstaller is not in a recognized RSS Guard installation. No files were removed."
+uninstall_done:
 SectionEnd
 
-;--------------------------------
-; Custom functions.
+!macro SharedFunctions Prefix
+Function ${Prefix}FindLocalOwner
+  StrCpy $LocalOwner 0
+  Push "$INSTDIR\${OWNERSHIP_FILE}"
+  Call ${Prefix}CheckDirectory
+  ReadINIStr $0 "$INSTDIR\${OWNERSHIP_FILE}" Installation Format
+  StrCmp $0 "1" 0 ownership_done
+  ReadINIStr $0 "$INSTDIR\${OWNERSHIP_FILE}" Installation Product
+  StrCmp $0 "${INSTALL_NAME}" 0 ownership_done
+  ReadINIStr $0 "$INSTDIR\${OWNERSHIP_FILE}" Installation Directory
+  StrCmp $0 "" ownership_done
+  Push $0
+  Call ${Prefix}NormalizePath
+  Pop $0
+  StrCmp $0 "$INSTDIR" 0 ownership_done
+  StrCpy $LocalOwner 1
+ownership_done:
+  ClearErrors
+FunctionEnd
+
+Function ${Prefix}NormalizePath
+  Exch $0
+  Push $1
+  Push $2
+  ; Unlike NSIS GetFullPathName, the API accepts a directory that does not exist yet.
+  System::Call 'kernel32::GetFullPathNameW(w r0, i ${NSIS_MAX_STRLEN}, w .r1, p 0)i.r2'
+  ${If} $2 == 0
+  ${OrIf} $2 >= ${NSIS_MAX_STRLEN}
+    !insertmacro Fail "Invalid installation directory."
+  ${EndIf}
+  StrCpy $0 "$1"
+  ; Expand existing 8.3 aliases so they cannot bypass the protected-folder comparisons.
+  System::Call 'kernel32::GetLongPathNameW(w r0, w .r1, i ${NSIS_MAX_STRLEN})i.r2'
+  ${If} $2 > 0
+  ${AndIf} $2 < ${NSIS_MAX_STRLEN}
+    StrCpy $0 "$1"
+  ${EndIf}
+trim_separator:
+  StrCpy $1 $0 1 -1
+  StrCmp $1 "\" 0 normalized
+  StrCpy $0 $0 -1
+  Goto trim_separator
+normalized:
+  Pop $2
+  Pop $1
+  Exch $0
+FunctionEnd
+
+Function ${Prefix}CheckDirectory
+  Exch $0
+  Push $1
+  System::Call 'kernel32::GetFileAttributesW(w r0)i.r1'
+  ${If} $1 != -1
+    IntOp $1 $1 & 0x400 ; FILE_ATTRIBUTE_REPARSE_POINT
+    ${If} $1 != 0
+      !insertmacro Fail "An application directory is a link or junction ($0). Cleanup through links is not allowed."
+    ${EndIf}
+  ${EndIf}
+  Pop $1
+  Pop $0
+FunctionEnd
+
+Function ${Prefix}ValidateInstallDir
+  Push "$INSTDIR"
+  Call ${Prefix}NormalizePath
+  Pop $INSTDIR
+  StrCpy $0 $INSTDIR 4
+  StrCmp $0 "\\?\" bad_path
+  StrCmp $0 "\\.\" bad_path
+  ${GetRoot} "$INSTDIR" $0
+  StrCmp $0 "" bad_path
+  StrCmp "$INSTDIR" "$0" bad_path
+  StrCmp "$INSTDIR" "$0\" bad_path
+  StrCmp "$INSTDIR" "$WINDIR" bad_path
+  StrCmp "$INSTDIR" "$SYSDIR" bad_path
+  StrCmp "$INSTDIR" "$PROGRAMFILES" bad_path
+  StrCmp "$INSTDIR" "$PROGRAMFILES64" bad_path
+  StrCmp "$INSTDIR" "$COMMONFILES" bad_path
+  StrCmp "$INSTDIR" "$COMMONFILES64" bad_path
+  StrCmp "$INSTDIR" "$TEMP" bad_path
+  SetShellVarContext current
+  StrCmp "$INSTDIR" "$PROFILE" bad_path
+  StrCmp "$INSTDIR" "$DESKTOP" bad_path
+  StrCmp "$INSTDIR" "$DOCUMENTS" bad_path
+  StrCmp "$INSTDIR" "$APPDATA" bad_path
+  StrCmp "$INSTDIR" "$LOCALAPPDATA" bad_path
+  SetShellVarContext all
+  StrCmp "$INSTDIR" "$DESKTOP" bad_path
+  StrCmp "$INSTDIR" "$DOCUMENTS" bad_path
+  ; Reject reparse points in existing ancestors, not just the final directory.
+  StrCpy $2 "$INSTDIR"
+path_parent:
+  Push $2
+  Call ${Prefix}CheckDirectory
+  ${GetParent} "$2" $0
+  StrCmp $0 "" path_done
+  StrCmp $0 $2 path_done
+  StrCpy $2 $0
+  Goto path_parent
+bad_path:
+  !insertmacro Fail "Choose a dedicated application folder, not a drive root, system folder, or user-folder root."
+path_done:
+FunctionEnd
+
+Function ${Prefix}FindRegisteredOwner
+  StrCpy $RegisteredOwner 0
+  ReadRegStr $0 HKLM "${UNINSTALL_KEY}" InstallLocation
+  ${If} $0 != ""
+    Push $0
+    Call ${Prefix}NormalizePath
+    Pop $0
+    ${If} $0 == $INSTDIR
+      StrCpy $RegisteredOwner 1
+    ${EndIf}
+  ${EndIf}
+FunctionEnd
+
+Function ${Prefix}CheckRunning
+  ${nsProcess::FindProcess} "${EXE_NAME}" $0
+  ${nsProcess::Unload}
+  ${If} $0 == 0
+    !insertmacro Fail "${APP_NAME} is running. Close it before installing or uninstalling."
+  ${ElseIf} $0 != 603
+    !insertmacro Fail "Cannot check whether ${APP_NAME} is running (error $0). No installation changes were made."
+  ${EndIf}
+FunctionEnd
+!macroend
+!insertmacro SharedFunctions ""
+!insertmacro SharedFunctions "un."
 
 Function LaunchApplication
+  IfSilent launch_done
   Exec '"$WINDIR\explorer.exe" "$INSTDIR\${EXE_NAME}"'
+launch_done:
 FunctionEnd
 
-Function un.RmDirsButOne
-  Exch $R0 ; exclude prefix
-  Exch
-  Exch $R1 ; root dir
-  Push $R2
-  Push $R3
-  Push $R4
-  Push $R5
-
-  ; length of prefix
-  StrLen $R4 $R0
-
+Function PrepareRecovery
   ClearErrors
-  FindFirst $R3 $R2 "$R1\*.*"
-  IfErrors Exit
-
-  Top:
-    StrCmp $R2 "." Next
-    StrCmp $R2 ".." Next
-
-    ; compare prefix
-    StrCpy $R5 $R2 $R4
-    StrCmp $R5 $R0 Next
-
-    IfFileExists "$R1\$R2\*.*" 0 Next
-    RMDir /r "$R1\$R2"
-
-  Next:
-    ClearErrors
-    FindNext $R3 $R2
-    IfErrors Exit
-    Goto Top
-
-  Exit:
-    FindClose $R3
-
-  Pop $R5
-  Pop $R4
-  Pop $R3
-  Pop $R2
-  Pop $R1
-  Pop $R0
+  SetOutPath "$INSTDIR"
+  !insertmacro CheckErrors "Cannot prepare the installation directory."
+  Push "$INSTDIR\${OWNERSHIP_FILE}"
+  Call CheckDirectory
+  Call FindLocalOwner
+  ${If} $LocalOwner != 1
+    WriteINIStr "$INSTDIR\${OWNERSHIP_FILE}" Installation Format 1
+    WriteINIStr "$INSTDIR\${OWNERSHIP_FILE}" Installation Product "${INSTALL_NAME}"
+    WriteINIStr "$INSTDIR\${OWNERSHIP_FILE}" Installation Directory "$INSTDIR"
+    ${If} ${Errors}
+      Delete "$INSTDIR\${OWNERSHIP_FILE}"
+      !insertmacro Fail "Cannot save the installation ownership record."
+    ${EndIf}
+  ${EndIf}
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+  !insertmacro CheckErrors "Cannot create the recovery uninstaller. Retry installation after resolving the error."
 FunctionEnd
 
-; Executed when installer starts.
 Function .onInit
-  IntOp $0 ${SF_SELECTED} | ${SF_RO}
-  SectionSetFlags ${Core} $0
+  ; NSIS may discard an invalid /D= and silently fall back to InstallDir. Validate the actual request.
+  System::Call 'kernel32::GetCommandLineW()w.r0'
+  ${GetOptions} "$0" "/D=" $1
+  ${IfNot} ${Errors}
+    StrCpy $INSTDIR "$1"
+  ${EndIf}
+  ClearErrors
+  Call ValidateInstallDir
 FunctionEnd

@@ -17,6 +17,9 @@ $is_devbuild = $env:GITHUB_REF -notmatch '^refs/tags/[0-9]'
 $7za = "$old_pwd\resources\scripts\7za\7za.exe"
 $nsis = "$old_pwd\resources\scripts\nsis\makensis.exe"
 
+# Compile an exact list of packaged paths; it also validates required files before archiving.
+$prepare_installer = "$old_pwd\resources\scripts\github-actions\prepare-windows-installer.py"
+
 cd "rssguard-build"
 
 if ($is_devbuild) {
@@ -40,10 +43,13 @@ else {
   $packagebase += "-qt6-win10"
 }
 
-# Create 7zip package.
+& python "$prepare_installer" --stage ".\app" --definitions ".\NSIS.definitions.nsh" --output ".\NSIS.payload.nsh"
+if ($LASTEXITCODE -ne 0) { throw "Windows installer payload validation failed." }
+
+# Create 7zip package (including debugging symbols).
 & "$7za" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"
 
 # Create NSIS installation package.
-& "$nsis" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
+& "$nsis" /NOCONFIG /WX "/XOutFile $packagebase.exe" ".\NSIS.template.in"
 
 ls

@@ -11,6 +11,35 @@ import unittest
 @unittest.skipUnless(all(shutil.which(tool) for tool in ("cmake", "ninja", "go")),
                      "Go, CMake and Ninja are required")
 class ExtractorBuildTest(unittest.TestCase):
+    @unittest.skipUnless(all(shutil.which(tool) for tool in ("git", "gofmt")), "Git and gofmt are required")
+    def test_crlf_checkout(self):
+        with tempfile.TemporaryDirectory(prefix="rssguard-extractor-crlf-") as directory:
+            root = Path(directory)
+            package = Path(__file__).resolve().parent
+
+            def invoke(*args):
+                result = subprocess.run(args, cwd=root, capture_output=True, text=True, timeout=120)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                return result.stdout
+
+            invoke("git", "init", "--quiet")
+            invoke("git", "config", "core.autocrlf", "true")
+            shutil.copyfile(package / ".gitattributes", root / ".gitattributes")
+            files = [*package.glob("*.go"), package / "go.mod", package / "go.sum"]
+            for path in files:
+                (root / path.name).write_bytes(path.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+            # Uncovered files must actually use CRLF, proving the checkout configuration is active.
+            (root / "control.txt").write_bytes(b"control\n")
+            invoke("git", "add", ".")
+            for path in [*files, Path("control.txt")]:
+                (root / path.name).unlink()
+            invoke("git", "checkout-index", "--all", "--force")
+            self.assertIn(b"\r\n", (root / "control.txt").read_bytes())
+            for path in files:
+                self.assertNotIn(b"\r", (root / path.name).read_bytes(), path.name)
+            self.assertEqual(invoke("gofmt", "-l", "."), "")
+            invoke("go", "mod", "tidy", "-diff")
+
     def test_incremental_build_and_install(self):
         self.check_build("Ninja")
 

@@ -38,8 +38,20 @@ jobs:
       - name: Run shellcheck
         run: shellcheck --color=always ./resources/scripts/github-actions/build-linux-mac.sh ./resources/scripts/github-actions/prepare-macos-icu.sh
 
-      - name: Test macOS package validation
+      - name: Test package validation
         run: python3 -m unittest discover -s ./resources/scripts/github-actions/tests -v
+
+  check-windows-installer:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v7
+      - name: Initialize packaging tools
+        run: git submodule update --init resources/scripts/nsis resources/scripts/7za
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Test Windows installer
+        run: python -m unittest discover -s ./resources/scripts/github-actions/tests -p test_windows_installer.py -v
 
   check-article-extractor:
     runs-on: ${{ matrix.os }}
@@ -132,6 +144,7 @@ jobs:
     needs:
       - check-build-script
       - check-article-extractor
+      - check-windows-installer
       - source-tarball
     name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}; webengine_viewer = ${{ matrix.webengine_viewer }}"
     runs-on: "${{ matrix.os }}"

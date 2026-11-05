@@ -32,7 +32,21 @@ If you are unsure which one to choose, start with the `web` + `win10` package on
 ### Windows
 On Windows, there are several ways to install RSS Guard:
 * Portable-style `7z` [packages](https://github.com/martinrotter/rssguard/releases). Simply download and unpack them.
-* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained and are the recommended option for most users. They support normal upgrades and clean uninstallation, while still letting you keep your data if you want.
+* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained and are the recommended option for most users.
+
+Use a dedicated application folder. The installer refuses drive roots, system/user-folder roots, linked application directories, and unrelated non-empty folders. A folder containing only retained `data*` directories can be reused. Close RSS Guard before installing or uninstalling.
+
+Upgrades stop if the existing uninstaller fails or leaves essential application files behind. New uninstallers remove only packaged application files and leave user data, unrelated files, and non-empty directories in place. A failed removal retains its uninstaller and Installed Apps entry so you can close applications holding files open and retry. When upgrading from an older installer for the first time, that older uninstaller's removal policy still applies; back up custom files kept beside the executable first.
+
+Installation is not transactional: a failed installation or upgrade can leave partial application files. A local ownership record and recovery uninstaller allow you to resolve the reported error and rerun the installer in the same folder, or finish removing that copy. The ownership record does not mark installation as complete; registration is finalized only after all selected components succeed. Recovery also works when another copy owns the Installed Apps entry, without removing that other copy's registration or shortcuts. Keep the recovery files until installation or removal succeeds, and keep your `data*` folders and other personal files.
+
+```{attention}
+Versions 5.0.0 and 5.0.1 have unsafe uninstallers and cannot be upgraded automatically. Back up and verify your user-data folders **outside the old installation folder** before uninstalling those versions. Install the new version, uncheck `Start RSS Guard now`, and restore the backed-up data before starting RSS Guard. See [User Data](features/userdata.md) to locate the active profile.
+```
+
+Installer shortcuts are shared between Windows users and include the major version in their names. Documentation is an optional finish-page action. Silent installation (`/S`) opens neither the application nor a browser; `/D=<absolute-path>` chooses the destination and must be the final argument, without quotes around that argument even if the path contains spaces.
+
+Debug symbols remain available in the portable archive and are omitted from the ordinary installer.
 
 ```{warning}
 RSS Guard binaries provided via the official [download page](https://github.com/martinrotter/rssguard/releases) are not digitally signed. Because of that, Microsoft Defender SmartScreen may show a warning the first time you launch the application.

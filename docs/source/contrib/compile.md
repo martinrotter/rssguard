@@ -4,6 +4,20 @@ RSS Guard is a `C++` application. All common build instructions can be found at 
 
 If you want a practical reference for the currently maintained CI builds, look at `resources/scripts/github-actions/`. Those scripts show how the official Windows, Linux, and macOS packages are assembled in GitHub Actions.
 
+## Windows Installer
+The Windows build stages its runtime files in `rssguard-build/app`. Before running NSIS, `package-windows.ps1` calls `prepare-windows-installer.py` to validate the staged executable, core DLL, extractor, Qt platform plugin, and service plugins. Use Python 3 on `PATH` (CI uses Python 3.13). The helper rejects staged user data and links, and generates `NSIS.payload.nsh` with the exact core payload and uninstall paths. Debug symbols are kept in the portable archive rather than the installer.
+
+To regenerate that include when packaging manually, run this from the build directory:
+
+```text
+python <source>/resources/scripts/github-actions/prepare-windows-installer.py --stage app --definitions NSIS.definitions.nsh --output NSIS.payload.nsh
+<source>/resources/scripts/nsis/makensis.exe /NOCONFIG /WX "/XOutFile rssguard-installer.exe" NSIS.template.in
+```
+
+Keep `nsProcess.nsh` and the Unicode `nsProcess.dll` when updating the bundled NSIS toolchain. CMake tracks edits to the installer template and refreshes the build copy automatically. The installer creates `.rssguard-install.ini` and `Uninstall.exe` for recovery before extracting the application; neither file belongs in the staged package. The record identifies the product, format, and normalized installation directory independently of the shared Installed Apps entry, and is retained until payload removal succeeds.
+
+Run `python -m unittest discover -s resources/scripts/github-actions/tests -p test_windows_installer.py -v` to exercise payload validation. On Windows with the bundled NSIS available, the same suite compiles the actual template and tests installation, upgrades, failure/retry sequences, and removal using temporary payloads, private shortcut directories, and a unique per-user registry key. Legacy upgrade tests use the frozen pre-hardening installer in `tests/fixtures/NSIS.previous.nsi`, rather than relabeling the new template. It does not install the real application or require elevation. With CMake and Ninja available it also checks incremental template regeneration.
+
 ## Article And Web Viewer Backend
 RSS Guard can be built with one of two article/web viewer backends:
 * `WEB_ARTICLE_VIEWER_WEBENGINE=ON` - builds the Qt WebEngine-based viewer. This is the most browser-like and feature-complete option.

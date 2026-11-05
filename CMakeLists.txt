@@ -84,7 +84,7 @@ set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
 set(APP_VERSION "5.3.0")
-string(SUBSTRING "${APP_VERSION}" 0 1 APP_VERSION_MAJOR)
+string(REGEX MATCH "^[0-9]+" APP_VERSION_MAJOR "${APP_VERSION}")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new/choose")
@@ -375,7 +375,7 @@ if(WIN32)
     ${CMAKE_BINARY_DIR}/NSIS.definitions.nsh
   )
 
-  file(COPY resources/nsis/NSIS.template.in DESTINATION ${CMAKE_BINARY_DIR})
+  configure_file(resources/nsis/NSIS.template.in ${CMAKE_BINARY_DIR}/NSIS.template.in COPYONLY)
   file(COPY resources/graphics/${CMAKE_PROJECT_NAME}.ico DESTINATION ${CMAKE_BINARY_DIR})
 elseif(APPLE)
   set(MACOS_MINIMUM_VERSION_PLIST_ENTRY "")

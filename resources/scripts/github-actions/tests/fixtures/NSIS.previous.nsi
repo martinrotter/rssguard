@@ -1,0 +1,304 @@
+; Test snapshot of resources/nsis/NSIS.template.in from d25d95995d1c08c0a22ef79822510ad9316efb7d.
+; Production script preserved below; the test harness applies only isolation changes.
+; For license of this file, see <project-root-folder>/LICENSE.md.
+
+;--------------------------------
+; Unicode baby.
+Unicode True
+
+;--------------------------------
+; Do necessary inclusions.
+!include NSIS.definitions.nsh
+!include MUI2.nsh
+!include nsProcess.nsh
+!include LogicLib.nsh
+
+;--------------------------------
+; Basic values definitions.
+
+; Name and file.
+Name "${APP_NAME}"
+
+; Set custom branding text.
+BrandingText "${APP_NAME}"
+
+; Set compression.
+SetCompressor /SOLID /FINAL lzma
+
+; Default installation folder.
+InstallDir "C:\${APP_NAME} ${APP_VERSION_MAJOR}"
+InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation"
+
+; Require administrator access.
+RequestExecutionLevel admin
+
+;--------------------------------
+; Interface Settings
+
+; Show "are you sure" dialog when cancelling installation.
+!define MUI_ABORTWARNING
+
+;--------------------------------
+; Pages
+
+; Pages for installator.
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "${LICENSE_FILE}"
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
+
+; Start menu folder page configuration.
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU" 
+!define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${APP_NAME}" 
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
+
+!insertmacro MUI_PAGE_INSTFILES
+
+; Offer user to launch the application right when it is installed.
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Start ${APP_NAME} now"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchApplication"
+
+!insertmacro MUI_PAGE_FINISH
+
+; Pages for uninstallator.
+!insertmacro MUI_UNPAGE_CONFIRM
+!insertmacro MUI_UNPAGE_INSTFILES
+!insertmacro MUI_UNPAGE_FINISH
+
+;--------------------------------
+; Languages.
+
+!insertmacro MUI_LANGUAGE "English"
+
+;--------------------------------
+; Helper macros.
+
+!macro ExecWaitJob _exec
+StrCpy $9 0
+System::Call 'kernel32::CreateIoCompletionPort(i -1,i0,i0,i0)i.r1'
+${IfThen} $1 != 0 ${|} IntOp $9 $9 + 1 ${|}
+System::Call 'kernel32::CreateJobObject(i0,i0)i.r2'
+${IfThen} $2 != 0 ${|} IntOp $9 $9 + 1 ${|}
+System::Call '*(i 0,i $1)i.r0'
+System::Call 'kernel32::SetInformationJobObject(i $2,i 7,i $0,i 8)i.r3'
+${IfThen} $3 != 0 ${|} IntOp $9 $9 + 1 ${|}
+System::Free $0
+System::Call '*(i,i,i,i)i.r0'
+System::Alloc 72
+pop $4
+System::Call "*$4(i 72)"
+System::Call 'kernel32::CreateProcess(i0,t ${_exec},i0,i0,i0,i 0x01000004,i0,i0,i $4,i $0)i.r3'
+${IfThen} $3 != 0 ${|} IntOp $9 $9 + 1 ${|}
+System::Free $4
+System::Call "*$0(i.r3,i.r4,i,i)"
+System::Free $0
+System::Call 'kernel32::AssignProcessToJobObject(i $2,i $3)i.r0'
+${IfThen} $0 != 0 ${|} IntOp $9 $9 + 1 ${|}
+System::Call 'kernel32::ResumeThread(i $4)i.r0'
+${IfThen} $0 != -1 ${|} IntOp $9 $9 + 1 ${|}
+System::Call 'kernel32::CloseHandle(i $3)'
+System::Call 'kernel32::CloseHandle(i $4)'
+!define __ExecWaitJob__ ExecWaitJob${__LINE__}
+${__ExecWaitJob__}ioportwait:
+System::Call 'kernel32::GetQueuedCompletionStatus(i $1,*i.r3,*i,*i.r4,i -1)i.r0'
+${IfThen} $0 = 0 ${|} StrCpy $9 0 ${|}
+${IfThen} $3 != 4 ${|} goto ${__ExecWaitJob__}ioportwait ${|}
+System::Call 'kernel32::CloseHandle(i $2)'
+System::Call 'kernel32::CloseHandle(i $1)'
+!undef __ExecWaitJob__
+${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${|}
+!macroend
+
+; If you are using solid compression, files that are required before
+; the actual installation should be stored first in the data block,
+; because this will make your installer start faster.
+!insertmacro MUI_RESERVEFILE_LANGDLL
+
+;--------------------------------
+; Sections.
+
+; Installer sections.
+Section "!Core" Core
+  IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
+  
+Uninstall:
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES Continue IDNO QuitMe
+
+QuitMe:
+  SetErrorLevel 1
+  Quit
+
+Continue:
+  !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
+  
+NotInstalled:
+  SetOutPath "$INSTDIR"
+  
+  ; Install core application files.
+  File /r /x "rssguard-*.*" "${BINARY_TREE}\"
+  File "${BINARY_TREE}\rssguard-article-extractor.exe"
+
+  ; Create uninstaller.
+  WriteUninstaller "$INSTDIR\Uninstall.exe"
+
+  ; Add to Add/Remove programs.
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayName" "${APP_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayVersion" "${APP_VERSION}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation" "$INSTDIR"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
+
+  ; Open documentation.
+  ExecShell "open" "https://rssguard.readthedocs.io/en/stable"
+SectionEnd
+
+SectionGroup /e "Plugins"
+  Section "Feedly" PluginFeedly
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_FEEDLY}"
+  SectionEnd
+
+  Section "Gmail" PluginGmail
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_GMAIL}"
+  SectionEnd
+
+  Section "Google Reader API" PluginGreader
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_GREADER}"
+  SectionEnd
+
+  Section "Nextcloud News" PluginNextcloud
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_NEXTCLOUD}"
+  SectionEnd
+
+  Section "RSS/ATOM/JSON" PluginStandard
+    SectionIn RO
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_STANDARD}"
+  SectionEnd
+
+  Section "Tiny Tiny RSS" PluginTtrss
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_TTRSS}"
+  SectionEnd
+
+!if ${PLUGIN_XMPP_ENABLED} == 1
+  Section "XMPP" PluginXmpp
+    SetOutPath "$INSTDIR\plugins"
+    File "${PLUGIN_XMPP}"
+  SectionEnd
+!endif
+SectionGroupEnd
+
+Section "Desktop Icon" DesktopIcon
+  CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
+SectionEnd
+
+Section "Start Menu Shortcuts" StartMenuShortcuts
+  CreateDirectory "$SMPROGRAMS\${APP_NAME}"
+  CreateShortCut "$SMPROGRAMS\${APP_NAME}\${APP_NAME}.lnk" "$INSTDIR\${EXE_NAME}"
+  CreateShortCut "$SMPROGRAMS\${APP_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
+SectionEnd
+
+LangString DESC_Core ${LANG_ENGLISH} "Core installation files for ${APP_NAME}."
+LangString DESC_DesktopIcon ${LANG_ENGLISH} "Desktop icon for ${APP_NAME}."
+LangString DESC_StartMenuShortcuts ${LANG_ENGLISH} "Start Menu Shortcuts for ${APP_NAME}."
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${Core} $(DESC_Core)
+  !insertmacro MUI_DESCRIPTION_TEXT ${DesktopIcon} $(DESC_DesktopIcon)
+  !insertmacro MUI_DESCRIPTION_TEXT ${StartMenuShortcuts} $(DESC_StartMenuShortcuts)
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
+
+; Uninstaller section.
+Section "Uninstall"
+exeTest:
+	${nsProcess::FindProcess} "${EXE_NAME}" $R0
+	StrCmp $R0 0 0 notRunning
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "${APP_NAME} (${EXE_NAME}) is still running.$\n$\nQuit it or kill it manually first and then proceed." /SD IDCANCEL IDOK exeTest IDCANCEL quitMe
+
+quitMe:
+  SetErrorLevel 1
+  Quit
+
+notRunning:
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES continue IDNO quitMe
+
+continue:
+  ; Here remove all files, but skip "data" folder.
+  Push "$INSTDIR"
+  Push "data"
+  Call un.RmDirsButOne
+  
+  ; Remove top-level files.
+  Delete "$INSTDIR\*"
+   
+  ; Remove directory itself if empty.
+  RMDir "$INSTDIR"
+    
+  RMDir /r "$SMPROGRAMS\${APP_NAME}"
+  Delete "$DESKTOP\${APP_NAME}.lnk"
+  DeleteRegKey HKCU "Software\${APP_NAME}"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}"
+SectionEnd
+
+;--------------------------------
+; Custom functions.
+
+Function LaunchApplication
+  Exec '"$WINDIR\explorer.exe" "$INSTDIR\${EXE_NAME}"'
+FunctionEnd
+
+Function un.RmDirsButOne
+  Exch $R0 ; exclude prefix
+  Exch
+  Exch $R1 ; root dir
+  Push $R2
+  Push $R3
+  Push $R4
+  Push $R5
+
+  ; length of prefix
+  StrLen $R4 $R0
+
+  ClearErrors
+  FindFirst $R3 $R2 "$R1\*.*"
+  IfErrors Exit
+
+  Top:
+    StrCmp $R2 "." Next
+    StrCmp $R2 ".." Next
+
+    ; compare prefix
+    StrCpy $R5 $R2 $R4
+    StrCmp $R5 $R0 Next
+
+    IfFileExists "$R1\$R2\*.*" 0 Next
+    RMDir /r "$R1\$R2"
+
+  Next:
+    ClearErrors
+    FindNext $R3 $R2
+    IfErrors Exit
+    Goto Top
+
+  Exit:
+    FindClose $R3
+
+  Pop $R5
+  Pop $R4
+  Pop $R3
+  Pop $R2
+  Pop $R1
+  Pop $R0
+FunctionEnd
+
+; Executed when installer starts.
+Function .onInit
+  IntOp $0 ${SF_SELECTED} | ${SF_RO}
+  SectionSetFlags ${Core} $0
+FunctionEnd

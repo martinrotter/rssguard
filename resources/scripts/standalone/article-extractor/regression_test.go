@@ -2,10 +2,12 @@ package main
 
 import (
 	"bytes"
+	"compress/gzip"
 	"context"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net"
 	"net/http"
@@ -18,6 +20,7 @@ import (
 
 	"codeberg.org/readeck/go-readability/v2"
 	"golang.org/x/text/encoding/charmap"
+	"golang.org/x/text/encoding/unicode"
 )
 
 var testPNG, _ = base64.StdEncoding.DecodeString("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a5n8AAAAASUVORK5CYII=")
@@ -71,6 +74,12 @@ func TestOriginMatching(t *testing.T) {
 func TestRedirectUsesFinalBaseURL(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path == "/old/story" {
+			http.Redirect(w, r, "/old/story.xml.gz", 302)
+			return
+		}
+		if r.URL.Path == "/old/story.xml.gz" {
+			// Redirect bodies are not gzip data even when the URL or headers say gzip.
+			w.Header().Set("Content-Encoding", "gzip")
 			http.Redirect(w, r, "/new/path/story", 302)
 			return
 		}
@@ -111,48 +120,96 @@ func TestEmbeddingSharesPageCookies(t *testing.T) {
 	}
 }
 
-func TestCredentialsStayOnConfiguredOrigin(t *testing.T) {
-	for _, redirectedPage := range []bool{false, true} {
-		t.Run(map[bool]string{false: "image-and-image-redirect", true: "page-redirect"}[redirectedPage], func(t *testing.T) {
-			var requests atomic.Int32
-			foreign := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-				requests.Add(1)
-				for _, name := range []string{"Authorization", "Cookie", "X-Api-Key"} {
-					if r.Header.Get(name) != "" {
-						t.Errorf("forwarded %s to another origin", name)
+func TestConfiguredCookieDeletion(t *testing.T) {
+	for _, deleteAt := range []string{"page", "redirect", "image"} {
+		for _, expired := range []bool{false, true} {
+			t.Run(fmt.Sprintf("%s/expired=%t", deleteAt, expired), func(t *testing.T) {
+				var requests atomic.Int32
+				server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+					requests.Add(1)
+					wantSession := r.URL.Path == "/page" || (deleteAt == "image" && r.URL.Path == "/first-image")
+					cookie, err := r.Cookie("session")
+					if wantSession && (err != nil || cookie.Value != "original") {
+						t.Errorf("lost configured session on %s: %v, %v", r.URL.Path, cookie, err)
+					} else if !wantSession && err != http.ErrNoCookie {
+						t.Errorf("deleted session returned on %s: %v, %v", r.URL.Path, cookie, err)
 					}
+					if cookie, err := r.Cookie("preference"); err != nil || cookie.Value != "keep" {
+						t.Errorf("lost unrelated configured cookie: %v, %v", cookie, err)
+					}
+					if (deleteAt != "image" && r.URL.Path == "/page") || r.URL.Path == "/first-image" {
+						cookie := &http.Cookie{Name: "session", Path: "/", MaxAge: -1}
+						if expired {
+							cookie.MaxAge = 0
+							cookie.Expires = time.Unix(1, 0)
+						}
+						http.SetCookie(w, cookie)
+					}
+					if deleteAt == "redirect" && r.URL.Path == "/page" {
+						http.Redirect(w, r, "/final", http.StatusFound)
+					} else if strings.HasSuffix(r.URL.Path, "image") {
+						servePNG(w)
+					} else {
+						io.WriteString(w, articleHTML(`<img src="/first-image"><img src="/second-image">`))
+					}
+				}))
+				defer server.Close()
+				cfg := InputConfig{Headers: map[string]string{"Cookie": "session=original; preference=keep"}}
+				output := runMain(t, []string{"extractor", "-b", server.URL + "/page"}, configJSON(t, cfg))
+				if strings.Count(output, "data:image/png;base64,") != 2 || requests.Load() < 3 {
+					t.Fatal("expected page and both image downloads")
 				}
-				if r.Header.Get("User-Agent") != "Audit/1.0" || r.Header.Get("Accept-Language") != "cs" {
-					t.Error("lost public headers")
-				}
-				if r.URL.Path == "/page" {
-					io.WriteString(w, articleHTML(`<img src="/image">`))
-					return
-				}
-				servePNG(w)
-			}))
-			defer foreign.Close()
-			foreignURL := strings.Replace(foreign.URL, "127.0.0.1", "localhost", 1)
-			origin := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-				if r.Header.Get("Authorization") != "Bearer private" {
-					t.Error("lost original-origin authorization")
-				}
-				if r.URL.Path == "/redirect-image" {
-					http.Redirect(w, r, foreignURL+"/image", 302)
-					return
-				}
-				if redirectedPage {
-					http.Redirect(w, r, foreignURL+"/page", 302)
-					return
-				}
-				io.WriteString(w, articleHTML(`<img src="`+foreignURL+`/image"><img src="/redirect-image">`))
-			}))
-			defer origin.Close()
-			cfg := InputConfig{Headers: map[string]string{"Authorization": "Bearer private", "Cookie": "private=value", "X-Api-Key": "private", "User-Agent": "Audit/1.0", "Accept-Language": "cs"}}
-			output := runMain(t, []string{"extractor", "-b", origin.URL}, configJSON(t, cfg))
-			assertContains(t, output, "data:image/png;base64,")
-			if requests.Load() != 2 {
-				t.Fatalf("expected two foreign requests, got %d", requests.Load())
+			})
+		}
+	}
+}
+
+func TestCredentialsStayOnConfiguredOrigin(t *testing.T) {
+	for _, foreignHost := range []string{"localhost", "127.0.0.1"} {
+		t.Run(foreignHost, func(t *testing.T) {
+			for _, redirectedPage := range []bool{false, true} {
+				t.Run(map[bool]string{false: "image-and-image-redirect", true: "page-redirect"}[redirectedPage], func(t *testing.T) {
+					var requests atomic.Int32
+					foreign := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+						requests.Add(1)
+						for _, name := range []string{"Authorization", "Cookie", "X-Api-Key"} {
+							if r.Header.Get(name) != "" {
+								t.Errorf("forwarded %s to another origin", name)
+							}
+						}
+						if r.Header.Get("User-Agent") != "Audit/1.0" || r.Header.Get("Accept-Language") != "cs" {
+							t.Error("lost public headers")
+						}
+						if r.URL.Path == "/page" {
+							io.WriteString(w, articleHTML(`<img src="/image">`))
+							return
+						}
+						servePNG(w)
+					}))
+					defer foreign.Close()
+					foreignURL := strings.Replace(foreign.URL, "127.0.0.1", foreignHost, 1)
+					origin := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+						if r.Header.Get("Authorization") != "Bearer private" {
+							t.Error("lost original-origin authorization")
+						}
+						if r.URL.Path == "/redirect-image" {
+							http.Redirect(w, r, foreignURL+"/image", 302)
+							return
+						}
+						if redirectedPage {
+							http.Redirect(w, r, foreignURL+"/page", 302)
+							return
+						}
+						io.WriteString(w, articleHTML(`<img src="`+foreignURL+`/image"><img src="/redirect-image">`))
+					}))
+					defer origin.Close()
+					cfg := InputConfig{Headers: map[string]string{"Authorization": "Bearer private", "Cookie": "private=value", "X-Api-Key": "private", "User-Agent": "Audit/1.0", "Accept-Language": "cs"}}
+					output := runMain(t, []string{"extractor", "-b", origin.URL}, configJSON(t, cfg))
+					assertContains(t, output, "data:image/png;base64,")
+					if requests.Load() != 2 {
+						t.Fatalf("expected two foreign requests, got %d", requests.Load())
+					}
+				})
 			}
 		})
 	}
@@ -460,11 +517,91 @@ func TestSizeLimits(t *testing.T) {
 }
 
 func TestDownloadedPageLimit(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { io.WriteString(w, strings.Repeat("x", maxHTMLBytes+1)) }))
-	defer server.Close()
-	var output, stderr bytes.Buffer
-	if err := run(context.Background(), []string{server.URL}, strings.NewReader(""), &output, &stderr); err == nil || output.Len() != 0 {
-		t.Fatal("oversized page was accepted")
+	for _, tc := range []struct {
+		name, contentType, payload string
+	}{
+		{"utf8", "text/html; charset=utf-8", strings.Repeat("x", maxHTMLBytes+1)},
+		// This shrinks below the limit during charset conversion, hiding Colly's truncation.
+		{"utf16", "text/html; charset=utf-16le", strings.Repeat("x\x00", maxHTMLBytes/2+1)},
+		// This fits before conversion, but expands beyond the limit in UTF-8.
+		{"charset-expansion", "text/html; charset=windows-1250", strings.Repeat("\xe1", maxHTMLBytes/2+1)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", tc.contentType)
+				io.WriteString(w, tc.payload)
+			}))
+			defer server.Close()
+			var output, stderr bytes.Buffer
+			err := run(context.Background(), []string{server.URL}, strings.NewReader(""), &output, &stderr)
+			if err == nil || !strings.Contains(err.Error(), "downloaded HTML exceeds") || output.Len() != 0 {
+				t.Fatalf("expected size error and no output: %v", err)
+			}
+		})
+	}
+}
+
+func TestCompressedPageLimitStopsBeforeEOF(t *testing.T) {
+	for _, acceptEncoding := range []string{"", "gzip"} {
+		t.Run("accept-encoding="+acceptEncoding, func(t *testing.T) {
+			done := make(chan struct{})
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "text/html; charset=utf-8")
+				w.Header().Set("Content-Encoding", "gzip")
+				compressed := gzip.NewWriter(w)
+				io.WriteString(compressed, strings.Repeat("x", maxHTMLBytes+1))
+				compressed.Flush()
+				w.(http.Flusher).Flush()
+				// Deliberately leave the stream open: oversized decoded data must fail without EOF.
+				<-done
+				compressed.Close()
+			}))
+			defer server.Close()
+			defer close(done)
+			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			cfg := InputConfig{Headers: map[string]string{"Accept-Encoding": acceptEncoding}}
+			var output, stderr bytes.Buffer
+			err := run(ctx, []string{server.URL}, strings.NewReader(configJSON(t, cfg)), &output, &stderr)
+			if err == nil || !strings.Contains(err.Error(), "downloaded HTML exceeds") || output.Len() != 0 {
+				t.Fatalf("expected immediate decoded size error and no output: %v", err)
+			}
+		})
+	}
+}
+
+func TestCompressedAndUTF16Pages(t *testing.T) {
+	markup := articleHTML("<p>Complete article ending.</p>")
+	utf16, err := unicode.UTF16(unicode.LittleEndian, unicode.IgnoreBOM).NewEncoder().String(markup)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range []struct {
+		name, contentType, encoding, path, payload string
+	}{
+		{"gzip", "text/html; charset=utf-8", "gzip", "/page", markup},
+		{"gzip-content-type", "application/gzip", "", "/page", markup},
+		{"gzip-suffix", "text/html; charset=utf-8", "", "/page.xml.gz", markup},
+		{"utf16", "text/html; charset=utf-16le", "", "/page", utf16},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", tc.contentType)
+				w.Header().Set("Content-Encoding", tc.encoding)
+				if strings.HasPrefix(tc.name, "gzip") {
+					compressed := gzip.NewWriter(w)
+					io.WriteString(compressed, tc.payload)
+					compressed.Close()
+				} else {
+					io.WriteString(w, tc.payload)
+				}
+			}))
+			defer server.Close()
+			// Explicit encoding disables net/http's automatic gzip decompression.
+			cfg := InputConfig{Headers: map[string]string{"Accept-Encoding": "gzip"}}
+			output := runMain(t, []string{"extractor", "-t", server.URL + tc.path}, configJSON(t, cfg))
+			assertContains(t, output, "Complete article ending.")
+		})
 	}
 }
 

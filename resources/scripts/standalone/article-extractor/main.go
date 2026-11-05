@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"compress/gzip"
 	"context"
 	"encoding/base64"
 	"encoding/json"
@@ -105,25 +106,33 @@ func publicHeader(name string) bool {
 	return false
 }
 
-func applyHeaders(req *http.Request, headers map[string]string, origin *url.URL, jar http.CookieJar) {
+func applyHeaders(req *http.Request, headers map[string]string, origin *url.URL) {
 	req.Header.Set("User-Agent", DefaultUserAgent)
 	for name, value := range headers {
-		if sameOrigin(req.URL, origin) || publicHeader(name) {
+		if !strings.EqualFold(name, "Cookie") && (sameOrigin(req.URL, origin) || publicHeader(name)) {
 			req.Header.Set(name, value)
 		}
 	}
-	// Cookies updated by the page take precedence over the original configured value.
-	stored := make(map[string]bool)
-	for _, cookie := range jar.Cookies(req.URL) {
-		stored[cookie.Name] = true
+}
+
+// Both jars receive server cookies. Only the original-origin view starts with
+// configured cookies, so those cookies cannot leak to another port or scheme.
+type originCookieJar struct {
+	http.CookieJar
+	configured http.CookieJar
+	origin     *url.URL
+}
+
+func (j *originCookieJar) Cookies(u *url.URL) []*http.Cookie {
+	if sameOrigin(u, j.origin) {
+		return j.configured.Cookies(u)
 	}
-	configured := req.Cookies()
-	req.Header.Del("Cookie")
-	for _, cookie := range configured {
-		if !stored[cookie.Name] {
-			req.AddCookie(cookie)
-		}
-	}
+	return j.CookieJar.Cookies(u)
+}
+
+func (j *originCookieJar) SetCookies(u *url.URL, cookies []*http.Cookie) {
+	j.CookieJar.SetCookies(u, cookies)
+	j.configured.SetCookies(u, cookies)
 }
 
 func setupProxy(cfg *ProxyConfig, transport *http.Transport) error {
@@ -167,9 +176,26 @@ func newClient(cfg InputConfig, origin *url.URL) (*http.Client, error) {
 	if err != nil {
 		return nil, err
 	}
+	headers := make(http.Header)
+	for name, value := range cfg.Headers {
+		headers.Set(name, value)
+	}
+	cookies := (&http.Request{Header: headers}).Cookies()
+	var requestJar http.CookieJar = jar
+	if len(cookies) != 0 {
+		configured, err := cookiejar.New(&cookiejar.Options{PublicSuffixList: publicsuffix.List})
+		if err != nil {
+			return nil, err
+		}
+		for _, cookie := range cookies {
+			cookie.Path = "/" // Configured Cookie headers previously applied to every path on the origin.
+		}
+		configured.SetCookies(origin, cookies)
+		requestJar = &originCookieJar{CookieJar: jar, configured: configured, origin: origin}
+	}
 	return &http.Client{
 		Transport: transport,
-		Jar:       jar,
+		Jar:       requestJar,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			if len(via) >= 10 {
 				return errors.New("stopped after 10 redirects")
@@ -188,13 +214,52 @@ func newClient(cfg InputConfig, origin *url.URL) (*http.Client, error) {
 	}, nil
 }
 
+type pageTransport struct{ http.RoundTripper }
+
+func (t pageTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	resp, err := t.RoundTripper.RoundTrip(req)
+	if err != nil {
+		return nil, err
+	}
+	switch resp.StatusCode {
+	case http.StatusMovedPermanently, http.StatusFound, http.StatusSeeOther, http.StatusTemporaryRedirect, http.StatusPermanentRedirect:
+		if resp.Header.Get("Location") != "" {
+			return resp, nil // The client follows redirects before Colly reads or decodes the body.
+		}
+	}
+	encoding := strings.ToLower(resp.Header.Get("Content-Encoding"))
+	// Match Colly's gzip handling, but limit the decoded stream before it reads it all.
+	if !resp.Uncompressed && (strings.Contains(encoding, "gzip") ||
+		(encoding == "" && strings.Contains(strings.ToLower(resp.Header.Get("Content-Type")), "gzip")) ||
+		strings.HasSuffix(strings.ToLower(req.URL.Path), ".xml.gz")) {
+		decoded, err := gzip.NewReader(resp.Body)
+		if err != nil {
+			resp.Body.Close()
+			return nil, err
+		}
+		resp.Body = struct {
+			io.Reader
+			io.Closer
+		}{decoded, resp.Body}
+		resp.Header.Del("Content-Encoding")
+		resp.Header.Del("Content-Length")
+		resp.ContentLength = -1
+		resp.Uncompressed = true
+	}
+	resp.Body = http.MaxBytesReader(nil, resp.Body, maxHTMLBytes)
+	return resp, nil
+}
+
 func fetchPage(ctx context.Context, pageURL *url.URL, cfg InputConfig, client *http.Client) ([]byte, *url.URL, error) {
-	collector := colly.NewCollector(colly.MaxBodySize(maxHTMLBytes + 1))
+	// Colly's own limit silently truncates before charset conversion, which can hide oversize pages.
+	collector := colly.NewCollector(colly.MaxBodySize(0))
 	collector.Context = ctx
-	collector.SetClient(client)
+	pageClient := *client
+	pageClient.Transport = pageTransport{client.Transport}
+	collector.SetClient(&pageClient)
 	collector.OnRequest(func(r *colly.Request) {
 		req := &http.Request{URL: r.URL, Header: *r.Headers}
-		applyHeaders(req, cfg.Headers, pageURL, client.Jar)
+		applyHeaders(req, cfg.Headers, pageURL)
 	})
 	var pageHTML []byte
 	finalURL := pageURL
@@ -203,6 +268,10 @@ func fetchPage(ctx context.Context, pageURL *url.URL, cfg InputConfig, client *h
 		finalURL = r.Request.URL
 	})
 	if err := collector.Visit(pageURL.String()); err != nil {
+		var tooLarge *http.MaxBytesError
+		if errors.As(err, &tooLarge) {
+			return nil, nil, fmt.Errorf("downloaded HTML exceeds %d bytes", maxHTMLBytes)
+		}
 		return nil, nil, fmt.Errorf("fetching page: %w", err)
 	}
 	if len(pageHTML) > maxHTMLBytes {
@@ -248,7 +317,7 @@ func downloadImage(ctx context.Context, src string, client *http.Client, cfg Inp
 	if err != nil {
 		return ""
 	}
-	applyHeaders(req, cfg.Headers, origin, client.Jar)
+	applyHeaders(req, cfg.Headers, origin)
 	resp, err := client.Do(req)
 	if err != nil {
 		return ""
