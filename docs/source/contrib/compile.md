@@ -5,7 +5,7 @@ RSS Guard is a `C++` application. All common build instructions can be found at 
 If you want a practical reference for the currently maintained CI builds, look at `resources/scripts/github-actions/`. Those scripts show how the official Windows, Linux, and macOS packages are assembled in GitHub Actions.
 
 ## Windows Installer
-The Windows build stages its runtime files in `rssguard-build/app`. Before running NSIS, `package-windows.ps1` calls `prepare-windows-installer.py` to validate the staged executable, core DLL, extractor, Qt platform plugin, and service plugins. Use Python 3 on `PATH` (CI uses Python 3.13). The helper rejects staged user data and links, and generates `NSIS.payload.nsh` with the exact core payload and uninstall paths. Debug symbols are kept in the portable archive rather than the installer.
+The Windows build stages its runtime files in `rssguard-build/app`. Before running NSIS, `package-windows.ps1` calls `prepare-windows-installer.py` to validate the staged executable, core DLL, extractor, Qt platform plugin, and service plugins. Use Python 3 on `PATH` (CI uses Python 3.13). The helper rejects staged user data and links, and generates `NSIS.payload.nsh` with the exact core payload and uninstall paths. Debug symbols (`.pdb`) and MSVC import libraries (`.lib`) are kept in the portable archive rather than the installer.
 
 To regenerate that include when packaging manually, run this from the build directory:
 

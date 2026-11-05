@@ -54,7 +54,8 @@ def payload_files(stage, executable, xmpp):
             if key in seen:
                 raise ValueError(f"Case-colliding package path: {relative}")
             seen.add(key)
-            if entry.is_file() and entry.suffix.lower() != ".pdb":
+            # Symbols and MSVC import libraries stay in the portable archive only.
+            if entry.is_file() and entry.suffix.lower() not in (".pdb", ".lib"):
                 files.append(relative)
     plugins = set(PLUGINS) | ({"xmpp"} if xmpp else set())
     required = {executable, "rssguard.dll", "rssguard-article-extractor.exe", "platforms/qwindows.dll"}

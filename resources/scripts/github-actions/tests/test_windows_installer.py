@@ -56,9 +56,11 @@ def definitions(stage, name="RSS Guard fixture", executable="rssguard.exe", vers
 
 def make_payload(stage, executable="rssguard.exe", xmpp=False):
     names = [executable, "rssguard.dll", "rssguard-article-extractor.exe", "platforms/qwindows.dll",
-             "resources/žluťoučký.txt", "rssguard-extra$helper.exe", "rssguard.pdb", "plugins/rssguard-feedly.pdb",
+             "resources/žluťoučký.txt", "rssguard-extra$helper.exe", "rssguard.pdb", "rssguard.lib",
+             "plugins/rssguard-feedly.pdb",
              "zz-recovery-test.dll"]  # Removed after the main binaries: exercises genuinely partial cleanup.
-    names += [f"plugins/rssguard-{plugin}.dll" for plugin in (*package.PLUGINS, *(("xmpp",) if xmpp else ()))]
+    names += [f"plugins/rssguard-{plugin}.{extension}"
+              for plugin in (*package.PLUGINS, *(("xmpp",) if xmpp else ())) for extension in ("dll", "lib")]
     for name in names:
         path = stage / name
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -97,6 +99,17 @@ class PayloadTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "Missing package files"):
                     package.generate(self.stage, self.defs, self.output)
                 path.write_bytes(contents)
+
+    def test_build_artifacts_are_excluded_without_modifying_stage(self):
+        artifacts = ("rssguard.lib", "rssguard.pdb", "plugins/rssguard-feedly.lib", "plugins/extra.LIB",
+                     "plugins/extra.PDB")
+        for relative in artifacts:
+            (self.stage / relative).write_bytes(b"build artifact")
+        package.generate(self.stage, self.defs, self.output)
+        result = self.output.read_text(encoding="utf-8")
+        for relative in artifacts:
+            self.assertNotIn(Path(relative).name, result)
+            self.assertEqual((self.stage / relative).read_bytes(), b"build artifact")
 
     def test_reject_user_data(self):
         (self.stage / "Data5").mkdir()
@@ -315,6 +328,8 @@ class InstallerTests(unittest.TestCase):
                                  capture_output=True, text=True, errors="replace", timeout=30)
         self.assertEqual(listing.returncode, 0)
         self.assertIn("rssguard.pdb", listing.stdout)
+        self.assertIn("rssguard.lib", listing.stdout)
+        self.assertIn("rssguard-feedly.lib", listing.stdout)
 
     def setUp(self):
         self.target = self.root / ("install ü with spaces " + uuid.uuid4().hex)
@@ -361,6 +376,8 @@ class InstallerTests(unittest.TestCase):
         self.assertTrue((self.target / "rssguard-extra$helper.exe").exists())
         self.assertTrue((self.target / "resources/žluťoučký.txt").exists())
         self.assertFalse((self.target / "rssguard.pdb").exists())
+        self.assertFalse((self.target / "rssguard.lib").exists())
+        self.assertFalse((self.target / "plugins/rssguard-feedly.lib").exists())
         retained = ["data4/config.ini", "data5/database.db", "profile/notes.txt", "notes.txt",
                     "plugins/my-file.txt", "platforms/my-file.txt"]
         for relative in retained:
