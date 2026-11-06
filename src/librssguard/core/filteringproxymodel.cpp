@@ -7,12 +7,17 @@
 #include <QTimer>
 
 FilteringProxyModel::FilteringProxyModel(QObject* parent)
-  : QSortFilterProxyModel(parent), m_hasFilteredOutItems(false), m_refreshScheduled(false) {
+  : QSortFilterProxyModel(parent), m_filterMatchMode(FilterMatchMode::Any), m_hasFilteredOutItems(false),
+    m_refreshScheduled(false) {
   connectModelSignals(this);
 }
 
 bool FilteringProxyModel::hasFilteredOutItems() const {
   return m_hasFilteredOutItems;
+}
+
+void FilteringProxyModel::setFilterMatchMode(FilterMatchMode mode) {
+  m_filterMatchMode = mode;
 }
 
 void FilteringProxyModel::setSourceModel(QAbstractItemModel* source_model) {

@@ -40,7 +40,7 @@ class MessagesProxyModel : public FilteringProxyModel {
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
     QModelIndexList mapListFromSource(const QModelIndexList& indexes, bool deep = false) const;
 
-    void setMessageListFilter(MessageListFilter filter);
+    void setMessageListFilter(MessageListFilter filter, FilterMatchMode mode);
 
     // Fix for matching indexes with respect to specifics of the message model.
     virtual QModelIndexList match(const QModelIndex& start,
@@ -68,7 +68,6 @@ class MessagesProxyModel : public FilteringProxyModel {
     MessagesModel* m_sourceModel;
     MessageListFilter m_filter;
     QMap<MessageListFilter, std::function<bool(int)>> m_filters;
-    QList<MessageListFilter> m_filterKeys;
 };
 
 Q_DECLARE_METATYPE(MessagesProxyModel::MessageListFilter)

@@ -27,13 +27,15 @@ class FeedsProxyModel : public FilteringProxyModel {
       ShowSwitchedOff = 64,
       ShowQuiet = 128,
       ShowWithArticleFilters = 256,
-      ShowSwitchedOn = 512
+      ShowSwitchedOn = 512,
+      ShowFeeds = 1024,
+      ShowFolders = 2048
     };
 
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
     virtual ~FeedsProxyModel();
 
-    void setFeedListFilter(FeedListFilter filter);
+    void setFeedListFilter(FeedListFilter filter, FilterMatchMode mode);
 
     virtual bool canDropMimeData(const QMimeData* data,
                                  Qt::DropAction action,
@@ -101,7 +103,6 @@ class FeedsProxyModel : public FilteringProxyModel {
 
     // NOTE: The parameter type can be Category, Feed or Label only.
     QMap<FeedListFilter, std::function<bool(const RootItem*)>> m_filters;
-    QList<FeedListFilter> m_filterKeys;
 };
 
 Q_DECLARE_METATYPE(FeedsProxyModel::FeedListFilter)

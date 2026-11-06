@@ -969,8 +969,9 @@ void MessagesView::loadItem(RootItem* item) {
   requestArticleHiding();
 }
 
-void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
-  m_proxyModel->setMessageListFilter(filter);
+void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter,
+                                FilteringProxyModel::FilterMatchMode mode) {
+  m_proxyModel->setMessageListFilter(filter, mode);
 
   // NOTE: Proxy model is normally not dynamically filtered, but when user changes filter
   // explicitly, then yes, we need to do something.

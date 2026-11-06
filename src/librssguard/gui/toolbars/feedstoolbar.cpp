@@ -10,6 +10,8 @@
 #include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 
+#include <QActionGroup>
+#include <QScopedValueRollback>
 #include <QWidgetAction>
 
 FeedsToolBar::FeedsToolBar(const QString& title, QWidget* parent) : BaseToolBar(title, parent) {
@@ -45,11 +47,14 @@ void FeedsToolBar::saveAndSetActions(const QStringList& actions) {
   if (!activatedActions().contains(m_actionSearchMessages)) {
     m_txtSearchMessages->clear();
   }
-
-  handleMessageFilterChange(nullptr);
 }
 
 QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
+  QScopedValueRollback<bool> restoring(m_restoringFilter, true);
+  for (QAction* action : m_filterActions) {
+    action->setChecked(false);
+  }
+
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 
@@ -105,6 +110,8 @@ void FeedsToolBar::loadSpecificActions(const QList<QAction*>& actions, bool init
   for (QAction* act : actions) {
     addAction(act);
   }
+
+  handleMessageFilterChange(nullptr);
 }
 
 inline FeedsProxyModel::FeedListFilter operator|(FeedsProxyModel::FeedListFilter a, FeedsProxyModel::FeedListFilter b) {
@@ -112,27 +119,28 @@ inline FeedsProxyModel::FeedListFilter operator|(FeedsProxyModel::FeedListFilter
 }
 
 void FeedsToolBar::handleMessageFilterChange(QAction* action) {
-  FeedsProxyModel::FeedListFilter task =
-    action == nullptr ? FeedsProxyModel::FeedListFilter(0) : action->data().value<FeedsProxyModel::FeedListFilter>();
-  auto checked_tasks = qlinq::from(m_menuMessageFilter->actions())
-                         .where([](QAction* act) {
-                           return act->isChecked();
+  if (m_restoringFilter) {
+    return;
+  }
+
+  const auto mode = m_filterMatchModes->checkedAction()->data().value<FilteringProxyModel::FilterMatchMode>();
+  if (action != nullptr && action->actionGroup() == m_filterMatchModes) {
+    qApp->settings()->setValue(GROUP(GUI), GUI::FeedsFilterMatchMode, static_cast<int>(mode));
+  }
+
+  auto task = FeedsProxyModel::FeedListFilter::NoFiltering;
+  auto checked_tasks = qlinq::from(m_filterActions)
+                         .where([this](QAction* act) {
+                           return act != m_actionNoFiltering && act->isChecked();
                          })
                          .toList();
 
-  if (task == FeedsProxyModel::FeedListFilter::NoFiltering || checked_tasks.isEmpty()) {
-    task = FeedsProxyModel::FeedListFilter::NoFiltering;
-
+  if (action == m_actionNoFiltering || checked_tasks.isEmpty()) {
     checked_tasks.clear();
 
-    // Uncheck everything.
-    m_menuMessageFilter->blockSignals(true);
-
-    for (QAction* tsk : m_menuMessageFilter->actions()) {
+    for (QAction* tsk : m_filterActions) {
       tsk->setChecked(false);
     }
-
-    m_menuMessageFilter->blockSignals(false);
   }
   else {
     task = FeedsProxyModel::FeedListFilter(0);
@@ -142,15 +150,23 @@ void FeedsToolBar::handleMessageFilterChange(QAction* action) {
     }
   }
 
-  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_menuMessageFilter->actions().constFirst()
-                                                               : checked_tasks.first());
+  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_actionNoFiltering : checked_tasks.first());
 
   if (checked_tasks.size() > 1) {
     drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks.size()));
   }
 
+  QStringList tooltip{m_filterMatchModes->checkedAction()->text()};
+  for (QAction* criterion : checked_tasks) {
+    tooltip.append(criterion->text());
+  }
+  if (checked_tasks.isEmpty()) {
+    tooltip.append(m_actionNoFiltering->text());
+  }
+  m_btnMessageFilter->setToolTip(tooltip.join(QL1C('\n')));
+
   saveToolButtonSelection(QSL(FILTER_ACTION_NAME), GUI::FeedsToolbarActions, checked_tasks);
-  emit feedFilterChanged(task);
+  emit feedFilterChanged(task, mode);
 }
 
 QStringList FeedsToolBar::defaultActions() const {
@@ -165,7 +181,7 @@ QStringList FeedsToolBar::savedActions() const {
 }
 
 QList<QAction*> FeedsToolBar::extraActions() const {
-  return m_menuMessageFilter->actions();
+  return m_filterActions;
 }
 
 void FeedsToolBar::initializeSearchBox() {
@@ -204,6 +220,18 @@ void FeedsToolBar::initializeFilter() {
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::NoFiltering),
                   QSL("feedlist_no_filtering"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show feeds"),
+                  fl,
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowFeeds),
+                  QSL("feedlist_show_feeds"));
+  addActionToMenu(m_menuMessageFilter,
+                  qApp->icons()->fromTheme(QSL("mail-mark-read")),
+                  tr("Show folders"),
+                  fl,
+                  QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowFolders),
+                  QSL("feedlist_show_folders"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
                   tr("Show unread items"),
@@ -252,6 +280,16 @@ void FeedsToolBar::initializeFilter() {
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithArticleFilters),
                   QSL("feedlist_with_filters"));
+
+  m_filterActions = m_menuMessageFilter->actions();
+  m_actionNoFiltering = m_filterActions.constFirst();
+  m_filterMatchModes =
+    addFilterMatchModeActions(m_menuMessageFilter,
+                              static_cast<
+                                FilteringProxyModel::FilterMatchMode>(qApp->settings()
+                                                                        ->value(GROUP(GUI),
+                                                                                SETTING(GUI::FeedsFilterMatchMode))
+                                                                        .toInt()));
 
   m_btnMessageFilter = new QToolButton(this);
   m_btnMessageFilter->setToolTip(tr("Display all feeds"));

@@ -449,8 +449,8 @@ void FeedsView::editRecursiveFeeds() {
   }
 }
 
-void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter) {
-  m_proxyModel->setFeedListFilter(filter);
+void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter, FilteringProxyModel::FilterMatchMode mode) {
+  m_proxyModel->setFeedListFilter(filter, mode);
 
   QTimer::singleShot(0, this, &FeedsView::loadAllExpandStates);
 

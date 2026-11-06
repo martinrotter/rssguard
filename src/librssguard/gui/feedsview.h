@@ -88,7 +88,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // Switches visibility of the widget.
     void switchVisibility();
 
-    void changeFilter(FeedsProxyModel::FeedListFilter filter);
+    void changeFilter(FeedsProxyModel::FeedListFilter filter, FilteringProxyModel::FilterMatchMode mode);
     void searchItems(SearchLineEdit::SearchMode mode,
                      Qt::CaseSensitivity sensitivity,
                      int custom_criteria,

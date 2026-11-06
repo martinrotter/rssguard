@@ -387,6 +387,9 @@ namespace GUI {
   KEY FeedsToolbarActions;
   VALUE(char*) FeedsToolbarActionsDef;
 
+  KEY FeedsFilterMatchMode;
+  VALUE(int) FeedsFilterMatchModeDef;
+
   KEY StatusbarActions;
   VALUE(char*) StatusbarActionsDef;
 
@@ -491,6 +494,9 @@ namespace GUI {
 
   KEY MessagesToolbarDefaultButtons;
   VALUE(char*) MessagesToolbarDefaultButtonsDef;
+
+  KEY MessagesFilterMatchMode;
+  VALUE(int) MessagesFilterMatchModeDef;
 
   KEY DefaultSortColumnFeeds;
   VALUE(int) DefaultSortColumnFeedsDef;

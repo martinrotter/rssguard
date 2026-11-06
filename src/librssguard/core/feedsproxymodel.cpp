@@ -475,6 +475,14 @@ void FeedsProxyModel::forgetFilteredItems(const QModelIndex& source_parent, int 
 }
 
 void FeedsProxyModel::initializeFilters() {
+  m_filters[FeedListFilter::ShowFeeds] = [](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Feed;
+  };
+
+  m_filters[FeedListFilter::ShowFolders] = [](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Category;
+  };
+
   m_filters[FeedListFilter::ShowEmpty] = [](const RootItem* item) {
     return item->countOfAllMessages() == 0;
   };
@@ -522,8 +530,6 @@ void FeedsProxyModel::initializeFilters() {
 
     return feed != nullptr && feed->status() == Feed::Status::NewMessages;
   };
-
-  m_filterKeys = m_filters.keys();
 }
 
 bool FeedsProxyModel::filterAcceptsRowInternal(const QModelIndex& source_index, const RootItem* item) const {
@@ -568,23 +574,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(const QModelIndex& source_index, 
                                 .hasMatch();
   bool should_show = should_show_model || should_show_all_data;
 
-  for (FeedListFilter val : m_filterKeys) {
-    if (Globals::hasFlag(m_filter, val)) {
-      // This particular filter is enabled.
-      if (m_filters[val](item)) {
-        // The item matches the feed filter.
-        // Display it if it matches internal string-based filter too.
-        return should_show;
-      }
-    }
-  }
-
-  if (m_filter != FeedListFilter::NoFiltering) {
-    // Some filter is enabled but this item does not meet it.
-    return false;
-  }
-
-  return should_show;
+  return should_show && matchesSelectedFilters(m_filter, m_filters, item);
 }
 
 bool FeedsProxyModel::isHierarchicalFilteringModel() const {
@@ -658,16 +648,19 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes)
   return source_indexes;
 }
 
-void FeedsProxyModel::setFeedListFilter(FeedListFilter filter) {
+void FeedsProxyModel::setFeedListFilter(FeedListFilter filter, FilterMatchMode mode) {
 #if QT_VERSION_MAJOR == 5
   m_filter = filter;
+  setFilterMatchMode(mode);
   invalidateFilter();
 #elif QT_VERSION >= 0x060A00 // Qt > 6.9.0
   beginFilterChange();
   m_filter = filter;
+  setFilterMatchMode(mode);
   endFilterChange(QSortFilterProxyModel::Direction::Rows);
 #else
   m_filter = filter;
+  setFilterMatchMode(mode);
   invalidateRowsFilter();
 #endif
 

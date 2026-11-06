@@ -239,12 +239,14 @@ void FeedMessageViewer::switchFeedComponentVisibility() {
   }
 }
 
-void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilter filter) {
-  m_messagesView->changeFilter(filter);
+void FeedMessageViewer::changeMessageFilter(MessagesProxyModel::MessageListFilter filter,
+                                            FilteringProxyModel::FilterMatchMode mode) {
+  m_messagesView->changeFilter(filter, mode);
 }
 
-void FeedMessageViewer::changeFeedFilter(FeedsProxyModel::FeedListFilter filter) {
-  m_feedsView->changeFilter(filter);
+void FeedMessageViewer::changeFeedFilter(FeedsProxyModel::FeedListFilter filter,
+                                         FilteringProxyModel::FilterMatchMode mode) {
+  m_feedsView->changeFilter(filter, mode);
 }
 
 void FeedMessageViewer::toggleShowFeedTreeBranches() {

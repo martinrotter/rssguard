@@ -27,7 +27,7 @@ class FeedsToolBar : public BaseToolBar {
     SearchLineEdit* searchBox() const;
 
   signals:
-    void feedFilterChanged(FeedsProxyModel::FeedListFilter filter);
+    void feedFilterChanged(FeedsProxyModel::FeedListFilter filter, FilteringProxyModel::FilterMatchMode mode);
     void searchCriteriaChanged(SearchLineEdit::SearchMode mode,
                                Qt::CaseSensitivity sensitivity,
                                int custom_criteria,
@@ -44,6 +44,10 @@ class FeedsToolBar : public BaseToolBar {
     QWidgetAction* m_actionMessageFilter;
     QToolButton* m_btnMessageFilter;
     QMenu* m_menuMessageFilter;
+    QList<QAction*> m_filterActions;
+    QAction* m_actionNoFiltering;
+    QActionGroup* m_filterMatchModes;
+    bool m_restoringFilter = false;
 
     SearchLineEdit* m_txtSearchMessages;
     QWidgetAction* m_actionSearchMessages;

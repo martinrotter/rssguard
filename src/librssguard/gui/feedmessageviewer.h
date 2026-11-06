@@ -64,8 +64,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     // toolbar.
     void switchFeedComponentVisibility();
 
-    void changeMessageFilter(MessagesProxyModel::MessageListFilter filter);
-    void changeFeedFilter(FeedsProxyModel::FeedListFilter filter);
+    void changeMessageFilter(MessagesProxyModel::MessageListFilter filter, FilteringProxyModel::FilterMatchMode mode);
+    void changeFeedFilter(FeedsProxyModel::FeedListFilter filter, FilteringProxyModel::FilterMatchMode mode);
 
     void toggleShowFeedTreeBranches();
     void toggleItemsAutoExpandingOnSelection();

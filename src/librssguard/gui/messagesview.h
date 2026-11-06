@@ -110,7 +110,7 @@ class MessagesView : public BaseTreeView {
                         const QString& phrase);
 
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
-    void changeFilter(MessagesProxyModel::MessageListFilter filter);
+    void changeFilter(MessagesProxyModel::MessageListFilter filter, FilteringProxyModel::FilterMatchMode mode);
 
   protected slots:
     virtual void verticalScrollbarValueChanged(int value);

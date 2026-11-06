@@ -3,11 +3,15 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
+#include "core/filteringproxymodel.h"
+
 #include <QKeySequence>
 #include <QMenu>
 #include <QToolBar>
 #include <QToolButton>
 #include <QWidgetAction>
+
+class QActionGroup;
 
 class BaseBar {
   public:
@@ -59,6 +63,7 @@ class BaseToolBar : public QToolBar, public BaseBar {
     virtual ~BaseToolBar();
 
   protected:
+    QActionGroup* addFilterMatchModeActions(QMenu* menu, FilteringProxyModel::FilterMatchMode initial_mode);
     void saveToolButtonSelection(const QString& button_name,
                                  const QString& setting_name,
                                  const QList<QAction*>& actions) const;

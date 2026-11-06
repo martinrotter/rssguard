@@ -12,7 +12,9 @@
 
 #include <chrono>
 
+#include <QActionGroup>
 #include <QMenu>
+#include <QScopedValueRollback>
 #include <QTimer>
 
 using namespace std::chrono_literals;
@@ -45,11 +47,14 @@ void MessagesToolBar::saveAndSetActions(const QStringList& actions) {
   if (!activatedActions().contains(m_actionSearchMessages)) {
     m_txtSearchMessages->clear();
   }
-
-  handleMessageFilterChange(nullptr);
 }
 
 QList<QAction*> MessagesToolBar::convertActions(const QStringList& actions) {
+  QScopedValueRollback<bool> restoring(m_restoringFilter, true);
+  for (QAction* action : m_filterActions) {
+    action->setChecked(false);
+  }
+
   QList<QAction*> available_actions = availableActions();
   QList<QAction*> spec_actions;
 
@@ -110,6 +115,8 @@ void MessagesToolBar::loadSpecificActions(const QList<QAction*>& actions, bool i
   for (QAction* act : actions) {
     addAction(act);
   }
+
+  handleMessageFilterChange(nullptr);
 }
 
 inline MessagesProxyModel::MessageListFilter operator|(MessagesProxyModel::MessageListFilter a,
@@ -163,28 +170,28 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
 }
 
 void MessagesToolBar::handleMessageFilterChange(QAction* action) {
-  MessagesProxyModel::MessageListFilter task = action == nullptr
-                                                 ? MessagesProxyModel::MessageListFilter(0)
-                                                 : action->data().value<MessagesProxyModel::MessageListFilter>();
-  auto checked_tasks = qlinq::from(m_menuMessageFilter->actions())
-                         .where([](QAction* act) {
-                           return act->isChecked();
+  if (m_restoringFilter) {
+    return;
+  }
+
+  const auto mode = m_filterMatchModes->checkedAction()->data().value<FilteringProxyModel::FilterMatchMode>();
+  if (action != nullptr && action->actionGroup() == m_filterMatchModes) {
+    qApp->settings()->setValue(GROUP(GUI), GUI::MessagesFilterMatchMode, static_cast<int>(mode));
+  }
+
+  auto task = MessagesProxyModel::MessageListFilter::NoFiltering;
+  auto checked_tasks = qlinq::from(m_filterActions)
+                         .where([this](QAction* act) {
+                           return act != m_actionNoFiltering && act->isChecked();
                          })
                          .toList();
 
-  if (task == MessagesProxyModel::MessageListFilter::NoFiltering || checked_tasks.isEmpty()) {
-    task = MessagesProxyModel::MessageListFilter::NoFiltering;
-
+  if (action == m_actionNoFiltering || checked_tasks.isEmpty()) {
     checked_tasks.clear();
 
-    // Uncheck everything.
-    m_menuMessageFilter->blockSignals(true);
-
-    for (QAction* tsk : m_menuMessageFilter->actions()) {
+    for (QAction* tsk : m_filterActions) {
       tsk->setChecked(false);
     }
-
-    m_menuMessageFilter->blockSignals(false);
   }
   else {
     task = MessagesProxyModel::MessageListFilter(0);
@@ -194,15 +201,23 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
     }
   }
 
-  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_menuMessageFilter->actions().constFirst()
-                                                               : checked_tasks.first());
+  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_actionNoFiltering : checked_tasks.first());
 
   if (checked_tasks.size() > 1) {
     drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks.size()));
   }
 
+  QStringList tooltip{m_filterMatchModes->checkedAction()->text()};
+  for (QAction* criterion : checked_tasks) {
+    tooltip.append(criterion->text());
+  }
+  if (checked_tasks.isEmpty()) {
+    tooltip.append(m_actionNoFiltering->text());
+  }
+  m_btnMessageFilter->setToolTip(tooltip.join(QL1C('\n')));
+
   saveToolButtonSelection(QSL(FILTER_ACTION_NAME), GUI::MessagesToolbarDefaultButtons, checked_tasks);
-  emit messageFilterChanged(task);
+  emit messageFilterChanged(task, mode);
 }
 
 void MessagesToolBar::initializeSearchBox() {
@@ -327,6 +342,16 @@ void MessagesToolBar::initializeHighlighter() {
                   QVariant::fromValue(MessagesProxyModel::MessageListFilter::ShowOnlyWithScore),
                   QSL("articlelist_show_with_score"));
 
+  m_filterActions = m_menuMessageFilter->actions();
+  m_actionNoFiltering = m_filterActions.constFirst();
+  m_filterMatchModes =
+    addFilterMatchModeActions(m_menuMessageFilter,
+                              static_cast<
+                                FilteringProxyModel::FilterMatchMode>(qApp->settings()
+                                                                        ->value(GROUP(GUI),
+                                                                                SETTING(GUI::MessagesFilterMatchMode))
+                                                                        .toInt()));
+
   m_btnMessageHighlighter = new QToolButton(this);
   m_btnMessageHighlighter->setToolTip(tr("Display all articles"));
   m_btnMessageHighlighter->setMenu(m_menuMessageHighlighter);
@@ -379,7 +404,7 @@ QStringList MessagesToolBar::savedActions() const {
 QList<QAction*> MessagesToolBar::extraActions() const {
   QList<QAction*> act;
 
-  act << m_menuMessageHighlighter->actions() << m_menuMessageFilter->actions();
+  act << m_menuMessageHighlighter->actions() << m_filterActions;
 
   return act;
 }

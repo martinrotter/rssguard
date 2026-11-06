@@ -345,6 +345,8 @@ DKEY GUI::HeightRowFeeds = QSL("height_row_feeds");
 DVALUE(int) GUI::HeightRowFeedsDef = -1;
 
 DKEY GUI::FeedsToolbarActions = QSL("feeds_toolbar");
+DKEY GUI::FeedsFilterMatchMode = QSL("feeds_filter_match_mode");
+DVALUE(int) GUI::FeedsFilterMatchModeDef = 0;
 DVALUE(char*)
 GUI::FeedsToolbarActionsDef = "m_actionUpdateAllItems,m_actionStopRunningItemsUpdate,m_actionPauseFeedFetching,m_"
                               "actionMarkAllItemsRead,filter,spacer,search";
@@ -479,6 +481,8 @@ DKEY GUI::HideTabBarIfOnlyOneTab = QSL("hide_tabbar_one_tab");
 DVALUE(bool) GUI::HideTabBarIfOnlyOneTabDef = false;
 
 DKEY GUI::MessagesToolbarDefaultButtons = QSL("messages_toolbar");
+DKEY GUI::MessagesFilterMatchMode = QSL("messages_filter_match_mode");
+DVALUE(int) GUI::MessagesFilterMatchModeDef = 0;
 DVALUE(char*)
 GUI::MessagesToolbarDefaultButtonsDef =
   "m_actionMarkSelectedMessagesAsRead,m_actionMarkSelectedMessagesAsUnread,m_actionSwitchImportanceOfSelectedMessages,"

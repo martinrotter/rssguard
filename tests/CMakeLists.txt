@@ -28,7 +28,7 @@ function(add_rssguard_test TEST_TARGET)
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
            TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum" OR
            TEST_TARGET STREQUAL "test_articlepreview" OR TEST_TARGET STREQUAL "test_externaltool" OR
-           TEST_TARGET STREQUAL "test_externaltoolsettings")
+           TEST_TARGET STREQUAL "test_externaltoolsettings" OR TEST_TARGET STREQUAL "test_filtermatchmode")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -223,6 +223,10 @@ if(ENABLE_TESTING)
   )
   target_include_directories(test_articlepreview PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_articlepreview PROPERTIES TIMEOUT 60)
+
+  add_rssguard_test(test_filtermatchmode gui/test_filtermatchmode.cpp)
+  target_include_directories(test_filtermatchmode PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  set_tests_properties(test_filtermatchmode PROPERTIES TIMEOUT 120)
 
   # These GUI classes are internal to the library and have no Windows DLL exports.
   add_rssguard_test(test_labelsmenu

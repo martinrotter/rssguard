@@ -34,7 +34,7 @@ class MessagesToolBar : public BaseToolBar {
                                int custom_criteria,
                                const QString& phrase);
     void messageHighlighterChanged(MessagesModel::MessageHighlighter highlighter);
-    void messageFilterChanged(MessagesProxyModel::MessageListFilter filter);
+    void messageFilterChanged(MessagesProxyModel::MessageListFilter filter, FilteringProxyModel::FilterMatchMode mode);
 
   private slots:
     void handleMessageHighlighterChange(QAction* action);
@@ -52,6 +52,10 @@ class MessagesToolBar : public BaseToolBar {
     QWidgetAction* m_actionMessageFilter;
     QToolButton* m_btnMessageFilter;
     QMenu* m_menuMessageFilter;
+    QList<QAction*> m_filterActions;
+    QAction* m_actionNoFiltering;
+    QActionGroup* m_filterMatchModes;
+    bool m_restoringFilter = false;
 
     QWidgetAction* m_actionSearchMessages;
     SearchLineEdit* m_txtSearchMessages;

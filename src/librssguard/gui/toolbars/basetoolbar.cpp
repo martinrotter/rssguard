@@ -8,6 +8,7 @@
 #include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 
+#include <QActionGroup>
 #include <QFont>
 #include <QPainter>
 #include <QWidgetAction>
@@ -22,6 +23,28 @@ BaseToolBar::BaseToolBar(const QString& title, QWidget* parent) : QToolBar(title
 
 BaseToolBar::~BaseToolBar() {
   qDebugNN << LOGSEC_GUI << "Destroying BaseToolBar instance.";
+}
+
+QActionGroup* BaseToolBar::addFilterMatchModeActions(QMenu* menu, FilteringProxyModel::FilterMatchMode initial_mode) {
+  using Mode = FilteringProxyModel::FilterMatchMode;
+  auto* group = new QActionGroup(menu);
+  group->setExclusive(true);
+  menu->addSeparator();
+
+  auto* any = menu->addAction(tr("Match any selected filter (OR)"));
+  any->setObjectName(QSL("filter_match_any"));
+  any->setCheckable(true);
+  any->setData(QVariant::fromValue(Mode::Any));
+  group->addAction(any);
+
+  auto* all = menu->addAction(tr("Match all selected filters (AND)"));
+  all->setObjectName(QSL("filter_match_all"));
+  all->setCheckable(true);
+  all->setData(QVariant::fromValue(Mode::All));
+  group->addAction(all);
+
+  (initial_mode == Mode::All ? all : any)->setChecked(true);
+  return group;
 }
 
 QList<QAction*> BaseBar::extraActions() const {

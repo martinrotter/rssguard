@@ -115,8 +115,6 @@ void MessagesProxyModel::initializeFilters() {
 
     return msg_score > MSG_SCORE_MIN;
   };
-
-  m_filterKeys = m_filters.keys();
 }
 
 bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
@@ -129,13 +127,7 @@ bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
     return true;
   }
 
-  for (MessageListFilter val : m_filterKeys) {
-    if (Globals::hasFlag(m_filter, val) && m_filters[val](msg_row_index)) {
-      return true;
-    }
-  }
-
-  return false;
+  return matchesSelectedFilters(m_filter, m_filters, msg_row_index);
 }
 
 QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) const {
@@ -187,8 +179,9 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) && filterAcceptsMessage(source_row);
 }
 
-void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
+void MessagesProxyModel::setMessageListFilter(MessageListFilter filter, FilterMatchMode mode) {
   m_filter = filter;
+  setFilterMatchMode(mode);
   scheduleFilteredOutItemsRefresh();
   // m_sourceModel->setAdditionalArticleId(0);
 }
