@@ -617,6 +617,10 @@ const RootItem* FeedsProxyModel::selectedItem() const {
 }
 
 void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
+  if (selected_item == m_selectedItem) {
+    return;
+  }
+
   auto* previous_selected_item = m_selectedItem;
   m_selectedItem = selected_item;
 

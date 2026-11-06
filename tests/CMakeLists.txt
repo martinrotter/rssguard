@@ -22,7 +22,7 @@ function(add_rssguard_test TEST_TARGET)
     endif()
 
     if(TEST_TARGET STREQUAL "test_mediawikiparser" OR TEST_TARGET STREQUAL "test_feedicons" OR
-       TEST_TARGET STREQUAL "test_feedvalidators")
+       TEST_TARGET STREQUAL "test_feedvalidators" OR TEST_TARGET STREQUAL "test_feeddeletion")
       set(TEST_EXTRA_PATH "$<TARGET_FILE_DIR:rssguard-standard>$<SEMICOLON>${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     elseif(TEST_TARGET STREQUAL "test_styleditemdelegate" OR TEST_TARGET STREQUAL "test_zoom" OR
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
@@ -227,6 +227,14 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_filtermatchmode gui/test_filtermatchmode.cpp)
   target_include_directories(test_filtermatchmode PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_filtermatchmode PROPERTIES TIMEOUT 120)
+
+  add_rssguard_test(test_feeddeletion gui/test_feeddeletion.cpp)
+  add_dependencies(test_feeddeletion rssguard-standard)
+  target_compile_definitions(test_feeddeletion PRIVATE TEST_STANDARD_PLUGIN="$<TARGET_FILE:rssguard-standard>")
+  target_include_directories(test_feeddeletion PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  set_tests_properties(test_feeddeletion PROPERTIES
+    ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+    TIMEOUT 120)
 
   # These GUI classes are internal to the library and have no Windows DLL exports.
   add_rssguard_test(test_labelsmenu
