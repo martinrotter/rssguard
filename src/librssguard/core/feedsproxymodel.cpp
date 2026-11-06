@@ -495,6 +495,12 @@ void FeedsProxyModel::initializeFilters() {
     return feed != nullptr && feed->isSwitchedOff();
   };
 
+  m_filters[FeedListFilter::ShowSwitchedOn] = [](const RootItem* item) {
+    Feed* feed = item->toFeed();
+
+    return feed != nullptr && !feed->isSwitchedOff();
+  };
+
   m_filters[FeedListFilter::ShowUnread] = [](const RootItem* item) {
     return item->countOfUnreadMessages() > 0;
   };

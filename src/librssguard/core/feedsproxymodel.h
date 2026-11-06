@@ -26,7 +26,8 @@ class FeedsProxyModel : public FilteringProxyModel {
       ShowWithError = 32,
       ShowSwitchedOff = 64,
       ShowQuiet = 128,
-      ShowWithArticleFilters = 256
+      ShowWithArticleFilters = 256,
+      ShowSwitchedOn = 512
     };
 
     explicit FeedsProxyModel(FeedsModel* source_model, QObject* parent = nullptr);
