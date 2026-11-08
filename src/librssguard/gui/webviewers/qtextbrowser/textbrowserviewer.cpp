@@ -237,6 +237,7 @@ bool TextBrowserImageCache::saveImage(const QUrl& image_url, const QByteArray& i
 
 void TextBrowserImageCache::cleanup() {
   IOFactory::removeFolder(cacheRootFolder());
+  IOFactory::ensureCacheDirectoryTag(cacheRootFolder());
 }
 
 TextBrowserImageDownloader::TextBrowserImageDownloader(QList<QUrl> image_urls,

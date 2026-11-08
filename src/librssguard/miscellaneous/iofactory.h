@@ -22,6 +22,7 @@ class RSSGUARD_DLLSPEC IOFactory {
 
   public:
     static bool isFolderWritable(const QString& folder);
+    static void ensureCacheDirectoryTag(const QString& folder);
 
     // Returns system-wide folder according to type.
     static QString getSystemFolder(QStandardPaths::StandardLocation location);

@@ -7,6 +7,7 @@
 
 #include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QProcess>
 #include <QTemporaryFile>
 
@@ -21,6 +22,33 @@ bool IOFactory::isFolderWritable(const QString& folder) {
 
   real_file += QSL("test-permissions-file");
   return QTemporaryFile(real_file).open();
+}
+
+void IOFactory::ensureCacheDirectoryTag(const QString& folder) {
+  static const QByteArray signature = QByteArrayLiteral("Signature: 8a477f597d28d172789f06886806bc55");
+  QFile tag(QDir(folder).filePath(QSL("CACHEDIR.TAG")));
+  const QFileInfo tag_info(tag);
+
+  if (tag_info.isSymLink() || (tag_info.exists() && !tag_info.isFile())) {
+    qWarningNN << LOGSEC_CORE << "Cache directory tag is not a regular file" << QUOTE_W_SPACE_DOT(tag.fileName());
+    return;
+  }
+
+  if (tag.open(QIODevice::ReadOnly)) {
+    const bool valid = tag.read(signature.size()) == signature;
+    tag.close();
+
+    if (valid) {
+      return;
+    }
+  }
+
+  const QByteArray contents = signature + QByteArrayLiteral("\n# This file marks an RSS Guard cache directory.\n"
+                                                          "# https://bford.info/cachedir/\n");
+
+  if (!QDir().mkpath(folder) || !tag.open(QIODevice::WriteOnly) || tag.write(contents) != contents.size()) {
+    qWarningNN << LOGSEC_CORE << "Failed to write cache directory tag" << QUOTE_W_SPACE_DOT(tag.fileName());
+  }
 }
 
 QString IOFactory::getSystemFolder(QStandardPaths::StandardLocation location) {

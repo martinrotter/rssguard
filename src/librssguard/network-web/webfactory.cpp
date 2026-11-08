@@ -381,6 +381,7 @@ WebFactory::WebFactory(QObject* parent)
 #endif
 
   m_cookieJar = new CookieJar(this);
+  IOFactory::ensureCacheDirectoryTag(webCacheFolder() + QDir::separator() + QSL("images"));
 }
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -495,19 +496,20 @@ void WebFactory::initializeWebEngineAttributeActions() {
 }
 
 void WebFactory::updateWebEngineProfileSettings() {
-  QString cache_cache = webCacheFolder() + QDir::separator() + QSL("cache");
+  QString cache_cache = webCacheFolder();
 
   if (!QDir().mkpath(cache_cache)) {
     qCriticalNN << LOGSEC_NETWORK << "Failed to create web cache folder" << QUOTE_W_SPACE_DOT(cache_cache);
   }
   else {
-    m_webEngineProfile->setCachePath(webCacheFolder());
+    m_webEngineProfile->setCachePath(cache_cache);
+    IOFactory::ensureCacheDirectoryTag(cache_cache + QDir::separator() + QSL("Cache"));
   }
 
   QString cache_pers = webCacheFolder() + QDir::separator() + QSL("storage");
 
   if (!QDir().mkpath(cache_pers)) {
-    qCriticalNN << LOGSEC_NETWORK << "Failed to create web storage folder" << QUOTE_W_SPACE_DOT(cache_cache);
+    qCriticalNN << LOGSEC_NETWORK << "Failed to create web storage folder" << QUOTE_W_SPACE_DOT(cache_pers);
   }
   else {
     m_webEngineProfile->setPersistentStoragePath(cache_pers);
@@ -527,6 +529,8 @@ QWebEngineProfile* WebFactory::webEngineProfile() const {
 }
 
 void WebFactory::onClearHttpCacheCompleted() {
+  IOFactory::ensureCacheDirectoryTag(webCacheFolder() + QDir::separator() + QSL("Cache"));
+
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        GuiMessage(tr("Web cache cleared"),
                                   tr("Web cache was cleared. List of visited links was cleared too.")),
@@ -561,7 +565,7 @@ void WebFactory::initializeWebEngineProfile() {
   m_webEngineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
   m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
 
-#if QT_VERSION_MAJOR >= 6
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
   connect(m_webEngineProfile,
           &QWebEngineProfile::clearHttpCacheCompleted,
           this,
