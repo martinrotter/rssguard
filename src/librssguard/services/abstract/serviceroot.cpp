@@ -7,6 +7,7 @@
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -697,7 +698,7 @@ void ServiceRoot::requestSyncIn() {
 }
 
 void ServiceRoot::startSyncInTask(std::function<RootItem*()> task) {
-  if (m_syncInRunning) {
+  if (m_syncInRunning || (qApp->feedReader() != nullptr && qApp->feedReader()->isQuitting())) {
     return;
   }
 

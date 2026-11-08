@@ -72,6 +72,10 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
   if (emit_signals) {
     emit cachesSynchronized();
   }
+
+  if (m_stopFetching && !m_isUpdateRunning) {
+    emit stopRequestProcessed();
+  }
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
@@ -567,6 +571,10 @@ void FeedDownloader::finalizeUpdate() {
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
   emit updateFinished(results);
+
+  if (m_stopFetching && !m_isCacheSynchronizationRunning) {
+    emit stopRequestProcessed();
+  }
 }
 
 bool FeedDownloader::isCacheSynchronizationRunning() const {

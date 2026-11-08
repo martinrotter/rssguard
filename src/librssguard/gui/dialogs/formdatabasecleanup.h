@@ -33,6 +33,7 @@ class FormDatabaseCleanup : public QDialog {
     void purgeRequested(const CleanerOrders& which_data);
 
   private:
+    CleanerOrders cleanupOrders() const;
     void loadDatabaseInfo();
 
   private:

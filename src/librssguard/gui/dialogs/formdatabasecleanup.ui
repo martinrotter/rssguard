@@ -94,6 +94,42 @@
     </widget>
    </item>
    <item>
+    <layout class="QHBoxLayout" name="m_layoutAutomaticCleanup">
+     <item>
+      <widget class="QLabel" name="m_lblAutomaticCleanup">
+       <property name="text">
+        <string>Run automatically</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbAutomaticCleanup</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_cmbAutomaticCleanup">
+       <property name="toolTip">
+        <string>Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Never</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>On application startup</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>On application exit</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Database information</string>
@@ -200,6 +236,7 @@
   <tabstop>m_checkShrink</tabstop>
   <tabstop>m_checkRemoveOldMessages</tabstop>
   <tabstop>m_spinDays</tabstop>
+   <tabstop>m_cmbAutomaticCleanup</tabstop>
   <tabstop>m_txtFileSize</tabstop>
   <tabstop>m_txtDatabaseType</tabstop>
  </tabstops>

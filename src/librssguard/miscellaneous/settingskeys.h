@@ -579,6 +579,14 @@ namespace Proxy {
 namespace Database {
   KEY ID;
 
+  KEY CleanupTiming;
+  KEY CleanupRemoveReadMessages;
+  KEY CleanupShrinkDatabase;
+  KEY CleanupRemoveOldMessages;
+  KEY CleanupRemoveRecycleBin;
+  KEY CleanupRemoveStarredMessages;
+  KEY CleanupOlderThanDays;
+
   KEY MySQLHostname;
   VALUE(QString) MySQLHostnameDef;
 

@@ -2,6 +2,7 @@
 
 #include "miscellaneous/applicationlifecycle.h"
 
+#include "database/databasecleaner.h"
 #include "database/databasefactory.h"
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
@@ -56,6 +57,7 @@ void ApplicationLifecycle::onAboutToQuit() {
   }
 
   m_application->feedReader()->quit();
+  DatabaseCleaner::runAutomatically(DatabaseCleaner::Timing::OnExit);
 
   try {
     m_application->database()->driver()->saveDatabase();

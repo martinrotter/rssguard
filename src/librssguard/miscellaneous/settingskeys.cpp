@@ -540,6 +540,14 @@ DVALUE(int) Proxy::PortDef = 80;
 // Database.
 DKEY Database::ID = QSL("database");
 
+DKEY Database::CleanupTiming = QSL("cleanup_timing");
+DKEY Database::CleanupRemoveReadMessages = QSL("cleanup_remove_read_messages");
+DKEY Database::CleanupShrinkDatabase = QSL("cleanup_shrink_database");
+DKEY Database::CleanupRemoveOldMessages = QSL("cleanup_remove_old_messages");
+DKEY Database::CleanupRemoveRecycleBin = QSL("cleanup_remove_recycle_bin");
+DKEY Database::CleanupRemoveStarredMessages = QSL("cleanup_remove_starred_messages");
+DKEY Database::CleanupOlderThanDays = QSL("cleanup_older_than_days");
+
 DKEY Database::MySQLHostname = QSL("mysql_hostname");
 DVALUE(QString) Database::MySQLHostnameDef = QString();
 

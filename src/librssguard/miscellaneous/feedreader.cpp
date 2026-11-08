@@ -126,6 +126,10 @@ void FeedReader::onFeedFetchRequested(const QList<Feed*>& feeds) {
 }
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
+  if (m_quitting) {
+    return;
+  }
+
   if (!m_application->feedUpdateLock()->tryLock()) {
     m_application
       ->showGuiMessage(Notification::Event::GeneralEvent,
@@ -154,6 +158,10 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off
 }
 
 void FeedReader::synchronizeMessageData(const QList<CacheForServiceRoot*>& caches) {
+  if (m_quitting) {
+    return;
+  }
+
   QMetaObject::invokeMethod(m_feedDownloader,
                             "synchronizeAccountCaches",
                             Qt::ConnectionType::QueuedConnection,
@@ -436,6 +444,10 @@ bool FeedReader::isFeedUpdateRunning() const {
   return m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning();
 }
 
+bool FeedReader::isQuitting() const {
+  return m_quitting;
+}
+
 FeedDownloader* FeedReader::feedDownloader() const {
   return m_feedDownloader;
 }
@@ -589,6 +601,12 @@ QList<MessageFilter*> FeedReader::messageFilters() const {
 }
 
 void FeedReader::quit() {
+  if (m_quitting) {
+    return;
+  }
+
+  m_quitting = true;
+
   if (m_autoUpdateTimer->isActive()) {
     m_autoUpdateTimer->stop();
   }
@@ -597,16 +615,17 @@ void FeedReader::quit() {
   if (m_feedDownloader != nullptr) {
     QEventLoop loop(this);
 
-    connect(m_feedDownloader, &FeedDownloader::cachesSynchronized, &loop, &QEventLoop::quit);
     connect(m_feedDownloader, &FeedDownloader::stopRequestProcessed, &loop, &QEventLoop::quit);
-    connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
 
     qDebugNN << LOGSEC_CORE << "Hooked feed fetch stopping signals.";
     QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::QueuedConnection);
     qDebugNN << LOGSEC_CORE << "Requested feed fetch stop.";
-    loop.exec();
+    loop.exec(QEventLoop::ExcludeUserInputEvents);
     qDebugNN << LOGSEC_CORE << "Feed fetch stop was processed.";
     m_feedDownloaderThread->quit();
+    m_feedDownloaderThread->wait();
+    m_feedDownloader = nullptr;
+    m_feedDownloaderThread = nullptr;
     qDebugNN << LOGSEC_CORE << "Feed downloader thread quits.";
   }
 

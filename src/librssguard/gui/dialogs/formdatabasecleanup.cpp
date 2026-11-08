@@ -7,8 +7,6 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/settingskeys.h"
 
 #include <QCloseEvent>
 #include <QDialogButtonBox>
@@ -45,12 +43,19 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
   connect(&m_cleaner, &DatabaseCleaner::purgeFinished, this, &FormDatabaseCleanup::onPurgeFinished);
   connect(&m_cleaner, &DatabaseCleaner::purgeFailed, this, &FormDatabaseCleanup::onPurgeFailed);
 
-  m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
+  const CleanerOrders orders = DatabaseCleaner::loadSettings();
+
+  m_ui->m_checkRemoveReadMessages->setChecked(orders.m_removeReadMessages);
+  m_ui->m_checkShrink->setChecked(orders.m_shrinkDatabase);
+  m_ui->m_checkRemoveOldMessages->setChecked(orders.m_removeOldMessages);
+  m_ui->m_checkRemoveRecycleBin->setChecked(orders.m_removeRecycleBin);
+  m_ui->m_checkRemoveStarredMessages->setChecked(orders.m_removeStarredMessages);
+  m_ui->m_spinDays->setValue(orders.m_barrierForRemovingOldMessagesInDays);
+  updateDaysSuffix(m_ui->m_spinDays->value());
+  m_ui->m_cmbAutomaticCleanup->setCurrentIndex(int(DatabaseCleaner::automaticCleanupTiming()));
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("I am ready."), tr("I am ready."));
 
   loadDatabaseInfo();
-
-  GuiUtilities::restoreState(this, qApp->settings()->value(GROUP(GUI), objectName(), QByteArray()).toByteArray());
 }
 
 void FormDatabaseCleanup::closeEvent(QCloseEvent* event) {
@@ -76,6 +81,13 @@ void FormDatabaseCleanup::updateDaysSuffix(int number) {
 }
 
 void FormDatabaseCleanup::startPurging() {
+  const CleanerOrders orders = cleanupOrders();
+
+  DatabaseCleaner::saveSettings(orders, DatabaseCleaner::Timing(m_ui->m_cmbAutomaticCleanup->currentIndex()));
+  emit purgeRequested(orders);
+}
+
+CleanerOrders FormDatabaseCleanup::cleanupOrders() const {
   CleanerOrders orders;
 
   orders.m_removeRecycleBin = m_ui->m_checkRemoveRecycleBin->isChecked();
@@ -85,7 +97,7 @@ void FormDatabaseCleanup::startPurging() {
   orders.m_shrinkDatabase = m_ui->m_checkShrink->isEnabled() && m_ui->m_checkShrink->isChecked();
   orders.m_removeStarredMessages = m_ui->m_checkRemoveStarredMessages->isChecked();
 
-  emit purgeRequested(orders);
+  return orders;
 }
 
 void FormDatabaseCleanup::onPurgeStarted() {
@@ -126,8 +138,6 @@ void FormDatabaseCleanup::loadDatabaseInfo() {
 }
 
 void FormDatabaseCleanup::hideEvent(QHideEvent* event) {
-  QByteArray state = GuiUtilities::saveState(this);
-
-  qApp->settings()->setValue(GROUP(GUI), objectName(), state);
+  DatabaseCleaner::saveSettings(cleanupOrders(), DatabaseCleaner::Timing(m_ui->m_cmbAutomaticCleanup->currentIndex()));
   QDialog::hideEvent(event);
 }

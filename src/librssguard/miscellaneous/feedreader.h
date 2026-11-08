@@ -48,6 +48,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
     // True if feed update is running right now.
     bool isFeedUpdateRunning() const;
+    bool isQuitting() const;
 
     // Resets global auto-download intervals according to settings
     // and starts/stop the timer as needed.
@@ -113,6 +114,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
     bool m_feedFetchingPaused;
+    bool m_quitting = false;
     QList<QPointer<Feed>> m_feedsRequestedToFetchByAccounts;
 };
 

@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "core/feedsmodel.h"
+#include "database/databasecleaner.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -155,6 +156,11 @@ int main(int argc, char* argv[]) {
     qWarningNN << LOGSEC_CORE << "Another instance of the application is already running. Notifying it.";
     application.finishSplash();
     return EXIT_FAILURE;
+  }
+
+  if (DatabaseCleaner::automaticCleanupTiming() == DatabaseCleaner::Timing::OnStartup) {
+    application.showSplashMessage(Application::tr("Cleaning up database..."));
+    DatabaseCleaner::runAutomatically(DatabaseCleaner::Timing::OnStartup);
   }
 
   application.showSplashMessage(Application::tr("Registering application services..."));
