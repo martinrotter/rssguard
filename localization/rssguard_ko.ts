@@ -63,7 +63,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="111"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>어플리케이션 초기화 중...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="136"/>
@@ -1385,17 +1385,17 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;아이템:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="566"/>
       <source>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;타입:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
       <source>&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;선택 아이템:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="589"/>
