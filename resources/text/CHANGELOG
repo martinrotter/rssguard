@@ -1,6 +1,6 @@
 5.3.0
 -----
-Released on: 2026-11-XX
+Released on: 2026-11-11
 
 Article filtering now supports explicit full-article overwrites with `msg.overwrite = true`. Use this opt-in flag when filter changes must be saved even if an existing article would otherwise be skipped; it also allows replacing stored read and starred states. Regular fetching and "Process checked feeds" now share the same saving policy: manual processing no longer implicitly forces updates or bypasses read-state preservation. The new "Force overwrite of accepted articles" checkbox lets you preview or apply full overwrites in the filter dialog without editing the script. Test previews the local saving decision and expected stored values, while processing reports actual outcomes. Overwrites save the complete writable article, so scripts must preserve any stored values they need. Permanently deleted records remain protected. See the updated article-filter documentation for examples and the clarified settings. (#2490)
 
