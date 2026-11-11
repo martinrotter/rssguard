@@ -32,8 +32,8 @@ target_link_libraries(app PUBLIC
   rssguard
 )
 
-# This executable reuses real application startup and is never installed or shipped.
-if(APPLE AND ENABLE_PACKAGE_SMOKE_TEST)
+# This diagnostic executable reuses real application startup; packaging opts in explicitly.
+if(ENABLE_PACKAGE_SMOKE_TEST)
   add_executable(package_smoke_test
     main.cpp
     ${CMAKE_SOURCE_DIR}/resources/scripts/github-actions/package-smoke-test.cpp
@@ -47,9 +47,12 @@ if(APPLE AND ENABLE_PACKAGE_SMOKE_TEST)
   set_target_properties(package_smoke_test PROPERTIES
     OUTPUT_NAME rssguard-package-smoke
     MACOSX_BUNDLE FALSE
-    BUILD_WITH_INSTALL_RPATH TRUE
-    INSTALL_RPATH "@executable_path/../Frameworks"
   )
+  if(APPLE)
+    set_target_properties(package_smoke_test PROPERTIES
+      BUILD_WITH_INSTALL_RPATH TRUE
+      INSTALL_RPATH "@executable_path/../Frameworks")
+  endif()
 endif()
 
 if(APPLE)
@@ -69,10 +72,12 @@ if(WIN32 AND NOT BUILD_MSYS2)
   install(FILES ${CMAKE_SOURCE_DIR}/resources/graphics/${CMAKE_PROJECT_NAME}.ico
     DESTINATION .
   )
-  install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/scripts/redist/
-    DESTINATION .
-    FILES_MATCHING PATTERN "*.dll"
-  )
+  if(USE_BUNDLED_MSVC_RUNTIME)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/scripts/redist/
+      DESTINATION .
+      FILES_MATCHING PATTERN "*.dll"
+    )
+  endif()
   install(FILES ${CMAKE_SOURCE_DIR}/resources/scripts/clang-format/clang-format.exe
     DESTINATION .
   )

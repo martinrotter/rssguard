@@ -290,3 +290,20 @@ if(ENABLE_BENCHMARKS)
 
   set_tests_properties(benchmark_textfactory PROPERTIES LABELS "benchmark")
 endif()
+
+if(ENABLE_TESTING AND BUILD_XMPP_PLUGIN)
+  add_executable(test_xmpp_pubsub
+    xmpp/test_xmpp_pubsub.cpp
+    ../src/librssguard-xmpp/src/xmppubsubpmanager.cpp
+    ../src/librssguard-xmpp/src/xmppubsubpmanager.h
+    ../src/librssguard-xmpp/src/parsers/atomparser.cpp
+    ../src/librssguard-xmpp/src/parsers/feedparser.cpp
+  )
+  target_compile_definitions(test_xmpp_pubsub PRIVATE RSSGUARD_DLLSPEC=Q_DECL_IMPORT)
+  target_include_directories(test_xmpp_pubsub PRIVATE ../src/librssguard-xmpp ../src)
+  target_link_libraries(test_xmpp_pubsub PRIVATE rssguard QXmpp::QXmpp Qt6::Test)
+  target_compile_features(test_xmpp_pubsub PRIVATE cxx_std_20)
+  add_dependencies(test_xmpp_pubsub rssguard-xmpp)
+  add_test(NAME test_xmpp_pubsub COMMAND test_xmpp_pubsub)
+  set_tests_properties(test_xmpp_pubsub PROPERTIES TIMEOUT 60 ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
+endif()

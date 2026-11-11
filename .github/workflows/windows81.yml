@@ -1,0 +1,50 @@
+name: Windows 8.1 XMPP candidates
+on:
+  workflow_dispatch:
+  push:
+    branches: ['win81-xmpp']
+permissions:
+  contents: read
+jobs:
+  build:
+    concurrency:
+      group: windows81-${{ github.ref }}-${{ matrix.viewer }}
+      cancel-in-progress: true
+    runs-on: windows-2022
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        viewer: [text, web]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26.11'
+      - name: Install the pinned Windows-compatible compiler and CRT
+        shell: pwsh
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products '*' -property installationPath
+          $installer = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\setup.exe"
+          $process = Start-Process $installer -ArgumentList 'modify', '--installPath', "`"$vs`"", '--add', 'Microsoft.VisualStudio.Component.VC.14.38.17.8.x86.x64', '--quiet', '--norestart' -Wait -PassThru
+          if ($process.ExitCode -notin @(0, 3010)) { throw "VS component install failed: $($process.ExitCode)" }
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          toolset: '14.38'
+      - name: Build patched Qt, Go, QXmpp, RSS Guard and validate the package
+        shell: pwsh
+        run: ./resources/scripts/windows81/build.ps1 -Work C:\rg81-${{ matrix.viewer }} -Viewer ${{ matrix.viewer }} -Jobs 4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rssguard-win81-x64-${{ matrix.viewer }}-candidate
+          path: C:\rg81-${{ matrix.viewer }}\rssguard-win81-x64-${{ matrix.viewer }}-candidate.zip
+          if-no-files-found: error
+      - name: Retain logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.viewer }}
+          path: |
+            C:\rg81-${{ matrix.viewer }}\**\CMakeConfigureLog.yaml
+            C:\rg81-${{ matrix.viewer }}\**\LastTest.log

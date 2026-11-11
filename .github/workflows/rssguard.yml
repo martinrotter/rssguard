@@ -3,7 +3,7 @@ name: rssguard
 
 on:
   push:
-    branches: ["*"]
+    branches: ["*", "!win81-xmpp"]
     tags: ["*"]
 
 env:

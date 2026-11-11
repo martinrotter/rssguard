@@ -74,7 +74,9 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
     connect(m_pubSubManager,
             &PubSubManager::realTimeArticleObtained,
             m_root,
-            &::XmppServiceRoot::onRealTimeArticleObtained);
+            [this](const QString& service, const QString& node, const Message& message) {
+              m_root->onRealTimeArticleObtained(service, node, message);
+            });
     connect(m_mamManager,
             &QXmppMamManager::resultsRecieved,
             this,

@@ -1,0 +1,2340 @@
+--- a/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/page_allocator_internals_win.h
++++ b/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/page_allocator_internals_win.h
+@@ -227,9 +227,21 @@
+ 
+ void DiscardSystemPagesInternal(uintptr_t address, size_t length) {
+   void* ptr = reinterpret_cast<void*>(address);
++  // Windows 7 backport: DiscardVirtualMemory() was introduced in Windows 8.1.
++  // Resolve it at run time so the import does not keep the library from
++  // loading; where it is missing the MEM_RESET path below is used, which is
++  // what Windows 7 always used and which makes the same guarantees.
++  using DiscardVirtualMemoryFunction =
++      DWORD(WINAPI*)(PVOID virtualAddress, SIZE_T size);
++  static DiscardVirtualMemoryFunction discard_virtual_memory =
++      reinterpret_cast<DiscardVirtualMemoryFunction>(::GetProcAddress(
++          ::GetModuleHandle(L"Kernel32.dll"), "DiscardVirtualMemory"));
++
+   // Use DiscardVirtualMemory when available because it releases faster than
+   // MEM_RESET.
+-  DWORD ret = DiscardVirtualMemory(ptr, length);
++  DWORD ret = ERROR_NOT_SUPPORTED;
++  if (discard_virtual_memory)
++    ret = discard_virtual_memory(ptr, length);
+   // DiscardVirtualMemory is buggy in Win10 SP0, so fall back to MEM_RESET on
+   // failure.
+   if (ret) {
+--- a/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_base/rand_util_win.cc
++++ b/src/3rdparty/chromium/base/allocator/partition_allocator/src/partition_alloc/partition_alloc_base/rand_util_win.cc
+@@ -21,6 +21,29 @@
+ 
+ namespace partition_alloc::internal::base {
+ 
++namespace {
++
++// Windows 7 backport: ProcessPrng was introduced in Windows 10. bcryptprimitives.dll
++// itself is present on Windows 7, so LoadLibraryW() below succeeds and only the export
++// lookup fails - which the original code turns into a CHECK failure, aborting the
++// process (int 3) the first time random bytes are requested.
++//
++// Fall back to RtlGenRandom(), which is what Chromium used before it switched to
++// ProcessPrng. That switch was made to avoid opening a handle to \Device\KsecDD in the
++// sandboxed renderer (see the comment in RandBytes() below); nothing here depends on it.
++using RtlGenRandomFn = BOOLEAN(WINAPI*)(PVOID RandomBuffer, ULONG RandomBufferLength);
++
++RtlGenRandomFn GetRtlGenRandom() {
++  HMODULE hmod = LoadLibraryW(L"advapi32.dll");
++  PA_BASE_CHECK(hmod);
++  RtlGenRandomFn rtl_gen_random_fn =
++      reinterpret_cast<RtlGenRandomFn>(GetProcAddress(hmod, "SystemFunction036"));
++  PA_BASE_CHECK(rtl_gen_random_fn);
++  return rtl_gen_random_fn;
++}
++
++}  // namespace
++
+ void RandBytes(void* output, size_t output_length) {
+   // Import bcryptprimitives directly rather than cryptbase to avoid opening a
+   // handle to \\Device\KsecDD in the renderer.
+@@ -28,13 +51,34 @@
+   // startup, but this should be safe as the process will be single-threaded
+   // when this first runs.
+   static decltype(&ProcessPrng) process_prng_fn = nullptr;
+-  if (!process_prng_fn) {
++  // Windows 7 backport: only set when ProcessPrng is unavailable.
++  static RtlGenRandomFn rtl_gen_random_fn = nullptr;
++
++  if (!process_prng_fn && !rtl_gen_random_fn) {
+     HMODULE hmod = LoadLibraryW(L"bcryptprimitives.dll");
+     PA_BASE_CHECK(hmod);
+     process_prng_fn = reinterpret_cast<decltype(&ProcessPrng)>(
+         GetProcAddress(hmod, "ProcessPrng"));
+-    PA_BASE_CHECK(process_prng_fn);
++    if (!process_prng_fn) {
++      rtl_gen_random_fn = GetRtlGenRandom();
++    }
+   }
++
++  if (rtl_gen_random_fn) {
++    // Windows 7 backport: RtlGenRandom takes a ULONG length, so feed it in chunks.
++    BYTE* cursor = static_cast<BYTE*>(output);
++    size_t remaining = output_length;
++    while (remaining > 0) {
++      const ULONG chunk = static_cast<ULONG>(
++          std::min<size_t>(remaining, std::numeric_limits<ULONG>::max()));
++      const BOOLEAN success = rtl_gen_random_fn(cursor, chunk);
++      PA_BASE_CHECK(success);
++      cursor += chunk;
++      remaining -= chunk;
++    }
++    return;
++  }
++
+   BOOL success = process_prng_fn(static_cast<BYTE*>(output), output_length);
+   // ProcessPrng is documented to always return TRUE.
+   PA_BASE_CHECK(success);
+--- a/src/3rdparty/chromium/base/files/file_util_win.cc
++++ b/src/3rdparty/chromium/base/files/file_util_win.cc
+@@ -1118,10 +1118,33 @@
+   return false;
+ }
+ 
++namespace {
++
++// Windows 7 backport: ::PrefetchVirtualMemory() is only available on Windows 8
++// and above, so check for the function's presence dynamically as Chromium did
++// up to 109.0.5414.120. Where it is missing PreReadFileSlow() is used, which
++// warms the same pages through a plain sequential read.
++using PrefetchVirtualMemoryPtr = decltype(&::PrefetchVirtualMemory);
++
++// Returns null if ::PrefetchVirtualMemory() is not available.
++PrefetchVirtualMemoryPtr GetPrefetchVirtualMemoryPtr() {
++  HMODULE kernel32_dll = ::GetModuleHandleA("kernel32.dll");
++  return reinterpret_cast<PrefetchVirtualMemoryPtr>(
++      GetProcAddress(kernel32_dll, "PrefetchVirtualMemory"));
++}
++
++}  // namespace
++
+ bool PreReadFile(const FilePath& file_path,
+                  bool is_executable,
+                  int64_t max_bytes) {
+   DCHECK_GE(max_bytes, 0);
++
++  static PrefetchVirtualMemoryPtr prefetch_virtual_memory =
++      GetPrefetchVirtualMemoryPtr();
++
++  if (prefetch_virtual_memory == nullptr)
++    return internal::PreReadFileSlow(file_path, max_bytes);
+ 
+   if (max_bytes == 0) {
+     // ::PrefetchVirtualMemory() fails when asked to read zero bytes.
+@@ -1145,7 +1168,7 @@
+   // simple data file read, more from a RAM perspective than CPU. This is
+   // because reading the file as data results in double mapping to
+   // Image/executable pages for all pages of code executed.
+-  if (!::PrefetchVirtualMemory(::GetCurrentProcess(),
++  if (!prefetch_virtual_memory(::GetCurrentProcess(),
+                                /*NumberOfEntries=*/1, &address_range,
+                                /*Flags=*/0)) {
+     return internal::PreReadFileSlow(file_path, max_bytes);
+--- a/src/3rdparty/chromium/base/memory/discardable_shared_memory.cc
++++ b/src/3rdparty/chromium/base/memory/discardable_shared_memory.cc
+@@ -422,11 +422,23 @@
+ #elif BUILDFLAG(IS_WIN)
+   // On Windows, discarded pages are not returned to the system immediately and
+   // not guaranteed to be zeroed when returned to the application.
++  // Windows 7 backport: DiscardVirtualMemory() was introduced in Windows 8.1,
++  // so resolve it at run time as Chromium did up to 109.0.5414.120. Where it is
++  // missing the MEM_RESET path below is taken, which is what Windows 7 always
++  // used and which satisfies the same contract (contents become undefined).
++  using DiscardVirtualMemoryFunction =
++      DWORD(WINAPI*)(PVOID virtualAddress, SIZE_T size);
++  static DiscardVirtualMemoryFunction discard_virtual_memory =
++      reinterpret_cast<DiscardVirtualMemoryFunction>(GetProcAddress(
++          GetModuleHandle(L"Kernel32.dll"), "DiscardVirtualMemory"));
++
+   char* address = static_cast<char*>(shared_memory_mapping_.memory()) +
+                   AlignToPageSize(sizeof(SharedState));
+   size_t length = AlignToPageSize(mapped_size_);
+ 
+-  DWORD ret = DiscardVirtualMemory(address, length);
++  DWORD ret = ERROR_NOT_SUPPORTED;
++  if (discard_virtual_memory)
++    ret = discard_virtual_memory(address, length);
+   // DiscardVirtualMemory is buggy in Win10 SP0, so fall back to MEM_RESET on
+   // failure.
+   if (ret != ERROR_SUCCESS) {
+--- a/src/3rdparty/chromium/base/memory/platform_shared_memory_region_win.cc
++++ b/src/3rdparty/chromium/base/memory/platform_shared_memory_region_win.cc
+@@ -14,7 +14,11 @@
+ #include "base/metrics/histogram_functions.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/process/process_handle.h"
++#include "base/rand_util.h"
+ #include "base/strings/string_util.h"
++#include "base/strings/stringprintf.h"
++#include "base/strings/utf_string_conversions.h"
++#include "base/win/windows_version.h"
+ 
+ namespace base::subtle {
+ 
+@@ -73,6 +77,12 @@
+   HANDLE h = CreateFileMapping(INVALID_HANDLE_VALUE, sa, PAGE_READWRITE, 0,
+                                static_cast<DWORD>(rounded_size), name);
+   if (!h) {
++    // Windows 7 backport: the original DPLOG here is compiled out of release
++    // builds, which leaves a failure to allocate shared memory looking exactly
++    // like running out of it - the caller reports OOM and the process dies
++    // without ever saying which call failed or why.
++    PLOG(ERROR) << "CreateFileMapping failed for a " << rounded_size
++                << " byte " << (name ? "named" : "unnamed") << " section";
+     return nullptr;
+   }
+ 
+@@ -85,6 +95,8 @@
+   DCHECK(rv);
+ 
+   if (!success) {
++    PLOG(ERROR) << "DuplicateHandle failed for a " << rounded_size << " byte "
++                << (name ? "named" : "unnamed") << " section";
+     return nullptr;
+   }
+ 
+@@ -211,11 +223,46 @@
+   }
+ 
+   std::u16string name;
++  // Windows 7 backport: restored from Chromium 109.0.5414.120. Windows before
++  // 8.1 ignores the DACL on certain unnamed objects, shared sections among
++  // them, so the empty DACL set above does not actually make a read-only
++  // region read-only: the handle can still be duplicated with FILE_MAP_WRITE.
++  // CheckPlatformHandlePermissionsCorrespondToMode() detects exactly that
++  // mismatch and the CHECK in Take() turns it into a breakpoint, killing the
++  // browser process the first time a region is handed over. Giving the section
++  // a random name makes Windows honour the DACL again. Nothing changes on
++  // Windows 8.1 and later, where the sections stay unnamed as before.
++  if (win::GetVersion() < win::Version::WIN8_1) {
++    uint64_t rand_values[4];
++    RandBytes(&rand_values, sizeof(rand_values));
++    name = ASCIIToUTF16(StringPrintf("CrSharedMem_%016llx%016llx%016llx%016llx",
++                                     rand_values[0], rand_values[1],
++                                     rand_values[2], rand_values[3]));
++    DCHECK(!name.empty());
++  }
++
+   SECURITY_ATTRIBUTES sa = {sizeof(sa), &sd, FALSE};
+   // Ask for the file mapping with reduced permisions to avoid passing the
+   // access control permissions granted by default into unpriviledged process.
+   HANDLE h = CreateFileMappingWithReducedPermissions(
+       &sa, rounded_size, name.empty() ? nullptr : as_wcstr(name));
++  if (h == nullptr && !name.empty()) {
++    // Windows 7 backport: naming the section is what makes the DACL above
++    // count, but a name also has to be creatable, and a locked-down renderer
++    // has very little say over the object namespace. When the named attempt
++    // fails there is nothing to gain by giving up - an unnamed section is
++    // exactly what Windows 8.1 and later use, and the only thing lost is the
++    // kernel enforcing read-only-ness, which this Windows version was not
++    // enforcing before the workaround existed either. Failing here instead
++    // means no shared memory at all, which the caller reports as OOM and which
++    // kills the renderer the moment a page needs a software raster tile.
++    static bool reported = false;
++    if (!reported) {
++      reported = true;
++      LOG(ERROR) << "Windows 7: falling back to unnamed shared memory sections";
++    }
++    h = CreateFileMappingWithReducedPermissions(&sa, rounded_size, nullptr);
++  }
+   if (h == nullptr) {
+     // The error is logged within CreateFileMappingWithReducedPermissions().
+     return {};
+@@ -251,6 +298,23 @@
+   bool expected_read_only = mode == Mode::kReadOnly;
+ 
+   if (is_read_only != expected_read_only) {
++    // Windows 7 backport: before Windows 8.1 the DACL on an unnamed section is
++    // ignored, so a region that is supposed to be read-only really can be
++    // duplicated with write access. Create() names its sections below 8.1 to
++    // make the kernel honour the DACL again, but where that name cannot be
++    // created the section is unnamed and lands here - and the caller turns a
++    // false into a CHECK that takes the whole process down. Accept the
++    // platform's own behaviour instead, loudly and once.
++    if (win::GetVersion() < win::Version::WIN8_1 && !is_read_only &&
++        expected_read_only) {
++      static bool reported = false;
++      if (!reported) {
++        reported = true;
++        LOG(ERROR) << "Windows 7: the kernel is not enforcing this read-only "
++                      "shared memory region; continuing anyway";
++      }
++      return true;
++    }
+     DLOG(ERROR) << "File mapping handle has wrong access rights: it is"
+                 << (is_read_only ? " " : " not ") << "read-only but it should"
+                 << (expected_read_only ? " " : " not ") << "be";
+--- a/src/3rdparty/chromium/base/power_monitor/power_monitor_device_source_win.cc
++++ b/src/3rdparty/chromium/base/power_monitor/power_monitor_device_source_win.cc
+@@ -53,6 +53,33 @@
+   }
+ 
+   ProcessPowerEventHelper(power_event);
++}
++
++// Windows 7 backport: (Un)RegisterSuspendResumeNotification() were introduced
++// in Windows 8, so resolve them at run time as Chromium did up to
++// 109.0.5414.120. On Windows 7 registration is not needed in the first place:
++// WM_POWERBROADCAST/PBT_APMSUSPEND is delivered to every top-level window
++// there, the registration only being required for modern standby machines.
++HPOWERNOTIFY RegisterSuspendResumeNotification(HANDLE hRecipient, DWORD Flags) {
++  const auto register_suspend_resume_notification_ptr =
++      reinterpret_cast<decltype(&::RegisterSuspendResumeNotification)>(
++          ::GetProcAddress(::GetModuleHandle(L"user32.dll"),
++                           "RegisterSuspendResumeNotification"));
++  if (!register_suspend_resume_notification_ptr)
++    return nullptr;
++
++  return register_suspend_resume_notification_ptr(hRecipient, Flags);
++}
++
++BOOL UnregisterSuspendResumeNotification(HPOWERNOTIFY Handle) {
++  const auto unregister_suspend_resume_notification_ptr =
++      reinterpret_cast<decltype(&::UnregisterSuspendResumeNotification)>(
++          ::GetProcAddress(::GetModuleHandle(L"user32.dll"),
++                           "UnregisterSuspendResumeNotification"));
++  if (!unregister_suspend_resume_notification_ptr)
++    return FALSE;
++
++  return unregister_suspend_resume_notification_ptr(Handle);
+ }
+ 
+ }  // namespace
+@@ -116,7 +143,7 @@
+   if (message_hwnd_) {
+     // On machines with modern standby calling RegisterSuspendResumeNotification
+     // is required in order to get the PBT_APMSUSPEND message.
+-    power_notify_handle_ = ::RegisterSuspendResumeNotification(
++    power_notify_handle_ = base::RegisterSuspendResumeNotification(
+         message_hwnd_, DEVICE_NOTIFY_WINDOW_HANDLE);
+   }
+ }
+@@ -124,7 +151,7 @@
+ PowerMonitorDeviceSource::PowerMessageWindow::~PowerMessageWindow() {
+   if (message_hwnd_) {
+     if (power_notify_handle_)
+-      ::UnregisterSuspendResumeNotification(power_notify_handle_);
++      base::UnregisterSuspendResumeNotification(power_notify_handle_);
+ 
+     ::DestroyWindow(message_hwnd_);
+     ::UnregisterClass(kWindowClassName, instance_);
+--- a/src/3rdparty/chromium/base/power_monitor/speed_limit_observer_win.cc
++++ b/src/3rdparty/chromium/base/power_monitor/speed_limit_observer_win.cc
+@@ -24,6 +24,34 @@
+ 
+ // From ntdef.f
+ #define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
++
++// Windows 7 backport: with current Windows SDKs CallNtPowerInformation() is
++// imported from api-ms-win-power-base-l1-1-0.dll, an API set that does not
++// exist on Windows 7 and that keeps the whole library from loading there. The
++// function itself has been exported by powrprof.dll since Windows XP, so load
++// it from there at run time; this is the very same implementation the API set
++// forwards to on newer Windows.
++NTSTATUS CallNtPowerInformationDynamic(POWER_INFORMATION_LEVEL information_level,
++                                       PVOID input_buffer,
++                                       ULONG input_buffer_length,
++                                       PVOID output_buffer,
++                                       ULONG output_buffer_length) {
++  using CallNtPowerInformationFn = NTSTATUS(WINAPI*)(POWER_INFORMATION_LEVEL,
++                                                     PVOID, ULONG, PVOID,
++                                                     ULONG);
++  static const CallNtPowerInformationFn call_nt_power_information_fn = []() {
++    HMODULE powrprof =
++        ::LoadLibraryEx(L"powrprof.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return powrprof ? reinterpret_cast<CallNtPowerInformationFn>(
++                          ::GetProcAddress(powrprof, "CallNtPowerInformation"))
++                    : nullptr;
++  }();
++  if (!call_nt_power_information_fn)
++    return static_cast<NTSTATUS>(0xC00000BBL);  // STATUS_NOT_SUPPORTED
++  return call_nt_power_information_fn(information_level, input_buffer,
++                                      input_buffer_length, output_buffer,
++                                      output_buffer_length);
++}
+ 
+ // We poll for new speed-limit values once every second.
+ constexpr base::TimeDelta kSampleInterval = base::Seconds(1);
+@@ -59,9 +87,9 @@
+ // Returns information about the idleness of the system.
+ bool GetCPUIdleness(int* idleness_percent) {
+   auto info = std::make_unique<SYSTEM_POWER_INFORMATION>();
+-  if (!NT_SUCCESS(CallNtPowerInformation(SystemPowerInformation, nullptr, 0,
+-                                         info.get(),
+-                                         sizeof(SYSTEM_POWER_INFORMATION)))) {
++  if (!NT_SUCCESS(CallNtPowerInformationDynamic(
++          SystemPowerInformation, nullptr, 0, info.get(),
++          sizeof(SYSTEM_POWER_INFORMATION)))) {
+     *idleness_percent = 0;
+     return false;
+   }
+@@ -208,7 +236,7 @@
+   // Populate the PROCESSOR_POWER_INFORMATION structures for all logical CPUs
+   // using the CallNtPowerInformation API.
+   std::vector<PROCESSOR_POWER_INFORMATION> info(num_cpus());
+-  if (!NT_SUCCESS(CallNtPowerInformation(
++  if (!NT_SUCCESS(CallNtPowerInformationDynamic(
+           ProcessorInformation, nullptr, 0, &info[0],
+           static_cast<ULONG>(sizeof(PROCESSOR_POWER_INFORMATION) *
+                              num_cpus())))) {
+--- a/src/3rdparty/chromium/base/process/process_win.cc
++++ b/src/3rdparty/chromium/base/process/process_win.cc
+@@ -286,9 +286,17 @@
+       power_throttling.ControlMask = 0;
+       power_throttling.StateMask = 0;
+     }
+-    bool ret =
+-        ::SetProcessInformation(Handle(), ProcessPowerThrottling,
+-                                &power_throttling, sizeof(power_throttling));
++    // Windows 7 backport: SetProcessInformation() was introduced in Windows 8.
++    // The branch is already gated on Windows 11 or later, so resolving it at
++    // run time only keeps the import out of the load-time table.
++    const auto set_process_information_fn =
++        reinterpret_cast<decltype(&::SetProcessInformation)>(
++            ::GetProcAddress(::GetModuleHandle(L"kernel32.dll"),
++                             "SetProcessInformation"));
++    bool ret = set_process_information_fn &&
++               set_process_information_fn(Handle(), ProcessPowerThrottling,
++                                          &power_throttling,
++                                          sizeof(power_throttling));
+     if (ret == 0) {
+       DPLOG(ERROR) << "Setting process QoS policy fails";
+     }
+--- a/src/3rdparty/chromium/base/rand_util_win.cc
++++ b/src/3rdparty/chromium/base/rand_util_win.cc
+@@ -53,15 +53,39 @@
+ 
+ namespace {
+ 
++// Windows 7 backport: ProcessPrng was introduced in Windows 10.
++// bcryptprimitives.dll itself is present on Windows 7, so LoadLibraryW() below
++// succeeds and only the export lookup fails - which the original code turns
++// into a CHECK failure, aborting the process (int 3) the first time random
++// bytes are requested.
++//
++// Fall back to RtlGenRandom(), which is what Chromium used before it switched
++// to ProcessPrng. That switch was made to avoid opening a handle to
++// \Device\KsecDD in the sandboxed renderer (see the comment below); on
++// Windows 7 that handle is opened during sandbox warmup anyway.
++using RtlGenRandomFn = BOOLEAN(WINAPI*)(PVOID RandomBuffer,
++                                        ULONG RandomBufferLength);
++
++RtlGenRandomFn GetRtlGenRandom() {
++  HMODULE hmod = LoadLibraryW(L"advapi32.dll");
++  CHECK(hmod);
++  RtlGenRandomFn rtl_gen_random_fn =
++      reinterpret_cast<RtlGenRandomFn>(GetProcAddress(hmod,
++                                                      "SystemFunction036"));
++  CHECK(rtl_gen_random_fn);
++  return rtl_gen_random_fn;
++}
++
+ // Import bcryptprimitives!ProcessPrng rather than cryptbase!RtlGenRandom to
+ // avoid opening a handle to \\Device\KsecDD in the renderer.
++// Windows 7 backport: returns null when the export is missing, leaving the
++// caller to use RtlGenRandom() instead of aborting.
+ decltype(&ProcessPrng) GetProcessPrng() {
+   HMODULE hmod = LoadLibraryW(L"bcryptprimitives.dll");
+   CHECK(hmod);
+   decltype(&ProcessPrng) process_prng_fn =
+       reinterpret_cast<decltype(&ProcessPrng)>(
+           GetProcAddress(hmod, "ProcessPrng"));
+-  CHECK(process_prng_fn);
+   return process_prng_fn;
+ }
+ 
+@@ -75,6 +99,23 @@
+   }
+ 
+   static decltype(&ProcessPrng) process_prng_fn = GetProcessPrng();
++  if (!process_prng_fn) {
++    // Windows 7 backport: RtlGenRandom takes a ULONG length, so feed it in
++    // chunks.
++    static RtlGenRandomFn rtl_gen_random_fn = GetRtlGenRandom();
++    BYTE* cursor = static_cast<BYTE*>(output.data());
++    size_t remaining = output.size();
++    while (remaining > 0) {
++      const ULONG chunk = static_cast<ULONG>(
++          std::min<size_t>(remaining, std::numeric_limits<ULONG>::max()));
++      const BOOLEAN success = rtl_gen_random_fn(cursor, chunk);
++      CHECK(success);
++      cursor += chunk;
++      remaining -= chunk;
++    }
++    return;
++  }
++
+   BOOL success =
+       process_prng_fn(static_cast<BYTE*>(output.data()), output.size());
+   // ProcessPrng is documented to always return TRUE.
+--- a/src/3rdparty/chromium/base/task/thread_pool/thread_group.cc
++++ b/src/3rdparty/chromium/base/task/thread_pool/thread_group.cc
+@@ -17,7 +17,9 @@
+ 
+ #if BUILDFLAG(IS_WIN)
+ #include "base/win/com_init_check_hook.h"
++#include "base/win/scoped_com_initializer.h"
+ #include "base/win/scoped_winrt_initializer.h"
++#include "base/win/windows_version.h"
+ #endif
+ 
+ namespace base {
+@@ -446,7 +448,20 @@
+ ThreadGroup::GetScopedWindowsThreadEnvironment(WorkerEnvironment environment) {
+   std::unique_ptr<win::ScopedWindowsThreadEnvironment> scoped_environment;
+   if (environment == WorkerEnvironment::COM_MTA) {
+-    scoped_environment = std::make_unique<win::ScopedWinrtInitializer>();
++    // Windows 7 backport: the version check is restored from Chromium
++    // 109.0.5414.120. ScopedWinrtInitializer calls RoInitialize(), which lives
++    // in combase.dll and therefore cannot work before Windows 8 - so on
++    // Windows 7 every thread pool worker that asks for an MTA would end up with
++    // no apartment initialised at all, and anything on those threads that needs
++    // COM fails from then on. Initialising the MTA the classic way through
++    // CoInitializeEx() gives those workers exactly what they asked for, which
++    // is what Chromium did on these systems.
++    if (win::GetVersion() >= win::Version::WIN8) {
++      scoped_environment = std::make_unique<win::ScopedWinrtInitializer>();
++    } else {
++      scoped_environment = std::make_unique<win::ScopedCOMInitializer>(
++          win::ScopedCOMInitializer::kMTA);
++    }
+ 
+     // TODO(crbug.com/1498668): rollback the change or replace it with a CHECK
+     // before closing the bug.
+--- a/src/3rdparty/chromium/base/threading/platform_thread_win.cc
++++ b/src/3rdparty/chromium/base/threading/platform_thread_win.cc
+@@ -379,6 +379,18 @@
+ 
+ namespace {
+ 
++// Windows 7 backport: SetThreadInformation() was introduced in Windows 8, so
++// resolve it at run time as Chromium did up to 109.0.5414.120. Both features it
++// is used for here — thread memory priority and EcoQoS power throttling — do
++// not exist on Windows 7, and both call sites already treat failure as an
++// expected outcome.
++decltype(&::SetThreadInformation) GetSetThreadInformationFunction() {
++  static const auto set_thread_information_fn =
++      reinterpret_cast<decltype(&::SetThreadInformation)>(::GetProcAddress(
++          ::GetModuleHandle(L"kernel32.dll"), "SetThreadInformation"));
++  return set_thread_information_fn;
++}
++
+ void SetCurrentThreadPriority(ThreadType thread_type,
+                               MessagePumpType pump_type_hint) {
+   if (thread_type == ThreadType::kCompositing &&
+@@ -444,9 +456,11 @@
+     // Override the memory priority.
+     MEMORY_PRIORITY_INFORMATION memory_priority{.MemoryPriority =
+                                                     MEMORY_PRIORITY_NORMAL};
++    const auto set_thread_information_fn = GetSetThreadInformationFunction();
+     [[maybe_unused]] const BOOL memory_priority_success =
+-        SetThreadInformation(thread_handle, ::ThreadMemoryPriority,
+-                             &memory_priority, sizeof(memory_priority));
++        set_thread_information_fn &&
++        set_thread_information_fn(thread_handle, ::ThreadMemoryPriority,
++                                  &memory_priority, sizeof(memory_priority));
+     DPLOG_IF(ERROR, !memory_priority_success)
+         << "Set thread memory priority failed.";
+   }
+@@ -490,9 +504,12 @@
+       .StateMask =
+           desire_ecoqos ? THREAD_POWER_THROTTLING_EXECUTION_SPEED : 0ul,
+   };
+-  [[maybe_unused]] const BOOL success = ::SetThreadInformation(
+-      ::GetCurrentThread(), ::ThreadPowerThrottling,
+-      &thread_power_throttling_state, sizeof(thread_power_throttling_state));
++  const auto set_thread_information_fn = GetSetThreadInformationFunction();
++  [[maybe_unused]] const BOOL success =
++      set_thread_information_fn &&
++      set_thread_information_fn(::GetCurrentThread(), ::ThreadPowerThrottling,
++                                &thread_power_throttling_state,
++                                sizeof(thread_power_throttling_state));
+   // Failure is expected on versions of Windows prior to RS3.
+   DPLOG_IF(ERROR, !success && win::GetVersion() >= win::Version::WIN10_RS3)
+       << "Failed to set EcoQoS to " << std::boolalpha << desire_ecoqos;
+--- a/src/3rdparty/chromium/base/time/time_win.cc
++++ b/src/3rdparty/chromium/base/time/time_win.cc
+@@ -646,8 +646,47 @@
+ 
+ namespace subtle {
+ LiveTicks LiveTicksNowIgnoringOverride() {
+-  ULONGLONG unbiased_interrupt_time;
+-  QueryUnbiasedInterruptTimePrecise(&unbiased_interrupt_time);
++  ULONGLONG unbiased_interrupt_time = 0;
++  // Windows 7 backport: QueryUnbiasedInterruptTimePrecise() only exists from
++  // Windows 10 on and is imported through api-ms-win-core-realtime-l1-1-1.dll,
++  // which is not present on Windows 7. Resolve it at run time and fall back to
++  // QueryUnbiasedInterruptTime(), which has been in kernel32 since Windows 7
++  // and reports the same unbiased interrupt time in the same units of 100
++  // nanoseconds, only at timer-tick rather than interpolated resolution.
++  using QueryUnbiasedInterruptTimePreciseFn = VOID(WINAPI*)(PULONGLONG);
++  using QueryUnbiasedInterruptTimeFn = BOOLEAN(WINAPI*)(PULONGLONG);
++  struct Resolved {
++    QueryUnbiasedInterruptTimePreciseFn precise = nullptr;
++    QueryUnbiasedInterruptTimeFn coarse = nullptr;
++  };
++  static const Resolved resolved = []() {
++    Resolved result;
++    // The precise variant is exported by KernelBase.dll, the coarse one by
++    // kernel32.dll; both modules are always loaded already.
++    if (HMODULE kernelbase = ::GetModuleHandle(L"kernelbase.dll")) {
++      result.precise = reinterpret_cast<QueryUnbiasedInterruptTimePreciseFn>(
++          ::GetProcAddress(kernelbase, "QueryUnbiasedInterruptTimePrecise"));
++    }
++    HMODULE kernel32 = ::GetModuleHandle(L"kernel32.dll");
++    if (!result.precise && kernel32) {
++      result.precise = reinterpret_cast<QueryUnbiasedInterruptTimePreciseFn>(
++          ::GetProcAddress(kernel32, "QueryUnbiasedInterruptTimePrecise"));
++    }
++    if (kernel32) {
++      result.coarse = reinterpret_cast<QueryUnbiasedInterruptTimeFn>(
++          ::GetProcAddress(kernel32, "QueryUnbiasedInterruptTime"));
++    }
++    return result;
++  }();
++
++  if (resolved.precise) {
++    resolved.precise(&unbiased_interrupt_time);
++  } else if (resolved.coarse) {
++    resolved.coarse(&unbiased_interrupt_time);
++  } else {
++    // Neither is available: report biased time rather than a zero clock.
++    unbiased_interrupt_time = ::GetTickCount64() * 10000ULL;
++  }
+   // QueryUnbiasedInterruptTimePrecise gets the interrupt time in system time
+   // units of 100 nanoseconds.
+   return LiveTicks() + Nanoseconds(unbiased_interrupt_time * 100);
+--- a/src/3rdparty/chromium/base/trace_event/trace_logging_minimal_win.cc
++++ b/src/3rdparty/chromium/base/trace_event/trace_logging_minimal_win.cc
+@@ -83,9 +83,20 @@
+   if (status != ERROR_SUCCESS)
+     return status;
+ 
++  // Windows 7 backport: EventSetInformation() was introduced in Windows 8, so
++  // resolve it at run time. Where it is missing the provider traits simply are
++  // not registered, which is exactly the "best-effort" outcome this call
++  // already tolerates; EventRegister()/EventWrite() keep working.
++  const auto event_set_information_ptr =
++      reinterpret_cast<decltype(&::EventSetInformation)>(
++          ::GetProcAddress(::GetModuleHandle(L"advapi32.dll"),
++                           "EventSetInformation"));
++  if (!event_set_information_ptr)
++    return ERROR_SUCCESS;
++
+   // Best-effort, ignore failure.
+-  return ::EventSetInformation(reg_handle_, EventProviderSetTraits,
+-                               provider_metadata_, provider_metadata_size_);
++  return event_set_information_ptr(reg_handle_, EventProviderSetTraits,
++                                   provider_metadata_, provider_metadata_size_);
+ }
+ 
+ bool TlmProvider::IsEnabled() const noexcept {
+--- a/src/3rdparty/chromium/base/win/core_winrt_util.cc
++++ b/src/3rdparty/chromium/base/win/core_winrt_util.cc
+@@ -4,16 +4,62 @@
+ 
+ #include "base/win/core_winrt_util.h"
+ 
++#include <windows.h>
++
++#include "base/threading/scoped_thread_priority.h"
++
++namespace {
++
++// Windows 7 backport: these entry points are exported by combase.dll, which is
++// not present on Windows 7. Calling them through the api-ms-win-core-winrt-*
++// import libraries puts them in the load-time import table and keeps the whole
++// library from loading there. Resolve them at run time instead, exactly as
++// Chromium did up to 109.0.5414.120, so that on Windows 8 and later the same
++// functions are used as before and on Windows 7 the WinRT-backed features
++// report themselves unavailable through their existing error paths.
++FARPROC LoadComBaseFunctionForCoreWinRTUtil(const char* function_name) {
++  static HMODULE const handle = []() {
++    // Mitigate the issues caused by loading DLLs on a background thread
++    // (http://crbug/973868).
++    SCOPED_MAY_LOAD_LIBRARY_AT_BACKGROUND_PRIORITY();
++    return ::LoadLibraryEx(L"combase.dll", nullptr,
++                           LOAD_LIBRARY_SEARCH_SYSTEM32);
++  }();
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++decltype(&::RoActivateInstance) GetRoActivateInstanceFunction() {
++  static decltype(&::RoActivateInstance) const function =
++      reinterpret_cast<decltype(&::RoActivateInstance)>(
++          LoadComBaseFunctionForCoreWinRTUtil("RoActivateInstance"));
++  return function;
++}
++
++decltype(&::RoGetActivationFactory) GetRoGetActivationFactoryFunction() {
++  static decltype(&::RoGetActivationFactory) const function =
++      reinterpret_cast<decltype(&::RoGetActivationFactory)>(
++          LoadComBaseFunctionForCoreWinRTUtil("RoGetActivationFactory"));
++  return function;
++}
++
++}  // namespace
++
+ namespace base::win {
+ 
+ HRESULT RoGetActivationFactory(HSTRING class_id,
+                                const IID& iid,
+                                void** out_factory) {
+-  return ::RoGetActivationFactory(class_id, iid, out_factory);
++  auto get_factory_func = GetRoGetActivationFactoryFunction();
++  if (!get_factory_func)
++    return E_FAIL;
++  return get_factory_func(class_id, iid, out_factory);
+ }
+ 
+ HRESULT RoActivateInstance(HSTRING class_id, IInspectable** instance) {
+-  return ::RoActivateInstance(class_id, instance);
++  auto activate_instance_func = GetRoActivateInstanceFunction();
++  if (!activate_instance_func)
++    return E_FAIL;
++  return activate_instance_func(class_id, instance);
+ }
+ 
+ }  // namespace base::win
+--- a/src/3rdparty/chromium/base/win/hstring_reference.cc
++++ b/src/3rdparty/chromium/base/win/hstring_reference.cc
+@@ -12,13 +12,41 @@
+ #include "base/check_op.h"
+ #include "base/numerics/safe_conversions.h"
+ 
+-namespace base::win {
++namespace base {
++namespace {
++
++// Windows 7 backport: WindowsCreateStringReference() is exported by
++// combase.dll, which does not exist on Windows 7. Resolve it at run time, as
++// Chromium did up to 109.0.5414.120, so the import does not keep the library
++// from loading. On Windows 8 and later the same function is called as before.
++decltype(&::WindowsCreateStringReference) GetWindowsCreateStringReference() {
++  static auto const create_string_reference_func =
++      []() -> decltype(&::WindowsCreateStringReference) {
++    const HMODULE handle =
++        ::LoadLibraryEx(L"combase.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    if (handle) {
++      return reinterpret_cast<decltype(&::WindowsCreateStringReference)>(
++          ::GetProcAddress(handle, "WindowsCreateStringReference"));
++    }
++    return nullptr;
++  }();
++  return create_string_reference_func;
++}
++
++}  // namespace
++
++namespace win {
+ 
+ HStringReference::HStringReference(const wchar_t* str, size_t length) {
+   // String must be null terminated for WindowsCreateStringReference.
+   // nullptr str is OK so long as the length is 0.
+   DCHECK(str ? str[length] == L'\0' : length == 0);
+-  const HRESULT hr = ::WindowsCreateStringReference(
++  auto create_string_reference_func = GetWindowsCreateStringReference();
++  // Windows 7 backport: leaves the instance holding a null HSTRING, which is
++  // what every WinRT call this feeds into already treats as a failure.
++  if (!create_string_reference_func)
++    return;
++  const HRESULT hr = create_string_reference_func(
+       str, checked_cast<UINT32>(length), &hstring_header_, &hstring_);
+   DCHECK_EQ(hr, S_OK);
+ }
+@@ -26,4 +54,5 @@
+ HStringReference::HStringReference(const wchar_t* str)
+     : HStringReference(str, str ? wcslen(str) : 0) {}
+ 
+-}  // namespace base::win
++}  // namespace win
++}  // namespace base
+--- a/src/3rdparty/chromium/base/win/scoped_hstring.cc
++++ b/src/3rdparty/chromium/base/win/scoped_hstring.cc
+@@ -3,6 +3,8 @@
+ // found in the LICENSE file.
+ 
+ #include "base/win/scoped_hstring.h"
++
++#include <windows.h>
+ 
+ #include <winstring.h>
+ 
+@@ -19,11 +21,75 @@
+ 
+ namespace base {
+ 
++namespace {
++
++// Windows 7 backport: the HSTRING functions are exported by combase.dll, which
++// does not exist on Windows 7. Importing them through
++// api-ms-win-core-winrt-string-l1-1-0.dll keeps the whole library from loading
++// there, so resolve them at run time as Chromium did up to 109.0.5414.120.
++// On Windows 8 and later the very same functions are called as before.
++FARPROC LoadComBaseFunctionForScopedHString(const char* function_name) {
++  static HMODULE const handle =
++      ::LoadLibraryEx(L"combase.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++decltype(&::WindowsCreateString) GetWindowsCreateString() {
++  static decltype(&::WindowsCreateString) const function =
++      reinterpret_cast<decltype(&::WindowsCreateString)>(
++          LoadComBaseFunctionForScopedHString("WindowsCreateString"));
++  return function;
++}
++
++decltype(&::WindowsDeleteString) GetWindowsDeleteString() {
++  static decltype(&::WindowsDeleteString) const function =
++      reinterpret_cast<decltype(&::WindowsDeleteString)>(
++          LoadComBaseFunctionForScopedHString("WindowsDeleteString"));
++  return function;
++}
++
++decltype(&::WindowsGetStringRawBuffer) GetWindowsGetStringRawBuffer() {
++  static decltype(&::WindowsGetStringRawBuffer) const function =
++      reinterpret_cast<decltype(&::WindowsGetStringRawBuffer)>(
++          LoadComBaseFunctionForScopedHString("WindowsGetStringRawBuffer"));
++  return function;
++}
++
++HRESULT WindowsCreateString(const wchar_t* src,
++                            uint32_t len,
++                            HSTRING* out_hstr) {
++  decltype(&::WindowsCreateString) create_string_func =
++      GetWindowsCreateString();
++  if (!create_string_func)
++    return E_FAIL;
++  return create_string_func(src, len, out_hstr);
++}
++
++HRESULT WindowsDeleteString(HSTRING hstr) {
++  decltype(&::WindowsDeleteString) delete_string_func =
++      GetWindowsDeleteString();
++  if (!delete_string_func)
++    return E_FAIL;
++  return delete_string_func(hstr);
++}
++
++const wchar_t* WindowsGetStringRawBuffer(HSTRING hstr, uint32_t* out_len) {
++  decltype(&::WindowsGetStringRawBuffer) get_string_raw_buffer_func =
++      GetWindowsGetStringRawBuffer();
++  if (!get_string_raw_buffer_func) {
++    *out_len = 0;
++    return nullptr;
++  }
++  return get_string_raw_buffer_func(hstr, out_len);
++}
++
++}  // namespace
++
+ namespace internal {
+ 
+ // static
+ void ScopedHStringTraits::Free(HSTRING hstr) {
+-  ::WindowsDeleteString(hstr);
++  base::WindowsDeleteString(hstr);
+ }
+ 
+ }  // namespace internal
+@@ -35,8 +101,8 @@
+ // static
+ ScopedHString ScopedHString::Create(std::wstring_view str) {
+   HSTRING hstr;
+-  HRESULT hr = ::WindowsCreateString(str.data(),
+-                                     checked_cast<UINT32>(str.length()), &hstr);
++  HRESULT hr = base::WindowsCreateString(
++      str.data(), checked_cast<UINT32>(str.length()), &hstr);
+   if (SUCCEEDED(hr))
+     return ScopedHString(hstr);
+ 
+@@ -45,6 +111,13 @@
+     // sizeof(HSTRING_HEADER) as well.
+     base::TerminateBecauseOutOfMemory((str.length() + 1) * sizeof(wchar_t));
+   }
++
++  // Windows 7 backport: without combase.dll no HSTRING can ever be created.
++  // That is an expected state there rather than a programming error, and every
++  // caller reaches it through code that already fails gracefully, so report it
++  // as an empty instance instead of an unreachable condition.
++  if (!GetWindowsCreateString())
++    return ScopedHString(nullptr);
+ 
+   // This should not happen at runtime. Otherwise we could silently pass nullptr
+   // or an empty string to downstream code.
+@@ -60,7 +133,9 @@
+ // static
+ std::wstring_view ScopedHString::Get() const {
+   UINT32 length = 0;
+-  const wchar_t* buffer = ::WindowsGetStringRawBuffer(get(), &length);
++  const wchar_t* buffer = base::WindowsGetStringRawBuffer(get(), &length);
++  if (!buffer)
++    return std::wstring_view();
+   return std::wstring_view(buffer, length);
+ }
+ 
+--- a/src/3rdparty/chromium/base/win/scoped_winrt_initializer.cc
++++ b/src/3rdparty/chromium/base/win/scoped_winrt_initializer.cc
+@@ -4,15 +4,64 @@
+ 
+ #include "base/win/scoped_winrt_initializer.h"
+ 
++#include <windows.h>
++
+ #include <roapi.h>
+ 
+ #include "base/check_op.h"
++#include "base/threading/scoped_thread_priority.h"
+ #include "base/win/com_init_util.h"
+ 
+ namespace base::win {
+ 
++namespace {
++
++// Windows 7 backport: RoInitialize()/RoUninitialize() live in combase.dll,
++// which does not exist on Windows 7. Resolve them at run time, as Chromium did
++// up to 109.0.5414.120. When they are missing the initializer simply fails,
++// which is a state every caller already handles through Succeeded().
++FARPROC LoadComBaseFunctionForWinrtInitializer(const char* function_name) {
++  static HMODULE const handle = []() {
++    // Mitigate the issues caused by loading DLLs on a background thread
++    // (http://crbug/973868).
++    SCOPED_MAY_LOAD_LIBRARY_AT_BACKGROUND_PRIORITY();
++    return ::LoadLibraryEx(L"combase.dll", nullptr,
++                           LOAD_LIBRARY_SEARCH_SYSTEM32);
++  }();
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++decltype(&::RoInitialize) GetRoInitializeFunction() {
++  static decltype(&::RoInitialize) const function =
++      reinterpret_cast<decltype(&::RoInitialize)>(
++          LoadComBaseFunctionForWinrtInitializer("RoInitialize"));
++  return function;
++}
++
++decltype(&::RoUninitialize) GetRoUninitializeFunction() {
++  static decltype(&::RoUninitialize) const function =
++      reinterpret_cast<decltype(&::RoUninitialize)>(
++          LoadComBaseFunctionForWinrtInitializer("RoUninitialize"));
++  return function;
++}
++
++HRESULT CallRoInitialize(RO_INIT_TYPE init_type) {
++  auto ro_initialize_func = GetRoInitializeFunction();
++  if (!ro_initialize_func)
++    return E_FAIL;
++  return ro_initialize_func(init_type);
++}
++
++void CallRoUninitialize() {
++  auto ro_uninitialize_func = GetRoUninitializeFunction();
++  if (ro_uninitialize_func)
++    ro_uninitialize_func();
++}
++
++}  // namespace
++
+ ScopedWinrtInitializer::ScopedWinrtInitializer()
+-    : hr_(::RoInitialize(RO_INIT_MULTITHREADED)) {
++    : hr_(CallRoInitialize(RO_INIT_MULTITHREADED)) {
+   DCHECK_CALLED_ON_VALID_THREAD(thread_checker_);
+ #if DCHECK_IS_ON()
+   if (SUCCEEDED(hr_))
+@@ -25,7 +74,7 @@
+ ScopedWinrtInitializer::~ScopedWinrtInitializer() {
+   DCHECK_CALLED_ON_VALID_THREAD(thread_checker_);
+   if (SUCCEEDED(hr_))
+-    ::RoUninitialize();
++    CallRoUninitialize();
+ }
+ 
+ bool ScopedWinrtInitializer::Succeeded() const {
+--- a/src/3rdparty/chromium/base/win/win_util.cc
++++ b/src/3rdparty/chromium/base/win/win_util.cc
+@@ -242,8 +242,10 @@
+   ScopedHString view_settings_guid = ScopedHString::Create(
+       RuntimeClass_Windows_UI_ViewManagement_UIViewSettings);
+   Microsoft::WRL::ComPtr<IUIViewSettingsInterop> view_settings_interop;
+-  HRESULT hr = ::RoGetActivationFactory(view_settings_guid.get(),
+-                                        IID_PPV_ARGS(&view_settings_interop));
++  // Windows 7 backport: go through the base::win wrapper, which resolves the
++  // WinRT entry point out of combase.dll at run time instead of importing it.
++  HRESULT hr = base::win::RoGetActivationFactory(
++      view_settings_guid.get(), IID_PPV_ARGS(&view_settings_interop));
+   if (FAILED(hr))
+     return false;
+ 
+@@ -606,11 +608,21 @@
+ 
+ bool IsUser32AndGdi32Available() {
+   static auto is_user32_and_gdi32_available = []() {
++    // Windows 7 backport: GetProcessMitigationPolicy() was introduced in
++    // Windows 8. Resolve it at run time; where it is missing, win32k syscalls
++    // cannot be disabled at all, so user32 and gdi32 are always available.
++    const auto get_process_mitigation_policy_func =
++        reinterpret_cast<decltype(&::GetProcessMitigationPolicy)>(
++            ::GetProcAddress(::GetModuleHandle(L"kernel32.dll"),
++                             "GetProcessMitigationPolicy"));
++    if (!get_process_mitigation_policy_func)
++      return true;
++
+     // If win32k syscalls aren't disabled, then user32 and gdi32 are available.
+     PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY policy = {};
+-    if (::GetProcessMitigationPolicy(GetCurrentProcess(),
+-                                     ProcessSystemCallDisablePolicy, &policy,
+-                                     sizeof(policy))) {
++    if (get_process_mitigation_policy_func(GetCurrentProcess(),
++                                           ProcessSystemCallDisablePolicy,
++                                           &policy, sizeof(policy))) {
+       return policy.DisallowWin32kSystemCalls == 0;
+     }
+ 
+@@ -682,8 +694,19 @@
+     return;
+ 
+   // Fall back to per-monitor DPI for older versions of Win10.
++  // Windows 7 backport: SetProcessDpiAwareness() is exported by shcore.dll,
++  // which only exists from Windows 8.1 on, so resolve it at run time. When it
++  // is missing the predecessor below is used, which is all Windows 7 supports.
+   PROCESS_DPI_AWARENESS process_dpi_awareness = PROCESS_PER_MONITOR_DPI_AWARE;
+-  if (!::SetProcessDpiAwareness(process_dpi_awareness)) {
++  const auto set_process_dpi_awareness_func = []() {
++    HMODULE shcore =
++        ::LoadLibraryEx(L"shcore.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return shcore ? reinterpret_cast<decltype(&::SetProcessDpiAwareness)>(
++                        ::GetProcAddress(shcore, "SetProcessDpiAwareness"))
++                  : nullptr;
++  }();
++  if (!set_process_dpi_awareness_func ||
++      !set_process_dpi_awareness_func(process_dpi_awareness)) {
+     // For windows versions where SetProcessDpiAwareness fails, try its
+     // predecessor.
+     BOOL result = ::SetProcessDPIAware();
+--- a/src/3rdparty/chromium/content/browser/renderer_host/dwrite_font_proxy_impl_win.cc
++++ b/src/3rdparty/chromium/content/browser/renderer_host/dwrite_font_proxy_impl_win.cc
+@@ -556,19 +556,35 @@
+     return;
+   }
+ 
+-  // QueryInterface for IDWriteFactory2. This should succeed since we only
+-  // support >= Win10.
++  // Windows 7 backport: the comments and DCHECKs that used to be here claimed
++  // both queries must succeed "since we only support >= Win10". They do not on
++  // Windows 7: IDWriteFactory2 arrived with Windows 8.1 and IDWriteFactory3
++  // with Windows 10. DCHECK compiles out in release builds, so the empty
++  // factory3_ went straight into GetLocalFontCollection() below and faulted on
++  // its first virtual call, taking the browser process down as soon as a page
++  // needed fonts. The wording below is the one Chromium used while it still
++  // supported these systems, up to 109.0.5414.120.
++
++  // QueryInterface for IDWriteFactory2. It's ok for this to fail if we are
++  // running an older version of DirectWrite (earlier than Win8.1).
+   factory_.As<IDWriteFactory2>(&factory2_);
+-  DCHECK(factory2_);
+-
+-  // QueryInterface for IDwriteFactory3, needed for MatchUniqueFont on Windows.
+-  // This should succeed since we only support >= Win10.
++
++  // QueryInterface for IDwriteFactory3, needed for MatchUniqueFont on Windows
++  // 10. May fail on older versions, in which case, unique font matching must be
++  // done through indexing system fonts using DWriteFontLookupTableBuilder.
+   factory_.As<IDWriteFactory3>(&factory3_);
+-  DCHECK(factory3_);
+-
+-  // Normally identical to factory_->GetSystemFontCollection() unless a
+-  // sideloaded font has been added using SideLoadFontForTesting().
+-  HRESULT hr = GetLocalFontCollection(factory3_, &collection_);
++
++  HRESULT hr;
++  if (factory3_) {
++    // Normally identical to factory_->GetSystemFontCollection() unless a
++    // sideloaded font has been added using SideLoadFontForTesting().
++    hr = GetLocalFontCollection(factory3_, &collection_);
++  } else {
++    // Windows 7 backport: no font set API here, so ask the base factory
++    // directly - which is exactly what Chromium did before sideloading was
++    // added, and all that side loading is used for is testing.
++    hr = factory_->GetSystemFontCollection(&collection_);
++  }
+   DCHECK(SUCCEEDED(hr));
+ 
+   if (!collection_) {
+--- a/src/3rdparty/chromium/gpu/command_buffer/service/dxgi_shared_handle_manager.cc
++++ b/src/3rdparty/chromium/gpu/command_buffer/service/dxgi_shared_handle_manager.cc
+@@ -15,6 +15,28 @@
+ namespace gpu {
+ 
+ namespace {
++
++// Windows 7 backport: CompareObjectHandles() is a Windows 10 API with no
++// Windows 7 equivalent, and importing it through
++// api-ms-win-core-handle-l1-1-0.dll keeps the library from loading there.
++// Resolve it at run time; where it is missing this consistency check between a
++// token and its already-registered handle cannot be made, so it is skipped
++// rather than turned into a failure. The surrounding code needs NT handles for
++// D3D11 shared resources, which are Windows 8 and later, so this is unreachable
++// on Windows 7 in practice.
++bool CompareObjectHandlesOrAssumeSame(HANDLE first, HANDLE second) {
++  using CompareObjectHandlesFn = BOOL(WINAPI*)(HANDLE, HANDLE);
++  static const CompareObjectHandlesFn compare_object_handles_fn =
++      []() -> CompareObjectHandlesFn {
++    HMODULE kernelbase = ::GetModuleHandle(L"kernelbase.dll");
++    return kernelbase ? reinterpret_cast<CompareObjectHandlesFn>(
++                            ::GetProcAddress(kernelbase, "CompareObjectHandles"))
++                      : nullptr;
++  }();
++  if (!compare_object_handles_fn)
++    return true;
++  return !!compare_object_handles_fn(first, second);
++}
+ 
+ Microsoft::WRL::ComPtr<ID3D11Texture2D> OpenSharedHandleTexture(
+     Microsoft::WRL::ComPtr<ID3D11Device> d3d11_device,
+@@ -266,7 +288,8 @@
+     DCHECK(state);
+     // If there's already a shared handle associated with the token, it should
+     // refer to the same D3D11 texture (or kernel object).
+-    if (!CompareObjectHandles(shared_handle.Get(), state->GetSharedHandle())) {
++    if (!CompareObjectHandlesOrAssumeSame(shared_handle.Get(),
++                                          state->GetSharedHandle())) {
+       LOG(ERROR) << "Existing shared handle for token doesn't match";
+       return nullptr;
+     }
+--- a/src/3rdparty/chromium/media/base/win/dxgi_device_manager.cc
++++ b/src/3rdparty/chromium/media/base/win/dxgi_device_manager.cc
+@@ -16,6 +16,32 @@
+ #include "media/base/win/mf_initializer.h"
+ 
+ namespace media {
++
++namespace {
++
++// Windows 7 backport: MFCreateDXGIDeviceManager() was introduced in Windows 8.
++// mfplat.dll itself exists on Windows 7, so the delay-load resolves the module
++// and then faults on the missing export. Resolve it by hand and report the
++// manager as unavailable instead, which every caller already handles - capture
++// then delivers CPU frames and hardware encoding is simply not offered.
++HRESULT CreateDXGIDeviceManagerDynamic(UINT* reset_token,
++                                       IMFDXGIDeviceManager** device_manager) {
++  using MFCreateDXGIDeviceManagerFn =
++      HRESULT(STDAPICALLTYPE*)(UINT*, IMFDXGIDeviceManager**);
++  static const MFCreateDXGIDeviceManagerFn create_dxgi_device_manager_fn =
++      []() -> MFCreateDXGIDeviceManagerFn {
++    HMODULE mfplat =
++        ::LoadLibraryEx(L"mfplat.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return mfplat ? reinterpret_cast<MFCreateDXGIDeviceManagerFn>(
++                        ::GetProcAddress(mfplat, "MFCreateDXGIDeviceManager"))
++                  : nullptr;
++  }();
++  if (!create_dxgi_device_manager_fn)
++    return E_NOTIMPL;
++  return create_dxgi_device_manager_fn(reset_token, device_manager);
++}
++
++}  // namespace
+ 
+ DXGIDeviceScopedHandle::DXGIDeviceScopedHandle(
+     IMFDXGIDeviceManager* device_manager)
+@@ -67,8 +93,8 @@
+   }
+   Microsoft::WRL::ComPtr<IMFDXGIDeviceManager> mf_dxgi_device_manager;
+   UINT d3d_device_reset_token = 0;
+-  HRESULT hr = MFCreateDXGIDeviceManager(&d3d_device_reset_token,
+-                                         &mf_dxgi_device_manager);
++  HRESULT hr = CreateDXGIDeviceManagerDynamic(&d3d_device_reset_token,
++                                              &mf_dxgi_device_manager);
+   RETURN_ON_HR_FAILURE(hr, "Failed to create MF DXGI device manager", nullptr);
+   auto dxgi_device_manager = base::WrapRefCounted(new DXGIDeviceManager(
+       std::move(mf_dxgi_device_manager), d3d_device_reset_token, luid));
+--- a/src/3rdparty/chromium/media/gpu/windows/media_foundation_video_encode_accelerator_win.cc
++++ b/src/3rdparty/chromium/media/gpu/windows/media_foundation_video_encode_accelerator_win.cc
+@@ -54,6 +54,32 @@
+ 
+ namespace {
+ 
++// Windows 7 backport: MFCreateDXGISurfaceBuffer() was introduced in Windows 8.
++// mfplat.dll exists on Windows 7, so the delay-load resolves the module and
++// then faults on the missing export; resolve it at run time and return a plain
++// failure HRESULT, which the caller already handles.
++HRESULT CreateDXGISurfaceBufferDynamic(REFIID riid,
++                                       IUnknown* surface,
++                                       UINT subresource_index,
++                                       BOOL bottom_up_when_linear,
++                                       IMFMediaBuffer** buffer) {
++  using MFCreateDXGISurfaceBufferFn =
++      HRESULT(STDAPICALLTYPE*)(REFIID, IUnknown*, UINT, BOOL,
++                               IMFMediaBuffer**);
++  static const MFCreateDXGISurfaceBufferFn create_dxgi_surface_buffer_fn =
++      []() -> MFCreateDXGISurfaceBufferFn {
++    HMODULE mfplat =
++        ::LoadLibraryEx(L"mfplat.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return mfplat ? reinterpret_cast<MFCreateDXGISurfaceBufferFn>(
++                        ::GetProcAddress(mfplat, "MFCreateDXGISurfaceBuffer"))
++                  : nullptr;
++  }();
++  if (!create_dxgi_surface_buffer_fn)
++    return E_NOTIMPL;
++  return create_dxgi_surface_buffer_fn(riid, surface, subresource_index,
++                                       bottom_up_when_linear, buffer);
++}
++
+ BASE_FEATURE(kMediaFoundationZeroCopyEncoding,
+              "MediaFoundationZeroCopyEncoding",
+              base::FEATURE_DISABLED_BY_DEFAULT);
+@@ -1073,6 +1099,13 @@
+   }
+   auto encode_output = std::move(encoder_output_queue_.front());
+   encoder_output_queue_.pop_front();
++  if (buffer.size() < encode_output->size()) {
++    NotifyErrorStatus(
++        {EncoderStatus::Codes::kInvalidOutputBuffer,
++         "Encoder output is too large: " + base::NumberToString(buffer.size()) +
++             " vs. " + base::NumberToString(encode_output->size())});
++    return;
++  }
+   memcpy(buffer_ref->mapping.memory(), encode_output->memory(),
+          encode_output->size());
+ 
+@@ -2035,8 +2068,13 @@
+   }
+ 
+   ComMFMediaBuffer input_buffer;
+-  hr = MFCreateDXGISurfaceBuffer(__uuidof(ID3D11Texture2D),
+-                                 sample_texture.Get(), 0, FALSE, &input_buffer);
++  // Windows 7 backport: MFCreateDXGISurfaceBuffer() only exists from Windows 8
++  // on; resolved at run time so the delay-load does not fault, and reported as
++  // a plain HRESULT failure, which this path already handles by falling back to
++  // software encoding.
++  hr = CreateDXGISurfaceBufferDynamic(__uuidof(ID3D11Texture2D),
++                                      sample_texture.Get(), 0, FALSE,
++                                      &input_buffer);
+   RETURN_ON_HR_FAILURE(hr, "Failed to create MF DXGI surface buffer", hr);
+ 
+   // Some encoder MFTs (e.g. Qualcomm) depend on the sample buffer having a
+@@ -2260,6 +2298,12 @@
+     auto encode_output = std::make_unique<EncodeOutput>(size, md);
+     {
+       MediaBufferScopedPointer scoped_buffer(output_buffer.Get());
++      if (!scoped_buffer.get() || encode_output->size() < size) {
++        NotifyErrorStatus({EncoderStatus::Codes::kInvalidOutputBuffer,
++                           "Failed to copy the output during encoding."});
++        return;
++      }
++
+       memcpy(encode_output->memory(), scoped_buffer.get(), size);
+     }
+     encoder_output_queue_.push_back(std::move(encode_output));
+@@ -2280,8 +2324,10 @@
+ 
+   {
+     MediaBufferScopedPointer scoped_buffer(output_buffer.Get());
+-    if (!buffer_ref->mapping.IsValid() || !scoped_buffer.get()) {
+-      DLOG(ERROR) << "Failed to copy bitstream media buffer.";
++    if (!buffer_ref->mapping.IsValid() || !scoped_buffer.get() ||
++        buffer_ref->mapping.size() < size) {
++      NotifyErrorStatus({EncoderStatus::Codes::kInvalidOutputBuffer,
++                         "Failed to copy bitstream media buffer."});
+       return;
+     }
+ 
+--- a/src/3rdparty/chromium/media/midi/midi_manager_winrt.cc
++++ b/src/3rdparty/chromium/media/midi/midi_manager_winrt.cc
+@@ -115,6 +115,38 @@
+   return result != FALSE;
+ }
+ 
++// Windows 7 backport: CM_Get_DevNode_PropertyW() was introduced in Windows 8,
++// and importing it keeps the whole library from loading on Windows 7. Resolve
++// it at run time; this file is only reached through the MidiManagerWinrt
++// backend, which is behind a feature disabled by default and is not used on
++// Windows 7 (the winmm-based MidiManagerWin is), so returning a failing
++// CONFIGRET simply leaves the driver strings empty there.
++CONFIGRET GetDevNodePropertyDynamic(DEVINST dev_inst,
++                                    const DEVPROPKEY* property_key,
++                                    DEVPROPTYPE* property_type,
++                                    PBYTE property_buffer,
++                                    PULONG property_buffer_size,
++                                    ULONG flags) {
++  using CMGetDevNodePropertyWFn = CONFIGRET(WINAPI*)(DEVINST,
++                                                     const DEVPROPKEY*,
++                                                     DEVPROPTYPE*,
++                                                     PBYTE,
++                                                     PULONG,
++                                                     ULONG);
++  static const CMGetDevNodePropertyWFn get_dev_node_property_fn =
++      []() -> CMGetDevNodePropertyWFn {
++    HMODULE cfgmgr32 =
++        ::LoadLibraryEx(L"cfgmgr32.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return cfgmgr32 ? reinterpret_cast<CMGetDevNodePropertyWFn>(
++                          ::GetProcAddress(cfgmgr32, "CM_Get_DevNode_PropertyW"))
++                    : nullptr;
++  }();
++  if (!get_dev_node_property_fn)
++    return CR_FAILURE;
++  return get_dev_node_property_fn(dev_inst, property_key, property_type,
++                                  property_buffer, property_buffer_size, flags);
++}
++
+ void GetDevPropString(DEVINST handle,
+                       const DEVPROPKEY* devprop_key,
+                       std::string* out) {
+@@ -122,8 +154,8 @@
+   unsigned long buffer_size = 0;
+ 
+   // Retrieve |buffer_size| and allocate buffer later for receiving data.
+-  CONFIGRET cr = CM_Get_DevNode_Property(handle, devprop_key, &devprop_type,
+-                                         nullptr, &buffer_size, 0);
++  CONFIGRET cr = GetDevNodePropertyDynamic(handle, devprop_key, &devprop_type,
++                                           nullptr, &buffer_size, 0);
+   if (cr != CR_BUFFER_SMALL) {
+     // Here we print error codes in hex instead of using PrintHr() with
+     // HRESULT_FROM_WIN32() and CM_MapCrToWin32Err(), since only a minor set of
+@@ -140,8 +172,8 @@
+   std::unique_ptr<uint8_t[]> buffer(new uint8_t[buffer_size]);
+ 
+   // Receive property data.
+-  cr = CM_Get_DevNode_Property(handle, devprop_key, &devprop_type, buffer.get(),
+-                               &buffer_size, 0);
++  cr = GetDevNodePropertyDynamic(handle, devprop_key, &devprop_type,
++                                 buffer.get(), &buffer_size, 0);
+   if (cr != CR_SUCCESS)
+     VLOG(1) << "CM_Get_DevNode_Property failed: CONFIGRET 0x" << std::hex << cr;
+   else
+--- a/src/3rdparty/chromium/media/renderers/win/media_foundation_renderer.cc
++++ b/src/3rdparty/chromium/media/renderers/win/media_foundation_renderer.cc
+@@ -40,6 +40,38 @@
+ using Microsoft::WRL::MakeAndInitialize;
+ 
+ namespace {
++
++// Windows 7 backport: MFLockDXGIDeviceManager()/MFUnlockDXGIDeviceManager()
++// were introduced in Windows 8. mfplat.dll itself is present on Windows 7, so
++// the delay-load finds the module and then faults on the missing export.
++// Resolve them at run time and report failure instead; InitializeDXGIDeviceManager()
++// propagates that HRESULT and the renderer falls back to a non-DXGI path.
++FARPROC LoadMFPlatFunctionForRenderer(const char* function_name) {
++  static HMODULE const handle =
++      ::LoadLibraryEx(L"mfplat.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++HRESULT LockDXGIDeviceManagerDynamic(UINT* reset_token,
++                                     IMFDXGIDeviceManager** device_manager) {
++  using MFLockDXGIDeviceManagerFn =
++      HRESULT(STDAPICALLTYPE*)(UINT*, IMFDXGIDeviceManager**);
++  static const auto lock_dxgi_device_manager_fn =
++      reinterpret_cast<MFLockDXGIDeviceManagerFn>(
++          LoadMFPlatFunctionForRenderer("MFLockDXGIDeviceManager"));
++  if (!lock_dxgi_device_manager_fn)
++    return E_NOTIMPL;
++  return lock_dxgi_device_manager_fn(reset_token, device_manager);
++}
++
++void UnlockDXGIDeviceManagerDynamic() {
++  using MFUnlockDXGIDeviceManagerFn = HRESULT(STDAPICALLTYPE*)();
++  static const auto unlock_dxgi_device_manager_fn =
++      reinterpret_cast<MFUnlockDXGIDeviceManagerFn>(
++          LoadMFPlatFunctionForRenderer("MFUnlockDXGIDeviceManager"));
++  if (unlock_dxgi_device_manager_fn)
++    unlock_dxgi_device_manager_fn();
++}
+ 
+ ATOM g_video_window_class = 0;
+ 
+@@ -152,7 +184,7 @@
+ 
+   if (dxgi_device_manager_) {
+     dxgi_device_manager_.Reset();
+-    MFUnlockDXGIDeviceManager();
++    UnlockDXGIDeviceManagerDynamic();
+   }
+   if (virtual_video_window_) {
+     DestroyWindow(virtual_video_window_);
+@@ -378,7 +410,7 @@
+ HRESULT MediaFoundationRenderer::InitializeDXGIDeviceManager() {
+   UINT device_reset_token;
+   RETURN_IF_FAILED(
+-      MFLockDXGIDeviceManager(&device_reset_token, &dxgi_device_manager_));
++      LockDXGIDeviceManagerDynamic(&device_reset_token, &dxgi_device_manager_));
+   // `dxgi_device_manager_` returned is a singleton object, thus all
+   // MediaFoundationRenderer instances will all receive the
+   // `dxgi_device_manager_` pointing to the same object. Therefore we only need
+--- a/src/3rdparty/chromium/sandbox/policy/win/sandbox_warmup.cc
++++ b/src/3rdparty/chromium/sandbox/policy/win/sandbox_warmup.cc
+@@ -30,13 +30,19 @@
+ 
+ // Import bcryptprimitives!ProcessPrng rather than cryptbase!RtlGenRandom to
+ // avoid opening a handle to \\Device\KsecDD in the renderer.
++// Windows 7 backport: ProcessPrng only exists from Windows 10 on, while
++// bcryptprimitives.dll itself is present on Windows 7, so LoadLibraryW()
++// succeeds and only the export lookup fails - which the original CHECK turned
++// into a deliberate abort of every sandboxed process at startup. Return null
++// instead and let the caller take the RtlGenRandom() path below, which is what
++// this warmup did before the feature was introduced.
+ decltype(&ProcessPrng) GetProcessPrng() {
+   HMODULE hmod = LoadLibraryW(L"bcryptprimitives.dll");
+-  CHECK(hmod);
++  if (!hmod)
++    return nullptr;
+   decltype(&ProcessPrng) process_prng_fn =
+       reinterpret_cast<decltype(&ProcessPrng)>(
+           GetProcAddress(hmod, "ProcessPrng"));
+-  CHECK(process_prng_fn);
+   return process_prng_fn;
+ }
+ 
+@@ -45,10 +51,15 @@
+ void WarmupRandomnessInfrastructure() {
+   BYTE data[1];
+ 
+-  if (base::FeatureList::IsEnabled(
++  static decltype(&ProcessPrng) process_prng_fn = GetProcessPrng();
++
++  // Windows 7 backport: without ProcessPrng the RtlGenRandom() path below is
++  // taken, which also opens the \Device\KsecDD handle the sandboxed process
++  // needs before its token is lowered.
++  if (process_prng_fn &&
++      base::FeatureList::IsEnabled(
+           sandbox::policy::features::kWinSboxWarmupProcessPrng)) {
+     // TODO(crbug.com/74242) Call a warmup function exposed by boringssl.
+-    static decltype(&ProcessPrng) process_prng_fn = GetProcessPrng();
+     BOOL success = process_prng_fn(data, sizeof(data));
+     // ProcessPrng is documented to always return TRUE.
+     CHECK(success);
+--- a/src/3rdparty/chromium/sandbox/policy/win/sandbox_win.cc
++++ b/src/3rdparty/chromium/sandbox/policy/win/sandbox_win.cc
+@@ -324,7 +324,11 @@
+ 
+   config->SetLockdownDefaultDacl();
+ 
+-  result = config->AddKernelObjectToClose(L"File", L"\\Device\\DeviceApi");
++  // Windows 7 backport: Win8+ adds a device DeviceApi that we don't need. It
++  // does not exist on Windows 7, so asking the handle closer to look for it
++  // only costs it work.
++  if (base::win::GetVersion() >= base::win::Version::WIN8)
++    result = config->AddKernelObjectToClose(L"File", L"\\Device\\DeviceApi");
+   if (result != SBOX_ALL_OK)
+     return result;
+ 
+@@ -622,7 +626,17 @@
+     return result;
+ 
+   if (process_type == switches::kRendererProcess) {
+-    if (base::FeatureList::IsEnabled(features::kWinSboxRendererCloseKsecDD)) {
++    // Windows 7 backport: closing this handle is only safe when the renderer
++    // draws its randomness from bcryptprimitives!ProcessPrng, which exists from
++    // Windows 10 on. Below that both base::RandBytes() and BoringSSL fall back
++    // to advapi32!RtlGenRandom, forwarded to cryptbase.dll, which opens
++    // \Device\KsecDD once during sandbox warmup and keeps that handle for the
++    // life of the process. Closing it right before lockdown makes every later
++    // call fail, and BoringSSL answers a failing CRYPTO_sysrand() with abort():
++    // the renderer dies silently with exit code 3 the moment the page asks for
++    // random bytes.
++    if (base::win::GetVersion() >= base::win::Version::WIN10 &&
++        base::FeatureList::IsEnabled(features::kWinSboxRendererCloseKsecDD)) {
+       // TODO(crbug.com/74242) Remove if we can avoid loading cryptbase.dll.
+       result = config->AddKernelObjectToClose(L"File", L"\\Device\\KsecDD");
+       if (result != SBOX_ALL_OK) {
+@@ -828,6 +842,16 @@
+ // static
+ ResultCode SandboxWin::AddWin32kLockdownPolicy(TargetConfig* config) {
+   DCHECK(!config->IsConfigured());
++
++  // Windows 7 backport: win32k lockdown is a Windows 8 process mitigation, and
++  // Chromium gated this whole function on it until the version check was
++  // dropped along with Windows 7 support. Without the gate a Windows 7 renderer
++  // asks for a mitigation the kernel cannot apply and, more importantly, turns
++  // on the sandbox's fake GDI initialisation - a path that only ever ran in
++  // processes where win32k really was locked down.
++  if (base::win::GetVersion() < base::win::Version::WIN8)
++    return SBOX_ALL_OK;
++
+   MitigationFlags flags = config->GetProcessMitigations();
+   // Check not enabling twice. Should not happen.
+   DCHECK_EQ(0U, flags & MITIGATION_WIN32K_DISABLE);
+--- a/src/3rdparty/chromium/sandbox/win/src/app_container_base.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/app_container_base.cc
+@@ -23,6 +23,54 @@
+ struct FreeSidDeleter {
+   inline void operator()(void* ptr) const { ::FreeSid(ptr); }
+ };
++
++// Windows 7 backport: the AppContainer profile functions were introduced in
++// Windows 8 and importing them keeps the library from loading on Windows 7.
++// Resolve them at run time; when they are missing every entry point below
++// reports failure, which is the same outcome the callers already get from
++// sandbox::features::IsAppContainerSandboxSupported() returning false.
++FARPROC LoadUserenvFunctionForAppContainer(const char* function_name) {
++  static HMODULE const handle =
++      ::LoadLibraryEx(L"userenv.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++HRESULT CreateAppContainerProfileDynamic(PCWSTR container_name,
++                                         PCWSTR display_name,
++                                         PCWSTR description,
++                                         PSID_AND_ATTRIBUTES capabilities,
++                                         DWORD capability_count,
++                                         PSID* container_sid) {
++  static const auto create_app_container_profile_fn =
++      reinterpret_cast<decltype(&::CreateAppContainerProfile)>(
++          LoadUserenvFunctionForAppContainer("CreateAppContainerProfile"));
++  if (!create_app_container_profile_fn)
++    return E_NOTIMPL;
++  return create_app_container_profile_fn(container_name, display_name,
++                                         description, capabilities,
++                                         capability_count, container_sid);
++}
++
++HRESULT DeriveAppContainerSidFromAppContainerNameDynamic(
++    PCWSTR container_name,
++    PSID* container_sid) {
++  static const auto derive_app_container_sid_fn = reinterpret_cast<
++      decltype(&::DeriveAppContainerSidFromAppContainerName)>(
++      LoadUserenvFunctionForAppContainer(
++          "DeriveAppContainerSidFromAppContainerName"));
++  if (!derive_app_container_sid_fn)
++    return E_NOTIMPL;
++  return derive_app_container_sid_fn(container_name, container_sid);
++}
++
++HRESULT DeleteAppContainerProfileDynamic(PCWSTR container_name) {
++  static const auto delete_app_container_profile_fn =
++      reinterpret_cast<decltype(&::DeleteAppContainerProfile)>(
++          LoadUserenvFunctionForAppContainer("DeleteAppContainerProfile"));
++  if (!delete_app_container_profile_fn)
++    return E_NOTIMPL;
++  return delete_app_container_profile_fn(container_name);
++}
+ 
+ }  // namespace
+ 
+@@ -31,7 +79,7 @@
+                                                   const wchar_t* display_name,
+                                                   const wchar_t* description) {
+   PSID package_sid_ptr = nullptr;
+-  HRESULT hr = ::CreateAppContainerProfile(
++  HRESULT hr = CreateAppContainerProfileDynamic(
+       package_name, display_name, description, nullptr, 0, &package_sid_ptr);
+   if (hr == HRESULT_FROM_WIN32(ERROR_ALREADY_EXISTS))
+     return Open(package_name);
+@@ -48,8 +96,8 @@
+ // static
+ AppContainerBase* AppContainerBase::Open(const wchar_t* package_name) {
+   PSID package_sid_ptr = nullptr;
+-  HRESULT hr = ::DeriveAppContainerSidFromAppContainerName(package_name,
+-                                                           &package_sid_ptr);
++  HRESULT hr = DeriveAppContainerSidFromAppContainerNameDynamic(
++      package_name, &package_sid_ptr);
+   if (FAILED(hr))
+     return nullptr;
+ 
+@@ -71,7 +119,7 @@
+ 
+ // static
+ bool AppContainerBase::Delete(const wchar_t* package_name) {
+-  return SUCCEEDED(::DeleteAppContainerProfile(package_name));
++  return SUCCEEDED(DeleteAppContainerProfileDynamic(package_name));
+ }
+ 
+ AppContainerBase::AppContainerBase(base::win::Sid& package_sid,
+--- a/src/3rdparty/chromium/sandbox/win/src/process_mitigations.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/process_mitigations.cc
+@@ -44,22 +44,43 @@
+ 
+ namespace {
+ 
++// Windows 7 backport: these entry points were all introduced in Windows 8 and
++// are resolved at run time, as Chromium did up to 109.0.5414.120. On Windows 7
++// none of the mitigations they configure exist, so the sandbox falls back to
++// the restricted token, job object, alternate desktop and integrity level -
++// exactly the profile Chromium used there.
++// API defined in libloaderapi.h >= Win8.
++using SetDefaultDllDirectoriesFunction = decltype(&SetDefaultDllDirectories);
++
++// APIs defined in processthreadsapi.h >= Win8.
++using SetProcessMitigationPolicyFunction =
++    decltype(&SetProcessMitigationPolicy);
++using GetProcessMitigationPolicyFunction =
++    decltype(&GetProcessMitigationPolicy);
++using SetThreadInformationFunction = decltype(&SetThreadInformation);
++
+ // Returns a two-element array of mitigation flags supported on this machine.
++// - This function is only useful on >= base::win::Version::WIN8.
+ const ULONG64* GetSupportedMitigations() {
+   static ULONG64 mitigations[2] = {};
+ 
+   // This static variable will only be initialized once.
+   if (!mitigations[0] && !mitigations[1]) {
+-    // NOTE: the two-element-sized input array is only supported on >= Win10
+-    // RS2. If an earlier version, the second element will be left 0.
+-    size_t mits_size =
+-        (base::win::GetVersion() >= base::win::Version::WIN10_RS2)
+-            ? (sizeof(mitigations[0]) * 2)
+-            : sizeof(mitigations[0]);
+-    if (!::GetProcessMitigationPolicy(::GetCurrentProcess(),
+-                                      ProcessMitigationOptionsMask,
+-                                      &mitigations, mits_size)) {
+-      NOTREACHED();
++    GetProcessMitigationPolicyFunction get_process_mitigation_policy =
++        reinterpret_cast<GetProcessMitigationPolicyFunction>(::GetProcAddress(
++            ::GetModuleHandleA("kernel32.dll"), "GetProcessMitigationPolicy"));
++    if (get_process_mitigation_policy) {
++      // NOTE: the two-element-sized input array is only supported on >= Win10
++      // RS2. If an earlier version, the second element will be left 0.
++      size_t mits_size =
++          (base::win::GetVersion() >= base::win::Version::WIN10_RS2)
++              ? (sizeof(mitigations[0]) * 2)
++              : sizeof(mitigations[0]);
++      if (!get_process_mitigation_policy(::GetCurrentProcess(),
++                                         ProcessMitigationOptionsMask,
++                                         &mitigations, mits_size)) {
++        NOTREACHED();
++      }
+     }
+   }
+ 
+@@ -83,7 +104,14 @@
+ bool SetProcessMitigationPolicyInternal(PROCESS_MITIGATION_POLICY policy,
+                                         PVOID lpBuffer,
+                                         SIZE_T dwLength) {
+-  PCHECK(::SetProcessMitigationPolicy(policy, lpBuffer, dwLength))
++  HMODULE module = ::GetModuleHandleA("kernel32.dll");
++  SetProcessMitigationPolicyFunction set_process_mitigation_policy_function =
++      reinterpret_cast<SetProcessMitigationPolicyFunction>(
++          ::GetProcAddress(module, "SetProcessMitigationPolicy"));
++  if (!set_process_mitigation_policy_function)
++    return false;
++
++  PCHECK(set_process_mitigation_policy_function(policy, lpBuffer, dwLength))
+       << "SetProcessMitigationPolicy failed with Policy: " << policy;
+ 
+   return true;
+@@ -100,20 +128,28 @@
+   base::win::Version version = base::win::GetVersion();
+ 
+   if (flags & MITIGATION_DLL_SEARCH_ORDER) {
++    HMODULE module = ::GetModuleHandleA("kernel32.dll");
++    SetDefaultDllDirectoriesFunction set_default_dll_directories =
++        reinterpret_cast<SetDefaultDllDirectoriesFunction>(
++            ::GetProcAddress(module, "SetDefaultDllDirectories"));
++
++    // Check for SetDefaultDllDirectories since it requires KB2533623.
++    if (set_default_dll_directories) {
+ #if defined(COMPONENT_BUILD)
+-    const DWORD directory_flags = LOAD_LIBRARY_SEARCH_DEFAULT_DIRS;
++      const DWORD directory_flags = LOAD_LIBRARY_SEARCH_DEFAULT_DIRS;
+ #else
+-    // In a non-component build, all DLLs will be loaded manually, or via
+-    // manifest definition, so these flags can be stronger. This prevents DLL
+-    // planting in the application directory.
+-    const DWORD directory_flags =
+-        LOAD_LIBRARY_SEARCH_SYSTEM32 | LOAD_LIBRARY_SEARCH_USER_DIRS;
++      // In a non-component build, all DLLs will be loaded manually, or via
++      // manifest definition, so these flags can be stronger. This prevents DLL
++      // planting in the application directory.
++      const DWORD directory_flags =
++          LOAD_LIBRARY_SEARCH_SYSTEM32 | LOAD_LIBRARY_SEARCH_USER_DIRS;
+ #endif
+-    if (!::SetDefaultDllDirectories(directory_flags)) {
+-      return false;
+-    }
+-
+-    applied_flags |= MITIGATION_DLL_SEARCH_ORDER;
++      if (!set_default_dll_directories(directory_flags)) {
++        return false;
++      }
++
++      applied_flags |= MITIGATION_DLL_SEARCH_ORDER;
++    }
+   }
+ 
+   // Set the heap to terminate on corruption
+@@ -356,9 +392,17 @@
+   if (flags & MITIGATION_DYNAMIC_CODE_OPT_OUT_THIS_THREAD) {
+     DWORD thread_policy = THREAD_DYNAMIC_CODE_ALLOW;
+ 
++    // NOTE: SetThreadInformation API only exists on >= Win8. Dynamically
++    //       get function handle.
++    SetThreadInformationFunction set_thread_info_function =
++        reinterpret_cast<SetThreadInformationFunction>(::GetProcAddress(
++            ::GetModuleHandleA("kernel32.dll"), "SetThreadInformation"));
++    if (!set_thread_info_function)
++      return false;
++
+     // NOTE: Must use the pseudo-handle here, a thread HANDLE won't work.
+-    if (!::SetThreadInformation(::GetCurrentThread(), ThreadDynamicCodePolicy,
+-                                &thread_policy, sizeof(thread_policy))) {
++    if (!set_thread_info_function(::GetCurrentThread(), ThreadDynamicCodePolicy,
++                                  &thread_policy, sizeof(thread_policy))) {
+       return false;
+     }
+   }
+@@ -379,8 +423,17 @@
+   *policy_value_1 = 0;
+   *policy_value_2 = 0;
+ 
+-#if defined(_WIN64) || defined(_M_IX86)
++// Windows 7 backport: on 32-bit Windows 7 the process creation attribute only
++// takes a DWORD-sized mitigation mask; passing the 64-bit one makes
++// UpdateProcThreadAttribute() fail and no child process starts at all. Restored
++// from Chromium 109.0.5414.120.
++#if defined(_WIN64)
+   *size = sizeof(*policy_flags);
++#elif defined(_M_IX86)
++  if (version < base::win::Version::WIN8)
++    *size = sizeof(DWORD);
++  else
++    *size = sizeof(*policy_flags);
+ #else
+ #error This platform is not supported.
+ #endif
+--- a/src/3rdparty/chromium/sandbox/win/src/sandbox_policy_base.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/sandbox_policy_base.cc
+@@ -419,12 +419,23 @@
+ // Does not work on 32-bit, and the ASAN runtime falls over with the
+ // CreateThread EAT patch used when this is enabled.
+ // See https://crbug.com/783296#c27.
++// Windows 7 backport: the version check below is restored from Chromium
++// 109.0.5414.120. Disconnecting csrss means closing the ALPC port handle to it,
++// and to leave the process in a usable state afterwards the sandbox first
++// destroys the heap it shares with csrss - which it locates by walking the
++// undocumented _HEAP structure in sandbox/win/src/heap_helper.cc at offsets
++// that only match Windows 8 and later. On Windows 7 that search finds nothing,
++// CloseOpenHandles() fails and the target kills itself with
++// SBOX_FATAL_CLOSEHANDLES (exit code 7010), so no renderer can ever start.
++// Below Windows 10 the sandbox simply keeps csrss connected, exactly as
++// Chromium did while it still supported these systems.
+ #if defined(_WIN64) && !defined(ADDRESS_SANITIZER)
+-  is_csrss_connected_ = false;
+-  return AddKernelObjectToClose(L"ALPC Port", nullptr);
+-#else
+-  return SBOX_ALL_OK;
++  if (base::win::GetVersion() >= base::win::Version::WIN10) {
++    is_csrss_connected_ = false;
++    return AddKernelObjectToClose(L"ALPC Port", nullptr);
++  }
+ #endif  // !defined(_WIN64) || defined(ADDRESS_SANITIZER)
++  return SBOX_ALL_OK;
+ }
+ 
+ void ConfigBase::SetDesktop(Desktop desktop) {
+--- a/src/3rdparty/chromium/sandbox/win/src/startup_information_helper.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/startup_information_helper.cc
+@@ -101,7 +101,10 @@
+       ++attribute_count;
+   }
+ 
+-  if (!job_handle_list_.empty())
++  // Windows 7 backport: the job list attribute is only available from
++  // Windows 10 on; below that the job is assigned after process creation.
++  if (!job_handle_list_.empty() &&
++      base::win::GetVersion() >= base::win::Version::WIN10)
+     ++attribute_count;
+ 
+   return attribute_count;
+@@ -160,12 +163,18 @@
+     expected_attributes--;
+   }
+ 
+-  if (!job_handle_list_.empty()) {
++  // Windows 7 backport: PROC_THREAD_ATTRIBUTE_JOB_LIST was introduced in
++  // Windows 10. Where it does not exist the attribute is left out and
++  // TargetProcess::Create() calls AssignProcessToJobObject() on the suspended
++  // target instead, which is what Chromium did up to 109.0.5414.120.
++  if (!job_handle_list_.empty() &&
++      base::win::GetVersion() >= base::win::Version::WIN10) {
+     if (!startup_info_.UpdateProcThreadAttribute(
+             PROC_THREAD_ATTRIBUTE_JOB_LIST, &job_handle_list_[0],
+             sizeof(HANDLE) * job_handle_list_.size())) {
+       return false;
+     }
++    jobs_associated_via_attribute_ = true;
+     expected_attributes--;
+   }
+ 
+--- a/src/3rdparty/chromium/sandbox/win/src/startup_information_helper.h
++++ b/src/3rdparty/chromium/sandbox/win/src/startup_information_helper.h
+@@ -48,6 +48,16 @@
+ 
+   // Will one or more jobs be associated via the wrapped StartupInformation.
+   bool HasJobsToAssociate() { return !job_handle_list_.empty(); }
++  // Windows 7 backport: PROC_THREAD_ATTRIBUTE_JOB_LIST only exists from
++  // Windows 10 on. Where it is unavailable BuildStartupInformation() leaves the
++  // attribute out and TargetProcess::Create() assigns the job by hand instead,
++  // which is how Chromium did it up to 109.0.5414.120. False until
++  // BuildStartupInformation() has run.
++  bool JobsAssociatedViaAttribute() { return jobs_associated_via_attribute_; }
++  // The job the target must be assigned to when the attribute was not used.
++  HANDLE GetJobToAssociate() {
++    return job_handle_list_.empty() ? nullptr : job_handle_list_[0];
++  }
+   // Have handles been provided for secure inheritance?
+   bool ShouldInheritHandles() { return inherit_handles_; }
+ 
+@@ -81,6 +91,7 @@
+   HANDLE stderr_handle_ = INVALID_HANDLE_VALUE;
+   bool inherit_handles_ = false;
+   bool filter_environment_ = false;
++  bool jobs_associated_via_attribute_ = false;
+   size_t mitigations_size_ = 0;
+ 
+   // startup_info_.startup_info() is passed to CreateProcessAsUserW().
+--- a/src/3rdparty/chromium/sandbox/win/src/target_process.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/target_process.cc
+@@ -25,6 +25,7 @@
+ #include "base/win/scoped_handle.h"
+ #include "base/win/security_util.h"
+ #include "base/win/startup_information.h"
++#include "base/win/windows_version.h"
+ #include "sandbox/win/src/crosscall_client.h"
+ #include "sandbox/win/src/crosscall_server.h"
+ #include "sandbox/win/src/policy_low_level.h"
+@@ -149,6 +150,14 @@
+ 
+   if (startup_info->has_extended_startup_info())
+     flags |= EXTENDED_STARTUPINFO_PRESENT;
++
++  // Windows 7 backport: Windows 8 implements nested jobs, but for older systems
++  // we need to break out of any job we're in to enforce our restrictions.
++  // Restored from Chromium 109.0.5414.120.
++  if (startup_info_helper->HasJobsToAssociate() &&
++      base::win::GetVersion() < base::win::Version::WIN8) {
++    flags |= CREATE_BREAKAWAY_FROM_JOB;
++  }
+ 
+   std::wstring new_env;
+ 
+@@ -192,6 +201,20 @@
+   }
+   base::win::ScopedProcessInformation process_info(temp_process_info);
+ 
++  // Windows 7 backport: on Windows 10 and later the job is attached through
++  // PROC_THREAD_ATTRIBUTE_JOB_LIST when the process is created. That attribute
++  // does not exist below Windows 10, so assign the still-suspended target to
++  // the job by hand, as Chromium did up to 109.0.5414.120.
++  if (startup_info_helper->HasJobsToAssociate() &&
++      !startup_info_helper->JobsAssociatedViaAttribute()) {
++    if (!::AssignProcessToJobObject(startup_info_helper->GetJobToAssociate(),
++                                    process_info.process_handle())) {
++      *win_error = ::GetLastError();
++      ::TerminateProcess(process_info.process_handle(), 0);
++      return SBOX_ERROR_ASSIGN_PROCESS_TO_JOB_OBJECT;
++    }
++  }
++
+   // Change the token of the main thread of the new process for the
+   // impersonation token with more rights. This allows the target to start;
+   // otherwise it will crash too early for us to help.
+--- a/src/3rdparty/chromium/sandbox/win/src/win_utils.cc
++++ b/src/3rdparty/chromium/sandbox/win/src/win_utils.cc
+@@ -540,6 +540,42 @@
+   return base_address;
+ }
+ 
++// Windows 7 backport: restored from Chromium 109.0.5414.120, where it was the
++// path taken on Windows 7 and 8.0. The information class the function below
++// uses does not exist there, so the handle table is walked by hand instead:
++// handle values are always a multiple of four, so try them in order until as
++// many live handles have been found as the process reports, giving up after a
++// long enough run of invalid ones to conclude the table has ended.
++static std::optional<ProcessHandleMap> GetCurrentProcessHandlesByScanning() {
++  DWORD handle_count;
++  const int kInvalidHandleThreshold = 100;
++  const size_t kHandleOffset = 4;  // Handles are always a multiple of 4.
++
++  if (!::GetProcessHandleCount(::GetCurrentProcess(), &handle_count))
++    return std::nullopt;
++
++  ProcessHandleMap handle_map;
++  uint32_t handle_value = 0;
++  int invalid_count = 0;
++
++  // Keep incrementing until we hit the number of handles reported by
++  // GetProcessHandleCount(). If we hit a very long sequence of invalid
++  // handles we assume that we've run past the end of the table.
++  while (handle_count && invalid_count < kInvalidHandleThreshold) {
++    handle_value += kHandleOffset;
++    HANDLE handle = base::win::Uint32ToHandle(handle_value);
++    auto type_name = GetTypeNameFromHandle(handle);
++    if (!type_name) {
++      ++invalid_count;
++      continue;
++    }
++
++    --handle_count;
++    handle_map[type_name.value()].push_back(handle);
++  }
++  return handle_map;
++}
++
+ std::optional<ProcessHandleMap> GetCurrentProcessHandles() {
+   DWORD handle_count;
+   if (!::GetProcessHandleCount(::GetCurrentProcess(), &handle_count))
+@@ -554,6 +590,16 @@
+       static_cast<ULONG>(buffer.size()), &return_length);
+ 
+   if (!NT_SUCCESS(status)) {
++    // Windows 7 backport: ProcessHandleTable is only understood from
++    // Windows 8.1 on; below that the call comes back with
++    // STATUS_INVALID_INFO_CLASS. Returning nothing here makes
++    // HandleCloserAgent::CloseHandles() fail, which makes the target terminate
++    // itself with SBOX_FATAL_CLOSEHANDLES (exit code 7010) - so no renderer
++    // ever starts. Fall back to walking the handle table by hand, as Chromium
++    // did for these systems until 109.0.5414.120.
++    std::optional<ProcessHandleMap> scanned = GetCurrentProcessHandlesByScanning();
++    if (scanned)
++      return scanned;
+     ::SetLastError(GetLastErrorFromNtStatus(status));
+     return std::nullopt;
+   }
+--- a/src/3rdparty/chromium/services/proxy_resolver_win/winhttp_api_wrapper_impl.cc
++++ b/src/3rdparty/chromium/services/proxy_resolver_win/winhttp_api_wrapper_impl.cc
+@@ -14,6 +14,70 @@
+ 
+ // TODO(https://crbug.com/1032820): Capture telemetry for WinHttp APIs if
+ // interesting.
++
++namespace {
++
++// Windows 7 backport: the asynchronous proxy resolution APIs below were
++// introduced in Windows 8, and importing them keeps the whole library from
++// loading on Windows 7. Resolve them at run time instead. Nothing reaches these
++// wrappers there anyway: WindowsSystemProxyResolutionService::IsSupported()
++// requires Windows 10 1607 or later, and proxy resolution falls back to
++// WinHttpGetIEProxyConfigForCurrentUser() plus PAC evaluation, both of which
++// work on Windows 7.
++FARPROC LoadWinHttpFunction(const char* function_name) {
++  static HMODULE const handle =
++      ::LoadLibraryExW(L"winhttp.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++  return handle ? ::GetProcAddress(handle, function_name) : nullptr;
++}
++
++DWORD WinHttpCreateProxyResolverDynamic(HINTERNET session,
++                                        HINTERNET* out_resolver_handle) {
++  using WinHttpCreateProxyResolverFn = DWORD(WINAPI*)(HINTERNET, HINTERNET*);
++  static const auto create_proxy_resolver_fn =
++      reinterpret_cast<WinHttpCreateProxyResolverFn>(
++          LoadWinHttpFunction("WinHttpCreateProxyResolver"));
++  if (!create_proxy_resolver_fn)
++    return ERROR_NOT_SUPPORTED;
++  return create_proxy_resolver_fn(session, out_resolver_handle);
++}
++
++DWORD WinHttpGetProxyForUrlExDynamic(HINTERNET resolver_handle,
++                                     PCWSTR url,
++                                     WINHTTP_AUTOPROXY_OPTIONS* autoproxy_options,
++                                     DWORD_PTR context) {
++  using WinHttpGetProxyForUrlExFn =
++      DWORD(WINAPI*)(HINTERNET, PCWSTR, WINHTTP_AUTOPROXY_OPTIONS*, DWORD_PTR);
++  static const auto get_proxy_for_url_ex_fn =
++      reinterpret_cast<WinHttpGetProxyForUrlExFn>(
++          LoadWinHttpFunction("WinHttpGetProxyForUrlEx"));
++  if (!get_proxy_for_url_ex_fn)
++    return ERROR_NOT_SUPPORTED;
++  return get_proxy_for_url_ex_fn(resolver_handle, url, autoproxy_options,
++                                 context);
++}
++
++DWORD WinHttpGetProxyResultDynamic(HINTERNET resolver_handle,
++                                   WINHTTP_PROXY_RESULT* proxy_result) {
++  using WinHttpGetProxyResultFn = DWORD(WINAPI*)(HINTERNET,
++                                                 WINHTTP_PROXY_RESULT*);
++  static const auto get_proxy_result_fn =
++      reinterpret_cast<WinHttpGetProxyResultFn>(
++          LoadWinHttpFunction("WinHttpGetProxyResult"));
++  if (!get_proxy_result_fn)
++    return ERROR_NOT_SUPPORTED;
++  return get_proxy_result_fn(resolver_handle, proxy_result);
++}
++
++void WinHttpFreeProxyResultDynamic(WINHTTP_PROXY_RESULT* proxy_result) {
++  using WinHttpFreeProxyResultFn = VOID(WINAPI*)(WINHTTP_PROXY_RESULT*);
++  static const auto free_proxy_result_fn =
++      reinterpret_cast<WinHttpFreeProxyResultFn>(
++          LoadWinHttpFunction("WinHttpFreeProxyResult"));
++  if (free_proxy_result_fn)
++    free_proxy_result_fn(proxy_result);
++}
++
++}  // namespace
+ 
+ ScopedIEConfig::ScopedIEConfig() = default;
+ ScopedIEConfig::~ScopedIEConfig() {
+@@ -71,7 +135,7 @@
+     HINTERNET* out_resolver_handle) {
+   DCHECK_NE(nullptr, session_handle_);
+   const DWORD result =
+-      ::WinHttpCreateProxyResolver(session_handle_, out_resolver_handle);
++      WinHttpCreateProxyResolverDynamic(session_handle_, out_resolver_handle);
+   return (result == ERROR_SUCCESS);
+ }
+ 
+@@ -83,7 +147,7 @@
+   const std::wstring wide_url(url.begin(), url.end());
+   // TODO(https://crbug.com/1032820): Upgrade to WinHttpGetProxyForUrlEx2()
+   // if there is a clear reason to do so.
+-  const DWORD result = ::WinHttpGetProxyForUrlEx(
++  const DWORD result = WinHttpGetProxyForUrlExDynamic(
+       resolver_handle, wide_url.data(), autoproxy_options, context);
+   return (result == ERROR_IO_PENDING);
+ }
+@@ -91,13 +155,14 @@
+ bool WinHttpAPIWrapperImpl::CallWinHttpGetProxyResult(
+     HINTERNET resolver_handle,
+     WINHTTP_PROXY_RESULT* proxy_result) {
+-  const DWORD result = ::WinHttpGetProxyResult(resolver_handle, proxy_result);
++  const DWORD result =
++      WinHttpGetProxyResultDynamic(resolver_handle, proxy_result);
+   return (result == ERROR_SUCCESS);
+ }
+ 
+ VOID WinHttpAPIWrapperImpl::CallWinHttpFreeProxyResult(
+     WINHTTP_PROXY_RESULT* proxy_result) {
+-  WinHttpFreeProxyResult(proxy_result);
++  WinHttpFreeProxyResultDynamic(proxy_result);
+ }
+ 
+ void WinHttpAPIWrapperImpl::CallWinHttpCloseHandle(HINTERNET internet_handle) {
+--- a/src/3rdparty/chromium/third_party/boringssl/src/crypto/rand_extra/windows.c
++++ b/src/3rdparty/chromium/third_party/boringssl/src/crypto/rand_extra/windows.c
+@@ -60,13 +60,38 @@
+ typedef BOOL (WINAPI *ProcessPrngFunction)(PBYTE pbData, SIZE_T cbData);
+ static ProcessPrngFunction g_processprng_fn = NULL;
+ 
++// Windows 7 backport: ProcessPrng only exists from Windows 10 on, while
++// bcryptprimitives.dll itself is present on Windows 7 - so LoadLibraryW()
++// succeeds and only the export lookup fails, which the original code turned
++// into an unconditional abort(). That abort fires the first time anything asks
++// BoringSSL for random bytes, which in practice is as soon as the network stack
++// starts, taking the whole browser process with it.
++//
++// RtlGenRandom (advapi32!SystemFunction036) is the same system RNG BoringSSL
++// used before it switched to ProcessPrng. The switch was made to avoid opening
++// a handle to \Device\KsecDD from inside the Chromium sandbox; on Windows 7 the
++// sandbox warmup opens that handle before the token is lowered, so the fallback
++// works there too.
++typedef BOOLEAN (WINAPI *RtlGenRandomFunction)(PVOID RandomBuffer,
++                                               ULONG RandomBufferLength);
++static RtlGenRandomFunction g_rtlgenrandom_fn = NULL;
++
+ static void init_processprng(void) {
+   HMODULE hmod = LoadLibraryW(L"bcryptprimitives");
+-  if (hmod == NULL) {
+-    abort();
++  if (hmod != NULL) {
++    g_processprng_fn = (ProcessPrngFunction)GetProcAddress(hmod, "ProcessPrng");
+   }
+-  g_processprng_fn = (ProcessPrngFunction)GetProcAddress(hmod, "ProcessPrng");
+-  if (g_processprng_fn == NULL) {
++  if (g_processprng_fn != NULL) {
++    return;
++  }
++
++  // Windows 7 backport: fall back to RtlGenRandom.
++  HMODULE advapi = LoadLibraryW(L"advapi32.dll");
++  if (advapi != NULL) {
++    g_rtlgenrandom_fn =
++        (RtlGenRandomFunction)GetProcAddress(advapi, "SystemFunction036");
++  }
++  if (g_rtlgenrandom_fn == NULL) {
+     abort();
+   }
+ }
+@@ -81,8 +106,25 @@
+   // On non-UWP configurations, use ProcessPrng instead of BCryptGenRandom
+   // to avoid accessing resources that may be unavailable inside the
+   // Chromium sandbox. See https://crbug.com/74242
+-  if (!g_processprng_fn(out, requested)) {
+-    abort();
++  if (g_processprng_fn != NULL) {
++    if (!g_processprng_fn(out, requested)) {
++      abort();
++    }
++    return;
++  }
++
++  // Windows 7 backport: RtlGenRandom takes a ULONG length, so feed it the
++  // request in chunks.
++  while (requested > 0) {
++    ULONG output_bytes_this_pass = ULONG_MAX;
++    if (requested < output_bytes_this_pass) {
++      output_bytes_this_pass = (ULONG)requested;
++    }
++    if (!g_rtlgenrandom_fn(out, output_bytes_this_pass)) {
++      abort();
++    }
++    requested -= output_bytes_this_pass;
++    out += output_bytes_this_pass;
+   }
+ }
+ 
+--- a/src/3rdparty/chromium/third_party/crashpad/crashpad/snapshot/win/system_snapshot_win.cc
++++ b/src/3rdparty/chromium/third_party/crashpad/crashpad/snapshot/win/system_snapshot_win.cc
+@@ -324,12 +324,30 @@
+   int num_cpus = CPUCount();
+   DCHECK_GT(num_cpus, 0);
+   std::vector<PROCESSOR_POWER_INFORMATION> info(num_cpus);
+-  if (CallNtPowerInformation(ProcessorInformation,
+-                             nullptr,
+-                             0,
+-                             &info[0],
+-                             sizeof(PROCESSOR_POWER_INFORMATION) * num_cpus) !=
+-      0) {
++  // Windows 7 backport: with current Windows SDKs CallNtPowerInformation() is
++  // imported from api-ms-win-power-base-l1-1-0.dll, an API set absent on
++  // Windows 7. powrprof.dll has exported the function since Windows XP and is
++  // what the API set forwards to, so resolve it there at run time instead.
++  using CallNtPowerInformationFn = NTSTATUS(WINAPI*)(
++      POWER_INFORMATION_LEVEL, PVOID, ULONG, PVOID, ULONG);
++  static const CallNtPowerInformationFn call_nt_power_information_fn = []() {
++    HMODULE powrprof =
++        ::LoadLibraryEx(L"powrprof.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return powrprof ? reinterpret_cast<CallNtPowerInformationFn>(
++                          ::GetProcAddress(powrprof, "CallNtPowerInformation"))
++                    : nullptr;
++  }();
++  if (!call_nt_power_information_fn) {
++    *current_hz = 0;
++    *max_hz = 0;
++    return;
++  }
++  if (call_nt_power_information_fn(
++          ProcessorInformation,
++          nullptr,
++          0,
++          &info[0],
++          sizeof(PROCESSOR_POWER_INFORMATION) * num_cpus) != 0) {
+     *current_hz = 0;
+     *max_hz = 0;
+     return;
+--- a/src/3rdparty/chromium/third_party/ipcz/src/reference_drivers/random.cc
++++ b/src/3rdparty/chromium/third_party/ipcz/src/reference_drivers/random.cc
+@@ -44,13 +44,32 @@
+ namespace {
+ 
+ #if BUILDFLAG(IS_WIN)
++// Windows 7 backport: ProcessPrng was introduced in Windows 10, while
++// bcryptprimitives.dll itself is present on Windows 7, so only the export
++// lookup fails. ABSL_ASSERT compiles to nothing in release builds, which would
++// leave a null function pointer to be called below. Fall back to RtlGenRandom()
++// instead, which is what Chromium used before it switched to ProcessPrng.
++using RtlGenRandomFn = BOOLEAN(WINAPI*)(PVOID RandomBuffer,
++                                        ULONG RandomBufferLength);
++
++RtlGenRandomFn GetRtlGenRandom() {
++  HMODULE hmod = LoadLibraryW(L"advapi32.dll");
++  ABSL_ASSERT(hmod);
++  RtlGenRandomFn rtl_gen_random_fn = reinterpret_cast<RtlGenRandomFn>(
++      GetProcAddress(hmod, "SystemFunction036"));
++  ABSL_ASSERT(rtl_gen_random_fn);
++  return rtl_gen_random_fn;
++}
++
+ decltype(&ProcessPrng) GetProcessPrng() {
+   HMODULE hmod = LoadLibraryW(L"bcryptprimitives.dll");
+   ABSL_ASSERT(hmod);
++  if (!hmod) {
++    return nullptr;
++  }
+   decltype(&ProcessPrng) process_prng_fn =
+       reinterpret_cast<decltype(&ProcessPrng)>(
+           GetProcAddress(hmod, "ProcessPrng"));
+-  ABSL_ASSERT(process_prng_fn);
+   return process_prng_fn;
+ }
+ #endif
+@@ -83,7 +102,22 @@
+ void RandomBytes(absl::Span<uint8_t> destination) {
+ #if BUILDFLAG(IS_WIN)
+   static decltype(&ProcessPrng) process_prng_fn = GetProcessPrng();
+-  process_prng_fn(destination.data(), destination.size());
++  if (process_prng_fn) {
++    process_prng_fn(destination.data(), destination.size());
++  } else {
++    // Windows 7 backport: RtlGenRandom takes a ULONG length, so feed it in
++    // chunks.
++    static RtlGenRandomFn rtl_gen_random_fn = GetRtlGenRandom();
++    uint8_t* cursor = destination.data();
++    size_t remaining = destination.size();
++    while (remaining > 0) {
++      const ULONG chunk = static_cast<ULONG>(
++          remaining > 0xFFFFFFFFu ? 0xFFFFFFFFu : remaining);
++      rtl_gen_random_fn(cursor, chunk);
++      cursor += chunk;
++      remaining -= chunk;
++    }
++  }
+ #elif BUILDFLAG(IS_FUCHSIA)
+   zx_cprng_draw(destination.data(), destination.size());
+ #elif BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_ANDROID)
+--- a/src/3rdparty/chromium/third_party/skia/src/ports/SkFontMgr_win_dw.cpp
++++ b/src/3rdparty/chromium/third_party/skia/src/ports/SkFontMgr_win_dw.cpp
+@@ -618,8 +618,21 @@
+         return this->fallback(dwFamilyName, dwStyle, dwBcp47->get(), character);
+     }
+ 
+-    // LayoutFallback may use the system font collection for fallback.
+-    return this->layoutFallback(dwFamilyName, dwStyle, dwBcp47->get(), character);
++    // Windows 7 backport: IDWriteFontFallback arrived with Windows 8.1, so on
++    // Windows 7 fFontFallback is always null and every character that needs a
++    // fallback font used to land in layoutFallback() - which, as the comment in
++    // that function says, cannot be stopped from using the system font
++    // collection. A sandboxed renderer cannot reach that collection, and
++    // DirectWrite answers by throwing a C++ exception rather than returning a
++    // failing HRESULT. Nothing in Chromium catches it, so msvcrt - which
++    // DWrite.dll is linked against, not the ucrtbase everything else uses -
++    // terminates the process with exit code 3 the moment a page lays out text.
++    //
++    // Chromium avoided this until 109.0.5414.120 by telling Blink not to use
++    // Skia's font fallback at all below Windows 8.1; that API was deleted along
++    // with Windows 7 support, so report "no match" instead and let Blink fall
++    // back on its own logic, which is what the old flag arranged for.
++    return nullptr;
+ }
+ 
+ sk_sp<SkTypeface> SkFontMgr_DirectWrite::fallback(const WCHAR* dwFamilyName,
+--- a/src/3rdparty/chromium/third_party/webrtc/modules/desktop_capture/win/screen_capture_utils.cc
++++ b/src/3rdparty/chromium/third_party/webrtc/modules/desktop_capture/win/screen_capture_utils.cc
+@@ -148,8 +148,26 @@
+ 
+ DesktopVector GetDpiForMonitor(HMONITOR monitor) {
+   UINT dpi_x, dpi_y;
++  // Windows 7 backport: ::GetDpiForMonitor() lives in shcore.dll, which only
++  // exists from Windows 8.1 on and whose import keeps the library from loading
++  // on Windows 7. Resolve it at run time and fall through to the system DPI
++  // below when it is absent - on Windows 7 every monitor uses the system DPI,
++  // so that is the correct answer rather than an approximation.
++  using GetDpiForMonitorFn = HRESULT(WINAPI*)(HMONITOR, MONITOR_DPI_TYPE,
++                                              UINT*, UINT*);
++  static const GetDpiForMonitorFn get_dpi_for_monitor_fn =
++      []() -> GetDpiForMonitorFn {
++    HMODULE shcore =
++        ::LoadLibraryExW(L"shcore.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return shcore ? reinterpret_cast<GetDpiForMonitorFn>(
++                        ::GetProcAddress(shcore, "GetDpiForMonitor"))
++                  : nullptr;
++  }();
+   // MDT_EFFECTIVE_DPI includes the scale factor as well as the system DPI.
+-  HRESULT hr = ::GetDpiForMonitor(monitor, MDT_EFFECTIVE_DPI, &dpi_x, &dpi_y);
++  HRESULT hr = get_dpi_for_monitor_fn
++                   ? get_dpi_for_monitor_fn(monitor, MDT_EFFECTIVE_DPI, &dpi_x,
++                                            &dpi_y)
++                   : E_NOTIMPL;
+   if (SUCCEEDED(hr)) {
+     return {static_cast<INT>(dpi_x), static_cast<INT>(dpi_y)};
+   }
+--- a/src/3rdparty/chromium/ui/display/win/screen_win.cc
++++ b/src/3rdparty/chromium/ui/display/win/screen_win.cc
+@@ -49,8 +49,24 @@
+ // Gets the DPI for a particular monitor.
+ absl::optional<int> GetPerMonitorDPI(HMONITOR monitor) {
+   UINT dpi_x, dpi_y;
++  // Windows 7 backport: ::GetDpiForMonitor() is exported by shcore.dll, which
++  // only exists from Windows 8.1 on. Resolve it at run time and report "no
++  // per-monitor DPI" when it is missing - Windows 7 has no per-monitor DPI at
++  // all, and the callers already fall back to the global scale factor.
++  using GetDpiForMonitorFn = HRESULT(WINAPI*)(HMONITOR, MONITOR_DPI_TYPE,
++                                              UINT*, UINT*);
++  static const GetDpiForMonitorFn get_dpi_for_monitor_fn =
++      []() -> GetDpiForMonitorFn {
++    HMODULE shcore =
++        ::LoadLibraryExW(L"shcore.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
++    return shcore ? reinterpret_cast<GetDpiForMonitorFn>(
++                        ::GetProcAddress(shcore, "GetDpiForMonitor"))
++                  : nullptr;
++  }();
++  if (!get_dpi_for_monitor_fn)
++    return absl::nullopt;
+   if (!SUCCEEDED(
+-          ::GetDpiForMonitor(monitor, MDT_EFFECTIVE_DPI, &dpi_x, &dpi_y))) {
++          get_dpi_for_monitor_fn(monitor, MDT_EFFECTIVE_DPI, &dpi_x, &dpi_y))) {
+     return absl::nullopt;
+   }
+ 
+@@ -324,7 +340,13 @@
+       display_infos_remaining, [](const internal::DisplayInfo& display_info) {
+         return display_info.screen_rect().origin().IsOrigin();
+       });
+-  DCHECK(primary_display_iter != display_infos_remaining.end());
++
++  // If we can't find the primary display, we likely witnessed a race condition
++  // when querying the OS for display info. We expect another OS notification to
++  // trigger this lookup again soon, so just return an empty list for now.
++  if (primary_display_iter == display_infos_remaining.end()) {
++    return {};
++  }
+ 
+   // Build the tree and determine DisplayPlacements along the way.
+   DisplayLayoutBuilder builder(primary_display_iter->id());
+--- a/src/3rdparty/chromium/ui/gfx/win/d3d_shared_fence.cc
++++ b/src/3rdparty/chromium/ui/gfx/win/d3d_shared_fence.cc
+@@ -128,7 +128,24 @@
+ }
+ 
+ bool D3DSharedFence::IsSameFenceAsHandle(HANDLE shared_handle) const {
+-  return CompareObjectHandles(shared_handle_.Get(), shared_handle);
++  // Windows 7 backport: CompareObjectHandles() is a Windows 10 API (there is no
++  // Windows 7 equivalent - it wraps NtCompareObjects, which that kernel does not
++  // have). Resolve it at run time so the import does not keep the library from
++  // loading. Where it is missing, fall back to comparing the handle values: two
++  // equal handles in one process always denote the same object, and the only
++  // cost of the false negative is that a fence object is not reused. This path
++  // is unreachable on Windows 7 anyway, since D3D11 fences require Windows 10.
++  using CompareObjectHandlesFn = BOOL(WINAPI*)(HANDLE, HANDLE);
++  static const CompareObjectHandlesFn compare_object_handles_fn =
++      []() -> CompareObjectHandlesFn {
++    HMODULE kernelbase = ::GetModuleHandle(L"kernelbase.dll");
++    return kernelbase ? reinterpret_cast<CompareObjectHandlesFn>(
++                            ::GetProcAddress(kernelbase, "CompareObjectHandles"))
++                      : nullptr;
++  }();
++  if (!compare_object_handles_fn)
++    return shared_handle_.Get() == shared_handle;
++  return compare_object_handles_fn(shared_handle_.Get(), shared_handle);
+ }
+ 
+ void D3DSharedFence::Update(uint64_t fence_value) {
+--- a/src/3rdparty/chromium/v8/src/libplatform/etw/etw-provider-win.h
++++ b/src/3rdparty/chromium/v8/src/libplatform/etw/etw-provider-win.h
+@@ -9,6 +9,20 @@
+ #include <windows.h>
+ #ifndef VOID
+ #define VOID void
++#endif
++// Windows 7 backport: TraceLoggingRegister() calls TraceLoggingSetInformation()
++// to attach provider traits, and because Chromium targets Windows 10 the SDK
++// header resolves that to a direct call to EventSetInformation(), which only
++// exists from Windows 8 on. That static import alone keeps Qt6WebEngineCore.dll
++// from loading on Windows 7. Mode 2 is the SDK's own documented behaviour for
++// pre-Windows 8 targets: look "EventSetInformation" up through
++// GetModuleHandleExW/GetProcAddress and return an error when it is absent.
++// TraceLogging is explicitly documented to work correctly without it, so ETW
++// tracing keeps registering and writing events on every Windows version, and
++// nothing changes on Windows 8 and later beyond one indirection at startup.
++// This is the only place in the tree that includes the header.
++#ifndef TLG_HAVE_EVENT_SET_INFORMATION
++#define TLG_HAVE_EVENT_SET_INFORMATION 2
+ #endif
+ #include <TraceLoggingProvider.h>
+ #include <evntprov.h>
+--- a/src/pdf/configure/BUILD.root.gn.in
++++ b/src/pdf/configure/BUILD.root.gn.in
+@@ -60,7 +60,8 @@
+   ]
+   if (is_msvc) {
+     libs = [
+-      "dloadhelper.lib",
++      # was dloadhelper.lib, not compatible with Windows 7
++      "delayimp.lib",
+       "winmm.lib",
+       "usp10.lib",
+     ]

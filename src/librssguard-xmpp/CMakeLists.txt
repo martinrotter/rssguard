@@ -36,28 +36,13 @@ if(NOT USE_SYSTEM_QXMPP AND NOT qxmpp_ROOT)
   message(STATUS "Using compiled qxmpp.")
 endif()
 
-find_library(qxmpp_LIBRARIES
-  NAMES "QXmpp" "QXmppQt${QT_VERSION_MAJOR}"
-  HINTS "${qxmpp_ROOT}" "${qxmpp_ROOT}/lib"
-  NO_CACHE
-  REQUIRED
-)
-
-find_path(qxmpp_INCLUDE_DIRS
-  NAMES "QXmppClient.h"
-  PATH_SUFFIXES "include" "include/QXmppQt${QT_VERSION_MAJOR}"
-  HINTS "${qxmpp_ROOT}"
-  NO_CACHE
-  REQUIRED
-)
-
-message(STATUS "Found qxmpp lib: '${qxmpp_LIBRARIES}'.")
-message(STATUS "Found qxmpp headers: '${qxmpp_INCLUDE_DIRS}'.")
-
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
+# Use the exported target so headers, import library and Qt dependencies belong
+# to the same QXmpp installation. A raw DLL/library search can silently pair
+# incompatible Qt 5/6 builds or headers from a different QXmpp release.
+find_package(QXmppQt6 1.15 CONFIG REQUIRED HINTS "${qxmpp_ROOT}")
+set_property(TARGET QXmpp::QXmpp PROPERTY IMPORTED_GLOBAL TRUE)
 
 prepare_rssguard_plugin(${PLUGIN_TARGET})
 
-target_link_libraries(${PLUGIN_TARGET} PRIVATE Qt${QT_VERSION_MAJOR}::Core ${qxmpp_LIBRARIES})
+target_link_libraries(${PLUGIN_TARGET} PRIVATE QXmpp::QXmpp)
 target_compile_features(${PLUGIN_TARGET} PRIVATE cxx_std_20)
-target_include_directories(${PLUGIN_TARGET} AFTER PRIVATE ${qxmpp_INCLUDE_DIRS})

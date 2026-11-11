@@ -1,7 +1,5 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "src/xmppfeed.h"
-
 #include <librssguard/core/message.h>
 
 #include <QCoreApplication>
@@ -29,7 +27,7 @@ class PubSubManager : public QXmppPubSubManager, public QXmppPubSubEventHandler 
     explicit PubSubManager(QObject* parent = nullptr);
 
   signals:
-    void realTimeArticleObtained(QString service, QString node, Message message, XmppFeed* feed = nullptr);
+    void realTimeArticleObtained(QString service, QString node, Message message);
 
   protected:
     virtual bool handlePubSubEvent(const QDomElement& element, const QString& service, const QString& node);
