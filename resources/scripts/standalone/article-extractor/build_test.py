@@ -5,6 +5,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 
 
@@ -83,6 +84,9 @@ class ExtractorBuildTest(unittest.TestCase):
                 wrapper.chmod(0o755)
             build = root / "build"
             install = root / "install"
+            executable = build / "src/rssguard" / ("rssguard-article-extractor" + executable_suffix)
+            last_build_finished_ns = 0
+            last_build_output = ""
 
             def invoke(*args):
                 result = subprocess.run(args, capture_output=True, text=True, timeout=120)
@@ -92,30 +96,70 @@ class ExtractorBuildTest(unittest.TestCase):
             def builds():
                 return len(log.read_text().splitlines()) if log.exists() else 0
 
+            def diagnostics():
+                paths = [extra, helper / "go.mod", helper / "go.sum", vendor / "modules.txt", wrapper,
+                         helper / "added.go", executable, build / "build.ninja",
+                         build / "extractor/go-sources.txt", build / "extractor/go-version.txt"]
+                lines = [f"Generator: {generator}", f"Last build finished (ns): {last_build_finished_ns}"]
+                for path in paths:
+                    if path.exists():
+                        stat = path.stat()
+                        lines.append(f"{path}: mtime_ns={stat.st_mtime_ns}, size={stat.st_size}")
+                    else:
+                        lines.append(f"{path}: missing")
+                ninja_log = build / ".ninja_log"
+                if ninja_log.exists():
+                    lines.extend(["Ninja log:", *ninja_log.read_text().splitlines()[-20:]])
+                lines.extend(["Build output:", last_build_output])
+                return "\n".join(lines)
+
+            def edit_dependency(path, contents):
+                reference_ns = max(last_build_finished_ns,
+                                   path.stat().st_mtime_ns if path.exists() else 0,
+                                   executable.stat().st_mtime_ns if executable.exists() else 0)
+                path.write_text(contents, encoding="utf-8")
+                deadline = time.monotonic() + 5
+                # Cross a whole-second boundary for generators/filesystems with coarse timestamps.
+                # Touch with the real clock; future timestamps can cause CMake regeneration loops.
+                while path.stat().st_mtime_ns // 1_000_000_000 <= reference_ns // 1_000_000_000:
+                    if time.monotonic() >= deadline:
+                        self.fail(f"Timestamp did not advance for {path}\n{diagnostics()}")
+                    time.sleep(0.02)
+                    os.utime(path, None)
+
             def rebuild():
-                invoke("cmake", "--build", str(build), "--target", "rssguard_article_extractor")
+                nonlocal last_build_finished_ns, last_build_output
+                args = ["cmake", "--build", str(build), "--target", "rssguard_article_extractor", "--verbose"]
+                if generator == "Ninja":
+                    args.extend(["--", "-d", "explain"])
+                result = subprocess.run(args, capture_output=True, text=True, timeout=120)
+                last_build_finished_ns = time.time_ns()
+                last_build_output = result.stdout + result.stderr
+                self.assertEqual(result.returncode, 0, diagnostics())
+
+            def assert_builds(expected, reason):
+                actual = builds()
+                self.assertEqual(actual, expected, f"{reason}\n{diagnostics()}" if actual != expected else reason)
 
             invoke("cmake", "-G", generator, "-S", str(source), "-B", str(build),
                    "-DGO_EXECUTABLE=" + wrapper.as_posix(), "-DCMAKE_INSTALL_PREFIX=" + install.as_posix())
             rebuild()
-            self.assertEqual(builds(), 1)
-            executable = build / "src/rssguard" / ("rssguard-article-extractor" + executable_suffix)
+            assert_builds(1, "initial build")
             self.assertEqual(invoke(str(executable)), "first")
             rebuild()
-            self.assertEqual(builds(), 1, "an unchanged build reran Go")
+            assert_builds(1, "an unchanged build reran Go")
 
-            extra.write_text('package main\nfunc value() string { return "updated" }\n', encoding="utf-8")
+            edit_dependency(extra, 'package main\nfunc value() string { return "updated" }\n')
             rebuild()
-            self.assertEqual(builds(), 2)
+            assert_builds(2, "changed Go source")
             self.assertEqual(invoke(str(executable)), "updated", "go build ignored another source file")
 
             # Manifest, vendor and compiler changes must each invalidate the custom command.
             for dependency in (helper / "go.mod", helper / "go.sum", vendor / "modules.txt", wrapper):
                 previous = builds()
-                with dependency.open("a", encoding="utf-8") as output:
-                    output.write("\n")
+                edit_dependency(dependency, dependency.read_text(encoding="utf-8") + "\n")
                 rebuild()
-                self.assertEqual(builds(), previous + 1, str(dependency))
+                assert_builds(previous + 1, str(dependency))
 
             # A compiler update must also be detected when its timestamp is preserved.
             previous = builds()
@@ -125,19 +169,21 @@ class ExtractorBuildTest(unittest.TestCase):
                 text = text.replace('@echo off\n', '@echo off\nif "%~1 %~2"=="env GOVERSION" (echo go1.27.999&exit /b 0)\n')
             else:
                 text = wrapper.read_text().replace('#!/bin/sh\n', '#!/bin/sh\nif [ "$1 $2" = "env GOVERSION" ]; then echo go1.27.999; exit 0; fi\n')
-            wrapper.write_text(text, encoding="utf-8")
+            edit_dependency(wrapper, text)
             os.utime(wrapper, ns=(timestamp.st_atime_ns, timestamp.st_mtime_ns))
             rebuild()
-            self.assertEqual(builds(), previous + 1, "compiler version changed without a rebuild")
+            assert_builds(previous + 1, "compiler version changed without a rebuild")
 
             previous = builds()
-            (helper / "added.go").write_text('package main\nfunc newlyAdded() {}\n', encoding="utf-8")
+            edit_dependency(helper / "added.go", 'package main\nfunc newlyAdded() {}\n')
             rebuild()
-            self.assertEqual(builds(), previous + 1, "new Go files did not invalidate the build")
+            assert_builds(previous + 1, "new Go files did not invalidate the build")
             previous = builds()
+            # Let the regenerated source-list manifest also get a newer timestamp after removal.
+            edit_dependency(helper / "added.go", (helper / "added.go").read_text(encoding="utf-8"))
             (helper / "added.go").unlink()
             rebuild()
-            self.assertEqual(builds(), previous + 1, "removed Go files did not invalidate the build")
+            assert_builds(previous + 1, "removed Go files did not invalidate the build")
             invoke("cmake", "--install", str(build))
             destination = "" if os.name == "nt" else ("Contents/MacOS" if sys.platform == "darwin" else "bin")
             installed = install / destination / executable.name
