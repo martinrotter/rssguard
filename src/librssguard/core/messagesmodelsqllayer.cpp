@@ -40,8 +40,8 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool i
   }
 
   int existing = m_sortColumns.indexOf(column);
-  bool is_ctrl_pressed =
-    Globals::hasFlag(QApplication::queryKeyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
+  bool is_ctrl_pressed = !ignore_multicolumn_sorting &&
+                         Globals::hasFlag(QApplication::queryKeyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
 
   if (existing >= 0) {
     m_sortColumns.removeAt(existing);
@@ -55,7 +55,7 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool i
     m_sortOrders.removeLast();
   }
 
-  if (is_ctrl_pressed && !ignore_multicolumn_sorting) {
+  if (is_ctrl_pressed) {
     // User is activating the multicolumn sort mode.
     m_sortColumns.append(column);
     m_sortOrders.append(order);

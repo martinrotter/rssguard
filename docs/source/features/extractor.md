@@ -192,7 +192,7 @@ const extracted = fs.runExecutableGetOutput(
 For most ordinary filters, prefer `msg.fetchFullContents(...)` because it uses the bundled extractor with RSS Guard's user agent, language, and applicable proxy settings. Call the extractor manually when you need custom headers, direct control over arguments, or want to pass a custom `html` string.
 
 ## Building and Testing
-Go 1.26.0 or newer is required. CI uses Go 1.27.3. CMake builds the complete Go package and tracks source, module manifest, vendor, and compiler changes. Windows builds install `rssguard-article-extractor.exe`.
+Go 1.26.0 or newer is required. CI uses Go 1.27.4. CMake builds the complete Go package and tracks source, module manifest, vendor, and compiler changes. Windows builds install `rssguard-article-extractor.exe`.
 
 Run these commands in `resources/scripts/standalone/article-extractor`:
 

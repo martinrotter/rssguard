@@ -627,9 +627,6 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::KeepCursorInCenter,
                        m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
-  settings()->setValue(GROUP(Messages),
-                       Messages::ArticleListColumnProfiles,
-                       m_ui->m_checkArticleListColumnProfiles->isChecked());
   settings()->setValue(GROUP(Messages), Messages::SwitchArticleListRtl, m_ui->m_checkSwitchArticleListRtl->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateEnabled, m_ui->m_checkAutoUpdate->isChecked());
@@ -727,6 +724,8 @@ void SettingsFeedsMessages::saveSettings() {
 
   qApp->feedReader()->messagesModel()->reloadLazyLoading();
   qApp->feedReader()->messagesModel()->updateDateFormat();
+  qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->setColumnProfilesEnabled(
+    m_ui->m_checkArticleListColumnProfiles->isChecked());
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
 
   onEndSaveSettings();

@@ -57,9 +57,8 @@ class MessagesView : public BaseTreeView {
     void saveActiveColumnProfile();
     void restoreInitialColumnProfile();
 
-    void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
-
   public slots:
+    void setColumnProfilesEnabled(bool enabled);
     void fetchFullSelectedArticles();
     void goToMotherFeed(bool edit_feed_also);
     void editFeedOfSelectedMessage();
@@ -155,9 +154,9 @@ class MessagesView : public BaseTreeView {
     void switchColumnProfileForItem(RootItem* item, bool save_current_profile);
     void restoreColumnProfile(ColumnProfile profile);
     void applyDefaultColumnProfile(ColumnProfile profile);
+    void updateSortIndicator();
     void setColumnProfileVisibility(const QList<int>& visible_columns);
     bool columnProfilesEnabled() const;
-    void setColumnProfilesEnabled(bool enabled);
     ColumnProfile columnProfileForItem(const RootItem* item) const;
     const QString& columnProfileSettingsKey(ColumnProfile profile) const;
     void requestArticleDisplay(const Message& msg);

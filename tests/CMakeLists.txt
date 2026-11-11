@@ -28,7 +28,8 @@ function(add_rssguard_test TEST_TARGET)
            TEST_TARGET STREQUAL "test_labelsmenu" OR TEST_TARGET STREQUAL "test_cookies" OR
            TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum" OR
            TEST_TARGET STREQUAL "test_articlepreview" OR TEST_TARGET STREQUAL "test_externaltool" OR
-           TEST_TARGET STREQUAL "test_externaltoolsettings" OR TEST_TARGET STREQUAL "test_filtermatchmode")
+           TEST_TARGET STREQUAL "test_externaltoolsettings" OR TEST_TARGET STREQUAL "test_filtermatchmode" OR
+           TEST_TARGET STREQUAL "test_articlesorting")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -227,6 +228,10 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_filtermatchmode gui/test_filtermatchmode.cpp)
   target_include_directories(test_filtermatchmode PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_filtermatchmode PROPERTIES TIMEOUT 120)
+
+  add_rssguard_test(test_articlesorting gui/test_articlesorting.cpp)
+  target_include_directories(test_articlesorting PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+  set_tests_properties(test_articlesorting PROPERTIES TIMEOUT 120)
 
   add_rssguard_test(test_feeddeletion gui/test_feeddeletion.cpp)
   add_dependencies(test_feeddeletion rssguard-standard)

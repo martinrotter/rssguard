@@ -32,6 +32,7 @@
 #include <QMenu>
 #include <QProcess>
 #include <QScrollBar>
+#include <QSignalBlocker>
 #include <QTimer>
 
 MessagesView::MessagesView(QWidget* parent)
@@ -99,15 +100,18 @@ BaseTreeView::ColumnSortStates MessagesView::columnSortStates() const {
 }
 
 void MessagesView::restoreColumnSortStates(const ColumnSortStates& states) {
+  const ColumnSortStates restored_states =
+    states.isEmpty() ? ColumnSortStates{{MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder},
+                                        {MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder}}
+                     : states;
+
   m_sourceModel->clearSortStates();
 
-  for (int i = states.size() - 1; i > 0; i--) {
-    m_sourceModel->addSortState(states.at(i).first, states.at(i).second, false);
+  for (int i = qMin(int(restored_states.size()), MAX_MULTICOLUMN_SORT_STATES) - 1; i >= 0; i--) {
+    m_sourceModel->addSortState(restored_states.at(i).first, restored_states.at(i).second, true);
   }
 
-  if (!states.isEmpty()) {
-    header()->setSortIndicator(states.constFirst().first, states.constFirst().second);
-  }
+  updateSortIndicator();
 }
 
 void MessagesView::fetchFullSelectedArticles() {
@@ -192,18 +196,13 @@ void MessagesView::copyDataOfSelectedArticlesImpl(bool show_dialog) const {
   }
 }
 
-void MessagesView::adjustSort(int column,
-                              Qt::SortOrder order,
-                              bool emit_changed_from_header,
-                              bool ignore_multicolumn_sorting) {
-  if (!emit_changed_from_header) {
-    header()->blockSignals(true);
+void MessagesView::updateSortIndicator() {
+  const ColumnSortStates states = columnSortStates();
+  const QSignalBlocker blocker(header());
+
+  if (!states.isEmpty()) {
+    header()->setSortIndicator(states.constFirst().first, states.constFirst().second);
   }
-
-  m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
-
-  header()->setSortIndicator(column, order);
-  header()->blockSignals(false);
 }
 
 void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_modify_selection, int article_id) {
@@ -260,7 +259,21 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
 }
 
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
-  adjustSort(column, order, false, false);
+  if (QApplication::queryKeyboardModifiers().testFlag(Qt::KeyboardModifier::ControlModifier)) {
+    const ColumnSortStates states = columnSortStates();
+
+    // The header shows the primary key, so Qt cannot toggle secondary keys itself.
+    for (int i = 1; i < states.size(); i++) {
+      if (states.at(i).first == column) {
+        order = states.at(i).second == Qt::SortOrder::AscendingOrder ? Qt::SortOrder::DescendingOrder
+                                                                     : Qt::SortOrder::AscendingOrder;
+        break;
+      }
+    }
+  }
+
+  m_sourceModel->addSortState(column, order, false);
+  updateSortIndicator();
   m_sourceModel->fetchInitialArticles();
   reselectArticle(true, false, m_sourceModel->additionalArticleId());
 }
@@ -418,7 +431,7 @@ bool MessagesView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int hig
 
 void MessagesView::restoreColumnProfile(ColumnProfile profile) {
   const QString state = qApp->settings()->value(GROUP(GUI), columnProfileSettingsKey(profile)).toString();
-  const bool old_block = header()->blockSignals(true);
+  const QSignalBlocker blocker(header());
 
   if (state.isEmpty()) {
     applyDefaultColumnProfile(profile);
@@ -426,8 +439,6 @@ void MessagesView::restoreColumnProfile(ColumnProfile profile) {
   else {
     restoreHeaderState(QByteArray::fromBase64(state.toLocal8Bit()));
   }
-
-  header()->blockSignals(old_block);
 }
 
 void MessagesView::applyDefaultColumnProfile(ColumnProfile profile) {
@@ -504,10 +515,7 @@ void MessagesView::applyDefaultColumnProfile(ColumnProfile profile) {
 
   setColumnProfileVisibility(visible_columns);
 
-  m_sourceModel->clearSortStates();
-  m_sourceModel->addSortState(MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder, true);
-  m_sourceModel->addSortState(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder, true);
-  header()->setSortIndicator(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder);
+  restoreColumnSortStates({});
 }
 
 void MessagesView::setColumnProfileVisibility(const QList<int>& visible_columns) {
@@ -528,13 +536,10 @@ void MessagesView::setColumnProfilesEnabled(bool enabled) {
   saveActiveColumnProfile();
   qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, enabled);
 
-  if (enabled) {
-    switchColumnProfileForItem(m_sourceModel->loadedItem(), false);
-  }
-  else {
-    m_currentColumnProfile = ColumnProfile::Default;
-    restoreColumnProfile(m_currentColumnProfile);
-  }
+  m_currentColumnProfile = enabled ? columnProfileForItem(m_sourceModel->loadedItem()) : ColumnProfile::Default;
+  restoreColumnProfile(m_currentColumnProfile);
+  m_sourceModel->fetchInitialArticles();
+  reselectArticle(true, false, m_sourceModel->additionalArticleId());
 }
 
 MessagesView::ColumnProfile MessagesView::columnProfileForItem(const RootItem* item) const {
@@ -932,12 +937,9 @@ void MessagesView::loadItem(RootItem* item) {
   switchColumnProfileForItem(item, true);
   cancelDelayedArticleMarking();
 
-  const int column = header()->sortIndicatorSection();
-  const Qt::SortOrder order = header()->sortIndicatorOrder();
-
   scrollToTop();
   clearSelection();
-  adjustSort(column, order, false, true);
+  updateSortIndicator();
 
   m_sourceModel->loadMessages(item);
 

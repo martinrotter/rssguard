@@ -13,6 +13,7 @@
 #include <QJsonObject>
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QSet>
 #include <QSignalBlocker>
 
 BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime(0), m_scrollSpeedFactor(1.0) {
@@ -77,42 +78,46 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
 
   if (saved_header_count < header()->count()) {
     qWarningNN << LOGSEC_GUI << "Detected invalid state for tree view" << QUOTE_W_SPACE_DOT(objectName());
-    return;
   }
+  else {
+    header()->setStretchLastSection(obj.contains(QSL("header_stretch_last_section"))
+                                      ? obj[QSL("header_stretch_last_section")].toBool()
+                                      : false);
+    header()->setCascadingSectionResizes(obj.contains(QSL("header_cascading_section_resizes"))
+                                           ? obj[QSL("header_cascading_section_resizes")].toBool()
+                                           : false);
 
-  header()->setStretchLastSection(obj.contains(QSL("header_stretch_last_section"))
-                                    ? obj[QSL("header_stretch_last_section")].toBool()
-                                    : false);
-  header()->setCascadingSectionResizes(obj.contains(QSL("header_cascading_section_resizes"))
-                                         ? obj[QSL("header_cascading_section_resizes")].toBool()
-                                         : false);
+    for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+      const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
+      const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
+      const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
+      const auto resize_mode = QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
+                                                         ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
+                                                         : int(header()->sectionResizeMode(i)));
 
-  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
-    const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
-    const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
-    const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
-    const auto resize_mode = QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
-                                                       ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
-                                                       : int(header()->sectionResizeMode(i)));
+      if (vi >= 0 && vi < header()->count()) {
+        header()->swapSections(header()->visualIndex(i), vi);
+      }
 
-    if (vi >= 0 && vi < header()->count()) {
-      header()->swapSections(header()->visualIndex(i), vi);
+      header()->resizeSection(i, ss);
+      header()->setSectionHidden(i, ish);
+      header()->setSectionResizeMode(i, resize_mode);
     }
-
-    header()->resizeSection(i, ss);
-    header()->setSectionHidden(i, ish);
-    header()->setSectionResizeMode(i, resize_mode);
   }
 
   ColumnSortStates states;
+  QSet<int> sorted_columns;
   const int saved_sort_count = obj[QSL("sort_count")].toInt();
 
   for (int i = 0; i < saved_sort_count; i++) {
-    const int col = obj[QSL("sort_%1_column").arg(i)].toInt();
-    const auto order = Qt::SortOrder(obj[QSL("sort_%1_order").arg(i)].toInt());
+    const int col = obj[QSL("sort_%1_column").arg(i)].toInt(-1);
+    const int order = obj[QSL("sort_%1_order").arg(i)].toInt(-1);
 
-    if (col >= 0 && col < header()->count()) {
-      states.append(QPair<int, Qt::SortOrder>(col, order));
+    if (col >= 0 && col < header()->count() &&
+        (order == int(Qt::SortOrder::AscendingOrder) || order == int(Qt::SortOrder::DescendingOrder)) &&
+        !sorted_columns.contains(col)) {
+      states.append(QPair<int, Qt::SortOrder>(col, Qt::SortOrder(order)));
+      sorted_columns.insert(col);
     }
   }
 

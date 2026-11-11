@@ -28,6 +28,7 @@ Added:
 * MediaWiki category and search pages can now be added as feeds, with full article HTML loaded through the MediaWiki API at a paced request rate. Each refresh fetches five newest results plus up to five older entries, with backfill progress saved across restarts after successful article storage.
 
 Fixed:
+* Fixed article-list sorting losing saved sort columns on startup or when switching column profiles. Profile changes now refresh sorting consistently from both settings and the column menu, preserve multicolumn priority, and keep sorting independent of column visibility.
 * Fixed a crash when deleting multiple selected feeds, including feeds inside folders. (#2507)
 * Fixed Windows installer packaging rejecting MSVC import libraries installed alongside service-plugin DLLs. Import libraries remain in the portable archive and are omitted from the installer.
 * Hardened Windows installation and upgrades: failed uninstallers stop upgrades, unsafe legacy upgrades and unsuitable target folders are rejected, and removal preserves files outside the packaged payload. Local ownership records and early recovery uninstallers allow failed installations, upgrades, and partial removals to be retried, including when another copy owns the Installed Apps entry. Added versioned shared shortcuts, installer metadata, staged-payload checks, reliable template rebuilds, and isolated regression tests using the actual previous installer. Silent installation no longer opens documentation; debug symbols remain in portable archives.
