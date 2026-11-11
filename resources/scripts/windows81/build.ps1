@@ -48,6 +48,17 @@ if (!(Test-Path "$qt\bin\qmake.exe")) {
         Run git @('-C', "$qtSource\qtwebengine", 'apply', '--check', "$PSScriptRoot\qtwebengine-6.8.3.patch")
         Run git @('-C', "$qtSource\qtwebengine", 'apply', "$PSScriptRoot\qtwebengine-6.8.3.patch")
         $modules += ',qtwebengine,qtwebchannel,qtpositioning'
+        # Chromium also requires gperf, bison and flex on the build host.
+        # Keep these out of the distributed application's dependency set.
+        $hostTools = "$Work\host-tools"
+        $buildTools = Source qt-build-tools https://github.com/crystalidea/qt-build-tools.git 306c3c5be2c6ad27d75a98eba614be373d8c9d14
+        $flex = Source winflexbison https://github.com/lexxmark/winflexbison.git 1176da2adaf972b2216b1ac8dd611e128fe80bc5
+        Run cmake @('-S', $flex, '-B', "$Work\flex-build", '-G', 'Ninja',
+            '-DCMAKE_BUILD_TYPE=Release', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5')
+        Run cmake @('--build', "$Work\flex-build", '--parallel', "$Jobs")
+        Run cmake @('--install', "$Work\flex-build", '--prefix', $hostTools)
+        Copy-Item "$buildTools\_tools\gperf.exe" $hostTools
+        $env:PATH = "$hostTools;$env:PATH"
         Run python @('-m', 'pip', 'install', 'html5lib==1.1')
     }
     Push-Location $openssl

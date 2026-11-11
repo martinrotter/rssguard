@@ -31,3 +31,7 @@ XMPP transport TLS remains enabled through Qt Network). OpenSSL is built from
 Go and its compatibility patches retain their BSD-style notices. Build output
 includes component notices and exact source pins. Preserve the corresponding
 source and modification patch alongside any distributed binaries.
+
+Web-only host tools (not shipped): WinFlexBison v2.5.25 at
+`1176da2adaf972b2216b1ac8dd611e128fe80bc5`, built from source, and gperf
+from crystalidea/qt-build-tools `306c3c5be2c6ad27d75a98eba614be373d8c9d14`.
