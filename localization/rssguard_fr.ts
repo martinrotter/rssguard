@@ -131,7 +131,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation>Éviter d’ajouter des articles publiés avant cette date dans la base de données</translation>
+      <translation>Éviter d’ajouter dans la base de données des articles publiés avant cette date</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
@@ -181,7 +181,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="18"/>
       <source>All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</source>
-      <translation>Tous les articles excessifs sont supprimés automatiquement par le logiciel, généralement après qu’un flux particulier est cherché. Ou bien les articles sont complètement purgés (y compris les articles de la corbeille) de la base de données interne, ou bien ils sont seulement placés dans la corbeille.</translation>
+      <translation>Tous les articles excessifs sont supprimés automatiquement par le logiciel, généralement après qu’un flux particulier est cherché. Soit les articles sont complètement purgés (y compris les articles de la corbeille) de la base de données interne, soit ils sont seulement placés dans la corbeille.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="24"/>
@@ -2769,7 +2769,7 @@ Les pièces jointes fournies par le flux sont séparées de la page Web et peuve
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="230"/>
       <source>Disable auto-fetching of articles</source>
-      <translation>Désactiver l&apos;obtention automatique des articles</translation>
+      <translation>Désactiver l’obtention automatique des articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="233"/>
@@ -3412,7 +3412,7 @@ de la fenêtre principale</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="504"/>
       <source>Hides or shows the list of feeds/folders.</source>
-      <translation>Cacher ou montrer la liste des flux/catégories</translation>
+      <translation>Cacher ou montrer la liste des flux / catégories.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
@@ -3479,8 +3479,7 @@ sélectionné</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="772"/>
       <source>Stop ongoing fetching</source>
-      <translation>Arrêter l&apos;obtention 
-en cours</translation>
+      <translation>Arrêter l’obtention en cours</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
@@ -5511,7 +5510,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/helpspoiler.cpp" line="25"/>
       <source>View more information on this</source>
-      <translation>Voir plus d&apos;infos</translation>
+      <translation>Voir plus d’informations</translation>
     </message>
   </context>
   <context>
@@ -6283,8 +6282,8 @@ A full article overwrite was requested.</translation>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="119"/>
       <source>
 The stored read state is preserved.</source>
-      <translation type="unfinished">
-The stored read state is preserved.</translation>
+      <translation>
+L’état de lecture connu est conservé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="122"/>
@@ -7530,7 +7529,7 @@ Feedly est un espace sécurisé où vous pouvez organiser et rechercher les suje
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="140"/>
       <source>Fetching articles right now</source>
-      <translation>Obtention d&apos;articles en cours</translation>
+      <translation>Obtention d’articles en cours</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="143"/>
@@ -7608,12 +7607,12 @@ Liste d’agrégateurs compatibles :</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="704"/>
       <source>interesting stuff</source>
-      <translation>trucs intéressants</translation>
+      <translation>articles intéressants</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="707"/>
       <source>interesting stuff (highlighted)</source>
-      <translation>trucs intéressants (surlignés)</translation>
+      <translation>articles intéressants (surlignés)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="710"/>
@@ -8673,7 +8672,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="828"/>
       <source>Error when fetching list of feeds</source>
-      <translation>Erreur lors de l&apos;obtention de la liste de flux</translation>
+      <translation>Erreur lors de l’obtention de la liste de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="829"/>
@@ -9120,7 +9119,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
       <source>Only auto-fetch articles if application is unfocused</source>
-      <translation>Obtenir les articles automatiquement que si le logiciel n’est pas au premier plan</translation>
+      <translation>Obtenir les articles automatiquement seulement si le logiciel n’est pas au premier plan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
@@ -9135,7 +9134,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-      <translation>Activer l'auto‐obtention ultra rapide (moins de 10 secondes)</translation>
+      <translation>Activer l’auto‐obtention ultra‐rapide (moins de 10 secondes)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
@@ -9232,7 +9231,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
-      <translation>Uniquement autoriser les raccourcis claviers basiques pour la liste de flux/d&apos;articles</translation>
+      <translation>Autoriser les seuls raccourcis claviers basiques pour la liste de flux / d’articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
@@ -9267,7 +9266,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
       <source>Ignore body-only changes from feeds</source>
-      <translation type="unfinished">Ignore body-only changes from feeds</translation>
+      <translation>Ignorer les changements du seul contenu des articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
@@ -9287,7 +9286,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
       <source>Preserve read state on feed updates</source>
-      <translation type="unfinished">Preserve read state on feed updates</translation>
+      <translation>Conserver l’état de lecture lors des mises à jour des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="602"/>
@@ -9312,7 +9311,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="916"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
-      <translation>Afficher l’icône du flux dans la colonne &quot;Flux&quot;</translation>
+      <translation>Afficher l’icône du flux dans la colonne « Flux »</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
@@ -9478,7 +9477,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="52"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
-      <translation>Notez que les couleurs de thèmes pour les dialogues/contrôles ne prennent effet qu'avec certains styles, par exemple avec le style Fusion.</translation>
+      <translation>Notez que les couleurs de thèmes pour les dialogues / contrôles ne prennent effet qu’avec certains styles, par exemple avec le style Fusion.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="165"/>
@@ -9737,7 +9736,7 @@ Description : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="438"/>
       <source>Hide tab bar if just one tab is visible</source>
-      <translation>Masquer la barre des onglets si qu&apos;un seul est visible</translation>
+      <translation>Masquer la barre des onglets si un seul est visible</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="38"/>
@@ -9868,7 +9867,7 @@ Description : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="37"/>
       <source>Ignore cookies for downloads</source>
-      <translation type="unfinished">Ignore cookies for downloads</translation>
+      <translation>Ignorer les cookies pour le téléchargement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="44"/>
@@ -10841,7 +10840,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="744"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
-      <translation>Certains flux ou categories n’ont pas pu être importés à cause d’une erreur ; veuillez consulter le log debug pour plus de détails.</translation>
+      <translation>Certains flux ou catégories n’ont pas pu être importés à cause d’une erreur ; veuillez consulter le log debug pour plus de détails.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
@@ -11345,7 +11344,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="184"/>
       <source>URL should NOT end with &quot;/api/&quot;.</source>
-      <translation>Le lien ne doit PAS se terminer avec &quot;/api&quot;.</translation>
+      <translation>Le lien ne doit PAS se terminer avec « /api ».</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="187"/>
@@ -11464,7 +11463,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="117"/>
       <source>Share to published</source>
-      <translation>Partager à &quot;publié&quot;</translation>
+      <translation>Partager à « publié »</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="136"/>
