@@ -101,8 +101,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
-    void scrollVerticallyBy(double delta) override;
-    void scrollVerticallyByPage(bool down) override;
+    virtual void scrollVerticallyBy(double delta) override;
+    virtual void scrollVerticallyByPage(bool down) override;
 
     virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 

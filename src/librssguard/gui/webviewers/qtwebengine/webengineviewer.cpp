@@ -453,7 +453,7 @@ void WebEngineViewer::scrollVerticallyBy(double delta) {
 void WebEngineViewer::scrollVerticallyByPage(bool down) {
   // Measure in CSS pixels inside the page, so resize and zoom are respected.
   page()->runJavaScript(QSL("window.scrollBy({left: 0, top: %1 * window.innerHeight, behavior: 'instant'});")
-                          .arg(down ? 1 : -1),
+                          .arg(down ? 0.8 : -0.8),
                         QWebEngineScript::ApplicationWorld);
 }
 

@@ -97,8 +97,8 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void cleanupCache();
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
-    void scrollVerticallyBy(double delta) override;
-    void scrollVerticallyByPage(bool down) override;
+    virtual void scrollVerticallyBy(double delta) override;
+    virtual void scrollVerticallyByPage(bool down) override;
     virtual void applyFont(const QFont& fon);
     virtual void reloadPage();
     virtual void goBack();
