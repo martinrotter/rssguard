@@ -702,7 +702,7 @@ Veuillez changer le nom de la base de donnée en cours d’utilisation, et rées
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="368"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation>Ce flux utilise les paramètres globaux, mais l&apos;obtention automatique globale d&apos;articles est désactivée.</translation>
+      <translation>Ce flux utilise les paramètres globaux, mais l’obtention automatique globale d’articles est désactivée.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
@@ -723,7 +723,7 @@ Veuillez changer le nom de la base de donnée en cours d’utilisation, et rées
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation>n&apos;utilise pas l&apos;obtention automatique des articles</translation>
+      <translation>n&apos;utilise pas l’obtention automatique des articles</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="364"/>
@@ -975,7 +975,7 @@ Identifiant d’élément: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>Votre %1 n&apos;est pas officiellement compatible avec Feedly, vous devrez donc utiliser un code d&apos;autorisation spéciale appelé &quot;jeton d&apos;accès développeur&quot;. Ces jetons sont normalement valables un mois et autorisent jusqu&apos;à 250 appels API par jour.</translation>
+      <translation>Votre %1 n’est pas officiellement compatible avec Feedly, vous devrez donc utiliser un code d’autorisation spéciale appelé « jeton d’accès développeur ». Ces jetons sont normalement valables un mois et autorisent jusqu’à 250 appels API par jour.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
@@ -1021,7 +1021,7 @@ Identifiant d’élément: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation>Votre version %1 est officiellement avec Feedly. Vous n&apos;avez pas besoin d&apos;utiliser le &quot;jeton d&apos;accès développeur&quot;. Vous pouvez alors laisser les champs de texte correspondants vides.</translation>
+      <translation>Votre version %1 est officiellement avec Feedly. Vous n&apos;avez pas besoin d’utiliser le « jeton d’accès développeur ». Vous pouvez alors laisser les champs de texte correspondants vides.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="156"/>
@@ -2353,7 +2353,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="101"/>
       <source>Edit &quot;%1&quot;</source>
-      <translation>Modifier &quot;%1&quot;</translation>
+      <translation>Modifier « %1 »</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
@@ -2732,7 +2732,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="167"/>
       <source>Edit &quot;%1&quot;</source>
-      <translation>Modifier &quot;%1&quot;</translation>
+      <translation>Modifier « %1 »</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="172"/>
@@ -4602,7 +4602,7 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="23"/>
       <source>Share note to &quot;Published&quot; feed</source>
-      <translation>Partager la note au flux &quot;Publié&quot;</translation>
+      <translation>Partager la note au flux « Publié »</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="52"/>
@@ -5351,7 +5351,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="32"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Le lien n'est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe &quot;http://&quot; ou &quot;https://&quot;?</translation>
+      <translation>Le lien n'est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe « http:// » ou « https:// » ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="36"/>
@@ -7349,7 +7349,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe &quot;http://&quot; ou &quot;https://&quot;?</translation>
+      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe « http:// » ou « https:// » ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="31"/>
@@ -8685,7 +8685,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="31"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
-      <translation>Notez que &quot;%1&quot; (sans les guillemets) est l&apos;espace réservé pour l&apos;URL d&apos;un article sélectionné.</translation>
+      <translation>Notez que « %1 » (sans les guillemets) est l’espace réservé pour l’URL d’un article sélectionné.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="35"/>
@@ -8699,7 +8699,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="41"/>
       <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation>Sur cette page, vous pouvez configurer une liste d’outils externes qui peuvent ouvrir des URL. Si vous configurez un domaine (sans &quot;www.&quot;) alors l’outil sera directement utilisé pour ouvrir tous les liens cliqués à partir de ce domaine. Vous pouvez séparer plusieurs domaines avec ’,’.</translation>
+      <translation>Sur cette page, vous pouvez configurer une liste d’outils externes qui peuvent ouvrir des URL. Si vous configurez un domaine (sans « www. ») alors l’outil sera directement utilisé pour ouvrir tous les liens cliqués à partir de ce domaine. Vous pouvez séparer plusieurs domaines avec ’,’.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
@@ -9056,7 +9056,7 @@ Ceci peut accélerer le logiciel de façon très significative si vous avez des 
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="57"/>
       <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation>Entrez un format pour le compteur d’articles affiché à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%tous&quot; et &quot;%non lus&quot;, qui sont des remplaçants pour le compteur actuel de tous les articles (ou ceux non lus).</translation>
+      <translation>Entrez un format pour le compteur d’articles affiché à côté de chaque flux / catégorie dans la liste des flux. Utiliser « %tous » et « non lus », qui sont des remplaçants pour le compteur actuel de tous les articles (ou ceux non lus).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="61"/>
@@ -9819,7 +9819,7 @@ Description : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="45"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
-      <translation>Vous utilisez le lecteur multimédia moderne basé sur libmpv avec la version %1 de l'API.</translation>
+      <translation>Vous utilisez le lecteur multimédia moderne basé sur libmpv avec la version %1 de l’API.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="60"/>
@@ -9971,7 +9971,7 @@ Description : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="31"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
-      <translation>Il y a des sons de notification intégrés. Il suffit de commencer à taper &quot;:&quot; et ils apparaîtront.</translation>
+      <translation>Il y a des sons de notification intégrés. Il suffit de commencer à taper « : » et ils apparaîtront.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="34"/>
@@ -10441,7 +10441,7 @@ Récupérer les articles complets : %9 (texte brut uniquement : %10)</translat
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="228"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe &quot;http://&quot; ou &quot;https://&quot; ?</translation>
+      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe « http:// » ou « https:// » ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="232"/>
@@ -10547,7 +10547,7 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="82"/>
       <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-      <translation>Sélectionner un encodage pour le flux normal. Si vous n'êtes pas sûr à propos de l'encodage, sélectionner alors l'encodage &quot;UTF-8&quot;.</translation>
+      <translation>Sélectionner un encodage pour le flux normal. Si vous n'êtes pas sûr à propos de l'encodage, sélectionner alors l'encodage « UTF-8 ».</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="96"/>
@@ -10736,7 +10736,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</source>
       <translation>Les serveurs de type ressources (images, CSS, etc.) seront aussi télécharges via proxy, si le proxy est configuré. Entrez un nom de domaine par ligne.
 
-Cette fonctionnalité marche que sur la version &quot;web&quot; de RSS Guard, parce que sur la version &quot;texte&quot; elle n’est pas nécessaire, vu que la resolution de proxy dessus est automatique.</translation>
+Cette fonctionnalité marche que sur la version « web » de RSS Guard, parce que sur la version « texte » elle n’est pas nécessaire, vu que la resolution de proxy dessus est automatique.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="46"/>
@@ -11234,7 +11234,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="33"/>
       <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-      <translation>Le lien de votre instance TT-RSS SANS le fil &quot;/api/&quot; traînant</translation>
+      <translation>Le lien de votre instance TT-RSS SANS le fil « /api/ » traînant</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="35"/>
@@ -11430,7 +11430,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe &quot;http://&quot; ou &quot;https://&quot; ?</translation>
+      <translation>Le lien n’est pas conforme au modèle normal. Êtes‐vous sûr que votre lien commence bien avec le préfixe « http:// » ou « https:// » ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="31"/>
