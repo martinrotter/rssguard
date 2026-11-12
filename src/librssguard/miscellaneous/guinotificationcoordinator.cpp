@@ -181,14 +181,13 @@ void GuiNotificationCoordinator::deleteTrayIcon() {
 void GuiNotificationCoordinator::offerChanges() {
   if (m_application->isFirstRunCurrentVersion()) {
     showGuiMessage(Notification::Event::GeneralEvent,
-                   {m_application->tr("Welcome"),
-                    m_application
-                      ->tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                           "version by clicking this popup notification.")
+                   {Application::tr("Welcome"),
+                    Application::tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
+                                    "version by clicking this popup notification.")
                       .arg(QSL(APP_LONG_NAME)),
                     QSystemTrayIcon::MessageIcon::Information},
                    {},
-                   GuiAction(m_application->tr("Go to changelog"),
+                   GuiAction(Application::tr("Go to changelog"),
                              m_application->mainForm(),
                              [this]() {
                                FormAbout(true, m_application->mainForm()).exec();
@@ -368,9 +367,7 @@ void GuiNotificationCoordinator::onFeedUpdatesFinished(const FeedDownloadResults
   });
 
   if (some_unquiet_feed) {
-    GuiMessage message = {m_application->tr("Unread articles fetched"),
-                          QString(),
-                          QSystemTrayIcon::MessageIcon::NoIcon};
+    GuiMessage message = {Application::tr("Unread articles fetched"), QString(), QSystemTrayIcon::MessageIcon::NoIcon};
     if (m_application->toastNotifications() != nullptr) {
       message.m_feedFetchResults = results;
     }

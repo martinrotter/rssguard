@@ -5,11 +5,15 @@
 
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
+#include <QCoreApplication>
+
 class TtRssFeed;
 class TtRssFeedDetails;
 class AuthenticationDetails;
 
 class FormTtRssFeedDetails : public FormFeedDetails {
+    Q_DECLARE_TR_FUNCTIONS(FormTtRssFeedDetails)
+
   public:
     explicit FormTtRssFeedDetails(ServiceRoot* service_root,
                                   RootItem* parent_to_select = nullptr,

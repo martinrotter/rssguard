@@ -81,6 +81,8 @@ namespace {
 } // namespace
 
 class FormArticleFilterGenerator::ConditionRow : public QWidget {
+    Q_DECLARE_TR_FUNCTIONS(FormArticleFilterGenerator)
+
   public:
     ConditionRow(const QList<Field>& fields, QWidget* parent) : QWidget(parent), m_fields(fields) {
       auto* layout = new QHBoxLayout(this);
@@ -337,6 +339,8 @@ class FormArticleFilterGenerator::ConditionRow : public QWidget {
 };
 
 class FormArticleFilterGenerator::ActionRow : public QWidget {
+    Q_DECLARE_TR_FUNCTIONS(FormArticleFilterGenerator)
+
   public:
     ActionRow(const QList<Action>& actions, const QList<Field>& writable_fields, QWidget* parent)
       : QWidget(parent), m_actions(actions), m_writableFields(writable_fields) {

@@ -29,7 +29,7 @@ function(add_rssguard_test TEST_TARGET)
            TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum" OR
            TEST_TARGET STREQUAL "test_articlepreview" OR TEST_TARGET STREQUAL "test_externaltool" OR
            TEST_TARGET STREQUAL "test_externaltoolsettings" OR TEST_TARGET STREQUAL "test_filtermatchmode" OR
-           TEST_TARGET STREQUAL "test_articlesorting")
+           TEST_TARGET STREQUAL "test_articlesorting" OR TEST_TARGET STREQUAL "test_translations")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -57,6 +57,19 @@ if(ENABLE_TESTING)
     TIMEOUT 120)
 
   add_subdirectory(dynamic-shortcuts)
+
+  add_rssguard_test(test_translations miscellaneous/test_translations.cpp)
+  target_include_directories(test_translations PRIVATE ${CMAKE_SOURCE_DIR}/src ${CMAKE_BINARY_DIR}/src/librssguard)
+  if(BUILD_WITH_QT6)
+    target_compile_definitions(test_translations PRIVATE
+      TEST_LUPDATE="$<TARGET_FILE:Qt6::lupdate>"
+      TEST_CMAKE="${CMAKE_COMMAND}"
+      TEST_CMAKE_GENERATOR="${CMAKE_GENERATOR}"
+      TEST_CMAKE_MAKE_PROGRAM="${CMAKE_MAKE_PROGRAM}"
+      TEST_LUPDATE_INPUT="${RSSGUARD_LUPDATE_INPUT}"
+      TEST_SOURCE_ROOT="${CMAKE_SOURCE_DIR}")
+  endif()
+  set_tests_properties(test_translations PROPERTIES TIMEOUT 120)
 
   add_rssguard_test(test_globals
     definitions/test_globals.cpp

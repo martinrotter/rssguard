@@ -188,8 +188,6 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
       return tr("content not found");
 
     default:
-
-      //: Network status.
       return enumToString(error_code);
   }
 }

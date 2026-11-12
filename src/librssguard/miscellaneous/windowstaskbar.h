@@ -7,6 +7,7 @@
 
 #if defined(Q_OS_WIN)
 
+#include <QCoreApplication>
 #include <QIcon>
 #include <QImage>
 #include <QList>
@@ -19,6 +20,8 @@ struct ITaskbarList4;
 class QAction;
 
 class WindowsTaskbar : public QObject {
+    Q_DECLARE_TR_FUNCTIONS(WindowsTaskbar)
+
   public:
     enum class ProgressState {
       None,

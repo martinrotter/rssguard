@@ -1,22 +1,30 @@
-if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT6)
-  # Regenerate "en" .ts file.
-  #
-  # "en" .ts file is only used as "source" language
-  # and it is not offered in RSS Guard as localization.
-  file(GLOB_RECURSE ALL_SOURCES
-    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.cpp"
-    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
-    "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
+if(BUILD_WITH_QT6 AND (UPDATE_TRANSLATIONS OR ENABLE_TESTING))
+  include(TranslationSources.cmake)
+  rssguard_translation_sources(translation_sources translation_includes)
+  set(translation_input "")
+  foreach(directory IN LISTS translation_includes)
+    string(APPEND translation_input "-I${directory}\n")
+  endforeach()
+  foreach(source IN LISTS translation_sources)
+    string(APPEND translation_input "${source}\n")
+  endforeach()
+  set(RSSGUARD_LUPDATE_INPUT "${CMAKE_CURRENT_BINARY_DIR}/lupdate-input.txt")
+  set(RSSGUARD_LUPDATE_INPUT "${RSSGUARD_LUPDATE_INPUT}" PARENT_SCOPE)
+  file(GENERATE OUTPUT "${RSSGUARD_LUPDATE_INPUT}" CONTENT "${translation_input}")
 
-  qt_add_lupdate(rssguard
-    TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts"
-    SOURCES ${ALL_SOURCES}
-    INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/src/librssguard"
-    OPTIONS "-no-obsolete")
+  if(UPDATE_TRANSLATIONS)
+    # The English catalog is the source for translators, not a selectable localization.
+    # Invoke the tool directly to avoid a duplicate target-source scan and support Qt 6.5.
+    add_custom_target(rssguard_lupdate
+      COMMAND ${CMAKE_COMMAND} "-DLUPDATE=$<TARGET_FILE:Qt6::lupdate>" "-DINPUT=${RSSGUARD_LUPDATE_INPUT}"
+        "-DOUTPUT=${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts" -P "${CMAKE_CURRENT_SOURCE_DIR}/RunLupdate.cmake"
+      VERBATIM)
+    add_custom_target(update_translations DEPENDS rssguard_lupdate)
+  endif()
 endif()
 
-# Collect all .ts files and generate .qm files.
-FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOURCE_DIR}/*.ts)
+# Collect application and Qt catalogs without translation-update staging files.
+FILE(GLOB TS_FILES ${CMAKE_CURRENT_SOURCE_DIR}/rssguard_*.ts ${CMAKE_CURRENT_SOURCE_DIR}/qtbase_*.ts)
 
 set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
 

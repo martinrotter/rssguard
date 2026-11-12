@@ -5,10 +5,14 @@
 
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
+#include <QCoreApplication>
+
 class GreaderFeed;
 class GreaderFeedDetails;
 
 class FormGreaderFeedDetails : public FormFeedDetails {
+    Q_DECLARE_TR_FUNCTIONS(FormGreaderFeedDetails)
+
   public:
     explicit FormGreaderFeedDetails(ServiceRoot* service_root,
                                     RootItem* parent_to_select = nullptr,

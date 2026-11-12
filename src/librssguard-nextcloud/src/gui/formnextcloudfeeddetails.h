@@ -5,11 +5,15 @@
 
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
+#include <QCoreApplication>
+
 class NextcloudFeed;
 class NextcloudFeedDetails;
 class AuthenticationDetails;
 
 class FormNextcloudFeedDetails : public FormFeedDetails {
+    Q_DECLARE_TR_FUNCTIONS(FormNextcloudFeedDetails)
+
   public:
     explicit FormNextcloudFeedDetails(ServiceRoot* service_root,
                                       RootItem* parent_to_select = nullptr,

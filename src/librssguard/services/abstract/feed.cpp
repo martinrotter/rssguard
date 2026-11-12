@@ -354,16 +354,17 @@ QString Feed::getAutoUpdateStatusDescription() const {
       break;
 
     case AutoUpdateType::DefaultAutoUpdate:
-      //: Describes feed auto-update status.
       if (qApp->feedReader()->autoUpdateEnabled()) {
         int secs_to_next =
           QDateTime::currentDateTimeUtc()
             .secsTo(qApp->feedReader()->lastAutoUpdate().addSecs(qApp->feedReader()->autoUpdateInterval()));
 
+        //: Describes feed auto-update status.
         auto_update_string =
           tr("uses global settings (%n minute(s) to next auto-fetch of articles)", nullptr, int(secs_to_next / 60.0));
       }
       else {
+        //: Describes feed auto-update status.
         auto_update_string = tr("uses global settings, but global auto-fetching "
                                 "of articles is disabled");
       }
