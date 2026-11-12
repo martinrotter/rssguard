@@ -23,9 +23,10 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
 #if defined(Q_OS_WIN)
   m_ui->m_helpShrink->setHelpText(tr("Why can the database file stay large?"),
                                   tr("For faster database access, RSS Guard uses a Windows feature that can prevent "
-                                     "SQLite database files from shrinking on disk. The \"Total data size\" shown here "
-                                     "may still decrease after optimization. The unused space will be reused as new "
-                                     "articles are saved."),
+                                     "SQLite database files from shrinking on disk during manual cleanup. Automatic "
+                                     "cleanup on application startup can shrink the file on disk. The \"Total data size\" "
+                                     "shown here may still decrease after optimization. The unused space will be reused "
+                                     "as new articles are saved."),
                                   false);
   m_ui->m_helpShrink->setVisible(qApp->database()->driver()->driverType() == DatabaseDriver::DriverType::SQLite);
 #else
