@@ -178,8 +178,20 @@ else
   macdeployqt "$prefix" -executable="$prefix/Contents/MacOS/rssguard-package-smoke" -verbose=2
   mv "$prefix/Contents/MacOS/rssguard-package-smoke" ./rssguard-package-smoke
 
-  # Sign the final bundle after removing the probe, and deploy to DMG.
-  macdeployqt "$prefix" -dmg -verbose=2 -codesign=-
+  # Sign the final bundle after removing the probe.
+  macdeployqt "$prefix" -verbose=2 -codesign=-
+
+  # Retry DMG creation to mitigate intermittent hdiutil "Resource busy" failures.
+  for attempt in 1 2 3; do
+    if hdiutil create "${prefix%.app}.dmg" \
+        -srcfolder "$prefix" -format UDZO -fs HFS+ \
+        -volname "${prefix%.app}" -ov; then
+      break
+    fi
+
+    [[ "$attempt" -lt 3 ]] || exit 1
+    sleep 5
+  done
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
