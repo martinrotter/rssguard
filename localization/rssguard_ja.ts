@@ -87,7 +87,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="184"/>
       <source>Welcome</source>
-      <translation type="unfinished">Welcome</translation>
+      <translation>ようこそ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="185"/>
@@ -95,20 +95,19 @@
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>%1 へようこそ。
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+このポップアップ通知をクリックして、今回のバージョンで追加された新機能や変更点をご確認ください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="190"/>
       <source>Go to changelog</source>
-      <translation type="unfinished">Go to changelog</translation>
+      <translation>変更履歴を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="370"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>未読記事を取得しました</translation>
     </message>
   </context>
   <context>
@@ -344,12 +343,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/basetoolbar.cpp" line="34"/>
       <source>Match any selected filter (OR)</source>
-      <translation type="unfinished">Match any selected filter (OR)</translation>
+      <translation>選択したフィルターのいずれかに一致 (OR)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/basetoolbar.cpp" line="40"/>
       <source>Match all selected filters (AND)</source>
-      <translation type="unfinished">Match all selected filters (AND)</translation>
+      <translation>選択したすべてのフィルターに一致 (AND)</translation>
     </message>
   </context>
   <context>
@@ -495,32 +494,32 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="230"/>
       <source>Invalid SQL preprocessor directive: %1</source>
-      <translation type="unfinished">Invalid SQL preprocessor directive: %1</translation>
+      <translation>無効な SQL プリプロセッサ ディレクティブ: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="250"/>
       <source>unknown engine &apos;%1&apos;</source>
-      <translation type="unfinished">unknown engine &apos;%1&apos;</translation>
+      <translation>不明なエンジン &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="260"/>
       <source>unexpected #elif</source>
-      <translation type="unfinished">unexpected #elif</translation>
+      <translation>予期しない #elif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="269"/>
       <source>unexpected #else</source>
-      <translation type="unfinished">unexpected #else</translation>
+      <translation>予期しない #else</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="278"/>
       <source>unexpected #endif</source>
-      <translation type="unfinished">unexpected #endif</translation>
+      <translation>予期しない #endif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="288"/>
       <source>missing #endif</source>
-      <translation type="unfinished">missing #endif</translation>
+      <translation>#endif がありません</translation>
     </message>
   </context>
   <context>
@@ -574,28 +573,28 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="150"/>
       <source>Conflicting shortcuts</source>
-      <translation type="unfinished">Conflicting shortcuts</translation>
+      <translation>ショートカットの競合</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="151"/>
       <source>The shortcut %1 conflicts with other assignments.</source>
-      <translation type="unfinished">The shortcut %1 conflicts with other assignments.</translation>
+      <translation>ショートカット %1 が他の割り当てと競合しています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="153"/>
       <source>Keep the new assignment and clear all conflicting shortcuts?</source>
-      <translation type="unfinished">Keep the new assignment and clear all conflicting shortcuts?</translation>
+      <translation>新しい割り当てを保持し、競合するショートカットをすべて解除しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="193"/>
       <source>%1 (%2) conflicts with %3 (%4)</source>
-      <translation type="unfinished">%1 (%2) conflicts with %3 (%4)</translation>
+      <translation>%1 (%2) が %3 (%4) と競合しています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="203"/>
       <source>Conflicting assignments need to be changed or cleared:
 %1</source>
-      <translation type="unfinished">Conflicting assignments need to be changed or cleared:
+      <translation>競合している割り当てを変更または削除する必要があります:
 %1</translation>
     </message>
   </context>
@@ -1219,12 +1218,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds</source>
-      <translation type="unfinished">Show feeds</translation>
+      <translation>フィードを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show folders</source>
-      <translation type="unfinished">Show folders</translation>
+      <translation>フォルダを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
@@ -1254,7 +1253,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="267"/>
       <source>Show enabled feeds</source>
-      <translation type="unfinished">Show enabled feeds</translation>
+      <translation>有効なフィードを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="273"/>
@@ -2422,12 +2421,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="24"/>
       <source>Why can the database file stay large?</source>
-      <translation type="unfinished">Why can the database file stay large?</translation>
+      <translation>データベースファイルのサイズが大きいままになるのはなぜですか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="25"/>
       <source>For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</source>
-      <translation type="unfinished">For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</translation>
+      <translation>データベースへのアクセスを高速化するため、RSS Guard は Windows の機能を使用しており、その影響で手動クリーンアップ時にディスク上の SQLite データベースファイルが縮小されない場合があります。アプリケーション起動時の自動クリーンアップを実行すると、ディスク上のファイルを縮小できます。なお、最適化後にここに表示される &quot;合計データサイズ&quot; 自体は減少することがあります。未使用の領域は、新しい記事が保存される際に再利用されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="108"/>
@@ -2489,27 +2488,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="101"/>
       <source>Run automatically</source>
-      <translation type="unfinished">Run automatically</translation>
+      <translation>自動的に実行</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="111"/>
       <source>Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</source>
-      <translation type="unfinished">Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</translation>
+      <translation>選択したクリーンアップ操作を自動的に実行します。今すぐクリーンアップを実行せずに選択内容を保存するには、このダイアログを閉じてください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="115"/>
       <source>Never</source>
-      <translation type="unfinished">Never</translation>
+      <translation>実行しない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="120"/>
       <source>On application startup</source>
-      <translation type="unfinished">On application startup</translation>
+      <translation>アプリケーション起動時</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="125"/>
       <source>On application exit</source>
-      <translation type="unfinished">On application exit</translation>
+      <translation>アプリケーション終了時</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="135"/>
@@ -3762,7 +3761,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="166"/>
       <source>Stored values</source>
-      <translation type="unfinished">Stored values</translation>
+      <translation>保存された値</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="238"/>
@@ -3974,22 +3973,22 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="274"/>
       <source>Request a full overwrite for every article the filter accepts, including its read and starred states. Test previews the result. Process checked feeds applies it and clears this option.</source>
-      <translation type="unfinished">Request a full overwrite for every article the filter accepts, including its read and starred states. Test previews the result. Process checked feeds applies it and clears this option.</translation>
+      <translation>フィルターに一致したすべての記事に対して、既読やスターの状態を含めた完全な上書きを要求します。「テスト」で結果をプレビューでき、「チェックしたフィードを処理」を実行すると適用され、このオプションは解除されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="277"/>
       <source>Force overwrite of accepted articles</source>
-      <translation type="unfinished">Force overwrite of accepted articles</translation>
+      <translation>受け入れた記事を強制的に上書き</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="286"/>
       <source>Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</source>
-      <translation type="unfinished">Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</translation>
+      <translation>読み込まれた保存済み記事に対して選択したフィルターを実行し、データベースへの保存結果をプレビューします。記事の変更内容は保存されませんが、スクリプトによる副作用は実行されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="296"/>
       <source>Run the selected filter on undeleted articles in checked feeds and show actual saving results.</source>
-      <translation type="unfinished">Run the selected filter on undeleted articles in checked feeds and show actual saving results.</translation>
+      <translation>チェックしたフィード内の未削除の記事に対して選択したフィルターを実行し、実際の保存結果を表示します。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
@@ -4009,23 +4008,23 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="395"/>
       <source>Show values</source>
-      <translation type="unfinished">Show values</translation>
+      <translation>値を表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="405"/>
       <source>Compare the script result with the values expected to be saved under the current settings. A preview does not simulate script side effects or later feed cleanup.</source>
-      <translation type="unfinished">Compare the script result with the values expected to be saved under the current settings. A preview does not simulate script side effects or later feed cleanup.</translation>
+      <translation>スクリプトの実行結果と、現在の設定に基づいて保存される予定の値とを比較します。プレビューでは、スクリプトによる副作用や、その後のフィードのクリーンアップ処理はシミュレーションされません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="409"/>
       <source>Script result</source>
-      <translation type="unfinished">Script result</translation>
+      <translation>スクリプト実行結果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="414"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="166"/>
       <source>Expected stored values</source>
-      <translation type="unfinished">Expected stored values</translation>
+      <translation>保存される予定の値</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="469"/>
@@ -4040,7 +4039,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="592"/>
       <source>Output</source>
-      <translation type="unfinished">Output</translation>
+      <translation>アウトプット</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="111"/>
@@ -4141,7 +4140,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="32"/>
       <source>Canceling… Waiting for active tasks to finish.</source>
-      <translation type="unfinished">Canceling… Waiting for active tasks to finish.</translation>
+      <translation>キャンセル中… 実行中のタスクの完了を待機しています。</translation>
     </message>
   </context>
   <context>
@@ -4282,37 +4281,37 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="100"/>
       <source>Fetching feed icons</source>
-      <translation type="unfinished">Fetching feed icons</translation>
+      <translation>フィードアイコンを取得中</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="107"/>
       <source>No usable icon found.</source>
-      <translation type="unfinished">No usable icon found.</translation>
+      <translation>使用可能なアイコンが見つかりませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="117"/>
       <source>Icon fetching failed.</source>
-      <translation type="unfinished">Icon fetching failed.</translation>
+      <translation>アイコンの取得に失敗しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="121"/>
       <source>Processed %1 of %2 feeds.</source>
-      <translation type="unfinished">Processed %1 of %2 feeds.</translation>
+      <translation>%2 件中 %1 件のフィードを処理しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="137"/>
       <source>%1: %2</source>
-      <translation type="unfinished">%1: %2</translation>
+      <translation>%1: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="144"/>
       <source>Individual icons are ready for %1 feeds.</source>
-      <translation type="unfinished">Individual icons are ready for %1 feeds.</translation>
+      <translation>%1 件のフィードの個別アイコンの準備ができました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="150"/>
       <source>Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</source>
-      <translation type="unfinished">Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</translation>
+      <translation>%2 件中 %1 件のアイコンを取得しました。取得できなかったフィードには既存のアイコンが維持されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="206"/>
@@ -4322,22 +4321,22 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="210"/>
       <source>The selected icon will be applied to all selected feeds.</source>
-      <translation type="unfinished">The selected icon will be applied to all selected feeds.</translation>
+      <translation>選択したアイコンが、選択中のすべてのフィードに適用されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="256"/>
       <source>Fetch icons again after changing feed settings.</source>
-      <translation type="unfinished">Fetch icons again after changing feed settings.</translation>
+      <translation>フィード設定を変更した後で、再度アイコンを取得してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="259"/>
       <source>Feed settings changed. Fetch icons again to apply individual icons.</source>
-      <translation type="unfinished">Feed settings changed. Fetch icons again to apply individual icons.</translation>
+      <translation>フィード設定が変更されました。個別のアイコンを適用するには、再度アイコンを取得してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="408"/>
       <source>Fetch icons for each feed</source>
-      <translation type="unfinished">Fetch icons for each feed</translation>
+      <translation>フィードごとにアイコンを取得</translation>
     </message>
   </context>
   <context>
@@ -6134,12 +6133,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="21"/>
       <source>Filter decision</source>
-      <translation type="unfinished">Filter decision</translation>
+      <translation>フィルター判定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="21"/>
       <source>Database outcome</source>
-      <translation type="unfinished">Database outcome</translation>
+      <translation>データベースへの反映結果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="22"/>
@@ -6159,104 +6158,104 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="64"/>
       <source>Accept</source>
-      <translation type="unfinished">Accept</translation>
+      <translation>承認</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="66"/>
       <source>Ignore</source>
-      <translation type="unfinished">Ignore</translation>
+      <translation>無視</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="68"/>
       <source>Purge</source>
-      <translation type="unfinished">Purge</translation>
+      <translation>消去</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="70"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="260"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="303"/>
       <source>Not processed</source>
-      <translation type="unfinished">Not processed</translation>
+      <translation>未処理</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Would insert</source>
-      <translation type="unfinished">Would insert</translation>
+      <translation>新規追加予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Inserted</source>
-      <translation type="unfinished">Inserted</translation>
+      <translation>新規追加済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Would update</source>
-      <translation type="unfinished">Would update</translation>
+      <translation>更新予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Updated</source>
-      <translation type="unfinished">Updated</translation>
+      <translation>更新済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="88"/>
       <source>Skipped: permanently deleted</source>
-      <translation type="unfinished">Skipped: permanently deleted</translation>
+      <translation>スキップ: 完全に削除済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="91"/>
       <source>Skipped: article no longer exists</source>
-      <translation type="unfinished">Skipped: article no longer exists</translation>
+      <translation>スキップ: 記事がすでに存在しません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="94"/>
       <source>Skipped: invalid article</source>
-      <translation type="unfinished">Skipped: invalid article</translation>
+      <translation>スキップ: 無効な記事</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="97"/>
       <source>Skipped: no update trigger</source>
-      <translation type="unfinished">Skipped: no update trigger</translation>
+      <translation>スキップ: 更新取得なし</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="102"/>
       <source>Write failed or unconfirmed</source>
-      <translation type="unfinished">Write failed or unconfirmed</translation>
+      <translation>書き込み失敗、または未確認</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="105"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="142"/>
       <source>Not attempted</source>
-      <translation type="unfinished">Not attempted</translation>
+      <translation>未実行</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels would change</source>
-      <translation type="unfinished">; labels would change</translation>
+      <translation>; ラベル変更予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels changed</source>
-      <translation type="unfinished">; labels changed</translation>
+      <translation>; ラベル変更済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="112"/>
       <source>; removed by feed cleanup</source>
-      <translation type="unfinished">; removed by feed cleanup</translation>
+      <translation>; フィードのクリーンアップにより削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
       <source>
 A full article overwrite was requested.</source>
-      <translation type="unfinished">
-A full article overwrite was requested.</translation>
+      <translation>
+記事の完全上書きが要求されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="119"/>
       <source>
 The stored read state is preserved.</source>
-      <translation type="unfinished">
-The stored read state is preserved.</translation>
+      <translation>
+保存済みの既読状態は維持されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="122"/>
@@ -8099,95 +8098,95 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
       <source>Invalid MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation parameter.</translation>
+      <translation>無効な MediaWiki の継続パラメータです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="601"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="611"/>
       <source>Invalid MediaWiki continuation offset.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation offset.</translation>
+      <translation>無効な MediaWiki の継続オフセットです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="616"/>
       <source>MediaWiki continuation parameter is too long.</source>
-      <translation type="unfinished">MediaWiki continuation parameter is too long.</translation>
+      <translation>MediaWiki の継続パラメータが長すぎます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="631"/>
       <source>Invalid MediaWiki continuation object.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation object.</translation>
+      <translation>無効な MediaWiki の継続オブジェクトです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="706"/>
       <source>MediaWiki catalog exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki catalog exceeded the requested page size.</translation>
+      <translation>MediaWiki のカタログが要求されたページサイズを超えました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="729"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="790"/>
       <source>MediaWiki API repeated a continuation token.</source>
-      <translation type="unfinished">MediaWiki API repeated a continuation token.</translation>
+      <translation>MediaWiki API が継続トークンを繰り返し返しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="735"/>
       <source>MediaWiki continuation requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki continuation requires a resource handler.</translation>
+      <translation>MediaWiki の継続処理にはリソースハンドラーが必要です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="741"/>
       <source>MediaWiki continuation changed origin.</source>
-      <translation type="unfinished">MediaWiki continuation changed origin.</translation>
+      <translation>MediaWiki の継続処理で取得元が変更されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="770"/>
       <source>MediaWiki backfill requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki backfill requires a resource handler.</translation>
+      <translation>MediaWiki のバックフィル処理にはリソースハンドラーが必要です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="780"/>
       <source>MediaWiki backfill exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki backfill exceeded the requested page size.</translation>
+      <translation>MediaWiki のバックフィル処理が要求されたページサイズを超えました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="895"/>
       <source>Not a supported MediaWiki feed.</source>
-      <translation type="unfinished">Not a supported MediaWiki feed.</translation>
+      <translation>サポートされている MediaWiki フィードではありません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="908"/>
       <source>Invalid MediaWiki feed source URL.</source>
-      <translation type="unfinished">Invalid MediaWiki feed source URL.</translation>
+      <translation>無効な MediaWiki フィードのソース URL です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="968"/>
       <source>MediaWiki article requests require a resource handler.</source>
-      <translation type="unfinished">MediaWiki article requests require a resource handler.</translation>
+      <translation>MediaWiki の記事の取得にはリソースハンドラーが必要です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="980"/>
       <source>MediaWiki API rate limit reached while fetching article %1.</source>
-      <translation type="unfinished">MediaWiki API rate limit reached while fetching article %1.</translation>
+      <translation>記事 %1 の取得中に MediaWiki API のレート制限に達しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="989"/>
       <source>MediaWiki article response did not match the requested page.</source>
-      <translation type="unfinished">MediaWiki article response did not match the requested page.</translation>
+      <translation>MediaWiki の記事応答が要求されたページと一致しませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="999"/>
       <source>Could not fetch MediaWiki article %1: %2</source>
-      <translation type="unfinished">Could not fetch MediaWiki article %1: %2</translation>
+      <translation>MediaWiki の記事 %1 を取得できませんでした: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="140"/>
       <source>not a JSON Wordpress feed</source>
-      <translation type="unfinished">not a JSON Wordpress feed</translation>
+      <translation>JSON 形式の WordPress フィードではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="151"/>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="157"/>
       <source>not a WordPress REST API feed</source>
-      <translation type="unfinished">not a WordPress REST API feed</translation>
+      <translation>WordPress REST API フィードではありません</translation>
     </message>
   </context>
   <context>
@@ -8659,12 +8658,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Choose image...</source>
-      <translation type="unfinished">Choose image...</translation>
+      <translation>画像を選択…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
       <source>Use automatic icon</source>
-      <translation type="unfinished">Use automatic icon</translation>
+      <translation>自動アイコンを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="54"/>
@@ -8706,7 +8705,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="325"/>
       <source>Select external tool icon</source>
-      <translation type="unfinished">Select external tool icon</translation>
+      <translation>外部ツールのアイコンを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="328"/>
@@ -8716,12 +8715,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="342"/>
       <source>Invalid icon</source>
-      <translation type="unfinished">Invalid icon</translation>
+      <translation>無効なアイコン</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="343"/>
       <source>The selected file could not be loaded as an image.</source>
-      <translation type="unfinished">The selected file could not be loaded as an image.</translation>
+      <translation>選択したファイルを画像として読み込めませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="54"/>
@@ -8831,12 +8830,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="328"/>
       <source>Choose an image for the selected tool, or restore its automatic icon.</source>
-      <translation type="unfinished">Choose an image for the selected tool, or restore its automatic icon.</translation>
+      <translation>選択したツールの画像を選択するか、自動アイコンに戻してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="331"/>
       <source>Change &amp;icon...</source>
-      <translation type="unfinished">Change &amp;icon...</translation>
+      <translation>アイコンを変更…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="341"/>
@@ -9153,19 +9152,19 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="242"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="835"/>
       <source>Change &amp;unread font</source>
-      <translation type="unfinished">Change &amp;unread font</translation>
+      <translation>未読のフォントを変更</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="249"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="842"/>
       <source>Use the normal font with bold enabled.</source>
-      <translation type="unfinished">Use the normal font with bold enabled.</translation>
+      <translation>通常のフォントに太字を適用して使用する。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="252"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="845"/>
       <source>Reset</source>
-      <translation type="unfinished">Reset</translation>
+      <translation>リセット</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="277"/>
@@ -9215,12 +9214,12 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="399"/>
       <source>Body differences alone do not trigger an article update during fetching or manual filter processing. If another change triggers an update, the new body is saved too. Article filters can request an update explicitly with msg.overwrite = true.</source>
-      <translation type="unfinished">Body differences alone do not trigger an article update during fetching or manual filter processing. If another change triggers an update, the new body is saved too. Article filters can request an update explicitly with msg.overwrite = true.</translation>
+      <translation>本文のみの変更は、フィードの取得時や手動フィルター処理の際に、記事の更新を取得することはありません。他の変更によって更新が取得された場合は、新しい本文も保存されます。記事フィルターで msg.overwrite = true を指定すると、明示的に更新を要求できます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
       <source>Ignore body-only changes from feeds</source>
-      <translation type="unfinished">Ignore body-only changes from feeds</translation>
+      <translation>フィードの本文のみの変更を無視する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
@@ -9235,12 +9234,12 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
       <source>Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</source>
-      <translation type="unfinished">Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</translation>
+      <translation>手動フィルター処理を含む通常のローカル記事の更新時に、保存済みの既読状態を維持します。無効にした場合は、処理結果の記事の既読状態が使用されます。同期アカウントでは各サービス側の状態が使用されます。記事フィルターでは msg.overwrite = true を指定することでこの保持設定を上書きできます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
       <source>Preserve read state on feed updates</source>
-      <translation type="unfinished">Preserve read state on feed updates</translation>
+      <translation>フィード更新時に既読状態を維持する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="602"/>
@@ -9645,7 +9644,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="339"/>
       <source>Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</source>
-      <translation type="unfinished">Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</translation>
+      <translation>StartAllBack を使用している場合は、このオプションを無効にしてください。StartAllBack がインストールされている環境では、タスクバーのサムネイルボタンが原因で RSS Guard がクラッシュすることがあります。設定を保存してから RSS Guard を再起動してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
@@ -9816,12 +9815,12 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <source>&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;フィードやその他のファイルをダウンロードする際に Cookie を無視します。&lt;/p&gt;&lt;p&gt;内蔵ウェブブラウザーでは現在のセッション中のログインに引き続き Cookie を使用できますが、アプリケーションを再起動すると保存されません。&lt;/p&gt;&lt;p&gt;このオプションを有効にすると、ブラウザーのログイン用 Cookie を含む既存の Cookie がすべて消去されます。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="37"/>
       <source>Ignore cookies for downloads</source>
-      <translation type="unfinished">Ignore cookies for downloads</translation>
+      <translation>ダウンロード時に Cookie を無視する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="44"/>
@@ -10119,7 +10118,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="84"/>
       <source>Database checkpoint failed or was blocked by another connection.</source>
-      <translation type="unfinished">Database checkpoint failed or was blocked by another connection.</translation>
+      <translation>データベースのチェックポイント処理に失敗したか、別の接続によってブロックされました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="96"/>
@@ -10244,7 +10243,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes (application setting)</source>
-      <translation type="unfinished">yes (application setting)</translation>
+      <translation>はい（アプリケーション設定）</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
@@ -10651,7 +10650,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;このフィードのダウンロード時に Cookie を無視します。内蔵ウェブブラウザー内の Cookie には影響しません。&lt;/p&gt;&lt;p&gt;「設定 &gt; ネットワークとウェブ &gt; ネットワーク」で全体設定として Cookie を無視している場合、このチェックボックスの状態に関わらずこのフィードでも Cookie は無視されます。全体設定での無視がオフの場合に、このフィードの保存された設定が有効になります。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="108"/>
@@ -10779,12 +10778,12 @@ OPMLファイルからの読み込み：標準のOPML 2.0ファイルをイン�
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
-      <translation type="unfinished">MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
+      <translation>MediaWiki API が必要な JSON カタログを含まない HTTP 304 を返しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
       <source>Unsupported feed type.</source>
-      <translation type="unfinished">Unsupported feed type.</translation>
+      <translation>サポートされていないフィード形式です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
