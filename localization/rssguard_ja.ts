@@ -6261,102 +6261,102 @@ The stored read state is preserved.</source>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="122"/>
       <source>
 The stored starred state is preserved.</source>
-      <translation type="unfinished">
-The stored starred state is preserved.</translation>
+      <translation>
+保存済みのスター状態は維持されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="130"/>
       <source>Purged</source>
-      <translation type="unfinished">Purged</translation>
+      <translation>消去済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="133"/>
       <source>Not saved: processing failed</source>
-      <translation type="unfinished">Not saved: processing failed</translation>
+      <translation>未保存: 処理に失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="136"/>
       <source>No article write: ignored</source>
-      <translation type="unfinished">No article write: ignored</translation>
+      <translation>記事の書き込みなし: 無視されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="139"/>
       <source>Would purge</source>
-      <translation type="unfinished">Would purge</translation>
+      <translation>消去予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
-Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
+      <translation>
+現在のデータベースに基づく予測結果です。その後の変更、スクリプトの副作用、フィードのクリーンアップによって実際の結果が変わる場合があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>There would be no stored article.</source>
-      <translation type="unfinished">There would be no stored article.</translation>
+      <translation>保存される記事はありません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>The article is no longer stored.</source>
-      <translation type="unfinished">The article is no longer stored.</translation>
+      <translation>この記事は既に保存されていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="582"/>
       <source>Could not refresh stored values after the incomplete run.</source>
-      <translation type="unfinished">Could not refresh stored values after the incomplete run.</translation>
+      <translation>実行が不完全だったため、保存済みの値を更新できませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="646"/>
       <source>The feed for article &apos;%1&apos; is no longer available.</source>
-      <translation type="unfinished">The feed for article &apos;%1&apos; is no longer available.</translation>
+      <translation>記事 &apos;%1&apos; のフィードは利用できなくなりました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="749"/>
       <source>Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</source>
-      <translation type="unfinished">Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</translation>
+      <translation>%3 件中 %2 件のフィードから読み込まれた %1 件の記事のプレビュー: 更新予定 %4 件、新規追加予定 %5 件、スキップ %6 件、無視 %7 件、消去予定 %8 件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="751"/>
       <source>Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</source>
-      <translation type="unfinished">Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</translation>
+      <translation>%3 件中 %2 件のフィード内の %1 件の記事の処理結果: 更新 %4 件、新規追加 %5 件、スキップ %6 件、無視 %7 件、消去 %8 件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="761"/>
       <source> Labels would change on %1 articles.</source>
-      <translation type="unfinished"> Labels would change on %1 articles.</translation>
+      <translation> %1 件の記事でラベルが変更される予定です。</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
       <source> Label changes confirmed on %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes confirmed on %n article(s).</numerusform>
+      <translation>
+        <numerusform> %n 件の記事でラベルの変更を適用しました。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="764"/>
       <source> Label changes could not be confirmed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> %n 件の記事でラベルの変更を確認できませんでした。</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="767"/>
       <source> Run incomplete.</source>
-      <translation type="unfinished"> Run incomplete.</translation>
+      <translation> 実行が完了しませんでした。</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="769"/>
       <source> Processing failed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Processing failed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> %n 件の記事の処理に失敗しました。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="772"/>
       <source> %n article(s) not attempted.</source>
-      <translation type="unfinished">
-        <numerusform> %n article(s) not attempted.</numerusform>
+      <translation>
+        <numerusform> %n 件の記事は実行されませんでした。</numerusform>
       </translation>
     </message>
     <message>
@@ -7463,14 +7463,14 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="97"/>
       <source>Feed no longer exists in the database.</source>
-      <translation type="unfinished">Feed no longer exists in the database.</translation>
+      <translation>フィードは既にデータベース内に存在しません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
       <source>Could not obtain the inserted article ID.</source>
-      <translation type="unfinished">Could not obtain the inserted article ID.</translation>
+      <translation>新規追加された記事の ID を取得できませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
@@ -8048,52 +8048,52 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="207"/>
       <source>MediaWiki API response is not a JSON object.</source>
-      <translation type="unfinished">MediaWiki API response is not a JSON object.</translation>
+      <translation>MediaWiki API の応答が JSON オブジェクトではありません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="208"/>
       <source>Invalid MediaWiki JSON: %1</source>
-      <translation type="unfinished">Invalid MediaWiki JSON: %1</translation>
+      <translation>無効な MediaWiki JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
       <source>MediaWiki API error: %1</source>
-      <translation type="unfinished">MediaWiki API error: %1</translation>
+      <translation>MediaWiki API エラー: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="228"/>
       <source>MediaWiki API response has no expected result list.</source>
-      <translation type="unfinished">MediaWiki API response has no expected result list.</translation>
+      <translation>MediaWiki API の応答に期待される結果リストが含まれていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="531"/>
       <source>Category: %1 — %2</source>
-      <translation type="unfinished">Category: %1 — %2</translation>
+      <translation>カテゴリ: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="532"/>
       <source>Pages added to &apos;%1&apos;.</source>
-      <translation type="unfinished">Pages added to &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; にページが追加されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="536"/>
       <source>Search: %1 — %2</source>
-      <translation type="unfinished">Search: %1 — %2</translation>
+      <translation>検索: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="537"/>
       <source>Pages matching &apos;%1&apos;, ordered by last edit.</source>
-      <translation type="unfinished">Pages matching &apos;%1&apos;, ordered by last edit.</translation>
+      <translation>&apos;%1&apos; に一致するページ（最終編集日時順）。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="585"/>
       <source>MediaWiki continuation has no catalog position.</source>
-      <translation type="unfinished">MediaWiki continuation has no catalog position.</translation>
+      <translation>MediaWiki の継続（continuation）情報にカタログ位置が含まれていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="590"/>
       <source>Unexpected MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Unexpected MediaWiki continuation parameter.</translation>
+      <translation>予期しない MediaWiki の継続パラメータです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
