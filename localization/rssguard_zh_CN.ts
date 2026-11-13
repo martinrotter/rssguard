@@ -8122,62 +8122,62 @@ stack: %3</source>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="729"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="790"/>
       <source>MediaWiki API repeated a continuation token.</source>
-      <translation type="unfinished">MediaWiki API repeated a continuation token.</translation>
+      <translation>MediaWiki API 重复了一个继续令牌。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="735"/>
       <source>MediaWiki continuation requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki continuation requires a resource handler.</translation>
+      <translation>MediaWiki 继续需要一个资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="741"/>
       <source>MediaWiki continuation changed origin.</source>
-      <translation type="unfinished">MediaWiki continuation changed origin.</translation>
+      <translation>MediaWiki 继续更改了来源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="770"/>
       <source>MediaWiki backfill requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki backfill requires a resource handler.</translation>
+      <translation>MediaWiki 返回填充需要一个资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="780"/>
       <source>MediaWiki backfill exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki backfill exceeded the requested page size.</translation>
+      <translation>MediaWiki 返回填充超过了请求的页面大小。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="895"/>
       <source>Not a supported MediaWiki feed.</source>
-      <translation type="unfinished">Not a supported MediaWiki feed.</translation>
+      <translation>不支持的 MediaWiki 源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="908"/>
       <source>Invalid MediaWiki feed source URL.</source>
-      <translation type="unfinished">Invalid MediaWiki feed source URL.</translation>
+      <translation>无效的 MediaWiki feed 源 URL。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="968"/>
       <source>MediaWiki article requests require a resource handler.</source>
-      <translation type="unfinished">MediaWiki article requests require a resource handler.</translation>
+      <translation>MediaWiki 文章请求需要资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="980"/>
       <source>MediaWiki API rate limit reached while fetching article %1.</source>
-      <translation type="unfinished">MediaWiki API rate limit reached while fetching article %1.</translation>
+      <translation>获取文章 %1 时达到了MediaWiki API 速率限制。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="989"/>
       <source>MediaWiki article response did not match the requested page.</source>
-      <translation type="unfinished">MediaWiki article response did not match the requested page.</translation>
+      <translation>MediaWiki文章响应与请求的页面不匹配。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="999"/>
       <source>Could not fetch MediaWiki article %1: %2</source>
-      <translation type="unfinished">Could not fetch MediaWiki article %1: %2</translation>
+      <translation>无法获取MediaWiki 文章 %1: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="140"/>
       <source>not a JSON Wordpress feed</source>
-      <translation type="unfinished">not a JSON Wordpress feed</translation>
+      <translation>不是JSON Wordpress 源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="151"/>
