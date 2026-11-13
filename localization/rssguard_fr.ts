@@ -584,18 +584,18 @@ Veuillez changer le nom de la base de donnée en cours d’utilisation, et rées
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="153"/>
       <source>Keep the new assignment and clear all conflicting shortcuts?</source>
-      <translation type="unfinished">Keep the new assignment and clear all conflicting shortcuts?</translation>
+      <translation>Conserver la nouvelle affectation et effacer tous les raccourcis en conflit ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="193"/>
       <source>%1 (%2) conflicts with %3 (%4)</source>
-      <translation type="unfinished">%1 (%2) conflicts with %3 (%4)</translation>
+      <translation>%1 (%2) entre en conflit avec %3 (%4)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="203"/>
       <source>Conflicting assignments need to be changed or cleared:
 %1</source>
-      <translation type="unfinished">Conflicting assignments need to be changed or cleared:
+      <translation>Les affectations conflictuelles doivent être modifiées ou supprimées :
 %1</translation>
     </message>
   </context>
@@ -4333,7 +4333,7 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="150"/>
       <source>Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</source>
-      <translation type="unfinished">Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</translation>
+      <translation>%1 icônes parmi %2 ont été récupérées. Les icônes existantes seront conservées pour les flux infructueux.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="206"/>
@@ -4343,17 +4343,17 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="210"/>
       <source>The selected icon will be applied to all selected feeds.</source>
-      <translation type="unfinished">The selected icon will be applied to all selected feeds.</translation>
+      <translation>L'icône sélectionnée sera appliquée à tous les flux sélectionnés.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="256"/>
       <source>Fetch icons again after changing feed settings.</source>
-      <translation type="unfinished">Fetch icons again after changing feed settings.</translation>
+      <translation>Récupérer à nouveau les icônes après avoir modifié les paramètres du flux.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="259"/>
       <source>Feed settings changed. Fetch icons again to apply individual icons.</source>
-      <translation type="unfinished">Feed settings changed. Fetch icons again to apply individual icons.</translation>
+      <translation>Paramètres du flux modifiés. Récupérez à nouveau les icônes pour appliquer des icônes individuelles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="408"/>
@@ -6295,12 +6295,12 @@ L'état des étoiles stockées est préservé.</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="133"/>
       <source>Not saved: processing failed</source>
-      <translation type="unfinished">Not saved: processing failed</translation>
+      <translation>Non enregistré : échec du traitement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="136"/>
       <source>No article write: ignored</source>
-      <translation type="unfinished">No article write: ignored</translation>
+      <translation>Aucune écriture d'article : ignorée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="139"/>
@@ -8097,7 +8097,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
       <source>MediaWiki API error: %1</source>
-      <translation type="unfinished">MediaWiki API error: %1</translation>
+      <translation>Erreur MediaWiki API : %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="228"/>
@@ -8112,7 +8112,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="532"/>
       <source>Pages added to &apos;%1&apos;.</source>
-      <translation type="unfinished">Pages added to &apos;%1&apos;.</translation>
+      <translation>Pages ajoutées à « %1 ».</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="536"/>
@@ -8189,7 +8189,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="895"/>
       <source>Not a supported MediaWiki feed.</source>
-      <translation type="unfinished">Not a supported MediaWiki feed.</translation>
+      <translation>Flux MediaWiki non pris en charge</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="908"/>
@@ -8699,7 +8699,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Choose image...</source>
-      <translation type="unfinished">Choose image...</translation>
+      <translation>Sélectionner une image...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
@@ -8761,7 +8761,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="343"/>
       <source>The selected file could not be loaded as an image.</source>
-      <translation type="unfinished">The selected file could not be loaded as an image.</translation>
+      <translation>Le fichier sélectionné n'a pu être chargé en tant qu'image.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="54"/>
@@ -10160,7 +10160,7 @@ Description : %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="84"/>
       <source>Database checkpoint failed or was blocked by another connection.</source>
-      <translation type="unfinished">Database checkpoint failed or was blocked by another connection.</translation>
+      <translation>Le point de contrôle de la base de données a échoué ou a été bloqué par une autre connexion.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="96"/>
@@ -10286,7 +10286,7 @@ Si c'est le cas, alors vous devez définir des intervalles de temps lors de la r
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes (application setting)</source>
-      <translation type="unfinished">yes (application setting)</translation>
+      <translation>oui (réglage de l'application)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
