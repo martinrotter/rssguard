@@ -32,6 +32,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     // Custom data serializers.
     static QString serializeCustomData(const QVariantHash& data);
     static QVariantHash deserializeCustomData(const QString& data);
+    static QVariantHash loadAccountCustomData(const QSqlDatabase& db, int account_id);
+    // Call within one DatabaseWorker write job; preserves keys not touched by edit.
+    static QVariantHash modifyAccountCustomData(const QSqlDatabase& db,
+                                                int account_id,
+                                                const std::function<void(QVariantHash&)>& edit);
 
     static void storeCategoryCustomData(const QSqlDatabase& db, Category* category);
     static void storeFeedCustomData(const QSqlDatabase& db, Feed* feed);
@@ -162,6 +167,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void loadRootFromDatabase(ServiceRoot* root);
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
+    static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account, const QVariantHash& custom_data);
 
     // Read-only prediction of the same matching and saving rules used below.
     static QList<MessageSavePreview> previewMessageUpdates(DatabaseFactory* db_factory,
@@ -208,6 +214,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                     int account_id,
                                     int new_parent_id,
                                     int new_feed_id = 0);
+    static void updateFeedCommonSettings(const QSqlDatabase& db, const Feed* feed, int account_id);
     static void createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int new_parent_id);
     static void deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
     static void deleteCategory(const QSqlDatabase& db, Category* category);
@@ -241,6 +248,10 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id);
 
   private:
+    static void createOverwriteAccountImpl(const QSqlDatabase& db,
+                                            ServiceRoot* account,
+                                            const QVariantHash* custom_data);
+    static QString articleCleanupCondition(const QSqlDatabase& db);
     static QMap<int, ArticleCounts> messageCountsByCondition(const QSqlDatabase& db,
                                                              const QString& where_clause,
                                                              bool group_by_feed,

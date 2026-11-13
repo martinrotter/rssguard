@@ -5,12 +5,16 @@
 
 #include "core/message.h"
 #include "core/messagesmodelsqllayer.h"
+#include "services/abstract/articlecolumn.h"
 #include "services/abstract/label.h"
 #include "services/abstract/rootitem.h"
 
 #include <QAbstractTableModel>
 #include <QFont>
 #include <QIcon>
+#include <QPointer>
+
+class ServiceRoot;
 
 #define BATCH_SIZE 10000
 
@@ -72,6 +76,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem* loadedItem() const;
+    ServiceRoot* columnProvider() const;
+    bool setColumnProvider(ServiceRoot* provider);
     Feed* feedById(int id) const;
 
     void editFeedOfMessage(const Message& msg);
@@ -152,6 +158,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     QHash<QString, Label*> m_hashedLabels;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
+    QPointer<ServiceRoot> m_columnProvider;
+    QString m_columnProviderCode;
+    QHash<int, ArticleColumn> m_pluginColumns;
+    int m_extraColumnCount = 0;
     QFont m_normalFont;
     QFont m_unreadFont;
     QFont m_normalStrikedFont;

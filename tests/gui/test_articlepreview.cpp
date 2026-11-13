@@ -12,7 +12,9 @@
 
 #include <memory>
 
+#include <QAction>
 #include <QDir>
+#include <QPointer>
 #include <QSettings>
 #include <QSignalSpy>
 #include <QTemporaryDir>
@@ -63,6 +65,7 @@ class TestArticlePreview : public QObject {
 
   private slots:
     void initTestCase();
+    void cleanupTestCase();
     void init();
     void delayedTabLoadPreservesVisibility_data();
     void delayedTabLoadPreservesVisibility();
@@ -210,6 +213,22 @@ void TestArticlePreview::embeddedPreviewDoesNotRevealBackgroundTab() {
   tabs->setCurrentIndex(0);
   QVERIFY(feeds->messagesBrowser()->isVisible());
   QVERIFY(feeds->webBrowser()->viewer()->plainText().contains(QSL("Article preview regression test.")));
+}
+
+void TestArticlePreview::cleanupTestCase() {
+  m_window->tabWidget()->setCurrentIndex(0);
+  QVERIFY(displayArticle(m_feed));
+  QPointer<MessagePreviewer> preview(m_window->tabWidget()->feedMessageViewer()->messagesBrowser());
+  QVERIFY(preview->isVisible());
+  auto* scroll_up = m_window->findChild<QAction*>(QSL("m_actionBrowserScrollUp"));
+  QVERIFY(scroll_up != nullptr);
+  QVERIFY(scroll_up->isEnabled());
+  preview->hide();
+  QVERIFY(!scroll_up->isEnabled());
+  preview->show();
+  QVERIFY(scroll_up->isEnabled());
+  m_window.reset();
+  QVERIFY(preview.isNull());
 }
 
 int main(int argc, char* argv[]) {

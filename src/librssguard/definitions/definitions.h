@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QtGlobal>
 
+#define RSSGUARD_PLUGIN_API_VERSION 1
+
 #if QT_VERSION < 0x060700 // Qt < 6.7.0
 #define STATE_CHANGED stateChanged
 #else
@@ -19,6 +21,7 @@
 #define SERVICE_CODE_FEEDLY    "feedly"
 #define SERVICE_CODE_INOREADER "inoreader"
 #define SERVICE_CODE_GMAIL     "gmail"
+#define SERVICE_CODE_GCALENDAR "gcalendar"
 #define SERVICE_CODE_XMPP      "xmpp"
 
 #define OAUTH_DECRYPTION_KEY 11451167756100761335ul
@@ -52,6 +55,7 @@
 #define HIGHLIGHTED_FOREGROUND_ROLE 65
 #define HIGHLIGHTED_BACKGROUND_ROLE 66
 #define TEXT_DIRECTION_ROLE         67
+#define COLUMN_ID_ROLE              (Qt::UserRole + 1)
 
 #define SOUNDS_BUILTIN_DIRECTORY    ":/sounds"
 #define ARGUMENTS_LIST_SEPARATOR    "\n"

@@ -15,6 +15,9 @@ function(add_rssguard_test TEST_TARGET)
   if(WIN32)
     set(TEST_EXTRA_PATH "")
     set(TEST_PLATFORM "offscreen")
+    if(QT_VERSION_MAJOR EQUAL 5 AND NOT TARGET Qt5::QOffscreenIntegrationPlugin AND TARGET Qt5::QMinimalIntegrationPlugin)
+      set(TEST_PLATFORM "minimal")
+    endif()
 
     if(TEST_TARGET STREQUAL "test_zoom" AND QT_VERSION_MAJOR EQUAL 5)
       # Qt 5's Windows WebEngine profile cannot initialize with the offscreen plugin.
@@ -29,7 +32,8 @@ function(add_rssguard_test TEST_TARGET)
            TEST_TARGET STREQUAL "test_filteringresults" OR TEST_TARGET STREQUAL "test_sqlitevacuum" OR
            TEST_TARGET STREQUAL "test_articlepreview" OR TEST_TARGET STREQUAL "test_externaltool" OR
            TEST_TARGET STREQUAL "test_externaltoolsettings" OR TEST_TARGET STREQUAL "test_filtermatchmode" OR
-           TEST_TARGET STREQUAL "test_articlesorting" OR TEST_TARGET STREQUAL "test_translations")
+           TEST_TARGET STREQUAL "test_articlesorting" OR TEST_TARGET STREQUAL "test_translations" OR
+           TEST_TARGET STREQUAL "test_gcalendaraccount")
       set(TEST_EXTRA_PATH "${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>")
     endif()
 
@@ -50,6 +54,93 @@ endfunction()
 
 if(ENABLE_TESTING)
   message(STATUS "Enabling unit tests.")
+
+  foreach(fixture current mismatched missing)
+    add_library(test_plugin_${fixture} MODULE plugins/fixture.cpp)
+    target_link_libraries(test_plugin_${fixture} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+    target_include_directories(test_plugin_${fixture} PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard)
+    target_compile_definitions(test_plugin_${fixture} PRIVATE RSSGUARD_DLLSPEC=
+      TEST_PLUGIN_METADATA="${CMAKE_CURRENT_SOURCE_DIR}/plugins/${fixture}.json")
+  endforeach()
+  add_rssguard_test(test_pluginfactory miscellaneous/test_pluginfactory.cpp)
+  target_compile_definitions(test_pluginfactory PRIVATE
+    TEST_PLUGIN_CURRENT="$<TARGET_FILE:test_plugin_current>"
+    TEST_PLUGIN_MISMATCHED="$<TARGET_FILE:test_plugin_mismatched>"
+    TEST_PLUGIN_MISSING="$<TARGET_FILE:test_plugin_missing>")
+  add_dependencies(test_pluginfactory test_plugin_current test_plugin_mismatched test_plugin_missing)
+
+  add_rssguard_test(test_oauthloopback network-web/test_oauthloopback.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/network-web/httpserver.cpp)
+
+  add_rssguard_test(test_calendarevent gcalendar/test_calendarevent.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarevent.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarfeed.cpp)
+  target_include_directories(test_calendarevent PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src)
+
+  add_rssguard_test(test_calendareventdraft gcalendar/test_calendareventdraft.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarevent.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendareventdraft.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp)
+  target_include_directories(test_calendareventdraft PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src)
+
+  add_rssguard_test(test_calendarreminders gcalendar/test_calendarreminders.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarevent.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarreminders.cpp)
+  target_include_directories(test_calendarreminders PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src)
+
+  add_rssguard_test(test_gcalendarnetwork gcalendar/test_gcalendarnetwork.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp)
+  target_include_directories(test_gcalendarnetwork PRIVATE ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src)
+
+  if(BUILD_GCALENDAR_PLUGIN)
+    qt_wrap_ui(gcalendar_test_ui
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formcalendarevent.ui
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formcalendareventdetails.ui
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui
+    )
+    add_rssguard_test(test_gcalendaraccount
+      gcalendar/test_gcalendaraccount.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarevent.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarevent.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendareventdraft.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendareventdraft.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarreminders.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/calendarreminders.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarfeed.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarfeed.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarnetworkfactory.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarserviceroot.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gcalendarserviceroot.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/calendareventpreviewer.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formcalendarevent.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formcalendarevent.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.h
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.h
+      ${gcalendar_test_ui}
+    )
+    target_include_directories(test_gcalendaraccount PRIVATE ${CMAKE_SOURCE_DIR}/src
+      ${CMAKE_SOURCE_DIR}/src/librssguard-gcalendar ${CMAKE_BINARY_DIR}/src/librssguard)
+    target_compile_definitions(test_gcalendaraccount PRIVATE TEST_GCALENDAR_PLUGIN="$<TARGET_FILE:rssguard-gcalendar>")
+    add_dependencies(test_gcalendaraccount rssguard-gcalendar)
+    if(BUILD_GMAIL_PLUGIN)
+      target_compile_definitions(test_gcalendaraccount PRIVATE TEST_GMAIL_PLUGIN="$<TARGET_FILE:rssguard-gmail>")
+      add_dependencies(test_gcalendaraccount rssguard-gmail)
+    endif()
+  endif()
 
   add_test(NAME test_article_extractor COMMAND "${GO_EXECUTABLE}" test -count=1 ./...)
   set_tests_properties(test_article_extractor PROPERTIES

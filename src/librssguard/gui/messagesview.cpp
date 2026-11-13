@@ -100,10 +100,16 @@ BaseTreeView::ColumnSortStates MessagesView::columnSortStates() const {
 }
 
 void MessagesView::restoreColumnSortStates(const ColumnSortStates& states) {
-  const ColumnSortStates restored_states =
-    states.isEmpty() ? ColumnSortStates{{MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder},
-                                        {MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder}}
-                     : states;
+  ColumnSortStates restored_states;
+  for (const auto& state : states) {
+    if (MessagesModelSqlLayer::isSortableColumn(state.first)) {
+      restored_states.append(state);
+    }
+  }
+  if (restored_states.isEmpty()) {
+    restored_states = {{MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder},
+                       {MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder}};
+  }
 
   m_sourceModel->clearSortStates();
 
@@ -259,6 +265,10 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
 }
 
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
+  if (!MessagesModelSqlLayer::isSortableColumn(column)) {
+    updateSortIndicator();
+    return;
+  }
   if (QApplication::queryKeyboardModifiers().testFlag(Qt::KeyboardModifier::ControlModifier)) {
     const ColumnSortStates states = columnSortStates();
 
@@ -389,31 +399,21 @@ void MessagesView::setupAppearance() {
 }
 
 void MessagesView::switchColumnProfileForItem(RootItem* item, bool save_current_profile) {
-  if (!columnProfilesEnabled()) {
-    if (save_current_profile) {
-      saveActiveColumnProfile();
-    }
-
-    m_currentColumnProfile = ColumnProfile::Default;
-    return;
-  }
-
-  const ColumnProfile new_profile = columnProfileForItem(item);
-
-  if (new_profile == m_currentColumnProfile) {
-    if (save_current_profile) {
-      saveActiveColumnProfile();
-    }
-
-    return;
-  }
-
+  auto* provider = item == nullptr ? nullptr : item->account();
+  const QString provider_code =
+    provider != nullptr && !provider->articleColumns().isEmpty() ? provider->code() : QString();
+  const ColumnProfile new_profile = columnProfilesEnabled() ? columnProfileForItem(item) : ColumnProfile::Default;
+  const bool context_changed = provider_code != m_columnProfileProvider || new_profile != m_currentColumnProfile;
   if (save_current_profile) {
     saveActiveColumnProfile();
   }
-
-  restoreColumnProfile(new_profile);
+  const QSignalBlocker blocker(header());
+  const bool schema_changed = m_sourceModel->setColumnProvider(provider);
+  m_columnProfileProvider = provider_code;
   m_currentColumnProfile = new_profile;
+  if (context_changed || schema_changed) {
+    restoreColumnProfile(new_profile);
+  }
 }
 
 bool MessagesView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) {
@@ -435,8 +435,26 @@ void MessagesView::restoreColumnProfile(ColumnProfile profile) {
 
   if (state.isEmpty()) {
     applyDefaultColumnProfile(profile);
+    if (!m_columnProfileProvider.isEmpty()) {
+      const QString seed = qApp->settings()->value(GROUP(GUI), columnProfileSettingsKey(profile, false)).toString();
+      if (!seed.isEmpty()) {
+        restoreHeaderState(QByteArray::fromBase64(seed.toLocal8Bit()));
+      }
+      for (int column = MSG_MDL_LABELS + 1; column < m_sourceModel->columnCount(); ++column) {
+        header()->setSectionHidden(column, true);
+        header()->setSectionResizeMode(column, QHeaderView::Interactive);
+        header()->resizeSection(column, header()->defaultSectionSize());
+      }
+    }
   }
   else {
+    if (!m_columnProfileProvider.isEmpty()) {
+      applyDefaultColumnProfile(profile);
+      for (int column = MSG_MDL_LABELS + 1; column < m_sourceModel->columnCount(); ++column) {
+        header()->setSectionResizeMode(column, QHeaderView::Interactive);
+        header()->resizeSection(column, header()->defaultSectionSize());
+      }
+    }
     restoreHeaderState(QByteArray::fromBase64(state.toLocal8Bit()));
   }
 }
@@ -575,33 +593,38 @@ MessagesView::ColumnProfile MessagesView::columnProfileForItem(const RootItem* i
   return ColumnProfile::Default;
 }
 
-const QString& MessagesView::columnProfileSettingsKey(ColumnProfile profile) const {
+QString MessagesView::columnProfileSettingsKey(ColumnProfile profile, bool include_provider) const {
+  const auto key = [&](const QString& base) {
+    return !include_provider || m_columnProfileProvider.isEmpty()
+             ? base
+             : base + QSL("_provider_") + QString::fromLatin1(QUrl::toPercentEncoding(m_columnProfileProvider));
+  };
   switch (profile) {
     case ColumnProfile::Feed:
-      return GUI::MessageViewStateFeed;
+      return key(GUI::MessageViewStateFeed);
     case ColumnProfile::Category:
-      return GUI::MessageViewStateCategory;
+      return key(GUI::MessageViewStateCategory);
     case ColumnProfile::Account:
-      return GUI::MessageViewStateAccount;
+      return key(GUI::MessageViewStateAccount);
     case ColumnProfile::Labels:
-      return GUI::MessageViewStateLabels;
+      return key(GUI::MessageViewStateLabels);
     case ColumnProfile::Label:
-      return GUI::MessageViewStateLabel;
+      return key(GUI::MessageViewStateLabel);
     case ColumnProfile::Probes:
-      return GUI::MessageViewStateProbes;
+      return key(GUI::MessageViewStateProbes);
     case ColumnProfile::Probe:
-      return GUI::MessageViewStateProbe;
+      return key(GUI::MessageViewStateProbe);
     case ColumnProfile::Important:
-      return GUI::MessageViewStateImportant;
+      return key(GUI::MessageViewStateImportant);
     case ColumnProfile::Unread:
-      return GUI::MessageViewStateUnread;
+      return key(GUI::MessageViewStateUnread);
     case ColumnProfile::Bin:
-      return GUI::MessageViewStateBin;
+      return key(GUI::MessageViewStateBin);
     case ColumnProfile::Default:
-      return GUI::MessageViewState;
+      return key(GUI::MessageViewState);
   }
 
-  return GUI::MessageViewState;
+  return key(GUI::MessageViewState);
 }
 
 void MessagesView::focusInEvent(QFocusEvent* event) {

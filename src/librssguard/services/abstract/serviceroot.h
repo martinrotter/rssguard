@@ -8,6 +8,7 @@
 #include "database/messageupdateresult.h"
 #include "definitions/typedefs.h"
 #include "exceptions/applicationexception.h"
+#include "services/abstract/articlecolumn.h"
 #include "services/abstract/rootitem.h"
 
 #include <functional>
@@ -36,6 +37,12 @@ struct FeedFetchResult {
     QList<Message> messages;
     // Empty for services without persistent refresh state. Discard on failure/cancellation.
     std::function<void()> afterMessagesStored;
+};
+
+struct MessageStoragePolicy {
+    bool m_trackCustomDataChanges = false;
+    bool m_preserveLocalFields = false;
+    bool m_useArticleCleanup = true;
 };
 
 // THIS IS the root node of the service.
@@ -89,6 +96,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual QString additionalTooltip() const;
     virtual void saveAccountDataToDatabase();
     virtual QVariantHash customDatabaseData() const;
+    virtual MessageStoragePolicy messageStoragePolicy() const;
+    virtual QList<ArticleColumn> articleColumns() const;
+    virtual QVariant articleColumnData(const Message& message, const QString& column_id, int role) const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual bool displaysEnclosures() const;
