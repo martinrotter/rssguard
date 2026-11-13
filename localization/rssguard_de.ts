@@ -2060,47 +2060,47 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="301"/>
       <source>is greater than</source>
-      <translation type="unfinished">is greater than</translation>
+      <translation>ist grösser als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="302"/>
       <source>is at least</source>
-      <translation type="unfinished">is at least</translation>
+      <translation>ist mindestens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="303"/>
       <source>is less than</source>
-      <translation type="unfinished">is less than</translation>
+      <translation>ist kleiner als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="304"/>
       <source>is at most</source>
-      <translation type="unfinished">is at most</translation>
+      <translation>ist höchstens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="305"/>
       <source>Number</source>
-      <translation type="unfinished">Number</translation>
+      <translation>Nummer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="308"/>
       <source>is older than</source>
-      <translation type="unfinished">is older than</translation>
+      <translation>Ist älter als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="309"/>
       <source>is newer than</source>
-      <translation type="unfinished">is newer than</translation>
+      <translation>Ist neuer als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="310"/>
       <source>Age in days</source>
-      <translation type="unfinished">Age in days</translation>
+      <translation>Alter in Tagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="364"/>
       <source>Remove action</source>
-      <translation type="unfinished">Remove action</translation>
+      <translation>Aktion entfernen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="423"/>
@@ -2150,7 +2150,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="583"/>
       <source>Set article property</source>
-      <translation type="unfinished">Set article property</translation>
+      <translation>Artikeleigenschaft festlegen</translation>
     </message>
   </context>
   <context>
@@ -2173,23 +2173,23 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation type="unfinished">operation was cancelled</translation>
+      <translation>Vorgang wurde abgebrochen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>Benutzername darf nicht leer sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>Das Passwort darf nicht leer sein.</translation>
     </message>
   </context>
   <context>
