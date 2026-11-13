@@ -6254,7 +6254,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels would change</source>
-      <translation type="unfinished">; labels would change</translation>
+      <translation>; les étiquettes changeraient</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
@@ -6270,8 +6270,8 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
       <source>
 A full article overwrite was requested.</source>
-      <translation type="unfinished">
-A full article overwrite was requested.</translation>
+      <translation>
+Une réécriture complète de l’article a été demandé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="119"/>
@@ -6317,7 +6317,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>There would be no stored article.</source>
-      <translation type="unfinished">There would be no stored article.</translation>
+      <translation>Il n'y aurait aucun article enregistré.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
@@ -6347,7 +6347,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="761"/>
       <source> Labels would change on %1 articles.</source>
-      <translation type="unfinished"> Labels would change on %1 articles.</translation>
+      <translation> Les étiquettes changeraient pour %1 articles.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
@@ -7502,14 +7502,14 @@ Feedly est un espace sécurisé où vous pouvez organiser et rechercher les suje
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="97"/>
       <source>Feed no longer exists in the database.</source>
-      <translation type="unfinished">Feed no longer exists in the database.</translation>
+      <translation>Le flux n’existe plus dans la base de données.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
       <source>Could not obtain the inserted article ID.</source>
-      <translation type="unfinished">Could not obtain the inserted article ID.</translation>
+      <translation>Impossible d'obtenir l'ID de l'article inséré.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
