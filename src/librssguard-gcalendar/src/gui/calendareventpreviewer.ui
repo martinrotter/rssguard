@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalendarEventPreviewer</class>
+ <widget class="QWidget" name="CalendarEventPreviewer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="m_layout">
+   <item>
+    <layout class="QHBoxLayout" name="m_layoutActions">
+     <item>
+      <widget class="QPushButton" name="m_btnNewEvent">
+       <property name="text">
+        <string>New event</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_btnEdit">
+       <property name="text">
+        <string>Edit event</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="m_spacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_btnGoogle">
+       <property name="text">
+        <string>Open in Google Calendar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_btnJoin">
+       <property name="text">
+        <string>Join meeting</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="LabelWithStatus" name="m_lblState" native="true"/>
+   </item>
+   <item>
+    <widget class="QTextBrowser" name="m_details">
+     <property name="openExternalLinks">
+      <bool>false</bool>
+     </property>
+     <property name="openLinks">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,4 +1,5 @@
 {
+  "rssguardPluginApiVersion": 1,
   "name": "Feedly",
   "author": "Martin Rotter",
   "website": "https://github.com/martinrotter/rssguard"

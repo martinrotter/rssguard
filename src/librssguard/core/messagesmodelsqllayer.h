@@ -19,6 +19,7 @@ class MessagesModelSqlLayer {
     explicit MessagesModelSqlLayer();
 
     void addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting);
+    static bool isSortableColumn(int column);
     void clearSortStates();
 
     SortColumnsAndOrders sortColumnAndOrders() const;
@@ -37,7 +38,7 @@ class MessagesModelSqlLayer {
     QString orderByClause() const;
     QString limitOffset(int limit, int offset) const;
     QString formatFields() const;
-    int mapColumnToDatabase(int column) const;
+    static int mapColumnToDatabase(int column);
 
     QString m_filter;
     QStringList m_fieldNames;

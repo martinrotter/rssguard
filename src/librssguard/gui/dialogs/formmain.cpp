@@ -124,6 +124,12 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
+  // Child hide events can arrive after m_ui has been destroyed.
+  disconnect(tabWidget()->feedMessageViewer()->messagesBrowser(),
+             &MessagePreviewer::scrollableBrowserChanged,
+             this,
+             nullptr);
+
   qApp->deactivateShortcutPriority();
   qDebugNN << LOGSEC_GUI << "Destroying FormMain instance.";
 }

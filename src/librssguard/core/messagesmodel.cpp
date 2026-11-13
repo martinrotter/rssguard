@@ -28,6 +28,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 #include <QPainterPath>
+#include <QSet>
 #include <QSqlError>
 #include <QSqlField>
 
@@ -295,13 +296,13 @@ int MessagesModel::rowCount(const QModelIndex& parent) const {
 }
 
 int MessagesModel::columnCount(const QModelIndex& parent) const {
-  return parent.isValid() ? 0 : m_headerData.size();
+  return parent.isValid() ? 0 : m_headerData.size() + m_extraColumnCount;
 }
 
 bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int role) {
   Q_UNUSED(role)
 
-  if (!idx.isValid()) {
+  if (!idx.isValid() || idx.column() >= m_headerData.size()) {
     return false;
   }
 
@@ -372,6 +373,7 @@ bool MessagesModel::hasUniformFontHeights() const {
 }
 
 void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id) {
+  setColumnProvider(item == nullptr ? nullptr : item->account());
   m_selectedItem = item;
 
   if (!keep_additional_article_id) {
@@ -431,6 +433,42 @@ RootItem::Importance MessagesModel::messageImportance(int row_index) const {
 
 RootItem* MessagesModel::loadedItem() const {
   return m_selectedItem;
+}
+
+ServiceRoot* MessagesModel::columnProvider() const {
+  return m_columnProvider;
+}
+
+bool MessagesModel::setColumnProvider(ServiceRoot* provider) {
+  QHash<int, ArticleColumn> columns;
+  QSet<QString> ids;
+  int next_column = m_headerData.size();
+  if (provider != nullptr) {
+    for (const auto& column : provider->articleColumns()) {
+      if (column.m_id.isEmpty() || column.m_title.isEmpty() || ids.contains(column.m_id) ||
+          column.m_existingColumn < -1 || column.m_existingColumn >= m_headerData.size() ||
+          (column.m_existingColumn >= 0 && columns.contains(column.m_existingColumn))) {
+        qWarningNN << LOGSEC_MESSAGEMODEL << "Ignoring invalid or duplicate plugin article column.";
+        continue;
+      }
+      ids.insert(column.m_id);
+      columns.insert(column.m_existingColumn >= 0 ? column.m_existingColumn : next_column++, column);
+    }
+  }
+  const QString code = provider == nullptr ? QString() : provider->code();
+  const bool changed = columns != m_pluginColumns || (!columns.isEmpty() && code != m_columnProviderCode);
+  if (provider == m_columnProvider && !changed) {
+    return false;
+  }
+  beginResetModel();
+  m_messages.clear();
+  m_canFetchMoreArticles = false;
+  m_columnProvider = provider;
+  m_columnProviderCode = code;
+  m_pluginColumns = columns;
+  m_extraColumnCount = next_column - m_headerData.size();
+  endResetModel();
+  return changed;
 }
 
 Feed* MessagesModel::feedById(int id) const {
@@ -646,6 +684,9 @@ bool MessagesModel::lazyLoading() const {
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
   if (index.isValid()) {
+    if (index.column() >= m_headerData.size()) {
+      return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemNeverHasChildren;
+    }
     return Qt::ItemFlag::ItemIsSelectable | Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsEditable |
            Qt::ItemFlag::ItemNeverHasChildren;
   }
@@ -716,6 +757,24 @@ QVariant MessagesModel::data(int row, int column, int role) const {
 QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
   if (!idx.isValid()) {
     return QVariant();
+  }
+
+  const bool extra = idx.column() >= m_headerData.size();
+  const bool tooltip = role == Qt::ToolTipRole;
+  if (tooltip && !qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+    return {};
+  }
+  if (role == Qt::DisplayRole || tooltip || (extra && role == Qt::EditRole)) {
+    const auto column = m_pluginColumns.constFind(idx.column());
+    if (column != m_pluginColumns.constEnd() && m_columnProvider != nullptr) {
+      const auto value = m_columnProvider->articleColumnData(messageForRow(idx.row()), column->m_id, role);
+      if (value.isValid()) {
+        return value;
+      }
+    }
+    if (extra) {
+      return tooltip ? data(idx, Qt::DisplayRole) : QVariant();
+    }
   }
 
   switch (role) {
@@ -1456,8 +1515,22 @@ void MessagesModel::markArticleDataReadUnread(bool read) {
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {
-  if (orientation != Qt::Orientation::Horizontal) {
+  if (orientation != Qt::Orientation::Horizontal || section < 0 || section >= columnCount()) {
     return QVariant();
+  }
+
+  const auto column = m_pluginColumns.constFind(section);
+  const bool extra = section >= m_headerData.size();
+  if (role == COLUMN_ID_ROLE) {
+    return extra && column != m_pluginColumns.constEnd() ? m_columnProviderCode + QL1C(':') + column->m_id
+                                                         : QSL("core.%1").arg(section);
+  }
+  if (column != m_pluginColumns.constEnd() &&
+      (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole)) {
+    return column->m_title;
+  }
+  if (extra) {
+    return {};
   }
 
   switch (role) {

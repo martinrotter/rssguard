@@ -10,3 +10,19 @@ A simple `C++` API allows you to create new service plugins. All base API classe
 The API is reasonably simple to understand, but relatively extensive. Sane defaults are used where it makes sense.
 
 A plugin must be compiled as a separate library, which can then be loaded dynamically by RSS Guard. A good example of a plugin can be seen [here](https://github.com/martinrotter/rssguard/tree/devbuild5/src/librssguard-greader).
+
+## Binary compatibility
+
+Plugin JSON metadata must include integer `rssguardPluginApiVersion` matching `RSSGUARD_PLUGIN_API_VERSION` from `definitions.h`. RSS Guard checks this before constructing a plugin. Rebuild plugins when this version changes; new virtual methods change binary compatibility. The metadata IID remains provider-specific.
+
+## Optional article columns
+
+`ServiceRoot::articleColumns()` defaults to an empty list. Each `ArticleColumn` has a stable provider-local ID and translated title. Leave its built-in column index at `-1` to append a read-only, non-sortable column, or identify a built-in column to override its presentation. IDs and built-in targets must be unique; IDs must remain stable across translations and releases.
+
+`articleColumnData(message, id, role)` supplies display, edit/raw and tooltip values from the loaded message. Keep this path inexpensive: painting must not make network calls or database queries. A built-in override retains its original raw edit value, SQL sorting and date-filter semantics. Extra columns participate in the existing column menu, all-column text search and numeric copy placeholders; title-only search still searches titles. Layouts use stable provider/column IDs and the existing source profiles. Providers with no overrides retain their existing layout keys.
+
+## Managed message caches
+
+`ServiceRoot::messageStoragePolicy()` defaults to existing article behavior. Providers can opt into metadata-only change detection, preservation of local read/important/trash/retrieval fields during normal remote updates, and exclusion from ordinary article cleanup. Explicit filter overwrites and permanent-deletion protection retain their existing semantics.
+
+The cleanup preference is also persisted in account custom data so it remains effective if the plugin is unavailable. Targeted custom-data changes should use `DatabaseQueries::loadAccountCustomData()` / `modifyAccountCustomData()` inside a serialized write job, preserving other namespaces and current runtime tokens. Avoid nested synchronous database-worker calls.

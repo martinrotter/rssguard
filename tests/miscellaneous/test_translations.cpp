@@ -198,7 +198,14 @@ void TestTranslations::extractionCoverage() {
                              QSL("/src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp"),
                              QSL("/src/librssguard/gui/messagetextbrowser.cpp"),
                              QSL("/src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp"),
-                             QSL("/src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp")}) {
+                             QSL("/src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp"),
+                             QSL("/src/librssguard-gcalendar/src/gcalendarserviceroot.cpp"),
+                             QSL("/src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp"),
+                             QSL("/src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui"),
+                             QSL("/src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp"),
+                             QSL("/src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui"),
+                             QSL("/src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp"),
+                             QSL("/src/librssguard-gcalendar/src/gui/formcalendarevent.ui")}) {
     QVERIFY2(sources.contains(source_root + suffix), qPrintable(suffix));
   }
 
@@ -222,6 +229,18 @@ void TestTranslations::extractionCoverage() {
     QCOMPARE(extracted, catalogKeys(source_root + QSL("/localization/rssguard_en.ts")));
     for (const auto& source : {QSL("Welcome"), QSL("Go to changelog"), QSL("Unread articles fetched")}) {
       QVERIFY(extracted.contains(QStringList{QSL("Application"), source, {}, {}}.join(QChar(0x1f))));
+    }
+    for (const auto& key : {QStringList{QSL("GCalendarServiceRoot"), QSL("Authorize Google Calendar"), {}, {}},
+                            QStringList{QSL("GCalendarAccountDetails"), QSL("Event cache"), {}, {}},
+                            QStringList{QSL("GCalendarAccountDetails"), QSL("&Test setup"), {}, {}},
+                            QStringList{QSL("GCalendarReminderDetails"), QSL("Multiple values"), {}, {}},
+                            QStringList{QSL("GCalendarReminderSettings"),
+                                        QSL("Apply reminder settings to all selected calendars"),
+                                        {},
+                                        {}},
+                            QStringList{QSL("FormGCalendarFeedDetails"), QSL("Reminders"), {}, {}},
+                            QStringList{QSL("FormCalendarEvent"), QSL("The whole series"), {}, {}}}) {
+      QVERIFY2(extracted.contains(key.join(QChar(0x1f))), qPrintable(key.join(QL1C('|'))));
     }
     QFile catalog(output_path);
     QVERIFY(catalog.open(QIODevice::ReadOnly));
@@ -303,6 +322,7 @@ void TestTranslations::checkoutPaths() {
   const QString root = directory.filePath(checkout);
   const QStringList expected{QSL("src/librssguard/core.cpp"),
                              QSL("src/librssguard-xmpp/src/disabled.cpp"),
+                             QSL("src/librssguard-gcalendar/src/disabled.cpp"),
                              QSL("src/librssguard-gmail/src/3rd-party/richtexteditor/editor.cpp")};
   QStringList files = expected;
   files << QSL("src/librssguard/build/generated.cpp") << QSL("src/librssguard/CMakeFiles/generated.cpp")
@@ -318,6 +338,8 @@ void TestTranslations::checkoutPaths() {
   QVERIFY(project.open(QIODevice::WriteOnly));
   const QString cmake = QSL("cmake_minimum_required(VERSION 3.21.1)\n"
                             "project(translation_fixture NONE)\n"
+                            "set(BUILD_GCALENDAR_PLUGIN OFF)\n"
+                            "set(BUILD_GMAIL_PLUGIN OFF)\n"
                             "include(\"%1/localization/TranslationSources.cmake\")\n"
                             "rssguard_translation_sources(sources includes)\n"
                             "set(input \"\")\n"

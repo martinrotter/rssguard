@@ -9,9 +9,26 @@
 #include <QDir>
 #include <QDirIterator>
 #include <QFileInfo>
+#include <QJsonObject>
 #include <QPluginLoader>
 
 PluginFactory::PluginFactory() {}
+
+ServiceEntryPoint* PluginFactory::loadPlugin(const QString& path, QString* error) {
+  QPluginLoader loader(path);
+  const QJsonValue version = loader.metaData().value(QSL("MetaData")).toObject().value(QSL("rssguardPluginApiVersion"));
+  if (!version.isDouble() || version.toDouble() != RSSGUARD_PLUGIN_API_VERSION) {
+    if (error != nullptr) {
+      *error = QObject::tr("Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.");
+    }
+    return nullptr;
+  }
+  auto* plugin = qobject_cast<ServiceEntryPoint*>(loader.instance());
+  if (error != nullptr) {
+    *error = plugin == nullptr ? loader.errorString() : QString();
+  }
+  return plugin;
+}
 
 QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
   QList<ServiceEntryPoint*> plugins;
@@ -41,14 +58,14 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
       QCoreApplication::addLibraryPath(plugin_file.absolutePath());
       QDir::setCurrent(plugin_file.absolutePath());
 
-      QPluginLoader loader(plugin_file.absoluteFilePath());
-      ServiceEntryPoint* plugin_instance = qobject_cast<ServiceEntryPoint*>(loader.instance());
+      QString error;
+      ServiceEntryPoint* plugin_instance = loadPlugin(plugin_file.absoluteFilePath(), &error);
 
       QDir::setCurrent(backup_current_dir);
 
       if (plugin_instance == nullptr) {
         qCriticalNN << LOGSEC_CORE << "The plugin" << QUOTE_W_SPACE(plugin_file.absoluteFilePath())
-                    << "was not loaded successfully:" << QUOTE_W_SPACE_DOT(loader.errorString());
+                    << "was not loaded successfully:" << QUOTE_W_SPACE_DOT(error);
       }
       else {
         if (plugin_ids.contains(plugin_instance->code())) {

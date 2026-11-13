@@ -18,6 +18,11 @@ Keep `nsProcess.nsh` and the Unicode `nsProcess.dll` when updating the bundled N
 
 Run `python -m unittest discover -s resources/scripts/github-actions/tests -p test_windows_installer.py -v` to exercise payload validation. On Windows with the bundled NSIS available, the same suite compiles the actual template and tests installation, upgrades, failure/retry sequences, and removal using temporary payloads, private shortcut directories, and a unique per-user registry key. Legacy upgrade tests use the frozen pre-hardening installer in `tests/fixtures/NSIS.previous.nsi`, rather than relabeling the new template. It does not install the real application or require elevation. With CMake and Ninja available it also checks incremental template regeneration.
 
+## Calendar and Gmail Plugins
+`BUILD_GCALENDAR_PLUGIN` and `BUILD_GMAIL_PLUGIN` independently control the Google Calendar and Gmail plugins; both default to `ON`. Calendar uses QtNetwork directly and requires no additional library. Optional `GCALENDAR_CLIENT_ID` and `GCALENDAR_CLIENT_SECRET` build settings provide Calendar-specific desktop OAuth credentials.
+
+Calendar regression tests use fake REST replies, temporary SQLite data and captured notifications. They require no Google account. `test_gcalendaraccount` also supports selected integration cases against a disposable local MariaDB server: set `RSSGUARD_TEST_MARIADB_PORT` to its loopback port, make Qt's QMYSQL driver and client library available, and run database-independent cases such as `createsEditsAndPreservesLocalAndRemoteFields` and `calendarOverrideAndRetirementUseCustomData`. As with `test_mariadbinserts`, optional `RSSGUARD_TEST_MARIADB_USER` and `RSSGUARD_TEST_MARIADB_PASSWORD` override the local `root` / empty-password defaults. The fixture creates and drops a uniquely named `rssguard_calendar_test_*` database. Failure-injection cases using SQLite triggers remain SQLite-only.
+
 ## Article And Web Viewer Backend
 RSS Guard can be built with one of two article/web viewer backends:
 * `WEB_ARTICLE_VIEWER_WEBENGINE=ON` - builds the Qt WebEngine-based viewer. This is the most browser-like and feature-complete option.

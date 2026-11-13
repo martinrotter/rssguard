@@ -35,6 +35,7 @@
 #include <exception>
 #include <utility>
 
+#include <QCryptographicHash>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -106,6 +107,10 @@ QString OAuth2Service::bearer() {
   else {
     return QSL("Bearer %1").arg(accessToken());
   }
+}
+
+void OAuth2Service::setNetworkProxy(const QNetworkProxy& proxy) {
+  m_networkManager.setProxy(proxy);
 }
 
 bool OAuth2Service::isFullyLoggedIn() const {
@@ -195,6 +200,9 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   query.addQueryItem(QSL("code"), auth_code);
   query.addQueryItem(QSL("redirect_uri"), m_redirectionHandler->listenAddressPort());
   query.addQueryItem(QSL("grant_type"), m_tokenGrantType);
+  if (m_pkceEnabled && !m_pkceVerifier.isEmpty()) {
+    query.addQueryItem(QSL("code_verifier"), m_pkceVerifier);
+  }
 
   const QString content = query.toString(QUrl::FullyEncoded);
 
@@ -462,6 +470,7 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
 }
 
 void OAuth2Service::logout(bool stop_redirection_handler) {
+  m_pkceVerifier.clear();
   m_functorOnLogin = {};
   m_loginFunctorGeneration++;
 
@@ -496,8 +505,29 @@ void OAuth2Service::killRefreshTimer() {
   }
 }
 
-void OAuth2Service::retrieveAuthCode() {
+void OAuth2Service::setPkceEnabled(bool enabled) {
+  m_pkceEnabled = enabled;
+  m_pkceVerifier.clear();
+}
+
+QString OAuth2Service::pkceChallenge(const QString& verifier) {
+  return QString::fromLatin1(QCryptographicHash::hash(verifier.toLatin1(), QCryptographicHash::Sha256)
+                               .toBase64(QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals));
+}
+
+QUrl OAuth2Service::createAuthorizationUrl() {
   m_id = QString::number(QRandomGenerator::global()->generate());
+  if (m_pkceEnabled) {
+    const auto random_token = []() {
+      QByteArray random(32, '\0');
+      for (int i = 0; i < random.size(); ++i) {
+        random[i] = char(QRandomGenerator::system()->generate() & 0xff);
+      }
+      return QString::fromLatin1(random.toBase64(QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals));
+    };
+    m_id = random_token();
+    m_pkceVerifier = random_token();
+  }
 
   QUrl auth_url(m_authUrl);
   QUrlQuery query;
@@ -510,8 +540,15 @@ void OAuth2Service::retrieveAuthCode() {
   query.addQueryItem(QSL("prompt"), QSL("consent"));
   query.addQueryItem(QSL("duration"), QSL("permanent"));
   query.addQueryItem(QSL("access_type"), QSL("offline"));
+  if (m_pkceEnabled) {
+    query.addQueryItem(QSL("code_challenge_method"), QSL("S256"));
+    query.addQueryItem(QSL("code_challenge"), pkceChallenge(m_pkceVerifier));
+  }
   auth_url.setQuery(query);
+  return auth_url;
+}
 
+void OAuth2Service::retrieveAuthCode() {
   // We run login URL in external browser, response is caught by light HTTP server.
-  qApp->web()->openUrlInExternalBrowser(auth_url);
+  qApp->web()->openUrlInExternalBrowser(createAuthorizationUrl());
 }

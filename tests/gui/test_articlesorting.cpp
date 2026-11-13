@@ -1,6 +1,8 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "core/feedsmodel.h"
+#include "core/messagesmodel.h"
+#include "core/messagesproxymodel.h"
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -15,6 +17,7 @@
 #include <memory>
 
 #include <QCheckBox>
+#include <QClipboard>
 #include <QDialog>
 #include <QDir>
 #include <QFileInfo>
@@ -35,8 +38,22 @@ namespace {
   class TestServiceRoot : public ServiceRoot {
     public:
       QString code() const override {
-        return QSL("article-sorting-test");
+        return m_code;
       }
+
+      QList<ArticleColumn> articleColumns() const override {
+        return m_columns;
+      }
+
+      QVariant articleColumnData(const Message& message, const QString& id, int role) const override {
+        if (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole) {
+          return QSL("extra-%1-%2").arg(id, message.m_title);
+        }
+        return {};
+      }
+
+      QString m_code = QSL("article-sorting-test");
+      QList<ArticleColumn> m_columns;
 
       QList<Message> obtainNewMessages(Feed*,
                                        const QHash<BagOfMessages, QStringList>&,
@@ -108,6 +125,13 @@ class TestArticleSorting : public QObject {
     void profileToggleRefreshesArticles();
     void nestedHeaderSignalBlockingIsPreserved();
     void sortingSurvivesRestartWithoutSelectingFeed();
+    void pluginColumnsUseExistingLayouts_data();
+    void pluginColumnsUseExistingLayouts();
+    void pluginColumnIdentitiesSurviveSchemaChanges();
+    void pluginColumnsCannotChangeSorting();
+    void pluginColumnRolesAndSearch();
+    void pluginColumnDescriptorsAreValidated();
+    void legacyLayoutRestoresIntoExpandedSchema();
 
   private:
     FeedMessageViewer* viewer() const;
@@ -121,6 +145,8 @@ class TestArticleSorting : public QObject {
     Category* m_folder = nullptr;
     Feed* m_first = nullptr;
     Feed* m_second = nullptr;
+    TestServiceRoot* m_otherAccount = nullptr;
+    Feed* m_otherFeed = nullptr;
 };
 
 void TestArticleSorting::initTestCase() {
@@ -159,6 +185,18 @@ void TestArticleSorting::initTestCase() {
     DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), articles, feed, false, true).throwIfFailed();
   }
   qApp->feedReader()->feedsModel()->rootItem()->appendChild(m_account);
+  m_otherAccount = new TestServiceRoot();
+  m_otherAccount->m_code = QSL("other-sorting-provider");
+  m_otherAccount->setTitle(QSL("Other provider"));
+  m_otherFeed = new Feed(m_otherAccount);
+  m_otherFeed->setTitle(QSL("Other provider feed"));
+  m_otherFeed->setCustomId(QSL("other-provider-feed"));
+  m_otherAccount->appendChild(m_otherFeed);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, m_otherAccount);
+    DatabaseQueries::createOverwriteFeed(db, m_otherFeed, m_otherAccount->accountId(), NO_PARENT_CATEGORY);
+  });
+  qApp->feedReader()->feedsModel()->rootItem()->appendChild(m_otherAccount);
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
   m_window = std::make_unique<FormMain>();
 }
@@ -166,12 +204,14 @@ void TestArticleSorting::initTestCase() {
 void TestArticleSorting::init() {
   QTest::keyRelease(view(), Qt::Key_Control);
   loadItem(nullptr);
+  m_account->m_columns.clear();
   qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, false);
   for (const auto& key : {GUI::MessageViewState,
                           GUI::MessageViewStateFeed,
                           GUI::MessageViewStateCategory,
                           GUI::MessageViewStateAccount}) {
     qApp->settings()->remove(GROUP(GUI), key);
+    qApp->settings()->remove(GROUP(GUI), key + QSL("_provider_article-sorting-test"));
   }
   viewer()->loadSize();
 }
@@ -457,8 +497,152 @@ void TestArticleSorting::sortingSurvivesRestartWithoutSelectingFeed() {
   }
 }
 
+void TestArticleSorting::pluginColumnsUseExistingLayouts_data() {
+  QTest::addColumn<bool>("profiles");
+  QTest::newRow("common") << false;
+  QTest::newRow("source-profiles") << true;
+}
+
+void TestArticleSorting::pluginColumnsUseExistingLayouts() {
+  QFETCH(bool, profiles);
+  qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, profiles);
+  m_account->m_columns = {{QSL("location"), QSL("Location")}, {QSL("end"), QSL("Ends")}};
+  loadItem(m_first);
+  constexpr int location = MSG_MDL_LABELS + 1;
+  constexpr int end = location + 1;
+  QCOMPARE(view()->sourceModel()->columnCount(), end + 1);
+  QVERIFY(view()->isColumnHidden(location));
+  view()->setColumnHidden(location, false);
+  view()->header()->setSectionResizeMode(location, QHeaderView::Interactive);
+  view()->header()->resizeSection(location, 171);
+  view()->header()->setSectionResizeMode(end, QHeaderView::ResizeToContents);
+  view()->header()->moveSection(view()->header()->visualIndex(location), 1);
+  const auto state = headerState(view());
+  loadItem(m_otherFeed);
+  QCOMPARE(view()->sourceModel()->columnCount(), MSG_MDL_LABELS + 1);
+  loadItem(m_second);
+  QCOMPARE(headerState(view()).value(QSL("header_%1_size").arg(location)),
+           state.value(QSL("header_%1_size").arg(location)));
+  QVERIFY(!view()->isColumnHidden(location));
+  QCOMPARE(view()->header()->sectionResizeMode(end), QHeaderView::ResizeToContents);
+  QCOMPARE(view()->header()->visualIndex(location), 1);
+  loadItem(m_otherFeed);
+  loadItem(m_first);
+  QCOMPARE(view()->header()->sectionSize(location), 171);
+}
+
+void TestArticleSorting::pluginColumnIdentitiesSurviveSchemaChanges() {
+  m_account->m_columns = {{QSL("location"), QSL("Location")}, {QSL("end"), QSL("Ends")}};
+  loadItem(m_first);
+  constexpr int first_extra = MSG_MDL_LABELS + 1;
+  view()->setColumnHidden(first_extra + 1, false);
+  view()->header()->setSectionResizeMode(first_extra + 1, QHeaderView::Interactive);
+  view()->header()->resizeSection(first_extra + 1, 222);
+  view()->header()->moveSection(view()->header()->visualIndex(first_extra + 1), 0);
+  m_account->m_columns = {{QSL("end"), QSL("Ends")}, {QSL("new"), QSL("New")}};
+  loadItem(m_first);
+  QCOMPARE(view()->header()->sectionSize(first_extra), 222);
+  QVERIFY(!view()->isColumnHidden(first_extra));
+  QCOMPARE(view()->header()->visualIndex(first_extra), 0);
+  QVERIFY(view()->isColumnHidden(first_extra + 1));
+  QCOMPARE(view()->sourceModel()->headerData(first_extra, Qt::Horizontal, COLUMN_ID_ROLE).toString(),
+           QSL("article-sorting-test:end"));
+}
+
+void TestArticleSorting::pluginColumnsCannotChangeSorting() {
+  m_account->m_columns = {{QSL("location"), QSL("Location")}};
+  loadItem(m_first);
+  const auto before = sortStates(headerState(view()));
+  QSignalSpy resets(view()->sourceModel(), &QAbstractItemModel::modelReset);
+  const int extra = MSG_MDL_LABELS + 1;
+  view()->header()->setSortIndicator(extra, Qt::AscendingOrder);
+  QCOMPARE(sortStates(headerState(view())), before);
+  QCOMPARE(view()->header()->sortIndicatorSection(), before.first().first);
+  QCOMPARE(resets.count(), 0);
+  QTest::keyPress(view(), Qt::Key_Control, Qt::ControlModifier);
+  view()->header()->setSortIndicator(extra, Qt::DescendingOrder);
+  QTest::keyRelease(view(), Qt::Key_Control);
+  QCOMPARE(sortStates(headerState(view())), before);
+  auto forged = headerState(view());
+  setSortStates(forged, {{extra, Qt::AscendingOrder}});
+  view()->restoreHeaderState(QJsonDocument(forged).toJson());
+  QCOMPARE(sortStates(headerState(view())), defaultSort);
+  view()->setColumnHidden(MSG_MDL_DCREATED_INDEX, true);
+  QCOMPARE(sortStates(headerState(view())), defaultSort);
+}
+
+void TestArticleSorting::pluginColumnRolesAndSearch() {
+  m_account->m_columns = {{QSL("location"), QSL("Location")}, {QSL("start"), QSL("Starts"), MSG_MDL_DCREATED_INDEX}};
+  loadItem(m_first);
+  auto* source = view()->sourceModel();
+  const int extra = MSG_MDL_LABELS + 1;
+  const auto idx = source->index(0, extra);
+  QVERIFY(source->data(idx, Qt::EditRole).toString().startsWith(QSL("extra-location-")));
+  QVERIFY(!source->flags(idx).testFlag(Qt::ItemIsEditable));
+  QVERIFY(!source->setData(idx, QSL("changed")));
+  QCOMPARE(source->headerData(MSG_MDL_DCREATED_INDEX, Qt::Horizontal, Qt::EditRole).toString(), QSL("Starts"));
+  QVERIFY(source->data(source->index(0, MSG_MDL_DCREATED_INDEX), Qt::EditRole).toDateTime().isValid());
+  const bool tooltips = qApp->settings()->value(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages).toBool();
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, false);
+  QVERIFY(!source->data(idx, Qt::ToolTipRole).isValid());
+  qApp->settings()->setValue(GROUP(Feeds), Feeds::EnableTooltipsFeedsMessages, tooltips);
+  auto* proxy = view()->model();
+  proxy->setFilterKeyColumn(-1);
+  proxy->setFilterFixedString(QSL("extra-location"));
+  QCOMPARE(proxy->rowCount(), 4);
+  proxy->setFilterKeyColumn(MSG_MDL_TITLE_INDEX);
+  QCOMPARE(proxy->rowCount(), 0);
+  proxy->setFilterFixedString(QString());
+  proxy->setFilterKeyColumn(-1);
+  const auto old_pattern = qApp->settings()->value(GROUP(Messages), Messages::CopyArticlePattern);
+  qApp->settings()->setValue(GROUP(Messages), Messages::CopyArticlePattern, QSL("%19%"));
+  const auto selected = proxy->index(0, MSG_MDL_TITLE_INDEX);
+  view()->setCurrentIndex(selected);
+  view()->selectionModel()->select(selected, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+  QVERIFY(QMetaObject::invokeMethod(view(), "copyDataOfSelectedArticlesWithoutDialog", Qt::DirectConnection));
+  QVERIFY(QApplication::clipboard()->text().startsWith(QSL("extra-location-")));
+  qApp->settings()->setValue(GROUP(Messages), Messages::CopyArticlePattern, old_pattern);
+}
+
+void TestArticleSorting::pluginColumnDescriptorsAreValidated() {
+  m_account->m_columns = {{QSL("valid"), QSL("Valid")},
+                          {QSL("valid"), QSL("Duplicate")},
+                          {QString(), QSL("Missing ID")},
+                          {QSL("bad"), QSL("Bad target"), 999},
+                          {QSL("title"), QSL("Event"), MSG_MDL_TITLE_INDEX},
+                          {QSL("title-two"), QSL("Duplicate target"), MSG_MDL_TITLE_INDEX}};
+  loadItem(m_first);
+  QCOMPARE(view()->sourceModel()->columnCount(), MSG_MDL_LABELS + 2);
+  QCOMPARE(view()->sourceModel()->headerData(MSG_MDL_TITLE_INDEX, Qt::Horizontal, Qt::EditRole).toString(),
+           QSL("Event"));
+}
+
+void TestArticleSorting::legacyLayoutRestoresIntoExpandedSchema() {
+  auto legacy = headerState(view());
+  for (int column = 0; column <= MSG_MDL_LABELS; ++column) {
+    legacy.remove(QSL("header_%1_id").arg(column));
+  }
+  legacy[QSL("header_%1_size").arg(MSG_MDL_AUTHOR_INDEX)] = 183;
+  legacy[QSL("header_%1_resize_mode").arg(MSG_MDL_AUTHOR_INDEX)] = int(QHeaderView::Fixed);
+  legacy[QSL("header_%1_hidden").arg(MSG_MDL_DCREATED_INDEX)] = true;
+  setSortStates(legacy, {{MSG_MDL_DCREATED_INDEX, Qt::AscendingOrder}});
+  m_account->m_columns = {{QSL("location"), QSL("Location")}};
+  loadItem(m_otherFeed);
+  saveProfile(GUI::MessageViewState + QSL("_provider_article-sorting-test"), legacy);
+  loadItem(m_first);
+  QCOMPARE(view()->sourceModel()->columnCount(), MSG_MDL_LABELS + 2);
+  QCOMPARE(view()->header()->sectionSize(MSG_MDL_AUTHOR_INDEX), 183);
+  QCOMPARE(view()->header()->sectionResizeMode(MSG_MDL_AUTHOR_INDEX), QHeaderView::Fixed);
+  QVERIFY(view()->isColumnHidden(MSG_MDL_DCREATED_INDEX));
+  QVERIFY(view()->isColumnHidden(MSG_MDL_LABELS + 1));
+  QCOMPARE(sortStates(headerState(view())), SortStates({{MSG_MDL_DCREATED_INDEX, Qt::AscendingOrder}}));
+  QCOMPARE(view()->header()->sortIndicatorSection(), MSG_MDL_DCREATED_INDEX);
+}
+
 int main(int argc, char* argv[]) {
-  qputenv("QT_QPA_PLATFORM", "offscreen");
+  if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
+    qputenv("QT_QPA_PLATFORM", "offscreen");
+  }
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   QTemporaryDir directory;
   if (!directory.isValid()) {

@@ -8,11 +8,12 @@
 
 class ServiceEntryPoint;
 
-class PluginFactory {
+class RSSGUARD_DLLSPEC PluginFactory {
   public:
     explicit PluginFactory();
 
     QList<ServiceEntryPoint*> loadPlugins() const;
+    static ServiceEntryPoint* loadPlugin(const QString& path, QString* error = nullptr);
 
   private:
     QStringList pluginPaths() const;

@@ -8,6 +8,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 
 #include <QStyledItemDelegate>
+#include <QPersistentModelIndex>
 #include <QTimer>
 
 class FeedsProxyModel;
@@ -134,7 +135,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
-    QSet<QModelIndex> m_delayedItemExpansions;
+    QSet<QPersistentModelIndex> m_delayedItemExpansions;
     QTimer m_expansionDelayer;
     StyledItemDelegate* m_delegate;
     bool m_columnsAdjusted;

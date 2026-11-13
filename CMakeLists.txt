@@ -28,6 +28,8 @@
 #   ENABLE_TESTING - Enables unit tests.
 #   ENABLE_BENCHMARKS - Enables benchmarks.
 #   BUILD_XMPP_PLUGIN - Builds XMPP plugin. This only works for Qt 6.
+#   BUILD_GMAIL_PLUGIN - Builds Gmail plugin.
+#   BUILD_GCALENDAR_PLUGIN - Builds independent Google Calendar plugin.
 #   WEB_ARTICLE_VIEWER_WEBENGINE - Use QtWebEngine-based article/web viewer. If set to "OFF"
 #                                  then very simple QTextBrowser viewer is used.
 #   ENABLE_ICU - Enable direct ICU dependency, used to convert among text encodings.
@@ -42,8 +44,8 @@
 #                               This requires "zlib" library and if you want to use specific
 #                               zlib location, then use "ZLIB_ROOT" variable, for example
 #                               -DZLIB_ROOT="C:\\zlib"
-#   {FEEDLY,GMAIL,INOREADER}_CLIENT_ID - preconfigured OAuth client ID.
-#   {FEEDLY,GMAIL,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
+#   {FEEDLY,GMAIL,GCALENDAR,INOREADER}_CLIENT_ID - preconfigured OAuth client ID.
+#   {FEEDLY,GMAIL,GCALENDAR,INOREADER}_CLIENT_SECRET - preconfigured OAuth client SECRET.
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2,
@@ -136,6 +138,8 @@ option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv 
 option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
 option(USE_SYSTEM_QXMPP "Use qxmpp library from the system." OFF)
 option(BUILD_XMPP_PLUGIN "Build XMPP plugin." OFF)
+option(BUILD_GMAIL_PLUGIN "Build Gmail plugin." ON)
+option(BUILD_GCALENDAR_PLUGIN "Build Google Calendar plugin." ON)
 option(WEB_ARTICLE_VIEWER_WEBENGINE "Use QtWebEngine-based article/web viewer." ON)
 
 if(IS_DEVBUILD)
@@ -401,7 +405,12 @@ add_subdirectory(localization)
 
 # Plugins.
 add_subdirectory(src/librssguard-feedly)
-add_subdirectory(src/librssguard-gmail)
+if(BUILD_GMAIL_PLUGIN)
+  add_subdirectory(src/librssguard-gmail)
+endif()
+if(BUILD_GCALENDAR_PLUGIN)
+  add_subdirectory(src/librssguard-gcalendar)
+endif()
 add_subdirectory(src/librssguard-greader)
 add_subdirectory(src/librssguard-nextcloud)
 add_subdirectory(src/librssguard-standard)

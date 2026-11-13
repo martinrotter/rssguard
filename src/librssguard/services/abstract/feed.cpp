@@ -309,6 +309,9 @@ void Feed::setRtlBehavior(RtlBehavior rtl) {
 }
 
 QList<int> Feed::removeUnwantedArticles() {
+  if (!account()->messageStoragePolicy().m_useArticleCleanup) {
+    return {};
+  }
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 

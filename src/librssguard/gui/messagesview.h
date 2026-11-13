@@ -158,7 +158,7 @@ class MessagesView : public BaseTreeView {
     void setColumnProfileVisibility(const QList<int>& visible_columns);
     bool columnProfilesEnabled() const;
     ColumnProfile columnProfileForItem(const RootItem* item) const;
-    const QString& columnProfileSettingsKey(ColumnProfile profile) const;
+    QString columnProfileSettingsKey(ColumnProfile profile, bool include_provider = true) const;
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
     void cancelDelayedArticleMarking();
@@ -173,6 +173,7 @@ class MessagesView : public BaseTreeView {
     bool m_processingRightMouseButton;
     QByteArray m_defaultColumnProfileState;
     ColumnProfile m_currentColumnProfile;
+    QString m_columnProfileProvider;
     ArticleMarkingPolicy m_articleMarkingPolicy;
     int m_articleMarkingDelay;
     QTimer m_delayedArticleMarker;

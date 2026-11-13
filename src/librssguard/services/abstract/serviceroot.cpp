@@ -425,7 +425,24 @@ QVariantHash ServiceRoot::customDatabaseData() const {
   return {{QSL("show_node_unread"), m_nodeShowUnread},
           {QSL("show_node_important"), m_nodeShowImportant},
           {QSL("show_node_labels"), m_nodeShowLabels},
-          {QSL("show_node_probes"), m_nodeShowProbes}};
+          {QSL("show_node_probes"), m_nodeShowProbes},
+          {QSL("message_storage_policy"),
+           QVariantHash{{QSL("use_article_cleanup"), messageStoragePolicy().m_useArticleCleanup}}}};
+}
+
+MessageStoragePolicy ServiceRoot::messageStoragePolicy() const {
+  return {};
+}
+
+QList<ArticleColumn> ServiceRoot::articleColumns() const {
+  return {};
+}
+
+QVariant ServiceRoot::articleColumnData(const Message& message, const QString& column_id, int role) const {
+  Q_UNUSED(message)
+  Q_UNUSED(column_id)
+  Q_UNUSED(role)
+  return {};
 }
 
 void ServiceRoot::setCustomDatabaseData(const QVariantHash& data) {

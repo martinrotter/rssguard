@@ -63,35 +63,7 @@ void FormFeedDetails::apply() {
   QList<Feed*> fds = feeds<Feed>();
 
   for (Feed* fd : fds) {
-    // Setup common data for the feed.
-    if (isChangeAllowed(m_ui->m_mcbAutoDownloading)) {
-      fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType
-                                                                ->itemData(m_ui->m_cmbAutoUpdateType->currentIndex())
-                                                                .toInt()));
-      fd->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
-    }
-
-    if (isChangeAllowed(m_ui->m_mcbFeedRtl)) {
-      fd->setRtlBehavior(m_ui->m_cmbRtlBehavior->currentData().value<RtlBehavior>());
-    }
-
-    m_ui->m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
-
-    if (isChangeAllowed(m_ui->m_mcbDisableFeed)) {
-      fd->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
-    }
-
-    if (isChangeAllowed(m_ui->m_mcbSuppressFeed)) {
-      fd->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
-    }
-
-    if (isChangeAllowed(m_ui->m_mcbExcludeFromGlobalUnreadCount)) {
-      fd->setExcludesFromGlobalUnreadCount(m_ui->m_cbExcludeFromGlobalUnreadCount->isChecked());
-    }
-
-    if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
-      fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
-    }
+    applyCommonFeedSettings(fd);
 
     if (!m_creatingNew) {
       qApp->database()->worker()->write([&](const QSqlDatabase& db) {
@@ -102,6 +74,38 @@ void FormFeedDetails::apply() {
 
   if (!m_creatingNew) {
     m_serviceRoot->itemChanged(feeds<RootItem>());
+  }
+}
+
+void FormFeedDetails::applyCommonFeedSettings(Feed* fd) const {
+  // Setup common data for the feed.
+  if (isChangeAllowed(m_ui->m_mcbAutoDownloading)) {
+    fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(m_ui->m_cmbAutoUpdateType
+                                                              ->itemData(m_ui->m_cmbAutoUpdateType->currentIndex())
+                                                              .toInt()));
+    fd->setAutoUpdateInterval(int(m_ui->m_spinAutoUpdateInterval->value()));
+  }
+
+  if (isChangeAllowed(m_ui->m_mcbFeedRtl)) {
+    fd->setRtlBehavior(m_ui->m_cmbRtlBehavior->currentData().value<RtlBehavior>());
+  }
+
+  m_ui->m_wdgArticleLimiting->saveFeed(fd, m_isBatchEdit);
+
+  if (isChangeAllowed(m_ui->m_mcbDisableFeed)) {
+    fd->setIsSwitchedOff(m_ui->m_cbDisableFeed->isChecked());
+  }
+
+  if (isChangeAllowed(m_ui->m_mcbSuppressFeed)) {
+    fd->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
+  }
+
+  if (isChangeAllowed(m_ui->m_mcbExcludeFromGlobalUnreadCount)) {
+    fd->setExcludesFromGlobalUnreadCount(m_ui->m_cbExcludeFromGlobalUnreadCount->isChecked());
+  }
+
+  if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
+    fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
   }
 }
 

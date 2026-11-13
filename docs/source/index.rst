@@ -37,6 +37,7 @@ RSS Guard Documentation!
    services/standard
    services/feedly
    services/gmail
+   services/google-calendar
    services/google-reader-api
    services/nextcloud-news
    services/tiny-tiny-rss

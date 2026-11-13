@@ -1,0 +1,9 @@
+{
+  "id": "event-id",
+  "summary": "Discussion",
+  "etag": "version-one",
+  "status": "confirmed",
+  "start": { "dateTime": "2035-11-12T14:00:00+01:00", "timeZone": "Europe/Prague" },
+  "end": { "dateTime": "2035-11-12T15:00:00+01:00", "timeZone": "Europe/Prague" },
+  "conferenceData": { "entryPoints": [{ "uri": "https://meet.google.com/example" }] }
+}

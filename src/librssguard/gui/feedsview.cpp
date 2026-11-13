@@ -1001,7 +1001,7 @@ void FeedsView::reloadDelayedExpansions() {
 
   auto expansions = m_delayedItemExpansions;
 
-  for (const QModelIndex& idx : expansions) {
+  for (const QPersistentModelIndex& idx : expansions) {
     loadExpandState(idx);
   }
 
