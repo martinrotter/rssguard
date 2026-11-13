@@ -8045,78 +8045,78 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="207"/>
       <source>MediaWiki API response is not a JSON object.</source>
-      <translation type="unfinished">MediaWiki API response is not a JSON object.</translation>
+      <translation>MediaWiki API 响应不是JSON对象。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="208"/>
       <source>Invalid MediaWiki JSON: %1</source>
-      <translation type="unfinished">Invalid MediaWiki JSON: %1</translation>
+      <translation>无效的 MediaWiki JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
       <source>MediaWiki API error: %1</source>
-      <translation type="unfinished">MediaWiki API error: %1</translation>
+      <translation>MediaWiki API 错误: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="228"/>
       <source>MediaWiki API response has no expected result list.</source>
-      <translation type="unfinished">MediaWiki API response has no expected result list.</translation>
+      <translation>MediaWiki API 响应没有预期结果列表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="531"/>
       <source>Category: %1 — %2</source>
-      <translation type="unfinished">Category: %1 — %2</translation>
+      <translation>类别: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="532"/>
       <source>Pages added to &apos;%1&apos;.</source>
-      <translation type="unfinished">Pages added to &apos;%1&apos;.</translation>
+      <translation>页面已添加到 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="536"/>
       <source>Search: %1 — %2</source>
-      <translation type="unfinished">Search: %1 — %2</translation>
+      <translation>搜索: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="537"/>
       <source>Pages matching &apos;%1&apos;, ordered by last edit.</source>
-      <translation type="unfinished">Pages matching &apos;%1&apos;, ordered by last edit.</translation>
+      <translation>匹配 &apos;%1&apos;的页面；按最后编辑排序。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="585"/>
       <source>MediaWiki continuation has no catalog position.</source>
-      <translation type="unfinished">MediaWiki continuation has no catalog position.</translation>
+      <translation>MediaWiki 继续操作没有目录位置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="590"/>
       <source>Unexpected MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Unexpected MediaWiki continuation parameter.</translation>
+      <translation>意外的 MediaWiki 继续参数。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
       <source>Invalid MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation parameter.</translation>
+      <translation>无效的 MediaWiki 继续参数。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="601"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="611"/>
       <source>Invalid MediaWiki continuation offset.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation offset.</translation>
+      <translation>无效的 MediaWiki 继续偏移量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="616"/>
       <source>MediaWiki continuation parameter is too long.</source>
-      <translation type="unfinished">MediaWiki continuation parameter is too long.</translation>
+      <translation>MediaWiki 继续参数太长。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="631"/>
       <source>Invalid MediaWiki continuation object.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation object.</translation>
+      <translation>无效的 MediaWiki 继续对象。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="706"/>
       <source>MediaWiki catalog exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki catalog exceeded the requested page size.</translation>
+      <translation>MediaWiki 目录超出请求的页面大小。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="729"/>
