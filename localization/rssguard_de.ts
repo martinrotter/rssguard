@@ -2416,8 +2416,8 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="81"/>
       <source> day(s)</source>
       <translation>
-        <numerusform> Tag</numerusform>
-        <numerusform> Tage</numerusform>
+        <numerusform> Tag(e)</numerusform>
+        <numerusform> Tage()</numerusform>
       </translation>
     </message>
     <message>
@@ -2451,7 +2451,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="130"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>Bereinigung der Datenbank fehlgeschlagen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="135"/>
@@ -2491,32 +2491,32 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="89"/>
       <source>Remove all important articles</source>
-      <translation type="unfinished">Remove all important articles</translation>
+      <translation>Alle wichtigen Artikel löschen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="101"/>
       <source>Run automatically</source>
-      <translation type="unfinished">Run automatically</translation>
+      <translation>Automatisch starten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="111"/>
       <source>Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</source>
-      <translation type="unfinished">Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</translation>
+      <translation>Ausgewählte Bereinigungs-Vorgänge automatisch ausführen. Diesen Dialog schließen, um die Auswahl zu speichern, ohne die Bereinigung jetzt durchzuführen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="115"/>
       <source>Never</source>
-      <translation type="unfinished">Never</translation>
+      <translation>niemals</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="120"/>
       <source>On application startup</source>
-      <translation type="unfinished">On application startup</translation>
+      <translation>Beim Start der Anwendung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="125"/>
       <source>On application exit</source>
-      <translation type="unfinished">On application exit</translation>
+      <translation>Beim Beenden der Anwendung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="135"/>
@@ -3366,7 +3366,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1148"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>&amp;Web-Cache bereinigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1153"/>
@@ -3421,7 +3421,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="670"/>
       <source>&amp;Cleanup database</source>
-      <translation>Datenbank be&amp;reinigen</translation>
+      <translation>Datenbank &amp;bereinigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="678"/>
@@ -3647,7 +3647,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="177"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
-      <translation>Kann die Datenbank aufgrund einer anderen Aktion hieran nicht bereinigen.</translation>
+      <translation>Die Datenbank kann nicht bereinigt werden, weil eine andere kritische Aktion ausgeführt wird.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="468"/>
@@ -6256,7 +6256,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="112"/>
       <source>; removed by feed cleanup</source>
-      <translation type="unfinished">; removed by feed cleanup</translation>
+      <translation>; entfernt durch Feed-Bereinigung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
@@ -6303,8 +6303,8 @@ The stored starred state is preserved.</translation>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
-Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
+      <translation>
+Vorhersage auf Grundlage der aktuellen Datenbank. Später können sich die Skript-Seiteneffekte und Feed-Bereinigung auf das tatsächliche Ergebnis auswirken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
