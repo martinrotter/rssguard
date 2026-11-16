@@ -1223,12 +1223,12 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds</source>
-      <translation type="unfinished">Show feeds</translation>
+      <translation>Feeds anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show folders</source>
-      <translation type="unfinished">Show folders</translation>
+      <translation>Ordner anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
@@ -1258,7 +1258,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="267"/>
       <source>Show enabled feeds</source>
-      <translation type="unfinished">Show enabled feeds</translation>
+      <translation>Aktivierte Feeds anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="273"/>
@@ -1613,7 +1613,7 @@ Skins base folder -&gt; &quot;%5&quot;
 Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Benutzerdatenordner (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Einstellungen-Datei (%4) -&gt; &quot;%3&quot;&quot;
+Einstellungen-Datei (%4) -&gt; &quot;%3&quot;
 Design-Basisordner -&gt; &quot;%5&quot;
 Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     </message>
@@ -2145,7 +2145,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="662"/>
       <source>During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</source>
-      <translation type="unfinished">During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</translation>
+      <translation>Während des automatischen Feed-Abrufs wird jeder Artikel verworfen, da Ignorieren und Löschen neu heruntergeladene Artikel ablehnen. Möchten Sie diesen Filter trotzdem generieren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="583"/>
@@ -4523,7 +4523,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation>Optionales Post-processing Script</translation>
+      <translation>Optionales Nachbearbeitungs-Script</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="109"/>
@@ -10341,16 +10341,16 @@ Ignore cookies: %7
 Report empty feed as broken: %8
 Feed timeout: %9
 Fetch full articles: %10 (plain text only: %11)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+      <translation>Kodierung: %1
+Typ: %2
+Nachbearbeitungs-Skript: %3
+Als Roh-XML speichern %4
+Artikel-Kommentare holen: %5
 HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Feed timeout: %9
-Fetch full articles: %10 (plain text only: %11)</translation>
+Cookies ignorieren: %7
+Leeren Feed als defekt markieren %8
+Feed Timeout: %9
+Vollständigen Artikel laden: %10 (nur Text-Modus: %11)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="573"/>
@@ -10505,7 +10505,7 @@ Fetch full articles: %10 (plain text only: %11)</translation>
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
       <translation>Du kannst eine URL als Quelle deines Feeds verwenden, oder einen eigenen Feed mit einem Skript erzeugen.
 
-Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript weiter verarbeiten. Dies sind fortgeschrittene Funktionen, lese die Dokumentation bevor du diese verwendest.</translation>
+Du kannst die generierten Feed-Daten auch mit einem extra Nachbearbeitungs-Skript weiter verarbeiten. Dies sind fortgeschrittene Funktionen, lese die Dokumentation bevor du diese verwendest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="14"/>
