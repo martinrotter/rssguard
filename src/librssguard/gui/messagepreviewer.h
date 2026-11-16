@@ -29,15 +29,16 @@ class MessagePreviewer : public TabContent {
     virtual ~MessagePreviewer();
 
     void reloadFontSettings();
+    void warmUpBrowser();
 
-    virtual WebBrowser* webBrowser() const;
-    WebBrowser* scrollableWebBrowser() const override;
+    virtual WebBrowser* webBrowser() const override;
 
     LabelsMenu* menuLabels() const;
 
   public slots:
     void setToolbarsVisible(bool visible);
     void clear();
+    void cleanupCache();
 
     void showItemDetails(RootItem* item);
     void loadMessage(const Message& message, RootItem* root, Feed* feed);
@@ -50,7 +51,8 @@ class MessagePreviewer : public TabContent {
     void fetchFullMessageContents();
 
   signals:
-    void scrollableBrowserChanged();
+    // The selected browser or its visibility changed.
+    void webBrowserChanged();
     void articleTweaked(const Message& msg);
     void revealFeed();
     void markMessageRead(int id, RootItem::ReadStatus read);

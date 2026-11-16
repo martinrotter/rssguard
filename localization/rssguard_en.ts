@@ -5409,11 +5409,6 @@ You can install it now.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="409"/>
-        <source>Calendar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="410"/>
         <source>Ends</source>
         <translation type="unfinished"></translation>

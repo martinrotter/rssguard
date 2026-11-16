@@ -91,11 +91,10 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   #endif
   */
 
-  // This layout holds standard article browser on index 0
-  // and optional custom browser on index 1.
+  // This layout holds the standard browser, item details and an optional custom previewer.
   m_viewerLayout->addWidget(m_msgBrowser);
   m_viewerLayout->addWidget(m_itemDetails);
-  connect(m_viewerLayout, &QStackedLayout::currentChanged, this, &MessagePreviewer::scrollableBrowserChanged);
+  connect(m_viewerLayout, &QStackedLayout::currentChanged, this, &MessagePreviewer::webBrowserChanged);
 
   m_mainLayout->setContentsMargins(3, 3, 3, 3);
   m_mainLayout->addLayout(m_viewerLayout, 0, 1, 1, 1);
@@ -122,6 +121,14 @@ void MessagePreviewer::reloadFontSettings() {
   m_msgBrowser->reloadFontSettings();
 }
 
+void MessagePreviewer::warmUpBrowser() {
+  m_msgBrowser->setHtml(QSL("<!DOCTYPE html><html><body></body></html>"));
+}
+
+void MessagePreviewer::cleanupCache() {
+  m_msgBrowser->cleanupCache();
+}
+
 void MessagePreviewer::setToolbarsVisible(bool visible) {
   m_toolbarVisible = visible;
 
@@ -132,28 +139,21 @@ void MessagePreviewer::setToolbarsVisible(bool visible) {
 }
 
 WebBrowser* MessagePreviewer::webBrowser() const {
-  return m_msgBrowser;
-}
-
-WebBrowser* MessagePreviewer::scrollableWebBrowser() const {
-  if (isHidden()) {
-    return nullptr;
-  }
   if (m_viewerLayout->currentIndex() == INDEX_DEFAULT) {
     return m_msgBrowser;
   }
   auto* custom_previewer = qobject_cast<CustomMessagePreviewer*>(m_viewerLayout->currentWidget());
-  return custom_previewer != nullptr ? custom_previewer->scrollableWebBrowser() : nullptr;
+  return custom_previewer != nullptr ? custom_previewer->webBrowser() : nullptr;
 }
 
 void MessagePreviewer::showEvent(QShowEvent* event) {
   TabContent::showEvent(event);
-  emit scrollableBrowserChanged();
+  emit webBrowserChanged();
 }
 
 void MessagePreviewer::hideEvent(QHideEvent* event) {
   TabContent::hideEvent(event);
-  emit scrollableBrowserChanged();
+  emit webBrowserChanged();
 }
 
 void MessagePreviewer::clear() {

@@ -406,7 +406,6 @@ void GCalendarServiceRoot::applySettings(const QString& name,
 
 QList<ArticleColumn> GCalendarServiceRoot::articleColumns() const {
   return {{QSL("starts"), tr("Starts"), MSG_MDL_DCREATED_INDEX},
-          {QSL("calendar"), tr("Calendar"), MSG_MDL_FEED_TITLE_INDEX},
           {QSL("ends"), tr("Ends")},
           {QSL("location"), tr("Location")},
           {QSL("all_day"), tr("All day")}};
@@ -415,9 +414,6 @@ QList<ArticleColumn> GCalendarServiceRoot::articleColumns() const {
 QVariant GCalendarServiceRoot::articleColumnData(const Message& message, const QString& column_id, int role) const {
   if (role != Qt::DisplayRole && role != Qt::EditRole && role != Qt::ToolTipRole) {
     return {};
-  }
-  if (column_id == QLatin1String("calendar")) {
-    return message.m_feedTitle;
   }
   const auto event = CalendarEvent::fromMessage(message);
   if (!event.isValid()) {

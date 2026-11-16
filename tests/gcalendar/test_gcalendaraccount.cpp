@@ -1899,7 +1899,7 @@ void TestGCalendarAccount::bundledPluginsLoadIndependentCachedRoots() {
   cached->start(false);
   QCOMPARE(cached->getSubTreeFeeds().size(), 1);
   QCOMPARE(cached->getSubTreeFeeds().first()->id(), feed()->id());
-  QCOMPARE(cached->articleColumns().size(), 5);
+  QCOMPARE(cached->articleColumns().size(), 4);
   QVERIFY(!cached->messageStoragePolicy().m_useArticleCleanup);
   cached->stop();
 #if defined(TEST_GMAIL_PLUGIN)

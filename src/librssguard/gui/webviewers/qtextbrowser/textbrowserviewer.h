@@ -82,7 +82,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
     virtual QSize sizeHint() const;
 
-    virtual void reloadNetworkSettings();
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
     virtual void loadUrl(const QUrl& url);

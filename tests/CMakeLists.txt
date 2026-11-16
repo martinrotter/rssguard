@@ -55,7 +55,7 @@ endfunction()
 if(ENABLE_TESTING)
   message(STATUS "Enabling unit tests.")
 
-  foreach(fixture current mismatched missing)
+  foreach(fixture current previous mismatched missing)
     add_library(test_plugin_${fixture} MODULE plugins/fixture.cpp)
     target_link_libraries(test_plugin_${fixture} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
     target_include_directories(test_plugin_${fixture} PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard)
@@ -65,9 +65,10 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_pluginfactory miscellaneous/test_pluginfactory.cpp)
   target_compile_definitions(test_pluginfactory PRIVATE
     TEST_PLUGIN_CURRENT="$<TARGET_FILE:test_plugin_current>"
+    TEST_PLUGIN_PREVIOUS="$<TARGET_FILE:test_plugin_previous>"
     TEST_PLUGIN_MISMATCHED="$<TARGET_FILE:test_plugin_mismatched>"
     TEST_PLUGIN_MISSING="$<TARGET_FILE:test_plugin_missing>")
-  add_dependencies(test_pluginfactory test_plugin_current test_plugin_mismatched test_plugin_missing)
+  add_dependencies(test_pluginfactory test_plugin_current test_plugin_previous test_plugin_mismatched test_plugin_missing)
 
   add_rssguard_test(test_oauthloopback network-web/test_oauthloopback.cpp
     ${CMAKE_SOURCE_DIR}/src/librssguard/network-web/httpserver.cpp)
@@ -262,6 +263,22 @@ if(ENABLE_TESTING)
           $<TARGET_FILE:test_zoom>)
     endif()
     set_tests_properties(test_zoom_webengine PROPERTIES
+      ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+      TIMEOUT 120)
+
+    if(WIN32)
+      add_test(NAME test_articlepreview_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
+          "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+          $<TARGET_FILE:test_articlepreview> defaultBrowserWarmup)
+    else()
+      add_test(NAME test_articlepreview_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
+          $<TARGET_FILE:test_articlepreview> defaultBrowserWarmup)
+    endif()
+    set_tests_properties(test_articlepreview_webengine PROPERTIES
       ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
       TIMEOUT 120)
 

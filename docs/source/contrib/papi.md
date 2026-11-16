@@ -15,6 +15,8 @@ A plugin must be compiled as a separate library, which can then be loaded dynami
 
 Plugin JSON metadata must include integer `rssguardPluginApiVersion` matching `RSSGUARD_PLUGIN_API_VERSION` from `definitions.h`. RSS Guard checks this before constructing a plugin. Rebuild plugins when this version changes; new virtual methods change binary compatibility. The metadata IID remains provider-specific.
 
+`TabContent::webBrowser()` returns the browser for its selected content, or `nullptr` when that content has no browser. It does not check visibility; interactive commands must check the returned widget's visibility themselves. Plugin API version 2 removes `scrollableWebBrowser()` and the unused `WebViewer::reloadNetworkSettings()` hook; custom message previewers only implement `webBrowser()`.
+
 ## Optional article columns
 
 `ServiceRoot::articleColumns()` defaults to an empty list. Each `ArticleColumn` has a stable provider-local ID and translated title. Leave its built-in column index at `-1` to append a read-only, non-sortable column, or identify a built-in column to override its presentation. IDs and built-in targets must be unique; IDs must remain stable across translations and releases.

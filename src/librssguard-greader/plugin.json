@@ -1,5 +1,5 @@
 {
-  "rssguardPluginApiVersion": 1,
+  "rssguardPluginApiVersion": 2,
   "name": "Google Reader API",
   "author": "Martin Rotter",
   "website": "https://github.com/martinrotter/rssguard"

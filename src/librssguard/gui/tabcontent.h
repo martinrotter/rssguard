@@ -21,15 +21,9 @@ class TabContent : public QWidget {
     virtual int index() const;
     virtual void setIndex(int index);
 
-    // Obtains instance contained in this TabContent or nullptr.
-    // This can be used for obtaining the menu from the instance and so on.
+    // Returns the browser for the selected content, or nullptr if it has none.
+    // Visibility is independent of the selected content.
     virtual WebBrowser* webBrowser() const = 0;
-
-    // Scroll commands need the displayed browser, which may differ from the
-    // default browser retained for menus/settings by a custom previewer.
-    virtual WebBrowser* scrollableWebBrowser() const {
-      return webBrowser();
-    }
 
   protected:
     int m_index;
