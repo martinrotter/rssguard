@@ -6553,7 +6553,7 @@ Vorhersage auf Grundlage der aktuellen Datenbank. Später können sich die Skrip
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="624"/>
       <source>Published</source>
-      <translation type="unfinished">Published</translation>
+      <translation>Publiziert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="624"/>
