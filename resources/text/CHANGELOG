@@ -2,6 +2,7 @@
 -----
 
 Fixed:
+* Calendar event previews now use the shared article browser, including skins, search, zoom and normal link handling. Scroll commands now target the displayed custom previewer, including Calendar and Gmail.
 * Fixed Windows packaging rejecting the Google Calendar plugin. The installer now includes Calendar and respects the Calendar/Gmail build options.
 
 

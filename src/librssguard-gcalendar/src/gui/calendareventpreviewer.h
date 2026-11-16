@@ -5,6 +5,7 @@
 
 #include "ui_calendareventpreviewer.h"
 
+#include <librssguard/gui/webbrowser.h>
 #include <librssguard/services/abstract/gui/custommessagepreviewer.h>
 
 #include <QPointer>
@@ -25,6 +26,9 @@ class CalendarEventPreviewer : public CustomMessagePreviewer {
     void setStatus(WidgetWithStatus::StatusType status, const QString& text);
     Ui::CalendarEventPreviewer m_ui;
     QPointer<GCalendarServiceRoot> m_account;
+    QScopedPointer<WebBrowser> m_webView;
+    QPointer<RootItem> m_selectedItem;
+    QPointer<Feed> m_feed;
     Message m_message;
     QUrl m_googleUrl;
     QUrl m_meetingUrl;

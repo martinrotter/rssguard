@@ -9,6 +9,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "services/abstract/gui/custommessagepreviewer.h"
 
 #include <memory>
 
@@ -19,8 +20,37 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QVBoxLayout>
 
 namespace {
+  class TestMessagePreviewer : public CustomMessagePreviewer {
+    public:
+      explicit TestMessagePreviewer(bool has_browser)
+        : m_browser(new WebBrowser(nullptr, this)), m_hasBrowser(has_browser) {
+        auto* layout = new QVBoxLayout(this);
+        layout->addWidget(m_browser);
+        m_browser->setToolBarVisible(false);
+      }
+
+      WebBrowser* webBrowser() const override {
+        return m_hasBrowser ? m_browser : nullptr;
+      }
+
+      void clear() override {
+        m_browser->clear(false);
+      }
+
+      void loadMessage(const Message& message, RootItem* selected_item, Feed* feed) override {
+        auto long_message = message;
+        long_message.m_contents = message.m_contents.repeated(200);
+        m_browser->loadMessage(long_message, selected_item, feed);
+      }
+
+    private:
+      WebBrowser* m_browser;
+      bool m_hasBrowser;
+  };
+
   class TestServiceRoot : public ServiceRoot {
     public:
       QString code() const override {
@@ -32,6 +62,12 @@ namespace {
                                        const QHash<QString, QStringList>&) override {
         return {};
       }
+
+      CustomMessagePreviewer* customMessagePreviewer() override {
+        return m_previewer.get();
+      }
+
+      std::unique_ptr<TestMessagePreviewer> m_previewer;
   };
 
   class ShowEventCounter : public QObject {
@@ -72,6 +108,8 @@ class TestArticlePreview : public QObject {
     void embeddedPreviewAfterClear_data();
     void embeddedPreviewAfterClear();
     void embeddedPreviewDoesNotRevealBackgroundTab();
+    void customPreviewScrollRouting_data();
+    void customPreviewScrollRouting();
 
   private:
     int openArticleTab();
@@ -107,6 +145,7 @@ void TestArticlePreview::init() {
   qApp->settings()->setValue(GROUP(Messages), Messages::AlwaysDisplayItemPreview, false);
   tabs->feedMessageViewer()->updateArticleViewerSettings();
   QVERIFY(tabs->feedMessageViewer()->messagesBrowser()->isHidden());
+  m_account->m_previewer.reset();
 }
 
 int TestArticlePreview::openArticleTab() {
@@ -213,6 +252,52 @@ void TestArticlePreview::embeddedPreviewDoesNotRevealBackgroundTab() {
   tabs->setCurrentIndex(0);
   QVERIFY(feeds->messagesBrowser()->isVisible());
   QVERIFY(feeds->webBrowser()->viewer()->plainText().contains(QSL("Article preview regression test.")));
+}
+
+void TestArticlePreview::customPreviewScrollRouting_data() {
+  QTest::addColumn<bool>("has_browser");
+  QTest::newRow("browser") << true;
+  QTest::newRow("no-browser") << false;
+}
+
+void TestArticlePreview::customPreviewScrollRouting() {
+  QFETCH(bool, has_browser);
+  auto* tabs = m_window->tabWidget();
+  auto* feeds = tabs->feedMessageViewer();
+  auto* preview = feeds->messagesBrowser();
+  auto* default_browser = feeds->webBrowser();
+  m_account->m_previewer = std::make_unique<TestMessagePreviewer>(has_browser);
+  auto* browser = m_account->m_previewer->webBrowser();
+  QVERIFY(displayArticle(m_feed));
+  QCOMPARE(feeds->webBrowser(), default_browser);
+  QCOMPARE(feeds->scrollableWebBrowser(), browser);
+  auto* scroll_down = m_window->findChild<QAction*>(QSL("m_actionBrowserScrollDown"));
+  auto* scroll_up = m_window->findChild<QAction*>(QSL("m_actionBrowserScrollUp"));
+  QVERIFY(scroll_down != nullptr && scroll_up != nullptr);
+  QCOMPARE(scroll_down->isEnabled(), has_browser);
+  QCOMPARE(scroll_up->isEnabled(), has_browser);
+  if (has_browser) {
+    QTRY_VERIFY(browser->isVisible());
+    scroll_down->trigger();
+    QTRY_VERIFY(browser->verticalScrollBarPosition() > 0.0);
+    QCOMPARE(default_browser->verticalScrollBarPosition(), 0.0);
+    scroll_up->trigger();
+    QTRY_COMPARE(browser->verticalScrollBarPosition(), 0.0);
+  }
+  preview->hide();
+  QCOMPARE(feeds->scrollableWebBrowser(), nullptr);
+  QVERIFY(!scroll_down->isEnabled());
+  preview->show();
+  QCOMPARE(feeds->scrollableWebBrowser(), browser);
+  QCOMPARE(scroll_down->isEnabled(), has_browser);
+
+  QVERIFY(QMetaObject::invokeMethod(preview, "showItemDetails", Qt::DirectConnection, Q_ARG(RootItem*, m_feed)));
+  QCOMPARE(feeds->scrollableWebBrowser(), nullptr);
+  QVERIFY(!scroll_down->isEnabled());
+  m_account->m_previewer.reset();
+  QVERIFY(displayArticle(m_feed));
+  QCOMPARE(feeds->scrollableWebBrowser(), default_browser);
+  QVERIFY(scroll_down->isEnabled());
 }
 
 void TestArticlePreview::cleanupTestCase() {

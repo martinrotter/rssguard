@@ -187,9 +187,8 @@ Message CalendarEvent::toMessage() const {
     isAllDay() ? displayStart() : QLocale().toString(m_start.toTimeZone(m_zone), QLocale::ShortFormat);
   const auto preview_end =
     isAllDay() ? displayEnd() : QLocale().toString(m_end.toTimeZone(m_zone), QLocale::ShortFormat);
-  result.m_contents = QStringLiteral("<h2>%1</h2><p>%2 &ndash; %3</p><p>%4</p><p>%5</p>")
-                        .arg(result.m_title.toHtmlEscaped(),
-                             preview_start.toHtmlEscaped(),
+  result.m_contents = QStringLiteral("<p><b>%1 &ndash; %2</b></p><p>%3</p><p>%4</p>")
+                        .arg(preview_start.toHtmlEscaped(),
                              preview_end.toHtmlEscaped(),
                              m_resource.value(QStringLiteral("location")).toString().toHtmlEscaped(),
                              plainDescription(m_resource.value(QStringLiteral("description")).toString()));

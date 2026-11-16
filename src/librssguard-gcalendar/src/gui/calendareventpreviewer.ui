@@ -59,16 +59,6 @@
    <item>
     <widget class="LabelWithStatus" name="m_lblState" native="true"/>
    </item>
-   <item>
-    <widget class="QTextBrowser" name="m_details">
-     <property name="openExternalLinks">
-      <bool>false</bool>
-     </property>
-     <property name="openLinks">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>

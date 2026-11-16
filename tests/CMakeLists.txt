@@ -240,30 +240,48 @@ if(ENABLE_TESTING)
     ENVIRONMENT "QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
     TIMEOUT 120)
   if(WEB_ARTICLE_VIEWER_WEBENGINE)
-    set(ZOOM_TEST_PLATFORM "offscreen")
+    set(WEBENGINE_TEST_PLATFORM "offscreen")
     if(QT_VERSION_MAJOR EQUAL 5)
       if(WIN32)
-        set(ZOOM_TEST_PLATFORM "windows")
+        set(WEBENGINE_TEST_PLATFORM "windows")
       elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         # Qt 5's WebEngine view needs an X11 OpenGL context; CI provides it through Xvfb.
-        set(ZOOM_TEST_PLATFORM "xcb")
+        set(WEBENGINE_TEST_PLATFORM "xcb")
       endif()
     endif()
     if(WIN32)
       add_test(NAME test_zoom_webengine
         COMMAND ${CMAKE_COMMAND} -E env
-          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+          "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
           "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
           $<TARGET_FILE:test_zoom>)
     else()
       add_test(NAME test_zoom_webengine
         COMMAND ${CMAKE_COMMAND} -E env
-          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+          "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
           $<TARGET_FILE:test_zoom>)
     endif()
     set_tests_properties(test_zoom_webengine PROPERTIES
       ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
       TIMEOUT 120)
+
+    if(TARGET test_gcalendaraccount)
+      if(WIN32)
+        add_test(NAME test_gcalendarpreview_webengine
+          COMMAND ${CMAKE_COMMAND} -E env
+            "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
+            "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+            $<TARGET_FILE:test_gcalendaraccount> previewUsesCachedDataAndRespectsPermissions previewReloadsSavedEventsAndClearsContent)
+      else()
+        add_test(NAME test_gcalendarpreview_webengine
+          COMMAND ${CMAKE_COMMAND} -E env
+            "QT_QPA_PLATFORM=${WEBENGINE_TEST_PLATFORM}"
+            $<TARGET_FILE:test_gcalendaraccount> previewUsesCachedDataAndRespectsPermissions previewReloadsSavedEventsAndClearsContent)
+      endif()
+      set_tests_properties(test_gcalendarpreview_webengine PROPERTIES
+        ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+        TIMEOUT 120)
+    endif()
   endif()
 
   add_rssguard_test(test_styleditemdelegate

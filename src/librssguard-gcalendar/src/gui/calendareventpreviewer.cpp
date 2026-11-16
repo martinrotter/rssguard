@@ -17,8 +17,10 @@ namespace {
 } // namespace
 
 CalendarEventPreviewer::CalendarEventPreviewer(GCalendarServiceRoot* account, QWidget* parent)
-  : CustomMessagePreviewer(parent), m_account(account) {
+  : CustomMessagePreviewer(parent), m_account(account), m_webView(new WebBrowser(nullptr, this)) {
   m_ui.setupUi(this);
+  m_ui.m_layout->addWidget(m_webView.data(), 1);
+  m_webView->setToolBarVisible(false);
   m_ui.m_lblState->label()->setWordWrap(true);
   m_ui.m_lblState->label()->setTextFormat(Qt::PlainText);
   m_ui.m_btnNewEvent->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
@@ -41,12 +43,11 @@ CalendarEventPreviewer::CalendarEventPreviewer(GCalendarServiceRoot* account, QW
   connect(m_ui.m_btnJoin, &QPushButton::clicked, this, [this]() {
     openLink(m_meetingUrl);
   });
-  connect(m_ui.m_details, &QTextBrowser::anchorClicked, this, &CalendarEventPreviewer::openLink);
   connect(account, &GCalendarServiceRoot::eventSaved, this, [this](int id) {
     if (id > 0 && id == m_message.m_id && m_account != nullptr) {
       try {
         const auto message = m_account->cachedMessage(id);
-        loadMessage(message, nullptr, nullptr);
+        loadMessage(message, m_selectedItem.data(), m_feed.data());
         emit articleTweaked(message);
       }
       catch (const ApplicationException& ex) {
@@ -65,29 +66,35 @@ void CalendarEventPreviewer::setStatus(WidgetWithStatus::StatusType status, cons
 }
 
 WebBrowser* CalendarEventPreviewer::webBrowser() const {
-  return nullptr;
+  return m_webView.data();
 }
 
 void CalendarEventPreviewer::clear() {
   m_message = Message();
+  m_selectedItem.clear();
+  m_feed.clear();
   m_googleUrl = QUrl();
   m_meetingUrl = QUrl();
-  m_ui.m_details->clear();
+  m_webView->clear(false);
   setStatus(WidgetWithStatus::StatusType::Information, {});
   m_ui.m_btnEdit->setEnabled(false);
   m_ui.m_btnGoogle->setEnabled(false);
   m_ui.m_btnJoin->setEnabled(false);
 }
 
-void CalendarEventPreviewer::loadMessage(const Message& message, RootItem*, Feed*) {
+void CalendarEventPreviewer::loadMessage(const Message& message, RootItem* selected_item, Feed* feed) {
   clear();
   m_message = message;
+  m_selectedItem = selected_item;
+  m_feed = feed;
   const auto event = CalendarEvent::fromMessage(message);
   if (!event.isValid()) {
     setStatus(WidgetWithStatus::StatusType::Error, event.m_error);
     return;
   }
-  m_ui.m_details->setHtml(event.toMessage().m_contents);
+  auto rendered_message = message;
+  rendered_message.m_contents = event.toMessage().m_contents;
+  m_webView->loadMessage(rendered_message, selected_item, feed);
   auto* calendar = m_account != nullptr
                      ? dynamic_cast<GCalendarFeed*>(m_account->getHashedSubTreeFeeds().value(event.m_calendarId))
                      : nullptr;

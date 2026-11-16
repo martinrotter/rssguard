@@ -136,7 +136,14 @@ WebBrowser* MessagePreviewer::webBrowser() const {
 }
 
 WebBrowser* MessagePreviewer::scrollableWebBrowser() const {
-  return !isHidden() && m_viewerLayout->currentIndex() == INDEX_DEFAULT ? m_msgBrowser : nullptr;
+  if (isHidden()) {
+    return nullptr;
+  }
+  if (m_viewerLayout->currentIndex() == INDEX_DEFAULT) {
+    return m_msgBrowser;
+  }
+  auto* custom_previewer = qobject_cast<CustomMessagePreviewer*>(m_viewerLayout->currentWidget());
+  return custom_previewer != nullptr ? custom_previewer->scrollableWebBrowser() : nullptr;
 }
 
 void MessagePreviewer::showEvent(QShowEvent* event) {

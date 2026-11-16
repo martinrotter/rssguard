@@ -15,6 +15,7 @@
 #include <librssguard/gui/feedmessageviewer.h>
 #include <librssguard/gui/feedsview.h>
 #include <librssguard/gui/messagesview.h>
+#include <librssguard/gui/webbrowser.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/feedreader.h>
 #include <librssguard/miscellaneous/iconfactory.h>
@@ -48,7 +49,6 @@
 #include <QTcpSocket>
 #include <QTemporaryDir>
 #include <QTest>
-#include <QTextBrowser>
 #include <QThread>
 #include <QTimer>
 #include <QUuid>
@@ -464,6 +464,7 @@ class TestGCalendarAccount : public QObject {
     void expiredTombstonesRetireConservatively();
     void queuedEditFollowsSnapshotStorage();
     void previewUsesCachedDataAndRespectsPermissions();
+    void previewReloadsSavedEventsAndClearsContent();
     void remindersContinueDuringRemoteReads();
     void localDeleteRestoreUsesCommonCountRefresh();
     void seriesOutsideWindowPinsARealOccurrence();
@@ -1631,6 +1632,9 @@ void TestGCalendarAccount::queuedEditFollowsSnapshotStorage() {
 void TestGCalendarAccount::previewUsesCachedDataAndRespectsPermissions() {
   QVERIFY(discover());
   auto resource = calendarEvent(QSL("preview"));
+  resource[QSL("summary")] = QSL("Meeting <unsafe>");
+  resource[QSL("description")] = QSL("<b>Details</b><script>bad()</script>");
+  resource[QSL("htmlLink")] = QSL("https://calendar.example.invalid/event");
   resource[QSL("attendees")] = QJsonArray{QJsonObject{{QSL("displayName"), QSL("Guest <unsafe>")}}};
   resource[QSL("conferenceData")] =
     QJsonObject{{QSL("entryPoints"),
@@ -1642,11 +1646,16 @@ void TestGCalendarAccount::previewUsesCachedDataAndRespectsPermissions() {
   CalendarEventPreviewer preview(m_account);
   const int requests = m_server->m_requests.size();
   preview.loadMessage(message, m_account, feed());
-  auto* details = preview.findChild<QTextBrowser*>(QSL("m_details"));
+  auto* details = preview.webBrowser();
   auto* edit = preview.findChild<QPushButton*>(QSL("m_btnEdit"));
   auto* join = preview.findChild<QPushButton*>(QSL("m_btnJoin"));
   QVERIFY(details != nullptr && edit != nullptr && join != nullptr);
-  QVERIFY(details->toPlainText().contains(QSL("Guest <unsafe>")));
+  QTRY_VERIFY(details->viewer()->plainText().contains(QSL("Guest <unsafe>")));
+  const auto text = details->viewer()->plainText();
+  QCOMPARE(text.count(message.m_title), 1);
+  QVERIFY(text.contains(message.m_feedTitle));
+  QVERIFY(!details->viewer()->html().contains(QSL("<script>")));
+  QCOMPARE(details->viewer()->url(), QUrl(message.m_url));
   QVERIFY(edit->isEnabled());
   QVERIFY(join->isEnabled());
   preview.resize(720, 420);
@@ -1656,6 +1665,53 @@ void TestGCalendarAccount::previewUsesCachedDataAndRespectsPermissions() {
   message.m_isDeleted = true;
   preview.loadMessage(message, m_account, feed());
   QVERIFY(!edit->isEnabled());
+}
+
+void TestGCalendarAccount::previewReloadsSavedEventsAndClearsContent() {
+  QVERIFY(discover());
+  auto resource = calendarEvent(QSL("preview-reload"));
+  m_server->store(resource);
+  fetch();
+  auto message = m_account->cachedMessage(records().value(QSL("preview-reload")).m_id);
+  message.m_contents = QSL("Stale cached body");
+  CalendarEventPreviewer preview(m_account);
+  preview.loadMessage(message, m_account, feed());
+  auto* browser = preview.webBrowser();
+  QVERIFY(browser != nullptr);
+  QTRY_VERIFY(browser->viewer()->plainText().contains(message.m_title));
+  QVERIFY(!browser->viewer()->plainText().contains(message.m_contents));
+  QSignalSpy tweaked(&preview, &CustomMessagePreviewer::articleTweaked);
+  resource[QSL("summary")] = QSL("Saved event title");
+  m_server->store(resource);
+  fetch();
+  const int requests = m_server->m_requests.size();
+  QVERIFY(QMetaObject::invokeMethod(m_account, "eventSaved", Qt::DirectConnection, Q_ARG(int, message.m_id)));
+  QCOMPARE(tweaked.count(), 1);
+  QCOMPARE(qvariant_cast<Message>(tweaked.first().first()).m_id, message.m_id);
+  QTRY_VERIFY(browser->viewer()->plainText().contains(QSL("Saved event title")));
+  QVERIFY(browser->viewer()->plainText().contains(message.m_feedTitle));
+  QCOMPARE(m_server->m_requests.size(), requests);
+
+  const auto check_cleared = [&]() {
+    return !browser->viewer()->plainText().contains(QSL("Saved event title")) &&
+           !preview.findChild<QPushButton*>(QSL("m_btnEdit"))->isEnabled() &&
+           !preview.findChild<QPushButton*>(QSL("m_btnGoogle"))->isEnabled() &&
+           !preview.findChild<QPushButton*>(QSL("m_btnJoin"))->isEnabled();
+  };
+  preview.clear();
+  QTRY_VERIFY(check_cleared());
+  message = m_account->cachedMessage(message.m_id);
+  preview.loadMessage(message, m_account, feed());
+  QTRY_VERIFY(browser->viewer()->plainText().contains(QSL("Saved event title")));
+  auto invalid = message;
+  invalid.m_customData.clear();
+  preview.loadMessage(invalid, m_account, feed());
+  QTRY_VERIFY(check_cleared());
+  preview.loadMessage(message, m_account, feed());
+  QTRY_VERIFY(browser->viewer()->plainText().contains(QSL("Saved event title")));
+  QVERIFY(QMetaObject::invokeMethod(m_account, "accountStopped", Qt::DirectConnection));
+  QTRY_VERIFY(check_cleared());
+  QCOMPARE(m_server->m_requests.size(), requests);
 }
 
 void TestGCalendarAccount::remindersContinueDuringRemoteReads() {
@@ -2768,11 +2824,10 @@ int main(int argc, char* argv[]) {
     settings.setValue(GROUP(Database) + QSL("/") + Database::MySQLDatabase, mysql_schema);
   }
   settings.sync();
-  const QStringList arguments{QString::fromLocal8Bit(argv[0]),
-                              QSL("--data"),
-                              directory.path(),
-                              QSL("--no-single-instance"),
-                              QSL("--force-text-browser")};
+  QStringList arguments{QString::fromLocal8Bit(argv[0]), QSL("--data"), directory.path(), QSL("--no-single-instance")};
+  if (!qEnvironmentVariableIsSet("RSSGUARD_TEST_WEBENGINE")) {
+    arguments.append(QSL("--force-text-browser"));
+  }
   Application application(QSL("rssguard-calendar-account-test"), argc, argv, arguments);
   if (mysql_port > 0 && application.database()->activeDatabaseDriver() != DatabaseDriver::DriverType::MySQL) {
     return 1;
