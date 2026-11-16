@@ -26,6 +26,7 @@
 
 #include <QElapsedTimer>
 #include <QFontMetrics>
+#include <QMetaType>
 #include <QPainter>
 #include <QPainterPath>
 #include <QSet>
@@ -750,6 +751,28 @@ QString MessagesModel::formattedDataOfArticles(const QString& line_pattern,
   return csv;
 }
 
+QVariant MessagesModel::formatDateDisplayValue(const QVariant& value) const {
+  if (value.userType() == QMetaType::QDate) {
+    const auto date = value.toDate();
+    if (!date.isValid()) {
+      return QString();
+    }
+    return m_customFormatForDatesOnly.isEmpty() ? QLocale().toString(date, QLocale::ShortFormat)
+                                                : date.toString(m_customFormatForDatesOnly);
+  }
+  if (value.userType() == QMetaType::QDateTime) {
+    const auto date_time = value.toDateTime();
+    if (!date_time.isValid()) {
+      return QString();
+    }
+    const auto local = date_time.toLocalTime();
+    const QString& pattern =
+      local.date() == QDate::currentDate() && !m_customTimeFormat.isEmpty() ? m_customTimeFormat : m_customDateFormat;
+    return pattern.isEmpty() ? QLocale().toString(local, QLocale::ShortFormat) : local.toString(pattern);
+  }
+  return value;
+}
+
 QVariant MessagesModel::data(int row, int column, int role) const {
   return data(index(row, column), role);
 }
@@ -761,17 +784,22 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
   const bool extra = idx.column() >= m_headerData.size();
   const bool tooltip = role == Qt::ToolTipRole;
+
   if (tooltip && !qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
     return {};
   }
+
   if (role == Qt::DisplayRole || tooltip || (extra && role == Qt::EditRole)) {
     const auto column = m_pluginColumns.constFind(idx.column());
+
     if (column != m_pluginColumns.constEnd() && m_columnProvider != nullptr) {
       const auto value = m_columnProvider->articleColumnData(messageForRow(idx.row()), column->m_id, role);
+
       if (value.isValid()) {
-        return value;
+        return role == Qt::DisplayRole ? formatDateDisplayValue(value) : value;
       }
     }
+
     if (extra) {
       return tooltip ? data(idx, Qt::DisplayRole) : QVariant();
     }
@@ -890,11 +918,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
             return tr("just now");
           }
         }
-        else if (m_customDateFormat.isEmpty()) {
-          return QLocale().toString(dt, QLocale::FormatType::ShortFormat);
-        }
         else {
-          return dt.toString(m_customDateFormat);
+          return formatDateDisplayValue(QVariant(utc_dt));
         }
       }
       else if (index_column == MSG_MDL_CONTENTS_INDEX) {

@@ -23,6 +23,8 @@ Plugin JSON metadata must include integer `rssguardPluginApiVersion` matching `R
 
 `articleColumnData(message, id, role)` supplies display, edit/raw and tooltip values from the loaded message. Keep this path inexpensive: painting must not make network calls or database queries. A built-in override retains its original raw edit value, SQL sorting and date-filter semantics. Extra columns participate in the existing column menu, all-column text search and numeric copy placeholders; title-only search still searches titles. Layouts use stable provider/column IDs and the existing source profiles. Providers with no overrides retain their existing layout keys.
 
+For `DisplayRole`, plugins can return `QDate` for a date without a time zone or `QDateTime` for an instant. The model applies the user's dates-only format to `QDate`, and the custom date/time or today's format to locally displayed `QDateTime` values, with locale short formats as fallbacks. Strings are displayed as supplied. This presentation formatting does not affect raw `EditRole` values or SQL sorting.
+
 ## Managed message caches
 
 `ServiceRoot::messageStoragePolicy()` defaults to existing article behavior. Providers can opt into metadata-only change detection, preservation of local read/important/trash/retrieval fields during normal remote updates, and exclusion from ordinary article cleanup. Explicit filter overwrites and permanent-deletion protection retain their existing semantics.

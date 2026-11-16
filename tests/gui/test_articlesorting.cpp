@@ -25,11 +25,13 @@
 #include <QJsonObject>
 #include <QMenu>
 #include <QProcess>
+#include <QScopeGuard>
 #include <QSettings>
 #include <QSignalBlocker>
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTimeZone>
 #include <QTimer>
 
 namespace {
@@ -47,6 +49,9 @@ namespace {
 
       QVariant articleColumnData(const Message& message, const QString& id, int role) const override {
         if (role == Qt::DisplayRole || role == Qt::EditRole || role == Qt::ToolTipRole) {
+          if (m_values.contains(id)) {
+            return m_values.value(id);
+          }
           return QSL("extra-%1-%2").arg(id, message.m_title);
         }
         return {};
@@ -54,6 +59,7 @@ namespace {
 
       QString m_code = QSL("article-sorting-test");
       QList<ArticleColumn> m_columns;
+      QHash<QString, QVariant> m_values;
 
       QList<Message> obtainNewMessages(Feed*,
                                        const QHash<BagOfMessages, QStringList>&,
@@ -132,6 +138,11 @@ class TestArticleSorting : public QObject {
     void pluginColumnRolesAndSearch();
     void pluginColumnDescriptorsAreValidated();
     void legacyLayoutRestoresIntoExpandedSchema();
+    void pluginDateFormattingRefreshesAfterSaving();
+    void pluginDisplayTypes_data();
+    void pluginDisplayTypes();
+    void legacyDateFormatting_data();
+    void legacyDateFormatting();
 
   private:
     FeedMessageViewer* viewer() const;
@@ -205,6 +216,11 @@ void TestArticleSorting::init() {
   QTest::keyRelease(view(), Qt::Key_Control);
   loadItem(nullptr);
   m_account->m_columns.clear();
+  m_account->m_values.clear();
+  for (const auto& key : {Messages::UseCustomDate, Messages::UseCustomTime, Messages::UseCustomFormatForDatesOnly}) {
+    qApp->settings()->setValue(GROUP(Messages), key, false);
+  }
+  qApp->settings()->setValue(GROUP(Messages), Messages::RelativeTimeForNewerArticles, -1);
   qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, false);
   for (const auto& key : {GUI::MessageViewState,
                           GUI::MessageViewStateFeed,
@@ -637,6 +653,106 @@ void TestArticleSorting::legacyLayoutRestoresIntoExpandedSchema() {
   QVERIFY(view()->isColumnHidden(MSG_MDL_LABELS + 1));
   QCOMPARE(sortStates(headerState(view())), SortStates({{MSG_MDL_DCREATED_INDEX, Qt::AscendingOrder}}));
   QCOMPARE(view()->header()->sortIndicatorSection(), MSG_MDL_DCREATED_INDEX);
+}
+
+void TestArticleSorting::pluginDateFormattingRefreshesAfterSaving() {
+  const QDateTime value(QDate(2035, 3, 25), QTime(13, 20), QTimeZone::systemTimeZone());
+  m_account->m_columns = {{QSL("when"), QSL("When")}};
+  m_account->m_values.insert(QSL("when"), value.toUTC());
+  loadItem(m_first);
+  const int column = MSG_MDL_LABELS + 1;
+  auto* settings = qApp->settings();
+  settings->setValue(GROUP(Messages), Messages::UseCustomDate, true);
+  for (const auto& prefix : {QSL("first"), QSL("second")}) {
+    const QString pattern = QL1C('\'') + prefix + QSL("' yyyy-MM-dd HH:mm");
+    const QString expected = prefix + QSL(" 2035-03-25 13:20");
+    settings->setValue(GROUP(Messages), Messages::CustomDateFormat, pattern);
+    QVERIFY(toggleProfiles(true));
+    QCOMPARE(view()->sourceModel()->data(view()->sourceModel()->index(0, column), Qt::DisplayRole).toString(),
+             expected);
+    QCOMPARE(view()->sourceModel()->data(view()->sourceModel()->index(0, column), Qt::EditRole).toDateTime(), value);
+  }
+}
+
+void TestArticleSorting::pluginDisplayTypes_data() {
+  QTest::addColumn<QVariant>("value");
+  QTest::addColumn<QVariant>("expected");
+  QTest::newRow("date-like-string") << QVariant(QSL("2035-03-25")) << QVariant(QSL("2035-03-25"));
+  QTest::newRow("integer") << QVariant(42) << QVariant(42);
+  QTest::newRow("invalid-date") << QVariant(QDate()) << QVariant(QString());
+  QTest::newRow("invalid-datetime") << QVariant(QDateTime()) << QVariant(QString());
+}
+
+void TestArticleSorting::pluginDisplayTypes() {
+  QFETCH(QVariant, value);
+  QFETCH(QVariant, expected);
+  m_account->m_columns = {{QSL("value"), QSL("Value")}};
+  m_account->m_values.insert(QSL("value"), value);
+  qApp->settings()->setValue(GROUP(Messages), Messages::UseCustomDate, true);
+  qApp->settings()->setValue(GROUP(Messages), Messages::CustomDateFormat, QSL("'formatted' yyyy"));
+  QVERIFY(toggleProfiles(true));
+  loadItem(m_first);
+  const auto index = view()->sourceModel()->index(0, MSG_MDL_LABELS + 1);
+  const auto displayed = index.data(Qt::DisplayRole);
+  QCOMPARE(displayed.userType(), expected.userType());
+  QCOMPARE(displayed, expected);
+  QCOMPARE(index.data(Qt::EditRole), value);
+}
+
+void TestArticleSorting::legacyDateFormatting_data() {
+  QTest::addColumn<QDateTime>("published");
+  QTest::addColumn<QString>("expected");
+  const QDateTime midnight(QDate(2035, 3, 25), QTime(0, 0, 0, 123), Qt::UTC);
+  const QString date_text = QSL("date ") + midnight.toLocalTime().toString(QSL("yyyy-MM-dd HH:mm"));
+  QTest::newRow("utc-midnight-including-milliseconds") << midnight << date_text;
+  auto today = QDateTime(QDate::currentDate(), QTime(0, 0), Qt::UTC);
+  if (today.toLocalTime().date() != QDate::currentDate()) {
+    today = today.addDays(1);
+  }
+  const QString today_text = QSL("today ") + today.toLocalTime().toString(QSL("HH:mm"));
+  QTest::newRow("today-precedes-date-only") << today << today_text;
+  auto yesterday = QDateTime::currentDateTimeUtc().addSecs(-25 * 3600);
+  if (yesterday.time().hour() == 0 && yesterday.time().minute() == 0 && yesterday.time().second() == 0) {
+    yesterday = yesterday.addSecs(1);
+  }
+  QTest::newRow("relative-time") << yesterday << QCoreApplication::translate("MessagesModel", "yesterday");
+}
+
+void TestArticleSorting::legacyDateFormatting() {
+  QFETCH(QDateTime, published);
+  QFETCH(QString, expected);
+  auto* settings = qApp->settings();
+  settings->setValue(GROUP(Messages), Messages::UseCustomDate, true);
+  settings->setValue(GROUP(Messages), Messages::CustomDateFormat, QSL("'stamp' yyyy-MM-dd HH:mm"));
+  settings->setValue(GROUP(Messages), Messages::UseCustomTime, true);
+  settings->setValue(GROUP(Messages), Messages::CustomTimeFormat, QSL("'today' HH:mm"));
+  settings->setValue(GROUP(Messages), Messages::UseCustomFormatForDatesOnly, true);
+  settings->setValue(GROUP(Messages), Messages::CustomFormatForDatesOnly, QSL("'date' yyyy-MM-dd HH:mm"));
+  settings->setValue(GROUP(Messages), Messages::RelativeTimeForNewerArticles, 30);
+  QVERIFY(toggleProfiles(true));
+  Message article;
+  article.m_customId = QSL("date-format-test");
+  article.m_title = QSL("Date format test");
+  article.m_created = published;
+  article.m_retrieved = published;
+  article.m_feedId = m_otherFeed->id();
+  article.m_accountId = m_otherAccount->accountId();
+  QList<Message> messages{article};
+  DatabaseQueries::updateMessages(qApp->database(), settings, messages, m_otherFeed, false, true).throwIfFailed();
+  const auto remove = qScopeGuard([&]() {
+    loadItem(nullptr);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      SqlQuery query(db);
+      query.prepare(QSL("DELETE FROM Messages WHERE id = :id;"));
+      query.bindValue(QSL(":id"), messages.first().m_id);
+      query.exec();
+    });
+  });
+  loadItem(m_otherFeed);
+  QCOMPARE(view()->sourceModel()->rowCount(), 1);
+  const auto index = view()->sourceModel()->index(0, MSG_MDL_DCREATED_INDEX);
+  QCOMPARE(index.data(Qt::DisplayRole).toString(), expected);
+  QCOMPARE(index.data(Qt::EditRole).toDateTime(), published);
 }
 
 int main(int argc, char* argv[]) {

@@ -140,6 +140,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
   private:
     QString formatLabels(const QList<Label*>& labels) const;
+    QVariant formatDateDisplayValue(const QVariant& value) const;
 
     void fillComputedMessageData(Message* msg);
     void setupHeaderData();

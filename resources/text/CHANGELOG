@@ -2,7 +2,7 @@
 -----
 
 Fixed:
-* Calendar event previews now use the shared article browser, including skins, search, zoom and normal link handling. Calendar uses the standard Feed column instead of renaming it. A single webBrowser() accessor identifies the selected browser; scroll commands check visibility and support custom previews, including Calendar and Gmail. Startup browser initialization and cache cleanup also work without a selected browser. Removed the unused viewer network-settings reload hook. External plugins must be rebuilt for plugin API version 2.
+* Calendar event previews now use the shared article browser, including skins, search, zoom and normal link handling. Starts and Ends honor custom date/time formats while preserving all-day dates. Calendar uses the standard Feed column instead of renaming it. A single webBrowser() accessor identifies the selected browser; scroll commands check visibility and support custom previews, including Calendar and Gmail. Startup browser initialization and cache cleanup also work without a selected browser. Removed the unused viewer network-settings reload hook. External plugins must be rebuilt for plugin API version 2.
 * Fixed Windows packaging rejecting the Google Calendar plugin. The installer now includes Calendar and respects the Calendar/Gmail build options.
 
 

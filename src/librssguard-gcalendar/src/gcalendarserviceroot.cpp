@@ -420,9 +420,15 @@ QVariant GCalendarServiceRoot::articleColumnData(const Message& message, const Q
     return {};
   }
   if (column_id == QLatin1String("starts")) {
+    if (role == Qt::DisplayRole) {
+      return event.isAllDay() ? QVariant(event.m_startDate) : QVariant(event.m_start);
+    }
     return event.displayStart();
   }
   if (column_id == QLatin1String("ends")) {
+    if (role == Qt::DisplayRole) {
+      return event.isAllDay() ? QVariant(event.m_endDate.addDays(-1)) : QVariant(event.m_end);
+    }
     return role == Qt::EditRole ? QVariant(event.m_end) : QVariant(event.displayEnd());
   }
   if (column_id == QLatin1String("location")) {

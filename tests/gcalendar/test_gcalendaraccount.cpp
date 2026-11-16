@@ -29,6 +29,7 @@
 #include <librssguard/services/abstract/serviceentrypoint.h>
 #include <memory>
 
+#include <QCheckBox>
 #include <QDateTimeEdit>
 #include <QDialogButtonBox>
 #include <QDir>
@@ -36,6 +37,7 @@
 #include <QFontDatabase>
 #include <QGroupBox>
 #include <QJsonDocument>
+#include <QLocale>
 #include <QMutexLocker>
 #include <QPushButton>
 #include <QRadioButton>
@@ -476,6 +478,8 @@ class TestGCalendarAccount : public QObject {
     void bundledPluginsLoadIndependentCachedRoots();
     void calendarLayoutsSurviveRecreationAndAbsence_data();
     void calendarLayoutsSurviveRecreationAndAbsence();
+    void calendarColumnDateFormats_data();
+    void calendarColumnDateFormats();
 
   private:
     bool discover();
@@ -1957,6 +1961,161 @@ void TestGCalendarAccount::calendarLayoutsSurviveRecreationAndAbsence() {
   QCOMPARE(view->header()->sectionSize(location), 247);
   QVERIFY(!view->isColumnHidden(ends));
   QVERIFY(QMetaObject::invokeMethod(view, "loadItem", Qt::DirectConnection, Q_ARG(RootItem*, nullptr)));
+}
+
+void TestGCalendarAccount::calendarColumnDateFormats_data() {
+  QTest::addColumn<QJsonObject>("resource");
+  QTest::addColumn<int>("formats");
+  QTest::addColumn<bool>("empty_formats");
+  QTest::addColumn<QString>("expected_start");
+  QTest::addColumn<QString>("expected_end");
+  const auto today = QDate::currentDate();
+  const auto zone = QTimeZone::systemTimeZone();
+  const QDateTime future(today.addDays(3), QTime(13, 20), zone);
+  const QDateTime current(today, QTime(13, 20), zone);
+  const auto stamp = [](const QDateTime& date) -> QString {
+    return QSL("stamp ") + date.toLocalTime().toString(QSL("yyyy-MM-dd HH:mm"));
+  };
+  const auto short_date = [](const QDateTime& date) {
+    return QLocale().toString(date.toLocalTime(), QLocale::ShortFormat);
+  };
+  const auto add_timed = [&](const char* name,
+                             const QDateTime& start,
+                             const QDateTime& end,
+                             int formats,
+                             bool empty,
+                             const QString& expected_start,
+                             const QString& expected_end) {
+    auto resource = calendarEvent(QSL("format"));
+    resource[QSL("start")] = QJsonObject{{QSL("dateTime"), start.toUTC().toString(Qt::ISODate)}};
+    resource[QSL("end")] = QJsonObject{{QSL("dateTime"), end.toUTC().toString(Qt::ISODate)}};
+    QTest::newRow(name) << resource << formats << empty << expected_start << expected_end;
+  };
+  // Bits select the general, today and dates-only formats respectively.
+  add_timed("disabled", future, future.addSecs(3600), 0, false, short_date(future), short_date(future.addSecs(3600)));
+  add_timed("general", future, future.addSecs(3600), 7, false, stamp(future), stamp(future.addSecs(3600)));
+  add_timed("today", current, current.addSecs(3600), 7, false, QSL("today 13:20"), QSL("today 14:20"));
+  add_timed("today-format-disabled",
+            current,
+            current.addSecs(3600),
+            5,
+            false,
+            stamp(current),
+            stamp(current.addSecs(3600)));
+  add_timed("general-disabled",
+            future,
+            future.addSecs(3600),
+            6,
+            false,
+            short_date(future),
+            short_date(future.addSecs(3600)));
+  add_timed("empty", future, future.addSecs(3600), 7, true, short_date(future), short_date(future.addSecs(3600)));
+  const QDateTime midnight(today.addDays(3), QTime(0, 0), Qt::UTC);
+  add_timed("timed-utc-midnight",
+            midnight,
+            midnight.addSecs(3600),
+            7,
+            false,
+            stamp(midnight),
+            stamp(midnight.addSecs(3600)));
+  const QDateTime tomorrow(today.addDays(1), QTime(1, 20), zone);
+  add_timed("ends-tomorrow", current, tomorrow, 7, false, QSL("today 13:20"), stamp(tomorrow));
+  add_timed("ends-today", current.addDays(-1), current, 7, false, stamp(current.addDays(-1)), QSL("today 13:20"));
+  const auto add_all_day = [&](const char* name, const QDate& start, int formats, bool empty) {
+    auto resource = calendarEvent(QSL("format"));
+    resource[QSL("start")] = QJsonObject{{QSL("date"), start.toString(Qt::ISODate)}};
+    resource[QSL("end")] = QJsonObject{{QSL("date"), start.addDays(3).toString(Qt::ISODate)}};
+    const bool custom = (formats & 4) != 0 && !empty;
+    const auto date_text = [custom](const QDate& date) -> QString {
+      return custom ? QSL("date ") + date.toString(QSL("yyyy-MM-dd")) : QLocale().toString(date, QLocale::ShortFormat);
+    };
+    QTest::newRow(name) << resource << formats << empty << date_text(start) << date_text(start.addDays(2));
+  };
+  add_all_day("all-day-disabled", today.addDays(3), 0, false);
+  add_all_day("all-day-custom", today.addDays(3), 7, false);
+  add_all_day("all-day-today", today, 7, false);
+  add_all_day("all-day-date-format-disabled", today.addDays(3), 3, false);
+  add_all_day("all-day-empty", today.addDays(3), 7, true);
+}
+
+void TestGCalendarAccount::calendarColumnDateFormats() {
+  QFETCH(QJsonObject, resource);
+  QFETCH(int, formats);
+  QFETCH(bool, empty_formats);
+  QFETCH(QString, expected_start);
+  QFETCH(QString, expected_end);
+  auto* settings = qApp->settings();
+  QVariantHash saved;
+  for (const auto& key : {Messages::UseCustomDate,
+                          Messages::UseCustomTime,
+                          Messages::UseCustomFormatForDatesOnly,
+                          Messages::CustomDateFormat,
+                          Messages::CustomTimeFormat,
+                          Messages::CustomFormatForDatesOnly,
+                          Messages::RelativeTimeForNewerArticles}) {
+    saved.insert(key, settings->value(GROUP(Messages), key));
+  }
+  const auto restore = qScopeGuard([&]() {
+    for (auto it = saved.constBegin(); it != saved.constEnd(); ++it) {
+      settings->setValue(GROUP(Messages), it.key(), it.value());
+    }
+  });
+  settings->setValue(GROUP(Messages), Messages::UseCustomDate, (formats & 1) != 0);
+  settings->setValue(GROUP(Messages), Messages::UseCustomTime, (formats & 2) != 0);
+  settings->setValue(GROUP(Messages), Messages::UseCustomFormatForDatesOnly, (formats & 4) != 0);
+  settings->setValue(GROUP(Messages),
+                     Messages::CustomDateFormat,
+                     empty_formats ? QString() : QSL("'stamp' yyyy-MM-dd HH:mm"));
+  settings->setValue(GROUP(Messages), Messages::CustomTimeFormat, empty_formats ? QString() : QSL("'today' HH:mm"));
+  settings->setValue(GROUP(Messages),
+                     Messages::CustomFormatForDatesOnly,
+                     empty_formats ? QString() : QSL("'date' yyyy-MM-dd"));
+  settings->setValue(GROUP(Messages), Messages::RelativeTimeForNewerArticles, 30);
+  FeedMessageViewer pane;
+  auto* view = pane.messagesView();
+  const auto clear = qScopeGuard([&]() {
+    QMetaObject::invokeMethod(view, "loadItem", Qt::DirectConnection, Q_ARG(RootItem*, nullptr));
+  });
+  auto* action = qApp->mainFormWidget()->findChild<QAction*>(QSL("m_actionSettings"));
+  QVERIFY(action != nullptr);
+  bool applied = false;
+  QTimer::singleShot(0, [&]() {
+    auto* dialog = qobject_cast<QDialog*>(QApplication::activeModalWidget());
+    if (dialog != nullptr) {
+      QMetaObject::invokeMethod(dialog, "openSettingsCategory", Qt::DirectConnection, Q_ARG(int, 4));
+      auto* checkbox = dialog->findChild<QCheckBox*>(QSL("m_checkMessagesDateTimeFormat"));
+      if (checkbox != nullptr) {
+        checkbox->setChecked(!checkbox->isChecked());
+        checkbox->setChecked(!checkbox->isChecked());
+        applied = QMetaObject::invokeMethod(dialog, "applySettings", Qt::DirectConnection);
+      }
+      dialog->done(QDialog::Rejected);
+    }
+  });
+  action->trigger();
+  QVERIFY(applied);
+  // Its midnight is on the previous UTC date, so treating an all-day date as an instant is observable.
+  m_server->m_calendars.first()[QSL("timeZone")] = QSL("Pacific/Kiritimati");
+  QVERIFY(discover());
+  m_server->store(resource);
+  fetch();
+  const auto message = m_account->cachedMessage(records().value(QSL("format")).m_id);
+  const auto event = CalendarEvent::fromMessage(message);
+  QVERIFY(event.isValid());
+  QVERIFY(QMetaObject::invokeMethod(view, "loadItem", Qt::DirectConnection, Q_ARG(RootItem*, feed())));
+  auto* model = view->sourceModel();
+  QCOMPARE(model->rowCount(), 1);
+  const auto starts = model->index(0, MSG_MDL_DCREATED_INDEX);
+  const auto ends = model->index(0, MSG_MDL_LABELS + 1);
+  QCOMPARE(model->data(starts, Qt::DisplayRole).toString(), expected_start);
+  QCOMPARE(model->data(ends, Qt::DisplayRole).toString(), expected_end);
+  QCOMPARE(model->data(starts, Qt::EditRole).toDateTime(), event.m_start);
+  QCOMPARE(model->data(ends, Qt::EditRole).toDateTime(), event.m_end);
+  QCOMPARE(m_account->articleColumnData(message, QSL("starts"), Qt::ToolTipRole).toString(), event.displayStart());
+  QCOMPARE(m_account->articleColumnData(message, QSL("ends"), Qt::ToolTipRole).toString(), event.displayEnd());
+  QCOMPARE(m_account->articleColumnData(message, QSL("starts"), Qt::DisplayRole).userType(),
+           event.isAllDay() ? int(QMetaType::QDate) : int(QMetaType::QDateTime));
+  QVERIFY(!message.m_contents.contains(QSL("stamp ")));
 }
 
 void TestGCalendarAccount::setupTestUsesEnteredSettingsAndStagesGrant() {
