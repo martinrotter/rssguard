@@ -85,7 +85,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "5.3.0")
+set(APP_VERSION "5.3.1")
 string(REGEX MATCH "^[0-9]+" APP_VERSION_MAJOR "${APP_VERSION}")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
@@ -359,6 +359,14 @@ if(BUILD_MSYS2)
   add_compile_definitions(BUILD_MSYS2)
 endif()
 
+
+foreach(plugin GMAIL GCALENDAR)
+  if(BUILD_${plugin}_PLUGIN)
+    set(PLUGIN_${plugin}_ENABLED 1)
+  else()
+    set(PLUGIN_${plugin}_ENABLED 0)
+  endif()
+endforeach()
 
 if(BUILD_XMPP_PLUGIN AND BUILD_WITH_QT6)
   set(PLUGIN_XMPP_ENABLED 1)

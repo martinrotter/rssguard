@@ -3,6 +3,7 @@
 import ctypes
 from contextlib import contextmanager
 import importlib.util
+import itertools
 import os
 from pathlib import Path
 import shutil
@@ -21,6 +22,7 @@ package = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(package)
 NSIS = ROOT / "resources/scripts/nsis/makensis.exe"
 OWNERSHIP = ".rssguard-install.ini"
+BUNDLED_PLUGINS = ("feedly", "gmail", "gcalendar", "greader", "nextcloud", "standard", "ttrss")
 
 
 @contextmanager
@@ -39,7 +41,8 @@ def locked_file(path):
         kernel.CloseHandle(handle)
 
 
-def definitions(stage, name="RSS Guard fixture", executable="rssguard.exe", version="5.3.0", xmpp=False):
+def definitions(stage, name="RSS Guard fixture", executable="rssguard.exe", version="5.3.0", xmpp=False,
+                gmail=True, gcalendar=True):
     values = {
         "APP_VERSION": version, "APP_VERSION_MAJOR": version.split('.')[0], "APP_NAME": name,
         "APP_AUTHOR": "Installer regression tests", "APP_URL": "https://example.invalid",
@@ -48,19 +51,25 @@ def definitions(stage, name="RSS Guard fixture", executable="rssguard.exe", vers
         "MUI_ICON": str(ROOT / "resources/graphics/rssguard.ico"),
         "MUI_UNICON": str(ROOT / "resources/graphics/rssguard.ico"),
         "BINARY_TREE": str(stage), "PLUGIN_XMPP_ENABLED": str(int(xmpp)),
+        "PLUGIN_GMAIL_ENABLED": str(int(gmail)), "PLUGIN_GCALENDAR_ENABLED": str(int(gcalendar)),
     }
-    for plugin in (*package.PLUGINS, "xmpp"):
+    for plugin in (*BUNDLED_PLUGINS, "xmpp"):
         values["PLUGIN_" + plugin.upper()] = str(stage / "plugins" / f"rssguard-{plugin}.dll")
     return '\n'.join('!define ' + key + ' ' + package.quoted(value) for key, value in values.items()) + '\n'
 
 
-def make_payload(stage, executable="rssguard.exe", xmpp=False):
+def make_payload(stage, executable="rssguard.exe", xmpp=False, gmail=True, gcalendar=True):
     names = [executable, "rssguard.dll", "rssguard-article-extractor.exe", "platforms/qwindows.dll",
              "resources/žluťoučký.txt", "rssguard-extra$helper.exe", "rssguard.pdb", "rssguard.lib",
              "plugins/rssguard-feedly.pdb",
              "zz-recovery-test.dll"]  # Removed after the main binaries: exercises genuinely partial cleanup.
-    names += [f"plugins/rssguard-{plugin}.{extension}"
-              for plugin in (*package.PLUGINS, *(("xmpp",) if xmpp else ())) for extension in ("dll", "lib")]
+    plugins = set(BUNDLED_PLUGINS)
+    for plugin, enabled in (("gmail", gmail), ("gcalendar", gcalendar), ("xmpp", xmpp)):
+        if enabled:
+            plugins.add(plugin)
+        else:
+            plugins.discard(plugin)
+    names += [f"plugins/rssguard-{plugin}.{extension}" for plugin in sorted(plugins) for extension in ("dll", "lib")]
     for name in names:
         path = stage / name
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -91,7 +100,8 @@ class PayloadTests(unittest.TestCase):
 
     def test_missing_required_files(self):
         for name in ("rssguard.exe", "rssguard.dll", "rssguard-article-extractor.exe",
-                     "platforms/qwindows.dll", "plugins/rssguard-standard.dll"):
+                     "platforms/qwindows.dll", "plugins/rssguard-standard.dll", "plugins/rssguard-gmail.dll",
+                     "plugins/rssguard-gcalendar.dll"):
             with self.subTest(name=name):
                 path = self.stage / name
                 contents = path.read_bytes()
@@ -127,17 +137,57 @@ class PayloadTests(unittest.TestCase):
                 finally:
                     path.unlink()
 
-    def test_disabled_xmpp_is_not_silently_packaged(self):
-        (self.stage / "plugins/rssguard-xmpp.dll").write_bytes(b"fixture")
+    def test_disabled_optional_plugins_are_not_silently_packaged(self):
+        for plugin in ("gmail", "gcalendar", "xmpp"):
+            with self.subTest(plugin=plugin):
+                (self.stage / f"plugins/rssguard-{plugin}.dll").write_bytes(b"fixture")
+                self.defs.write_text(definitions(self.stage, **{plugin: False}), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "Unexpected service plugin"):
+                    package.generate(self.stage, self.defs, self.output)
+                self.defs.write_text(definitions(self.stage, **{plugin: True}), encoding="utf-8")
+                package.generate(self.stage, self.defs, self.output)
+
+    def test_missing_enabled_optional_plugins_are_rejected(self):
+        for plugin in ("gmail", "gcalendar", "xmpp"):
+            with self.subTest(plugin=plugin):
+                self.defs.write_text(definitions(self.stage, **{plugin: True}), encoding="utf-8")
+                path = self.stage / f"plugins/rssguard-{plugin}.dll"
+                path.write_bytes(b"fixture")
+                path.unlink()
+                with self.assertRaisesRegex(ValueError, f"rssguard-{plugin}.dll"):
+                    package.generate(self.stage, self.defs, self.output)
+                path.write_bytes(b"fixture")
+
+    def test_optional_plugin_configurations(self):
+        for gmail, gcalendar, xmpp in itertools.product((False, True), repeat=3):
+            with self.subTest(gmail=gmail, gcalendar=gcalendar, xmpp=xmpp):
+                stage = self.root / f"flags-{int(gmail)}-{int(gcalendar)}-{int(xmpp)}"
+                options = dict(gmail=gmail, gcalendar=gcalendar, xmpp=xmpp)
+                make_payload(stage, **options)
+                self.defs.write_text(definitions(stage, **options), encoding="utf-8")
+                package.generate(stage, self.defs, self.output)
+                result = self.output.read_text(encoding="utf-8")
+                for plugin, enabled in options.items():
+                    self.assertEqual(f'Delete "$INSTDIR\\plugins\\rssguard-{plugin}.dll"' in result, enabled)
+
+    def test_unknown_service_plugin_is_rejected(self):
+        (self.stage / "plugins/rssguard-unknown.dll").write_bytes(b"fixture")
         with self.assertRaisesRegex(ValueError, "Unexpected service plugin"):
             package.generate(self.stage, self.defs, self.output)
-        self.defs.write_text(definitions(self.stage, xmpp=True), encoding="utf-8")
-        package.generate(self.stage, self.defs, self.output)
 
-    def test_missing_enabled_xmpp_is_rejected(self):
-        self.defs.write_text(definitions(self.stage, xmpp=True), encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "rssguard-xmpp.dll"):
-            package.generate(self.stage, self.defs, self.output)
+    def test_optional_plugin_flags_are_required_and_validated(self):
+        original = definitions(self.stage)
+        for plugin in ("GMAIL", "GCALENDAR", "XMPP"):
+            name = f"PLUGIN_{plugin}_ENABLED"
+            for missing in (False, True):
+                with self.subTest(plugin=plugin, missing=missing):
+                    lines = original.splitlines()
+                    lines = [line for line in lines if not line.startswith(f"!define {name} ")]
+                    if not missing:
+                        lines.append(f'!define {name} "ON"')
+                    self.defs.write_text('\n'.join(lines), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, name):
+                        package.generate(self.stage, self.defs, self.output)
 
     def test_dollar_in_filename_is_escaped(self):
         (self.stage / "helper$special.exe").write_bytes(b"fixture")
@@ -158,6 +208,39 @@ class PayloadTests(unittest.TestCase):
 
 @unittest.skipUnless(shutil.which("cmake") and shutil.which("ninja"), "CMake and Ninja are required")
 class BuildRulesTests(unittest.TestCase):
+    def test_plugin_build_options_reach_installer_definitions(self):
+        with tempfile.TemporaryDirectory(prefix="rssguard-nsis-flags-") as directory:
+            root = Path(directory).resolve()
+            self.assertEqual(root.parent, Path(tempfile.gettempdir()).resolve())
+            source = root / "source"
+            template = source / "resources/nsis/NSIS.definitions.nsh.in"
+            template.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / "resources/nsis/NSIS.definitions.nsh.in", template)
+            cmake = (ROOT / "CMakeLists.txt").read_text(encoding="utf-8")
+            start = cmake.index("foreach(plugin GMAIL GCALENDAR)")
+            end = cmake.index("# Configure and copy some needed files.", start)
+            (source / "CMakeLists.txt").write_text(
+                'cmake_minimum_required(VERSION 3.21)\nproject(rssguard VERSION 5.3.0 LANGUAGES NONE)\n' +
+                cmake[start:end] +
+                '\nconfigure_file(resources/nsis/NSIS.definitions.nsh.in ${CMAKE_BINARY_DIR}/NSIS.definitions.nsh)\n',
+                encoding="utf-8")
+            for gmail, gcalendar, xmpp, qt6 in itertools.product((False, True), repeat=4):
+                with self.subTest(gmail=gmail, gcalendar=gcalendar, xmpp=xmpp, qt6=qt6):
+                    build = root / f"build-{int(gmail)}-{int(gcalendar)}-{int(xmpp)}-{int(qt6)}"
+                    result = subprocess.run(
+                        ["cmake", "-G", "Ninja", "-S", str(source), "-B", str(build),
+                         f"-DBUILD_GMAIL_PLUGIN={int(gmail)}", f"-DBUILD_GCALENDAR_PLUGIN={int(gcalendar)}",
+                         f"-DBUILD_XMPP_PLUGIN={int(xmpp)}", f"-DBUILD_WITH_QT6={int(qt6)}"],
+                        capture_output=True, text=True, timeout=60)
+                    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                    executable, plugins = package.read_definitions(build / "NSIS.definitions.nsh")
+                    self.assertEqual(executable, "rssguard.exe")
+                    expected = {"feedly", "greader", "nextcloud", "standard", "ttrss"}
+                    for plugin, enabled in (("gmail", gmail), ("gcalendar", gcalendar), ("xmpp", xmpp and qt6)):
+                        if enabled:
+                            expected.add(plugin)
+                    self.assertEqual(plugins, expected)
+
     def test_template_edits_trigger_incremental_reconfiguration(self):
         with tempfile.TemporaryDirectory(prefix="rssguard-nsis-cmake-") as directory:
             root = Path(directory).resolve()
@@ -218,7 +301,7 @@ class InstallerTests(unittest.TestCase):
         cls.old = cls.build("5.2.0", legacy=True)
         cls.new = cls.build("5.3.0", xmpp=True)
         cls.minimal = cls.build("5.3.0", disabled=("PluginFeedly", "PluginGmail", "PluginGreader",
-                                                  "PluginNextcloud", "PluginTtrss"))
+                                                  "PluginNextcloud", "PluginTtrss", "PluginGcalendar"))
         cls.failing = cls.helper("failing.exe", "SetErrorLevel 7\nQuit")
         cls.noop = cls.helper("noop.exe", "SetErrorLevel 0\nQuit")
 
@@ -246,10 +329,10 @@ class InstallerTests(unittest.TestCase):
         directory = cls.root / (version + ("-minimal" if disabled else ""))
         directory.mkdir()
         stage = directory / "app"
-        make_payload(stage, cls.executable, xmpp)
+        make_payload(stage, cls.executable, xmpp, gcalendar=not legacy)
         shutil.copyfile(cls.helper("app-" + version + ".exe", "Sleep 60000", version), stage / cls.executable)
         defs = directory / "NSIS.definitions.nsh"
-        defs.write_text(definitions(stage, cls.name, cls.executable, version, xmpp), encoding="utf-8")
+        defs.write_text(definitions(stage, cls.name, cls.executable, version, xmpp, gcalendar=not legacy), encoding="utf-8")
         package.generate(stage, defs, directory / "NSIS.payload.nsh")
         if legacy:
             template = (Path(__file__).parent / "fixtures/NSIS.previous.nsi").read_text(encoding="utf-8")
@@ -269,6 +352,20 @@ class InstallerTests(unittest.TestCase):
     def test_production_template_compiles_without_scope_substitutions(self):
         template = (ROOT / "resources/nsis/NSIS.template.in").read_text(encoding="utf-8")
         self.compile(template, self.root / "production.exe", self.root / "5.3.0", strict=True)
+
+    def test_optional_plugin_build_configurations_compile(self):
+        for gmail, gcalendar, xmpp in itertools.product((False, True), repeat=3):
+            with self.subTest(gmail=gmail, gcalendar=gcalendar, xmpp=xmpp):
+                directory = self.root / f"compile-{int(gmail)}-{int(gcalendar)}-{int(xmpp)}"
+                directory.mkdir()
+                stage = directory / "app"
+                options = dict(gmail=gmail, gcalendar=gcalendar, xmpp=xmpp)
+                make_payload(stage, self.executable, **options)
+                defs = directory / "NSIS.definitions.nsh"
+                defs.write_text(definitions(stage, self.name, self.executable, **options), encoding="utf-8")
+                package.generate(stage, defs, directory / "NSIS.payload.nsh")
+                template = (ROOT / "resources/nsis/NSIS.template.in").read_text(encoding="utf-8")
+                self.compile(template, directory / "installer.exe", directory, strict=True)
 
     @unittest.skipUnless(shutil.which("pwsh") and shutil.which("git") and
                          (ROOT / "resources/scripts/7za/7za.exe").exists(), "PowerShell, Git and bundled 7za are required")
@@ -318,18 +415,22 @@ class InstallerTests(unittest.TestCase):
             self.assertEqual(list(build.glob("*.7z")) + list(build.glob("*.exe")), [])
         finally:
             backup.rename(extractor)
-        result = subprocess.run(command, cwd=workspace, env=environment, capture_output=True,
-                                text=True, errors="replace", timeout=60)
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertEqual(len(list(build.glob("*.exe"))), 1)
+        for qt5, webengine in itertools.product(("ON", "OFF"), repeat=2):
+            with self.subTest(qt5=qt5, webengine=webengine):
+                command[-2:] = [qt5, webengine]
+                result = subprocess.run(command, cwd=workspace, env=environment, capture_output=True,
+                                        text=True, errors="replace", timeout=60)
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(len(list(build.glob("*.exe"))), 4)
         archives = list(build.glob("*.7z"))
-        self.assertEqual(len(archives), 1)
+        self.assertEqual(len(archives), 4)
         listing = subprocess.run([str(scripts / "7za/7za.exe"), "l", str(archives[0])],
                                  capture_output=True, text=True, errors="replace", timeout=30)
         self.assertEqual(listing.returncode, 0)
         self.assertIn("rssguard.pdb", listing.stdout)
         self.assertIn("rssguard.lib", listing.stdout)
         self.assertIn("rssguard-feedly.lib", listing.stdout)
+        self.assertIn("rssguard-gcalendar.dll", listing.stdout)
 
     def setUp(self):
         self.target = self.root / ("install ü with spaces " + uuid.uuid4().hex)
@@ -373,6 +474,8 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(self.registration("NoRepair"), 1)
         self.assertGreater(self.registration("EstimatedSize"), 0)
         self.assertTrue((self.target / "plugins/rssguard-xmpp.dll").exists())
+        self.assertTrue((self.target / "plugins/rssguard-gmail.dll").exists())
+        self.assertTrue((self.target / "plugins/rssguard-gcalendar.dll").exists())
         self.assertTrue((self.target / "rssguard-extra$helper.exe").exists())
         self.assertTrue((self.target / "resources/žluťoučký.txt").exists())
         self.assertFalse((self.target / "rssguard.pdb").exists())
@@ -388,6 +491,7 @@ class InstallerTests(unittest.TestCase):
         for relative in retained:
             self.assertEqual((self.target / relative).read_text(encoding="utf-8"), "keep")
         self.assertFalse((self.target / self.executable).exists())
+        self.assertFalse((self.target / "plugins/rssguard-gcalendar.dll").exists())
         self.assertFalse((self.target / OWNERSHIP).exists())
         with self.assertRaises(FileNotFoundError):
             self.registration("InstallLocation")

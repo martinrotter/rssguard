@@ -14,6 +14,9 @@
 
 !define PLUGIN_FEEDLY "@CMAKE_BINARY_DIR@\app\plugins\rssguard-feedly.dll"
 !define PLUGIN_GMAIL "@CMAKE_BINARY_DIR@\app\plugins\rssguard-gmail.dll"
+!define PLUGIN_GMAIL_ENABLED "@PLUGIN_GMAIL_ENABLED@"
+!define PLUGIN_GCALENDAR "@CMAKE_BINARY_DIR@\app\plugins\rssguard-gcalendar.dll"
+!define PLUGIN_GCALENDAR_ENABLED "@PLUGIN_GCALENDAR_ENABLED@"
 !define PLUGIN_GREADER "@CMAKE_BINARY_DIR@\app\plugins\rssguard-greader.dll"
 !define PLUGIN_NEXTCLOUD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-nextcloud.dll"
 !define PLUGIN_STANDARD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-standard.dll"
