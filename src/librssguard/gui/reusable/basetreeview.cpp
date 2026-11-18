@@ -7,7 +7,10 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 
+#include <algorithm>
+
 #include <QContextMenuEvent>
+#include <QHash>
 #include <QHeaderView>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -58,6 +61,10 @@ QByteArray BaseTreeView::saveHeaderState() const {
     obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
     obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
     obj[QSL("header_%1_resize_mode").arg(i)] = int(header()->sectionResizeMode(i));
+    const auto id = header()->model()->headerData(i, Qt::Horizontal, COLUMN_ID_ROLE).toString();
+    if (!id.isEmpty()) {
+      obj[QSL("header_%1_id").arg(i)] = id;
+    }
   }
 
   const ColumnSortStates states = columnSortStates();
@@ -76,7 +83,28 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
   const QJsonObject obj = QJsonDocument::fromJson(dta).object();
   const int saved_header_count = obj[QSL("header_count")].toInt();
 
-  if (saved_header_count < header()->count()) {
+  QHash<QString, int> current_ids;
+  for (int i = 0; i < header()->count(); ++i) {
+    const auto id = header()->model()->headerData(i, Qt::Horizontal, COLUMN_ID_ROLE).toString();
+    if (!id.isEmpty()) {
+      current_ids.insert(id, i);
+    }
+  }
+  const bool named_state = !current_ids.isEmpty() && obj.contains(QSL("header_0_id"));
+  const auto restore_section = [&](int saved, int logical) {
+    const int size = obj[QSL("header_%1_size").arg(saved)].toInt(header()->sectionSize(logical));
+    const bool hidden = obj[QSL("header_%1_hidden").arg(saved)].toBool(header()->isSectionHidden(logical));
+    const int mode = obj[QSL("header_%1_resize_mode").arg(saved)].toInt(int(header()->sectionResizeMode(logical)));
+    if (size >= 0) {
+      header()->resizeSection(logical, size);
+    }
+    header()->setSectionHidden(logical, hidden);
+    if (mode >= int(QHeaderView::Interactive) && mode <= int(QHeaderView::ResizeToContents)) {
+      header()->setSectionResizeMode(logical, QHeaderView::ResizeMode(mode));
+    }
+  };
+
+  if (saved_header_count < header()->count() && current_ids.isEmpty()) {
     qWarningNN << LOGSEC_GUI << "Detected invalid state for tree view" << QUOTE_W_SPACE_DOT(objectName());
   }
   else {
@@ -87,21 +115,40 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
                                            ? obj[QSL("header_cascading_section_resizes")].toBool()
                                            : false);
 
-    for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
-      const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
-      const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
-      const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
-      const auto resize_mode = QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
-                                                         ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
-                                                         : int(header()->sectionResizeMode(i)));
-
-      if (vi >= 0 && vi < header()->count()) {
-        header()->swapSections(header()->visualIndex(i), vi);
+    if (named_state) {
+      QList<QPair<int, int>> order;
+      QSet<int> restored;
+      for (int saved = 0; saved < saved_header_count; ++saved) {
+        const auto id = obj[QSL("header_%1_id").arg(saved)].toString();
+        const auto target = current_ids.constFind(id);
+        if (target == current_ids.constEnd() || restored.contains(target.value())) {
+          continue;
+        }
+        restored.insert(target.value());
+        restore_section(saved, target.value());
+        order.append({obj[QSL("header_%1_idx").arg(saved)].toInt(saved), target.value()});
       }
-
-      header()->resizeSection(i, ss);
-      header()->setSectionHidden(i, ish);
-      header()->setSectionResizeMode(i, resize_mode);
+      std::stable_sort(order.begin(), order.end(), [](const auto& left, const auto& right) {
+        return left.first < right.first;
+      });
+      int visual = 0;
+      for (const auto& section : order) {
+        header()->moveSection(header()->visualIndex(section.second), visual++);
+      }
+      for (int logical = 0; logical < header()->count(); ++logical) {
+        if (!restored.contains(logical)) {
+          header()->moveSection(header()->visualIndex(logical), visual++);
+        }
+      }
+    }
+    else {
+      for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+        const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
+        if (vi >= 0 && vi < header()->count()) {
+          header()->swapSections(header()->visualIndex(i), vi);
+        }
+        restore_section(i, i);
+      }
     }
   }
 

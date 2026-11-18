@@ -124,6 +124,12 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
 }
 
 FormMain::~FormMain() {
+  // Child hide events can arrive after m_ui has been destroyed.
+  disconnect(tabWidget()->feedMessageViewer()->messagesBrowser(),
+             &MessagePreviewer::webBrowserChanged,
+             this,
+             nullptr);
+
   qApp->deactivateShortcutPriority();
   qDebugNN << LOGSEC_GUI << "Destroying FormMain instance.";
 }
@@ -441,7 +447,8 @@ void FormMain::updateTabsButtonsAvailability(int index) {
 
   m_ui->m_actionTabsCloseCurrent->setEnabled(valid_tab &&
                                              tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable);
-  const bool can_scroll = tab_content != nullptr && tab_content->scrollableWebBrowser() != nullptr;
+  WebBrowser* browser = tab_content != nullptr ? tab_content->webBrowser() : nullptr;
+  const bool can_scroll = browser != nullptr && browser->isVisible() && browser->isVisibleTo(tab_content);
   m_ui->m_actionBrowserScrollUp->setEnabled(can_scroll);
   m_ui->m_actionBrowserScrollDown->setEnabled(can_scroll);
 }
@@ -917,8 +924,8 @@ void FormMain::createConnections() {
           &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionCleanupWebCache,
           &QAction::triggered,
-          m_ui->m_tabWidget->feedMessageViewer()->webBrowser(),
-          &WebBrowser::cleanupCache);
+          m_ui->m_tabWidget->feedMessageViewer()->messagesBrowser(),
+          &MessagePreviewer::cleanupCache);
   connect(m_ui->m_tabWidget,
           &TabWidget::emptySpaceDoubleClicked,
           m_ui->m_actionTabsNewBrowser,
@@ -942,7 +949,7 @@ void FormMain::createConnections() {
           &FormMain::updateMessageButtonsAvailability);
   connect(tabWidget(), &TabWidget::currentChanged, this, &FormMain::updateTabsButtonsAvailability);
   connect(tabWidget()->feedMessageViewer()->messagesBrowser(),
-          &MessagePreviewer::scrollableBrowserChanged,
+          &MessagePreviewer::webBrowserChanged,
           this,
           [this]() {
             updateTabsButtonsAvailability(tabWidget()->currentIndex());

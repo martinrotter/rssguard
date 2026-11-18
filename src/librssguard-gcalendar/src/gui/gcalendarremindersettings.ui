@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GCalendarReminderSettings</class>
+ <widget class="QWidget" name="GCalendarReminderSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="m_layout">
+   <item>
+    <widget class="QCheckBox" name="m_cbEnabled">
+     <property name="text">
+      <string>Enable local reminders</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="HelpSpoiler" name="m_lblTiming" native="true" />
+   </item>
+   <item>
+    <widget class="QLabel" name="m_lblMixed">
+     <property name="text">
+      <string>Selected calendars use different reminder settings.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="m_panelSelection" native="true">
+     <layout class="QHBoxLayout" name="m_layoutSelection">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="MultiFeedEditCheckBox" name="m_mcbReminders" />
+      </item>
+      <item>
+       <widget class="QLabel" name="m_lblApplyReminders">
+        <property name="text">
+         <string>Apply reminder settings to all selected calendars</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_mcbReminders</cstring>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="m_panelEditor" native="true">
+     <layout class="QVBoxLayout" name="m_layoutEditor">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QWidget" name="m_panelCalendarMode" native="true">
+        <layout class="QFormLayout" name="m_layoutCalendarMode">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="m_lblMode">
+           <property name="text">
+            <string>Rules</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_cmbMode</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="m_cmbMode">
+           <item>
+            <property name="text">
+             <string>Inherit account rules</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Disable for this calendar</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Use local offsets</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Use Google's popup offsets</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="m_panelSettings" native="true">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <layout class="QFormLayout" name="m_layoutSettings">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::ExpandingFieldsGrow</enum>
+         </property>
+         <property name="rowWrapPolicy">
+          <enum>QFormLayout::WrapLongRows</enum>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="m_lblCheckInterval">
+           <property name="text">
+            <string>Check every</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinCheckInterval</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="m_spinCheckInterval">
+           <property name="suffix">
+            <string> minutes</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>35791</number>
+           </property>
+           <property name="value">
+            <number>30</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="2">
+          <widget class="QCheckBox" name="m_cbGoogleReminders">
+           <property name="text">
+            <string>Use Google's popup reminder offsets</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="m_lblOffsets">
+           <property name="text">
+            <string>Local offsets</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_txtOffsets</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="BaseLineEdit" name="m_txtOffsets">
+           <property name="text">
+            <string notr="true">0</string>
+           </property>
+           <property name="placeholderText">
+            <string>Minutes before start, separated by commas; 0 means at start</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="m_lblRepeatInterval">
+           <property name="text">
+            <string>Repeat every</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_spinRepeatInterval</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="m_spinRepeatInterval">
+           <property name="specialValueText">
+            <string>Do not repeat</string>
+           </property>
+           <property name="suffix">
+            <string> minutes</string>
+           </property>
+           <property name="maximum">
+            <number>35791</number>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="m_lblAllDayTime">
+           <property name="text">
+            <string>All-day time</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_timeAllDay</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QTimeEdit" name="m_timeAllDay">
+           <property name="displayFormat">
+            <string notr="true">HH:mm</string>
+           </property>
+           <property name="time">
+            <time>
+             <hour>9</hour>
+             <minute>0</minute>
+             <second>0</second>
+            </time>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="m_lblNotificationTitle">
+           <property name="text">
+            <string>Notification title</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_txtNotificationTitle</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="BaseLineEdit" name="m_txtNotificationTitle" />
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="m_lblNotificationBody">
+           <property name="text">
+            <string>Notification text</string>
+           </property>
+           <property name="buddy">
+            <cstring>m_txtNotificationBody</cstring>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QPlainTextEdit" name="m_txtNotificationBody">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>90</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>110</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_lblPlaceholders">
+     <property name="text">
+      <string>Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar's time zone and applies to local rules.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>librssguard/gui/reusable/baselineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>librssguard/services/abstract/gui/multifeededitcheckbox.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_cbEnabled</tabstop>
+  <tabstop>m_mcbReminders</tabstop>
+  <tabstop>m_cmbMode</tabstop>
+  <tabstop>m_spinCheckInterval</tabstop>
+  <tabstop>m_cbGoogleReminders</tabstop>
+  <tabstop>m_txtOffsets</tabstop>
+  <tabstop>m_spinRepeatInterval</tabstop>
+  <tabstop>m_timeAllDay</tabstop>
+  <tabstop>m_txtNotificationTitle</tabstop>
+  <tabstop>m_txtNotificationBody</tabstop>
+ </tabstops>
+ <resources />
+ <connections />
+</ui>

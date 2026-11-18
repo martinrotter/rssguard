@@ -34,7 +34,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAG
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {
-  if (column < 0) {
+  if (!isSortableColumn(column)) {
     qWarningNN << LOGSEC_MESSAGEMODEL << "Cannot sort this column.";
     return;
   }
@@ -119,7 +119,11 @@ QString MessagesModelSqlLayer::formatFields() const {
   return m_fieldNames.join(QSL(", "));
 }
 
-int MessagesModelSqlLayer::mapColumnToDatabase(int column) const {
+bool MessagesModelSqlLayer::isSortableColumn(int column) {
+  return mapColumnToDatabase(column) >= 0;
+}
+
+int MessagesModelSqlLayer::mapColumnToDatabase(int column) {
   switch (column) {
     case MSG_MDL_ID_INDEX:
       return MSG_DB_ID_INDEX;
@@ -207,6 +211,9 @@ QString MessagesModelSqlLayer::orderByClause() const {
     for (int i = 0; i < m_sortColumns.size(); i++) {
       // We need to map model/header column to source database column.
       auto target_column = mapColumnToDatabase(m_sortColumns[i]);
+      if (target_column < 0 || target_column >= m_orderByNames.size()) {
+        continue;
+      }
 
       if (used_columns.contains(target_column)) {
         continue;

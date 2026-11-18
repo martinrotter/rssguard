@@ -41,14 +41,15 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     void clearTabs();
 
     // Applies changes.
-    // NOTE: This must be reimplemented in subclasses. Also this
-    // base implementation must be called first.
+    // Reimplementations must apply common settings, either through this
+    // implementation or applyCommonFeedSettings() when saving atomically.
     virtual void apply();
 
   protected:
     QDialogButtonBox* buttonBox() const;
 
     bool isChangeAllowed(MultiFeedEditCheckBox* mcb) const;
+    void applyCommonFeedSettings(Feed* feed) const;
 
     // Inserts custom tab made by plugin into its editing form. When index is less
     // than zero, tab is inserted to the last position.

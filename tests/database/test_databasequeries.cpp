@@ -46,6 +46,12 @@ namespace {
         m_isSyncable = syncable;
       }
 
+      MessageStoragePolicy messageStoragePolicy() const override {
+        return m_storagePolicy;
+      }
+
+      MessageStoragePolicy m_storagePolicy;
+
       virtual QList<Message> obtainNewMessages(Feed* feed,
                                                const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                const QHash<QString, QStringList>& tagged_messages) override {
@@ -138,6 +144,12 @@ class TestDatabaseQueries : public QObject {
     void previewKeepsBodiesAndLabels();
     void previewRespectsStoredIdentity();
     void previewRoundTripsInvalidDates();
+    void managedMetadataPreservesLocalState();
+    void managedWritePreservesConcurrentLocalState();
+    void managedCleanup_data();
+    void managedCleanup();
+    void accountCustomDataMutationsPreserveNamespaces();
+    void corruptAccountMetadataPreventsCleanup();
 
   private:
     Message storedMessage(int id);
@@ -235,7 +247,8 @@ void TestDatabaseQueries::nestedPooledReadReusesConnectionAndPropagatesErrors() 
   QVERIFY_EXCEPTION_THROWN(worker->readForArticleUpdate([](const QSqlDatabase& db) {
     SqlQuery query(db);
     query.exec(QSL("SELECT * FROM nonexistent_reader_pool_test_table;"));
-  }), SqlException);
+  }),
+                           SqlException);
 }
 
 void TestDatabaseQueries::updatesMixedArticleBatch() {
@@ -563,6 +576,7 @@ void TestDatabaseQueries::articleWriteErrorsPropagate() {
 
 void TestDatabaseQueries::init() {
   m_account->setSyncable(false);
+  m_account->m_storagePolicy = {};
   m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, false);
   m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, false);
 }
@@ -934,7 +948,10 @@ void TestDatabaseQueries::forcedImportDoesNotOverwritePermanentRecord() {
 void TestDatabaseQueries::boundInsertPreservesLiteralsAndGeneratedIds() {
   QList<Message> batch;
   for (int i = 0; i < 2; ++i) {
-    auto message = makeMessage(QSL("bound-insert"), i, m_feed->id(), m_account->accountId(),
+    auto message = makeMessage(QSL("bound-insert"),
+                               i,
+                               m_feed->id(),
+                               m_account->accountId(),
                                QSL("bound-literal-%1:account_id").arg(i));
     message.m_title = QSL("O'Reilly :score %1");
     message.m_contents = QSL("Literal :enclosures, :custom_id and :account_id.");
@@ -970,7 +987,10 @@ void TestDatabaseQueries::boundInsertPreservesLiteralsAndGeneratedIds() {
 void TestDatabaseQueries::partialInsertFailureRollsBackOnlyFailedBatch() {
   QList<Message> batch;
   for (int i = 0; i <= 2000; ++i) {
-    batch.append(makeMessage(QSL("atomic-insert"), i, m_feed->id(), m_account->accountId(),
+    batch.append(makeMessage(QSL("atomic-insert"),
+                             i,
+                             m_feed->id(),
+                             m_account->accountId(),
                              QSL("atomic-insert-%1").arg(i)));
   }
   m_database.worker()->write([](const QSqlDatabase& db) {
@@ -1003,7 +1023,10 @@ void TestDatabaseQueries::partialInsertFailureRollsBackOnlyFailedBatch() {
 void TestDatabaseQueries::failedCommitDoesNotPublishUpdates() {
   QList<Message> batch;
   for (int i = 0; i < 2; ++i) {
-    batch.append(makeMessage(QSL("commit-failure"), i, m_feed->id(), m_account->accountId(),
+    batch.append(makeMessage(QSL("commit-failure"),
+                             i,
+                             m_feed->id(),
+                             m_account->accountId(),
                              QSL("commit-failure-%1").arg(i)));
   }
   DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, true).throwIfFailed();
@@ -1143,11 +1166,8 @@ void TestDatabaseQueries::receiptsKeepInputPositions() {
 void TestDatabaseQueries::directIdLookupKeepsInputsAcrossBatches() {
   QList<Message> seed;
   for (int i = 0; i < 3; ++i) {
-    seed.append(makeMessage(QSL("direct-batch"),
-                            i,
-                            m_feed->id(),
-                            m_account->accountId(),
-                            QSL("direct-batch-%1").arg(i)));
+    seed
+      .append(makeMessage(QSL("direct-batch"), i, m_feed->id(), m_account->accountId(), QSL("direct-batch-%1").arg(i)));
   }
   seed[0].m_isRead = true;
   seed[0].m_isImportant = true;
@@ -1241,11 +1261,8 @@ void TestDatabaseQueries::previewKeepsBodiesAndLabels() {
   m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, ignore_body);
   QList<Message> seed;
   for (int i = 0; i < 2; ++i) {
-    Message message = makeMessage(QSL("preview-labels"),
-                                    i,
-                                    m_feed->id(),
-                                    m_account->accountId(),
-                                    QSL("preview-labels-%1").arg(i));
+    Message message =
+      makeMessage(QSL("preview-labels"), i, m_feed->id(), m_account->accountId(), QSL("preview-labels-%1").arg(i));
     message.m_contents = QString(8192, QL1C('a'));
     seed.append(message);
   }
@@ -1344,6 +1361,199 @@ void TestDatabaseQueries::previewRoundTripsInvalidDates() {
   const Message stored = storedMessage(id);
   QCOMPARE(preview.first().m_expectedStored.m_created, stored.m_created);
   QCOMPARE(preview.first().m_expectedStored.m_retrieved, stored.m_retrieved);
+}
+
+void TestDatabaseQueries::managedMetadataPreservesLocalState() {
+  m_account->setSyncable(true);
+  m_account->m_storagePolicy = {true, true, false};
+  auto original =
+    makeMessage(QSL("managed-metadata"), 0, m_feed->id(), m_account->accountId(), QSL("managed-metadata"));
+  original.m_isRead = true;
+  original.m_isImportant = true;
+  original.m_isDeleted = true;
+  original.m_customData = QSL("{\"end\":1}");
+  QList<Message> batch{original};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false).throwIfFailed();
+  const int id = batch.first().m_id;
+  batch.first().m_isRead = false;
+  batch.first().m_isImportant = false;
+  batch.first().m_isDeleted = false;
+  batch.first().m_retrieved = QDateTime::currentDateTimeUtc();
+  const auto unchanged = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  QCOMPARE(unchanged.count(MessageWriteOutcome::Skipped), 1);
+  batch.first().m_customData = QSL("{\"end\":2}");
+  const auto preview = DatabaseQueries::previewMessageUpdates(&m_database, &m_settings, batch, m_feed);
+  QCOMPARE(preview.first().m_decision.m_action, MessageSaveAction::Update);
+  QVERIFY(preview.first().m_expectedStored.m_isDeleted);
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.count(MessageWriteOutcome::Updated), 1);
+  QVERIFY(report.m_unread.isEmpty());
+  const Message saved = storedMessage(id);
+  QCOMPARE(saved.m_customData, batch.first().m_customData);
+  QVERIFY(saved.m_isRead);
+  QVERIFY(saved.m_isImportant);
+  QVERIFY(saved.m_isDeleted);
+  QCOMPARE(saved.m_retrieved, original.m_retrieved);
+  QCOMPARE(report.m_all.first().m_retrieved, saved.m_retrieved);
+  QCOMPARE(batch.first().m_isRead, saved.m_isRead);
+  QCOMPARE(batch.first().m_isDeleted, saved.m_isDeleted);
+}
+
+void TestDatabaseQueries::managedWritePreservesConcurrentLocalState() {
+  m_account->setSyncable(true);
+  m_account->m_storagePolicy = {true, true, false};
+  QList<Message> batch{
+    makeMessage(QSL("managed-concurrent"), 0, m_feed->id(), m_account->accountId(), QSL("managed-concurrent"))};
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false).throwIfFailed();
+  const int id = batch.first().m_id;
+  m_database.worker()->write([id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("CREATE TRIGGER concurrent_calendar_state BEFORE UPDATE OF title ON Messages "
+                   "WHEN OLD.id = %1 BEGIN UPDATE Messages SET is_read = 1, is_important = 1, "
+                   "is_deleted = 1, date_retrieved = 1234567890000 WHERE id = OLD.id; END;")
+                 .arg(id));
+  });
+  batch.first().m_title = QSL("Changed after the comparison snapshot");
+  const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
+  m_database.worker()->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("DROP TRIGGER concurrent_calendar_state;"));
+  });
+  QVERIFY2(report.succeeded(), qPrintable(report.m_error));
+  QCOMPARE(report.m_all.size(), 1);
+  QVERIFY(report.m_unread.isEmpty());
+  const auto stored = storedMessage(id);
+  QVERIFY(stored.m_isRead);
+  QVERIFY(stored.m_isImportant);
+  QVERIFY(stored.m_isDeleted);
+  QCOMPARE(stored.m_retrieved.toMSecsSinceEpoch(), 1234567890000LL);
+  const auto actual = report.m_all.first();
+  QCOMPARE(actual.m_isRead, stored.m_isRead);
+  QCOMPARE(actual.m_isImportant, stored.m_isImportant);
+  QCOMPARE(actual.m_isDeleted, stored.m_isDeleted);
+  QCOMPARE(actual.m_retrieved, stored.m_retrieved);
+}
+
+void TestDatabaseQueries::managedCleanup_data() {
+  QTest::addColumn<int>("operation");
+  for (int operation = 0; operation < 4; ++operation) {
+    QTest::newRow(qPrintable(QString::number(operation))) << operation;
+  }
+}
+
+void TestDatabaseQueries::managedCleanup() {
+  QFETCH(int, operation);
+  m_account->m_storagePolicy = {true, true, false};
+  std::unique_ptr<TestServiceRoot> ordinary(new TestServiceRoot());
+  ordinary->setSortOrder(1);
+  auto* ordinary_feed = new Feed(ordinary.get());
+  ordinary_feed->setTitle(QSL("Ordinary cleanup control"));
+  ordinary_feed->setCustomId(QSL("ordinary-cleanup"));
+  ordinary_feed->setSortOrder(0);
+  ordinary->appendChild(ordinary_feed);
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, m_account.get());
+    DatabaseQueries::createOverwriteAccount(db, ordinary.get());
+    DatabaseQueries::createOverwriteFeed(db, ordinary_feed, ordinary->accountId(), NO_PARENT_CATEGORY);
+  });
+  QList<Message> batch{makeMessage(QSL("managed-cleanup"),
+                                   operation,
+                                   m_feed->id(),
+                                   m_account->accountId(),
+                                   QSL("managed-cleanup-%1").arg(operation))};
+  batch.first().m_isRead = true;
+  batch.first().m_isImportant = operation == 0;
+  batch.first().m_isDeleted = operation == 3;
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false).throwIfFailed();
+  const int id = batch.first().m_id;
+  QList<Message> control{
+    makeMessage(QSL("ordinary-cleanup"), operation, ordinary_feed->id(), ordinary->accountId(), QSL("control"))};
+  control.first().m_isRead = true;
+  control.first().m_isImportant = operation == 0;
+  control.first().m_isDeleted = operation == 3;
+  DatabaseQueries::updateMessages(&m_database, &m_settings, control, ordinary_feed, false, false).throwIfFailed();
+  const int control_id = control.first().m_id;
+  Feed::ArticleIgnoreLimit limit;
+  limit.m_customizeLimitting = true;
+  limit.m_keepCountOfArticles = 1;
+  const auto removed = m_database.worker()->write<QList<int>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::removeUnwantedArticlesFromFeed(db, m_feed, limit, limit);
+  });
+  QVERIFY(removed.isEmpty());
+  // Persisted policy protects the cache even if the service/plugin is unavailable.
+  m_account->m_storagePolicy = {};
+  m_database.worker()->write([operation](const QSqlDatabase& db) {
+    switch (operation) {
+      case 0:
+        DatabaseQueries::purgeImportantMessages(db);
+        break;
+      case 1:
+        DatabaseQueries::purgeReadMessages(db);
+        break;
+      case 2:
+        DatabaseQueries::purgeOldMessages(db, 0);
+        break;
+      case 3:
+        DatabaseQueries::purgeRecycleBin(db);
+        break;
+    }
+  });
+  QCOMPARE(storedMessage(id).m_id, id);
+  QVERIFY(storedMessage(control_id).m_id != control_id);
+}
+
+void TestDatabaseQueries::accountCustomDataMutationsPreserveNamespaces() {
+  const int account_id = m_account->accountId();
+  m_database.worker()->write([account_id](const QSqlDatabase& db) {
+    DatabaseQueries::storeCustomData(db,
+                                     QSL("Accounts"),
+                                     account_id,
+                                     {{QSL("refresh_token"), QSL("old")},
+                                      {QSL("reminder_state"), QSL("triggered")},
+                                      {QSL("unknown"), 42}});
+    DatabaseQueries::modifyAccountCustomData(db, account_id, [](QVariantHash& data) {
+      data[QSL("check_interval")] = 30;
+    });
+    DatabaseQueries::storeNewOauthTokens(db, QSL("new"), account_id);
+  });
+  const auto data = m_database.worker()->read<QVariantHash>([account_id](const QSqlDatabase& db) {
+    return DatabaseQueries::loadAccountCustomData(db, account_id);
+  });
+  QCOMPARE(data.value(QSL("refresh_token")).toString(), QSL("new"));
+  QCOMPARE(data.value(QSL("reminder_state")).toString(), QSL("triggered"));
+  QCOMPARE(data.value(QSL("unknown")).toInt(), 42);
+  QCOMPARE(data.value(QSL("check_interval")).toInt(), 30);
+  m_database.worker()->write([account_id](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("UPDATE Accounts SET custom_data = '{invalid' WHERE id = %1;").arg(account_id));
+  });
+  QVERIFY_EXCEPTION_THROWN(m_database.worker()->write([account_id](const QSqlDatabase& db) {
+    DatabaseQueries::modifyAccountCustomData(db, account_id, [](QVariantHash& value) {
+      value.clear();
+    });
+  }),
+                           SqlException);
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, m_account.get());
+  });
+}
+
+void TestDatabaseQueries::corruptAccountMetadataPreventsCleanup() {
+  QList<Message> batch{
+    makeMessage(QSL("corrupt-policy"), 0, m_feed->id(), m_account->accountId(), QSL("corrupt-policy"))};
+  batch.first().m_isRead = true;
+  DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false).throwIfFailed();
+  const int id = batch.first().m_id;
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("UPDATE Accounts SET custom_data = '{invalid' WHERE id = %1;").arg(m_account->accountId()));
+    DatabaseQueries::purgeReadMessages(db);
+  });
+  QCOMPARE(storedMessage(id).m_id, id);
+  m_database.worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, m_account.get());
+  });
 }
 
 int main(int argc, char* argv[]) {

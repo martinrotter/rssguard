@@ -7,7 +7,8 @@ import re
 import stat
 
 
-PLUGINS = ("feedly", "gmail", "greader", "nextcloud", "standard", "ttrss")
+PLUGINS = ("feedly", "greader", "nextcloud", "standard", "ttrss")
+OPTIONAL_PLUGINS = ("gmail", "gcalendar", "xmpp")
 
 
 def quoted(value):
@@ -18,19 +19,24 @@ def quoted(value):
 def read_definitions(path):
     text = path.read_text(encoding="utf-8-sig")
     values = {}
-    for name in ("EXE_NAME", "PLUGIN_XMPP_ENABLED"):
+    for name in ("EXE_NAME", *(f"PLUGIN_{plugin.upper()}_ENABLED" for plugin in OPTIONAL_PLUGINS)):
         match = re.search(r'^!define\s+' + name + r'\s+"([^"\r\n]+)"\s*$', text, re.MULTILINE)
         if not match:
             raise ValueError(f"Missing or invalid {name} in {path}")
         values[name] = match[1]
-    if values["PLUGIN_XMPP_ENABLED"] not in ("0", "1"):
-        raise ValueError("PLUGIN_XMPP_ENABLED must be 0 or 1")
+    plugins = set(PLUGINS)
+    for plugin in OPTIONAL_PLUGINS:
+        name = f"PLUGIN_{plugin.upper()}_ENABLED"
+        if values[name] not in ("0", "1"):
+            raise ValueError(f"{name} must be 0 or 1")
+        if values[name] == "1":
+            plugins.add(plugin)
     if Path(values["EXE_NAME"]).name != values["EXE_NAME"] or not values["EXE_NAME"].endswith(".exe"):
         raise ValueError("EXE_NAME must be an executable filename")
-    return values["EXE_NAME"], values["PLUGIN_XMPP_ENABLED"] == "1"
+    return values["EXE_NAME"], plugins
 
 
-def payload_files(stage, executable, xmpp):
+def payload_files(stage, executable, plugins):
     if (not stage.is_dir() or stage.is_symlink() or
             getattr(stage.lstat(), "st_file_attributes", 0) & stat.FILE_ATTRIBUTE_REPARSE_POINT):
         raise ValueError(f"Missing or invalid package directory: {stage}")
@@ -57,7 +63,6 @@ def payload_files(stage, executable, xmpp):
             # Symbols and MSVC import libraries stay in the portable archive only.
             if entry.is_file() and entry.suffix.lower() not in (".pdb", ".lib"):
                 files.append(relative)
-    plugins = set(PLUGINS) | ({"xmpp"} if xmpp else set())
     required = {executable, "rssguard.dll", "rssguard-article-extractor.exe", "platforms/qwindows.dll"}
     required.update(f"plugins/rssguard-{name}.dll" for name in plugins)
     actual = {path.as_posix() for path in files}
@@ -70,8 +75,8 @@ def payload_files(stage, executable, xmpp):
 
 
 def generate(stage, definitions, output):
-    executable, xmpp = read_definitions(definitions)
-    files = payload_files(stage, executable, xmpp)
+    executable, plugins = read_definitions(definitions)
+    files = payload_files(stage, executable, plugins)
     directories = sorted({parent for path in files for parent in path.parents if parent != Path(".")},
                          key=lambda path: (len(path.parts), path.as_posix()))
     lines = ["; Generated from the validated package. Do not edit.", "!macro InstallCoreFiles"]

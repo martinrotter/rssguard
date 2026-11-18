@@ -183,9 +183,16 @@ SectionGroup /e Plugins
   Section Feedly PluginFeedly
     !insertmacro InstallPlugin "${PLUGIN_FEEDLY}" Feedly
   SectionEnd
+!if ${PLUGIN_GMAIL_ENABLED} == 1
   Section Gmail PluginGmail
     !insertmacro InstallPlugin "${PLUGIN_GMAIL}" Gmail
   SectionEnd
+!endif
+!if ${PLUGIN_GCALENDAR_ENABLED} == 1
+  Section "Google Calendar" PluginGcalendar
+    !insertmacro InstallPlugin "${PLUGIN_GCALENDAR}" "Google Calendar"
+  SectionEnd
+!endif
   Section "Google Reader API" PluginGreader
     !insertmacro InstallPlugin "${PLUGIN_GREADER}" "Google Reader"
   SectionEnd
@@ -227,7 +234,12 @@ Section -Finalize Finalize
   StrCpy $InstalledSize 0
   !insertmacro AddSectionSize ${Core}
   !insertmacro AddSectionSize ${PluginFeedly}
+!if ${PLUGIN_GMAIL_ENABLED} == 1
   !insertmacro AddSectionSize ${PluginGmail}
+!endif
+!if ${PLUGIN_GCALENDAR_ENABLED} == 1
+  !insertmacro AddSectionSize ${PluginGcalendar}
+!endif
   !insertmacro AddSectionSize ${PluginGreader}
   !insertmacro AddSectionSize ${PluginNextcloud}
   !insertmacro AddSectionSize ${PluginStandard}

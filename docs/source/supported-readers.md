@@ -23,3 +23,5 @@ When it comes to online web-based feed readers, these are supported:
 [^4]: Tested services are: Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, TheOldReader.
 
 The **Supported Services** section of this documentation contains setup instructions and a description of each plugin.
+
+The independent [Google Calendar](services/google-calendar) plugin also uses the feed/article interface to list, create and edit events and deliver local reminders. Its read, important and deleted article states remain local.

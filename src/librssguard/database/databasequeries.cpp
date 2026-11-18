@@ -83,6 +83,35 @@ void DatabaseQueries::storeCategoryCustomData(const QSqlDatabase& db, Category* 
   storeCustomData(db, QSL("Categories"), category->id(), category->customDatabaseData());
 }
 
+QVariantHash DatabaseQueries::loadAccountCustomData(const QSqlDatabase& db, int account_id) {
+  SqlQuery query(db);
+  query.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
+  query.bindValue(QSL(":id"), account_id);
+  query.exec();
+  if (!query.next()) {
+    throw SqlException(SqlException::Type::GeneralError, QObject::tr("Account no longer exists in the database."));
+  }
+  const QString data = query.value(0).toString();
+  if (data.isEmpty()) {
+    return {};
+  }
+  QJsonParseError error;
+  const auto document = QJsonDocument::fromJson(data.toUtf8(), &error);
+  if (error.error != QJsonParseError::NoError || !document.isObject()) {
+    throw SqlException(SqlException::Type::GeneralError, QObject::tr("Invalid account custom data."));
+  }
+  return document.object().toVariantHash();
+}
+
+QVariantHash DatabaseQueries::modifyAccountCustomData(const QSqlDatabase& db,
+                                                      int account_id,
+                                                      const std::function<void(QVariantHash&)>& edit) {
+  auto data = loadAccountCustomData(db, account_id);
+  edit(data);
+  storeCustomData(db, QSL("Accounts"), account_id, data);
+  return data;
+}
+
 void DatabaseQueries::storeFeedCustomData(const QSqlDatabase& db, Feed* feed) {
   storeCustomData(db, QSL("Feeds"), feed->id(), feed->customDatabaseData());
 }
@@ -544,6 +573,9 @@ QList<int> DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& d
                                                            const Feed* feed,
                                                            const Feed::ArticleIgnoreLimit& feed_setup,
                                                            const Feed::ArticleIgnoreLimit& app_setup) {
+  if (!feed->account()->messageStoragePolicy().m_useArticleCleanup) {
+    return {};
+  }
   // Feed setup has higher preference.
   int amount_to_keep =
     feed_setup.m_customizeLimitting ? feed_setup.m_keepCountOfArticles : app_setup.m_keepCountOfArticles;
@@ -655,12 +687,36 @@ void DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
   purgeMessagesByCondition(db, QSL("id = %1").arg(message_id));
 }
 
+QString DatabaseQueries::articleCleanupCondition(const QSqlDatabase& db) {
+  SqlQuery accounts(db);
+  accounts.exec(QSL("SELECT id, custom_data FROM Accounts;"));
+  QStringList protected_accounts;
+  while (accounts.next()) {
+    const QString serialized = accounts.value(1).toString();
+    QJsonParseError error;
+    const auto document = QJsonDocument::fromJson(serialized.toUtf8(), &error);
+    if (!serialized.isEmpty() && (error.error != QJsonParseError::NoError || !document.isObject())) {
+      // A damaged account may own a managed cache. Do not erase it while its policy is unreadable.
+      protected_accounts.append(QString::number(accounts.value(0).toInt()));
+      continue;
+    }
+    const auto data = document.object().toVariantHash();
+    const auto policy = data.value(QSL("message_storage_policy")).toHash();
+    if (!policy.value(QSL("use_article_cleanup"), true).toBool()) {
+      protected_accounts.append(QString::number(accounts.value(0).toInt()));
+    }
+  }
+  return protected_accounts.isEmpty() ? QString()
+                                      : QSL(" AND account_id NOT IN (%1)").arg(protected_accounts.join(QL1C(',')));
+}
+
 void DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
-  purgeMessagesByCondition(db, QSL("is_important = 1 AND is_deleted = 0"));
+  purgeMessagesByCondition(db, QSL("is_important = 1 AND is_deleted = 0") + articleCleanupCondition(db));
 }
 
 void DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
-  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 0 AND is_read = 1"));
+  purgeMessagesByCondition(db,
+                           QSL("is_important = 0 AND is_deleted = 0 AND is_read = 1") + articleCleanupCondition(db));
 }
 
 void DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
@@ -668,11 +724,13 @@ void DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_da
                                ? QDateTime::currentDateTimeUtc().addYears(10).toMSecsSinceEpoch()
                                : QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
-  purgeMessagesByCondition(db, QSL("is_important = 0 AND date_created < %1").arg(since_epoch));
+  purgeMessagesByCondition(db,
+                           QSL("is_important = 0 AND date_created < %1").arg(since_epoch) +
+                             articleCleanupCondition(db));
 }
 
 void DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
-  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 1"));
+  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 1") + articleCleanupCondition(db));
 }
 
 void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
@@ -885,6 +943,11 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
 
 namespace {
 
+  qint64 articleTimestamp(const QDateTime& date_time) {
+    // Qt 5 leaves conversion of invalid dates undefined; SQL and preview use the same epoch fallback.
+    return date_time.isValid() ? date_time.toMSecsSinceEpoch() : 0;
+  }
+
   QString unnulifyString(const QString& str) {
     return str.isNull() ? QSL("") : str;
   }
@@ -936,8 +999,8 @@ namespace {
     query.bindValue(pos++, unnulifyString(message.m_url));
     query.bindValue(pos++, unnulifyString(message.m_author));
     query.bindValue(pos++, message.m_score);
-    query.bindValue(pos++, message.m_created.toMSecsSinceEpoch());
-    query.bindValue(pos++, message.m_retrieved.toMSecsSinceEpoch());
+    query.bindValue(pos++, articleTimestamp(message.m_created));
+    query.bindValue(pos++, articleTimestamp(message.m_retrieved));
     query.bindValue(pos++, unnulifyString(message.m_contents));
     query.bindValue(pos++, enclosures);
     query.bindValue(pos++, feed_id);
@@ -1087,6 +1150,7 @@ namespace {
       QString m_title;
       QString m_author;
       bool m_isPdeleted;
+      QString m_customData;
   };
 
   struct MessageSavePolicy {
@@ -1095,6 +1159,7 @@ namespace {
       bool m_markUnreadOnUpdated;
       bool m_forceUpdate;
       int m_feedId;
+      MessageStoragePolicy m_storage;
   };
 
   MessageSavePolicy messageSavePolicy(Settings* settings, Feed* feed, bool force_update) {
@@ -1102,7 +1167,8 @@ namespace {
             settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool(),
             settings->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool(),
             force_update,
-            feed->id()};
+            feed->id(),
+            feed->account()->messageStoragePolicy()};
   }
 
   QHash<int, ExistingMessageInfo> findExistingMessages(const QSqlDatabase& db,
@@ -1142,8 +1208,8 @@ namespace {
     const QString contents_column = ignore_contents_changes ? QSL("NULL") : QSL("Messages.contents");
     const QString lookup_columns =
       QSL("Messages.id, Messages.date_created, Messages.is_read, Messages.is_important, %1, "
-          "Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted")
-        .arg(contents_column);
+          "Messages.feed, Messages.title, Messages.author, Messages.is_pdeleted, %2")
+        .arg(contents_column, policy.m_storage.m_trackCustomDataChanges ? QSL("Messages.custom_data") : QSL("NULL"));
     const auto lookup_query = [&lookup_columns](const QStringList& requested_rows,
                                                 const QString& join_condition,
                                                 const QString& match_order = {}) {
@@ -1196,6 +1262,7 @@ namespace {
         existing_message.m_title = query.value(7).toString();
         existing_message.m_author = query.value(8).toString();
         existing_message.m_isPdeleted = query.value(9).toBool();
+        existing_message.m_customData = query.value(10).toString();
 
         if (inputs_by_id == nullptr) {
           existing_messages.insert(lookup_key, existing_message);
@@ -1332,22 +1399,25 @@ namespace {
 
     // These are the existing update conditions, shared by preview and persistence.
     const bool body_changed = !policy.m_ignoreContentsChanges && incoming.m_contents != stored->m_contents;
-    const bool synchronized_update =
-      !incoming.m_customId.isEmpty() && policy.m_syncable &&
-      (incoming.m_created.toMSecsSinceEpoch() != stored->m_created || incoming.m_isRead != stored->m_isRead ||
-       incoming.m_isImportant != stored->m_isImportant ||
-       (incoming.m_feedId != stored->m_feedId && incoming.m_feedId == policy.m_feedId) ||
-       incoming.m_title != stored->m_title || body_changed);
+    const bool preserve_local = policy.m_storage.m_preserveLocalFields && !incoming.m_overwrite;
+    const bool metadata_changed =
+      policy.m_storage.m_trackCustomDataChanges && incoming.m_customData != stored->m_customData;
+    const bool synchronized_update = !incoming.m_customId.isEmpty() && policy.m_syncable &&
+                                     (articleTimestamp(incoming.m_created) != stored->m_created ||
+                                      (!preserve_local && (incoming.m_isRead != stored->m_isRead ||
+                                                           incoming.m_isImportant != stored->m_isImportant)) ||
+                                      (incoming.m_feedId != stored->m_feedId && incoming.m_feedId == policy.m_feedId) ||
+                                      incoming.m_title != stored->m_title || body_changed);
     const bool local_content_update =
       !incoming.m_customId.isEmpty() && !policy.m_syncable &&
       (incoming.m_title != stored->m_title || incoming.m_author != stored->m_author || body_changed);
     const bool date_or_body_update =
       (incoming.m_createdFromFeed &&
-       std::abs(incoming.m_created.toMSecsSinceEpoch() - stored->m_created) > MSG_DATETIME_DIFF_THRESSHOLD) ||
+       std::abs(articleTimestamp(incoming.m_created) - stored->m_created) > MSG_DATETIME_DIFF_THRESSHOLD) ||
       body_changed;
 
-    if (!synchronized_update && !local_content_update && !date_or_body_update && !policy.m_forceUpdate &&
-        !incoming.m_overwrite) {
+    if (!synchronized_update && !local_content_update && !date_or_body_update && !metadata_changed &&
+        !policy.m_forceUpdate && !incoming.m_overwrite) {
       return {MessageSaveAction::Skip, MessageSaveReason::NoUpdateTrigger};
     }
 
@@ -1355,8 +1425,10 @@ namespace {
                                incoming.m_overwrite   ? MessageSaveReason::ExplicitOverwrite
                                : policy.m_forceUpdate ? MessageSaveReason::ForcedUpdate
                                                       : MessageSaveReason::OrdinaryUpdate};
-    result.m_preserveReadState = !incoming.m_overwrite && !policy.m_syncable && !policy.m_markUnreadOnUpdated;
-    result.m_preserveImportantState = !incoming.m_overwrite && !policy.m_syncable && !incoming.m_isImportant;
+    result.m_preserveReadState =
+      preserve_local || (!incoming.m_overwrite && !policy.m_syncable && !policy.m_markUnreadOnUpdated);
+    result.m_preserveImportantState =
+      preserve_local || (!incoming.m_overwrite && !policy.m_syncable && !incoming.m_isImportant);
     return result;
   }
 
@@ -1442,7 +1514,7 @@ namespace {
     return result;
   }
 
-  Message expectedStoredUpdate(const Message& incoming, const Message& stored) {
+  Message expectedStoredUpdate(const Message& incoming, const Message& stored, bool preserve_local) {
     // Overlay precisely the writable SQL fields. In particular, an existing
     // custom ID/account ID is not replaced merely because a script assigned it.
     Message result(stored);
@@ -1455,12 +1527,18 @@ namespace {
     result.m_score = incoming.m_score;
     // Preview the SQL timestamp round trip, including invalid dates becoming
     // the epoch, without changing the incoming date or update detection.
-    result.m_created = TextFactory::parseDateTime(incoming.m_created.toMSecsSinceEpoch());
-    result.m_retrieved = TextFactory::parseDateTime(incoming.m_retrieved.toMSecsSinceEpoch());
+    result.m_created = TextFactory::parseDateTime(articleTimestamp(incoming.m_created));
+    result.m_retrieved = TextFactory::parseDateTime(articleTimestamp(incoming.m_retrieved));
     result.m_contents = incoming.m_contents;
     result.m_enclosures = incoming.m_enclosures;
     result.m_feedId = incoming.m_feedId;
     result.m_customData = incoming.m_customData;
+    if (preserve_local) {
+      result.m_isRead = stored.m_isRead;
+      result.m_isImportant = stored.m_isImportant;
+      result.m_isDeleted = stored.m_isDeleted;
+      result.m_retrieved = stored.m_retrieved;
+    }
     if (result.m_customId.isEmpty()) {
       result.m_customId = QString::number(result.m_id);
     }
@@ -1536,7 +1614,8 @@ QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory
       if (result.m_decision.m_action == MessageSaveAction::Update) {
         result.m_expectedStored =
           expectedStoredUpdate(prepareMessageForUpdate(incoming, stored.value(), result.m_decision),
-                               snapshots.value(result.m_id));
+                               snapshots.value(result.m_id),
+                               policy.m_storage.m_preserveLocalFields && !incoming.m_overwrite);
       }
       else if (result.m_decision.m_action == MessageSaveAction::Insert) {
         result.m_expectedStored = incoming;
@@ -1549,9 +1628,9 @@ QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory
           result.m_expectedStored.m_retrieved = QDateTime::currentDateTimeUtc();
         }
         result.m_expectedStored.m_created =
-          TextFactory::parseDateTime(result.m_expectedStored.m_created.toMSecsSinceEpoch());
+          TextFactory::parseDateTime(articleTimestamp(result.m_expectedStored.m_created));
         result.m_expectedStored.m_retrieved =
-          TextFactory::parseDateTime(result.m_expectedStored.m_retrieved.toMSecsSinceEpoch());
+          TextFactory::parseDateTime(articleTimestamp(result.m_expectedStored.m_retrieved));
       }
       else if (result.m_hasStoredMessage) {
         result.m_expectedStored = snapshots.value(result.m_id);
@@ -1603,6 +1682,7 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
   const int account_id = feed->account()->accountId();
   const int feed_id = feed->id();
   QList<int> inserts;
+  const auto storage_policy = feed->account()->messageStoragePolicy();
   QList<QPair<int, Message>> updates;
   QSet<int> skipped_message_ids;
   QHash<int, QSet<int>> labels_before;
@@ -1635,6 +1715,12 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
     receipt.m_outcome = outcome;
     saved.m_insertedUpdated = true;
     messages[index].m_insertedUpdated = true;
+    if (storage_policy.m_preserveLocalFields && !messages[index].m_overwrite) {
+      messages[index].m_isRead = saved.m_isRead;
+      messages[index].m_isImportant = saved.m_isImportant;
+      messages[index].m_isDeleted = saved.m_isDeleted;
+      messages[index].m_retrieved = saved.m_retrieved;
+    }
     report.m_all.append(saved);
     if (!saved.m_isRead && !saved.m_isDeleted) {
       report.m_unread.append(saved);
@@ -1694,13 +1780,52 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
                                  "SET title = ?, is_read = ?, is_important = ?, is_deleted = ?, url = ?, "
                                  "author = ?, score = ?, date_created = ?, date_retrieved = ?, contents = ?, "
                                  "enclosures = ?, feed = ?, custom_data = ? WHERE id = ? AND is_pdeleted = 0;"));
-        const auto write_update = [&](const Message& message) -> std::optional<MessageSaveReason> {
-          const int id_pos = bindArticleFields(query_update, 0, message, message.m_feedId,
-                                               Enclosures::encodeEnclosuresToString(message.m_enclosures));
-          query_update.bindValue(id_pos, message.m_id);
-          query_update.exec();
-          const bool check_match = query_update.numRowsAffected() == 0;
-          query_update.finish();
+        SqlQuery query_local(db);
+        if (storage_policy.m_preserveLocalFields) {
+          query_local.prepare(QSL("UPDATE Messages SET title = ?, url = ?, author = ?, score = ?, date_created = ?, "
+                                  "contents = ?, enclosures = ?, feed = ?, custom_data = ? "
+                                  "WHERE id = ? AND is_pdeleted = 0;"));
+        }
+        const auto write_update = [&](Message& message) -> std::optional<MessageSaveReason> {
+          const bool preserve_local = storage_policy.m_preserveLocalFields && !message.m_overwrite;
+          SqlQuery& query = preserve_local ? query_local : query_update;
+          const QString enclosures = Enclosures::encodeEnclosuresToString(message.m_enclosures);
+          int id_pos = 0;
+          if (preserve_local) {
+            query.bindValue(id_pos++, unnulifyString(message.m_title));
+            query.bindValue(id_pos++, unnulifyString(message.m_url));
+            query.bindValue(id_pos++, unnulifyString(message.m_author));
+            query.bindValue(id_pos++, message.m_score);
+            query.bindValue(id_pos++, articleTimestamp(message.m_created));
+            query.bindValue(id_pos++, unnulifyString(message.m_contents));
+            query.bindValue(id_pos++, enclosures);
+            query.bindValue(id_pos++, message.m_feedId);
+            query.bindValue(id_pos++, unnulifyString(message.m_customData));
+          }
+          else {
+            id_pos = bindArticleFields(query, 0, message, message.m_feedId, enclosures);
+          }
+          query.bindValue(id_pos, message.m_id);
+          query.exec();
+          const bool check_match = query.numRowsAffected() == 0;
+          query.finish();
+          if (preserve_local) {
+            SqlQuery current(db);
+            current.prepare(QSL("SELECT is_read, is_important, is_deleted, date_retrieved, is_pdeleted "
+                                "FROM Messages WHERE id = :id;"));
+            current.bindValue(QSL(":id"), message.m_id);
+            current.exec();
+            if (!current.next()) {
+              return MessageSaveReason::MissingArticle;
+            }
+            if (current.value(4).toBool()) {
+              return MessageSaveReason::PermanentlyDeleted;
+            }
+            message.m_isRead = current.value(0).toBool();
+            message.m_isImportant = current.value(1).toBool();
+            message.m_isDeleted = current.value(2).toBool();
+            message.m_retrieved = TextFactory::parseDateTime(current.value(3).toLongLong());
+          }
           if (check_match) {
             // Some drivers also report zero affected rows for a successful no-op update.
             SqlQuery current(db);
@@ -1734,7 +1859,7 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
           const int end = std::min(start + batch_size, int(updates.size()));
           if (end == start + 1) {
             active_input = updates.at(start).first;
-            confirm_update(start, write_update(updates.at(start).second));
+            confirm_update(start, write_update(updates[start].second));
             active_input = -1;
             continue;
           }
@@ -1745,7 +1870,7 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
             for (int i = start; i < end; ++i) {
               active_input = updates.at(i).first;
               unconfirmed_batch.append(active_input);
-              outcomes.append(write_update(updates.at(i).second));
+              outcomes.append(write_update(updates[i].second));
             }
           }
           catch (const SqlException&) {
@@ -1756,7 +1881,7 @@ MessageUpdateReport DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
             if (transaction.rollback()) {
               unconfirmed_batch.clear();
               for (int i = 0; i < outcomes.size(); ++i) {
-                const auto& update = updates.at(start + i);
+                auto& update = updates[start + i];
                 active_input = update.first;
                 confirm_update(start + i, write_update(update.second));
               }
@@ -2373,6 +2498,38 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
   q.exec();
 }
 
+void DatabaseQueries::updateFeedCommonSettings(const QSqlDatabase& db, const Feed* feed, int account_id) {
+  SqlQuery query(db);
+  query.prepare(QSL("UPDATE Feeds SET update_type = :update_type, update_interval = :update_interval, "
+                    "is_off = :is_off, is_quiet = :is_quiet, is_rtl = :is_rtl, "
+                    "add_any_datetime_articles = :add_any_datetime_articles, datetime_to_avoid = :datetime_to_avoid, "
+                    "keep_article_customize = :keep_article_customize, keep_article_count = :keep_article_count, "
+                    "keep_unread_articles = :keep_unread_articles, keep_starred_articles = :keep_starred_articles, "
+                    "recycle_articles = :recycle_articles, open_articles = :open_articles, "
+                    "exclude_global_unread = :exclude_global_unread WHERE id = :id AND account_id = :account;"));
+  query.bindValue(QSL(":id"), feed->id());
+  query.bindValue(QSL(":account"), account_id);
+  query.bindValue(QSL(":update_type"), int(feed->autoUpdateType()));
+  query.bindValue(QSL(":update_interval"), feed->autoUpdateInterval());
+  query.bindValue(QSL(":is_off"), feed->isSwitchedOff());
+  query.bindValue(QSL(":is_quiet"), feed->isQuiet());
+  query.bindValue(QSL(":is_rtl"), int(feed->rtlBehavior()));
+  query.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
+  query.bindValue(QSL(":exclude_global_unread"), feed->excludesFromGlobalUnreadCount());
+  const auto& limit = feed->articleIgnoreLimit();
+  query.bindValue(QSL(":add_any_datetime_articles"), limit.m_addAnyArticlesToDb);
+  query.bindValue(QSL(":datetime_to_avoid"),
+                  limit.m_dtToAvoid.isValid() && limit.m_dtToAvoid.toMSecsSinceEpoch() > 0
+                    ? limit.m_dtToAvoid.toMSecsSinceEpoch()
+                    : limit.m_hoursToAvoid);
+  query.bindValue(QSL(":keep_article_customize"), limit.m_customizeLimitting);
+  query.bindValue(QSL(":keep_article_count"), limit.m_keepCountOfArticles);
+  query.bindValue(QSL(":keep_unread_articles"), limit.m_doNotRemoveUnread);
+  query.bindValue(QSL(":keep_starred_articles"), limit.m_doNotRemoveStarred);
+  query.bindValue(QSL(":recycle_articles"), limit.m_moveToBinDontPurge);
+  query.exec();
+}
+
 void DatabaseQueries::storeCustomData(const QSqlDatabase& db,
                                       const QString& table,
                                       int item_id,
@@ -2390,6 +2547,18 @@ void DatabaseQueries::storeCustomData(const QSqlDatabase& db,
 }
 
 void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account) {
+  createOverwriteAccountImpl(db, account, nullptr);
+}
+
+void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db,
+                                             ServiceRoot* account,
+                                             const QVariantHash& custom_data) {
+  createOverwriteAccountImpl(db, account, &custom_data);
+}
+
+void DatabaseQueries::createOverwriteAccountImpl(const QSqlDatabase& db,
+                                                 ServiceRoot* account,
+                                                 const QVariantHash* custom_data) {
   SqlQuery q(db);
 
   if (account->accountId() <= 0) {
@@ -2428,8 +2597,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   q.bindValue(QSL(":id"), account->accountId());
   q.bindValue(QSL(":ordr"), account->sortOrder());
 
-  auto custom_data = account->customDatabaseData();
-  QString serialized_custom_data = serializeCustomData(custom_data);
+  QString serialized_custom_data = serializeCustomData(custom_data == nullptr ? account->customDatabaseData() : *custom_data);
 
   q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
@@ -2785,25 +2953,7 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
 }
 
 void DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
-  SqlQuery q(db);
-
-  q.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
-  q.bindValue(QSL(":id"), account_id);
-
-  q.exec();
-
-  if (!q.next()) {
-    THROW_EX(SqlException, q.lastError());
-  }
-
-  QVariantHash custom_data = deserializeCustomData(q.value(0).toString());
-
-  custom_data[QSL("refresh_token")] = refresh_token;
-
-  q.clear();
-  q.prepare(QSL("UPDATE Accounts SET custom_data = :custom_data WHERE id = :id;"));
-  q.bindValue(QSL(":custom_data"), serializeCustomData(custom_data));
-  q.bindValue(QSL(":id"), account_id);
-
-  q.exec();
+  modifyAccountCustomData(db, account_id, [&](QVariantHash& data) {
+    data[QSL("refresh_token")] = refresh_token;
+  });
 }

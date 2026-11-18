@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GCalendarAccountDetails</class>
+ <widget class="QWidget" name="GCalendarAccountDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>560</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <layout class="QFormLayout" name="m_layout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::ExpandingFieldsGrow</enum>
+   </property>
+   <property name="rowWrapPolicy">
+    <enum>QFormLayout::WrapLongRows</enum>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_lblName">
+     <property name="text">
+      <string>Account name</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtName</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="LineEditWithStatus" name="m_txtName" native="true" />
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QGroupBox" name="m_groupOAuth">
+     <property name="title">
+      <string>OAuth 2.0 settings</string>
+     </property>
+     <layout class="QFormLayout" name="m_layoutOAuth">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::ExpandingFieldsGrow</enum>
+      </property>
+      <property name="rowWrapPolicy">
+       <enum>QFormLayout::WrapLongRows</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_lblClientId">
+        <property name="text">
+         <string>Client ID</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtClientId</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="LineEditWithStatus" name="m_txtClientId" native="true" />
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_lblClientSecret">
+        <property name="text">
+         <string>Client secret</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_txtClientSecret</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="LineEditWithStatus" name="m_txtClientSecret" native="true" />
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="HelpSpoiler" name="m_lblOAuthHelp" native="true" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QGroupBox" name="m_groupCache">
+     <property name="title">
+      <string>Event cache</string>
+     </property>
+     <layout class="QFormLayout" name="m_layoutCache">
+      <item row="0" column="0">
+       <widget class="QLabel" name="m_lblHistoryDays">
+        <property name="text">
+         <string>Keep past events</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_spinHistoryDays</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSpinBox" name="m_spinHistoryDays">
+        <property name="suffix">
+         <string> days</string>
+        </property>
+        <property name="maximum">
+         <number>36500</number>
+        </property>
+        <property name="value">
+         <number>30</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="m_lblFutureDays">
+        <property name="text">
+         <string>Fetch future events</string>
+        </property>
+        <property name="buddy">
+         <cstring>m_spinFutureDays</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="m_spinFutureDays">
+        <property name="suffix">
+         <string> days</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>36500</number>
+        </property>
+        <property name="value">
+         <number>365</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="m_lblCacheHelp">
+        <property name="text">
+         <string>Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_cbRefreshCalendarListOnStartup">
+     <property name="text">
+      <string>Refresh calendar list on startup</string>
+     </property>
+     <property name="toolTip">
+      <string>Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QFormLayout" name="m_layoutTest">
+     <item row="0" column="0">
+      <widget class="QPushButton" name="m_btnTestSetup">
+       <property name="text">
+        <string>&amp;Test setup</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="LabelWithStatus" name="m_lblTestResult" native="true" />
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LineEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/lineeditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_txtName</tabstop>
+  <tabstop>m_txtClientId</tabstop>
+  <tabstop>m_txtClientSecret</tabstop>
+  <tabstop>m_spinHistoryDays</tabstop>
+  <tabstop>m_spinFutureDays</tabstop>
+  <tabstop>m_cbRefreshCalendarListOnStartup</tabstop>
+  <tabstop>m_btnTestSetup</tabstop>
+ </tabstops>
+ <resources />
+ <connections />
+</ui>

@@ -71,6 +71,11 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     QString clientSecret() const;
     void setClientSecret(const QString& client_secret);
 
+    void setPkceEnabled(bool enabled);
+    void setNetworkProxy(const QNetworkProxy& proxy);
+    QUrl createAuthorizationUrl();
+    static QString pkceChallenge(const QString& verifier);
+
     QDateTime tokensExpireIn() const;
     void setTokensExpireIn(const QDateTime& tokens_expire_in);
 
@@ -143,6 +148,8 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     QString m_authUrl;
     QString m_scope;
     bool m_useHttpBasicAuthWithClientData;
+    bool m_pkceEnabled = false;
+    QString m_pkceVerifier;
     bool m_tokenRequestRunning;
     int m_loginFunctorGeneration;
     SilentNetworkAccessManager m_networkManager;
