@@ -8,6 +8,8 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
+#include <exception>
+
 #include <QException>
 #include <QFutureWatcher>
 #include <QHash>
@@ -95,7 +97,7 @@ class FeedDownloader : public QObject {
     QMutex m_mutexDb;
     QMutex m_mutexResults;
     mutable QMutex m_mutexOverloadedHosts;
-    QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
+    QHash<ServiceRoot*, std::exception_ptr> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};
     QFutureWatcher<FeedUpdateResult>* m_watcherLookup;
     FeedDownloadResults m_results;

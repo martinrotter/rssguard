@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "database/databasequeries.h"
+#include "exceptions/feedfetchexception.h"
 #include "filtering/messagesforfiltersmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
@@ -813,6 +814,7 @@ void TestFilteringResults::feedBatchUpdatesCountsOnce_data() {
   QTest::newRow("turn-on-during-batch") << 25 << false << true << Feed::Status::Normal << false;
   QTest::newRow("preflight-error-at-limit") << 25 << true << false << Feed::Status::OtherError << true;
   QTest::newRow("preflight-error-above-limit") << 26 << true << false << Feed::Status::OtherError << false;
+  QTest::newRow("typed-preflight-error") << 2 << true << false << Feed::Status::AuthError << true;
 }
 
 void TestFilteringResults::feedBatchUpdatesCountsOnce() {
@@ -842,8 +844,11 @@ void TestFilteringResults::feedBatchUpdatesCountsOnce() {
     };
   }
   if (preflight_error) {
-    second.m_beforeFetch = []() {
-      throw ApplicationException(QSL("Controlled preflight error."));
+    second.m_beforeFetch = [preflight_status]() {
+      if (preflight_status == Feed::Status::OtherError) {
+        throw ApplicationException(QSL("Controlled preflight error."));
+      }
+      throw FeedFetchException(preflight_status, QSL("Controlled preflight error."));
     };
   }
 

@@ -172,9 +172,8 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       try {
         rt->aboutToBeginFeedFetching(fds, per_acc_states, per_acc_tags);
       }
-      catch (const ApplicationException& ex) {
-        // Common error showed, all feeds from the root are errored now!
-        m_erroredAccounts.insert(rt, ex);
+      catch (const ApplicationException&) {
+        m_erroredAccounts.insert(rt, std::current_exception());
       }
     }
 
@@ -211,14 +210,15 @@ bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
 
 FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
   if (!m_stopFetching) {
-    if (m_erroredAccounts.contains(fd.account)) {
-      // This feed is errored because its account errored when preparing feed update.
-      ApplicationException root_ex = m_erroredAccounts.value(fd.account);
-
-      skipFeedUpdateWithError(fd.account, fd.feed, root_ex);
-
-      QMutexLocker lck_results(&m_mutexResults);
-      m_results.appendErroredFeed(fd.feed, root_ex.message());
+    if (const auto failure = m_erroredAccounts.value(fd.account)) {
+      try {
+        std::rethrow_exception(failure);
+      }
+      catch (const ApplicationException& ex) {
+        skipFeedUpdateWithError(fd.account, fd.feed, ex);
+        QMutexLocker lck_results(&m_mutexResults);
+        m_results.appendErroredFeed(fd.feed, ex.message());
+      }
     }
     else {
       updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
