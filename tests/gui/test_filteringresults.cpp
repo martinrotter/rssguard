@@ -2,6 +2,7 @@
 
 #include "database/databasequeries.h"
 #include "exceptions/feedfetchexception.h"
+#include "filtering/guinotificationstub.h"
 #include "filtering/messagesforfiltersmodel.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
@@ -938,6 +939,11 @@ void TestFilteringResults::feedBatchUpdatesCountsOnce() {
     });
   });
 
+  // A failed account produces one notification when the batch finishes.
+  allowNextArticlesFetchingErrorNotification(preflight_error);
+  const auto reset_notification = qScopeGuard([]() {
+    allowNextArticlesFetchingErrorNotification(false);
+  });
   std::atomic<int> feed_notifications{0};
   FeedReader reader(qApp);
   for (auto* timer : reader.findChildren<QTimer*>(QString(), Qt::FindDirectChildrenOnly)) {
