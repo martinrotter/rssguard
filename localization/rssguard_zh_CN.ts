@@ -87,7 +87,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="184"/>
       <source>Welcome</source>
-      <translation type="unfinished">Welcome</translation>
+      <translation>欢迎</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="185"/>
@@ -95,20 +95,19 @@
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>欢迎使用 %1。
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+单击此弹窗通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="190"/>
       <source>Go to changelog</source>
-      <translation type="unfinished">Go to changelog</translation>
+      <translation>前往更新日志</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="370"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>已获取未读文章</translation>
     </message>
   </context>
   <context>
@@ -343,12 +342,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/basetoolbar.cpp" line="34"/>
       <source>Match any selected filter (OR)</source>
-      <translation type="unfinished">Match any selected filter (OR)</translation>
+      <translation>匹配任何选中的筛选器 (OR)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/basetoolbar.cpp" line="40"/>
       <source>Match all selected filters (AND)</source>
-      <translation type="unfinished">Match all selected filters (AND)</translation>
+      <translation>匹配所有选中的过滤规则 (AND)</translation>
     </message>
   </context>
   <context>
@@ -494,32 +493,32 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="230"/>
       <source>Invalid SQL preprocessor directive: %1</source>
-      <translation type="unfinished">Invalid SQL preprocessor directive: %1</translation>
+      <translation>无效的 SQL 预处理器指令: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="250"/>
       <source>unknown engine &apos;%1&apos;</source>
-      <translation type="unfinished">unknown engine &apos;%1&apos;</translation>
+      <translation>未知引擎 &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="260"/>
       <source>unexpected #elif</source>
-      <translation type="unfinished">unexpected #elif</translation>
+      <translation>意外的 #elif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="269"/>
       <source>unexpected #else</source>
-      <translation type="unfinished">unexpected #else</translation>
+      <translation>意外的 #else</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="278"/>
       <source>unexpected #endif</source>
-      <translation type="unfinished">unexpected #endif</translation>
+      <translation>意外的 #endif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="288"/>
       <source>missing #endif</source>
-      <translation type="unfinished">missing #endif</translation>
+      <translation>缺失 #endif</translation>
     </message>
   </context>
   <context>
@@ -573,28 +572,28 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="150"/>
       <source>Conflicting shortcuts</source>
-      <translation type="unfinished">Conflicting shortcuts</translation>
+      <translation>快捷键冲突</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="151"/>
       <source>The shortcut %1 conflicts with other assignments.</source>
-      <translation type="unfinished">The shortcut %1 conflicts with other assignments.</translation>
+      <translation>快捷键 %1 与其他分配相冲突。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="153"/>
       <source>Keep the new assignment and clear all conflicting shortcuts?</source>
-      <translation type="unfinished">Keep the new assignment and clear all conflicting shortcuts?</translation>
+      <translation>保留新的分配并清除所有冲突的快捷键？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="193"/>
       <source>%1 (%2) conflicts with %3 (%4)</source>
-      <translation type="unfinished">%1 (%2) conflicts with %3 (%4)</translation>
+      <translation>%1 (%2) 与 %3 (%4) 冲突</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="203"/>
       <source>Conflicting assignments need to be changed or cleared:
 %1</source>
-      <translation type="unfinished">Conflicting assignments need to be changed or cleared:
+      <translation>需要更改或清除冲突的分配：
 %1</translation>
     </message>
   </context>
@@ -1218,12 +1217,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds</source>
-      <translation type="unfinished">Show feeds</translation>
+      <translation>显示源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show folders</source>
-      <translation type="unfinished">Show folders</translation>
+      <translation>显示文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
@@ -1253,7 +1252,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="267"/>
       <source>Show enabled feeds</source>
-      <translation type="unfinished">Show enabled feeds</translation>
+      <translation>显示已启用的源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="273"/>
@@ -2421,12 +2420,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="24"/>
       <source>Why can the database file stay large?</source>
-      <translation type="unfinished">Why can the database file stay large?</translation>
+      <translation>为什么数据库文件可能保持较大？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="25"/>
       <source>For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</source>
-      <translation type="unfinished">For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</translation>
+      <translation>为了更快地访问数据库，RSS Guard 使用可以防止SQLite 数据库文件在手动清理过程中在磁盘上缩小的 Windows 功能。 应用程序启动时自动清理可能缩小磁盘上的文件。这里显示的 &quot;总数据大小&quot; 在优化后可能仍然会减少。 当新文章被保存时，未使用的空间将被重新使用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="108"/>
@@ -2488,27 +2487,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="101"/>
       <source>Run automatically</source>
-      <translation type="unfinished">Run automatically</translation>
+      <translation>自动运行</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="111"/>
       <source>Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</source>
-      <translation type="unfinished">Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</translation>
+      <translation>自动运行选中的清理操作。关闭此对话框在不马上运行清理情况下保存选择。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="115"/>
       <source>Never</source>
-      <translation type="unfinished">Never</translation>
+      <translation>从不</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="120"/>
       <source>On application startup</source>
-      <translation type="unfinished">On application startup</translation>
+      <translation>启动应用程序时</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="125"/>
       <source>On application exit</source>
-      <translation type="unfinished">On application exit</translation>
+      <translation>应用程序退出时</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="135"/>
@@ -3761,7 +3760,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="166"/>
       <source>Stored values</source>
-      <translation type="unfinished">Stored values</translation>
+      <translation>存储的值</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="238"/>
@@ -3973,22 +3972,22 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="274"/>
       <source>Request a full overwrite for every article the filter accepts, including its read and starred states. Test previews the result. Process checked feeds applies it and clears this option.</source>
-      <translation type="unfinished">Request a full overwrite for every article the filter accepts, including its read and starred states. Test previews the result. Process checked feeds applies it and clears this option.</translation>
+      <translation>请求过滤器接受的每篇文章的完整覆盖，包括其阅读和星标状态。 “测试”预览结果。处理选中的源会应用它并清除此选项。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="277"/>
       <source>Force overwrite of accepted articles</source>
-      <translation type="unfinished">Force overwrite of accepted articles</translation>
+      <translation>强制覆盖已接受的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="286"/>
       <source>Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</source>
-      <translation type="unfinished">Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</translation>
+      <translation>在加载的已存储文章上运行选中的过滤器并预览数据库保存。不保存文章更改，但脚本侧效果仍然执行。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="296"/>
       <source>Run the selected filter on undeleted articles in checked feeds and show actual saving results.</source>
-      <translation type="unfinished">Run the selected filter on undeleted articles in checked feeds and show actual saving results.</translation>
+      <translation>对已勾选源中未删除的文章运行选中的过滤器并显示实际的保存结果。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
@@ -4008,23 +4007,23 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="395"/>
       <source>Show values</source>
-      <translation type="unfinished">Show values</translation>
+      <translation>显示值</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="405"/>
       <source>Compare the script result with the values expected to be saved under the current settings. A preview does not simulate script side effects or later feed cleanup.</source>
-      <translation type="unfinished">Compare the script result with the values expected to be saved under the current settings. A preview does not simulate script side effects or later feed cleanup.</translation>
+      <translation>比较脚本结果和预期将在当前设置下保存的值。 预览不模拟脚本侧效果或之后的源清理。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="409"/>
       <source>Script result</source>
-      <translation type="unfinished">Script result</translation>
+      <translation>脚本结果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="414"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="166"/>
       <source>Expected stored values</source>
-      <translation type="unfinished">Expected stored values</translation>
+      <translation>预期存储值</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="469"/>
@@ -4039,7 +4038,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="592"/>
       <source>Output</source>
-      <translation type="unfinished">Output</translation>
+      <translation>输出</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="111"/>
@@ -4140,7 +4139,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="32"/>
       <source>Canceling… Waiting for active tasks to finish.</source>
-      <translation type="unfinished">Canceling… Waiting for active tasks to finish.</translation>
+      <translation>正在取消… 等待活动任务完成。</translation>
     </message>
   </context>
   <context>
@@ -4282,37 +4281,37 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="100"/>
       <source>Fetching feed icons</source>
-      <translation type="unfinished">Fetching feed icons</translation>
+      <translation>正在获取订阅源图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="107"/>
       <source>No usable icon found.</source>
-      <translation type="unfinished">No usable icon found.</translation>
+      <translation>未找到可用的图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="117"/>
       <source>Icon fetching failed.</source>
-      <translation type="unfinished">Icon fetching failed.</translation>
+      <translation>图标获取失败。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="121"/>
       <source>Processed %1 of %2 feeds.</source>
-      <translation type="unfinished">Processed %1 of %2 feeds.</translation>
+      <translation>已处理 %1 个源，共 %2 个。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="137"/>
       <source>%1: %2</source>
-      <translation type="unfinished">%1: %2</translation>
+      <translation>%1：%2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="144"/>
       <source>Individual icons are ready for %1 feeds.</source>
-      <translation type="unfinished">Individual icons are ready for %1 feeds.</translation>
+      <translation>单独图标已可用于 %1 个源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="150"/>
       <source>Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</source>
-      <translation type="unfinished">Fetched %1 of %2 icons. Existing icons will be kept for unsuccessful feeds.</translation>
+      <translation>获取了 %1 个图标，共 %2 个。将保留不成功的源的现有图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="206"/>
@@ -4322,22 +4321,22 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="210"/>
       <source>The selected icon will be applied to all selected feeds.</source>
-      <translation type="unfinished">The selected icon will be applied to all selected feeds.</translation>
+      <translation>选中的图标将应用于所有选定的源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="256"/>
       <source>Fetch icons again after changing feed settings.</source>
-      <translation type="unfinished">Fetch icons again after changing feed settings.</translation>
+      <translation>更改源设置后再次获取图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="259"/>
       <source>Feed settings changed. Fetch icons again to apply individual icons.</source>
-      <translation type="unfinished">Feed settings changed. Fetch icons again to apply individual icons.</translation>
+      <translation>订阅源设置已更改。再次获取图标以应用单独图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="408"/>
       <source>Fetch icons for each feed</source>
-      <translation type="unfinished">Fetch icons for each feed</translation>
+      <translation>获取每个源的图标</translation>
     </message>
   </context>
   <context>
@@ -6131,12 +6130,12 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="21"/>
       <source>Filter decision</source>
-      <translation type="unfinished">Filter decision</translation>
+      <translation>过滤决策</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="21"/>
       <source>Database outcome</source>
-      <translation type="unfinished">Database outcome</translation>
+      <translation>数据库结果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="22"/>
@@ -6156,205 +6155,205 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="64"/>
       <source>Accept</source>
-      <translation type="unfinished">Accept</translation>
+      <translation>接受</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="66"/>
       <source>Ignore</source>
-      <translation type="unfinished">Ignore</translation>
+      <translation>忽略</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="68"/>
       <source>Purge</source>
-      <translation type="unfinished">Purge</translation>
+      <translation>清除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="70"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="260"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="303"/>
       <source>Not processed</source>
-      <translation type="unfinished">Not processed</translation>
+      <translation>未处理</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Would insert</source>
-      <translation type="unfinished">Would insert</translation>
+      <translation>会插入</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Inserted</source>
-      <translation type="unfinished">Inserted</translation>
+      <translation>已插入</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Would update</source>
-      <translation type="unfinished">Would update</translation>
+      <translation>将更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Updated</source>
-      <translation type="unfinished">Updated</translation>
+      <translation>已更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="88"/>
       <source>Skipped: permanently deleted</source>
-      <translation type="unfinished">Skipped: permanently deleted</translation>
+      <translation>已跳过：永久删除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="91"/>
       <source>Skipped: article no longer exists</source>
-      <translation type="unfinished">Skipped: article no longer exists</translation>
+      <translation>已跳过：文章不再存在</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="94"/>
       <source>Skipped: invalid article</source>
-      <translation type="unfinished">Skipped: invalid article</translation>
+      <translation>已跳过：无效文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="97"/>
       <source>Skipped: no update trigger</source>
-      <translation type="unfinished">Skipped: no update trigger</translation>
+      <translation>已跳过：没有更新触发器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="102"/>
       <source>Write failed or unconfirmed</source>
-      <translation type="unfinished">Write failed or unconfirmed</translation>
+      <translation>写入失败或未确认</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="105"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="142"/>
       <source>Not attempted</source>
-      <translation type="unfinished">Not attempted</translation>
+      <translation>未尝试</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels would change</source>
-      <translation type="unfinished">; labels would change</translation>
+      <translation>；标签将更改</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels changed</source>
-      <translation type="unfinished">; labels changed</translation>
+      <translation>；标签已更改</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="112"/>
       <source>; removed by feed cleanup</source>
-      <translation type="unfinished">; removed by feed cleanup</translation>
+      <translation>；被订阅源清理删除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
       <source>
 A full article overwrite was requested.</source>
-      <translation type="unfinished">
-A full article overwrite was requested.</translation>
+      <translation>
+请求了完整的文章覆盖。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="119"/>
       <source>
 The stored read state is preserved.</source>
-      <translation type="unfinished">
-The stored read state is preserved.</translation>
+      <translation>
+保留了已存储的阅读状态。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="122"/>
       <source>
 The stored starred state is preserved.</source>
-      <translation type="unfinished">
-The stored starred state is preserved.</translation>
+      <translation>
+保留了已存储的星标状态。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="130"/>
       <source>Purged</source>
-      <translation type="unfinished">Purged</translation>
+      <translation>已清除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="133"/>
       <source>Not saved: processing failed</source>
-      <translation type="unfinished">Not saved: processing failed</translation>
+      <translation>未保存：处理失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="136"/>
       <source>No article write: ignored</source>
-      <translation type="unfinished">No article write: ignored</translation>
+      <translation>没有文章写入：忽略</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="139"/>
       <source>Would purge</source>
-      <translation type="unfinished">Would purge</translation>
+      <translation>将清除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
-Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
+      <translation>
+对当前数据库的预测。稍后的更改、脚本侧效果和源清理可能会影响实际结果。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>There would be no stored article.</source>
-      <translation type="unfinished">There would be no stored article.</translation>
+      <translation>不会有存储的文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>The article is no longer stored.</source>
-      <translation type="unfinished">The article is no longer stored.</translation>
+      <translation>已不再存储该文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="582"/>
       <source>Could not refresh stored values after the incomplete run.</source>
-      <translation type="unfinished">Could not refresh stored values after the incomplete run.</translation>
+      <translation>无法在不完整的运行后刷新存储的值。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="646"/>
       <source>The feed for article &apos;%1&apos; is no longer available.</source>
-      <translation type="unfinished">The feed for article &apos;%1&apos; is no longer available.</translation>
+      <translation>文章 &apos;%1&apos; 的订阅源不再可用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="749"/>
       <source>Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</source>
-      <translation type="unfinished">Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</translation>
+      <translation>%2 个源（共 %3 个）中 %1 篇已加载文章的预览：%4 篇会更新、%5 篇会插入、会跳过 %6 篇、 忽略 %7 篇、%8 篇会清除。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="751"/>
       <source>Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</source>
-      <translation type="unfinished">Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</translation>
+      <translation>%2 个源（共 %3 个）中 %1 篇文章的处理结果：%4 篇已更新、%5 篇已插入、%6 篇已跳过、%7 篇已忽略、%8 篇已清除。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="761"/>
       <source> Labels would change on %1 articles.</source>
-      <translation type="unfinished"> Labels would change on %1 articles.</translation>
+      <translation> %1 篇文章的标签将会更改。</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
       <source> Label changes confirmed on %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes confirmed on %n article(s).</numerusform>
+      <translation>
+        <numerusform> 确认了 %n 篇文章的标签更改。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="764"/>
       <source> Label changes could not be confirmed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> 无法确认 %n 篇文章的标签更改。</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="767"/>
       <source> Run incomplete.</source>
-      <translation type="unfinished"> Run incomplete.</translation>
+      <translation> 运行不完整。</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="769"/>
       <source> Processing failed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Processing failed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> %n 篇文章处理失败。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="772"/>
       <source> %n article(s) not attempted.</source>
-      <translation type="unfinished">
-        <numerusform> %n article(s) not attempted.</numerusform>
+      <translation>
+        <numerusform> %n 篇文章未尝试。</numerusform>
       </translation>
     </message>
     <message>
@@ -7461,14 +7460,14 @@ Feedly是一个安全的空间，你可以私密组织和研究对你而言重�
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="97"/>
       <source>Feed no longer exists in the database.</source>
-      <translation type="unfinished">Feed no longer exists in the database.</translation>
+      <translation>源不再存在于数据库中。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
       <source>Could not obtain the inserted article ID.</source>
-      <translation type="unfinished">Could not obtain the inserted article ID.</translation>
+      <translation>无法获取已插入的文章 ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
@@ -8046,145 +8045,145 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="207"/>
       <source>MediaWiki API response is not a JSON object.</source>
-      <translation type="unfinished">MediaWiki API response is not a JSON object.</translation>
+      <translation>MediaWiki API 响应不是JSON对象。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="208"/>
       <source>Invalid MediaWiki JSON: %1</source>
-      <translation type="unfinished">Invalid MediaWiki JSON: %1</translation>
+      <translation>无效的 MediaWiki JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
       <source>MediaWiki API error: %1</source>
-      <translation type="unfinished">MediaWiki API error: %1</translation>
+      <translation>MediaWiki API 错误: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="228"/>
       <source>MediaWiki API response has no expected result list.</source>
-      <translation type="unfinished">MediaWiki API response has no expected result list.</translation>
+      <translation>MediaWiki API 响应没有预期结果列表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="531"/>
       <source>Category: %1 — %2</source>
-      <translation type="unfinished">Category: %1 — %2</translation>
+      <translation>类别: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="532"/>
       <source>Pages added to &apos;%1&apos;.</source>
-      <translation type="unfinished">Pages added to &apos;%1&apos;.</translation>
+      <translation>页面已添加到 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="536"/>
       <source>Search: %1 — %2</source>
-      <translation type="unfinished">Search: %1 — %2</translation>
+      <translation>搜索: %1 — %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="537"/>
       <source>Pages matching &apos;%1&apos;, ordered by last edit.</source>
-      <translation type="unfinished">Pages matching &apos;%1&apos;, ordered by last edit.</translation>
+      <translation>匹配 &apos;%1&apos;的页面；按最后编辑排序。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="585"/>
       <source>MediaWiki continuation has no catalog position.</source>
-      <translation type="unfinished">MediaWiki continuation has no catalog position.</translation>
+      <translation>MediaWiki 继续操作没有目录位置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="590"/>
       <source>Unexpected MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Unexpected MediaWiki continuation parameter.</translation>
+      <translation>意外的 MediaWiki 继续参数。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
       <source>Invalid MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation parameter.</translation>
+      <translation>无效的 MediaWiki 继续参数。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="601"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="611"/>
       <source>Invalid MediaWiki continuation offset.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation offset.</translation>
+      <translation>无效的 MediaWiki 继续偏移量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="616"/>
       <source>MediaWiki continuation parameter is too long.</source>
-      <translation type="unfinished">MediaWiki continuation parameter is too long.</translation>
+      <translation>MediaWiki 继续参数太长。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="631"/>
       <source>Invalid MediaWiki continuation object.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation object.</translation>
+      <translation>无效的 MediaWiki 继续对象。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="706"/>
       <source>MediaWiki catalog exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki catalog exceeded the requested page size.</translation>
+      <translation>MediaWiki 目录超出请求的页面大小。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="729"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="790"/>
       <source>MediaWiki API repeated a continuation token.</source>
-      <translation type="unfinished">MediaWiki API repeated a continuation token.</translation>
+      <translation>MediaWiki API 重复了一个继续令牌。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="735"/>
       <source>MediaWiki continuation requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki continuation requires a resource handler.</translation>
+      <translation>MediaWiki 继续需要一个资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="741"/>
       <source>MediaWiki continuation changed origin.</source>
-      <translation type="unfinished">MediaWiki continuation changed origin.</translation>
+      <translation>MediaWiki 继续更改了来源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="770"/>
       <source>MediaWiki backfill requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki backfill requires a resource handler.</translation>
+      <translation>MediaWiki 返回填充需要一个资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="780"/>
       <source>MediaWiki backfill exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki backfill exceeded the requested page size.</translation>
+      <translation>MediaWiki 返回填充超过了请求的页面大小。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="895"/>
       <source>Not a supported MediaWiki feed.</source>
-      <translation type="unfinished">Not a supported MediaWiki feed.</translation>
+      <translation>不支持的 MediaWiki 源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="908"/>
       <source>Invalid MediaWiki feed source URL.</source>
-      <translation type="unfinished">Invalid MediaWiki feed source URL.</translation>
+      <translation>无效的 MediaWiki feed 源 URL。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="968"/>
       <source>MediaWiki article requests require a resource handler.</source>
-      <translation type="unfinished">MediaWiki article requests require a resource handler.</translation>
+      <translation>MediaWiki 文章请求需要资源处理器。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="980"/>
       <source>MediaWiki API rate limit reached while fetching article %1.</source>
-      <translation type="unfinished">MediaWiki API rate limit reached while fetching article %1.</translation>
+      <translation>获取文章 %1 时达到了MediaWiki API 速率限制。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="989"/>
       <source>MediaWiki article response did not match the requested page.</source>
-      <translation type="unfinished">MediaWiki article response did not match the requested page.</translation>
+      <translation>MediaWiki文章响应与请求的页面不匹配。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="999"/>
       <source>Could not fetch MediaWiki article %1: %2</source>
-      <translation type="unfinished">Could not fetch MediaWiki article %1: %2</translation>
+      <translation>无法获取MediaWiki 文章 %1: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="140"/>
       <source>not a JSON Wordpress feed</source>
-      <translation type="unfinished">not a JSON Wordpress feed</translation>
+      <translation>不是JSON Wordpress 源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="151"/>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="157"/>
       <source>not a WordPress REST API feed</source>
-      <translation type="unfinished">not a WordPress REST API feed</translation>
+      <translation>不是 WordPress REST API 源</translation>
     </message>
   </context>
   <context>
@@ -8656,12 +8655,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Choose image...</source>
-      <translation type="unfinished">Choose image...</translation>
+      <translation>选择图像……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
       <source>Use automatic icon</source>
-      <translation type="unfinished">Use automatic icon</translation>
+      <translation>使用自动图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="54"/>
@@ -8703,7 +8702,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="325"/>
       <source>Select external tool icon</source>
-      <translation type="unfinished">Select external tool icon</translation>
+      <translation>选择外部工具图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="328"/>
@@ -8713,12 +8712,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="342"/>
       <source>Invalid icon</source>
-      <translation type="unfinished">Invalid icon</translation>
+      <translation>无效图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="343"/>
       <source>The selected file could not be loaded as an image.</source>
-      <translation type="unfinished">The selected file could not be loaded as an image.</translation>
+      <translation>所选文件无法作为图标加载。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="54"/>
@@ -8828,12 +8827,12 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="328"/>
       <source>Choose an image for the selected tool, or restore its automatic icon.</source>
-      <translation type="unfinished">Choose an image for the selected tool, or restore its automatic icon.</translation>
+      <translation>为选中的工具选择图像，或恢复其自动图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="331"/>
       <source>Change &amp;icon...</source>
-      <translation type="unfinished">Change &amp;icon...</translation>
+      <translation>修改图标(&amp;I)……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="341"/>
@@ -9150,19 +9149,19 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="242"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="835"/>
       <source>Change &amp;unread font</source>
-      <translation type="unfinished">Change &amp;unread font</translation>
+      <translation>更改未读字体(&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="249"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="842"/>
       <source>Use the normal font with bold enabled.</source>
-      <translation type="unfinished">Use the normal font with bold enabled.</translation>
+      <translation>在启用粗体情况下使用正常字体。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="252"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="845"/>
       <source>Reset</source>
-      <translation type="unfinished">Reset</translation>
+      <translation>重置</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="277"/>
@@ -9212,12 +9211,12 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="399"/>
       <source>Body differences alone do not trigger an article update during fetching or manual filter processing. If another change triggers an update, the new body is saved too. Article filters can request an update explicitly with msg.overwrite = true.</source>
-      <translation type="unfinished">Body differences alone do not trigger an article update during fetching or manual filter processing. If another change triggers an update, the new body is saved too. Article filters can request an update explicitly with msg.overwrite = true.</translation>
+      <translation>在获取或手动过滤器处理过程中，仅有正文差异并不会触发文章更新。 如果另一个更改触发更新，新的正文也会被保存。文章过滤器可以用 msg.overwrite = true来明确请求更新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
       <source>Ignore body-only changes from feeds</source>
-      <translation type="unfinished">Ignore body-only changes from feeds</translation>
+      <translation>忽略源中仅正文的更改</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
@@ -9232,12 +9231,12 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
       <source>Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</source>
-      <translation type="unfinished">Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</translation>
+      <translation>在正常更新本地文章期间，包括手动过滤器处理过程中，保留已存储的阅读状态。禁用时，使用生成文章&apos;的阅读状态。 同步账户使用服务&apos;的 状态。文章过滤器可以使用 msg.overwrite = true 覆盖保存。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
       <source>Preserve read state on feed updates</source>
-      <translation type="unfinished">Preserve read state on feed updates</translation>
+      <translation>在订阅源更新时保留阅读状态</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="602"/>
@@ -9642,7 +9641,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="339"/>
       <source>Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</source>
-      <translation type="unfinished">Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</translation>
+      <translation>如果使用 StartAllBack，请禁用此选项。 任务栏缩略图按钮可能在安装了该软件时导致 RSS Guard 崩溃。保存设置并重启 RSS Guard。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
@@ -9813,12 +9812,12 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <source>&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;下载源和其他文件时忽略 cookies。&lt;/p&gt;&lt;p&gt;内部 web 浏览器在当前会话期间仍能使用 cookies 进行登录，但这些 cookies 在程序关闭并再次打开后将消失。&lt;/p&gt;&lt;p&gt;开启该选项会清除现有 cookies，包括浏览器登录 cookies。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="37"/>
       <source>Ignore cookies for downloads</source>
-      <translation type="unfinished">Ignore cookies for downloads</translation>
+      <translation>忽略下载的 cookie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="44"/>
@@ -10116,7 +10115,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="84"/>
       <source>Database checkpoint failed or was blocked by another connection.</source>
-      <translation type="unfinished">Database checkpoint failed or was blocked by another connection.</translation>
+      <translation>数据库检查站失败或被另一个连接阻止。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="96"/>
@@ -10241,7 +10240,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes (application setting)</source>
-      <translation type="unfinished">yes (application setting)</translation>
+      <translation>是(应用程序设置)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
@@ -10648,7 +10647,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;下载这个源时忽略 cookies。内部 web 浏览器中的 cookies 不受影响。&lt;/p&gt;&lt;p&gt;如 cookies 在“设置” &gt; “网络和 web" &gt; "网络”中被全局性忽略，那么这个源也会忽略它们，不论是否选中这个单选框。关闭全局性忽略时，这个源&apos;的 cookies 偏好将生效。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="108"/>
@@ -10776,12 +10775,12 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
-      <translation type="unfinished">MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
+      <translation>MediaWiki API 返回 HTTP 304，没有必需的 JSON 目录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
       <source>Unsupported feed type.</source>
-      <translation type="unfinished">Unsupported feed type.</translation>
+      <translation>不支持的订阅源类型</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>

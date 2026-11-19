@@ -87,7 +87,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="184"/>
       <source>Welcome</source>
-      <translation type="unfinished">Welcome</translation>
+      <translation>Welkom</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="185"/>
@@ -95,20 +95,19 @@
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
+      <translation>Welkom bij %1.
 
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="190"/>
       <source>Go to changelog</source>
-      <translation type="unfinished">Go to changelog</translation>
+      <translation>Ga naar changelog</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/guinotificationcoordinator.cpp" line="370"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>Ongelezen artikelen opgehaald</translation>
     </message>
   </context>
   <context>
@@ -6189,192 +6188,192 @@ Logintoken verloopt: %2</translation>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="260"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="303"/>
       <source>Not processed</source>
-      <translation type="unfinished">Not processed</translation>
+      <translation>Niet verwerkt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Would insert</source>
-      <translation type="unfinished">Would insert</translation>
+      <translation>Zou ingevoegd worden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="80"/>
       <source>Inserted</source>
-      <translation type="unfinished">Inserted</translation>
+      <translation>Ingevoegd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Would update</source>
-      <translation type="unfinished">Would update</translation>
+      <translation>Zou geüpdatet worden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="83"/>
       <source>Updated</source>
-      <translation type="unfinished">Updated</translation>
+      <translation>Geüpdatet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="88"/>
       <source>Skipped: permanently deleted</source>
-      <translation type="unfinished">Skipped: permanently deleted</translation>
+      <translation>Overgeslagen: permanent verwijderd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="91"/>
       <source>Skipped: article no longer exists</source>
-      <translation type="unfinished">Skipped: article no longer exists</translation>
+      <translation>Overgeslagen: artikel bestaat niet meer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="94"/>
       <source>Skipped: invalid article</source>
-      <translation type="unfinished">Skipped: invalid article</translation>
+      <translation>Overgeslagen: ongeldig artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="97"/>
       <source>Skipped: no update trigger</source>
-      <translation type="unfinished">Skipped: no update trigger</translation>
+      <translation>Overgeslagen: geen update trigger</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="102"/>
       <source>Write failed or unconfirmed</source>
-      <translation type="unfinished">Write failed or unconfirmed</translation>
+      <translation>Schrijven mislukt of niet bevestigd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="105"/>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="142"/>
       <source>Not attempted</source>
-      <translation type="unfinished">Not attempted</translation>
+      <translation>Niet geprobeerd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels would change</source>
-      <translation type="unfinished">; labels would change</translation>
+      <translation>; labels zouden veranderen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="109"/>
       <source>; labels changed</source>
-      <translation type="unfinished">; labels changed</translation>
+      <translation>; labels gewijzigd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="112"/>
       <source>; removed by feed cleanup</source>
-      <translation type="unfinished">; removed by feed cleanup</translation>
+      <translation>; verwijderd door feed schoonmaak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
       <source>
 A full article overwrite was requested.</source>
-      <translation type="unfinished">
-A full article overwrite was requested.</translation>
+      <translation>
+Een volledig artikel overschrijven is aangevraagd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="119"/>
       <source>
 The stored read state is preserved.</source>
-      <translation type="unfinished">
-The stored read state is preserved.</translation>
+      <translation>
+De opgeslagen leesstatus blijft bewaard.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="122"/>
       <source>
 The stored starred state is preserved.</source>
-      <translation type="unfinished">
-The stored starred state is preserved.</translation>
+      <translation>
+De opgeslagen leesstatus blijft bewaard.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="130"/>
       <source>Purged</source>
-      <translation type="unfinished">Purged</translation>
+      <translation>Wissen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="133"/>
       <source>Not saved: processing failed</source>
-      <translation type="unfinished">Not saved: processing failed</translation>
+      <translation>Niet opgeslagen: verwerking mislukt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="136"/>
       <source>No article write: ignored</source>
-      <translation type="unfinished">No article write: ignored</translation>
+      <translation>Geen artikel opgeslagen: genegeerd</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="139"/>
       <source>Would purge</source>
-      <translation type="unfinished">Would purge</translation>
+      <translation>Zou opgeruimd worden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
-Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
+      <translation>
+Voorspelling van de huidige database. Later wijzigingen, scriptbijwerkingen en opschoning van de feed kunnen het werkelijke resultaat beïnvloeden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>There would be no stored article.</source>
-      <translation type="unfinished">There would be no stored article.</translation>
+      <translation>Er zou geen enkel artikel worden opgeslagen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
       <source>The article is no longer stored.</source>
-      <translation type="unfinished">The article is no longer stored.</translation>
+      <translation>Het artikel is niet langer opgeslagen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="582"/>
       <source>Could not refresh stored values after the incomplete run.</source>
-      <translation type="unfinished">Could not refresh stored values after the incomplete run.</translation>
+      <translation>Opgeslagen waarden konden niet worden vernieuwd na de onvolledige uitvoering.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="646"/>
       <source>The feed for article &apos;%1&apos; is no longer available.</source>
-      <translation type="unfinished">The feed for article &apos;%1&apos; is no longer available.</translation>
+      <translation>De feed voor artikel &apos;%1&apos; is niet meer beschikbaar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="749"/>
       <source>Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</source>
-      <translation type="unfinished">Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</translation>
+      <translation>Voorbeeld van %1 geladen artikelen in %2 van %3 feeds: %4 zou updaten, %5 zou invoegen, %6 overgeslagen, %7 zou worden genegeerd, %8 zou verwijderen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="751"/>
       <source>Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</source>
-      <translation type="unfinished">Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</translation>
+      <translation>Verwerking resultaten voor %1 artikelen in %2 van %3 feeds: %4 bijgewerkt, %5 ingedeeld, %6 overgeslagen, %7 negeerd, %8 verwijderd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="761"/>
       <source> Labels would change on %1 articles.</source>
-      <translation type="unfinished"> Labels would change on %1 articles.</translation>
+      <translation> Labels zouden veranderen op %1 artikelen.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
       <source> Label changes confirmed on %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes confirmed on %n article(s).</numerusform>
-        <numerusform> Label changes confirmed on %n article(s).</numerusform>
+      <translation>
+        <numerusform> Labelwijzigingen bevestigd op %n artikel(en).</numerusform>
+        <numerusform> Labelwijzigingen bevestigd op %n artikel(en).</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="764"/>
       <source> Label changes could not be confirmed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
-        <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> Labelwijzigingen konden niet worden bevestigd voor %n artikel(s).</numerusform>
+        <numerusform> Labelwijzigingen konden niet worden bevestigd voor %n artikel(s).</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="767"/>
       <source> Run incomplete.</source>
-      <translation type="unfinished"> Run incomplete.</translation>
+      <translation> Uitvoeren niet compleet.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="769"/>
       <source> Processing failed for %n article(s).</source>
-      <translation type="unfinished">
-        <numerusform> Processing failed for %n article(s).</numerusform>
-        <numerusform> Processing failed for %n article(s).</numerusform>
+      <translation>
+        <numerusform> Verwerking mislukt voor %n artikel(en).</numerusform>
+        <numerusform> Verwerking mislukt voor %n artikel(en).</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="772"/>
       <source> %n article(s) not attempted.</source>
-      <translation type="unfinished">
-        <numerusform> %n article(s) not attempted.</numerusform>
-        <numerusform> %n article(s) not attempted.</numerusform>
+      <translation>
+        <numerusform> %n artikel(en) niet geprobeerd.</numerusform>
+        <numerusform> %n artikel(en) niet geprobeerd.</numerusform>
       </translation>
     </message>
     <message>
@@ -7492,14 +7491,14 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="97"/>
       <source>Feed no longer exists in the database.</source>
-      <translation type="unfinished">Feed no longer exists in the database.</translation>
+      <translation>Feed bestaat niet meer in de database.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
       <source>Could not obtain the inserted article ID.</source>
-      <translation type="unfinished">Could not obtain the inserted article ID.</translation>
+      <translation>Kon het ingevoegde artikel-ID niet verkrijgen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
@@ -8077,73 +8076,73 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="207"/>
       <source>MediaWiki API response is not a JSON object.</source>
-      <translation type="unfinished">MediaWiki API response is not a JSON object.</translation>
+      <translation>MediaWiki API-antwoord is geen JSON-object.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="208"/>
       <source>Invalid MediaWiki JSON: %1</source>
-      <translation type="unfinished">Invalid MediaWiki JSON: %1</translation>
+      <translation>Ongeldige MediaWiki JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
       <source>MediaWiki API error: %1</source>
-      <translation type="unfinished">MediaWiki API error: %1</translation>
+      <translation>MediaWiki API error: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="228"/>
       <source>MediaWiki API response has no expected result list.</source>
-      <translation type="unfinished">MediaWiki API response has no expected result list.</translation>
+      <translation>MediaWiki API-antwoord heeft geen verwachte resultatenlijst.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="531"/>
       <source>Category: %1 — %2</source>
-      <translation type="unfinished">Category: %1 — %2</translation>
+      <translation>Categorie: %1 - %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="532"/>
       <source>Pages added to &apos;%1&apos;.</source>
-      <translation type="unfinished">Pages added to &apos;%1&apos;.</translation>
+      <translation>Pagina's toegevoegd aan &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="536"/>
       <source>Search: %1 — %2</source>
-      <translation type="unfinished">Search: %1 — %2</translation>
+      <translation>Zoeken: %1 - %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="537"/>
       <source>Pages matching &apos;%1&apos;, ordered by last edit.</source>
-      <translation type="unfinished">Pages matching &apos;%1&apos;, ordered by last edit.</translation>
+      <translation>Pagina's die overeenkomen met &apos;%1&apos;, gerangschikt op laatste wijziging.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="585"/>
       <source>MediaWiki continuation has no catalog position.</source>
-      <translation type="unfinished">MediaWiki continuation has no catalog position.</translation>
+      <translation>MediaWiki continuatie heeft geen cataloguspositie.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="590"/>
       <source>Unexpected MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Unexpected MediaWiki continuation parameter.</translation>
+      <translation>Onverwachte MediaWiki continuatie parameter.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
       <source>Invalid MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation parameter.</translation>
+      <translation>Ongeldige MediaWiki continuatie parameter.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="601"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="611"/>
       <source>Invalid MediaWiki continuation offset.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation offset.</translation>
+      <translation>Ongeldige MediaWiki continuatie offset.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="616"/>
       <source>MediaWiki continuation parameter is too long.</source>
-      <translation type="unfinished">MediaWiki continuation parameter is too long.</translation>
+      <translation>MediaWiki continuatie parameter is te lang.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="631"/>
       <source>Invalid MediaWiki continuation object.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation object.</translation>
+      <translation>Ongeldig MediaWiki continuatie object.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="706"/>
@@ -10276,7 +10275,7 @@ Als dat het geval is, dan moet je een tijdslimiet instellen voor het ophalen van
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes (application setting)</source>
-      <translation type="unfinished">yes (application setting)</translation>
+      <translation>ja (applicatie instellingen)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
@@ -10683,7 +10682,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;Negeer cookies bij het downloaden van deze feed. Cookies in de interne webbrowser worden niet beïnvloed.&lt;/p&gt;&lt;p&gt;Als cookies globaal worden genegeerd in Instellingen &gt; Netwerk &amp; web &gt; ze worden genegeerd voor deze feed ongeacht deze checkbox. Deze feed&apos;opgeslagen voorkeur wordt van kracht wanneer globaal negeren wordt uitgeschakeld.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="108"/>
@@ -10811,12 +10810,12 @@ Laad standaardfeeds: Zal kleine set van verschillende interessante feeds laden.<
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
-      <translation type="unfinished">MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
+      <translation>MediaWiki API gaf HTTP 304 terug zonder de vereiste JSON-catalogus.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
       <source>Unsupported feed type.</source>
-      <translation type="unfinished">Unsupported feed type.</translation>
+      <translation>Niet ondersteund feedtype.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>

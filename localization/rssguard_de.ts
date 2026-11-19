@@ -1223,12 +1223,12 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds</source>
-      <translation type="unfinished">Show feeds</translation>
+      <translation>Feeds anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show folders</source>
-      <translation type="unfinished">Show folders</translation>
+      <translation>Ordner anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
@@ -1258,7 +1258,7 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="267"/>
       <source>Show enabled feeds</source>
-      <translation type="unfinished">Show enabled feeds</translation>
+      <translation>Aktivierte Feeds anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="273"/>
@@ -1613,7 +1613,7 @@ Skins base folder -&gt; &quot;%5&quot;
 Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Benutzerdatenordner (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Einstellungen-Datei (%4) -&gt; &quot;%3&quot;&quot;
+Einstellungen-Datei (%4) -&gt; &quot;%3&quot;
 Design-Basisordner -&gt; &quot;%5&quot;
 Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     </message>
@@ -2060,47 +2060,47 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="301"/>
       <source>is greater than</source>
-      <translation type="unfinished">is greater than</translation>
+      <translation>ist grösser als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="302"/>
       <source>is at least</source>
-      <translation type="unfinished">is at least</translation>
+      <translation>ist mindestens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="303"/>
       <source>is less than</source>
-      <translation type="unfinished">is less than</translation>
+      <translation>ist kleiner als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="304"/>
       <source>is at most</source>
-      <translation type="unfinished">is at most</translation>
+      <translation>ist höchstens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="305"/>
       <source>Number</source>
-      <translation type="unfinished">Number</translation>
+      <translation>Nummer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="308"/>
       <source>is older than</source>
-      <translation type="unfinished">is older than</translation>
+      <translation>Ist älter als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="309"/>
       <source>is newer than</source>
-      <translation type="unfinished">is newer than</translation>
+      <translation>Ist neuer als</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="310"/>
       <source>Age in days</source>
-      <translation type="unfinished">Age in days</translation>
+      <translation>Alter in Tagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="364"/>
       <source>Remove action</source>
-      <translation type="unfinished">Remove action</translation>
+      <translation>Aktion entfernen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="423"/>
@@ -2145,12 +2145,12 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="662"/>
       <source>During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</source>
-      <translation type="unfinished">During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</translation>
+      <translation>Während des automatischen Feed-Abrufs wird jeder Artikel verworfen, da Ignorieren und Löschen neu heruntergeladene Artikel ablehnen. Möchten Sie diesen Filter trotzdem generieren?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="583"/>
       <source>Set article property</source>
-      <translation type="unfinished">Set article property</translation>
+      <translation>Artikeleigenschaft festlegen</translation>
     </message>
   </context>
   <context>
@@ -2173,23 +2173,23 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation type="unfinished">operation was cancelled</translation>
+      <translation>Vorgang wurde abgebrochen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>Benutzername darf nicht leer sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>Das Passwort darf nicht leer sein.</translation>
     </message>
   </context>
   <context>
@@ -2416,8 +2416,8 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="81"/>
       <source> day(s)</source>
       <translation>
-        <numerusform> Tag</numerusform>
-        <numerusform> Tage</numerusform>
+        <numerusform> Tag(e)</numerusform>
+        <numerusform> Tage()</numerusform>
       </translation>
     </message>
     <message>
@@ -2451,7 +2451,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="130"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>Bereinigung der Datenbank fehlgeschlagen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="135"/>
@@ -2491,32 +2491,32 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="89"/>
       <source>Remove all important articles</source>
-      <translation type="unfinished">Remove all important articles</translation>
+      <translation>Alle wichtigen Artikel löschen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="101"/>
       <source>Run automatically</source>
-      <translation type="unfinished">Run automatically</translation>
+      <translation>Automatisch starten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="111"/>
       <source>Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</source>
-      <translation type="unfinished">Run the selected cleanup operations automatically. Close this dialog to save the choices without running cleanup now.</translation>
+      <translation>Ausgewählte Bereinigungs-Vorgänge automatisch ausführen. Diesen Dialog schließen, um die Auswahl zu speichern, ohne die Bereinigung jetzt durchzuführen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="115"/>
       <source>Never</source>
-      <translation type="unfinished">Never</translation>
+      <translation>niemals</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="120"/>
       <source>On application startup</source>
-      <translation type="unfinished">On application startup</translation>
+      <translation>Beim Start der Anwendung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="125"/>
       <source>On application exit</source>
-      <translation type="unfinished">On application exit</translation>
+      <translation>Beim Beenden der Anwendung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="135"/>
@@ -3366,7 +3366,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1148"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>&amp;Web-Cache bereinigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1153"/>
@@ -3421,7 +3421,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="670"/>
       <source>&amp;Cleanup database</source>
-      <translation>Datenbank be&amp;reinigen</translation>
+      <translation>Datenbank &amp;bereinigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="678"/>
@@ -3647,7 +3647,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="177"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
-      <translation>Kann die Datenbank aufgrund einer anderen Aktion hieran nicht bereinigen.</translation>
+      <translation>Die Datenbank kann nicht bereinigt werden, weil eine andere kritische Aktion ausgeführt wird.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="468"/>
@@ -4523,7 +4523,7 @@ Dieser Neustart muss manuell ausgeführt werden.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="78"/>
       <source>Optional post-processing script</source>
-      <translation>Optionales Post-processing Script</translation>
+      <translation>Optionales Nachbearbeitungs-Script</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="109"/>
@@ -6256,7 +6256,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="112"/>
       <source>; removed by feed cleanup</source>
-      <translation type="unfinished">; removed by feed cleanup</translation>
+      <translation>; entfernt durch Feed-Bereinigung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="116"/>
@@ -6303,8 +6303,8 @@ The stored starred state is preserved.</translation>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
-Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
+      <translation>
+Vorhersage auf Grundlage der aktuellen Datenbank. Später können sich die Skript-Seiteneffekte und Feed-Bereinigung auf das tatsächliche Ergebnis auswirken.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="296"/>
@@ -6553,7 +6553,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="624"/>
       <source>Published</source>
-      <translation type="unfinished">Published</translation>
+      <translation>Publiziert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="624"/>
@@ -10341,16 +10341,16 @@ Ignore cookies: %7
 Report empty feed as broken: %8
 Feed timeout: %9
 Fetch full articles: %10 (plain text only: %11)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+      <translation>Kodierung: %1
+Typ: %2
+Nachbearbeitungs-Skript: %3
+Als Roh-XML speichern %4
+Artikel-Kommentare holen: %5
 HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Feed timeout: %9
-Fetch full articles: %10 (plain text only: %11)</translation>
+Cookies ignorieren: %7
+Leeren Feed als defekt markieren %8
+Feed Timeout: %9
+Vollständigen Artikel laden: %10 (nur Text-Modus: %11)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="573"/>
@@ -10505,7 +10505,7 @@ Fetch full articles: %10 (plain text only: %11)</translation>
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
       <translation>Du kannst eine URL als Quelle deines Feeds verwenden, oder einen eigenen Feed mit einem Skript erzeugen.
 
-Du kannst die generierten Feed Daten auch mit einem extra Nachbearbeituns-Skript weiter verarbeiten. Dies sind fortgeschrittene Funktionen, lese die Dokumentation bevor du diese verwendest.</translation>
+Du kannst die generierten Feed-Daten auch mit einem extra Nachbearbeitungs-Skript weiter verarbeiten. Dies sind fortgeschrittene Funktionen, lese die Dokumentation bevor du diese verwendest.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="14"/>
