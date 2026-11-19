@@ -63,6 +63,7 @@ class TestFeedDeletion : public QObject {
 
   private slots:
     void initTestCase();
+    void copiedFeedPreservesStatusAndCounts();
     void deleteMultipleFeeds_data();
     void deleteMultipleFeeds();
     void cleanupTestCase();
@@ -116,6 +117,19 @@ void TestFeedDeletion::initTestCase() {
   m_window->resize(1000, 700);
   m_window->show();
   QTRY_VERIFY(m_window->isVisible());
+}
+
+void TestFeedDeletion::copiedFeedPreservesStatusAndCounts() {
+  Feed original;
+  original.setCountOfAllMessages(9);
+  original.setCountOfUnreadMessages(3);
+  original.setStatus(Feed::Status::NewMessages, QSL("original status"));
+
+  const Feed copy(original);
+  QCOMPARE(copy.status(), Feed::Status::NewMessages);
+  QCOMPARE(copy.statusString(), original.statusString());
+  QCOMPARE(copy.countOfAllMessages(), 9);
+  QCOMPARE(copy.countOfUnreadMessages(), 3);
 }
 
 void TestFeedDeletion::deleteMultipleFeeds_data() {

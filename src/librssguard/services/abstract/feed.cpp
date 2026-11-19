@@ -31,13 +31,12 @@ Feed::Feed(const QString& title, const QString& custom_id, const QIcon& icon, Ro
   setIcon(icon);
 }
 
-Feed::Feed(const Feed& other) : RootItem(other) {
+Feed::Feed(const Feed& other)
+  : RootItem(other), m_status(other.m_status), m_statusString(other.m_statusString),
+    m_totalCount(other.m_totalCount), m_unreadCount(other.m_unreadCount) {
   setKind(RootItem::Kind::Feed);
 
-  setCountOfAllMessages(other.countOfAllMessages());
-  setCountOfUnreadMessages(other.countOfUnreadMessages());
   setSource(other.source());
-  setStatus(other.status(), other.statusString());
   setAutoUpdateType(other.autoUpdateType());
   setAutoUpdateInterval(other.autoUpdateInterval());
   setLastUpdated(other.lastUpdated());
