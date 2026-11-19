@@ -884,6 +884,11 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
 }
 
 namespace {
+  qint64 articleTimestamp(const QDateTime& date_time) {
+    // Qt 5 leaves conversion of invalid dates undefined.
+    return date_time.isValid() ? date_time.toMSecsSinceEpoch() : 0;
+  }
+
 
   QString unnulifyString(const QString& str) {
     return str.isNull() ? QSL("") : str;
@@ -936,8 +941,8 @@ namespace {
     query.bindValue(pos++, unnulifyString(message.m_url));
     query.bindValue(pos++, unnulifyString(message.m_author));
     query.bindValue(pos++, message.m_score);
-    query.bindValue(pos++, message.m_created.toMSecsSinceEpoch());
-    query.bindValue(pos++, message.m_retrieved.toMSecsSinceEpoch());
+    query.bindValue(pos++, articleTimestamp(message.m_created));
+    query.bindValue(pos++, articleTimestamp(message.m_retrieved));
     query.bindValue(pos++, unnulifyString(message.m_contents));
     query.bindValue(pos++, enclosures);
     query.bindValue(pos++, feed_id);
@@ -1334,7 +1339,7 @@ namespace {
     const bool body_changed = !policy.m_ignoreContentsChanges && incoming.m_contents != stored->m_contents;
     const bool synchronized_update =
       !incoming.m_customId.isEmpty() && policy.m_syncable &&
-      (incoming.m_created.toMSecsSinceEpoch() != stored->m_created || incoming.m_isRead != stored->m_isRead ||
+      (articleTimestamp(incoming.m_created) != stored->m_created || incoming.m_isRead != stored->m_isRead ||
        incoming.m_isImportant != stored->m_isImportant ||
        (incoming.m_feedId != stored->m_feedId && incoming.m_feedId == policy.m_feedId) ||
        incoming.m_title != stored->m_title || body_changed);
@@ -1343,7 +1348,7 @@ namespace {
       (incoming.m_title != stored->m_title || incoming.m_author != stored->m_author || body_changed);
     const bool date_or_body_update =
       (incoming.m_createdFromFeed &&
-       std::abs(incoming.m_created.toMSecsSinceEpoch() - stored->m_created) > MSG_DATETIME_DIFF_THRESSHOLD) ||
+       std::abs(articleTimestamp(incoming.m_created) - stored->m_created) > MSG_DATETIME_DIFF_THRESSHOLD) ||
       body_changed;
 
     if (!synchronized_update && !local_content_update && !date_or_body_update && !policy.m_forceUpdate &&
@@ -1453,10 +1458,9 @@ namespace {
     result.m_url = incoming.m_url;
     result.m_author = incoming.m_author;
     result.m_score = incoming.m_score;
-    // Preview the SQL timestamp round trip, including invalid dates becoming
-    // the epoch, without changing the incoming date or update detection.
-    result.m_created = TextFactory::parseDateTime(incoming.m_created.toMSecsSinceEpoch());
-    result.m_retrieved = TextFactory::parseDateTime(incoming.m_retrieved.toMSecsSinceEpoch());
+    // Preview the SQL timestamp round trip without changing the incoming date.
+    result.m_created = TextFactory::parseDateTime(articleTimestamp(incoming.m_created));
+    result.m_retrieved = TextFactory::parseDateTime(articleTimestamp(incoming.m_retrieved));
     result.m_contents = incoming.m_contents;
     result.m_enclosures = incoming.m_enclosures;
     result.m_feedId = incoming.m_feedId;
@@ -1549,9 +1553,9 @@ QList<MessageSavePreview> DatabaseQueries::previewMessageUpdates(DatabaseFactory
           result.m_expectedStored.m_retrieved = QDateTime::currentDateTimeUtc();
         }
         result.m_expectedStored.m_created =
-          TextFactory::parseDateTime(result.m_expectedStored.m_created.toMSecsSinceEpoch());
+          TextFactory::parseDateTime(articleTimestamp(result.m_expectedStored.m_created));
         result.m_expectedStored.m_retrieved =
-          TextFactory::parseDateTime(result.m_expectedStored.m_retrieved.toMSecsSinceEpoch());
+          TextFactory::parseDateTime(articleTimestamp(result.m_expectedStored.m_retrieved));
       }
       else if (result.m_hasStoredMessage) {
         result.m_expectedStored = snapshots.value(result.m_id);

@@ -1342,6 +1342,8 @@ void TestDatabaseQueries::previewRoundTripsInvalidDates() {
   const auto report = DatabaseQueries::updateMessages(&m_database, &m_settings, batch, m_feed, false, false);
   QVERIFY2(report.succeeded(), qPrintable(report.m_error));
   const Message stored = storedMessage(id);
+  QCOMPARE(stored.m_created.toMSecsSinceEpoch(), qint64(0));
+  QCOMPARE(stored.m_retrieved.toMSecsSinceEpoch(), qint64(0));
   QCOMPARE(preview.first().m_expectedStored.m_created, stored.m_created);
   QCOMPARE(preview.first().m_expectedStored.m_retrieved, stored.m_retrieved);
 }
