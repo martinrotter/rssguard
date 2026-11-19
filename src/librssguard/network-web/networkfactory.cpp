@@ -49,8 +49,13 @@ QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
     return QDateTime::currentDateTimeUtc().addSecs(seconds <= 0 ? SECS_WHEN_RETRYAFTER_MISSING : seconds);
   }
 
-  return QDateTime::fromString(retry_after_value.simplified().replace(QSL("GMT"), QSL("+0000")),
-                               QSL("ddd, dd MMM yyyy HH:mm:ss tt"));
+  auto value = retry_after_value.simplified();
+  if (value.endsWith(QL1S(" GMT"))) {
+    // Some Qt versions require a numeric offset when parsing RFC 2822 dates.
+    value.chop(3);
+    value += QL1S("+0000");
+  }
+  return QDateTime::fromString(value, Qt::RFC2822Date).toUTC();
 }
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
