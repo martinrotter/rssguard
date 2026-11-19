@@ -124,6 +124,12 @@ if(ENABLE_TESTING)
     network-web/test_httpresponse.cpp
   )
 
+  add_rssguard_test(test_oauthloopback
+    network-web/test_oauthloopback.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/network-web/httpserver.cpp
+  )
+  set_tests_properties(test_oauthloopback PROPERTIES TIMEOUT 60)
+
   # CookieJar and AutoSaver are internal classes without Windows DLL exports.
   add_rssguard_test(test_cookies
     network-web/test_cookies.cpp

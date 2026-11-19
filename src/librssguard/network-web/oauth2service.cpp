@@ -35,6 +35,7 @@
 #include <exception>
 #include <utility>
 
+#include <QCryptographicHash>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -195,11 +196,16 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
   query.addQueryItem(QSL("code"), auth_code);
   query.addQueryItem(QSL("redirect_uri"), m_redirectionHandler->listenAddressPort());
   query.addQueryItem(QSL("grant_type"), m_tokenGrantType);
+  if (m_pkceEnabled && !m_pkceVerifier.isEmpty()) {
+    query.addQueryItem(QSL("code_verifier"), m_pkceVerifier);
+  }
 
   const QString content = query.toString(QUrl::FullyEncoded);
 
   qDebugNN << LOGSEC_OAUTH << "Posting OAuth access token request.";
-  postTokenRequest(network_request, content);
+  if (postTokenRequest(network_request, content)) {
+    m_pkceVerifier.clear();
+  }
 }
 
 void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
@@ -246,19 +252,21 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   m_tokenReply.clear();
   m_tokenRequestRunning = false;
 
-  QByteArray repl = network_reply->readAll();
-  QJsonDocument json_document = QJsonDocument::fromJson(repl);
-  QJsonObject root_obj = json_document.object();
-
-  if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
-    qWarningNN << LOGSEC_OAUTH
-               << "Network error when obtaining token response:" << QUOTE_W_SPACE_DOT(network_reply->error());
-
+  const auto network_error = network_reply->error();
+  const auto root_obj = QJsonDocument::fromJson(network_reply->readAll()).object();
+  const auto fail = [&](const QString& error, const QString& description) {
     m_functorOnLogin = {};
     m_loginFunctorGeneration++;
-    emit tokensRetrieveError(QString(), NetworkFactory::networkErrorText(network_reply->error()));
+    emit tokensRetrieveError(error, description);
+  };
+  network_reply->deleteLater();
+
+  if (network_error != QNetworkReply::NetworkError::NoError) {
+    qWarningNN << LOGSEC_OAUTH << "Network error when obtaining token response:" << QUOTE_W_SPACE_DOT(network_error);
+
+    fail({}, NetworkFactory::networkErrorText(network_error));
   }
-  else if (root_obj.keys().contains(QSL("error"))) {
+  else if (root_obj.contains(QSL("error"))) {
     QString error = root_obj.value(QSL("error")).toString();
     QString error_description = root_obj.value(QSL("error_description")).toString();
 
@@ -266,15 +274,19 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
     logout();
 
-    m_functorOnLogin = {};
-    m_loginFunctorGeneration++;
-    emit tokensRetrieveError(error, error_description);
+    fail(error, error_description);
   }
   else {
-    int expires = root_obj.value(QL1S("expires_in")).toInt();
+    const int expires = root_obj.value(QL1S("expires_in")).toInt();
+    const auto access_token = root_obj.value(QL1S("access_token")).toString();
+    if (access_token.trimmed().isEmpty() || expires <= 0) {
+      qWarningNN << LOGSEC_OAUTH << "OAuth response is missing a usable access token or expiry.";
+      fail({}, tr("The OAuth token response is missing a usable access token or expiry."));
+      return;
+    }
 
     setTokensExpireIn(QDateTime::currentDateTime().addSecs(expires));
-    setAccessToken(root_obj.value(QL1S("access_token")).toString());
+    setAccessToken(access_token);
 
     const QString refresh_token = root_obj.value(QL1S("refresh_token")).toString();
 
@@ -290,8 +302,6 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
 
     scheduleLoginFunctor(functor);
   }
-
-  network_reply->deleteLater();
 }
 
 void OAuth2Service::scheduleLoginFunctor(const std::function<void()>& functor) {
@@ -462,6 +472,7 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
 }
 
 void OAuth2Service::logout(bool stop_redirection_handler) {
+  m_pkceVerifier.clear();
   m_functorOnLogin = {};
   m_loginFunctorGeneration++;
 
@@ -496,8 +507,29 @@ void OAuth2Service::killRefreshTimer() {
   }
 }
 
-void OAuth2Service::retrieveAuthCode() {
+void OAuth2Service::setPkceEnabled(bool enabled) {
+  m_pkceEnabled = enabled;
+  m_pkceVerifier.clear();
+}
+
+QString OAuth2Service::pkceChallenge(const QString& verifier) {
+  return QString::fromLatin1(QCryptographicHash::hash(verifier.toLatin1(), QCryptographicHash::Sha256)
+                               .toBase64(QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals));
+}
+
+QUrl OAuth2Service::createAuthorizationUrl() {
   m_id = QString::number(QRandomGenerator::global()->generate());
+  if (m_pkceEnabled) {
+    const auto random_token = []() {
+      QByteArray random(32, '\0');
+      for (int i = 0; i < random.size(); ++i) {
+        random[i] = char(QRandomGenerator::system()->generate() & 0xff);
+      }
+      return QString::fromLatin1(random.toBase64(QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals));
+    };
+    m_id = random_token();
+    m_pkceVerifier = random_token();
+  }
 
   QUrl auth_url(m_authUrl);
   QUrlQuery query;
@@ -510,8 +542,15 @@ void OAuth2Service::retrieveAuthCode() {
   query.addQueryItem(QSL("prompt"), QSL("consent"));
   query.addQueryItem(QSL("duration"), QSL("permanent"));
   query.addQueryItem(QSL("access_type"), QSL("offline"));
+  if (m_pkceEnabled) {
+    query.addQueryItem(QSL("code_challenge_method"), QSL("S256"));
+    query.addQueryItem(QSL("code_challenge"), pkceChallenge(m_pkceVerifier));
+  }
   auth_url.setQuery(query);
+  return auth_url;
+}
 
+void OAuth2Service::retrieveAuthCode() {
   // We run login URL in external browser, response is caught by light HTTP server.
-  qApp->web()->openUrlInExternalBrowser(auth_url);
+  qApp->web()->openUrlInExternalBrowser(createAuthorizationUrl());
 }

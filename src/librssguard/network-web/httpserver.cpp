@@ -62,6 +62,11 @@ void HttpServer::setListenAddressPort(const QString& full_uri, bool start_handle
                 << QUOTE_W_SPACE_DOT(m_httpServer.errorString());
   }
   else {
+    if (listen_port == 0) {
+      m_listenPort = m_httpServer.serverPort();
+      url.setPort(m_listenPort);
+      m_listenAddressPort = url.toString();
+    }
     qDebugNN << LOGSEC_NETWORK << "OAuth redirect handler IS LISTENING on address"
              << QUOTE_W_SPACE(m_listenAddress.toString()) << "and port" << QUOTE_W_SPACE_DOT(m_listenPort);
   }
