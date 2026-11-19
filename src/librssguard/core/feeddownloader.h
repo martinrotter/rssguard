@@ -34,16 +34,14 @@ class FeedDownloadResults {
 
     void appendUpdatedFeed(Feed* feed, const QList<Message>& updated_unread_msgs);
     void appendErroredFeed(Feed* feed, const QString& error);
-    void clear();
-
-    int feedRequestCount() const;
-    void setFeedRequestCount(int count);
+    void clear(bool update_feed_list);
+    bool updatesFeedListDuringFetching() const;
 
   private:
     QHash<Feed*, QList<Message>> m_updatedFeeds;
     QHash<Feed*, QString> m_erroredFeeds;
     QSet<ServiceRoot*> m_updatedAccounts;
-    int m_feedRequestCount = 0;
+    bool m_updateFeedListDuringFetching = false;
 };
 
 struct FeedUpdateResult {

@@ -571,12 +571,7 @@ void FeedReader::executeNextAutoUpdate() {
 }
 
 void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
-  // NOTE: Keep in sync with the same line in FeedDownloader::updateOneFeed() method.
-  const bool update_feed_list =
-    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
-    updated_feeds.feedRequestCount() <= 25;
-
-  if (!update_feed_list) {
+  if (!updated_feeds.updatesFeedListDuringFetching()) {
     // NOTE: Counts were not updated during feed fetching, update them now.
     for (auto* acc : updated_feeds.updatedAccounts()) {
       acc->updateCounts();

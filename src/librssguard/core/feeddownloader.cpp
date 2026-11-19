@@ -83,7 +83,11 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   m_erroredAccounts.clear();
   {
     QMutexLocker lck(&m_mutexResults);
-    m_results.clear();
+    // Refreshing the tree and counts for each feed is expensive in large batches.
+    const bool update_feed_list =
+      feeds.size() <= 25 &&
+      qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+    m_results.clear(update_feed_list);
   }
   m_feeds.clear();
   m_stopFetching = false;
@@ -232,8 +236,7 @@ FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd)
 
 void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex) {
   const FeedFetchException* fetch_ex = dynamic_cast<const FeedFetchException*>(&ex);
-  const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+  const bool update_feed_list = m_results.updatesFeedListDuringFetching();
 
   if (fetch_ex != nullptr) {
     feed->setStatus(fetch_ex->feedStatus(), fetch_ex->message());
@@ -259,9 +262,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
-  // NOTE: This has negative performance impact when fetching bigger number of feeds.
-  const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+  const bool update_feed_list = m_results.updatesFeedListDuringFetching();
 
   if (checkIfFeedOverloaded(feed)) {
     qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(feed->source())
@@ -559,7 +560,6 @@ void FeedDownloader::finalizeUpdate() {
 
   {
     QMutexLocker lck(&m_mutexResults);
-    m_results.setFeedRequestCount(int(m_feeds.size()));
     results = std::move(m_results);
   }
 
@@ -818,19 +818,15 @@ void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
   m_erroredFeeds.insert(feed, error);
 }
 
-void FeedDownloadResults::clear() {
+void FeedDownloadResults::clear(bool update_feed_list) {
   m_updatedFeeds.clear();
   m_erroredFeeds.clear();
   m_updatedAccounts.clear();
-  m_feedRequestCount = 0;
+  m_updateFeedListDuringFetching = update_feed_list;
 }
 
-int FeedDownloadResults::feedRequestCount() const {
-  return m_feedRequestCount;
-}
-
-void FeedDownloadResults::setFeedRequestCount(int count) {
-  m_feedRequestCount = count;
+bool FeedDownloadResults::updatesFeedListDuringFetching() const {
+  return m_updateFeedListDuringFetching;
 }
 
 const QSet<ServiceRoot*>& FeedDownloadResults::updatedAccounts() const {

@@ -12,6 +12,8 @@
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/unreadnode.h"
 
+#include <atomic>
+#include <functional>
 #include <memory>
 #include <utility>
 
@@ -40,6 +42,55 @@ namespace {
       }
 
       QList<Message> nextFetch;
+  };
+
+  class BatchAccount : public ServiceRoot {
+    public:
+      explicit BatchAccount(const QString& code) : m_code(code) {}
+
+      virtual QString code() const override {
+        return m_code;
+      }
+
+      virtual void aboutToBeginFeedFetching(const QList<Feed*>&,
+                                            const QHash<QString, QHash<BagOfMessages, QStringList>>&,
+                                            const QHash<QString, QStringList>&) override {
+        if (m_beforeFetch) {
+          m_beforeFetch();
+        }
+      }
+
+      virtual QList<Message> obtainNewMessages(Feed* feed,
+                                               const QHash<BagOfMessages, QStringList>&,
+                                               const QHash<QString, QStringList>&) override {
+        Message message;
+        message.m_title = message.m_customId = feed->customId();
+        message.m_created = QDateTime::currentDateTimeUtc();
+        return {message};
+      }
+
+      virtual void updateCounts() override {
+        ++m_recounts;
+        ServiceRoot::updateCounts();
+      }
+
+      std::function<void()> m_beforeFetch;
+      int m_recounts = 0;
+
+    private:
+      QString m_code;
+  };
+
+  class BatchFeed : public Feed {
+    public:
+      explicit BatchFeed(BatchAccount* account) : Feed(account) {}
+
+      virtual void updateCounts() override {
+        ++m_recounts;
+        Feed::updateCounts();
+      }
+
+      int m_recounts = 0;
   };
 
   void setScript(MessageFilter& filter, const QString& body) {
@@ -105,6 +156,8 @@ class TestFilteringResults : public QObject {
     void liveCountsReuseDatabaseReaders();
     void cleanupIsReportedAfterWriting();
     void completedFetchReleasesUnreadResults();
+    void feedBatchUpdatesCountsOnce_data();
+    void feedBatchUpdatesCountsOnce();
     void purgePreviewHasNoStoredDetails();
     void failedReloadClearsPreviousResults();
     void reinsertedArticleUsesReceiptIdentity();
@@ -743,6 +796,128 @@ void TestFilteringResults::completedFetchReleasesUnreadResults() {
   QMetaObject::invokeMethod(reader.feedDownloader(), []() {}, Qt::BlockingQueuedConnection);
   QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
   QVERIFY(enclosure.isNull());
+}
+
+void TestFilteringResults::feedBatchUpdatesCountsOnce_data() {
+  QTest::addColumn<int>("batch_size");
+  QTest::addColumn<bool>("enabled");
+  QTest::addColumn<bool>("change_setting");
+  QTest::addColumn<Feed::Status>("preflight_status");
+  QTest::addColumn<bool>("live_counts");
+
+  QTest::newRow("enabled-at-limit") << 25 << true << false << Feed::Status::Normal << true;
+  QTest::newRow("enabled-above-limit") << 26 << true << false << Feed::Status::Normal << false;
+  QTest::newRow("disabled-at-limit") << 25 << false << false << Feed::Status::Normal << false;
+  QTest::newRow("disabled-above-limit") << 26 << false << false << Feed::Status::Normal << false;
+  QTest::newRow("turn-off-during-batch") << 25 << true << true << Feed::Status::Normal << true;
+  QTest::newRow("turn-on-during-batch") << 25 << false << true << Feed::Status::Normal << false;
+  QTest::newRow("preflight-error-at-limit") << 25 << true << false << Feed::Status::OtherError << true;
+  QTest::newRow("preflight-error-above-limit") << 26 << true << false << Feed::Status::OtherError << false;
+}
+
+void TestFilteringResults::feedBatchUpdatesCountsOnce() {
+  QFETCH(int, batch_size);
+  QFETCH(bool, enabled);
+  QFETCH(bool, change_setting);
+  QFETCH(Feed::Status, preflight_status);
+  QFETCH(bool, live_counts);
+  const bool preflight_error = preflight_status != Feed::Status::Normal;
+  auto* settings = qApp->settings();
+  const auto previous = settings->value(GROUP(Feeds), Feeds::UpdateFeedListDuringFetching);
+  const auto restore_settings = qScopeGuard([&]() {
+    settings->setValue(GROUP(Feeds), Feeds::UpdateFeedListDuringFetching, previous);
+  });
+  settings->setValue(GROUP(Feeds), Feeds::UpdateFeedListDuringFetching, enabled);
+
+  BatchAccount first(QSL("batch-first"));
+  BatchAccount second(QSL("batch-second"));
+  if (change_setting) {
+    first.m_beforeFetch = [&]() {
+      QMetaObject::invokeMethod(
+        qApp,
+        [&]() {
+          settings->setValue(GROUP(Feeds), Feeds::UpdateFeedListDuringFetching, !enabled);
+        },
+        Qt::BlockingQueuedConnection);
+    };
+  }
+  if (preflight_error) {
+    second.m_beforeFetch = []() {
+      throw ApplicationException(QSL("Controlled preflight error."));
+    };
+  }
+
+  QList<Feed*> requested;
+  // Include one more, switched-off feed to verify the limit uses the accepted batch.
+  for (int i = 0; i <= batch_size; ++i) {
+    auto* account = i % 2 == 0 ? &first : &second;
+    auto* feed = new BatchFeed(account);
+    feed->setCustomId(QString::number(i));
+    feed->setTitle(feed->customId());
+    feed->setIsSwitchedOff(i == batch_size);
+    account->appendChild(feed);
+    requested.append(feed);
+  }
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, &first);
+    DatabaseQueries::createOverwriteAccount(db, &second);
+    for (auto* feed : requested) {
+      DatabaseQueries::createOverwriteFeed(db, feed, feed->account()->accountId(), NO_PARENT_CATEGORY);
+    }
+  });
+  const auto remove_accounts = qScopeGuard([&]() {
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      // Fixture accounts were never inserted into the feed model.
+      SqlQuery query(db);
+      query.prepare(QSL("DELETE FROM Accounts WHERE id IN (:first, :second);"));
+      query.bindValue(QSL(":first"), first.accountId());
+      query.bindValue(QSL(":second"), second.accountId());
+      query.exec();
+    });
+  });
+
+  std::atomic<int> feed_notifications{0};
+  FeedReader reader(qApp);
+  for (auto* timer : reader.findChildren<QTimer*>(QString(), Qt::FindDirectChildrenOnly)) {
+    timer->stop();
+  }
+  const auto stop_reader = qScopeGuard([&reader]() {
+    reader.quit();
+  });
+  for (auto* account : {&first, &second}) {
+    connect(
+      account,
+      &ServiceRoot::dataChanged,
+      &reader,
+      [&]() {
+        ++feed_notifications;
+      },
+      Qt::DirectConnection);
+  }
+  QSignalSpy finished(&reader, &FeedReader::feedUpdatesFinished);
+  reader.updateFeeds(requested);
+  QTRY_COMPARE(finished.size(), 1);
+
+  const int failed_feeds = preflight_error ? batch_size / 2 : 0;
+  const int successful_feeds = batch_size - failed_feeds;
+  QCOMPARE(feed_notifications.load(), live_counts ? successful_feeds * 2 + failed_feeds : 0);
+  QCOMPARE(first.m_recounts, live_counts ? 0 : 1);
+  QCOMPARE(second.m_recounts, live_counts || preflight_error ? 0 : 1);
+  QCOMPARE(first.unreadNode()->countOfAllMessages(), (batch_size + 1) / 2);
+  QCOMPARE(second.unreadNode()->countOfAllMessages(), preflight_error ? 0 : batch_size / 2);
+  for (int i = 0; i < requested.size(); ++i) {
+    auto* feed = static_cast<BatchFeed*>(requested.at(i));
+    const bool fetched = i < batch_size && !(preflight_error && i % 2 == 1);
+    if (i < batch_size) {
+      QCOMPARE(feed->status(), fetched ? Feed::Status::NewMessages : preflight_status);
+      if (!fetched) {
+        QVERIFY(feed->statusString().contains(QSL("Controlled preflight error.")));
+      }
+    }
+    QCOMPARE(feed->m_recounts, live_counts && fetched ? 1 : 0);
+    QCOMPARE(feed->countOfAllMessages(), fetched ? 1 : 0);
+    QCOMPARE(feed->countOfUnreadMessages(), fetched ? 1 : 0);
+  }
 }
 
 void TestFilteringResults::liveCountsReuseDatabaseReaders() {
