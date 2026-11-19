@@ -15,6 +15,9 @@ function(add_rssguard_test TEST_TARGET)
   if(WIN32)
     set(TEST_EXTRA_PATH "")
     set(TEST_PLATFORM "offscreen")
+    if(QT_VERSION_MAJOR EQUAL 5 AND NOT TARGET Qt5::QOffscreenIntegrationPlugin AND TARGET Qt5::QMinimalIntegrationPlugin)
+      set(TEST_PLATFORM "minimal")
+    endif()
 
     if(TEST_TARGET STREQUAL "test_zoom" AND QT_VERSION_MAJOR EQUAL 5)
       # Qt 5's Windows WebEngine profile cannot initialize with the offscreen plugin.
@@ -123,6 +126,21 @@ if(ENABLE_TESTING)
   add_rssguard_test(test_httpresponse
     network-web/test_httpresponse.cpp
   )
+
+  foreach(fixture current previous mismatched missing)
+    add_library(test_plugin_${fixture} MODULE plugins/fixture.cpp)
+    target_link_libraries(test_plugin_${fixture} PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+    target_include_directories(test_plugin_${fixture} PRIVATE ${CMAKE_SOURCE_DIR}/src/librssguard)
+    target_compile_definitions(test_plugin_${fixture} PRIVATE RSSGUARD_DLLSPEC=
+      TEST_PLUGIN_METADATA="${CMAKE_CURRENT_SOURCE_DIR}/plugins/${fixture}.json")
+  endforeach()
+  add_rssguard_test(test_pluginfactory miscellaneous/test_pluginfactory.cpp)
+  target_compile_definitions(test_pluginfactory PRIVATE
+    TEST_PLUGIN_CURRENT="$<TARGET_FILE:test_plugin_current>"
+    TEST_PLUGIN_PREVIOUS="$<TARGET_FILE:test_plugin_previous>"
+    TEST_PLUGIN_MISMATCHED="$<TARGET_FILE:test_plugin_mismatched>"
+    TEST_PLUGIN_MISSING="$<TARGET_FILE:test_plugin_missing>")
+  add_dependencies(test_pluginfactory test_plugin_current test_plugin_previous test_plugin_mismatched test_plugin_missing)
 
   add_rssguard_test(test_oauthloopback
     network-web/test_oauthloopback.cpp

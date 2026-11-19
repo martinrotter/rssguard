@@ -10,3 +10,10 @@ A simple `C++` API allows you to create new service plugins. All base API classe
 The API is reasonably simple to understand, but relatively extensive. Sane defaults are used where it makes sense.
 
 A plugin must be compiled as a separate library, which can then be loaded dynamically by RSS Guard. A good example of a plugin can be seen [here](https://github.com/martinrotter/rssguard/tree/devbuild5/src/librssguard-greader).
+
+Service plugin metadata must include an integer `rssguardPluginApiVersion` matching
+`RSSGUARD_PLUGIN_API_VERSION` in `definitions.h`. RSS Guard checks it before constructing a plugin.
+Rebuild external plugins for version 2. `TabContent::webBrowser()` now returns the active browser
+or `nullptr`. Interactive scroll commands check visibility. Version 2 removes
+`scrollableWebBrowser()` and the empty `WebViewer::reloadNetworkSettings()` hook and adds
+opt-in PKCE support to `OAuth2Service`.
