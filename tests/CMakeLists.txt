@@ -237,6 +237,23 @@ if(ENABLE_TESTING)
   )
   target_include_directories(test_articlepreview PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_articlepreview PROPERTIES TIMEOUT 60)
+  if(WEB_ARTICLE_VIEWER_WEBENGINE)
+    if(WIN32)
+      add_test(NAME test_articlepreview_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+          "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+          $<TARGET_FILE:test_articlepreview> defaultBrowserWarmup)
+    else()
+      add_test(NAME test_articlepreview_webengine
+        COMMAND ${CMAKE_COMMAND} -E env
+          "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+          $<TARGET_FILE:test_articlepreview> defaultBrowserWarmup)
+    endif()
+    set_tests_properties(test_articlepreview_webengine PROPERTIES
+      ENVIRONMENT "RSSGUARD_TEST_WEBENGINE=1;QT_OPENGL=software;QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu"
+      TIMEOUT 120)
+  endif()
 
   add_rssguard_test(test_filtermatchmode gui/test_filtermatchmode.cpp)
   target_include_directories(test_filtermatchmode PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)

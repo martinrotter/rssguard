@@ -6,7 +6,6 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/memorydiagnostics.h"
@@ -196,10 +195,7 @@ int main(int argc, char* argv[]) {
     application.showSplashMessage(Application::tr("Spinning up QtWebEngine-based browser..."));
 
     // Initialize the WebEngine compositor while the splash screen still covers the main window.
-    main_window.tabWidget()
-      ->feedMessageViewer()
-      ->webBrowser()
-      ->setHtml(QSL("<!DOCTYPE html><html><body></body></html>"));
+    main_window.tabWidget()->feedMessageViewer()->warmUpBrowser();
   }
 #endif
 

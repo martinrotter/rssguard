@@ -3,11 +3,7 @@
 #include "gui/settings/settingsnetwork.h"
 
 #include "gui/dialogs/filedialog.h"
-#include "gui/dialogs/formmain.h"
-#include "gui/feedmessageviewer.h"
 #include "gui/reusable/networkproxydetails.h"
-#include "gui/webbrowser.h"
-#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -103,7 +99,6 @@ void SettingsNetwork::saveSettings() {
 
   qApp->web()->updateProxy();
   qApp->web()->cookieJar()->updateSettings();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser()->viewer()->reloadNetworkSettings();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   settings()->setValue(GROUP(Web), Web::WebEngineChromiumFlags, m_ui->m_txtWebEngineFlags->toPlainText());

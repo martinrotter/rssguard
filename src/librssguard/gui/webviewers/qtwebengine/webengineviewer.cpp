@@ -314,8 +314,6 @@ void WebEngineViewer::findText(const QString& text, bool backwards) {
   QWebEngineView::findText(text, backwards ? QWebEnginePage::FindFlag::FindBackward : QWebEnginePage::FindFlag{});
 }
 
-void WebEngineViewer::reloadNetworkSettings() {}
-
 void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* root, Feed* feed) {
   m_selectedItem = root;
   m_feed = feed;

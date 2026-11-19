@@ -336,8 +336,6 @@ QSize TextBrowserViewer::sizeHint() const {
   return doc_size;
 }
 
-void TextBrowserViewer::reloadNetworkSettings() {}
-
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   m_browser = browser;
 

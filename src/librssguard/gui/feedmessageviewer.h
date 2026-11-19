@@ -28,8 +28,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     explicit FeedMessageViewer(QWidget* parent = nullptr);
     virtual ~FeedMessageViewer();
 
-    virtual WebBrowser* webBrowser() const;
-    WebBrowser* scrollableWebBrowser() const override;
+    virtual WebBrowser* webBrowser() const override;
+    void warmUpBrowser();
 
     FeedsView* feedsView() const;
     MessagesView* messagesView() const;
