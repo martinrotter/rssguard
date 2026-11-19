@@ -79,7 +79,7 @@ class FeedDownloader : public QObject {
     bool checkIfFeedOverloaded(Feed* feed) const;
 
     void skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex);
-    void updateOneFeed(ServiceRoot* acc,
+    bool updateOneFeed(ServiceRoot* acc,
                        Feed* feed,
                        const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                        const QHash<QString, QStringList>& tagged_messages);

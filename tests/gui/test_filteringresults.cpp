@@ -20,11 +20,13 @@
 
 #include <QDir>
 #include <QScopeGuard>
+#include <QSemaphore>
 #include <QSettings>
 #include <QSignalSpy>
 #include <QSortFilterProxyModel>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QThread>
 #include <QTimer>
 #include <QTreeView>
 
@@ -36,12 +38,25 @@ namespace {
         return QSL("filtering-results-test");
       }
 
+      void aboutToBeginFeedFetching(const QList<Feed*>&,
+                                    const QHash<QString, QHash<BagOfMessages, QStringList>>&,
+                                    const QHash<QString, QStringList>&) override {
+        if (beforeFetch) {
+          beforeFetch();
+        }
+      }
+
       QList<Message> obtainNewMessages(Feed*,
                                        const QHash<BagOfMessages, QStringList>&,
                                        const QHash<QString, QStringList>&) override {
+        if (duringFetch) {
+          duringFetch();
+        }
         return std::exchange(nextFetch, {});
       }
 
+      std::function<void()> beforeFetch;
+      std::function<void()> duringFetch;
       QList<Message> nextFetch;
   };
 
@@ -157,6 +172,7 @@ class TestFilteringResults : public QObject {
     void liveCountsReuseDatabaseReaders();
     void cleanupIsReportedAfterWriting();
     void completedFetchReleasesUnreadResults();
+    void stoppedFetchPreservesStatusAndTimestamp();
     void feedBatchUpdatesCountsOnce_data();
     void feedBatchUpdatesCountsOnce();
     void purgePreviewHasNoStoredDetails();
@@ -797,6 +813,47 @@ void TestFilteringResults::completedFetchReleasesUnreadResults() {
   QMetaObject::invokeMethod(reader.feedDownloader(), []() {}, Qt::BlockingQueuedConnection);
   QCoreApplication::sendPostedEvents(nullptr, QEvent::MetaCall);
   QVERIFY(enclosure.isNull());
+}
+
+void TestFilteringResults::stoppedFetchPreservesStatusAndTimestamp() {
+  QSemaphore fetching;
+  QSemaphore resume_fetch;
+  QObject* downloader_barrier = nullptr;
+  m_account->beforeFetch = [&]() {
+    downloader_barrier = new QObject();
+    connect(QThread::currentThread(), &QThread::finished, downloader_barrier, &QObject::deleteLater);
+  };
+  m_account->duringFetch = [&]() {
+    fetching.release();
+    resume_fetch.acquire();
+  };
+  const auto last_update = QDateTime::currentDateTimeUtc().addSecs(-3600);
+  m_feed->setLastUpdated(last_update);
+  m_feed->setStatus(Feed::Status::NetworkError, QSL("prior error"));
+
+  FeedReader reader(qApp);
+  for (auto* timer : reader.findChildren<QTimer*>(QString(), Qt::FindDirectChildrenOnly)) {
+    timer->stop();
+  }
+  const auto cleanup = qScopeGuard([&]() {
+    resume_fetch.release();
+    reader.quit();
+    m_account->beforeFetch = {};
+    m_account->duringFetch = {};
+  });
+  QSignalSpy finished(&reader, &FeedReader::feedUpdatesFinished);
+  reader.updateFeeds({m_feed});
+  QTRY_VERIFY(fetching.available() > 0);
+  QCOMPARE(m_feed->status(), Feed::Status::Fetching);
+
+  reader.stopRunningFeedUpdate();
+  // The queued Stop call runs on this thread before the barrier.
+  QVERIFY(QMetaObject::invokeMethod(downloader_barrier, []() {}, Qt::BlockingQueuedConnection));
+  resume_fetch.release();
+  QTRY_COMPARE(finished.size(), 1);
+  QCOMPARE(m_feed->status(), Feed::Status::NetworkError);
+  QCOMPARE(m_feed->statusString(), QSL("prior error"));
+  QCOMPARE(m_feed->lastUpdated(), last_update);
 }
 
 void TestFilteringResults::feedBatchUpdatesCountsOnce_data() {

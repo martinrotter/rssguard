@@ -26,6 +26,7 @@
 #include <QBitArray>
 #include <QDebug>
 #include <QElapsedTimer>
+#include <QScopeGuard>
 #include <QString>
 #include <QtConcurrentMap>
 
@@ -210,6 +211,7 @@ bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
 
 FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
   if (!m_stopFetching) {
+    bool completed = true;
     if (const auto failure = m_erroredAccounts.value(fd.account)) {
       try {
         std::rethrow_exception(failure);
@@ -221,10 +223,12 @@ FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd)
       }
     }
     else {
-      updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
+      completed = updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
     }
 
-    fd.feed->setLastUpdated(QDateTime::currentDateTimeUtc());
+    if (completed) {
+      fd.feed->setLastUpdated(QDateTime::currentDateTimeUtc());
+    }
   }
 
   FeedUpdateResult res;
@@ -258,7 +262,7 @@ void FeedDownloader::stopRunningUpdate() {
   }
 }
 
-void FeedDownloader::updateOneFeed(ServiceRoot* acc,
+bool FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
@@ -275,9 +279,19 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       acc->itemChanged({feed});
     }
 
-    return;
+    return true;
   }
 
+  const auto previous_status = feed->status();
+  const auto previous_status_text = feed->statusString();
+  const auto restore_status = qScopeGuard([&]() {
+    if (feed->status() == Feed::Status::Fetching) {
+      feed->setStatus(previous_status, previous_status_text);
+      if (update_feed_list) {
+        acc->itemChanged({feed});
+      }
+    }
+  });
   feed->setStatus(Feed::Status::Fetching);
 
   if (update_feed_list) {
@@ -305,7 +319,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     clearFeedOverload(feed);
 
     if (m_stopFetching) {
-      return;
+      return false;
     }
 
     bool fix_future_datetimes =
@@ -322,7 +336,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     QMutexLocker lck(&m_mutexDb);
 
     if (m_stopFetching) {
-      return;
+      return false;
     }
 
     QList<QPointer<MessageFilter>> feed_filters = feed->messageFilters();
@@ -360,7 +374,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
       for (int i = 0; i < msgs.size(); i++) {
         if (m_stopFetching) {
-          return;
+          return false;
         }
 
         Message msg_original(msgs[i]);
@@ -374,7 +388,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         for (int j = 0; j < feed_filters_enabled.size(); j++) {
           if (m_stopFetching) {
-            return;
+            return false;
           }
 
           QPointer<MessageFilter> filter = feed_filters_enabled.at(j);
@@ -449,7 +463,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     removeTooOldMessages(feed, msgs);
 
     if (m_stopFetching) {
-      return;
+      return false;
     }
 
     tmr.restart();
@@ -551,6 +565,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count "
            << m_watcherLookup->progressValue() + 1 << "/" << m_feeds.size() << " (id of feed is " << feed->id() << ").";
+  return true;
 }
 
 void FeedDownloader::finalizeUpdate() {
