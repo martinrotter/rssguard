@@ -8,6 +8,8 @@
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
+#include <utility>
+
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include <QWebEngineCookieStore>
 #include <QWebEnginePage>
@@ -15,6 +17,7 @@
 #endif
 
 #include <QDir>
+#include <QMap>
 #include <QNetworkCookie>
 #include <QSignalSpy>
 #include <QTcpServer>
@@ -32,9 +35,23 @@ class TestCookies : public QObject {
     void respectsDownloadPolicy();
     void preservesExplicitCookieHeader();
     void completesLocalReplyOnce();
+    void sendsCustomMethod_data();
+    void sendsCustomMethod();
+    void returnsRedirectResponse_data();
+    void returnsRedirectResponse();
+    void rejectsInvalidMethods_data();
+    void rejectsInvalidMethods();
+    void redirectLimitReturnsError();
     void preservesBrowserCookiesWhenSettingsAreReapplied();
 
   private:
+    struct Request {
+        QByteArray m_method;
+        QByteArray m_path;
+        QMap<QByteArray, QByteArray> m_headers;
+        QByteArray m_body;
+    };
+
     QString url(const QString& path) const {
       return QSL("http://127.0.0.1:%1%2").arg(m_server.serverPort()).arg(path);
     }
@@ -62,7 +79,28 @@ class TestCookies : public QObject {
       qApp->web()->cookieJar()->updateSettings();
     }
 
+    NetworkResult request(const QString& path,
+                          const QByteArray& body,
+                          QNetworkAccessManager::Operation operation,
+                          const NetworkFactory::HttpRequestOptions& options,
+                          const QList<QPair<QByteArray, QByteArray>>& headers = {}) {
+      return NetworkFactory::performNetworkOperation(url(path),
+                                                     3000,
+                                                     body,
+                                                     m_body,
+                                                     operation,
+                                                     headers,
+                                                     false,
+                                                     {},
+                                                     {},
+                                                     QNetworkProxy::NoProxy,
+                                                     NetworkFactory::Http2Status::Disabled,
+                                                     NetworkFactory::CookiePolicy::IgnoreCookies,
+                                                     options);
+    }
+
     QTcpServer m_server;
+    QList<Request> m_requests;
     QByteArray m_body;
 };
 
@@ -89,19 +127,32 @@ void TestCookies::initTestCase() {
     while (m_server.hasPendingConnections()) {
       auto* socket = m_server.nextPendingConnection();
       connect(socket, &QTcpSocket::disconnected, socket, &QObject::deleteLater);
-      connect(socket, &QTcpSocket::readyRead, this, [socket, request = QByteArray()]() mutable {
+      connect(socket, &QTcpSocket::readyRead, this, [this, socket, request = QByteArray()]() mutable {
         request += socket->readAll();
-        if (!request.contains("\r\n\r\n")) {
+        const auto headers_end = request.indexOf("\r\n\r\n");
+        if (headers_end < 0) {
           return;
         }
 
-        const QByteArray path = request.split(' ').value(1);
-        QByteArray cookies;
-        for (const auto& line : request.split('\n')) {
-          if (line.toLower().startsWith("cookie:")) {
-            cookies = line.mid(7).trimmed();
+        const auto lines = request.left(headers_end).split('\n');
+        const auto request_line = lines.first().split(' ');
+        Request incoming{request_line.value(0), request_line.value(1), {}, {}};
+        for (const auto& line : lines) {
+          const auto separator = line.indexOf(':');
+          if (separator > 0) {
+            incoming.m_headers.insert(line.left(separator).toLower(), line.mid(separator + 1).trimmed());
           }
         }
+        const auto content_length = incoming.m_headers.value("content-length").toInt();
+        const auto body_start = headers_end + 4;
+        if (request.size() - body_start < content_length) {
+          return;
+        }
+        incoming.m_body = request.mid(body_start, content_length);
+        m_requests.append(incoming);
+
+        const auto& path = incoming.m_path;
+        QByteArray response_body = incoming.m_headers.value("cookie");
         QByteArray response = "HTTP/1.1 200 OK\r\n";
         if (path == "/seed") {
           response += "Set-Cookie: stored=login; Path=/\r\n";
@@ -109,8 +160,18 @@ void TestCookies::initTestCase() {
         else if (path == "/redirect") {
           response = "HTTP/1.1 302 Found\r\nLocation: /echo\r\nSet-Cookie: redirected=yes; Path=/\r\n";
         }
-        socket->write(response + "Content-Length: " + QByteArray::number(cookies.size()) +
-                      "\r\nConnection: close\r\n\r\n" + cookies);
+        else if (path == "/redirect-method") {
+          response = "HTTP/1.1 307 Temporary Redirect\r\nLocation: /method\r\nX-Response: original\r\n";
+          response_body = "redirect body";
+        }
+        else if (path == "/redirect-loop") {
+          response = "HTTP/1.1 307 Temporary Redirect\r\nLocation: /redirect-loop\r\n";
+        }
+        else if (path == "/method") {
+          response_body = "updated";
+        }
+        socket->write(response + "Content-Length: " + QByteArray::number(response_body.size()) +
+                      "\r\nConnection: close\r\n\r\n" + response_body);
         socket->disconnectFromHost();
       });
     }
@@ -119,8 +180,85 @@ void TestCookies::initTestCase() {
 }
 
 void TestCookies::init() {
+  m_requests.clear();
   setGlobalIgnoring(false);
   qApp->web()->cookieJar()->clearCookies();
+}
+
+void TestCookies::sendsCustomMethod_data() {
+  QTest::addColumn<QString>("path");
+  QTest::addColumn<int>("requests");
+  QTest::newRow("direct") << QSL("/method") << 1;
+  QTest::newRow("follow-307") << QSL("/redirect-method") << 2;
+}
+
+void TestCookies::sendsCustomMethod() {
+  QFETCH(QString, path);
+  QFETCH(int, requests);
+  const QByteArray body(R"({"summary":"Updated"})");
+  const auto response = request(path,
+                                body,
+                                QNetworkAccessManager::CustomOperation,
+                                {"PATCH"},
+                                {{"Content-Type", "application/json"}, {"If-Match", "\"fixture-etag\""}});
+  QCOMPARE(response.m_networkError, QNetworkReply::NoError);
+  QCOMPARE(response.m_httpCode, 200);
+  QCOMPARE(response.m_url, QUrl(url(QSL("/method"))));
+  QCOMPARE(m_body, QByteArray("updated"));
+  QCOMPARE(m_requests.size(), requests);
+  QCOMPARE(m_requests.last().m_path, QByteArray("/method"));
+  for (const auto& received : std::as_const(m_requests)) {
+    QCOMPARE(received.m_method, QByteArray("PATCH"));
+    QCOMPARE(received.m_body, body);
+    QCOMPARE(received.m_headers.value("content-type"), QByteArray("application/json"));
+    QCOMPARE(received.m_headers.value("if-match"), QByteArray("\"fixture-etag\""));
+  }
+}
+
+void TestCookies::returnsRedirectResponse_data() {
+  QTest::addColumn<bool>("custom_method");
+  QTest::newRow("get") << false;
+  QTest::newRow("patch") << true;
+}
+
+void TestCookies::returnsRedirectResponse() {
+  QFETCH(bool, custom_method);
+  const auto path = QSL("/redirect-method");
+  const auto operation = custom_method ? QNetworkAccessManager::CustomOperation : QNetworkAccessManager::GetOperation;
+  const QByteArray method = custom_method ? "PATCH" : "GET";
+  const auto response = request(path,
+                                custom_method ? QByteArray("{}") : QByteArray(),
+                                operation,
+                                {custom_method ? method : QByteArray(), NetworkFactory::RedirectPolicy::ReturnResponse},
+                                {{"Authorization", "Bearer fixture-token"}});
+  QCOMPARE(response.m_networkError, QNetworkReply::NoError);
+  QCOMPARE(response.m_httpCode, 307);
+  QCOMPARE(response.m_url, QUrl(url(path)));
+  QCOMPARE(response.m_headers.value(QSL("location")), QSL("/method"));
+  QCOMPARE(response.m_headers.value(QSL("x-response")), QSL("original"));
+  QCOMPARE(m_body, QByteArray("redirect body"));
+  QCOMPARE(m_requests.size(), 1);
+  QCOMPARE(m_requests.first().m_path, QByteArray("/redirect-method"));
+  QCOMPARE(m_requests.first().m_method, method);
+}
+
+void TestCookies::rejectsInvalidMethods_data() {
+  QTest::addColumn<QByteArray>("method");
+  QTest::newRow("empty") << QByteArray();
+  QTest::newRow("contains-whitespace") << QByteArray("PATCH GET");
+}
+
+void TestCookies::rejectsInvalidMethods() {
+  QFETCH(QByteArray, method);
+  const auto response = request(QSL("/method"), {}, QNetworkAccessManager::CustomOperation, {method});
+  QCOMPARE(response.m_networkError, QNetworkReply::ProtocolInvalidOperationError);
+  QCOMPARE(response.m_httpCode, 0);
+  QVERIFY(m_body.isEmpty());
+  QVERIFY(m_requests.isEmpty());
+}
+
+void TestCookies::redirectLimitReturnsError() {
+  QCOMPARE(fetch(QSL("/redirect-loop")).m_networkError, QNetworkReply::TooManyRedirectsError);
 }
 
 void TestCookies::respectsDownloadPolicy_data() {

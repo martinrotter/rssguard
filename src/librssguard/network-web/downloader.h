@@ -45,6 +45,15 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     QNetworkProxy proxy() const;
     void setProxy(const QNetworkProxy& proxy);
 
+    void manipulateData(const QString& url,
+                        QNetworkAccessManager::Operation operation,
+                        const QByteArray& data,
+                        int timeout,
+                        bool protected_contents,
+                        const QString& username,
+                        const QString& password,
+                        const NetworkFactory::HttpRequestOptions& options);
+
   public slots:
     void cancel();
 
@@ -110,6 +119,8 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     void setCustomPropsToReply(QNetworkReply* reply);
     void watchReply(QNetworkReply* reply);
     void finishReply(QNetworkReply* reply);
+    void startRequest(const QNetworkRequest& request, QNetworkAccessManager::Operation operation);
+    void completeWithError(const QUrl& url, QNetworkReply::NetworkError error, int http_code = 0);
     QList<HttpResponse> decodeMultipartAnswer(QNetworkReply* reply);
     void manipulateData(const QString& url,
                         QNetworkAccessManager::Operation operation,
@@ -118,14 +129,10 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
                         int timeout = DOWNLOAD_TIMEOUT,
                         bool protected_contents = false,
                         const QString& username = QString(),
-                        const QString& password = QString());
+                        const QString& password = QString(),
+                        const NetworkFactory::HttpRequestOptions& options = {});
     void resetOutputDevice();
     void writeReplyDataToOutputDevice(QNetworkReply* reply);
-    void runDeleteRequest(const QNetworkRequest& request);
-    void runPutRequest(const QNetworkRequest& request, const QByteArray& data);
-    void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);
-    void runPostRequest(const QNetworkRequest& request, const QByteArray& data);
-    void runGetRequest(const QNetworkRequest& request);
     void runGeminiRequest(const QUrl& url, int timeout);
 
   private:

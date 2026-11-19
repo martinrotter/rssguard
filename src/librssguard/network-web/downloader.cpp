@@ -161,9 +161,20 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
+  manipulateData(url, operation, data, timeout, protected_contents, username, password, {});
+}
+
+void Downloader::manipulateData(const QString& url,
+                                QNetworkAccessManager::Operation operation,
+                                const QByteArray& data,
+                                int timeout,
+                                bool protected_contents,
+                                const QString& username,
+                                const QString& password,
+                                const NetworkFactory::HttpRequestOptions& options) {
   resetOutputDevice();
 
-  manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password);
+  manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password, options);
 }
 
 void Downloader::geminiRedirect(const QUrl& uri, bool is_permanent) {
@@ -184,6 +195,10 @@ void Downloader::runGeminiRequest(const QUrl& url, int timeout) {
   m_geminiClient->startRequest(url, GeminiClient::RequestOptions::IgnoreTlsErrors);
 }
 
+namespace {
+  constexpr auto RETURN_REDIRECT_RESPONSE = QNetworkRequest::User;
+}
+
 void Downloader::manipulateData(const QString& url,
                                 QNetworkAccessManager::Operation operation,
                                 const QByteArray& data,
@@ -191,52 +206,44 @@ void Downloader::manipulateData(const QString& url,
                                 int timeout,
                                 bool protected_contents,
                                 const QString& username,
-                                const QString& password) {
-  QString sanitized_url = NetworkFactory::sanitizeUrl(url);
+                                const QString& password,
+                                const NetworkFactory::HttpRequestOptions& options) {
+  const auto sanitized_url = NetworkFactory::sanitizeUrl(url);
 
-  if (m_geminiClient->supportsUrl(sanitized_url)) {
-    QUrl gemini_url = QUrl::fromUserInput(sanitized_url);
-
-    runGeminiRequest(gemini_url, timeout);
+  if (operation != QNetworkAccessManager::CustomOperation && m_geminiClient->supportsUrl(sanitized_url)) {
+    runGeminiRequest(QUrl::fromUserInput(sanitized_url), timeout);
+    return;
   }
-  else {
-    QNetworkRequest request;
-    QHashIterator<QByteArray, QByteArray> i(m_customHeaders);
 
-    while (i.hasNext()) {
-      i.next();
-      request.setRawHeader(i.key(), i.value());
-    }
+  m_inputData = data;
+  m_inputMultipartData = multipart_data;
 
-    m_inputData = data;
-    m_inputMultipartData = multipart_data;
-
-    // Set url for this request and fire it up.
-    request.setTransferTimeout(timeout);
-    request.setUrl(qApp->web()->processFeedUriScheme(sanitized_url));
-
-    m_targetProtected = protected_contents;
-    m_targetUsername = username;
-    m_targetPassword = password;
-
-    if (operation == QNetworkAccessManager::Operation::PostOperation) {
-      if (m_inputMultipartData == nullptr) {
-        runPostRequest(request, m_inputData);
-      }
-      else {
-        runPostRequest(request, m_inputMultipartData);
-      }
-    }
-    else if (operation == QNetworkAccessManager::GetOperation) {
-      runGetRequest(request);
-    }
-    else if (operation == QNetworkAccessManager::PutOperation) {
-      runPutRequest(request, m_inputData);
-    }
-    else if (operation == QNetworkAccessManager::DeleteOperation) {
-      runDeleteRequest(request);
-    }
+  const QUrl target(qApp->web()->processFeedUriScheme(sanitized_url));
+  QNetworkRequest request(target);
+  for (auto it = m_customHeaders.constBegin(); it != m_customHeaders.constEnd(); ++it) {
+    request.setRawHeader(it.key(), it.value());
   }
+  request.setTransferTimeout(timeout);
+  if (options.m_redirectPolicy == NetworkFactory::RedirectPolicy::ReturnResponse) {
+    request.setAttribute(RETURN_REDIRECT_RESPONSE, true);
+  }
+
+  if (operation == QNetworkAccessManager::CustomOperation) {
+    static const QRegularExpression http_token(QSL("\\A[!#$%&'*+.^_`|~0-9A-Za-z-]+\\z"));
+    const auto scheme = target.scheme();
+    if ((scheme != QL1S("http") && scheme != QL1S("https")) ||
+        !http_token.match(QString::fromLatin1(options.m_customMethod)).hasMatch()) {
+      completeWithError(target, QNetworkReply::ProtocolInvalidOperationError);
+      return;
+    }
+    request.setAttribute(QNetworkRequest::CustomVerbAttribute, options.m_customMethod);
+  }
+
+  m_targetProtected = protected_contents;
+  m_targetUsername = username;
+  m_targetPassword = password;
+
+  startRequest(request, operation);
 }
 
 static int numberOfRedirections(QNetworkReply* reply) {
@@ -266,18 +273,17 @@ void Downloader::finishReply(QNetworkReply* reply) {
     return;
   }
 
-  QNetworkAccessManager::Operation reply_operation = reply->operation();
-
+  auto request = reply->request();
   QUrl original_url = reply->property("original_url").toUrl();
 
   if (!original_url.isValid()) {
-    original_url = reply->request().url();
+    original_url = request.url();
   }
 
   // In this phase, some part of downloading process is completed.
   QUrl redirection_url = reply->attribute(QNetworkRequest::Attribute::RedirectionTargetAttribute).toUrl();
 
-  if (redirection_url.isValid()) {
+  if (redirection_url.isValid() && !request.attribute(RETURN_REDIRECT_RESPONSE).toBool()) {
     auto redir_number = numberOfRedirections(reply);
 
     qDebugNN << LOGSEC_NETWORK << "This network request was redirected" << QUOTE_W_SPACE(redir_number) << "times.";
@@ -287,14 +293,12 @@ void Downloader::finishReply(QNetworkReply* reply) {
     if (redir_number > MAX_NUMBER_OF_REDIRECTIONS) {
       qDebugNN << LOGSEC_NETWORK << "Aborting request due too many redirections.";
 
-      emit completed(redirection_url, QNetworkReply::NetworkError::TooManyRedirectsError, 404, {});
+      completeWithError(redirection_url, QNetworkReply::TooManyRedirectsError, 404);
       return;
     }
 
     // Communication indicates that HTTP redirection is needed.
     // Setup redirection URL and download again.
-    QNetworkRequest request = reply->request();
-
     qWarningNN << LOGSEC_NETWORK << "Network layer indicates HTTP redirection is needed.";
     qWarningNN << LOGSEC_NETWORK << "Origin URL:" << QUOTE_W_SPACE_DOT(request.url().toString());
     qWarningNN << LOGSEC_NETWORK << "Proposed redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
@@ -316,23 +320,7 @@ void Downloader::finishReply(QNetworkReply* reply) {
     m_activeReply->deleteLater();
     m_activeReply = nullptr;
 
-    if (reply_operation == QNetworkAccessManager::GetOperation) {
-      runGetRequest(request);
-    }
-    else if (reply_operation == QNetworkAccessManager::PostOperation) {
-      if (m_inputMultipartData == nullptr) {
-        runPostRequest(request, m_inputData);
-      }
-      else {
-        runPostRequest(request, m_inputMultipartData);
-      }
-    }
-    else if (reply_operation == QNetworkAccessManager::PutOperation) {
-      runPutRequest(request, m_inputData);
-    }
-    else if (reply_operation == QNetworkAccessManager::DeleteOperation) {
-      runDeleteRequest(request);
-    }
+    startRequest(request, reply->operation());
 
     if (m_activeReply != nullptr) {
       m_activeReply->setProperty("original_url", original_url);
@@ -388,10 +376,31 @@ void Downloader::finishReply(QNetworkReply* reply) {
 
     if (m_inputMultipartData != nullptr) {
       m_inputMultipartData->deleteLater();
+      m_inputMultipartData = nullptr;
     }
 
     emit completed(original_url, m_lastOutputError, m_lastHttpStatusCode, m_lastOutputData);
   }
+}
+
+void Downloader::completeWithError(const QUrl& url, QNetworkReply::NetworkError error, int http_code) {
+  if (m_activeReply != nullptr) {
+    m_activeReply->deleteLater();
+    m_activeReply = nullptr;
+  }
+  if (m_inputMultipartData != nullptr) {
+    m_inputMultipartData->deleteLater();
+    m_inputMultipartData = nullptr;
+  }
+  m_lastOutputData.clear();
+  m_lastOutputMultipartData.clear();
+  m_lastContentType.clear();
+  m_lastCookies.clear();
+  m_lastHeaders.clear();
+  m_lastUrl = url;
+  m_lastOutputError = error;
+  m_lastHttpStatusCode = http_code;
+  emit completed(url, error, http_code);
 }
 
 void Downloader::cancel() {
@@ -530,24 +539,31 @@ void Downloader::watchReply(QNetworkReply* reply) {
   }
 }
 
-void Downloader::runDeleteRequest(const QNetworkRequest& request) {
-  watchReply(m_downloadManager->deleteResource(request));
-}
-
-void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray& data) {
-  watchReply(m_downloadManager->put(request, data));
-}
-
-void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data) {
-  watchReply(m_downloadManager->post(request, multipart_data));
-}
-
-void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray& data) {
-  watchReply(m_downloadManager->post(request, data));
-}
-
-void Downloader::runGetRequest(const QNetworkRequest& request) {
-  watchReply(m_downloadManager->get(request));
+void Downloader::startRequest(const QNetworkRequest& request, QNetworkAccessManager::Operation operation) {
+  QNetworkReply* reply;
+  switch (operation) {
+    case QNetworkAccessManager::GetOperation:
+      reply = m_downloadManager->get(request);
+      break;
+    case QNetworkAccessManager::PostOperation:
+      reply = m_inputMultipartData == nullptr ? m_downloadManager->post(request, m_inputData)
+                                              : m_downloadManager->post(request, m_inputMultipartData);
+      break;
+    case QNetworkAccessManager::PutOperation:
+      reply = m_downloadManager->put(request, m_inputData);
+      break;
+    case QNetworkAccessManager::DeleteOperation:
+      reply = m_downloadManager->deleteResource(request);
+      break;
+    case QNetworkAccessManager::CustomOperation:
+      reply = m_downloadManager->sendCustomRequest(
+        request, request.attribute(QNetworkRequest::CustomVerbAttribute).toByteArray(), m_inputData);
+      break;
+    default:
+      completeWithError(request.url(), QNetworkReply::ProtocolInvalidOperationError);
+      return;
+  }
+  watchReply(reply);
 }
 
 QUrl Downloader::lastUrl() const {

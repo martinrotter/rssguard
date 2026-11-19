@@ -54,6 +54,17 @@ class RSSGUARD_DLLSPEC NetworkFactory {
       IgnoreCookies = 1
     };
 
+    enum class RedirectPolicy {
+      Follow,
+      ReturnResponse // Return the original redirect response without following its Location.
+    };
+
+    // Options for requests with a byte-array body. The method is used with CustomOperation.
+    struct HttpRequestOptions {
+        QByteArray m_customMethod;
+        RedirectPolicy m_redirectPolicy = RedirectPolicy::Follow;
+    };
+
     static QDateTime extractRetryAfter(const QString& retry_after_value);
 
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
@@ -99,6 +110,19 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                    QNetworkProxy::ProxyType::DefaultProxy,
                                                  Http2Status http2_status = Http2Status::DontSet,
                                                  CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
+    static NetworkResult performNetworkOperation(const QString& url,
+                                                 int timeout,
+                                                 const QByteArray& input_data,
+                                                 QByteArray& output,
+                                                 QNetworkAccessManager::Operation operation,
+                                                 const QList<QPair<QByteArray, QByteArray>>& additional_headers,
+                                                 bool protected_contents,
+                                                 const QString& username,
+                                                 const QString& password,
+                                                 const QNetworkProxy& custom_proxy,
+                                                 Http2Status http2_status,
+                                                 CookiePolicy cookie_policy,
+                                                 const HttpRequestOptions& options);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  QHttpMultiPart* input_data,

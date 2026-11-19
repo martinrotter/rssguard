@@ -132,6 +132,7 @@ QPair<QByteArray, QByteArray> NetworkFactory::generateBasicAuthHeader(NetworkAut
 QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code) {
   switch (error_code) {
     case QNetworkReply::ProtocolUnknownError:
+    case QNetworkReply::ProtocolInvalidOperationError:
     case QNetworkReply::ProtocolFailure:
 
       //: Network status.
@@ -395,6 +396,34 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       const QNetworkProxy& custom_proxy,
                                                       Http2Status http2_status,
                                                       CookiePolicy cookie_policy) {
+  return performNetworkOperation(url,
+                                 timeout,
+                                 input_data,
+                                 output,
+                                 operation,
+                                 additional_headers,
+                                 protected_contents,
+                                 username,
+                                 password,
+                                 custom_proxy,
+                                 http2_status,
+                                 cookie_policy,
+                                 {});
+}
+
+NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
+                                                      int timeout,
+                                                      const QByteArray& input_data,
+                                                      QByteArray& output,
+                                                      QNetworkAccessManager::Operation operation,
+                                                      const QList<QPair<QByteArray, QByteArray>>& additional_headers,
+                                                      bool protected_contents,
+                                                      const QString& username,
+                                                      const QString& password,
+                                                      const QNetworkProxy& custom_proxy,
+                                                      Http2Status http2_status,
+                                                      CookiePolicy cookie_policy,
+                                                      const HttpRequestOptions& options) {
   Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
   NetworkResult result;
 
@@ -410,7 +439,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
 
   downloader.setHttp2Status(http2_status);
   waitForDownload(downloader, [&]() {
-    downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
+    downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password, options);
   });
 
   output = downloader.lastOutputData();
