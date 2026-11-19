@@ -102,15 +102,14 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     void geminiFinished(const QByteArray& data, const QString& mime);
     void geminiError(GeminiClient::NetworkError error, const QString& reason);
 
-    // Called when current reply is processed.
-    void finished();
-
     // Called when progress of downloaded file changes.
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
     void readyReadInternal();
 
   private:
     void setCustomPropsToReply(QNetworkReply* reply);
+    void watchReply(QNetworkReply* reply);
+    void finishReply(QNetworkReply* reply);
     QList<HttpResponse> decodeMultipartAnswer(QNetworkReply* reply);
     void manipulateData(const QString& url,
                         QNetworkAccessManager::Operation operation,

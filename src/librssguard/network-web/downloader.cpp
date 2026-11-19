@@ -261,8 +261,10 @@ static bool hasSameOrigin(const QUrl& first, const QUrl& second) {
          effectivePort(first) == effectivePort(second);
 }
 
-void Downloader::finished() {
-  auto* reply = qobject_cast<QNetworkReply*>(sender());
+void Downloader::finishReply(QNetworkReply* reply) {
+  if (reply != m_activeReply) {
+    return;
+  }
 
   QNetworkAccessManager::Operation reply_operation = reply->operation();
 
@@ -512,44 +514,40 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
   return parts;
 }
 
+void Downloader::watchReply(QNetworkReply* reply) {
+  m_activeReply = reply;
+  setCustomPropsToReply(reply);
+  connect(reply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(reply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
+  connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+    finishReply(reply);
+  });
+  if (reply->isFinished()) {
+    // Maintain asynchronous delivery and let the redirect caller set reply properties first.
+    QTimer::singleShot(0, reply, [this, reply]() {
+      finishReply(reply);
+    });
+  }
+}
+
 void Downloader::runDeleteRequest(const QNetworkRequest& request) {
-  m_activeReply = m_downloadManager->deleteResource(request);
-  setCustomPropsToReply(m_activeReply);
-  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
-  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
-  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+  watchReply(m_downloadManager->deleteResource(request));
 }
 
 void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray& data) {
-  m_activeReply = m_downloadManager->put(request, data);
-  setCustomPropsToReply(m_activeReply);
-  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
-  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
-  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+  watchReply(m_downloadManager->put(request, data));
 }
 
 void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data) {
-  m_activeReply = m_downloadManager->post(request, multipart_data);
-  setCustomPropsToReply(m_activeReply);
-  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
-  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
-  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+  watchReply(m_downloadManager->post(request, multipart_data));
 }
 
 void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray& data) {
-  m_activeReply = m_downloadManager->post(request, data);
-  setCustomPropsToReply(m_activeReply);
-  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
-  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
-  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+  watchReply(m_downloadManager->post(request, data));
 }
 
 void Downloader::runGetRequest(const QNetworkRequest& request) {
-  m_activeReply = m_downloadManager->get(request);
-  setCustomPropsToReply(m_activeReply);
-  connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
-  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
-  connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
+  watchReply(m_downloadManager->get(request));
 }
 
 QUrl Downloader::lastUrl() const {

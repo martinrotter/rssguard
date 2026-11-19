@@ -4,6 +4,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "network-web/cookiejar.h"
+#include "network-web/downloader.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
@@ -30,6 +31,7 @@ class TestCookies : public QObject {
     void respectsDownloadPolicy_data();
     void respectsDownloadPolicy();
     void preservesExplicitCookieHeader();
+    void completesLocalReplyOnce();
     void preservesBrowserCookiesWhenSettingsAreReapplied();
 
   private:
@@ -63,6 +65,24 @@ class TestCookies : public QObject {
     QTcpServer m_server;
     QByteArray m_body;
 };
+
+void TestCookies::completesLocalReplyOnce() {
+  const auto url = QSL("data:text/plain,local-reply");
+  Downloader downloader;
+  QSignalSpy completed(&downloader, &Downloader::completed);
+  downloader.downloadFile(url);
+  QTRY_COMPARE(completed.size(), 1);
+  QCoreApplication::processEvents();
+  QCOMPARE(completed.size(), 1);
+  QCOMPARE(downloader.lastOutputData(), QByteArray("local-reply"));
+
+  QByteArray body;
+  const auto response = NetworkFactory::performNetworkOperation(
+    url, 3000, QByteArray(), body, QNetworkAccessManager::GetOperation);
+  QCOMPARE(response.m_networkError, QNetworkReply::NoError);
+  QCOMPARE(response.m_url, QUrl(url));
+  QCOMPARE(body, QByteArray("local-reply"));
+}
 
 void TestCookies::initTestCase() {
   connect(&m_server, &QTcpServer::newConnection, this, [this]() {

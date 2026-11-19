@@ -33,6 +33,20 @@ namespace {
 
     return NetworkFactory::CookiePolicy::UseSharedCookieJar;
   }
+
+  template <typename Start>
+  void waitForDownload(Downloader& downloader, Start start) {
+    QEventLoop loop;
+    bool completed = false;
+    QObject::connect(&downloader, &Downloader::completed, &loop, [&]() {
+      completed = true;
+      loop.quit();
+    });
+    start();
+    if (!completed) {
+      loop.exec();
+    }
+  }
 } // namespace
 
 QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
@@ -382,11 +396,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       Http2Status http2_status,
                                                       CookiePolicy cookie_policy) {
   Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
-  QEventLoop loop;
   NetworkResult result;
-
-  // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   for (const auto& header : additional_headers) {
     if (!header.first.isEmpty()) {
@@ -399,8 +409,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   }
 
   downloader.setHttp2Status(http2_status);
-  downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
-  loop.exec();
+  waitForDownload(downloader, [&]() {
+    downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
+  });
 
   output = downloader.lastOutputData();
 
@@ -429,11 +440,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       Http2Status http2_status,
                                                       CookiePolicy cookie_policy) {
   Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
-  QEventLoop loop;
   NetworkResult result;
-
-  // We need to quit event loop when the download finishes.
-  QObject::connect(&downloader, &Downloader::completed, &loop, &QEventLoop::quit);
 
   for (const auto& header : additional_headers) {
     if (!header.first.isEmpty()) {
@@ -446,8 +453,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
   }
 
   downloader.setHttp2Status(http2_status);
-  downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
-  loop.exec();
+  waitForDownload(downloader, [&]() {
+    downloader.manipulateData(url, operation, input_data, timeout, protected_contents, username, password);
+  });
 
   output = downloader.lastOutputMultipartData();
 
