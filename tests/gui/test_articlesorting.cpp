@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "core/feedsmodel.h"
+#include "core/messagesmodelsqllayer.h"
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -98,6 +99,7 @@ class TestArticleSorting : public QObject {
     void cleanupTestCase();
     void completeSortingSurvivesRestore_data();
     void completeSortingSurvivesRestore();
+    void sqlSortIgnoresUnmappedColumn();
     void invalidSortingFallsBack_data();
     void invalidSortingFallsBack();
     void sortingValidationIsIndependentOfLayout();
@@ -236,6 +238,14 @@ void TestArticleSorting::completeSortingSurvivesRestore() {
   viewer()->saveSize();
   viewer()->loadSize();
   QCOMPARE(sortStates(headerState(view())), sorts);
+}
+
+void TestArticleSorting::sqlSortIgnoresUnmappedColumn() {
+  MessagesModelSqlLayer sql;
+  sql.addSortState(MSG_MDL_TITLE_INDEX, Qt::DescendingOrder, true);
+  sql.addSortState(999, Qt::AscendingOrder, true);
+  QCOMPARE(sql.sortColumnAndOrders().m_columns, QList<int>{MSG_MDL_TITLE_INDEX});
+  QCOMPARE(sql.sortColumnAndOrders().m_orders, QList<Qt::SortOrder>{Qt::DescendingOrder});
 }
 
 void TestArticleSorting::invalidSortingFallsBack_data() {
@@ -458,7 +468,9 @@ void TestArticleSorting::sortingSurvivesRestartWithoutSelectingFeed() {
 }
 
 int main(int argc, char* argv[]) {
-  qputenv("QT_QPA_PLATFORM", "offscreen");
+  if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
+    qputenv("QT_QPA_PLATFORM", "offscreen");
+  }
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   QTemporaryDir directory;
   if (!directory.isValid()) {

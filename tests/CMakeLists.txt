@@ -283,7 +283,10 @@ if(ENABLE_TESTING)
   target_include_directories(test_filtermatchmode PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_filtermatchmode PROPERTIES TIMEOUT 120)
 
-  add_rssguard_test(test_articlesorting gui/test_articlesorting.cpp)
+  add_rssguard_test(test_articlesorting
+    gui/test_articlesorting.cpp
+    ${CMAKE_SOURCE_DIR}/src/librssguard/core/messagesmodelsqllayer.cpp
+  )
   target_include_directories(test_articlesorting PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
   set_tests_properties(test_articlesorting PROPERTIES TIMEOUT 120)
 
