@@ -4,10 +4,13 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "network-web/httpserver.h"
+#include "network-web/networkfactory.h"
 #include "network-web/oauth2service.h"
 
 #include <QNetworkProxy>
 #include <QSignalSpy>
+#include <QTcpServer>
+#include <QTcpSocket>
 #include <QTemporaryDir>
 #include <QTest>
 #include <QUrlQuery>
@@ -15,6 +18,50 @@
 class TestServer : public HttpServer {
   protected:
     void answerClient(QTcpSocket*, const HttpRequest&) override {}
+};
+
+class TokenEndpoint : public QTcpServer {
+  public:
+    TokenEndpoint() {
+      connect(this, &QTcpServer::newConnection, this, [this]() {
+        auto* socket = nextPendingConnection();
+        connect(socket, &QTcpSocket::disconnected, socket, &QTcpSocket::deleteLater);
+        connect(socket, &QTcpSocket::readyRead, socket, [this, socket, request = QByteArray()]() mutable {
+          request += socket->readAll();
+          const auto headers_end = request.indexOf("\r\n\r\n");
+          if (headers_end < 0) {
+            return;
+          }
+          int content_length = -1;
+          for (const auto& header : request.left(headers_end).split('\n')) {
+            if (header.toLower().startsWith("content-length:")) {
+              content_length = header.mid(15).trimmed().toInt();
+            }
+          }
+          if (content_length < 0 || request.size() - headers_end - 4 < content_length) {
+            return;
+          }
+          m_request = request;
+          if (!m_stall) {
+            socket->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nConnection: close\r\nContent-Length: " +
+                          QByteArray::number(m_body.size()) + "\r\n\r\n" + m_body);
+            socket->disconnectFromHost();
+          }
+        });
+      });
+    }
+
+    QString tokenUrl() const {
+      return QSL("http://127.0.0.1:%1/token").arg(serverPort());
+    }
+
+    QUrlQuery form() const {
+      return QUrlQuery(QString::fromUtf8(m_request.mid(m_request.indexOf("\r\n\r\n") + 4)));
+    }
+
+    QByteArray m_request;
+    QByteArray m_body = R"({"access_token":"fixture-access","refresh_token":"fixture-refresh","expires_in":3600})";
+    bool m_stall = false;
 };
 
 class TestOAuthLoopback : public QObject {
@@ -50,41 +97,17 @@ class TestOAuthLoopback : public QObject {
     }
 
     void tokenExchange();
+    void tokenRequestTimeout_data();
+    void tokenRequestTimeout();
+    void tokenRequestProxyCanBeReset();
 };
 
 void TestOAuthLoopback::tokenExchange() {
   QFETCH(bool, pkce);
-  QTcpServer endpoint;
+  TokenEndpoint endpoint;
   QVERIFY(endpoint.listen(QHostAddress::LocalHost));
-  QByteArray received;
-  QByteArray body = R"({"access_token":"fixture-access","refresh_token":"fixture-refresh","expires_in":3600})";
-  connect(&endpoint, &QTcpServer::newConnection, &endpoint, [&]() {
-    auto* socket = endpoint.nextPendingConnection();
-    connect(socket, &QTcpSocket::readyRead, socket, [&, socket]() {
-      received += socket->readAll();
-      const int header_end = received.indexOf("\r\n\r\n");
-      if (header_end < 0) {
-        return;
-      }
-      const auto headers = received.left(header_end).split('\n');
-      int content_length = -1;
-      for (const auto& header : headers) {
-        if (header.toLower().startsWith("content-length:")) {
-          content_length = header.mid(15).trimmed().toInt();
-        }
-      }
-      if (content_length < 0 || received.size() < header_end + 4 + content_length) {
-        return;
-      }
-      socket->write("HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nConnection: close\r\nContent-Length: " +
-                    QByteArray::number(body.size()) + "\r\n\r\n" + body);
-      socket->disconnectFromHost();
-    });
-    connect(socket, &QTcpSocket::disconnected, socket, &QTcpSocket::deleteLater);
-  });
-  const auto token_url = QSL("http://127.0.0.1:%1/token").arg(endpoint.serverPort());
   OAuth2Service oauth(QSL("https://example.invalid/authorize"),
-                      token_url,
+                      endpoint.tokenUrl(),
                       QSL("fixture-client"),
                       {},
                       QSL("fixture-scope"));
@@ -101,7 +124,7 @@ void TestOAuthLoopback::tokenExchange() {
   QSignalSpy tokens(&oauth, &OAuth2Service::tokensRetrieved);
   oauth.retrieveAccessToken(QSL("fixture-code"));
   QTRY_COMPARE_WITH_TIMEOUT(tokens.size(), 1, 5000);
-  const QUrlQuery form(QString::fromUtf8(received.mid(received.indexOf("\r\n\r\n") + 4)));
+  const auto form = endpoint.form();
   QCOMPARE(form.queryItemValue(QSL("code")), QSL("fixture-code"));
   QCOMPARE(form.queryItemValue(QSL("redirect_uri")), second.queryItemValue(QSL("redirect_uri")));
   QCOMPARE(form.hasQueryItem(QSL("code_verifier")), pkce);
@@ -123,9 +146,8 @@ void TestOAuthLoopback::tokenExchange() {
     R"({"access_token":"replacement","expires_in":"3600"})",
   };
   for (const auto& reply : malformed) {
-    received.clear();
     failures.clear();
-    body = reply;
+    endpoint.m_body = reply;
     oauth.refreshAccessToken();
     QTRY_COMPARE_WITH_TIMEOUT(failures.size(), 1, 5000);
     QCOMPARE(tokens.size(), 1);
@@ -134,16 +156,93 @@ void TestOAuthLoopback::tokenExchange() {
     QCOMPARE(oauth.tokensExpireIn(), expiry);
   }
 
-  received.clear();
   failures.clear();
-  body = R"({"access_token":"replacement","expires_in":7200})";
+  endpoint.m_body = R"({"access_token":"replacement","expires_in":7200})";
   oauth.refreshAccessToken();
   QTRY_COMPARE_WITH_TIMEOUT(tokens.size(), 2, 5000);
-  const QUrlQuery refresh(QString::fromUtf8(received.mid(received.indexOf("\r\n\r\n") + 4)));
+  const auto refresh = endpoint.form();
   QVERIFY(!refresh.hasQueryItem(QSL("code_verifier")));
   QCOMPARE(oauth.accessToken(), QSL("replacement"));
   QCOMPARE(oauth.refreshToken(), QSL("fixture-refresh"));
   QCOMPARE(tokens.last().at(1).toString(), QSL("fixture-refresh"));
+  QVERIFY(failures.isEmpty());
+}
+
+void TestOAuthLoopback::tokenRequestTimeout_data() {
+  QTest::addColumn<bool>("refresh");
+  QTest::newRow("exchange") << false;
+  QTest::newRow("refresh") << true;
+}
+
+void TestOAuthLoopback::tokenRequestTimeout() {
+  QFETCH(bool, refresh);
+  TokenEndpoint endpoint;
+  QVERIFY(endpoint.listen(QHostAddress::LocalHost));
+  endpoint.m_stall = true;
+  OAuth2Service oauth(QSL("https://example.invalid/authorize"), endpoint.tokenUrl(), QSL("fixture-client"), {}, {});
+  oauth.setTokenRequestTimeout(500);
+  const auto expiry = QDateTime::currentDateTime().addSecs(3600);
+  oauth.setAccessToken(QSL("previous-access"));
+  oauth.setRefreshToken(QSL("previous-refresh"));
+  oauth.setTokensExpireIn(expiry);
+  QSignalSpy tokens(&oauth, &OAuth2Service::tokensRetrieved);
+  QSignalSpy failures(&oauth, &OAuth2Service::tokensRetrieveError);
+  const auto request_tokens = [&](const QString& auth_code) {
+    if (refresh) {
+      oauth.refreshAccessToken();
+    }
+    else {
+      oauth.retrieveAccessToken(auth_code);
+    }
+  };
+
+  request_tokens(QSL("first-code"));
+  QTRY_VERIFY_WITH_TIMEOUT(!endpoint.m_request.isEmpty(), 5000);
+  QCOMPARE(endpoint.form().queryItemValue(QSL("grant_type")), refresh ? QSL("refresh_token") : QSL("authorization_code"));
+  QTRY_COMPARE_WITH_TIMEOUT(failures.size(), 1, 5000);
+  QCOMPARE(failures.first().at(1).toString(), NetworkFactory::networkErrorText(QNetworkReply::TimeoutError));
+  QVERIFY(tokens.isEmpty());
+  QCOMPARE(oauth.accessToken(), QSL("previous-access"));
+  QCOMPARE(oauth.refreshToken(), QSL("previous-refresh"));
+  QCOMPARE(oauth.tokensExpireIn(), expiry);
+
+  endpoint.m_request.clear();
+  endpoint.m_stall = false;
+  oauth.setTokenRequestTimeout(0);
+  request_tokens(QSL("retry-code"));
+  QTRY_COMPARE_WITH_TIMEOUT(tokens.size(), 1, 5000);
+  QCOMPARE(failures.size(), 1);
+  QCOMPARE(oauth.accessToken(), QSL("fixture-access"));
+  QCOMPARE(oauth.refreshToken(), QSL("fixture-refresh"));
+  if (refresh) {
+    QCOMPARE(endpoint.form().queryItemValue(QSL("refresh_token")), QSL("previous-refresh"));
+  }
+  else {
+    QCOMPARE(endpoint.form().queryItemValue(QSL("code")), QSL("retry-code"));
+  }
+}
+
+void TestOAuthLoopback::tokenRequestProxyCanBeReset() {
+  TokenEndpoint origin;
+  TokenEndpoint proxy;
+  QVERIFY(origin.listen(QHostAddress::LocalHost));
+  QVERIFY(proxy.listen(QHostAddress::LocalHost));
+  OAuth2Service oauth(QSL("https://example.invalid/authorize"), origin.tokenUrl(), QSL("fixture-client"), {}, {});
+  QSignalSpy tokens(&oauth, &OAuth2Service::tokensRetrieved);
+  QSignalSpy failures(&oauth, &OAuth2Service::tokensRetrieveError);
+
+  oauth.setTokenRequestProxy(QNetworkProxy(QNetworkProxy::HttpProxy, QSL("127.0.0.1"), proxy.serverPort()));
+  oauth.refreshAccessToken(QSL("proxy-refresh"));
+  QTRY_COMPARE_WITH_TIMEOUT(tokens.size(), 1, 5000);
+  QVERIFY(origin.m_request.isEmpty());
+  QCOMPARE(proxy.m_request.split('\n').first().trimmed(), "POST " + origin.tokenUrl().toUtf8() + " HTTP/1.1");
+  QCOMPARE(proxy.form().queryItemValue(QSL("refresh_token")), QSL("proxy-refresh"));
+
+  oauth.setTokenRequestProxy(QNetworkProxy::DefaultProxy);
+  oauth.refreshAccessToken(QSL("direct-refresh"));
+  QTRY_COMPARE_WITH_TIMEOUT(tokens.size(), 2, 5000);
+  QCOMPARE(origin.m_request.split('\n').first().trimmed(), QByteArray("POST /token HTTP/1.1"));
+  QCOMPARE(origin.form().queryItemValue(QSL("refresh_token")), QSL("direct-refresh"));
   QVERIFY(failures.isEmpty());
 }
 

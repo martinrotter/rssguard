@@ -75,6 +75,11 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     QUrl createAuthorizationUrl();
     static QString pkceChallenge(const QString& verifier);
 
+    // Deadline for a token POST. Defaults to two minutes. Zero disables the deadline.
+    void setTokenRequestTimeout(int timeout_ms);
+    // Applies to token POSTs. DefaultProxy restores the application's network settings.
+    void setTokenRequestProxy(const QNetworkProxy& proxy);
+
     QDateTime tokensExpireIn() const;
     void setTokensExpireIn(const QDateTime& tokens_expire_in);
 

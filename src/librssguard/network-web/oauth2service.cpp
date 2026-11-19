@@ -39,12 +39,19 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QRandomGenerator>
 #include <QSystemTrayIcon>
 #include <QTimer>
 #include <QUrlQuery>
+
+namespace {
+  constexpr int DEFAULT_TOKEN_REQUEST_TIMEOUT = 120000;
+  constexpr char TOKEN_REQUEST_TIMEOUT[] = "rssguardOAuthTokenRequestTimeout";
+  constexpr char TOKEN_REQUEST_TIMED_OUT[] = "rssguardOAuthTokenRequestTimedOut";
+} // namespace
 
 OAuth2Service::OAuth2Service(const QString& auth_url,
                              const QString& token_url,
@@ -252,8 +259,12 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   m_tokenReply.clear();
   m_tokenRequestRunning = false;
 
-  const auto network_error = network_reply->error();
-  const auto root_obj = QJsonDocument::fromJson(network_reply->readAll()).object();
+  const auto network_error = network_reply->property(TOKEN_REQUEST_TIMED_OUT).toBool()
+                               ? QNetworkReply::TimeoutError
+                               : network_reply->error();
+  const auto root_obj = network_error == QNetworkReply::NoError
+                          ? QJsonDocument::fromJson(network_reply->readAll()).object()
+                          : QJsonObject();
   const auto fail = [&](const QString& error, const QString& description) {
     m_functorOnLogin = {};
     m_loginFunctorGeneration++;
@@ -318,6 +329,19 @@ void OAuth2Service::scheduleLoginFunctor(const std::function<void()>& functor) {
   });
 }
 
+void OAuth2Service::setTokenRequestTimeout(int timeout_ms) {
+  setProperty(TOKEN_REQUEST_TIMEOUT, timeout_ms);
+}
+
+void OAuth2Service::setTokenRequestProxy(const QNetworkProxy& proxy) {
+  if (proxy.type() == QNetworkProxy::DefaultProxy) {
+    m_networkManager.loadSettings();
+  }
+  else {
+    m_networkManager.setProxy(proxy);
+  }
+}
+
 bool OAuth2Service::postTokenRequest(const QNetworkRequest& request, const QString& content) {
   if (m_tokenRequestRunning) {
     qWarningNN << LOGSEC_OAUTH << "Token request is already running, ignoring duplicate request.";
@@ -325,7 +349,19 @@ bool OAuth2Service::postTokenRequest(const QNetworkRequest& request, const QStri
   }
 
   m_tokenRequestRunning = true;
-  m_tokenReply = m_networkManager.post(request, content.toUtf8());
+  auto* reply = m_networkManager.post(request, content.toUtf8());
+  m_tokenReply = reply;
+
+  const auto timeout = property(TOKEN_REQUEST_TIMEOUT);
+  const int timeout_ms = timeout.isValid() ? timeout.toInt() : DEFAULT_TOKEN_REQUEST_TIMEOUT;
+  if (timeout_ms > 0) {
+    QTimer::singleShot(timeout_ms, Qt::PreciseTimer, reply, [this, reply]() {
+      if (m_tokenReply == reply && !reply->isFinished()) {
+        reply->setProperty(TOKEN_REQUEST_TIMED_OUT, true);
+        reply->abort();
+      }
+    });
+  }
 
   return true;
 }
