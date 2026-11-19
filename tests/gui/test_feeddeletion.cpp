@@ -66,6 +66,7 @@ class TestFeedDeletion : public QObject {
     void copiedFeedPreservesStatusAndCounts();
     void deleteMultipleFeeds_data();
     void deleteMultipleFeeds();
+    void delayedExpansionIgnoresRemovedItem();
     void cleanupTestCase();
 
   private:
@@ -218,6 +219,24 @@ void TestFeedDeletion::deleteMultipleFeeds() {
   QCOMPARE(inconsistentModelWarnings.load(), 0);
 }
 
+void TestFeedDeletion::delayedExpansionIgnoresRemovedItem() {
+  auto* source = qApp->feedReader()->feedsModel();
+  auto* view = m_window->tabWidget()->feedMessageViewer()->feedsView();
+  auto* account = m_accounts.value(1);
+  auto* folder = account->getSubTree(RootItem::Kind::Category).value(0);
+  QVERIFY(folder != nullptr);
+  const auto index = source->indexForItem(folder);
+  QVERIFY(index.isValid());
+
+  QVERIFY(QMetaObject::invokeMethod(view, "reloadItemExpandState", Qt::DirectConnection, Q_ARG(QModelIndex, index)));
+  QPointer<RootItem> removed(folder);
+  source->removeItem(folder, false);
+  QVERIFY(removed.isNull());
+  QCOMPARE(inconsistentModelWarnings.load(), 0);
+  QVERIFY(QMetaObject::invokeMethod(view, "reloadDelayedExpansions", Qt::DirectConnection));
+  QCOMPARE(inconsistentModelWarnings.load(), 0);
+}
+
 void TestFeedDeletion::cleanupTestCase() {
   if (m_window != nullptr) {
     // Deliver hide notifications while the main window is still fully alive.
@@ -229,7 +248,9 @@ void TestFeedDeletion::cleanupTestCase() {
 }
 
 int main(int argc, char* argv[]) {
-  qputenv("QT_QPA_PLATFORM", "offscreen");
+  if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORM")) {
+    qputenv("QT_QPA_PLATFORM", "offscreen");
+  }
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   QTemporaryDir directory;
   if (!directory.isValid()) {
