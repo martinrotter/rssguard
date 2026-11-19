@@ -2,6 +2,7 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/messagepreviewer.h"
 #include "gui/tabwidget.h"
 #include "gui/webbrowser.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
@@ -46,7 +47,19 @@ namespace {
         return;
       }
 
-      WebBrowser* browser = qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser();
+      auto* feed_viewer = qApp->mainForm()->tabWidget()->feedMessageViewer();
+      auto* preview = feed_viewer->messagesBrowser();
+
+      // A fresh profile opens on item details. Reset the preview to select its built-in browser.
+      preview->clear();
+      auto* browser = feed_viewer->webBrowser();
+      if (browser == nullptr) {
+        std::fprintf(stderr, "The packaged article preview has no browser after reset.\n");
+        QCoreApplication::exit(EXIT_FAILURE);
+        return;
+      }
+      preview->show();
+
       const QString html = QStringLiteral("<!doctype html><html><body><article><h1>%1</h1>"
                                           "<p>A local article verifies the packaged viewer without network access.</p>"
                                           "</article></body></html>").arg(marker);
