@@ -698,34 +698,34 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="368"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>グローバル設定を使用していますが、記事のグローバル自動取得は無効です</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="391"/>
       <source>no errors</source>
       <translation>エラーなし</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="397"/>
       <source>authentication error</source>
       <translation>認証エラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="403"/>
       <source>network error</source>
       <translation>ネットワーク エラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="352"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>記事の自動取得を使用しない</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="364"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="363"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -733,7 +733,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -741,37 +741,37 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="395"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="394"/>
       <source>has new articles</source>
       <translation>新しい記事があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="400"/>
       <source>SQL database error</source>
       <translation>SQL データベースエラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="406"/>
       <source>parsing error</source>
       <translation>解析エラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="410"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
       <translation>記事が含まれていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="413"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
       <source>article filtering error</source>
       <translation>記事フィルタリングエラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="416"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="415"/>
       <source>error</source>
       <translation>error</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="494"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="493"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -787,7 +787,7 @@ Item custom ID: %5</source>
   <context>
     <name>FeedDownloader</name>
     <message>
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="271"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="276"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
       <translation>ネットワークへのリクエストが多すぎるため、フィードがネットワーククールダウンモードになっています</translation>
     </message>
@@ -885,12 +885,12 @@ Item custom ID: %5</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="591"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="586"/>
       <source>Some feeds have errors</source>
       <translation>一部のフィードにエラーがあります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="592"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="587"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>一部のフィードで、記事の取得時にエラーが発生しました</translation>
     </message>
@@ -2874,12 +2874,12 @@ Attachments supplied by the feed are separate from the webpage and might not app
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="423"/>
       <source>No possible actions</source>
       <translation>可能なアクションはありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="382"/>
       <source>No recycle bin</source>
       <translation>ごみ箱は空です</translation>
     </message>
@@ -3240,7 +3240,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
       <source>Add new folder</source>
       <translation>新しいフォルダを追加</translation>
     </message>
@@ -3621,72 +3621,72 @@ Attachments supplied by the feed are separate from the webpage and might not app
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="338"/>
       <source>Add new feed</source>
       <translation>新しいフィードを追加</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="389"/>
       <source>No actions possible</source>
       <translation>実行可能なアクションはありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="182"/>
       <source>Cannot cleanup database</source>
       <translation>データベースをクリーンアップできません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="177"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="183"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>別の重要なアクションが実行中のため、データベースをクリーンアップできません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="468"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
       <source>Stopping feed fetching</source>
       <translation>フィードの取得を停止する</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="498"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="505"/>
       <source>Play in media player</source>
       <translation>メディアプレーヤーで再生</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="499"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="506"/>
       <source>(not supported)</source>
       <translation>(サポートされていません)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="575"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="582"/>
       <source>Close opened modal dialogs first.</source>
       <translation>まず開いているモーダルダイアログを閉じます</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
       <source>Cookies deleted</source>
       <translation>Cookie が削除されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
       <source>Stored cookies were deleted.</source>
       <translation>保存された Cookie が削除されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="892"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="899"/>
       <source>Skin reloaded</source>
       <translation>スキンを再読み込みしました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="900"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>この機能はスキンのデバッグ専用です。すべてを正しく読み込むには、アプリケーションを再起動してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="463"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="470"/>
       <source>Fetching common data</source>
       <translation>共通データの取得中</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="574"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="581"/>
       <source>Close dialogs</source>
       <translation>ダイアログを閉じる</translation>
     </message>
@@ -6095,12 +6095,12 @@ Login tokens expiration: %2</source>
       <translation>すべてのラベルを表示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="298"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="305"/>
       <source>Fetching failed</source>
       <translation>取得に失敗しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="306"/>
       <source>Article cannot be fetched: %1.</source>
       <translation>記事を取得できません: %1</translation>
     </message>
@@ -6952,89 +6952,89 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>NetworkFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="119"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="139"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
       <translation>プロトコルエラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="127"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
       <translation>ホストが存在しません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="137"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="157"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>接続が拒否されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="162"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
       <translation>接続がタイムアウトしました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="167"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
       <translation>SSL ハンドシェイクに失敗しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="153"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="173"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>プロキシサーバー接続が拒否されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="158"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="178"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
       <translation>一時的な障害</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="163"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="183"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
       <translation>認証に失敗しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="168"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="188"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
       <translation>プロキシの認証が必要です</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="173"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="193"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
       <translation>プロキシのサーバーが見つかりません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="188"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="208"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
       <translation>コンテンツが存在しません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="178"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="198"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
       <translation>エラーなし</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="122"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
       <source>access to content was denied</source>
       <translation>コンテンツへのアクセスが拒否されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="131"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="151"/>
       <source>connection timed out or was cancelled</source>
       <translation>接続がタイムアウトまたはキャンセルされました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="183"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="203"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
       <translation>不明なコンテンツ</translation>
@@ -7345,49 +7345,54 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>OAuth2Service</name>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="98"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="106"/>
       <source>Click here to login.</source>
       <translation>ここをクリックしてログイン</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="230"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="243"/>
       <source>Logging in via OAuth 2.0...</source>
       <translation>OAuth 2.0 経由でログイン...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="231"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="244"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
       <translation>&apos;%1&apos; のログイントークンを更新しています...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="97"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="105"/>
       <source>You have to login first</source>
       <translation>先にログインする必要があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="55"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="63"/>
       <source>You can close this window now. Go back to %1.</source>
       <translation>このウィンドウを閉じることができます。 %1 に戻ります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="337"/>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="355"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
+      <source>The OAuth token response is missing a usable access token or expiry.</source>
+      <translation type="unfinished">The OAuth token response is missing a usable access token or expiry.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="392"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="401"/>
       <source>After-login action failed</source>
       <translation>ログイン後の処理に失敗しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="396"/>
       <source>Unknown error.</source>
       <translation>不明なエラーが発生しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="478"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
       <translation>OAuth リダイレクトリスナーの起動に失敗しました。おそらくあなたの権限が十分でないのかもしれません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="101"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="109"/>
       <source>Login</source>
       <translation>ログイン</translation>
     </message>
@@ -7408,7 +7413,7 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="803"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="818"/>
       <source>
 
 + %n other feeds.</source>
@@ -7466,19 +7471,19 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
       <translation>フィードは既にデータベース内に存在しません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1058"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1066"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1826"/>
       <source>Could not obtain the inserted article ID.</source>
       <translation>新規追加された記事の ID を取得できませんでした。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2521"/>
       <source>cannot move item of kind %1</source>
       <translation>種類 %1 のアイテムを移動できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2658"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2662"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>現在のデータベースは最後に挿入された行の ID を返せないため、記事フィルタを挿入できません</translation>
     </message>
@@ -8187,6 +8192,11 @@ stack: %3</source>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="157"/>
       <source>not a WordPress REST API feed</source>
       <translation>WordPress REST API フィードではありません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/pluginfactory.cpp" line="22"/>
+      <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
+      <translation type="unfinished">Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</translation>
     </message>
   </context>
   <context>
@@ -9848,7 +9858,7 @@ Description: %3</source>
       <translation>フラグ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="28"/>
       <source>Network proxy</source>
       <translation>ネットワークプロキシ</translation>
     </message>
@@ -10951,7 +10961,7 @@ OPMLファイルからの読み込み：標準のOPML 2.0ファイルをイン�
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="657"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="655"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
       <translation>HTTP/%1 エラーが発生したため、ページを読み込むことができません</translation>
     </message>
@@ -11588,47 +11598,47 @@ Last login on: %4</source>
       <translation>ソースを表示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="493"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="491"/>
       <source>Save page to PDF file</source>
       <translation>ページを PDF ファイルに保存</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="496"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="494"/>
       <source>PDF files (*.pdf)</source>
       <translation>PDF ファイル(*.pdf)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="512"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="510"/>
       <source>Save complete page to file</source>
       <translation>ページ全体をファイルに保存</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="515"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="513"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation>Mime HTMLファイル (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="568"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="566"/>
       <source>Advanced</source>
       <translation>高度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="571"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="569"/>
       <source>Extra actions</source>
       <translation>追加アクション</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="574"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="572"/>
       <source>Page actions</source>
       <translation>ページアクション</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="581"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="579"/>
       <source>Web attributes</source>
       <translation>ウェブ属性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="585"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="583"/>
       <source>Diagnostics</source>
       <translation>診断</translation>
     </message>
