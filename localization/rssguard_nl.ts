@@ -7397,7 +7397,7 @@ Voorspelling van de huidige database. Later wijzigingen, scriptbijwerkingen en o
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
       <source>The OAuth token response is missing a usable access token or expiry.</source>
-      <translation type="unfinished">The OAuth token response is missing a usable access token or expiry.</translation>
+      <translation>Het OAuth token antwoord mist een bruikbaar toegangstoken of verloop.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
@@ -8224,7 +8224,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/pluginfactory.cpp" line="22"/>
       <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
-      <translation type="unfinished">Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</translation>
+      <translation>Onverenigbare plugin API. Herbouw de plugin tegen deze versie van RSS Guard.</translation>
     </message>
   </context>
   <context>
