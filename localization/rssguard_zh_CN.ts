@@ -697,34 +697,34 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="368"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>使用全局设置，但全局自动获取文章已被禁用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="391"/>
       <source>no errors</source>
       <translation>正常</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="397"/>
       <source>authentication error</source>
       <translation>身份验证错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="403"/>
       <source>network error</source>
       <translation>网络错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="352"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>禁用文章自动获取</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="364"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="363"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -732,7 +732,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -740,37 +740,37 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="395"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="394"/>
       <source>has new articles</source>
       <translation>有新文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="400"/>
       <source>SQL database error</source>
       <translation>SQL 数据库错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="406"/>
       <source>parsing error</source>
       <translation>解析错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="410"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
       <translation>不包含文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="413"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
       <source>article filtering error</source>
       <translation>文章筛选错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="416"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="415"/>
       <source>error</source>
       <translation>错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="494"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="493"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -786,7 +786,7 @@ Item custom ID: %5</source>
   <context>
     <name>FeedDownloader</name>
     <message>
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="271"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="276"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
       <translation>由于做了过多网络请求订阅源处于网络”降温“模式下</translation>
     </message>
@@ -884,12 +884,12 @@ Item custom ID: %5</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="591"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="586"/>
       <source>Some feeds have errors</source>
       <translation>部分订阅源存在错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="592"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="587"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>部分订阅源在获取文章时发生错误。</translation>
     </message>
@@ -2873,12 +2873,12 @@ Attachments supplied by the feed are separate from the webpage and might not app
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="423"/>
       <source>No possible actions</source>
       <translation>无可用操作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="382"/>
       <source>No recycle bin</source>
       <translation>无回收站</translation>
     </message>
@@ -3239,7 +3239,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
       <source>Add new folder</source>
       <translation>添加新文件夹</translation>
     </message>
@@ -3620,72 +3620,72 @@ Attachments supplied by the feed are separate from the webpage and might not app
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="338"/>
       <source>Add new feed</source>
       <translation>添加新订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="389"/>
       <source>No actions possible</source>
       <translation>无可用操作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="182"/>
       <source>Cannot cleanup database</source>
       <translation>无法清理数据库</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="177"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="183"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>由于另一项关键操作正在执行，无法清理数据库。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="468"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
       <source>Stopping feed fetching</source>
       <translation>正在停止订阅源获取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="498"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="505"/>
       <source>Play in media player</source>
       <translation>在媒体播放器中播放</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="499"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="506"/>
       <source>(not supported)</source>
       <translation>(不支持)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="575"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="582"/>
       <source>Close opened modal dialogs first.</source>
       <translation>请先关闭已打开的模式对话框。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
       <source>Cookies deleted</source>
       <translation>Cookies 已删除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="886"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
       <source>Stored cookies were deleted.</source>
       <translation>存储的 cookie 已被删除。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="892"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="899"/>
       <source>Skin reloaded</source>
       <translation>重新加载了皮肤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="893"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="900"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>注意此功能只是为了皮肤调试目的。重启程序让一切正确加载。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="463"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="470"/>
       <source>Fetching common data</source>
       <translation>获取通用数据</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="574"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="581"/>
       <source>Close dialogs</source>
       <translation>关闭对话框</translation>
     </message>
@@ -6092,12 +6092,12 @@ Token 过期时间：%2</translation>
       <translation>显示所有标签</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="298"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="305"/>
       <source>Fetching failed</source>
       <translation>获取失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="306"/>
       <source>Article cannot be fetched: %1.</source>
       <translation>无法获取文章： %1。</translation>
     </message>
@@ -6949,89 +6949,89 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>NetworkFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="119"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="139"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
       <translation>协议错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="127"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
       <source>host not found</source>
       <extracomment>Network status.</extracomment>
       <translation>主机未找到</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="137"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="157"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>连接被拒绝</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="162"/>
       <source>connection timed out</source>
       <extracomment>Network status.</extracomment>
       <translation>连接超时</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="147"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="167"/>
       <source>SSL handshake failed</source>
       <extracomment>Network status.</extracomment>
       <translation>SSL 握手失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="153"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="173"/>
       <source>proxy server connection refused</source>
       <extracomment>Network status.</extracomment>
       <translation>代理服务器拒绝连接</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="158"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="178"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
       <translation>网络临时故障</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="163"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="183"/>
       <source>authentication failed</source>
       <extracomment>Network status.</extracomment>
       <translation>身份认证失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="168"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="188"/>
       <source>proxy authentication required</source>
       <extracomment>Network status.</extracomment>
       <translation>代理服务器需要身份认证</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="173"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="193"/>
       <source>proxy server not found</source>
       <extracomment>Network status.</extracomment>
       <translation>未找到代理服务器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="188"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="208"/>
       <source>content not found</source>
       <extracomment>Network status.</extracomment>
       <translation>URL 资源未找到</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="178"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="198"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
       <translation>正常</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="122"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
       <source>access to content was denied</source>
       <translation>访问被拒绝</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="131"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="151"/>
       <source>connection timed out or was cancelled</source>
       <translation>连接超时或被取消</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="183"/>
+      <location filename="../src/librssguard/network-web/networkfactory.cpp" line="203"/>
       <source>unknown content</source>
       <extracomment>Network status.</extracomment>
       <translation>未知的响应</translation>
@@ -7342,49 +7342,54 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>OAuth2Service</name>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="98"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="106"/>
       <source>Click here to login.</source>
       <translation>点此登录。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="230"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="243"/>
       <source>Logging in via OAuth 2.0...</source>
       <translation>通过 OAuth 2.0 登陆…</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="231"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="244"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
       <translation>正在为 &apos;%1&apos; 刷新登录 Token…</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="97"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="105"/>
       <source>You have to login first</source>
       <translation>必须先登录</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="55"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="63"/>
       <source>You can close this window now. Go back to %1.</source>
       <translation>你现在可以关闭这个窗口。回到%1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="337"/>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="346"/>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="355"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
+      <source>The OAuth token response is missing a usable access token or expiry.</source>
+      <translation>OAuth 令牌响应缺少可用的访问令牌或过期时间。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="392"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="401"/>
       <source>After-login action failed</source>
       <translation>登录后操作失败</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="396"/>
       <source>Unknown error.</source>
       <translation>未知错误。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="432"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="478"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
       <translation>启动OAuth重定向接听器失败。也许你的权限不够高。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="101"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="109"/>
       <source>Login</source>
       <translation>登录</translation>
     </message>
@@ -7405,7 +7410,7 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="803"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="818"/>
       <source>
 
 + %n other feeds.</source>
@@ -7463,19 +7468,19 @@ Feedly是一个安全的空间，你可以私密组织和研究对你而言重�
       <translation>源不再存在于数据库中。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1053"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1061"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1822"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1058"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1066"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1826"/>
       <source>Could not obtain the inserted article ID.</source>
       <translation>无法获取已插入的文章 ID。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2517"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2521"/>
       <source>cannot move item of kind %1</source>
       <translation>无法移动 %1 类型的项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2658"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2662"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>不能插入文章过滤器，因为当前数据库不能返回最后插入的行ID。</translation>
     </message>
@@ -8184,6 +8189,11 @@ stack: %3</source>
       <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="157"/>
       <source>not a WordPress REST API feed</source>
       <translation>不是 WordPress REST API 源</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/pluginfactory.cpp" line="22"/>
+      <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
+      <translation>不兼容的插件 API。重新构建此版本 RSS Guard 的插件。</translation>
     </message>
   </context>
   <context>
@@ -9845,7 +9855,7 @@ Description: %3</source>
       <translation>标记</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="28"/>
       <source>Network proxy</source>
       <translation>代理网络</translation>
     </message>
@@ -10948,7 +10958,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="657"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="655"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
       <translation>页面无法加载，HTTP/%1 错误。</translation>
     </message>
@@ -11585,47 +11595,47 @@ Last login on: %4</source>
       <translation>查看源代码</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="493"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="491"/>
       <source>Save page to PDF file</source>
       <translation>保存页面到 PDF 文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="496"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="494"/>
       <source>PDF files (*.pdf)</source>
       <translation>PDF 文件（*.pdf）</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="512"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="510"/>
       <source>Save complete page to file</source>
       <translation>保存完整页面到文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="515"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="513"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation>Mime HTML 文件 (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="568"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="566"/>
       <source>Advanced</source>
       <translation>高级</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="571"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="569"/>
       <source>Extra actions</source>
       <translation>额外操作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="574"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="572"/>
       <source>Page actions</source>
       <translation>页面操作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="581"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="579"/>
       <source>Web attributes</source>
       <translation>Web 属性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="585"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="583"/>
       <source>Diagnostics</source>
       <translation>诊断</translation>
     </message>
