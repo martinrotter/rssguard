@@ -7369,7 +7369,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
       <source>The OAuth token response is missing a usable access token or expiry.</source>
-      <translation type="unfinished">The OAuth token response is missing a usable access token or expiry.</translation>
+      <translation>OAuth 令牌响应缺少可用的访问令牌或过期时间。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
@@ -8193,7 +8193,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/pluginfactory.cpp" line="22"/>
       <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
-      <translation type="unfinished">Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</translation>
+      <translation>不兼容的插件 API。重新构建此版本 RSS Guard 的插件。</translation>
     </message>
   </context>
   <context>
