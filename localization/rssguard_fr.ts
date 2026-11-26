@@ -6352,17 +6352,17 @@ Prédiction par rapport à la base de données actuelle. Les changements ultéri
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
       <source> Label changes confirmed on %n article(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> Modifications d’étiquette confirmées sur %n article(s).</numerusform>
-        <numerusform> Label changes confirmed on %n article(s).</numerusform>
+        <numerusform> Modifications d’étiquette confirmées sur %n article(s).</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="764"/>
       <source> Label changes could not be confirmed for %n article(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> Les modifications de l’étiquette n’ont pas pu être confirmées pour %n article(s).</numerusform>
-        <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
+        <numerusform> Les modifications de l’étiquette n’ont pas pu être confirmées pour %n article(s).</numerusform>
       </translation>
     </message>
     <message>
@@ -6381,9 +6381,9 @@ Prédiction par rapport à la base de données actuelle. Les changements ultéri
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="772"/>
       <source> %n article(s) not attempted.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> %n article(s) non essayé(s).</numerusform>
-        <numerusform> %n article(s) not attempted.</numerusform>
+        <numerusform> %n article(s) non essayé(s).</numerusform>
       </translation>
     </message>
     <message>
@@ -7408,7 +7408,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
       <source>The OAuth token response is missing a usable access token or expiry.</source>
-      <translation type="unfinished">The OAuth token response is missing a usable access token or expiry.</translation>
+      <translation>La réponse du jeton OAuth manque un jeton d'accès utilisable ou expiration.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
@@ -8235,7 +8235,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/pluginfactory.cpp" line="22"/>
       <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
-      <translation type="unfinished">Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</translation>
+      <translation>Module complémentaire API non-compatible. Recompilez le module en accord avec cette version d'RSS Guard.</translation>
     </message>
   </context>
   <context>
