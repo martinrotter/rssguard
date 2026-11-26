@@ -596,7 +596,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="203"/>
       <source>Conflicting assignments need to be changed or cleared:
 %1</source>
-      <translation type="unfinished">Conflicting assignments need to be changed or cleared:
+      <translation>Conflicting assignments need to be changed or cleared:
 %1</translation>
     </message>
   </context>
@@ -2434,7 +2434,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="25"/>
       <source>For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</source>
-      <translation type="unfinished">For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</translation>
+      <translation>For faster database access, RSS Guard uses a Windows feature that can prevent SQLite database files from shrinking on disk during manual cleanup. Automatic cleanup on application startup can shrink the file on disk. The &quot;Total data size&quot; shown here may still decrease after optimization. The unused space will be reused as new articles are saved.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="108"/>
@@ -3997,12 +3997,12 @@ Maybe the filter title is not unique. If that&apos;s the case, change it.</trans
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="286"/>
       <source>Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</source>
-      <translation type="unfinished">Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</translation>
+      <translation>Run the selected filter on the loaded stored articles and preview database saving. Article changes are not saved, but script side effects still execute.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="296"/>
       <source>Run the selected filter on undeleted articles in checked feeds and show actual saving results.</source>
-      <translation type="unfinished">Run the selected filter on undeleted articles in checked feeds and show actual saving results.</translation>
+      <translation>Run the selected filter on undeleted articles in checked feeds and show actual saving results.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
@@ -4345,7 +4345,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="259"/>
       <source>Feed settings changed. Fetch icons again to apply individual icons.</source>
-      <translation type="unfinished">Feed settings changed. Fetch icons again to apply individual icons.</translation>
+      <translation>Feed settings changed. Fetch icons again to apply individual icons.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="408"/>
@@ -6300,7 +6300,7 @@ The stored starred state is preserved.</source>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="148"/>
       <source>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</source>
-      <translation type="unfinished">
+      <translation>
 Prediction against the current database. Later changes, script side effects and feed cleanup can affect the actual result.</translation>
     </message>
     <message>
@@ -6316,22 +6316,22 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="582"/>
       <source>Could not refresh stored values after the incomplete run.</source>
-      <translation type="unfinished">Could not refresh stored values after the incomplete run.</translation>
+      <translation>Could not refresh stored values after the incomplete run.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="646"/>
       <source>The feed for article &apos;%1&apos; is no longer available.</source>
-      <translation type="unfinished">The feed for article &apos;%1&apos; is no longer available.</translation>
+      <translation>The feed for article &apos;%1&apos; is no longer available.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="749"/>
       <source>Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</source>
-      <translation type="unfinished">Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</translation>
+      <translation>Preview of %1 loaded articles in %2 of %3 feeds: %4 would update, %5 would insert, %6 skipped, %7 ignored, %8 would purge.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="751"/>
       <source>Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</source>
-      <translation type="unfinished">Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</translation>
+      <translation>Processing results for %1 articles in %2 of %3 feeds: %4 updated, %5 inserted, %6 skipped, %7 ignored, %8 purged.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="761"/>
@@ -6341,7 +6341,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="762"/>
       <source> Label changes confirmed on %n article(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> Label changes confirmed on %n article(s).</numerusform>
         <numerusform> Label changes confirmed on %n article(s).</numerusform>
       </translation>
@@ -6349,7 +6349,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="764"/>
       <source> Label changes could not be confirmed for %n article(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
         <numerusform> Label changes could not be confirmed for %n article(s).</numerusform>
       </translation>
@@ -6362,7 +6362,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="769"/>
       <source> Processing failed for %n article(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> Processing failed for %n article(s).</numerusform>
         <numerusform> Processing failed for %n article(s).</numerusform>
       </translation>
@@ -6370,7 +6370,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message numerus="yes">
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="772"/>
       <source> %n article(s) not attempted.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform> %n article(s) not attempted.</numerusform>
         <numerusform> %n article(s) not attempted.</numerusform>
       </translation>
@@ -7396,7 +7396,7 @@ Prediction against the current database. Later changes, script side effects and 
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="295"/>
       <source>The OAuth token response is missing a usable access token or expiry.</source>
-      <translation type="unfinished">The OAuth token response is missing a usable access token or expiry.</translation>
+      <translation>The OAuth token response is missing a usable access token or expiry.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="383"/>
@@ -7495,14 +7495,14 @@ Feedly is a secure space where you can privately organise and research the topic
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="97"/>
       <source>Feed no longer exists in the database.</source>
-      <translation type="unfinished">Feed no longer exists in the database.</translation>
+      <translation>Feed no longer exists in the database.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1058"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1066"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1826"/>
       <source>Could not obtain the inserted article ID.</source>
-      <translation type="unfinished">Could not obtain the inserted article ID.</translation>
+      <translation>Could not obtain the inserted article ID.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2521"/>
@@ -8085,7 +8085,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="208"/>
       <source>Invalid MediaWiki JSON: %1</source>
-      <translation type="unfinished">Invalid MediaWiki JSON: %1</translation>
+      <translation>Invalid MediaWiki JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="218"/>
@@ -8115,12 +8115,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="537"/>
       <source>Pages matching &apos;%1&apos;, ordered by last edit.</source>
-      <translation type="unfinished">Pages matching &apos;%1&apos;, ordered by last edit.</translation>
+      <translation>Pages matching &apos;%1&apos;, ordered by last edit.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="585"/>
       <source>MediaWiki continuation has no catalog position.</source>
-      <translation type="unfinished">MediaWiki continuation has no catalog position.</translation>
+      <translation>MediaWiki continuation has no catalog position.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="590"/>
@@ -8130,7 +8130,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="594"/>
       <source>Invalid MediaWiki continuation parameter.</source>
-      <translation type="unfinished">Invalid MediaWiki continuation parameter.</translation>
+      <translation>Invalid MediaWiki continuation parameter.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="601"/>
@@ -8141,7 +8141,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="616"/>
       <source>MediaWiki continuation parameter is too long.</source>
-      <translation type="unfinished">MediaWiki continuation parameter is too long.</translation>
+      <translation>MediaWiki continuation parameter is too long.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="631"/>
@@ -8151,18 +8151,18 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="706"/>
       <source>MediaWiki catalog exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki catalog exceeded the requested page size.</translation>
+      <translation>MediaWiki catalog exceeded the requested page size.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="729"/>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="790"/>
       <source>MediaWiki API repeated a continuation token.</source>
-      <translation type="unfinished">MediaWiki API repeated a continuation token.</translation>
+      <translation>MediaWiki API repeated a continuation token.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="735"/>
       <source>MediaWiki continuation requires a resource handler.</source>
-      <translation type="unfinished">MediaWiki continuation requires a resource handler.</translation>
+      <translation>MediaWiki continuation requires a resource handler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="741"/>
@@ -8177,7 +8177,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="780"/>
       <source>MediaWiki backfill exceeded the requested page size.</source>
-      <translation type="unfinished">MediaWiki backfill exceeded the requested page size.</translation>
+      <translation>MediaWiki backfill exceeded the requested page size.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="895"/>
@@ -8192,17 +8192,17 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="968"/>
       <source>MediaWiki article requests require a resource handler.</source>
-      <translation type="unfinished">MediaWiki article requests require a resource handler.</translation>
+      <translation>MediaWiki article requests require a resource handler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="980"/>
       <source>MediaWiki API rate limit reached while fetching article %1.</source>
-      <translation type="unfinished">MediaWiki API rate limit reached while fetching article %1.</translation>
+      <translation>MediaWiki API rate limit reached while fetching article %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="989"/>
       <source>MediaWiki article response did not match the requested page.</source>
-      <translation type="unfinished">MediaWiki article response did not match the requested page.</translation>
+      <translation>MediaWiki article response did not match the requested page.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/mediawikiparser.cpp" line="999"/>
@@ -9274,7 +9274,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
       <source>Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</source>
-      <translation type="unfinished">Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</translation>
+      <translation>Keep the stored read state during ordinary updates of local articles, including manual filter processing. When disabled, use the resulting article&apos;s read state. Synchronized accounts use the service&apos;s state. Article filters can override preservation with msg.overwrite = true.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="568"/>
@@ -9684,7 +9684,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="339"/>
       <source>Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</source>
-      <translation type="unfinished">Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</translation>
+      <translation>Disable this option if you use StartAllBack. Taskbar thumbnail buttons can cause RSS Guard to crash when StartAllBack is installed. Save the settings and restart RSS Guard.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
@@ -9855,12 +9855,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <source>&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;Ignore cookies when downloading feeds and other files.&lt;/p&gt;&lt;p&gt;The internal web browser can still use cookies for logins during the current session, but these cookies are not saved between application runs.&lt;/p&gt;&lt;p&gt;Turning this option on clears existing cookies, including browser login cookies.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="37"/>
       <source>Ignore cookies for downloads</source>
-      <translation type="unfinished">Ignore cookies for downloads</translation>
+      <translation>Ignore cookies for downloads</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="44"/>
@@ -10158,7 +10158,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="84"/>
       <source>Database checkpoint failed or was blocked by another connection.</source>
-      <translation type="unfinished">Database checkpoint failed or was blocked by another connection.</translation>
+      <translation>Database checkpoint failed or was blocked by another connection.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="96"/>
@@ -10284,7 +10284,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
       <source>yes (application setting)</source>
-      <translation type="unfinished">yes (application setting)</translation>
+      <translation>yes (application setting)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
@@ -10691,7 +10691,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;Ignore cookies when downloading this feed. Cookies in the internal web browser are unaffected.&lt;/p&gt;&lt;p&gt;If cookies are ignored globally in Settings &gt; Network &amp; web &gt; Network, they are ignored for this feed regardless of this checkbox. This feed&apos;s saved preference takes effect when global ignoring is turned off.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="108"/>
@@ -10819,12 +10819,12 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
-      <translation type="unfinished">MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
+      <translation>MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
       <source>Unsupported feed type.</source>
-      <translation type="unfinished">Unsupported feed type.</translation>
+      <translation>Unsupported feed type.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
