@@ -76,6 +76,8 @@ During import you can:
 
 Fetching online metadata can take some time for a large subscription list.
 
+If an import fails with **Fetch online metadata** turned off and the feed titles are blank, fill in the `title` and `text` attributes for those feeds in a copy of the OPML file, then retry the import.
+
 <img alt="OPML import dialog" src="../features/images/opm-import-windows.png" width="600px">
 
 Export can include selected feeds, folder structure and feed icons.
