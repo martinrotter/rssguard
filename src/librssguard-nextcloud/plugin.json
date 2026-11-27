@@ -1,5 +1,5 @@
 {
-  "rssguardPluginApiVersion": 2,
+  "rssguardPluginApiVersion": 3,
   "name": "Nextcloud News",
   "author": "Martin Rotter",
   "website": "https://github.com/martinrotter/rssguard"

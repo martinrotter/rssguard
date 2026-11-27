@@ -46,6 +46,14 @@ namespace {
         m_isSyncable = syncable;
       }
 
+      virtual bool alwaysDetectsArticleContentChanges() const override {
+        return m_alwaysDetectsContentsChanges || ServiceRoot::alwaysDetectsArticleContentChanges();
+      }
+
+      void setAlwaysDetectsContentsChanges(bool detect) {
+        m_alwaysDetectsContentsChanges = detect;
+      }
+
       virtual QList<Message> obtainNewMessages(Feed* feed,
                                                const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                const QHash<QString, QStringList>& tagged_messages) override {
@@ -61,6 +69,7 @@ namespace {
 
     private:
       bool m_isSyncable = false;
+      bool m_alwaysDetectsContentsChanges = false;
   };
 
   Message makeMessage(const QString& group, int sequence, int feed_id, int account_id, const QString& custom_id) {
@@ -563,6 +572,7 @@ void TestDatabaseQueries::articleWriteErrorsPropagate() {
 
 void TestDatabaseQueries::init() {
   m_account->setSyncable(false);
+  m_account->setAlwaysDetectsContentsChanges(false);
   m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, false);
   m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, false);
 }
@@ -600,6 +610,7 @@ void TestDatabaseQueries::overwriteAndOrdinaryPolicies_data() {
   QTest::addColumn<bool>("mark_unread");
   QTest::addColumn<bool>("overwrite");
   QTest::addColumn<QString>("change");
+  QTest::addColumn<bool>("always_detect_contents");
   const QStringList changes{QSL("unchanged"),
                             QSL("states"),
                             QSL("body"),
@@ -621,12 +632,15 @@ void TestDatabaseQueries::overwriteAndOrdinaryPolicies_data() {
                                        .arg(ignore)
                                        .arg(mark)
                                        .arg(overwrite)))
-              << syncable << ignore << mark << overwrite << change;
+              << syncable << ignore << mark << overwrite << change << false;
           }
         }
       }
     }
   }
+  QTest::newRow("service-compares-body") << false << true << false << false << QSL("body") << true;
+  QTest::newRow("service-compares-body-mark-unread") << false << true << true << false << QSL("body") << true;
+  QTest::newRow("service-skips-unchanged-body") << false << true << false << false << QSL("unchanged") << true;
 }
 
 void TestDatabaseQueries::overwriteAndOrdinaryPolicies() {
@@ -635,7 +649,9 @@ void TestDatabaseQueries::overwriteAndOrdinaryPolicies() {
   QFETCH(bool, mark_unread);
   QFETCH(bool, overwrite);
   QFETCH(QString, change);
+  QFETCH(bool, always_detect_contents);
   m_account->setSyncable(syncable);
+  m_account->setAlwaysDetectsContentsChanges(always_detect_contents);
   m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, ignore_body);
   m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, mark_unread);
   const QString key = QSL("policy-%1").arg(QString::fromLatin1(QTest::currentDataTag()));
@@ -656,7 +672,10 @@ void TestDatabaseQueries::overwriteAndOrdinaryPolicies() {
   }
   else if (change == QL1S("body")) {
     incoming.m_contents = QSL("New body");
-    ordinary_update = !ignore_body;
+    if (always_detect_contents) {
+      incoming.m_isRead = incoming.m_isImportant = false;
+    }
+    ordinary_update = always_detect_contents || !ignore_body;
   }
   else if (change == QL1S("title")) {
     incoming.m_title = QSL("New title");

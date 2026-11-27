@@ -13,7 +13,10 @@ A plugin must be compiled as a separate library, which can then be loaded dynami
 
 Service plugin metadata must include an integer `rssguardPluginApiVersion` matching
 `RSSGUARD_PLUGIN_API_VERSION` in `definitions.h`. RSS Guard checks it before constructing a plugin.
-Rebuild external plugins for version 2. `TabContent::webBrowser()` now returns the active browser
+Rebuild external plugins for version 3. Services can override `ServiceRoot::alwaysDetectsArticleContentChanges()`
+to compare article contents even when **Ignore contents changes** is enabled.
+
+In version 2, `TabContent::webBrowser()` started returning the active browser
 or `nullptr`. Interactive scroll commands check visibility. Version 2 removes
 `scrollableWebBrowser()` and the empty `WebViewer::reloadNetworkSettings()` hook and adds
 opt-in PKCE support to `OAuth2Service`.
