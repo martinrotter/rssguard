@@ -14,7 +14,7 @@ class TestPluginFactory : public QObject {
     void rejectsBeforeConstruction_data() {
       QTest::addColumn<QString>("path");
       QTest::newRow("missing") << QStringLiteral(TEST_PLUGIN_MISSING);
-      QTest::newRow("previous") << QStringLiteral(TEST_PLUGIN_PREVIOUS);
+      QTest::newRow("previous-abi-2") << QStringLiteral(TEST_PLUGIN_PREVIOUS);
       QTest::newRow("mismatched") << QStringLiteral(TEST_PLUGIN_MISMATCHED);
     }
 

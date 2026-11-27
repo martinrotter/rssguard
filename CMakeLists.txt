@@ -399,8 +399,13 @@ endif()
 add_subdirectory(src/librssguard)
 add_subdirectory(localization)
 
+if(ENABLE_TESTING OR ENABLE_BENCHMARKS)
+  enable_testing()
+endif()
+
 # Plugins.
 add_subdirectory(src/librssguard-feedly)
+add_subdirectory(src/librssguard-gcalendar)
 add_subdirectory(src/librssguard-gmail)
 add_subdirectory(src/librssguard-greader)
 add_subdirectory(src/librssguard-nextcloud)
@@ -423,6 +428,5 @@ add_subdirectory(src/rssguard)
 
 # Tests and benchmarks.
 if(ENABLE_TESTING OR ENABLE_BENCHMARKS)
-  enable_testing()
   add_subdirectory(tests)
 endif()

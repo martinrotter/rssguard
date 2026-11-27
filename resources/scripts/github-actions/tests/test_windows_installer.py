@@ -91,7 +91,7 @@ class PayloadTests(unittest.TestCase):
 
     def test_missing_required_files(self):
         for name in ("rssguard.exe", "rssguard.dll", "rssguard-article-extractor.exe",
-                     "platforms/qwindows.dll", "plugins/rssguard-standard.dll"):
+                     "platforms/qwindows.dll", "plugins/rssguard-standard.dll", "plugins/rssguard-gcalendar.dll"):
             with self.subTest(name=name):
                 path = self.stage / name
                 contents = path.read_bytes()

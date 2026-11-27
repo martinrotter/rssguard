@@ -443,6 +443,10 @@ bool ServiceRoot::displaysEnclosures() const {
   return true;
 }
 
+bool ServiceRoot::alwaysDetectsArticleContentChanges() const {
+  return false;
+}
+
 void ServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
                                            const QHash<QString, QHash<BagOfMessages, QStringList>>& stated_messages,
                                            const QHash<QString, QStringList>& tagged_messages) {

@@ -92,6 +92,8 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual bool displaysEnclosures() const;
+    // Services can opt into comparing article contents on every update.
+    virtual bool alwaysDetectsArticleContentChanges() const;
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
                                           const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>&
                                             stated_messages,

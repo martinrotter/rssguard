@@ -1103,8 +1103,13 @@ namespace {
   };
 
   MessageSavePolicy messageSavePolicy(Settings* settings, Feed* feed, bool force_update) {
-    return {feed->account()->isSyncable(),
-            settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool(),
+    const auto* account = feed->account();
+    const bool ignore_contents_changes =
+      !account->alwaysDetectsArticleContentChanges() &&
+      settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool();
+
+    return {account->isSyncable(),
+            ignore_contents_changes,
             settings->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool(),
             force_update,
             feed->id()};

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormCalendarEvent</class>
+ <widget class="QDialog" name="FormCalendarEvent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>720</width>
+    <height>670</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Calendar event</string>
+  </property>
+  <layout class="QVBoxLayout" name="m_layout">
+   <item>
+    <layout class="QFormLayout" name="m_form">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::ExpandingFieldsGrow</enum>
+     </property>
+     <property name="rowWrapPolicy">
+      <enum>QFormLayout::WrapLongRows</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="m_lblCalendar">
+       <property name="text">
+        <string>Calendar</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbCalendar</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="m_cmbCalendar" />
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="m_lblTarget">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbTarget</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="m_cmbTarget">
+       <item>
+        <property name="text">
+         <string>This occurrence</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>The whole series</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="m_lblTitle">
+       <property name="text">
+        <string>Title</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtTitle</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="BaseLineEdit" name="m_txtTitle" />
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="m_lblLocation">
+       <property name="text">
+        <string>Location</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtLocation</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="BaseLineEdit" name="m_txtLocation" />
+     </item>
+     <item row="4" column="1">
+      <widget class="QCheckBox" name="m_cbAllDay">
+       <property name="text">
+        <string>All-day event</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="m_lblStart">
+       <property name="text">
+        <string>Starts</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_dateStart</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <layout class="QHBoxLayout" name="m_layoutStart">
+       <item>
+        <widget class="QDateEdit" name="m_dateStart">
+         <property name="displayFormat">
+          <string notr="true">yyyy-MM-dd</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTimeEdit" name="m_timeStart">
+         <property name="displayFormat">
+          <string notr="true">HH:mm</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="m_cmbStartOccurrence">
+         <property name="toolTip">
+          <string>This local time occurs twice. Choose which occurrence to use.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="m_lblEnd">
+       <property name="text">
+        <string>Ends</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_dateEnd</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <layout class="QHBoxLayout" name="m_layoutEnd">
+       <item>
+        <widget class="QDateEdit" name="m_dateEnd">
+         <property name="displayFormat">
+          <string notr="true">yyyy-MM-dd</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTimeEdit" name="m_timeEnd">
+         <property name="displayFormat">
+          <string notr="true">HH:mm</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="m_cmbEndOccurrence">
+         <property name="toolTip">
+          <string>This local time occurs twice. Choose which occurrence to use.</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="m_lblTimeZone">
+       <property name="text">
+        <string>Time zone</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbTimeZone</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QComboBox" name="m_cmbTimeZone">
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <property name="insertPolicy">
+        <enum>QComboBox::NoInsert</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="m_lblRecurrence">
+       <property name="text">
+        <string>Repeat</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_cmbRecurrence</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QComboBox" name="m_cmbRecurrence">
+       <item>
+        <property name="text">
+         <string>Do not repeat</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Daily</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weekly</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Monthly</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Yearly</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Keep existing recurrence</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="m_lblRepeatCount">
+       <property name="text">
+        <string>Number of occurrences</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_spinRepeatCount</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QSpinBox" name="m_spinRepeatCount">
+       <property name="maximum">
+        <number>9999</number>
+       </property>
+       <property name="specialValueText">
+        <string>No end date</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0" colspan="2">
+      <widget class="QLabel" name="m_lblRecurrenceHint">
+       <property name="text">
+        <string>Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="m_lblDescription">
+       <property name="text">
+        <string>Description</string>
+       </property>
+       <property name="buddy">
+        <cstring>m_txtDescription</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QPlainTextEdit" name="m_txtDescription">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>110</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_cbNotifyAttendees">
+     <property name="text">
+      <string>Notify attendees about changes</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="LabelWithStatus" name="m_lblStatus" native="true" />
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="m_layoutConflict">
+     <item>
+      <widget class="QPushButton" name="m_btnReload">
+       <property name="text">
+        <string>Reload (discard draft)</string>
+       </property>
+       <property name="visible">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="m_btnReapply">
+       <property name="text">
+        <string>Reapply my edits to the latest version</string>
+       </property>
+       <property name="visible">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="m_buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Save</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BaseLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>librssguard/gui/reusable/baselineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>librssguard/gui/reusable/labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_cmbCalendar</tabstop>
+  <tabstop>m_cmbTarget</tabstop>
+  <tabstop>m_txtTitle</tabstop>
+  <tabstop>m_txtLocation</tabstop>
+  <tabstop>m_cbAllDay</tabstop>
+  <tabstop>m_dateStart</tabstop>
+  <tabstop>m_timeStart</tabstop>
+  <tabstop>m_cmbStartOccurrence</tabstop>
+  <tabstop>m_dateEnd</tabstop>
+  <tabstop>m_timeEnd</tabstop>
+  <tabstop>m_cmbEndOccurrence</tabstop>
+  <tabstop>m_cmbTimeZone</tabstop>
+  <tabstop>m_cmbRecurrence</tabstop>
+  <tabstop>m_spinRepeatCount</tabstop>
+  <tabstop>m_txtDescription</tabstop>
+  <tabstop>m_cbNotifyAttendees</tabstop>
+ </tabstops>
+ <resources />
+ <connections />
+</ui>

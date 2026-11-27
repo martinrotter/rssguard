@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QtGlobal>
 
-#define RSSGUARD_PLUGIN_API_VERSION 2
+#define RSSGUARD_PLUGIN_API_VERSION 3
 
 #if QT_VERSION < 0x060700 // Qt < 6.7.0
 #define STATE_CHANGED stateChanged

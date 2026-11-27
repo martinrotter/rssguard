@@ -7,7 +7,7 @@ import re
 import stat
 
 
-PLUGINS = ("feedly", "gmail", "greader", "nextcloud", "standard", "ttrss")
+PLUGINS = ("feedly", "gcalendar", "gmail", "greader", "nextcloud", "standard", "ttrss")
 
 
 def quoted(value):
