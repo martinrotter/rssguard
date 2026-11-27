@@ -44,6 +44,11 @@ Q_DECLARE_METATYPE(ServiceRoot::SyncInResult)
 #endif
 
 namespace {
+  struct CachedEventData {
+      QJsonObject m_envelope;
+      bool m_isDeleted = false;
+  };
+
   void validateCachedStart(const CalendarEvent& event) {
     if (event.m_start.isValid() && event.m_start.toMSecsSinceEpoch() < 0) {
       throw CalendarApiException(
@@ -855,14 +860,14 @@ FeedFetchResult GCalendarServiceRoot::fetchSnapshot(Feed* feed, const GCalendarN
   const auto until = now.addDays(settings.value(QSL("future_days")).toInt(365));
   const auto calendar_id = feed->customId();
   const auto remote = GCalendarNetworkFactory(context, m_transport).events(calendar_id, from, until);
-  const auto cached_data = qApp->database()->worker()->read<QHash<QString, QJsonObject>>([&](const QSqlDatabase& db) {
+  const auto cached_data = qApp->database()->worker()->read<QHash<QString, CachedEventData>>([&](const QSqlDatabase& db) {
     SqlQuery query(db);
-    query.prepare(QSL("SELECT custom_id, custom_data, is_pdeleted FROM Messages WHERE feed = :feed AND account_id = "
-                      ":account;"));
+    query.prepare(QSL("SELECT custom_id, custom_data, is_pdeleted, is_deleted FROM Messages "
+                      "WHERE feed = :feed AND account_id = :account;"));
     query.bindValue(QSL(":feed"), feed->id());
     query.bindValue(QSL(":account"), accountId());
     query.exec();
-    QHash<QString, QJsonObject> result;
+    QHash<QString, CachedEventData> result;
     while (query.next()) {
       context.checkCancelled();
       Message message;
@@ -874,7 +879,7 @@ FeedFetchResult GCalendarServiceRoot::fetchSnapshot(Feed* feed, const GCalendarN
         }
         throw ApplicationException(tr("Invalid cached event; calendar data was preserved."));
       }
-      result.insert(query.value(0).toString(), readMetadata(message.m_customData));
+      result.insert(query.value(0).toString(), {readMetadata(message.m_customData), query.value(3).toBool()});
     }
     return result;
   });
@@ -892,8 +897,10 @@ FeedFetchResult GCalendarServiceRoot::fetchSnapshot(Feed* feed, const GCalendarN
     if (!event.isCancelled()) {
       validateCachedStart(event);
       auto message = event.toMessage();
-      if (cached_data.contains(event.identity())) {
-        auto envelope = cached_data.value(event.identity());
+      const auto cached = cached_data.constFind(event.identity());
+      if (cached != cached_data.constEnd()) {
+        message.m_isDeleted = cached->m_isDeleted;
+        auto envelope = cached->m_envelope;
         auto metadata = envelope.value(QSL("gcalendar")).toObject();
         metadata[QSL("event")] = item;
         metadata[QSL("time_zone")] = QString::fromUtf8(zone);
@@ -1510,9 +1517,9 @@ int GCalendarServiceRoot::storeConfirmedEvent(Feed* feed,
   }
   validateCachedStart(event);
   auto message = event.toMessage();
-  auto envelope = qApp->database()->worker()->read<QJsonObject>([&](const QSqlDatabase& db) {
+  auto [envelope, is_deleted] = qApp->database()->worker()->read<CachedEventData>([&](const QSqlDatabase& db) {
     SqlQuery query(db);
-    query.prepare(QSL("SELECT custom_data FROM Messages WHERE account_id = :account AND custom_id = :id;"));
+    query.prepare(QSL("SELECT custom_data, is_deleted FROM Messages WHERE account_id = :account AND custom_id = :id;"));
     query.bindValue(QSL(":account"), accountId());
     query.bindValue(QSL(":id"), event.identity());
     query.exec();
@@ -1523,10 +1530,11 @@ int GCalendarServiceRoot::storeConfirmedEvent(Feed* feed,
         throw ApplicationException(tr("Cached event metadata is invalid; the saved remote event was not applied "
                                       "locally."));
       }
-      return readMetadata(cached.m_customData);
+      return CachedEventData{readMetadata(cached.m_customData), query.value(1).toBool()};
     }
-    return readMetadata(message.m_customData);
+    return CachedEventData{readMetadata(message.m_customData)};
   });
+  message.m_isDeleted = is_deleted;
   auto metadata = envelope.value(QSL("gcalendar")).toObject();
   metadata[QSL("event")] = resource;
   metadata[QSL("time_zone")] = QString::fromUtf8(zone);
