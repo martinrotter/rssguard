@@ -170,8 +170,29 @@ void TestGCalendarFetch::discoveryAndBatchFetch() {
   QCOMPARE(CalendarEvent::fromMessage(after.first()).m_resource, edited);
 
   if (ignore_contents) {
+    const int event_id = after.first().m_id;
+    const auto setTrashed = [&](bool trashed) {
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::deleteOrRestoreMessagesToFromBin(db, {QString::number(event_id)}, trashed);
+      });
+    };
+    setTrashed(true);
+
+    // Fetch the same event with only the reminder removed.
+    update = false;
+    reader->updateFeeds({feeds.value(QSL("first"))});
+    QTRY_COMPARE(completions, 3);
+    const auto trashed = account->cachedMessage(event_id);
+    QCOMPARE(trashed.m_id, event_id);
+    QCOMPARE(CalendarEvent::fromMessage(trashed).m_resource, first);
+    QVERIFY(trashed.m_isDeleted);
+    QVERIFY(trashed.m_isRead);
+    QVERIFY(trashed.m_isImportant);
+    QVERIFY(stored().isEmpty());
+    setTrashed(false);
+
     QSignalSpy saved(account, &GCalendarServiceRoot::eventOperationFinished);
-    account->saveRemoteEvent(QSL("first"), edited, {{QSL("location"), written.value(QSL("location"))}}, false, false);
+    account->saveRemoteEvent(QSL("first"), first, {{QSL("location"), written.value(QSL("location"))}}, false, false);
     QVERIFY(saved.wait(5000));
     QVERIFY2(saved.first().at(4).toBool(), qPrintable(saved.first().at(3).toString()));
     QVERIFY2(saved.first().at(3).toString().isEmpty(), qPrintable(saved.first().at(3).toString()));
