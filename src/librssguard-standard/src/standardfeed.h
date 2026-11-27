@@ -6,6 +6,7 @@
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/feed.h>
 
+#include <memory>
 #include <optional>
 
 #include <QCoreApplication>
@@ -53,6 +54,8 @@ class StandardFeed : public Feed {
 
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
+
+    std::unique_ptr<StandardFeed> cloneConfiguration() const;
 
     virtual QString additionalTooltip() const;
     virtual bool canBeDeleted() const;
@@ -182,6 +185,7 @@ class StandardFeed : public Feed {
 
   private:
     StandardServiceRoot* serviceRoot() const;
+    QVariantHash withSerializedSettings(QVariantHash data) const;
     void removeItself();
 
     QString getHttpDescription() const;

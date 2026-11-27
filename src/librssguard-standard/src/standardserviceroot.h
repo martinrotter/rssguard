@@ -76,6 +76,7 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    void cloneFeed(const StandardFeed& source);
     QList<Message> obtainNewMessagesImpl(Feed* feed, std::function<void()>* after_messages_stored);
     void fetchMetadataForAllFeeds(const QList<Feed*>& feeds);
 

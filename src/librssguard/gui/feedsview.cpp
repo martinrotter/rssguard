@@ -1111,9 +1111,18 @@ void FeedsView::keyPressEvent(QKeyEvent* event) {
 }
 
 void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
-  const QModelIndex clicked_index = indexAt(event->pos());
+  const bool keyboard = event->reason() == QContextMenuEvent::Keyboard;
+  const QModelIndex clicked_index = keyboard ? currentIndex() : indexAt(event->pos());
 
   if (clicked_index.isValid()) {
+    const QPoint menu_position = keyboard ? viewport()->mapToGlobal(visualRect(clicked_index).center())
+                                           : event->globalPos();
+    auto* clicked_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(clicked_index));
+
+    if (!selectionModel()->isRowSelected(clicked_index.row(), clicked_index.parent())) {
+      selectionModel()->setCurrentIndex(clicked_index, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    }
+
     const auto items = selectedItems();
 
     if (items.isEmpty()) {
@@ -1138,6 +1147,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
 
     auto account = accounts.first();
     QMenu* base_menu = baseContextMenu(items);
+    base_menu->menuAction()->setData(QVariant::fromValue(clicked_item));
     auto service_specific_items = account->contextMenuFeedsList(items, base_menu);
 
     if (!service_specific_items.isEmpty()) {
@@ -1145,7 +1155,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
       base_menu->addActions(service_specific_items);
     }
 
-    base_menu->exec(event->globalPos());
+    base_menu->exec(menu_position);
     base_menu->deleteLater();
   }
   else {

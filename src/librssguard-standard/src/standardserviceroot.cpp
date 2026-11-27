@@ -28,6 +28,8 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/exceptions/sqlexception.h>
+#include <librssguard/filtering/messagefilter.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
@@ -38,6 +40,7 @@
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/miscellaneous/systemfactory.h>
+#include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/gui/formcategorydetails.h>
 #include <qtlinq/qtlinq.h>
@@ -52,6 +55,8 @@
 #include <QElapsedTimer>
 #include <QMenu>
 #include <QPointer>
+#include <QScopeGuard>
+#include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QStack>
 #include <QThread>
@@ -576,6 +581,24 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
   auto items_linq = qlinq::from(selected_items);
   QList<QAction*> my_menu;
 
+  if (parent_menu != nullptr && selected_items.size() == 1) {
+    const QPointer<StandardFeed> feed(qobject_cast<StandardFeed*>(
+      parent_menu->menuAction()->data().value<RootItem*>()));
+
+    if (feed != nullptr && feed.data() == selected_items.constFirst() && !feed->deleting()) {
+      auto* clone = new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Clone this"), parent_menu);
+      clone->setObjectName(QSL("m_actionCloneFeed"));
+      const QPointer<StandardServiceRoot> service(this);
+      // Accounts loaded from the database can belong to a worker thread.
+      connect(clone, &QAction::triggered, parent_menu, [service, feed]() {
+        if (service != nullptr && feed != nullptr && !feed->deleting() && feed->account() == service.data()) {
+          service->cloneFeed(*feed);
+        }
+      });
+      my_menu.append(clone);
+    }
+  }
+
   if (items_linq.all([](RootItem* it) {
         return it->kind() == RootItem::Kind::ServiceRoot || it->kind() == RootItem::Kind::Feed ||
                it->kind() == RootItem::Kind::Category;
@@ -610,6 +633,64 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
   }
 
   return base_menu;
+}
+
+void StandardServiceRoot::cloneFeed(const StandardFeed& source) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot clone feed"),
+                          tr("Cannot clone feed because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
+    return;
+  }
+
+  const auto unlock = qScopeGuard([]() { qApp->feedUpdateLock()->unlock(); });
+  auto* parent = source.parent();
+  auto clone = source.cloneConfiguration();
+  constexpr int max_feed_title_length = 400;
+  const QString copy_title = tr("%1 (copy)");
+  const int decoration_length = int(copy_title.arg(QString()).size());
+  clone->setTitle(copy_title.arg(TextFactory::shorten(clone->title(), max_feed_title_length - decoration_length)));
+
+  QList<QPointer<MessageFilter>> filters;
+  for (const auto& filter : source.messageFilters()) {
+    if (filter != nullptr) {
+      filters.append(filter);
+    }
+  }
+
+  try {
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      auto connection = db;
+      if (!connection.transaction()) {
+        THROW_EX(SqlException, connection.lastError());
+      }
+
+      auto rollback = qScopeGuard([&]() { connection.rollback(); });
+      DatabaseQueries::createOverwriteFeed(connection, clone.get(), accountId(), parent->id());
+      for (const auto& filter : std::as_const(filters)) {
+        DatabaseQueries::assignMessageFilterToFeed(connection, clone->id(), filter->id());
+      }
+
+      if (!connection.commit()) {
+        THROW_EX(SqlException, connection.lastError());
+      }
+      rollback.dismiss();
+    });
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot clone feed"),
+                          tr("Cannot save feed: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical});
+    return;
+  }
+
+  clone->setMessageFilters(filters);
+  auto* cloned_feed = clone.release();
+  requestItemReassignment(cloned_feed, parent);
+  itemChanged({cloned_feed});
+  editItems({cloned_feed});
 }
 
 QVariantHash StandardServiceRoot::customDatabaseData() const {

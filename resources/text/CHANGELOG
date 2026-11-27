@@ -5,6 +5,7 @@ Released on: 2026-12-XX
 Added:
 * OAuth service plugins can opt into PKCE with S256 and use an OS-assigned loopback redirect port.
 * Service plugin metadata now declares the plugin API version. Rebuild external plugins for version 2.
+* The "Clone this" feed menu action copies a Standard RSS feed's settings and filter assignments into a new feed in the same folder, then opens it for editing. (#2535)
 
 Fixed:
 * Preview scrolling follows the active browser, including Gmail's preview. Startup browser initialization and cache cleanup work regardless of the selected preview. Closing the window disconnects preview visibility notifications before destroying the UI.

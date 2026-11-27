@@ -88,6 +88,24 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_proxyExtraDomains = other.proxyExtraDomains();
 }
 
+std::unique_ptr<StandardFeed> StandardFeed::cloneConfiguration() const {
+  auto copy = std::make_unique<StandardFeed>();
+  copy->setTitle(title());
+  copy->setDescription(description());
+  copy->setIcon(icon());
+  copy->setSource(source());
+  copy->setAutoUpdateType(autoUpdateType());
+  copy->setAutoUpdateInterval(autoUpdateInterval());
+  copy->setOpenArticlesDirectly(openArticlesDirectly());
+  copy->setArticleIgnoreLimit(articleIgnoreLimit());
+  copy->setRtlBehavior(rtlBehavior());
+  copy->setIsSwitchedOff(isSwitchedOff());
+  copy->setIsQuiet(isQuiet());
+  copy->setExcludesFromGlobalUnreadCount(excludesFromGlobalUnreadCount());
+  copy->setCustomDatabaseData(withSerializedSettings({}));
+  return copy;
+}
+
 QString StandardFeed::additionalTooltip() const {
   const bool ignore_all_cookies =
     qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
@@ -188,8 +206,10 @@ void StandardFeed::setPassword(const QString& password) {
 }
 
 QVariantHash StandardFeed::customDatabaseData() const {
-  QVariantHash data = m_customDatabaseData;
+  return withSerializedSettings(m_customDatabaseData);
+}
 
+QVariantHash StandardFeed::withSerializedSettings(QVariantHash data) const {
   data[QSL("source_type")] = int(sourceType());
   data[QSL("type")] = int(type());
   data[QSL("encoding")] = encoding();
