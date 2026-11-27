@@ -25,6 +25,7 @@
 #include <QMenu>
 #include <QPointer>
 #include <QProgressBar>
+#include <QSignalBlocker>
 #include <QSplitter>
 #include <QStatusBar>
 #include <QSystemTrayIcon>
@@ -421,7 +422,6 @@ void FeedMessageViewer::createConnections() {
 
   // If user selects feeds, load their messages.
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);
-  connect(m_feedsView, &FeedsView::requestViewNextUnreadMessage, m_messagesView, &MessagesView::selectNextUnreadItem);
 
   connect(m_messagesView, &MessagesView::selectInFeedsView, m_feedsView, &FeedsView::revealItem);
 
@@ -431,6 +431,68 @@ void FeedMessageViewer::createConnections() {
           &FeedsModel::dataChangeNotificationTriggered,
           m_messagesView,
           &MessagesView::reactOnExternalDataChange);
+}
+
+void FeedMessageViewer::selectNextUnreadArticle() {
+  const auto select_article = [this](const QModelIndex& article) {
+    m_messagesView->selectionModel()->setCurrentIndex(article,
+                                                      QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    m_messagesView->setFocus();
+  };
+
+  const auto next = m_messagesView->nextUnreadArticle();
+  if (next.isValid()) {
+    select_article(next);
+    return;
+  }
+
+  auto* articles = m_messagesView->sourceModel();
+  auto* original_item = articles->loadedItem();
+  const int original_row_count = articles->rowCount();
+  const auto selected_article = m_messagesView->selectedArticle();
+  const int original_article_id =
+    selected_article.sibling(selected_article.row(), MSG_MDL_ID_INDEX).data(Qt::EditRole).toInt();
+  QList<int> selected_ids;
+  for (const auto& index : m_messagesView->selectionModel()->selectedRows(MSG_MDL_ID_INDEX)) {
+    selected_ids.append(index.data(Qt::EditRole).toInt());
+  }
+
+  auto* feeds = m_feedsView->sourceModel();
+  auto* feed_proxy = m_feedsView->model();
+  const auto start = feed_proxy->mapFromSource(feeds->indexForItem(m_feedsView->selectedItem()));
+  const auto candidates = m_feedsView->unreadItemsAfter(start);
+  for (const auto& candidate : candidates) {
+    if (!candidate.isValid()) {
+      continue;
+    }
+
+    auto* item = feeds->itemForIndex(feed_proxy->mapToSource(candidate));
+    if (item == original_item) {
+      continue;
+    }
+
+    m_messagesView->loadItem(item);
+    const auto article = m_messagesView->nextUnreadArticle(original_article_id);
+    if (article.isValid()) {
+      m_feedsView->scrollTo(candidate);
+      {
+        // The articles for this item are already loaded.
+        const QSignalBlocker blocker(m_feedsView);
+        m_feedsView->selectionModel()->setCurrentIndex(candidate,
+                                                       QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+      }
+      select_article(article);
+      return;
+    }
+  }
+
+  if (articles->loadedItem() != original_item) {
+    m_messagesView->loadItem(original_item);
+    if (articles->lazyLoading() && articles->rowCount() < original_row_count) {
+      articles->fetchMoreArticles(original_row_count - articles->rowCount());
+    }
+    m_messagesView->restoreArticleSelection(selected_ids, original_article_id);
+  }
 }
 
 void FeedMessageViewer::updateArticleViewerSettings() {

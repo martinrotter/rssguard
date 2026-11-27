@@ -130,35 +130,27 @@ bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
   return matchesSelectedFilters(m_filter, m_filters, msg_row_index);
 }
 
-QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) const {
-  const bool started_from_zero = default_row == 0;
-  QModelIndex next_index = getNextUnreadItemIndex(default_row, rowCount() - 1);
+QModelIndex MessagesProxyModel::nextUnreadIndex(int current_row, int excluded_article_id) const {
+  const auto next = firstUnreadIndex(current_row + 1, rowCount() - 1, excluded_article_id);
 
-  // There is no next message, check previous.
-  if (!next_index.isValid() && !started_from_zero) {
-    next_index = getNextUnreadItemIndex(0, default_row - 1);
+  if (next.isValid() || current_row <= 0) {
+    return next;
   }
 
-  return next_index;
+  return firstUnreadIndex(0, current_row - 1, excluded_article_id);
 }
 
-QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) const {
-  while (default_row <= max_row) {
-    // Get info if the message is read or not.
-    const QModelIndex proxy_index = index(default_row, MSG_MDL_READ_INDEX);
-    const bool is_read =
-      m_sourceModel->data(mapToSource(proxy_index).row(), MSG_MDL_READ_INDEX, Qt::ItemDataRole::EditRole).toBool();
+QModelIndex MessagesProxyModel::firstUnreadIndex(int first_row, int last_row, int excluded_article_id) const {
+  for (int row = first_row; row <= last_row; ++row) {
+    const auto proxy_index = index(row, MSG_MDL_READ_INDEX);
+    const auto& article = m_sourceModel->messageForRow(mapToSource(proxy_index).row());
 
-    if (!is_read) {
-      // We found unread message, mark it.
+    if (!article.m_isRead && article.m_id != excluded_article_id) {
       return proxy_index;
-    }
-    else {
-      default_row++;
     }
   }
 
-  return QModelIndex();
+  return {};
 }
 
 bool MessagesProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right) const {

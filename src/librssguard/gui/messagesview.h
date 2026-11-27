@@ -57,6 +57,10 @@ class MessagesView : public BaseTreeView {
     void saveActiveColumnProfile();
     void restoreInitialColumnProfile();
 
+    QModelIndex selectedArticle() const;
+    QModelIndex nextUnreadArticle(int excluded_article_id = 0) const;
+    void restoreArticleSelection(const QList<int>& selected_ids, int current_id);
+
   public slots:
     void setColumnProfilesEnabled(bool enabled);
     void fetchFullSelectedArticles();
@@ -99,8 +103,6 @@ class MessagesView : public BaseTreeView {
     void selectNextItem();
     void selectPreviousItem();
     void selectItemWithCursorAction(QAbstractItemView::CursorAction act);
-
-    void selectNextUnreadItem();
 
     // Searchs the visible message according to given pattern.
     void searchMessages(SearchLineEdit::SearchMode mode,

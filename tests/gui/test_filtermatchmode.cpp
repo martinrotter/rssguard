@@ -20,6 +20,8 @@
 #include <memory>
 
 #include <QActionGroup>
+#include <QComboBox>
+#include <QDialog>
 #include <QDir>
 #include <QMetaMethod>
 #include <QProcess>
@@ -28,6 +30,7 @@
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QTimer>
 
 namespace {
   using Mode = FilteringProxyModel::FilterMatchMode;
@@ -101,6 +104,8 @@ class TestFilterMatchMode : public QObject {
     void modeControlsAreSeparateFromCriteria();
     void independentModesAndCriteriaSurviveRestart();
     void restoreWithoutCriteriaAppliesMode();
+    void nextUnreadArticle_data();
+    void nextUnreadArticle();
 
   private:
     FeedMessageViewer* viewer() const;
@@ -109,6 +114,7 @@ class TestFilterMatchMode : public QObject {
     void selectArticles();
     void clearArticleSelection();
     QSet<QString> articleTitles() const;
+    bool setArticleMarkingPolicy(MessagesView::ArticleMarkingPolicy policy);
     void verifyRestart(Mode feeds,
                        Mode articles,
                        const QStringList& feed_criteria = {},
@@ -496,6 +502,126 @@ void TestFilterMatchMode::restoreWithoutCriteriaAppliesMode() {
   QCOMPARE(qApp->feedReader()->messagesProxyModel()->filterMatchMode(), Mode::All);
   QVERIFY(visible(m_enabledUnread));
   QVERIFY(visible(m_disabledUnread));
+}
+
+void TestFilterMatchMode::nextUnreadArticle_data() {
+  QTest::addColumn<bool>("auto_mark");
+  QTest::addColumn<int>("selected_row");
+  QTest::addColumn<int>("unread_row");
+  QTest::addColumn<bool>("other_feed_unread");
+  QTest::addColumn<bool>("show_unread_node");
+  QTest::addColumn<QString>("expected_title");
+
+  QTest::newRow("forward-manual") << false << 0 << 1 << false << false << QSL("Unread");
+  QTest::newRow("forward-immediate") << true << 0 << 1 << false << false << QSL("Unread");
+  QTest::newRow("wrap") << false << 3 << 0 << false << false << QSL("Both");
+  QTest::newRow("no-selection") << false << -1 << 0 << false << false << QSL("Both");
+  QTest::newRow("another-feed") << false << 0 << -1 << true << false << QSL("Other feed article");
+  QTest::newRow("no-destination") << true << 0 << -1 << false << false << QSL("Both");
+  QTest::newRow("same-article-in-unread-node") << true << 0 << -1 << false << true << QSL("Both");
+}
+
+bool TestFilterMatchMode::setArticleMarkingPolicy(MessagesView::ArticleMarkingPolicy policy) {
+  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleMarkOnSelection)).toInt() == int(policy)) {
+    return true;
+  }
+
+  auto* action = m_window->findChild<QAction*>(QSL("m_actionSettings"));
+  if (action == nullptr || !action->isEnabled()) {
+    return false;
+  }
+
+  bool applied = false;
+  QTimer::singleShot(0, [&]() {
+    auto* dialog = qobject_cast<QDialog*>(QApplication::activeModalWidget());
+    if (dialog != nullptr) {
+      QMetaObject::invokeMethod(dialog, "openSettingsCategory", Qt::DirectConnection, Q_ARG(int, 4));
+      auto* marking = dialog->findChild<QComboBox*>(QSL("m_cmbArticleMarkingPolicy"));
+      const int index = marking == nullptr ? -1 : marking->findData(int(policy));
+      if (index >= 0) {
+        marking->setCurrentIndex(index);
+        applied = QMetaObject::invokeMethod(dialog, "applySettings", Qt::DirectConnection);
+      }
+      dialog->done(QDialog::Rejected);
+    }
+  });
+  action->trigger();
+  return applied;
+}
+
+void TestFilterMatchMode::nextUnreadArticle() {
+  QFETCH(bool, auto_mark);
+  QFETCH(int, selected_row);
+  QFETCH(int, unread_row);
+  QFETCH(bool, other_feed_unread);
+  QFETCH(bool, show_unread_node);
+  QFETCH(QString, expected_title);
+
+  selectArticles();
+  auto* view = viewer()->messagesView();
+  auto* model = view->model();
+  QStringList ids;
+  for (int row = 0; row < model->rowCount(); ++row) {
+    ids.append(model->index(row, MSG_MDL_ID_INDEX).data(Qt::EditRole).toString());
+  }
+
+  Message other_article;
+  other_article.m_title = other_article.m_customId = QSL("Other feed article");
+  other_article.m_feedId = m_disabledUnread->id();
+  other_article.m_accountId = m_account->accountId();
+  other_article.m_isRead = !other_feed_unread;
+  other_article.m_created = other_article.m_retrieved = QDateTime::currentDateTimeUtc();
+  QList<Message> other_articles{other_article};
+  DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), other_articles, m_disabledUnread, true, false)
+    .throwIfFailed();
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markMessagesReadUnread(db, ids, RootItem::ReadStatus::Read);
+    DatabaseQueries::markFeedsReadUnread(db,
+                                         {QString::number(m_disabledUnread->id())},
+                                         other_feed_unread ? RootItem::ReadStatus::Unread : RootItem::ReadStatus::Read);
+    if (unread_row >= 0) {
+      DatabaseQueries::markMessagesReadUnread(db, {ids.at(unread_row)}, RootItem::ReadStatus::Unread);
+    }
+  });
+  m_account->updateCounts();
+  if (selected_row >= 0 && unread_row < 0 && !other_feed_unread && !show_unread_node) {
+    // Force the fallback to inspect a feed whose count has not caught up yet.
+    m_disabledUnread->setCountOfUnreadMessages(1);
+  }
+  m_account->setNodeShowUnread(show_unread_node);
+  m_account->setNodeShowImportant(false);
+  viewer()->feedsView()->model()->invalidate();
+  viewer()->feedsView()->selectionModel()->clear();
+  selectArticles();
+
+  const auto marking_policy = auto_mark ? MessagesView::ArticleMarkingPolicy::MarkImmediately
+                                        : MessagesView::ArticleMarkingPolicy::MarkOnlyManually;
+  QVERIFY(setArticleMarkingPolicy(marking_policy));
+
+  auto* toggle = m_window->findChild<QAction*>(QSL("m_actionToggleArticlesReadUnread"));
+  auto* next = m_window->findChild<QAction*>(QSL("m_actionSelectNextUnreadMessage"));
+  QVERIFY(toggle != nullptr);
+  QVERIFY(next != nullptr);
+  if (selected_row >= 0) {
+    view->selectionModel()->setCurrentIndex(model->index(selected_row, MSG_MDL_TITLE_INDEX),
+                                            QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+    QVERIFY(toggle->isEnabled());
+    toggle->trigger();
+    QCOMPARE(model->index(selected_row, MSG_MDL_READ_INDEX).data(Qt::EditRole).toBool(), false);
+  }
+
+  QVERIFY(next->isEnabled());
+  next->trigger();
+  const auto current = view->currentIndex();
+  QVERIFY(current.isValid());
+  QCOMPARE(current.sibling(current.row(), MSG_MDL_TITLE_INDEX).data(Qt::EditRole).toString(), expected_title);
+
+  auto* expected_feed = other_feed_unread ? m_disabledUnread : m_enabledUnread;
+  QCOMPARE(viewer()->feedsView()->selectedItem(), static_cast<RootItem*>(expected_feed));
+  if (selected_row >= 0 && !other_feed_unread) {
+    QCOMPARE(model->index(selected_row, MSG_MDL_READ_INDEX).data(Qt::EditRole).toBool(), false);
+  }
 }
 
 int main(int argc, char* argv[]) {

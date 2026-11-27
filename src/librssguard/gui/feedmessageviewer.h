@@ -73,6 +73,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void respondToMainWindowResizes();
 
     void openHomepageOfSelectedArticleFeed();
+    void selectNextUnreadArticle();
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
 
   private slots:

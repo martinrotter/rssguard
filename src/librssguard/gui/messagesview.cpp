@@ -31,6 +31,7 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QProcess>
+#include <QScopedValueRollback>
 #include <QScrollBar>
 #include <QSignalBlocker>
 #include <QTimer>
@@ -1254,24 +1255,37 @@ void MessagesView::selectItemWithCursorAction(CursorAction act) {
   }
 }
 
-void MessagesView::selectNextUnreadItem() {
-  const QModelIndexList selected_rows = selectionModel()->selectedRows();
-  int active_row;
+QModelIndex MessagesView::selectedArticle() const {
+  const auto current = currentIndex();
 
-  if (!selected_rows.isEmpty()) {
-    // Okay, something is selected, start from it.
-    active_row = selected_rows.at(0).row();
-  }
-  else {
-    active_row = 0;
+  if (current.isValid() && selectionModel()->isRowSelected(current.row(), current.parent())) {
+    return current;
   }
 
-  const QModelIndex next_unread = m_proxyModel->getNextPreviousUnreadItemIndex(active_row);
+  return selectionModel()->selectedRows().value(0);
+}
 
-  if (next_unread.isValid()) {
-    setCurrentIndex(next_unread);
-    setFocus();
+QModelIndex MessagesView::nextUnreadArticle(int excluded_article_id) const {
+  return m_proxyModel->nextUnreadIndex(selectedArticle().row(), excluded_article_id);
+}
+
+void MessagesView::restoreArticleSelection(const QList<int>& selected_ids, int current_id) {
+  m_sourceModel->setAdditionalArticleId(current_id);
+  m_proxyModel->invalidate();
+
+  QItemSelection selection;
+  for (int id : selected_ids) {
+    const auto index = m_proxyModel->mapFromSource(m_sourceModel->indexForMessage(id));
+
+    if (index.isValid()) {
+      selection.select(index, index);
+    }
   }
+
+  const auto current = m_proxyModel->mapFromSource(m_sourceModel->indexForMessage(current_id));
+  const QScopedValueRollback<bool> suppress_marking(m_processingRightMouseButton, true);
+  selectionModel()->setCurrentIndex(current, QItemSelectionModel::NoUpdate);
+  selectionModel()->select(selection, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
 }
 
 void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,

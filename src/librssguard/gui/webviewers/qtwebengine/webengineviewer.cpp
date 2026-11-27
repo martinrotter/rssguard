@@ -132,6 +132,7 @@ void WebEngineViewer::loadMessage(const Message& message, RootItem* root, Feed* 
 void WebEngineViewer::loadUrl(const QUrl& url) {
   m_hasImageSizeLimits = false;
   if (url.isValid()) {
+    ++m_contentGeneration;
     QWebEngineView::load(url);
   }
   else {
@@ -372,6 +373,7 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
     }
   }
 
+  ++m_contentGeneration;
   QWebEngineView::setHtml(display_html, url);
 }
 

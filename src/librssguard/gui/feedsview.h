@@ -39,6 +39,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // "current", returns firs item of selected ones.
     RootItem* selectedItem() const;
     QList<RootItem*> selectedItems() const;
+    QList<QPersistentModelIndex> unreadItemsAfter(const QModelIndex& start_index) const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void loadAllExpandStates();
@@ -84,7 +85,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // Selects next/previous item (feed/category) in the list.
     void selectNextItem();
     void selectPreviousItem();
-    void selectNextUnreadItem();
 
     // Switches visibility of the widget.
     void switchVisibility();
@@ -98,7 +98,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
 
   signals:
     void itemSelected(RootItem* item);
-    void requestViewNextUnreadMessage();
 
   protected:
     virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
@@ -124,9 +123,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void onItemExpandRequested(const QList<RootItem*>& items, bool exp);
 
   private:
-    QModelIndex nextPreviousUnreadItem(const QModelIndex& default_row);
-    QModelIndex nextUnreadItem(const QModelIndex& default_row);
-
     // Initializes context menus.
     QMenu* baseContextMenu(const QList<RootItem*>& selected_items);
 

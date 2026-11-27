@@ -1184,8 +1184,8 @@ void FormMain::createConnections() {
           &MessagesView::selectNextItem);
   connect(m_ui->m_actionSelectNextUnreadMessage,
           &QAction::triggered,
-          tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::selectNextUnreadItem);
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::selectNextUnreadArticle);
   connect(m_ui->m_actionSelectPreviousMessage,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),

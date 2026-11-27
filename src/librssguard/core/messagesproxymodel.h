@@ -34,7 +34,7 @@ class MessagesProxyModel : public FilteringProxyModel {
     explicit MessagesProxyModel(MessagesModel* source_model, QObject* parent = nullptr);
     virtual ~MessagesProxyModel();
 
-    QModelIndex getNextPreviousUnreadItemIndex(int default_row) const;
+    QModelIndex nextUnreadIndex(int current_row, int excluded_article_id) const;
 
     // Maps list of indexes.
     QModelIndexList mapListToSource(const QModelIndexList& indexes) const;
@@ -57,7 +57,7 @@ class MessagesProxyModel : public FilteringProxyModel {
   private:
     void initializeFilters();
 
-    QModelIndex getNextUnreadItemIndex(int default_row, int max_row) const;
+    QModelIndex firstUnreadIndex(int first_row, int last_row, int excluded_article_id) const;
 
     bool filterAcceptsMessage(int msg_row_index) const;
 

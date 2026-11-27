@@ -1,5 +1,6 @@
 5.3.1
 -----
+Released on: 2026-12-XX
 
 Added:
 * OAuth service plugins can opt into PKCE with S256 and use an OS-assigned loopback redirect port.
@@ -7,9 +8,11 @@ Added:
 
 Fixed:
 * Preview scrolling follows the active browser, including Gmail's preview. Startup browser initialization and cache cleanup work regardless of the selected preview. Closing the window disconnects preview visibility notifications before destroying the UI.
+* Added a Qt WebEngine workaround for a reported crash when switching between Slashdot articles. (#2529)
 * Large fetch batches update feed counts once at completion. Feed preparation failures retain their status and message, and stopping an unfinished fetch restores its previous status and last-update time.
 * Delayed feed-tree expansion handles items moved or removed before its timer fires. Feed copies preserve status and article counts.
 * Article sorting ignores unmapped columns. Invalid article dates use the same fallback in database writes and filter previews.
+* "Next unread article" advances after toggling the selected article back to unread and continues to another feed when needed. (#2522)
 * Malformed OAuth token replies report a login error and preserve existing credentials. The HTTP downloader handles replies that are already finished, and Retry-After accepts HTTP dates.
 
 5.3.0

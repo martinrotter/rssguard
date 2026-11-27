@@ -824,69 +824,32 @@ void FeedsView::selectPreviousItem() {
   setFocus();
 }
 
-void FeedsView::selectNextUnreadItem() {
-  QModelIndex next_unread_row;
+QList<QPersistentModelIndex> FeedsView::unreadItemsAfter(const QModelIndex& start_index) const {
+  QList<QPersistentModelIndex> before_start;
+  QList<QPersistentModelIndex> after_start;
+  bool passed_start = !start_index.isValid();
+  const auto visit_children = [this, &start_index, &passed_start, &before_start, &after_start](
+                                const auto& visit, const QModelIndex& parent) -> void {
+    for (int row = 0; row < m_proxyModel->rowCount(parent); ++row) {
+      const auto index = m_proxyModel->index(row, 0, parent);
 
-  if (currentIndex().isValid()) {
-    next_unread_row = nextPreviousUnreadItem(currentIndex());
-  }
-  else {
-    next_unread_row = nextPreviousUnreadItem(m_proxyModel->index(0, MSG_MDL_READ_INDEX));
-  }
-
-  if (next_unread_row.isValid()) {
-    setCurrentIndex(next_unread_row);
-    // scrollTo(next_unread_row, QAbstractItemView::ScrollHint::EnsureVisible);
-    emit requestViewNextUnreadMessage();
-  }
-}
-
-QModelIndex FeedsView::nextPreviousUnreadItem(const QModelIndex& default_row) {
-  const bool started_from_zero = default_row.row() == 0 && !default_row.parent().isValid();
-  QModelIndex next_index = nextUnreadItem(default_row);
-
-  // There is no next message, check previous.
-  if (!next_index.isValid() && !started_from_zero) {
-    next_index = nextUnreadItem(m_proxyModel->index(0, 0));
-  }
-
-  return next_index;
-}
-
-QModelIndex FeedsView::nextUnreadItem(const QModelIndex& default_row) {
-  QModelIndex nconst_default_row = m_proxyModel->index(default_row.row(), 0, default_row.parent());
-  const QModelIndex starting_row = default_row;
-
-  while (true) {
-    bool has_unread =
-      m_sourceModel->itemForIndex(m_proxyModel->mapToSource(nconst_default_row))->countOfUnreadMessages() > 0;
-
-    if (has_unread) {
-      if (m_proxyModel->hasChildren(nconst_default_row)) {
-        // Current index has unread items, but is expandable, go to first child.
-        expand(nconst_default_row);
-        nconst_default_row = indexBelow(nconst_default_row);
-        continue;
+      if (index == start_index) {
+        passed_start = true;
       }
-      else {
-        // We found unread feed, return it.
-        return nconst_default_row;
+
+      if (m_proxyModel->hasChildren(index)) {
+        visit(visit, index);
+      }
+      else if (index != start_index &&
+               m_sourceModel->itemForIndex(m_proxyModel->mapToSource(index))->countOfUnreadMessages() > 0) {
+        (passed_start ? after_start : before_start).append(QPersistentModelIndex(index));
       }
     }
-    else {
-      QModelIndex next_row = indexBelow(nconst_default_row);
+  };
 
-      if (next_row == nconst_default_row || !next_row.isValid() || starting_row == next_row) {
-        // We came to last row probably.
-        break;
-      }
-      else {
-        nconst_default_row = next_row;
-      }
-    }
-  }
-
-  return QModelIndex();
+  visit_children(visit_children, {});
+  after_start += before_start;
+  return after_start;
 }
 
 void FeedsView::switchVisibility() {
