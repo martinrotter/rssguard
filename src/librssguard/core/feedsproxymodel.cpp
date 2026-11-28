@@ -566,12 +566,13 @@ bool FeedsProxyModel::filterAcceptsRowInternal(const QModelIndex& source_index, 
 
   // Either basic model matching is successful or "everywhere" is enabled
   // and we find something in item's description.
-  bool should_show_model = QSortFilterProxyModel::filterAcceptsRow(source_index.row(), source_index.parent());
-  bool should_show_all_data = filterKeyColumn() < 0 && filterRegularExpression().isValid() &&
-                              filterRegularExpression()
-                                .match(item->data(FDS_MODEL_TITLE_INDEX, Qt::ItemDataRole::ToolTipRole).toString())
-                                .hasMatch();
-  bool should_show = should_show_model || should_show_all_data;
+  bool should_show = QSortFilterProxyModel::filterAcceptsRow(source_index.row(), source_index.parent());
+  if (!should_show && filterKeyColumn() < 0) {
+    const auto expression = filterRegularExpression();
+    should_show = expression.isValid() &&
+                  expression.match(item->data(FDS_MODEL_TITLE_INDEX, Qt::ItemDataRole::ToolTipRole).toString())
+                    .hasMatch();
+  }
 
   return should_show && matchesSelectedFilters(m_filter, m_filters, item);
 }

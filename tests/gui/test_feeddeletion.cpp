@@ -20,6 +20,7 @@
 #include <memory>
 
 #include <QDir>
+#include <QMenu>
 #include <QPixmap>
 #include <QPluginLoader>
 #include <QPointer>
@@ -63,6 +64,7 @@ class TestFeedDeletion : public QObject {
 
   private slots:
     void initTestCase();
+    void rebuildingMenusReleasesOldAccountSubmenus();
     void copiedFeedPreservesStatusAndCounts();
     void deleteMultipleFeeds_data();
     void deleteMultipleFeeds();
@@ -118,6 +120,31 @@ void TestFeedDeletion::initTestCase() {
   m_window->resize(1000, 700);
   m_window->show();
   QTRY_VERIFY(m_window->isVisible());
+}
+
+void TestFeedDeletion::rebuildingMenusReleasesOldAccountSubmenus() {
+  const QList<QPair<QString, QString>> menus{
+    {QSL("m_menuAccounts"), QSL("m_actionServiceAdd")},
+    {QSL("m_menuAddItem"), QSL("m_actionAddFeedIntoSelectedItem")},
+    {QSL("m_menuRecycleBin"), QSL("m_actionEmptyAllRecycleBins")}};
+
+  for (const auto& [menu_name, action_name] : menus) {
+    auto* menu = m_window->findChild<QMenu*>(menu_name);
+    QVERIFY(menu != nullptr);
+    QPointer<QAction> shared_action(m_window->findChild<QAction*>(action_name));
+    QVERIFY(!shared_action.isNull());
+
+    menu->aboutToShow();
+    const auto submenus = menu->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly);
+    QCOMPARE(submenus.size(), m_accounts.size());
+    QPointer<QMenu> old_submenu(submenus.constFirst());
+
+    menu->aboutToShow();
+    QVERIFY(old_submenu.isNull());
+    QCOMPARE(menu->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly).size(), m_accounts.size());
+    QVERIFY(!shared_action.isNull());
+    QVERIFY(menu->actions().contains(shared_action.data()));
+  }
 }
 
 void TestFeedDeletion::copiedFeedPreservesStatusAndCounts() {

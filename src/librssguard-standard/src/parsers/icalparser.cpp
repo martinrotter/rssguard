@@ -167,7 +167,7 @@ void Icalendar::setTitle(const QString& title) {
 }
 
 void Icalendar::processLines(const QString& data) {
-  static QRegularExpression regex("^BEGIN:(\\w+)\\r$(.+?)(?=^BEGIN|^END)",
+  static QRegularExpression regex("^BEGIN:(\\w+)\\r?$(.+?)(?=^BEGIN|^END)",
                                   QRegularExpression::PatternOption::MultilineOption |
                                     QRegularExpression::PatternOption::DotMatchesEverythingOption);
 
@@ -241,7 +241,7 @@ QVariantMap Icalendar::tokenizeBody(const QString& body) const {
 
     QString value = match.mid(sep + 1);
 
-    value = value.replace(QRegularExpression("\\r\\n\\s?"), QString());
+    value = value.replace(QRegularExpression("\\r?\\n\\s?"), QString());
     value = value.replace(QSL("\\n"), QSL("<br/>"));
     value = value.replace(QSL("\\,"), QSL(","));
     value = value.replace(QSL("\\;"), QSL(";"));

@@ -37,6 +37,7 @@
 
 #include <QClipboard>
 #include <QCloseEvent>
+#include <QMenu>
 #include <QRect>
 #include <QScopedPointer>
 #include <QTimer>
@@ -55,6 +56,17 @@
 #include <ShObjIdl.h>
 #include "miscellaneous/windowstaskbar.h"
 #endif
+
+namespace {
+  void clearAccountMenu(QMenu* menu) {
+    menu->clear();
+
+    // Each generated submenu owns its menu action, so clear() only detaches it.
+    for (auto* submenu : menu->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly)) {
+      delete submenu;
+    }
+  }
+} // namespace
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_statusBar(nullptr) {
@@ -311,8 +323,7 @@ void FormMain::switchFullscreenMode() {
 }
 
 void FormMain::updateAddItemMenu() {
-  // NOTE: Clear here deletes items from memory but only those OWNED by the menu.
-  m_ui->m_menuAddItem->clear();
+  clearAccountMenu(m_ui->m_menuAddItem);
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
@@ -325,9 +336,8 @@ void FormMain::updateAddItemMenu() {
 
     if (activated_root->supportsCategoryAdding()) {
       QAction* action_new_category =
-        new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Add new folder"), m_ui->m_menuAddItem);
+        root_menu->addAction(qApp->icons()->fromTheme(QSL("folder")), tr("Add new folder"));
 
-      root_menu->addAction(action_new_category);
       connect(action_new_category, &QAction::triggered, activated_root, [activated_root]() {
         activated_root->addNewCategory(activated_root);
       });
@@ -335,9 +345,8 @@ void FormMain::updateAddItemMenu() {
 
     if (activated_root->supportsFeedAdding()) {
       QAction* action_new_feed =
-        new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Add new feed"), m_ui->m_menuAddItem);
+        root_menu->addAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Add new feed"));
 
-      root_menu->addAction(action_new_feed);
       connect(action_new_feed, &QAction::triggered, activated_root, [activated_root]() {
         activated_root->addNewFeed(activated_root, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
       });
@@ -365,7 +374,7 @@ void FormMain::updateAddItemMenu() {
 }
 
 void FormMain::updateRecycleBinMenu() {
-  m_ui->m_menuRecycleBin->clear();
+  clearAccountMenu(m_ui->m_menuRecycleBin);
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
@@ -379,17 +388,15 @@ void FormMain::updateRecycleBinMenu() {
 
     if (bin == nullptr) {
       QAction* no_action =
-        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No recycle bin"), m_ui->m_menuRecycleBin);
+        root_menu->addAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No recycle bin"));
 
       no_action->setEnabled(false);
-      root_menu->addAction(no_action);
     }
     else if ((context_menu = activated_root->contextMenuFeedsList({bin}, root_menu)).isEmpty()) {
       QAction* no_action =
-        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No actions possible"), m_ui->m_menuRecycleBin);
+        root_menu->addAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No actions possible"));
 
       no_action->setEnabled(false);
-      root_menu->addAction(no_action);
     }
     else {
       root_menu->addActions(context_menu);
@@ -407,7 +414,7 @@ void FormMain::updateRecycleBinMenu() {
 }
 
 void FormMain::updateAccountsMenu() {
-  m_ui->m_menuAccounts->clear();
+  clearAccountMenu(m_ui->m_menuAccounts);
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
@@ -420,10 +427,9 @@ void FormMain::updateAccountsMenu() {
 
     if (root_actions.isEmpty()) {
       QAction* no_action =
-        new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No possible actions"), m_ui->m_menuAccounts);
+        root_menu->addAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No possible actions"));
 
       no_action->setEnabled(false);
-      root_menu->addAction(no_action);
     }
     else {
       root_menu->addActions(root_actions);

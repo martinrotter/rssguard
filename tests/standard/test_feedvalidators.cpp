@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
@@ -38,6 +39,7 @@ class TestFeedValidators : public QObject {
 
   private slots:
     void commitOnlyAfterSuccessfulStorage();
+    void calendarEventsPopulateArticles_data();
     void calendarEventsPopulateArticles();
 };
 
@@ -179,21 +181,31 @@ void TestFeedValidators::commitOnlyAfterSuccessfulStorage() {
   QCOMPARE(requests.last(), QByteArray());
 }
 
+void TestFeedValidators::calendarEventsPopulateArticles_data() {
+  QTest::addColumn<QByteArray>("line_ending");
+  QTest::newRow("CRLF") << QByteArray("\r\n");
+  QTest::newRow("LF") << QByteArray("\n");
+}
+
 void TestFeedValidators::calendarEventsPopulateArticles() {
-  const QByteArray calendar =
-    "BEGIN:VCALENDAR\r\n"
-    "VERSION:2.0\r\n"
-    "BEGIN:VEVENT\r\n"
-    "UID:planning-1\r\n"
-    "SUMMARY:Planning meeting\r\n"
-    "URL:https://example.test/planning\r\n"
-    "ORGANIZER:mailto:organizer@example.test\r\n"
-    "DTSTART;VALUE=DATE:20251105\r\n"
-    "DTEND;VALUE=DATE:20251106\r\n"
-    "LOCATION:Meeting room\r\n"
-    "DESCRIPTION:Review plans\r\n"
-    "END:VEVENT\r\n"
-    "END:VCALENDAR\r\n";
+  QFETCH(QByteArray, line_ending);
+  QByteArray calendar =
+    "BEGIN:VCALENDAR\n"
+    "VERSION:2.0\n"
+    "BEGIN:VEVENT\n"
+    "UID:planning-1\n"
+    "SUMMARY:Planning meeting\n"
+    "URL:https://example.test/planning\n"
+    "ORGANIZER:mailto:organizer@example.test\n"
+    "DTSTART;VALUE=DATE:20251105\n"
+    "DTEND;VALUE=DATE:20251106\n"
+    "LOCATION:Meeting room\n"
+    "DESCRIPTION:Review plans and\n"
+    "  prepare the agenda\\nBudget\n"
+    "\t planning\n"
+    "END:VEVENT\n"
+    "END:VCALENDAR\n";
+  calendar.replace("\n", line_ending);
   QTemporaryFile file;
   QVERIFY(file.open());
   QCOMPARE(file.write(calendar), qint64(calendar.size()));
@@ -234,7 +246,13 @@ void TestFeedValidators::calendarEventsPopulateArticles() {
   config[QSL("encoding")] = QSL("UTF-8");
   feed->setCustomDatabaseData(config);
 
-  const auto messages = account->obtainNewMessagesForUpdate(feed, {}, {}).messages;
+  QList<Message> messages;
+  try {
+    messages = account->obtainNewMessagesForUpdate(feed, {}, {}).messages;
+  }
+  catch (const ApplicationException& ex) {
+    QFAIL(qPrintable(ex.message()));
+  }
   QCOMPARE(messages.size(), 1);
   const auto& article = messages.first();
   QCOMPARE(article.m_customId, QSL("planning-1"));
@@ -244,7 +262,7 @@ void TestFeedValidators::calendarEventsPopulateArticles() {
   QVERIFY(article.m_createdFromFeed);
   QCOMPARE(article.m_created.toLocalTime().date(), QDate(2025, 11, 5));
   QVERIFY(article.m_contents.contains(QSL("Meeting room")));
-  QVERIFY(article.m_contents.contains(QSL("Review plans")));
+  QVERIFY(article.m_contents.contains(QSL("Review plans and prepare the agenda<br/>Budget planning")));
   QVERIFY(article.m_rawContents.contains(QSL("DTSTART;VALUE=DATE")));
 }
 

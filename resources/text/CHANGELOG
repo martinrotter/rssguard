@@ -40,6 +40,9 @@ Fixed:
 * SQLite backups include recently saved changes even while the database is being read.
 * The text article viewer prepares pages with many resized images faster.
 * Feeds with many attachments are processed faster, including when the same attachment appears more than once.
+* iCalendar feeds saved with Unix line endings now load correctly.
+* Reopening the Accounts, Add item, and Recycle bins menus now frees the old account submenus.
+* Everywhere searches do less work when a feed or folder already matches.
 
 5.3.0
 -----

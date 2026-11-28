@@ -26,6 +26,7 @@
 #include <QDir>
 #include <QMetaMethod>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QScopeGuard>
 #include <QSet>
 #include <QSettings>
@@ -100,6 +101,7 @@ class TestFilterMatchMode : public QObject {
     void pinnedFeedOrdering();
     void feedTextSearchIntersectsWithBothModes();
     void clearingWildcardSearchRestoresMatchingFeeds();
+    void everywhereSearchOnlyBuildsTooltipsWhenNeeded();
     void foldersAndSelectedFeedRemainVisible();
     void articlesRefreshWhenOnlyModeChanges();
     void textSearchIntersectsWithBothModes();
@@ -424,6 +426,44 @@ void TestFilterMatchMode::clearingWildcardSearchRestoresMatchingFeeds() {
   QVERIFY(visible(m_enabledRead));
   QVERIFY(visible(m_enabledUnread));
   QVERIFY(!visible(m_disabledUnread));
+}
+
+void TestFilterMatchMode::everywhereSearchOnlyBuildsTooltipsWhenNeeded() {
+  class CountingFeed : public Feed {
+    public:
+      using Feed::Feed;
+
+      QString additionalTooltip() const override {
+        ++m_tooltipReads;
+        return QSL("tooltip-only phrase");
+      }
+
+      mutable int m_tooltipReads = 0;
+  };
+
+  FeedReader reader(qApp);
+  const auto stop_reader = qScopeGuard([&reader]() { reader.quit(); });
+  auto* account = new TestServiceRoot();
+  auto* feed = new CountingFeed(account);
+  feed->setTitle(QSL("Matching feed title"));
+  account->appendChild(feed);
+  auto* model = reader.feedsModel();
+  QVERIFY(model->addServiceAccount(account, true));
+
+  QSortFilterProxyModel* proxy = reader.feedsProxyModel();
+  const auto feed_index = model->indexForItem(feed);
+  QVERIFY(feed_index.isValid());
+  proxy->setFilterKeyColumn(-1);
+  QVERIFY(proxy->mapFromSource(feed_index).isValid());
+  QCOMPARE(feed->m_tooltipReads, 0);
+
+  proxy->setFilterRegularExpression(QRegularExpression(QSL("Matching feed title")));
+  QVERIFY(proxy->mapFromSource(feed_index).isValid());
+  QCOMPARE(feed->m_tooltipReads, 0);
+
+  proxy->setFilterRegularExpression(QRegularExpression(QSL("tooltip-only phrase")));
+  QVERIFY(proxy->mapFromSource(feed_index).isValid());
+  QVERIFY(feed->m_tooltipReads > 0);
 }
 
 void TestFilterMatchMode::articlesRefreshWhenOnlyModeChanges() {
