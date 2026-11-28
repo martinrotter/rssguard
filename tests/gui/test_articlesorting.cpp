@@ -16,13 +16,16 @@
 #include <memory>
 
 #include <QCheckBox>
+#include <QContextMenuEvent>
 #include <QDialog>
 #include <QDir>
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMenu>
+#include <QPointer>
 #include <QProcess>
+#include <QScopeGuard>
 #include <QSettings>
 #include <QSignalBlocker>
 #include <QSignalSpy>
@@ -109,6 +112,7 @@ class TestArticleSorting : public QObject {
     void profileToggleRefreshesArticles_data();
     void profileToggleRefreshesArticles();
     void nestedHeaderSignalBlockingIsPreserved();
+    void reopeningArticleMenuReleasesGeneratedSubmenus();
     void sortingSurvivesRestartWithoutSelectingFeed();
 
   private:
@@ -449,6 +453,61 @@ void TestArticleSorting::nestedHeaderSignalBlockingIsPreserved() {
                                     Q_ARG(int, MSG_MDL_AUTHOR_INDEX),
                                     Q_ARG(Qt::SortOrder, Qt::AscendingOrder)));
   QVERIFY(view()->header()->signalsBlocked());
+}
+
+void TestArticleSorting::reopeningArticleMenuReleasesGeneratedSubmenus() {
+  m_window->show();
+  const auto hide_window = qScopeGuard([this]() {
+    m_window->hide();
+  });
+  loadItem(m_first);
+
+  auto* articles = view();
+  const auto row = articles->model()->index(0, MSG_MDL_TITLE_INDEX);
+  QVERIFY(row.isValid());
+  articles->selectionModel()->select(row, QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows);
+  articles->scrollTo(row);
+  const auto position = articles->visualRect(row).center();
+  QVERIFY(articles->viewport()->rect().contains(position));
+  QCOMPARE(articles->indexAt(position), row);
+
+  QPointer<QAction> shared_action = m_window->findChild<QAction*>(QSL("m_actionOpenSelectedMessagesInternally"));
+  QVERIFY(!shared_action.isNull());
+  const auto tools_title = QCoreApplication::translate("MessagesView", "Open with external tool");
+  QList<QPointer<QObject>> first_menu_objects;
+
+  for (int opening = 0; opening < 2; ++opening) {
+    int submenu_count = 0;
+    bool shared_action_visible = false;
+    QTimer dismiss_popup;
+    dismiss_popup.setSingleShot(true);
+    connect(&dismiss_popup, &QTimer::timeout, this, [&]() {
+      if (auto* menu = qobject_cast<QMenu*>(QApplication::activePopupWidget())) {
+        const auto submenus = menu->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly);
+        submenu_count = submenus.size();
+        shared_action_visible = menu->actions().contains(shared_action.data());
+        if (opening == 0) {
+          for (auto* submenu : submenus) {
+            first_menu_objects.append(QPointer<QObject>(submenu));
+            if (submenu->title() == tools_title && submenu->actions().size() == 1) {
+              first_menu_objects.append(QPointer<QObject>(submenu->actions().constFirst()));
+            }
+          }
+        }
+        menu->close();
+      }
+    });
+    dismiss_popup.start(0);
+    QContextMenuEvent event(QContextMenuEvent::Mouse, position, articles->viewport()->mapToGlobal(position));
+    QApplication::sendEvent(articles->viewport(), &event);
+    QCOMPARE(submenu_count, 2);
+    QVERIFY(shared_action_visible);
+  }
+
+  QCOMPARE(first_menu_objects.size(), 3);
+  for (const auto& object : first_menu_objects) {
+    QVERIFY(object.isNull());
+  }
 }
 
 void TestArticleSorting::sortingSurvivesRestartWithoutSelectingFeed() {

@@ -40,6 +40,7 @@
 #include <QIODevice>
 #include <QProcess>
 #include <QRegularExpression>
+#include <QSet>
 #include <QTcpSocket>
 #include <QTemporaryFile>
 #include <QUrl>
@@ -302,7 +303,10 @@ namespace {
     return rule_hosts;
   }
 
-  void collectHyperlinksFromGumboNode(GumboNode* node, const QUrl& base_url, QStringList& hyperlinks) {
+  void collectHyperlinksFromGumboNode(GumboNode* node,
+                                     const QUrl& base_url,
+                                     QStringList& hyperlinks,
+                                     QSet<QString>& seen_hyperlinks) {
     if (node == nullptr) {
       return;
     }
@@ -311,7 +315,7 @@ namespace {
       GumboVector* children = &node->v.document.children;
 
       for (unsigned int i = 0; i < children->length; i++) {
-        collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks);
+        collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks, seen_hyperlinks);
       }
 
       return;
@@ -334,7 +338,8 @@ namespace {
           const QUrl resolved_url = base_url.resolved(raw_url);
           const QString resolved_url_string = resolved_url.toString();
 
-          if (resolved_url.isValid() && !resolved_url_string.isEmpty() && !hyperlinks.contains(resolved_url_string)) {
+          if (resolved_url.isValid() && !resolved_url_string.isEmpty() && !seen_hyperlinks.contains(resolved_url_string)) {
+            seen_hyperlinks.insert(resolved_url_string);
             hyperlinks << resolved_url_string;
           }
         }
@@ -344,7 +349,7 @@ namespace {
     GumboVector* children = &element.children;
 
     for (unsigned int i = 0; i < children->length; i++) {
-      collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks);
+      collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks, seen_hyperlinks);
     }
   }
 } // namespace
@@ -1166,7 +1171,8 @@ QStringList WebFactory::extractAllHyperlinks(const QUrl& base_url, const QByteAr
     return hyperlinks;
   }
 
-  collectHyperlinksFromGumboNode(output->root, base_url, hyperlinks);
+  QSet<QString> seen_hyperlinks;
+  collectHyperlinksFromGumboNode(output->root, base_url, hyperlinks, seen_hyperlinks);
   gumbo_destroy_output(&kGumboDefaultOptions, output);
 
   qDebugNN << hyperlinks;

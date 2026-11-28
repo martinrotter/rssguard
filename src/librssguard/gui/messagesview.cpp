@@ -648,6 +648,12 @@ void MessagesView::initializeContextMenu() {
   }
 
   m_contextMenu->clear();
+
+  // A submenu owns its menu action and can retain the previous selection after clear().
+  for (auto* submenu : m_contextMenu->findChildren<QMenu*>(QString(), Qt::FindDirectChildrenOnly)) {
+    delete submenu;
+  }
+
   QList<Message> selected_messages;
 
   if (m_sourceModel->loadedItem() != nullptr) {
@@ -684,10 +690,9 @@ void MessagesView::initializeContextMenu() {
 
   if (menu_ext_tools->actions().isEmpty()) {
     QAction* act_not_tools =
-      new QAction(qApp->icons()->fromTheme(QSL("dialog-information")), tr("No external tools activated"));
+      menu_ext_tools->addAction(qApp->icons()->fromTheme(QSL("dialog-information")), tr("No external tools activated"));
 
     act_not_tools->setEnabled(false);
-    menu_ext_tools->addAction(act_not_tools);
   }
 
   // Labels.

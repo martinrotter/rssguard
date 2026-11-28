@@ -33,6 +33,7 @@
 #include <QFileInfo>
 #include <QHash>
 #include <QMetaObject>
+#include <QSet>
 #include <QSortFilterProxyModel>
 #include <QtConcurrentMap>
 
@@ -322,23 +323,20 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
   const QList<QPair<QByteArray, QByteArray>> headers = {{HTTP_HEADERS_ACCEPT, QByteArray("*/*")}};
 
   auto extractLinkedUrls = [&](const QList<DocumentWithUrl>& prepared_documents) {
-    QStringList known_document_urls;
+    QSet<QString> queued_document_urls;
 
     for (const DocumentWithUrl& document : std::as_const(prepared_documents)) {
       QUrl document_url = document.m_documentUrl;
 
       document_url.setFragment({});
-      known_document_urls << document_url.toString();
+      queued_document_urls.insert(document_url.toString());
     }
 
-    QStringList queued_document_urls = known_document_urls;
 
     for (const DocumentWithUrl& document : prepared_documents) {
-      QStringList hyperlinks = qApp->web()->extractAllHyperlinks(document.m_documentUrl, document.m_documentData);
+      const auto hyperlinks = qApp->web()->extractAllHyperlinks(document.m_documentUrl, document.m_documentData);
 
-      hyperlinks.removeDuplicates();
-
-      for (const QString& hyperlink : std::as_const(hyperlinks)) {
+      for (const QString& hyperlink : hyperlinks) {
         QUrl hyperlink_url(hyperlink);
 
         hyperlink_url.setFragment({});
@@ -352,7 +350,7 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
         if (hyperlink_url.isLocalFile() || hyperlink_url.scheme() == QSL("http") ||
             hyperlink_url.scheme() == QSL("https")) {
           linked_urls.append(hyperlink_url);
-          queued_document_urls << hyperlink_string;
+          queued_document_urls.insert(hyperlink_string);
         }
       }
     }

@@ -43,6 +43,9 @@ Fixed:
 * iCalendar feeds saved with Unix line endings now load correctly.
 * Reopening the Accounts, Add item, and Recycle bins menus now frees the old account submenus.
 * Everywhere searches do less work when a feed or folder already matches.
+* TXT export now includes only the feeds you selected.
+* Reopening the article list menu now frees old submenus and the article data they held.
+* Deep feed discovery prepares links from large web pages faster.
 
 5.3.0
 -----

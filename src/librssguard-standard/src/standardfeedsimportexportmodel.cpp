@@ -534,10 +534,13 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
 }
 
 bool FeedsImportExportModel::exportToTxtURLPerLine(QByteArray& result) {
-  auto stf = sourceModel()->rootItem()->getSubTreeFeeds();
+  const auto* model = sourceModel();
+  const auto feeds = model->rootItem()->getSubTreeFeeds();
 
-  for (const Feed* const feed : std::as_const(stf)) {
-    result += feed->source() + QL1S("\n");
+  for (auto* feed : feeds) {
+    if (model->isItemChecked(feed)) {
+      result += feed->source() + QL1S("\n");
+    }
   }
 
   return true;
