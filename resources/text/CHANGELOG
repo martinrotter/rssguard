@@ -34,6 +34,9 @@ Fixed:
 * Article filters that look for similar titles now compare the beginnings of those titles correctly.
 * Article previews handle missing feeds safely and use the online feed address for relative links when an article has no link of its own.
 * Large feeds with many entries that have neither a title nor a link are processed faster.
+* Reopened database connections now restore their settings, including checks that keep related records consistent.
+* Article counts work on MariaDB servers that enforce stricter query rules.
+* Keyboard shortcut handling does less work when checking which action should run.
 
 5.3.0
 -----

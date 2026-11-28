@@ -693,10 +693,12 @@ QMap<int, ArticleCounts> DatabaseQueries::messageCountsByCondition(const QSqlDat
                                                                    const QVariantMap& bindings) {
   SqlQuery q(db);
 
-  q.prepare(QSL("SELECT feed, COUNT(*), SUM(NOT is_read) "
+  q.prepare(QSL("SELECT %1, COUNT(*), SUM(NOT is_read) "
                 "FROM Messages "
-                "WHERE %1 %2;")
-              .arg(where_clause, group_by_feed ? QSL("GROUP BY feed") : QString()));
+                "WHERE %2 %3;")
+              .arg(group_by_feed ? QSL("feed") : QSL("0"),
+                   where_clause,
+                   group_by_feed ? QSL("GROUP BY feed") : QString()));
 
   for (auto it = bindings.cbegin(); it != bindings.cend(); ++it) {
     q.bindValue(it.key(), it.value());

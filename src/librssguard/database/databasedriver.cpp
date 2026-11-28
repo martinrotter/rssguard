@@ -76,7 +76,8 @@ QSqlDatabase DatabaseDriver::connection(const QString& connection_name) {
   }
   else {
     if (QSqlDatabase::contains(connection_name)) {
-      database = QSqlDatabase::database(connection_name);
+      // Let ensureConnectionUsable reapply session settings when reopening a connection.
+      database = QSqlDatabase::database(connection_name, false);
     }
     else {
       database = QSqlDatabase::addDatabase(qtDriverCode(), connection_name);

@@ -2,6 +2,7 @@
 // Set RSSGUARD_TEST_MARIADB_PORT (and optionally USER/PASSWORD with the same
 // prefix) to also execute initialization and migrations on a disposable schema.
 
+#include "database/databasequeries.h"
 #include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "definitions/definitions.h"
@@ -10,6 +11,7 @@
 
 #include <QDir>
 #include <QRegularExpression>
+#include <QScopeGuard>
 #include <QSqlError>
 #include <QTemporaryDir>
 #include <QTest>
@@ -110,6 +112,8 @@ class TestDatabaseScripts : public QObject {
     void generatedStatements();
     void schemaMigrations_data();
     void schemaMigrations();
+    void sqliteConnectionReappliesPragmasAfterClose();
+    void mariaDbArticleCountsWithStrictGrouping();
 };
 
 void TestDatabaseScripts::conditionals_data() {
@@ -341,6 +345,59 @@ void TestDatabaseScripts::schemaMigrations() {
                           : QStringList({QSL("feed"), QSL("url")}));
     }
   });
+}
+
+void TestDatabaseScripts::sqliteConnectionReappliesPragmasAfterClose() {
+  QTemporaryDir folder;
+  QVERIFY(folder.isValid());
+  SqliteDriver driver(folder.path());
+  const QString name = QUuid::createUuid().toString(QUuid::Id128);
+  const auto remove_connection = qScopeGuard([&]() { driver.removeConnection(name); });
+
+  for (int open_count = 0; open_count < 2; ++open_count) {
+    QSqlDatabase connection = driver.connection(name);
+    QVERIFY(connection.isOpen());
+    {
+      QSqlQuery query(connection);
+      QVERIFY(query.exec(QSL("PRAGMA foreign_keys;")));
+      QVERIFY(query.next());
+      QCOMPARE(query.value(0).toInt(), 1);
+      QVERIFY(query.exec(QSL("PRAGMA cache_size;")));
+      QVERIFY(query.next());
+      QCOMPARE(query.value(0).toInt(), -65536);
+    }
+    connection.close();
+  }
+}
+
+void TestDatabaseScripts::mariaDbArticleCountsWithStrictGrouping() {
+  if (!qEnvironmentVariableIsSet("RSSGUARD_TEST_MARIADB_PORT")) {
+    QSKIP("Set RSSGUARD_TEST_MARIADB_PORT to verify article counts on MariaDB.");
+  }
+
+  TestConnection connection(true);
+  const auto& database = connection.database;
+  QVERIFY2(connection.database.open(), qPrintable(database.lastError().text()));
+  QSqlQuery query(database);
+  QVERIFY2(query.exec(QSL("CREATE DATABASE %1").arg(connection.schema)), qPrintable(query.lastError().text()));
+  QVERIFY2(query.exec(QSL("USE %1").arg(connection.schema)), qPrintable(query.lastError().text()));
+  QVERIFY2(query.exec(QSL("SET SESSION sql_mode = 'ONLY_FULL_GROUP_BY'")), qPrintable(query.lastError().text()));
+  QVERIFY2(query.exec(QSL("CREATE TABLE Messages (feed INT, account_id INT, is_read INT, is_deleted INT, is_pdeleted INT)")),
+           qPrintable(query.lastError().text()));
+  QVERIFY2(query.exec(QSL("INSERT INTO Messages VALUES (1, 1, 0, 0, 0), (1, 1, 1, 0, 0), (2, 1, 0, 0, 0)")),
+           qPrintable(query.lastError().text()));
+
+  const auto feed_counts = DatabaseQueries::getMessageCountsForFeed(database, 1);
+  QCOMPARE(feed_counts.m_total, 2);
+  QCOMPARE(feed_counts.m_unread, 1);
+  const auto grouped = DatabaseQueries::getMessageCountsForFeeds(database, {QSL("1"), QSL("2")});
+  QCOMPARE(grouped.size(), 2);
+  QCOMPARE(grouped.value(1).m_total, 2);
+  QCOMPARE(grouped.value(2).m_total, 1);
+  const auto missing = DatabaseQueries::getMessageCountsForFeed(database, 3);
+  QCOMPARE(missing.m_total, 0);
+  QCOMPARE(missing.m_unread, 0);
+  QCOMPARE(DatabaseQueries::getUnreadMessageCounts(database, 1).m_total, 2);
 }
 
 QTEST_GUILESS_MAIN(TestDatabaseScripts)

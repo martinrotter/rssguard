@@ -12,6 +12,7 @@
 #include <QKeySequenceEdit>
 #include <QLineEdit>
 #include <QPlainTextEdit>
+#include <QSet>
 #include <QShortcutEvent>
 #include <QTextEdit>
 #include <QThread>
@@ -160,10 +161,15 @@ bool ShortcutPriority::eligible(const QAction* action) const {
 }
 
 QList<QPointer<QAction>> ShortcutPriority::liveActions() const {
+  const auto actions = m_actions();
+  QSet<QAction*> seen;
   QList<QPointer<QAction>> result;
+  seen.reserve(actions.size());
+  result.reserve(actions.size());
 
-  for (QAction* action : m_actions()) {
-    if (action != nullptr && !result.contains(action)) {
+  for (QAction* action : actions) {
+    if (action != nullptr && !seen.contains(action)) {
+      seen.insert(action);
       result.append(action);
     }
   }

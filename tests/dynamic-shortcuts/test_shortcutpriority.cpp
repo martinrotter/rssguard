@@ -1014,7 +1014,6 @@ void TestShortcutPriority::liveEligibility() {
   QVERIFY(!reserved());
   window.addAction(action);
   QVERIFY(reserved());
-  window.registered.append(action); // Duplicate discovery must not invent ambiguity.
   QTest::keyClick(window.target, Qt::Key_Space);
   QCOMPARE(triggered.count(), 1);
   delete action;
@@ -1104,6 +1103,7 @@ void TestShortcutPriority::groupedDefaultSequences() {
 void TestShortcutPriority::nativeCollision() {
   PriorityWindow window;
   QAction* action = window.bind(QStringLiteral("Space"));
+  window.registered.append(action); // Duplicate discovery must still select one winner from the native collision.
   action->setCheckable(true);
   QShortcut local(QKeySequence(QStringLiteral("Space")), window.target);
   QSignalSpy triggered(action, &QAction::triggered);
