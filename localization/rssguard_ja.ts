@@ -5241,37 +5241,37 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="61"/>
       <source>Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</source>
-      <translation type="unfinished">Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</translation>
+      <translation>リマインダーは、RSS Guard の実行中にキャッシュされた予定を使用します。既定の確認間隔は 30 分であるため、通知が最大 1 間隔分遅れる場合があります。見逃したリマインダーは 1 間隔分までさかのぼって通知されます。予定が終了すると繰り返しは停止します。予定を既読にしてもリマインダーは解除されません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="66"/>
       <source>The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</source>
-      <translation type="unfinished">The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</translation>
+      <translation>アカウントでリマインダーが有効になっている必要があります。チェック間隔、終日予定の時刻、通知テキストはアカウント設定から取得されます。ローカルオフセットは開始前の分数（カンマ区切り）で指定します（0 は開始時刻）。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="121"/>
       <source>Enter distinct nonnegative reminder offsets in minutes.</source>
-      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+      <translation>重複しない 0 以上のリマインダーオフセット（分単位）を入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="142"/>
       <source>Add at least one local reminder offset or select Google&apos;s popup offsets.</source>
-      <translation type="unfinished">Add at least one local reminder offset or select Google&apos;s popup offsets.</translation>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上追加するか、Google のポップアップ通知のオフセットを選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="150"/>
       <source>Select at least one calendar.</source>
-      <translation type="unfinished">Select at least one calendar.</translation>
+      <translation>カレンダーを 1 つ以上選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="183"/>
       <source>Choose reminder rules for the selected calendars.</source>
-      <translation type="unfinished">Choose reminder rules for the selected calendars.</translation>
+      <translation>選択したカレンダーのリマインダールールを選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="190"/>
       <source>Enter at least one local reminder offset.</source>
-      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上入力してください。</translation>
     </message>
   </context>
   <context>
@@ -5279,73 +5279,73 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="17"/>
       <source>Enable local reminders</source>
-      <translation type="unfinished">Enable local reminders</translation>
+      <translation>ローカルリマインダーを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="27"/>
       <source>Selected calendars use different reminder settings.</source>
-      <translation type="unfinished">Selected calendars use different reminder settings.</translation>
+      <translation>選択したカレンダーでは異なるリマインダー設定が使用されています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="55"/>
       <source>Apply reminder settings to all selected calendars</source>
-      <translation type="unfinished">Apply reminder settings to all selected calendars</translation>
+      <translation>選択したすべてのカレンダーにリマインダー設定を適用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="98"/>
       <source>Rules</source>
-      <translation type="unfinished">Rules</translation>
+      <translation>ルール</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="109"/>
       <source>Inherit account rules</source>
-      <translation type="unfinished">Inherit account rules</translation>
+      <translation>アカウントのルールを継承</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="114"/>
       <source>Disable for this calendar</source>
-      <translation type="unfinished">Disable for this calendar</translation>
+      <translation>このカレンダーでは無効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="119"/>
       <source>Use local offsets</source>
-      <translation type="unfinished">Use local offsets</translation>
+      <translation>ローカルオフセットを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="124"/>
       <source>Use Google&apos;s popup offsets</source>
-      <translation type="unfinished">Use Google&apos;s popup offsets</translation>
+      <translation>Google のポップアップ通知のオフセットを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="159"/>
       <source>Check every</source>
-      <translation type="unfinished">Check every</translation>
+      <translation>チェック間隔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="169"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="225"/>
       <source> minutes</source>
-      <translation type="unfinished"> minutes</translation>
+      <translation> 分</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="185"/>
       <source>Use Google&apos;s popup reminder offsets</source>
-      <translation type="unfinished">Use Google&apos;s popup reminder offsets</translation>
+      <translation>Google のポップアップリマインダーのオフセットを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="192"/>
       <source>Local offsets</source>
-      <translation type="unfinished">Local offsets</translation>
+      <translation>ローカルオフセット</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="205"/>
       <source>Minutes before start, separated by commas; 0 means at start</source>
-      <translation type="unfinished">Minutes before start, separated by commas; 0 means at start</translation>
+      <translation>開始前の分数（カンマ区切り、0 は開始時刻）</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="212"/>
       <source>Repeat every</source>
-      <translation type="unfinished">Repeat every</translation>
+      <translation>繰り返し間隔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="222"/>
@@ -5355,17 +5355,17 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="235"/>
       <source>All-day time</source>
-      <translation type="unfinished">All-day time</translation>
+      <translation>終日予定の時刻</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="259"/>
       <source>Notification title</source>
-      <translation type="unfinished">Notification title</translation>
+      <translation>通知タイトル</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="272"/>
       <source>Notification text</source>
-      <translation type="unfinished">Notification text</translation>
+      <translation>通知テキスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="304"/>
@@ -5383,12 +5383,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="122"/>
       <source>Enter at least one local reminder offset.</source>
-      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="136"/>
       <source>Enter distinct nonnegative reminder offsets in minutes.</source>
-      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+      <translation>重複しない 0 以上のリマインダーオフセット（分単位）を入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="162"/>
@@ -9074,171 +9074,171 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="119"/>
       <source>Invalid or unsupported calendar event metadata.</source>
-      <translation type="unfinished">Invalid or unsupported calendar event metadata.</translation>
+      <translation>カレンダーの予定のメタデータが無効またはサポートされていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="168"/>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="36"/>
       <source>Untitled event</source>
-      <translation type="unfinished">Untitled event</translation>
+      <translation>無題の予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="196"/>
       <source>Time zone: %1</source>
-      <translation type="unfinished">Time zone: %1</translation>
+      <translation>タイムゾーン: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="200"/>
       <source>Organizer: %1</source>
-      <translation type="unfinished">Organizer: %1</translation>
+      <translation>主催者: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="204"/>
       <source>Participants</source>
-      <translation type="unfinished">Participants</translation>
+      <translation>参加者</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="225"/>
       <source>Meeting link</source>
-      <translation type="unfinished">Meeting link</translation>
+      <translation>ミーティングリンク</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="16"/>
       <source>This local time does not exist in the selected time zone.</source>
-      <translation type="unfinished">This local time does not exist in the selected time zone.</translation>
+      <translation>選択したタイムゾーンにこのローカル時刻は存在しません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="19"/>
       <source>Choose which occurrence of the ambiguous local time to use.</source>
-      <translation type="unfinished">Choose which occurrence of the ambiguous local time to use.</translation>
+      <translation>重複しているローカル時刻のどちらの予定を使用するか選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="57"/>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="122"/>
       <source>Choose a valid event time zone.</source>
-      <translation type="unfinished">Choose a valid event time zone.</translation>
+      <translation>有効な予定のタイムゾーンを選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="77"/>
       <source>This event cannot be edited.</source>
-      <translation type="unfinished">This event cannot be edited.</translation>
+      <translation>この予定は編集できません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="129"/>
       <source>The event&apos;s final date must not precede its start date.</source>
-      <translation type="unfinished">The event&apos;s final date must not precede its start date.</translation>
+      <translation>予定の終了日は開始日より前にすることはできません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="139"/>
       <source>The event must end after it starts.</source>
-      <translation type="unfinished">The event must end after it starts.</translation>
+      <translation>終了時刻は開始時刻より後に設定する必要があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="151"/>
       <source>Edit the whole series to change its recurrence.</source>
-      <translation type="unfinished">Edit the whole series to change its recurrence.</translation>
+      <translation>繰り返し設定を変更するには、すべての予定を編集してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="172"/>
       <source>The reloaded event does not match this draft.</source>
-      <translation type="unfinished">The reloaded event does not match this draft.</translation>
+      <translation>再読み込みされた予定はこの下書きと一致しません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="18"/>
       <source>Invalid calendar reminder settings or trigger state.</source>
-      <translation type="unfinished">Invalid calendar reminder settings or trigger state.</translation>
+      <translation>カレンダーのリマインダー設定またはトリガー状態が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="89"/>
       <source>The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</source>
-      <translation type="unfinished">The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</translation>
+      <translation>今後のキャッシュ期間は、すべてのリマインダーオフセットが含まれている必要があります（Google のポップアップリマインダーの場合は 28 日以上）。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarfeed.cpp" line="31"/>
       <source>Invalid or unsupported calendar metadata.</source>
-      <translation type="unfinished">Invalid or unsupported calendar metadata.</translation>
+      <translation>カレンダーのメタデータが無効またはサポートされていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="81"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="120"/>
       <source>Calendar operation cancelled.</source>
-      <translation type="unfinished">Calendar operation cancelled.</translation>
+      <translation>カレンダー操作がキャンセルされました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="117"/>
       <source>Google Calendar request timed out.</source>
-      <translation type="unfinished">Google Calendar request timed out.</translation>
+      <translation>Google カレンダーへのリクエストがタイムアウトしました。	</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="136"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="165"/>
       <source>Authorize the Calendar account first.</source>
-      <translation type="unfinished">Authorize the Calendar account first.</translation>
+      <translation>先にカレンダーアカウントを認証してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="175"/>
       <source>Invalid JSON response from Google Calendar.</source>
-      <translation type="unfinished">Invalid JSON response from Google Calendar.</translation>
+      <translation>Google カレンダーから無効な JSON 応答が返されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="195"/>
       <source>Google Calendar request failed (HTTP %1).</source>
-      <translation type="unfinished">Google Calendar request failed (HTTP %1).</translation>
+      <translation>Google カレンダーのリクエストに失敗しました (HTTP %1)。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="215"/>
       <source>Invalid Google Calendar collection response.</source>
-      <translation type="unfinished">Invalid Google Calendar collection response.</translation>
+      <translation>Google カレンダーのコレクション応答が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="221"/>
       <source>Invalid item in Google Calendar response.</source>
-      <translation type="unfinished">Invalid item in Google Calendar response.</translation>
+      <translation>Google カレンダーの応答に無効な項目が含まれています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="227"/>
       <source>Invalid Google Calendar page token.</source>
-      <translation type="unfinished">Invalid Google Calendar page token.</translation>
+      <translation>Google カレンダーのページトークンが無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="240"/>
       <source>Google Calendar pagination did not complete.</source>
-      <translation type="unfinished">Google Calendar pagination did not complete.</translation>
+      <translation>Google カレンダーのページネーションが完了しませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="261"/>
       <source>Invalid calendar cache window.</source>
-      <translation type="unfinished">Invalid calendar cache window.</translation>
+      <translation>カレンダーのキャッシュ期間が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="281"/>
       <source>Invalid recurring-event instance window.</source>
-      <translation type="unfinished">Invalid recurring-event instance window.</translation>
+      <translation>繰り返し予定のインスタンス期間が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="299"/>
       <source>Missing client event ID.</source>
-      <translation type="unfinished">Missing client event ID.</translation>
+      <translation>クライアントイベント ID がありません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="325"/>
       <source>Reload the event before editing it.</source>
-      <translation type="unfinished">Reload the event before editing it.</translation>
+      <translation>編集する前に予定を再読み込みしてください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="64"/>
       <source>Invalid calendar custom data; existing data was preserved.</source>
-      <translation type="unfinished">Invalid calendar custom data; existing data was preserved.</translation>
+      <translation>カレンダーのカスタムデータが無効です。既存のデータは保持されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="75"/>
       <source>This Calendar account no longer exists.</source>
-      <translation type="unfinished">This Calendar account no longer exists.</translation>
+      <translation>このカレンダーアカウントは既に存在しません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="96"/>
       <source>This calendar no longer exists.</source>
-      <translation type="unfinished">This calendar no longer exists.</translation>
+      <translation>このカレンダーは既に存在しません。</translation>
     </message>
   </context>
   <context>
@@ -11845,23 +11845,23 @@ OPMLファイルからの読み込み：標準のOPML 2.0ファイルをイン�
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="589"/>
       <source>Clone this</source>
-      <translation type="unfinished">Clone this</translation>
+      <translation>これを複製</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
       <source>Cannot clone feed</source>
-      <translation type="unfinished">Cannot clone feed</translation>
+      <translation>フィードを複製できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="642"/>
       <source>Cannot clone feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot clone feed because another critical operation is ongoing.</translation>
+      <translation>別の重要な操作が進行中のため、フィードを複製できません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="651"/>
       <source>%1 (copy)</source>
-      <translation type="unfinished">%1 (copy)</translation>
+      <translation>%1 (コピー)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="684"/>
