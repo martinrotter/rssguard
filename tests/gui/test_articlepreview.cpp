@@ -109,6 +109,7 @@ class TestArticlePreview : public QObject {
     void init();
     void delayedTabLoadPreservesVisibility_data();
     void delayedTabLoadPreservesVisibility();
+    void delayedTabClosesWhenFeedIsRemoved();
     void embeddedPreviewAfterClear_data();
     void embeddedPreviewAfterClear();
     void embeddedPreviewDoesNotRevealBackgroundTab();
@@ -120,7 +121,7 @@ class TestArticlePreview : public QObject {
     void cacheCleanupWithoutSelectedBrowser();
 
   private:
-    int openArticleTab();
+    int openArticleTab(Feed* feed);
     bool displayArticle(RootItem* selected_item);
     bool selectContent(int content, bool hidden);
 
@@ -158,16 +159,16 @@ void TestArticlePreview::init() {
   m_account->m_previewer.reset();
 }
 
-int TestArticlePreview::openArticleTab() {
+int TestArticlePreview::openArticleTab(Feed* feed) {
   int index = -1;
   // Invoke the real slot, including its delayed load, without exporting the internal TabWidget class.
   QMetaObject::invokeMethod(m_window->tabWidget(),
                             "addSingleMessageView",
                             Qt::DirectConnection,
                             Q_RETURN_ARG(int, index),
-                            Q_ARG(RootItem*, m_feed),
+                            Q_ARG(RootItem*, feed),
                             Q_ARG(Message, m_message),
-                            Q_ARG(Feed*, m_feed));
+                            Q_ARG(Feed*, feed));
   return index;
 }
 
@@ -190,7 +191,7 @@ void TestArticlePreview::delayedTabLoadPreservesVisibility_data() {
 void TestArticlePreview::delayedTabLoadPreservesVisibility() {
   QFETCH(int, selection);
   auto* tabs = m_window->tabWidget();
-  const int index = openArticleTab();
+  const int index = openArticleTab(m_feed);
   QCOMPARE(index, 1);
   auto* page = tabs->widget(index);
   auto* browser = page->findChild<WebBrowser*>();
@@ -224,6 +225,20 @@ void TestArticlePreview::delayedTabLoadPreservesVisibility() {
   QVERIFY(m_window->findChild<QAction*>(QSL("m_actionBrowserScrollUp"))->isEnabled());
 }
 
+void TestArticlePreview::delayedTabClosesWhenFeedIsRemoved() {
+  auto* tabs = m_window->tabWidget();
+  auto feed = std::make_unique<Feed>(m_account.get());
+  const int index = openArticleTab(feed.get());
+
+  QCOMPARE(index, 1);
+  QPointer<QWidget> page = tabs->widget(index);
+  QVERIFY(!page.isNull());
+  feed.reset();
+
+  QTRY_COMPARE(tabs->count(), 1);
+  QTRY_VERIFY(page.isNull());
+}
+
 void TestArticlePreview::embeddedPreviewAfterClear_data() {
   QTest::addColumn<bool>("valid_item");
   QTest::newRow("selected-article") << true;
@@ -250,7 +265,7 @@ void TestArticlePreview::embeddedPreviewAfterClear() {
 void TestArticlePreview::embeddedPreviewDoesNotRevealBackgroundTab() {
   auto* tabs = m_window->tabWidget();
   auto* feeds = tabs->feedMessageViewer();
-  const int index = openArticleTab();
+  const int index = openArticleTab(m_feed);
   QCOMPARE(index, 1);
   tabs->setCurrentIndex(index);
   ShowEventCounter shows;

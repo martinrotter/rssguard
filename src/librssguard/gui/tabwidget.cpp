@@ -25,6 +25,7 @@
 
 #include <QMenu>
 #include <QMouseEvent>
+#include <QPointer>
 #include <QTimer>
 #include <QToolButton>
 
@@ -232,6 +233,12 @@ void TabWidget::closeCurrentTab() {
 }
 
 int TabWidget::addSingleMessageView(RootItem* root, const Message& message, Feed* feed) {
+  if (root == nullptr) {
+    return -1;
+  }
+
+  const QPointer<RootItem> pending_root(root);
+  const QPointer<Feed> pending_feed(feed);
   auto* browser = new MessagePreviewer(this);
   auto* msg_mdl = qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel();
 
@@ -242,8 +249,13 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message, Feed
 
   int index = addTab(browser, root->fullIcon(), message.m_title, TabBar::TabType::Closable);
 
-  QTimer::singleShot(500, browser, [=]() {
-    browser->loadMessage(message, root, feed);
+  QTimer::singleShot(500, browser, [this, browser, message, pending_root, pending_feed]() {
+    if (pending_root.isNull()) {
+      closeTab(indexOf(browser));
+      return;
+    }
+
+    browser->loadMessage(message, pending_root.data(), pending_feed.data());
   });
 
   return index;

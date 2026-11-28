@@ -12,6 +12,7 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/domdocument.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/textfactory.h>
 #include <qtlinq/qtlinq.h>
 
 #include <QDomAttr>
@@ -20,7 +21,30 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QStack>
+#include <QStringList>
 #include <QtConcurrentMap>
+
+namespace {
+  QStringList firstOpmlCategoryPath(const QString& categories) {
+    for (const auto& path : categories.split(QL1C(','))) {
+      QStringList segments;
+
+      for (const auto& part : path.split(QL1C('/'))) {
+        const QString name = part.trimmed();
+
+        if (!name.isEmpty()) {
+          segments.append(name);
+        }
+      }
+
+      if (!segments.isEmpty()) {
+        return segments;
+      }
+    }
+
+    return {};
+  }
+} // namespace
 
 FeedsImportExportModel::FeedsImportExportModel(StandardServiceRoot* account, QObject* parent)
   : AccountCheckSortedModel(parent), m_account(account), m_mode(Mode::Import), m_newRoot(nullptr) {
@@ -195,6 +219,7 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
 
 bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
   StandardFeed* new_feed = nullptr;
+  const QString imported_title = feed_lookup.custom_data.value(QSL("title")).toString();
 
   try {
     if (feed_lookup.fetch_metadata_online) {
@@ -224,12 +249,8 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
         new_feed = new_feed_data.first;
 
-        if (feed_lookup.do_not_fetch_titles) {
-          QString old_title = feed_lookup.custom_data[QSL("title")].toString();
-
-          if (!old_title.simplified().isEmpty()) {
-            new_feed->setTitle(old_title);
-          }
+        if (feed_lookup.do_not_fetch_titles && !imported_title.isEmpty()) {
+          new_feed->setTitle(imported_title);
         }
 
         if (feed_lookup.do_not_fetch_icons) {
@@ -259,6 +280,14 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
     else {
       new_feed = new StandardFeed();
       fillFeedFromFeedLookupData(new_feed, feed_lookup);
+    }
+
+    if (!feed_lookup.custom_data.isEmpty() && new_feed->title().trimmed().isEmpty()) {
+      constexpr int max_feed_title_length = 400;
+      const QString fallback_title = imported_title.isEmpty()
+                                       ? TextFactory::shorten(feed_lookup.url.trimmed(), max_feed_title_length)
+                                       : imported_title;
+      new_feed->setTitle(fallback_title);
     }
 
     QMutexLocker mtx(&m_mtxLookup);
@@ -364,6 +393,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   total = opml_document.elementsByTagName(QSL("outline")).size();
 
   QList<FeedLookup> lookup;
+  QList<QPair<qsizetype, QStringList>> category_paths;
 
   while (!elements_to_process.isEmpty()) {
     RootItem* active_model_item = model_items.pop();
@@ -376,24 +406,22 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
       if (child.isElement()) {
         QDomElement child_element = child.toElement();
 
-        // Now analyze if this element is category or feed.
-        // NOTE: All feeds must include xmlUrl attribute and text attribute.
-        if (child_element.hasAttribute(QSL("xmlUrl")) &&
-            (child_element.hasAttribute(QSL("text")) || child_element.hasAttribute(QSL("title")))) {
+        if (child_element.hasAttribute(QSL("xmlUrl"))) {
           // This is FEED.
           // Add feed and end this iteration.
-          QString feed_url = child_element.attribute(QSL("xmlUrl"));
+          const QString feed_url = child_element.attribute(QSL("xmlUrl"));
 
-          if (!feed_url.isEmpty()) {
+          if (!feed_url.trimmed().isEmpty()) {
             FeedLookup f;
             QVariantMap feed_data;
 
-            feed_data[QSL("title")] = child_element.attribute(QSL("text"));
+            QString title = child_element.attribute(QSL("text")).trimmed();
 
-            if (feed_data[QSL("title")].toString().isEmpty()) {
-              feed_data[QSL("title")] = child_element.attribute(QSL("title"));
+            if (title.isEmpty()) {
+              title = child_element.attribute(QSL("title")).trimmed();
             }
 
+            feed_data[QSL("title")] = title;
             feed_data[QSL("encoding")] = child_element.attribute(QSL("encoding"), QSL(DEFAULT_FEED_ENCODING));
             feed_data[QSL("type")] = child_element.attribute(QSL("version"), QSL(DEFAULT_FEED_TYPE)).toUpper();
             feed_data[QSL("description")] = child_element.attribute(QSL("description"));
@@ -412,6 +440,14 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             f.parent = active_model_item;
             f.post_process_script = post_process_script;
             f.url = feed_url;
+
+            if (active_model_item == m_newRoot) {
+              const auto path = firstOpmlCategoryPath(child_element.attribute(QSL("category")));
+
+              if (!path.isEmpty()) {
+                category_paths.append({lookup.size(), path});
+              }
+            }
 
             lookup.append(f);
           }
@@ -453,6 +489,27 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
         emit parsingProgress(++completed, total);
       }
     }
+  }
+
+  // Resolve category paths after reading explicit folders so paths can reuse them.
+  for (const auto& entry : std::as_const(category_paths)) {
+    RootItem* parent = m_newRoot;
+
+    for (const QString& name : entry.second) {
+      auto* category = qlinq::from(parent->childItems(RootItem::Kind::Category))
+                         .firstOrDefault([&name](const RootItem* child) { return child->title() == name; })
+                         .value_or(nullptr);
+
+      if (category == nullptr) {
+        category = new StandardCategory(parent);
+        category->setTitle(name);
+        parent->appendChild(category);
+      }
+
+      parent = category;
+    }
+
+    lookup[entry.first].parent = parent;
   }
 
   m_lookup.clear();

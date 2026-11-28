@@ -159,19 +159,27 @@ QString XmlEncodingDetector::extractAsciiProbe(const QByteArray& data, const QSt
 }
 
 QString XmlEncodingDetector::detectXmlEncoding(const QByteArray& data) {
-  QByteArray trimmed_data = data.trimmed();
+  const auto first = data.cbegin();
+  const auto end = data.cend();
+  auto start = first;
 
-  if (trimmed_data.isEmpty()) {
+  // Only the prefix matters. Trimming the byte array could copy the entire feed.
+  while (start != end && (*start == ' ' || (*start >= '\t' && *start <= '\r'))) {
+    ++start;
+  }
+
+  if (start == end) {
     return QSL("UTF-8");
   }
 
-  QString enc = detectBomEncoding(trimmed_data);
+  const QByteArray probe_data = start == first ? data : QByteArray::fromRawData(start, end - start);
+  QString enc = detectBomEncoding(probe_data);
 
   if (enc.isEmpty()) {
     enc = QSL("UTF-8");
   }
 
-  QString ascii_probe = extractAsciiProbe(trimmed_data, enc);
+  QString ascii_probe = extractAsciiProbe(probe_data, enc);
   QString decl_enc = extractXmlDeclEncoding(ascii_probe);
 
   if (!decl_enc.isEmpty()) {

@@ -16,6 +16,12 @@ Fixed:
 * Article sorting ignores unmapped columns. Invalid article dates use the same fallback in database writes and filter previews.
 * "Next unread article" advances after toggling the selected article back to unread and continues to another feed when needed. (#2522)
 * Malformed OAuth token replies report a login error and preserve existing credentials. The HTTP downloader handles replies that are already finished, and Retry-After accepts HTTP dates.
+* OPML import uses the feed URL as its name when the file and available online metadata provide an empty or missing name. (#2540)
+* OPML import restores folders from `category` paths for feeds listed at the top level.
+* OPML import reuses same-named folders under the same parent, including when importing the same file again.
+* Removing a feed just after opening one of its articles closes the loading tab safely.
+* XML feeds with consecutive unescaped ampersands can now load, and cleanup for malformed feeds is faster.
+* Large XML feeds with extra whitespace load faster when RSS Guard detects their text encoding.
 
 5.3.0
 -----

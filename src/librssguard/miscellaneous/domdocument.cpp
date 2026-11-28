@@ -26,19 +26,14 @@ bool DomDocument::setContent(const QString& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  auto text_modified = QString(text)
-                         .trimmed()
-                         .replace(QSL("&shy;"), QString())
-                         .replace(QSL("&rsquo;"), QSL("\'"))
-                         .replace(QSL(" & "), QSL(" &amp; "))
-                         .replace(QChar::SpecialCharacter::Null, QString());
+  static const QRegularExpression bare_ampersand(QSL("(?<= )&(?= )"));
+  static const QRegularExpression forbidden_chars(QSL("[\\x00-\\x08\\x0B-\\x0C\\x0E-\\x1F\\x7F-\\x84\\x86-\\x9F]+"));
+  auto text_modified = text.trimmed();
 
-  // Remove all forbidden characters per XML official format, see https://www.w3.org/TR/xml11/#charsets.
-  text_modified.remove(QRegularExpression(QSL("[\\x01-\\x08]")));
-  text_modified.remove(QRegularExpression(QSL("[\\x0B-\\x0C]")));
-  text_modified.remove(QRegularExpression(QSL("[\\x0E-\\x1F]")));
-  text_modified.remove(QRegularExpression(QSL("[\\x7F-\\x84]")));
-  text_modified.remove(QRegularExpression(QSL("[\\x86-\\x9F]")));
+  text_modified.replace(QSL("&shy;"), QString())
+    .replace(QSL("&rsquo;"), QSL("\'"))
+    .replace(bare_ampersand, QSL("&amp;"))
+    .remove(forbidden_chars);
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =

@@ -747,48 +747,36 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
 
       if (source_item->kind() == RootItem::Kind::Category) {
         auto* source_category = qobject_cast<StandardCategory*>(source_item);
-        auto* new_category = new StandardCategory(*source_category);
-        QString new_category_title = new_category->title();
+        auto* target_category = qlinq::from(target_parent->childItems(RootItem::Kind::Category))
+                                  .firstOrDefault([source_category](const RootItem* child) {
+                                    return child->title() == source_category->title();
+                                  })
+                                  .value_or(nullptr);
 
-        // Add category to model.
-        new_category->clearChildren();
+        if (target_category == nullptr) {
+          auto new_category = std::make_unique<StandardCategory>(*source_category);
+          new_category->clearChildren();
 
-        try {
-          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-            DatabaseQueries::createOverwriteCategory(db,
-                                                     new_category,
-                                                     target_root_node->account()->accountId(),
-                                                     target_parent->id());
-          });
-
-          requestItemReassignment(new_category, target_parent);
-
-          original_parents.push(new_category);
-          new_parents.push(source_category);
-        }
-        catch (ApplicationException& ex) {
-          // Add category failed, but this can mean that the same category (with same title)
-          // already exists. If such a category exists in current parent, then find it and
-          // add descendants to it.
-          RootItem* existing_category = nullptr;
-          auto tar_chi = target_parent->childItems();
-
-          for (RootItem* child : std::as_const(tar_chi)) {
-            if (child->kind() == RootItem::Kind::Category && child->title() == new_category_title) {
-              existing_category = child;
-            }
+          try {
+            qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+              DatabaseQueries::createOverwriteCategory(db,
+                                                       new_category.get(),
+                                                       target_root_node->account()->accountId(),
+                                                       target_parent->id());
+            });
           }
-
-          if (existing_category != nullptr) {
-            original_parents.push(existing_category);
-            new_parents.push(source_category);
-          }
-          else {
+          catch (const ApplicationException& ex) {
             some_feed_category_error = true;
-
             qCriticalNN << LOGSEC_STANDARD << "Cannot import category:" << QUOTE_W_SPACE_DOT(ex.message());
+            continue;
           }
+
+          target_category = new_category.release();
+          requestItemReassignment(target_category, target_parent);
         }
+
+        original_parents.push(target_category);
+        new_parents.push(source_category);
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);

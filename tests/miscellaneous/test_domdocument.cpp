@@ -27,6 +27,15 @@ void TestDomDocument::normalizesCommonInvalidContents() {
 
   QVERIFY(document.setContent(QStringLiteral("<root>Rock & Roll &shy;&rsquo;</root>"), false));
   QCOMPARE(document.documentElement().text(), QStringLiteral("Rock & Roll '"));
+
+  QString dirty = QStringLiteral("<root>A & & B");
+
+  dirty += QChar(0);
+  dirty += QChar(0x08);
+  dirty += QChar(0x86);
+  dirty += QStringLiteral("</root>");
+  QVERIFY(document.setContent(dirty, false));
+  QCOMPARE(document.documentElement().text(), QStringLiteral("A & & B"));
 }
 
 void TestDomDocument::rejectsMalformedXml() {

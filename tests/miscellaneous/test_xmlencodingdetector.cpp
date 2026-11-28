@@ -22,6 +22,8 @@ void TestXmlEncodingDetector::readsEncodingFromDeclaration() {
   const QByteArray xml = "<?xml version=\"1.0\" encoding=\"iso-8859-2\"?><feed/>";
 
   QCOMPARE(XmlEncodingDetector::detectXmlEncoding(xml), QStringLiteral("ISO-8859-2"));
+  QCOMPARE(XmlEncodingDetector::detectXmlEncoding(" \t\r\n" + xml + QByteArray(64 * 1024, '\n')),
+           QStringLiteral("ISO-8859-2"));
 }
 
 void TestXmlEncodingDetector::detectsByteOrderMark() {
