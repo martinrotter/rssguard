@@ -17,6 +17,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QTemporaryDir>
+#include <QTemporaryFile>
 #include <QTest>
 #include <QTimer>
 
@@ -37,6 +38,7 @@ class TestFeedValidators : public QObject {
 
   private slots:
     void commitOnlyAfterSuccessfulStorage();
+    void calendarEventsPopulateArticles();
 };
 
 void TestFeedValidators::commitOnlyAfterSuccessfulStorage() {
@@ -175,6 +177,75 @@ void TestFeedValidators::commitOnlyAfterSuccessfulStorage() {
   QVERIFY(feed->source().endsWith(QL1S("/new-feed")));
   QVERIFY(refresh());
   QCOMPARE(requests.last(), QByteArray());
+}
+
+void TestFeedValidators::calendarEventsPopulateArticles() {
+  const QByteArray calendar =
+    "BEGIN:VCALENDAR\r\n"
+    "VERSION:2.0\r\n"
+    "BEGIN:VEVENT\r\n"
+    "UID:planning-1\r\n"
+    "SUMMARY:Planning meeting\r\n"
+    "URL:https://example.test/planning\r\n"
+    "ORGANIZER:mailto:organizer@example.test\r\n"
+    "DTSTART;VALUE=DATE:20251105\r\n"
+    "DTEND;VALUE=DATE:20251106\r\n"
+    "LOCATION:Meeting room\r\n"
+    "DESCRIPTION:Review plans\r\n"
+    "END:VEVENT\r\n"
+    "END:VCALENDAR\r\n";
+  QTemporaryFile file;
+  QVERIFY(file.open());
+  QCOMPARE(file.write(calendar), qint64(calendar.size()));
+  file.close();
+
+  QPluginLoader loader(QString::fromUtf8(TEST_STANDARD_PLUGIN));
+  auto* plugin = qobject_cast<ServiceEntryPoint*>(loader.instance());
+  QVERIFY2(plugin, qPrintable(loader.errorString()));
+  SeedAccount seed;
+  seed.setTitle(QSL("Calendar account"));
+  Feed seed_feed(&seed);
+  seed_feed.setCustomId(QSL("calendar-feed"));
+  seed_feed.setTitle(QSL("Calendar feed"));
+  seed_feed.setSource(file.fileName());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, &seed);
+    DatabaseQueries::createOverwriteFeed(db, &seed_feed, seed.accountId(), NO_PARENT_CATEGORY);
+  });
+
+  std::unique_ptr<ServiceRoot> account;
+  const auto roots = plugin->initializeSubtree();
+  for (auto* root : roots) {
+    if (root->accountId() == seed.accountId()) {
+      account.reset(root);
+    }
+    else {
+      delete root;
+    }
+  }
+  QVERIFY(account);
+  account->start(false);
+  const auto feeds = account->getSubTreeFeeds();
+  QCOMPARE(feeds.size(), 1);
+  auto* feed = feeds.first();
+  auto config = feed->customDatabaseData();
+  config[QSL("source_type")] = int(StandardFeed::SourceType::LocalFile);
+  config[QSL("type")] = int(StandardFeed::Type::iCalendar);
+  config[QSL("encoding")] = QSL("UTF-8");
+  feed->setCustomDatabaseData(config);
+
+  const auto messages = account->obtainNewMessagesForUpdate(feed, {}, {}).messages;
+  QCOMPARE(messages.size(), 1);
+  const auto& article = messages.first();
+  QCOMPARE(article.m_customId, QSL("planning-1"));
+  QCOMPARE(article.m_title, QSL("Planning meeting"));
+  QCOMPARE(article.m_url, QSL("https://example.test/planning"));
+  QCOMPARE(article.m_author, QSL("mailto:organizer@example.test"));
+  QVERIFY(article.m_createdFromFeed);
+  QCOMPARE(article.m_created.toLocalTime().date(), QDate(2025, 11, 5));
+  QVERIFY(article.m_contents.contains(QSL("Meeting room")));
+  QVERIFY(article.m_contents.contains(QSL("Review plans")));
+  QVERIFY(article.m_rawContents.contains(QSL("DTSTART;VALUE=DATE")));
 }
 
 int main(int argc, char* argv[]) {

@@ -765,27 +765,23 @@ QList<Feed*> FeedDownloader::scrambleFeedsWithSameHost(const QList<Feed*>& feeds
   QList<Feed*> result;
   result.reserve(feeds.size());
 
-  // Create list of iterators for each host group.
-  QList<QPair<QString, int>> host_indices;
-  host_indices.reserve(feeds_by_host.size());
+  QList<const QList<Feed*>*> active_hosts;
+  active_hosts.reserve(feeds_by_host.size());
 
   for (auto it = feeds_by_host.constBegin(); it != feeds_by_host.constEnd(); ++it) {
-    host_indices.append({it.key(), 0});
+    active_hosts.append(&it.value());
   }
 
-  // Round-robin distribution.
-  int total_added = 0;
-
-  while (total_added < feeds.size()) {
-    for (auto& pair : host_indices) {
-      const QList<Feed*>& host_feeds = feeds_by_host[pair.first];
-
-      if (pair.second < host_feeds.size()) {
-        result.append(host_feeds[pair.second]);
-        pair.second++;
-        total_added++;
+  // Compact exhausted hosts out of each round without changing the order of the remaining hosts.
+  for (qsizetype round = 0; !active_hosts.isEmpty(); ++round) {
+    auto remaining = active_hosts.begin();
+    for (const auto* host_feeds : std::as_const(active_hosts)) {
+      result.append(host_feeds->at(round));
+      if (round + 1 < host_feeds->size()) {
+        *remaining++ = host_feeds;
       }
     }
+    active_hosts.erase(remaining, active_hosts.end());
   }
 
   return result;

@@ -99,6 +99,7 @@ class TestFilterMatchMode : public QObject {
     void feedsMatchAnyAndAll();
     void pinnedFeedOrdering();
     void feedTextSearchIntersectsWithBothModes();
+    void clearingWildcardSearchRestoresMatchingFeeds();
     void foldersAndSelectedFeedRemainVisible();
     void articlesRefreshWhenOnlyModeChanges();
     void textSearchIntersectsWithBothModes();
@@ -406,6 +407,23 @@ void TestFilterMatchMode::feedTextSearchIntersectsWithBothModes() {
   trigger(toolbar, QSL("feedlist_no_filtering"));
   QVERIFY(visible(m_enabledRead));
   QVERIFY(!visible(m_enabledUnread));
+}
+
+void TestFilterMatchMode::clearingWildcardSearchRestoresMatchingFeeds() {
+  trigger(viewer()->feedsToolBar(), QSL("feedlist_switched_on"));
+  auto* feeds = viewer()->feedsView();
+  const auto mode = SearchLineEdit::SearchMode::Wildcard;
+  const auto sensitivity = Qt::CaseSensitivity::CaseInsensitive;
+  const int criteria = int(BaseToolBar::SearchFields::SearchTitleOnly);
+
+  feeds->searchItems(mode, sensitivity, criteria, QSL("Enabled rea?"));
+  QVERIFY(visible(m_enabledRead));
+  QVERIFY(!visible(m_enabledUnread));
+
+  feeds->searchItems(mode, sensitivity, criteria, {});
+  QVERIFY(visible(m_enabledRead));
+  QVERIFY(visible(m_enabledUnread));
+  QVERIFY(!visible(m_disabledUnread));
 }
 
 void TestFilterMatchMode::articlesRefreshWhenOnlyModeChanges() {

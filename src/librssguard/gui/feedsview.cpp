@@ -877,7 +877,8 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
 
   switch (mode) {
     case SearchLineEdit::SearchMode::Wildcard:
-      m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
+      m_proxyModel->setFilterRegularExpression(
+        phrase.isEmpty() ? QString() : QRegularExpression::wildcardToRegularExpression(phrase));
       break;
 
     case SearchLineEdit::SearchMode::RegularExpression:

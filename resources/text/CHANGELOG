@@ -25,6 +25,9 @@ Fixed:
 * Pinned feeds and folders follow the selected sort order within the pinned group.
 * Searching backward in the text viewer wraps to the last match after reaching the first.
 * Article filters that check for exact duplicates stop as soon as they find a match.
+* Improved reliability when reading event details from iCalendar feeds.
+* Large refreshes start faster when many feeds share the same website.
+* Clearing a wildcard search shows feeds that match the other active filters again.
 
 5.3.0
 -----

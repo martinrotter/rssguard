@@ -27,8 +27,6 @@ class IcalendarComponent {
     QVariantMap m_properties;
 };
 
-Q_DECLARE_METATYPE(IcalendarComponent)
-
 class EventComponent : public IcalendarComponent {
   public:
     QDateTime startsOn(const QMap<QString, QTimeZone>& time_zones = {},
@@ -67,7 +65,7 @@ class Icalendar : public FeedParser {
   private:
     QString m_title;
     QMap<QString, QTimeZone> m_tzs;
-    QList<IcalendarComponent> m_components;
+    QList<EventComponent> m_components;
 };
 
 class IcalParser : public FeedParser {

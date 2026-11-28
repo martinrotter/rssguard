@@ -87,21 +87,18 @@ QVariantList IcalParser::objMessageElements() {
 }
 
 QString IcalParser::objMessageTitle(const QVariant& msg_element) const {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   return comp.title();
 }
 
 QString IcalParser::objMessageUrl(const QVariant& msg_element) const {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
   return comp.url();
 }
 
 QString IcalParser::objMessageDescription(const QVariant& msg_element) {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   bool has_dt;
   auto son = comp.startsOn(m_iCalendar.m_tzs, &has_dt, &m_dateTimeFormat).toLocalTime();
@@ -129,15 +126,13 @@ QString IcalParser::objMessageDescription(const QVariant& msg_element) {
 }
 
 QString IcalParser::objMessageAuthor(const QVariant& msg_element) const {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   return comp.organizer();
 }
 
 QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   QDateTime dat = comp.startsOn(m_iCalendar.m_tzs, nullptr, &m_dateTimeFormat);
 
@@ -145,15 +140,13 @@ QDateTime IcalParser::objMessageDateCreated(const QVariant& msg_element) {
 }
 
 QString IcalParser::objMessageId(const QVariant& msg_element) const {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   return comp.uid();
 }
 
 QString IcalParser::objMessageRawContents(const QVariant& msg_element) const {
-  const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
-  const EventComponent& comp = static_cast<const EventComponent&>(comp_base);
+  const auto comp = msg_element.value<EventComponent>();
 
   return QString::fromUtf8(QJsonDocument(QJsonObject::fromVariantMap(comp.properties()))
                              .toJson(QJsonDocument::JsonFormat::Indented));
