@@ -352,6 +352,39 @@ version by clicking this popup notification.</translation>
     </message>
   </context>
   <context>
+    <name>CalendarEventPreviewer</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="19"/>
+      <source>New event</source>
+      <translation type="unfinished">New event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="26"/>
+      <source>Edit event</source>
+      <translation type="unfinished">Edit event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="46"/>
+      <source>Open in Google Calendar</source>
+      <translation type="unfinished">Open in Google Calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="53"/>
+      <source>Join meeting</source>
+      <translation type="unfinished">Join meeting</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="110"/>
+      <source>This event is cancelled.</source>
+      <translation type="unfinished">This event is cancelled.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="113"/>
+      <source>This event is read-only.</source>
+      <translation type="unfinished">This event is read-only.</translation>
+    </message>
+  </context>
+  <context>
     <name>Category</name>
     <message>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="88"/>
@@ -795,52 +828,52 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedMessageViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
       <source>Cannot open feed homepage</source>
       <translation type="unfinished">Cannot open feed homepage</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="50"/>
       <source>The feed does not have a valid homepage URL.</source>
       <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="68"/>
       <source>Toolbar for feeds</source>
       <translation>Bilah alat untuk feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="68"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="69"/>
       <source>Toolbar for articles</source>
       <translation type="unfinished">Toolbar for articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="326"/>
       <source>Filtered feed list</source>
       <translation type="unfinished">Filtered feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="327"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="345"/>
       <source>Filtered article list</source>
       <translation type="unfinished">Filtered article list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="346"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
       <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="369"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="370"/>
       <source>Some feeds are hidden by current search or filtering.</source>
       <translation type="unfinished">Some feeds are hidden by current search or filtering.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="372"/>
       <source>Some articles are hidden by current search or filtering.</source>
       <translation type="unfinished">Some articles are hidden by current search or filtering.</translation>
     </message>
@@ -1527,27 +1560,27 @@ Item custom ID: %5</translation>
       <translation type="unfinished">Do you really want to mark everything as read?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1169"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1141"/>
       <source>Not supported</source>
       <translation type="unfinished">Not supported</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1142"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1194"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1167"/>
       <source>Menu for feed list</source>
       <translation type="unfinished">Menu for feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1089"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1052"/>
       <source>Feed filtered out</source>
       <translation type="unfinished">Feed filtered out</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1090"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1053"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation type="unfinished">Your feed is probably filtered out and cannot be revealed.</translation>
     </message>
@@ -2281,6 +2314,208 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
   </context>
   <context>
+    <name>FormCalendarEvent</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="14"/>
+      <source>Calendar event</source>
+      <translation type="unfinished">Calendar event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="28"/>
+      <source>Calendar</source>
+      <translation type="unfinished">Calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="41"/>
+      <source>Edit</source>
+      <translation type="unfinished">Edit</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="52"/>
+      <source>This occurrence</source>
+      <translation type="unfinished">This occurrence</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="57"/>
+      <source>The whole series</source>
+      <translation type="unfinished">The whole series</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="65"/>
+      <source>Title</source>
+      <translation>Judul</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="78"/>
+      <source>Location</source>
+      <translation type="unfinished">Location</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="91"/>
+      <source>All-day event</source>
+      <translation type="unfinished">All-day event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="98"/>
+      <source>Starts</source>
+      <translation type="unfinished">Starts</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="127"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="165"/>
+      <source>This local time occurs twice. Choose which occurrence to use.</source>
+      <translation type="unfinished">This local time occurs twice. Choose which occurrence to use.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="136"/>
+      <source>Ends</source>
+      <translation type="unfinished">Ends</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="174"/>
+      <source>Time zone</source>
+      <translation type="unfinished">Time zone</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="194"/>
+      <source>Repeat</source>
+      <translation type="unfinished">Repeat</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="205"/>
+      <source>Do not repeat</source>
+      <translation type="unfinished">Do not repeat</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="210"/>
+      <source>Daily</source>
+      <translation type="unfinished">Daily</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="215"/>
+      <source>Weekly</source>
+      <translation type="unfinished">Weekly</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="220"/>
+      <source>Monthly</source>
+      <translation type="unfinished">Monthly</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="225"/>
+      <source>Yearly</source>
+      <translation type="unfinished">Yearly</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="230"/>
+      <source>Keep existing recurrence</source>
+      <translation type="unfinished">Keep existing recurrence</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="238"/>
+      <source>Number of occurrences</source>
+      <translation type="unfinished">Number of occurrences</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="251"/>
+      <source>No end date</source>
+      <translation type="unfinished">No end date</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="258"/>
+      <source>Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</source>
+      <translation type="unfinished">Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="268"/>
+      <source>Description</source>
+      <translation>Deskripsi</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="290"/>
+      <source>Notify attendees about changes</source>
+      <translation type="unfinished">Notify attendees about changes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="302"/>
+      <source>Reload (discard draft)</source>
+      <translation type="unfinished">Reload (discard draft)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="312"/>
+      <source>Reapply my edits to the latest version</source>
+      <translation type="unfinished">Reapply my edits to the latest version</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
+      <source>New event</source>
+      <translation type="unfinished">New event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
+      <source>Edit event</source>
+      <translation type="unfinished">Edit event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="52"/>
+      <source>No writable calendar is available. Refresh the calendar list first.</source>
+      <translation type="unfinished">No writable calendar is available. Refresh the calendar list first.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="69"/>
+      <source>This event is read-only.</source>
+      <translation type="unfinished">This event is read-only.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="217"/>
+      <source>Choose occurrence</source>
+      <translation type="unfinished">Choose occurrence</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="220"/>
+      <source>%1 (%2 UTC)</source>
+      <translation type="unfinished">%1 (%2 UTC)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="285"/>
+      <source>Saving event...</source>
+      <translation type="unfinished">Saving event...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="310"/>
+      <source>Loading the whole series...</source>
+      <translation type="unfinished">Loading the whole series...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="369"/>
+      <source>The earlier creation succeeded. Your later edits are retained. Review them, then save.</source>
+      <translation type="unfinished">The earlier creation succeeded. Your later edits are retained. Review them, then save.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="374"/>
+      <source>Event saved</source>
+      <translation type="unfinished">Event saved</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="381"/>
+      <source>This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</source>
+      <translation type="unfinished">This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="411"/>
+      <source>Your edits have been reapplied. Review them, then save.</source>
+      <translation type="unfinished">Your edits have been reapplied. Review them, then save.</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormCalendarEventDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendareventdetails.ui" line="14"/>
+      <source>Event details</source>
+      <translation type="unfinished">Event details</translation>
+    </message>
+  </context>
+  <context>
     <name>FormCategoryDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="78"/>
@@ -2413,7 +2648,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <source>I am ready.</source>
       <translation>Saya siap.</translation>
@@ -2663,6 +2897,24 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
   </context>
   <context>
+    <name>FormEditGCalendarAccount</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="18"/>
+      <source>Calendar setup</source>
+      <translation type="unfinished">Calendar setup</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="25"/>
+      <source>Reminders</source>
+      <translation type="unfinished">Reminders</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="55"/>
+      <source>Wait for the setup test to finish before saving.</source>
+      <translation type="unfinished">Wait for the setup test to finish before saving.</translation>
+    </message>
+  </context>
+  <context>
     <name>FormEditGmailAccount</name>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formeditgmailaccount.cpp" line="14"/>
@@ -2833,6 +3085,19 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
       <source>Ignore notifications for this feed</source>
       <translation type="unfinished">Ignore notifications for this feed</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormGCalendarFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="16"/>
+      <source>Reminders</source>
+      <translation type="unfinished">Reminders</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="26"/>
+      <source>Select calendars belonging to this account.</source>
+      <translation type="unfinished">Select calendars belonging to this account.</translation>
     </message>
   </context>
   <context>
@@ -4401,7 +4666,6 @@ Anda harus me-restart secara manual.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="143"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="143"/>
       <source>Feeds were loaded.</source>
       <translation>Feed dimuat.</translation>
     </message>
@@ -4454,7 +4718,6 @@ Anda harus me-restart secara manual.</translation>
       <translation>Eror genting terjadi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <source>Parsing data...</source>
       <translation>Mengurai data...</translation>
@@ -4794,6 +5057,601 @@ You can install it now.</source>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="128"/>
       <source>Available files</source>
       <translation>Berkas tersedia</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarAccountDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="23"/>
+      <source>Account name</source>
+      <translation type="unfinished">Account name</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="36"/>
+      <source>OAuth 2.0 settings</source>
+      <translation>Pengaturan OAuth 2.0</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="48"/>
+      <source>Client ID</source>
+      <translation type="unfinished">Client ID</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="61"/>
+      <source>Client secret</source>
+      <translation type="unfinished">Client secret</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="80"/>
+      <source>Event cache</source>
+      <translation type="unfinished">Event cache</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="86"/>
+      <source>Keep past events</source>
+      <translation type="unfinished">Keep past events</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="96"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="119"/>
+      <source> days</source>
+      <translation type="unfinished"> days</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="109"/>
+      <source>Fetch future events</source>
+      <translation type="unfinished">Fetch future events</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="135"/>
+      <source>Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</source>
+      <translation type="unfinished">Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="148"/>
+      <source>Refresh calendar list on startup</source>
+      <translation type="unfinished">Refresh calendar list on startup</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="151"/>
+      <source>Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</source>
+      <translation type="unfinished">Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="160"/>
+      <source>&amp;Test setup</source>
+      <translation>&amp;Tes setelan</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="19"/>
+      <source>Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</source>
+      <translation type="unfinished">Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
+      <source>Enter an account name.</source>
+      <translation type="unfinished">Enter an account name.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
+      <source>Account name is set.</source>
+      <translation type="unfinished">Account name is set.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
+      <source>Preconfigured client ID will be used.</source>
+      <translation type="unfinished">Preconfigured client ID will be used.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="69"/>
+      <source>Client ID is set.</source>
+      <translation type="unfinished">Client ID is set.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="68"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="110"/>
+      <source>Enter your Google desktop application&apos;s client ID.</source>
+      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
+      <source>No client secret entered.</source>
+      <translation type="unfinished">No client secret entered.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
+      <source>Client secret is set.</source>
+      <translation type="unfinished">Client secret is set.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="96"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="97"/>
+      <source>Not tested yet.</source>
+      <translation>Belum teruji.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="132"/>
+      <source>You did not grant access.</source>
+      <translation>Anda tidak diberikan ijin akses.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="137"/>
+      <source>Waiting for authorization...</source>
+      <translation type="unfinished">Waiting for authorization...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="138"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="160"/>
+      <source>Testing setup.</source>
+      <translation type="unfinished">Testing setup.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="145"/>
+      <source>Authorization returned no access token.</source>
+      <translation type="unfinished">Authorization returned no access token.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="149"/>
+      <source>Authorization returned no refresh token. Test setup again to grant offline access.</source>
+      <translation type="unfinished">Authorization returned no refresh token. Test setup again to grant offline access.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="159"/>
+      <source>Testing Calendar access...</source>
+      <translation type="unfinished">Testing Calendar access...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="174"/>
+      <source>Tested successfully.</source>
+      <translation type="unfinished">Tested successfully.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="180"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="203"/>
+      <source>An unexpected error occurred while testing Calendar access.</source>
+      <translation type="unfinished">An unexpected error occurred while testing Calendar access.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="194"/>
+      <source>No calendar with readable event details was found.</source>
+      <translation type="unfinished">No calendar with readable event details was found.</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarEntryPoint</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarentrypoint.cpp" line="34"/>
+      <source>Google Calendar events, editing and local reminders via the Calendar REST API.</source>
+      <translation type="unfinished">Google Calendar events, editing and local reminders via the Calendar REST API.</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarReminderDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="57"/>
+      <source>Multiple values</source>
+      <translation type="unfinished">Multiple values</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="59"/>
+      <source>Reminder timing</source>
+      <translation type="unfinished">Reminder timing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="61"/>
+      <source>Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</source>
+      <translation type="unfinished">Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="66"/>
+      <source>The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</source>
+      <translation type="unfinished">The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="121"/>
+      <source>Enter distinct nonnegative reminder offsets in minutes.</source>
+      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="142"/>
+      <source>Add at least one local reminder offset or select Google&apos;s popup offsets.</source>
+      <translation type="unfinished">Add at least one local reminder offset or select Google&apos;s popup offsets.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="150"/>
+      <source>Select at least one calendar.</source>
+      <translation type="unfinished">Select at least one calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="183"/>
+      <source>Choose reminder rules for the selected calendars.</source>
+      <translation type="unfinished">Choose reminder rules for the selected calendars.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="190"/>
+      <source>Enter at least one local reminder offset.</source>
+      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarReminderSettings</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="17"/>
+      <source>Enable local reminders</source>
+      <translation type="unfinished">Enable local reminders</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="27"/>
+      <source>Selected calendars use different reminder settings.</source>
+      <translation type="unfinished">Selected calendars use different reminder settings.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="55"/>
+      <source>Apply reminder settings to all selected calendars</source>
+      <translation type="unfinished">Apply reminder settings to all selected calendars</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="98"/>
+      <source>Rules</source>
+      <translation type="unfinished">Rules</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="109"/>
+      <source>Inherit account rules</source>
+      <translation type="unfinished">Inherit account rules</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="114"/>
+      <source>Disable for this calendar</source>
+      <translation type="unfinished">Disable for this calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="119"/>
+      <source>Use local offsets</source>
+      <translation type="unfinished">Use local offsets</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="124"/>
+      <source>Use Google&apos;s popup offsets</source>
+      <translation type="unfinished">Use Google&apos;s popup offsets</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="159"/>
+      <source>Check every</source>
+      <translation type="unfinished">Check every</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="169"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="225"/>
+      <source> minutes</source>
+      <translation type="unfinished"> minutes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="185"/>
+      <source>Use Google&apos;s popup reminder offsets</source>
+      <translation type="unfinished">Use Google&apos;s popup reminder offsets</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="192"/>
+      <source>Local offsets</source>
+      <translation type="unfinished">Local offsets</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="205"/>
+      <source>Minutes before start, separated by commas; 0 means at start</source>
+      <translation type="unfinished">Minutes before start, separated by commas; 0 means at start</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="212"/>
+      <source>Repeat every</source>
+      <translation type="unfinished">Repeat every</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="222"/>
+      <source>Do not repeat</source>
+      <translation type="unfinished">Do not repeat</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="235"/>
+      <source>All-day time</source>
+      <translation type="unfinished">All-day time</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="259"/>
+      <source>Notification title</source>
+      <translation type="unfinished">Notification title</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="272"/>
+      <source>Notification text</source>
+      <translation type="unfinished">Notification text</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="304"/>
+      <source>Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</source>
+      <translation type="unfinished">Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarServiceRoot</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="56"/>
+      <source>Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</source>
+      <translation type="unfinished">Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="122"/>
+      <source>Enter at least one local reminder offset.</source>
+      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="136"/>
+      <source>Enter distinct nonnegative reminder offsets in minutes.</source>
+      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="162"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="275"/>
+      <source>Google Calendar</source>
+      <translation type="unfinished">Google Calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="222"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
+      <source>Cannot edit calendar</source>
+      <translation type="unfinished">Cannot edit calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
+      <source>An unexpected error occurred.</source>
+      <translation type="unfinished">An unexpected error occurred.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="241"/>
+      <source>Unsupported Calendar account data version.</source>
+      <translation type="unfinished">Unsupported Calendar account data version.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="246"/>
+      <source>Invalid Calendar account settings or reminder history.</source>
+      <translation type="unfinished">Invalid Calendar account settings or reminder history.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="369"/>
+      <source>Wait for the current calendar update before changing account settings.</source>
+      <translation type="unfinished">Wait for the current calendar update before changing account settings.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="372"/>
+      <source>Enter an account name and a valid calendar cache window.</source>
+      <translation type="unfinished">Enter an account name and a valid calendar cache window.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
+      <source>Enter your Google desktop application&apos;s client ID.</source>
+      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="689"/>
+      <source>Authorize this account to refresh calendars. Cached events remain available.</source>
+      <translation type="unfinished">Authorize this account to refresh calendars. Cached events remain available.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="467"/>
+      <source>Authorization failed: %1</source>
+      <translation type="unfinished">Authorization failed: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="468"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="473"/>
+      <source>Google Calendar authorization failed</source>
+      <translation type="unfinished">Google Calendar authorization failed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="474"/>
+      <source>Account &apos;%1&apos;: %2</source>
+      <translation type="unfinished">Account &apos;%1&apos;: %2</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="477"/>
+      <source>Authorize</source>
+      <translation type="unfinished">Authorize</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="518"/>
+      <source>Authorized</source>
+      <translation type="unfinished">Authorized</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="526"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="650"/>
+      <source>Calendar authorization failed.</source>
+      <translation type="unfinished">Calendar authorization failed.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="531"/>
+      <source>Authorization was declined.</source>
+      <translation type="unfinished">Authorization was declined.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="556"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="617"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="729"/>
+      <source>Authorize the Calendar account before refreshing events.</source>
+      <translation type="unfinished">Authorize the Calendar account before refreshing events.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="642"/>
+      <source>Timed out waiting for Calendar authorization.</source>
+      <translation type="unfinished">Timed out waiting for Calendar authorization.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="797"/>
+      <source>Invalid or duplicate calendar ID; cached calendars were preserved.</source>
+      <translation type="unfinished">Invalid or duplicate calendar ID; cached calendars were preserved.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="844"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1686"/>
+      <source>This calendar is disabled.</source>
+      <translation type="unfinished">This calendar is disabled.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="854"/>
+      <source>Calendar details are unavailable or access is limited to free/busy information.</source>
+      <translation type="unfinished">Calendar details are unavailable or access is limited to free/busy information.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="880"/>
+      <source>Invalid cached event; calendar data was preserved.</source>
+      <translation type="unfinished">Invalid cached event; calendar data was preserved.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="893"/>
+      <source>Duplicate event occurrence in calendar response.</source>
+      <translation type="unfinished">Duplicate event occurrence in calendar response.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="962"/>
+      <source>Invalid cached event; destructive reconciliation was cancelled.</source>
+      <translation type="unfinished">Invalid cached event; destructive reconciliation was cancelled.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1094"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1122"/>
+      <source>New event</source>
+      <translation type="unfinished">New event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1110"/>
+      <source>Authorize Google Calendar</source>
+      <translation type="unfinished">Authorize Google Calendar</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1113"/>
+      <source>Refresh calendar list</source>
+      <translation type="unfinished">Refresh calendar list</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1141"/>
+      <source>Event details</source>
+      <translation type="unfinished">Event details</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1145"/>
+      <source>Edit event</source>
+      <translation type="unfinished">Edit event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1174"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
+      <source>Cannot create event</source>
+      <translation type="unfinished">Cannot create event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1191"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
+      <source>Cannot edit event</source>
+      <translation type="unfinished">Cannot edit event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1361"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1364"/>
+      <source>Reminder check failed</source>
+      <translation type="unfinished">Reminder check failed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1365"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1382"/>
+      <source>An unexpected error occurred while checking reminders.</source>
+      <translation type="unfinished">An unexpected error occurred while checking reminders.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1422"/>
+      <source>Open</source>
+      <translation type="unfinished">Open</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1449"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
+      <source>Cannot open event details</source>
+      <translation type="unfinished">Cannot open event details</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1516"/>
+      <source>The saved event cannot be stored as an individual occurrence.</source>
+      <translation type="unfinished">The saved event cannot be stored as an individual occurrence.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1530"/>
+      <source>Cached event metadata is invalid; the saved remote event was not applied locally.</source>
+      <translation type="unfinished">Cached event metadata is invalid; the saved remote event was not applied locally.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1590"/>
+      <source>This Calendar account is stopped.</source>
+      <translation type="unfinished">This Calendar account is stopped.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1593"/>
+      <source>Wait for the calendar list to finish refreshing.</source>
+      <translation type="unfinished">Wait for the calendar list to finish refreshing.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1597"/>
+      <source>Select an available calendar.</source>
+      <translation type="unfinished">Select an available calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1625"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1782"/>
+      <source>An unexpected error occurred while processing the event.</source>
+      <translation type="unfinished">An unexpected error occurred while processing the event.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1642"/>
+      <source>Saved in Google Calendar, but the local cache could not be refreshed: %1</source>
+      <translation type="unfinished">Saved in Google Calendar, but the local cache could not be refreshed: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1648"/>
+      <source>Calendar event operation failed</source>
+      <translation type="unfinished">Calendar event operation failed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1665"/>
+      <source>Calendar operation cancelled or account settings changed. The draft was preserved.</source>
+      <translation type="unfinished">Calendar operation cancelled or account settings changed. The draft was preserved.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1680"/>
+      <source>The remote event response is invalid.</source>
+      <translation type="unfinished">The remote event response is invalid.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1697"/>
+      <source>Unsupported field in event changes.</source>
+      <translation type="unfinished">Unsupported field in event changes.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1703"/>
+      <source>This event or calendar is read-only.</source>
+      <translation type="unfinished">This event or calendar is read-only.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1721"/>
+      <source>Google accepted the write but returned an invalid event resource. Refresh this calendar.</source>
+      <translation type="unfinished">Google accepted the write but returned an invalid event resource. Refresh this calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1748"/>
+      <source>Invalid recurring-event occurrence returned after saving.</source>
+      <translation type="unfinished">Invalid recurring-event occurrence returned after saving.</translation>
     </message>
   </context>
   <context>
@@ -6856,79 +7714,79 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1049"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1050"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Masalah dengan memulai klien surel eksternal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1050"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1051"/>
       <source>External e-mail client could not be started.</source>
       <translation>Klien surel eksternal tidak dapat dimulai.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="665"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="666"/>
       <source>Open with external tool</source>
       <translation>Buka dengan alat eksternal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="423"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="424"/>
       <source>Use source-specific article list columns</source>
       <translation type="unfinished">Use source-specific article list columns</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="716"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="717"/>
       <source>Play attachment</source>
       <translation type="unfinished">Play attachment</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="851"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="852"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="853"/>
       <source>%n selected article(s)</source>
       <translation type="unfinished">
         <numerusform>%n selected article(s)</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="983"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1327"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="984"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1341"/>
       <source>Filtering changed</source>
       <translation type="unfinished">Filtering changed</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="984"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1328"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="985"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1342"/>
       <source>%n article(s) left after filtering change</source>
       <translation type="unfinished">
         <numerusform>%n article(s) left after filtering change</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1015"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1016"/>
       <source>No URL</source>
       <translation type="unfinished">No URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1016"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1017"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1354"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1368"/>
       <source>Cannot run external tool</source>
       <translation>Tidak dapat menjalankan alat eksternal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1355"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1369"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>Alat eksternal &apos;%1&apos; tidak dapat dijalankan.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="686"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="687"/>
       <source>No external tools activated</source>
       <translation type="unfinished">No external tools activated</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="646"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="647"/>
       <source>Context menu for articles</source>
       <translation type="unfinished">Context menu for articles</translation>
     </message>
@@ -7472,17 +8330,17 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1058"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1066"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1826"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1831"/>
       <source>Could not obtain the inserted article ID.</source>
       <translation type="unfinished">Could not obtain the inserted article ID.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2521"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2526"/>
       <source>cannot move item of kind %1</source>
       <translation type="unfinished">cannot move item of kind %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2662"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2667"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
@@ -8197,6 +9055,190 @@ stack: %3</translation>
       <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
       <translation type="unfinished">Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="73"/>
+      <source>Invalid recurring event identity.</source>
+      <translation type="unfinished">Invalid recurring event identity.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="81"/>
+      <source>Missing calendar or event ID.</source>
+      <translation type="unfinished">Missing calendar or event ID.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="108"/>
+      <source>Invalid calendar event time range or time zone.</source>
+      <translation type="unfinished">Invalid calendar event time range or time zone.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="119"/>
+      <source>Invalid or unsupported calendar event metadata.</source>
+      <translation type="unfinished">Invalid or unsupported calendar event metadata.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="168"/>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="36"/>
+      <source>Untitled event</source>
+      <translation type="unfinished">Untitled event</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="196"/>
+      <source>Time zone: %1</source>
+      <translation type="unfinished">Time zone: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="200"/>
+      <source>Organizer: %1</source>
+      <translation type="unfinished">Organizer: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="204"/>
+      <source>Participants</source>
+      <translation type="unfinished">Participants</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="225"/>
+      <source>Meeting link</source>
+      <translation type="unfinished">Meeting link</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="16"/>
+      <source>This local time does not exist in the selected time zone.</source>
+      <translation type="unfinished">This local time does not exist in the selected time zone.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="19"/>
+      <source>Choose which occurrence of the ambiguous local time to use.</source>
+      <translation type="unfinished">Choose which occurrence of the ambiguous local time to use.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="57"/>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="122"/>
+      <source>Choose a valid event time zone.</source>
+      <translation type="unfinished">Choose a valid event time zone.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="77"/>
+      <source>This event cannot be edited.</source>
+      <translation type="unfinished">This event cannot be edited.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="129"/>
+      <source>The event&apos;s final date must not precede its start date.</source>
+      <translation type="unfinished">The event&apos;s final date must not precede its start date.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="139"/>
+      <source>The event must end after it starts.</source>
+      <translation type="unfinished">The event must end after it starts.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="151"/>
+      <source>Edit the whole series to change its recurrence.</source>
+      <translation type="unfinished">Edit the whole series to change its recurrence.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="172"/>
+      <source>The reloaded event does not match this draft.</source>
+      <translation type="unfinished">The reloaded event does not match this draft.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="18"/>
+      <source>Invalid calendar reminder settings or trigger state.</source>
+      <translation type="unfinished">Invalid calendar reminder settings or trigger state.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="89"/>
+      <source>The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</source>
+      <translation type="unfinished">The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarfeed.cpp" line="31"/>
+      <source>Invalid or unsupported calendar metadata.</source>
+      <translation type="unfinished">Invalid or unsupported calendar metadata.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="81"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="120"/>
+      <source>Calendar operation cancelled.</source>
+      <translation type="unfinished">Calendar operation cancelled.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="117"/>
+      <source>Google Calendar request timed out.</source>
+      <translation type="unfinished">Google Calendar request timed out.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="136"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="165"/>
+      <source>Authorize the Calendar account first.</source>
+      <translation type="unfinished">Authorize the Calendar account first.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="175"/>
+      <source>Invalid JSON response from Google Calendar.</source>
+      <translation type="unfinished">Invalid JSON response from Google Calendar.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="195"/>
+      <source>Google Calendar request failed (HTTP %1).</source>
+      <translation type="unfinished">Google Calendar request failed (HTTP %1).</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="215"/>
+      <source>Invalid Google Calendar collection response.</source>
+      <translation type="unfinished">Invalid Google Calendar collection response.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="221"/>
+      <source>Invalid item in Google Calendar response.</source>
+      <translation type="unfinished">Invalid item in Google Calendar response.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="227"/>
+      <source>Invalid Google Calendar page token.</source>
+      <translation type="unfinished">Invalid Google Calendar page token.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="240"/>
+      <source>Google Calendar pagination did not complete.</source>
+      <translation type="unfinished">Google Calendar pagination did not complete.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="261"/>
+      <source>Invalid calendar cache window.</source>
+      <translation type="unfinished">Invalid calendar cache window.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="281"/>
+      <source>Invalid recurring-event instance window.</source>
+      <translation type="unfinished">Invalid recurring-event instance window.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="299"/>
+      <source>Missing client event ID.</source>
+      <translation type="unfinished">Missing client event ID.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="325"/>
+      <source>Reload the event before editing it.</source>
+      <translation type="unfinished">Reload the event before editing it.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="64"/>
+      <source>Invalid calendar custom data; existing data was preserved.</source>
+      <translation type="unfinished">Invalid calendar custom data; existing data was preserved.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="75"/>
+      <source>This Calendar account no longer exists.</source>
+      <translation type="unfinished">This Calendar account no longer exists.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="96"/>
+      <source>This calendar no longer exists.</source>
+      <translation type="unfinished">This calendar no longer exists.</translation>
+    </message>
   </context>
   <context>
     <name>QtMultimediaBackend</name>
@@ -8618,27 +9660,27 @@ Number of folders: %2
 Number of disabled feeds: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="718"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="722"/>
       <source>unknown synchronization error</source>
       <translation type="unfinished">unknown synchronization error</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="740"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="744"/>
       <source>no feed tree obtained</source>
       <translation type="unfinished">no feed tree obtained</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="821"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="825"/>
       <source>unknown data returned from sync-in</source>
       <translation type="unfinished">unknown data returned from sync-in</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="828"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="832"/>
       <source>Error when fetching list of feeds</source>
       <translation type="unfinished">Error when fetching list of feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="829"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="833"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
     </message>
@@ -10230,87 +11272,87 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="109"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="130"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="131"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="134"/>
       <source>yes</source>
       <translation>ya</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="109"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="130"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="131"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="134"/>
       <source>no</source>
       <translation>tidak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="129"/>
       <source>yes (application setting)</source>
       <translation type="unfinished">yes (application setting)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="132"/>
       <source>%1 ms</source>
       <translation type="unfinished">%1 ms</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="132"/>
       <source>application default</source>
       <translation type="unfinished">application default</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="301"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="321"/>
       <source>Script</source>
       <translation type="unfinished">Script</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="304"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="324"/>
       <source>Local file</source>
       <translation type="unfinished">Local file</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="626"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="646"/>
       <source>uses application setting</source>
       <translation type="unfinished">uses application setting</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="629"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="649"/>
       <source>enabled</source>
       <translation type="unfinished">enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="632"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="652"/>
       <source>disabled</source>
       <translation type="unfinished">disabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="635"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="655"/>
       <source>unknown state</source>
       <translation type="unfinished">unknown state</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="307"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="327"/>
       <source>Unknown</source>
       <translation type="unfinished">Unknown</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="574"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="594"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation type="unfinished">Cannot move feed, detailed information was logged via debug log.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="525"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="545"/>
       <source>feed format not recognized</source>
       <translation type="unfinished">feed format not recognized</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -10333,7 +11375,7 @@ Feed timeout: %9
 Fetch full articles: %10 (plain text only: %11)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="573"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="593"/>
       <source>Cannot move feed</source>
       <translation type="unfinished">Cannot move feed</translation>
     </message>
@@ -10728,27 +11770,27 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="807"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="888"/>
       <source>Error when loading initial feeds</source>
       <translation>Eror ketika memuat feed awal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="592"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="615"/>
       <source>Fetch metadata</source>
       <translation>Ambil metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
       <source>First steps</source>
       <translation type="unfinished">First steps</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="102"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="107"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
       <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="104"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="109"/>
       <source>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
 
 Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
@@ -10765,112 +11807,138 @@ Load from OPML file: Standard OPML 2.0 file import.
 Load default feeds: Will load small set of various interesting feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="117"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="122"/>
       <source>Import from &amp;RSS Guard 4.x</source>
       <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="121"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="126"/>
       <source>Import from &amp;QuiteRSS</source>
       <translation type="unfinished">Import from &amp;QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="125"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="130"/>
       <source>Load from &amp;OPML file</source>
       <translation type="unfinished">Load from &amp;OPML file</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="129"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="134"/>
       <source>Load &amp;default feeds</source>
       <translation type="unfinished">Load &amp;default feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="385"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
       <translation type="unfinished">MediaWiki API returned HTTP 304 without the required JSON catalog.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="497"/>
       <source>Unsupported feed type.</source>
       <translation type="unfinished">Unsupported feed type.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="545"/>
       <source>feed is working, but is empty</source>
       <translation type="unfinished">feed is working, but is empty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="744"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="589"/>
+      <source>Clone this</source>
+      <translation type="unfinished">Clone this</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
+      <source>Cannot clone feed</source>
+      <translation type="unfinished">Cannot clone feed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="642"/>
+      <source>Cannot clone feed because another critical operation is ongoing.</source>
+      <translation type="unfinished">Cannot clone feed because another critical operation is ongoing.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="651"/>
+      <source>%1 (copy)</source>
+      <translation type="unfinished">%1 (copy)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="684"/>
+      <source>Cannot save feed: %1</source>
+      <translation type="unfinished">Cannot save feed: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="825"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="848"/>
       <source>Cannot add folder</source>
       <translation type="unfinished">Cannot add folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="768"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="849"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="823"/>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="832"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="904"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="913"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="847"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="928"/>
       <source>Fetching metadata for %n feeds</source>
       <translation type="unfinished">
         <numerusform>Fetching metadata for %n feeds</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="856"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="937"/>
       <source>Fetched %n feeds...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n feeds...</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="866"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="947"/>
       <source>Export feeds</source>
       <translation>Ekspor feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="867"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="948"/>
       <source>Import feeds</source>
       <translation>Impor feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="869"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="950"/>
       <source>Import from QuiteRSS</source>
       <translation type="unfinished">Import from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="871"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="952"/>
       <source>Import from RSS Guard 4.x</source>
       <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="62"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="67"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="212"/>
       <source>Cannot add item</source>
       <translation>Tidak dapat menambah item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="208"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="213"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Tidak dapat menambah feed dikarenakan operasi genting lain sedang berlangsung.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="747"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="828"/>
       <source>Import was completely successful.</source>
       <translation>Impor benar-benar berhasil.</translation>
     </message>
@@ -11597,47 +12665,47 @@ Log masuk terakhir pada: %4</translation>
       <translation type="unfinished">View source</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="491"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="493"/>
       <source>Save page to PDF file</source>
       <translation type="unfinished">Save page to PDF file</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="494"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="496"/>
       <source>PDF files (*.pdf)</source>
       <translation type="unfinished">PDF files (*.pdf)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="510"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="512"/>
       <source>Save complete page to file</source>
       <translation type="unfinished">Save complete page to file</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="513"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="515"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="566"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="568"/>
       <source>Advanced</source>
       <translation type="unfinished">Advanced</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="569"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="571"/>
       <source>Extra actions</source>
       <translation type="unfinished">Extra actions</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="572"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="574"/>
       <source>Page actions</source>
       <translation type="unfinished">Page actions</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="579"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="581"/>
       <source>Web attributes</source>
       <translation type="unfinished">Web attributes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="583"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="585"/>
       <source>Diagnostics</source>
       <translation type="unfinished">Diagnostics</translation>
     </message>

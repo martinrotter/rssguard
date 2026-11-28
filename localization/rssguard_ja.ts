@@ -352,6 +352,39 @@ version by clicking this popup notification.</source>
     </message>
   </context>
   <context>
+    <name>CalendarEventPreviewer</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="19"/>
+      <source>New event</source>
+      <translation>新しい予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="26"/>
+      <source>Edit event</source>
+      <translation>予定を編集</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="46"/>
+      <source>Open in Google Calendar</source>
+      <translation>Google カレンダーで開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="53"/>
+      <source>Join meeting</source>
+      <translation>ミーティングに参加</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="110"/>
+      <source>This event is cancelled.</source>
+      <translation>この予定はキャンセルされました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="113"/>
+      <source>This event is read-only.</source>
+      <translation>この予定は読み取り専用です。</translation>
+    </message>
+  </context>
+  <context>
     <name>Category</name>
     <message>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="88"/>
@@ -795,52 +828,52 @@ Item custom ID: %5</source>
   <context>
     <name>FeedMessageViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
       <source>Cannot open feed homepage</source>
       <translation>フィードのホームページを開けません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="50"/>
       <source>The feed does not have a valid homepage URL.</source>
       <translation>フィードに有効なホームページ URL が設定されていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="68"/>
       <source>Toolbar for feeds</source>
       <translation>フィードのツールバー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="68"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="69"/>
       <source>Toolbar for articles</source>
       <translation>記事のツールバー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="326"/>
       <source>Filtered feed list</source>
       <translation>フィルタリングされたフィードリスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="327"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>フィードリストからフィードがフィルタリングされているため、記事リストで記事を選択できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="345"/>
       <source>Filtered article list</source>
       <translation>フィルタリングされた記事リスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="346"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
       <translation>記事リストがフィルタリングされているか、記事が削除されているようで記事を選択できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="369"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="370"/>
       <source>Some feeds are hidden by current search or filtering.</source>
       <translation>現在の検索やフィルタリングによって、一部のフィードが非表示になっています</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="372"/>
       <source>Some articles are hidden by current search or filtering.</source>
       <translation>現在の検索やフィルタリングにより、一部の記事が非表示になっています</translation>
     </message>
@@ -1527,27 +1560,27 @@ Item custom ID: %5</source>
       <translation>本当にすべてを既読にしますか？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1169"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1141"/>
       <source>Not supported</source>
       <translation>サポートされていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1142"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation>複数のアカウントのアイテムを含むコンテキストメニューはサポートされていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1194"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1167"/>
       <source>Menu for feed list</source>
       <translation>フィードリストのメニュー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1089"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1052"/>
       <source>Feed filtered out</source>
       <translation>フィードが除外されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1090"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1053"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation>フィードは除外されているため、表示できない可能性があります</translation>
     </message>
@@ -2281,6 +2314,208 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
   </context>
   <context>
+    <name>FormCalendarEvent</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="14"/>
+      <source>Calendar event</source>
+      <translation>カレンダーの予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="28"/>
+      <source>Calendar</source>
+      <translation>カレンダー</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="41"/>
+      <source>Edit</source>
+      <translation>編集</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="52"/>
+      <source>This occurrence</source>
+      <translation>この予定のみ</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="57"/>
+      <source>The whole series</source>
+      <translation>すべての予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="65"/>
+      <source>Title</source>
+      <translation>タイトル</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="78"/>
+      <source>Location</source>
+      <translation>場所</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="91"/>
+      <source>All-day event</source>
+      <translation>終日</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="98"/>
+      <source>Starts</source>
+      <translation>開始日</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="127"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="165"/>
+      <source>This local time occurs twice. Choose which occurrence to use.</source>
+      <translation>このローカル時刻は 2 回発生します。使用する方を選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="136"/>
+      <source>Ends</source>
+      <translation>終了日</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="174"/>
+      <source>Time zone</source>
+      <translation>タイムゾーン</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="194"/>
+      <source>Repeat</source>
+      <translation>繰り返し</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="205"/>
+      <source>Do not repeat</source>
+      <translation>繰り返さない</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="210"/>
+      <source>Daily</source>
+      <translation>毎日</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="215"/>
+      <source>Weekly</source>
+      <translation>毎週</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="220"/>
+      <source>Monthly</source>
+      <translation>毎月</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="225"/>
+      <source>Yearly</source>
+      <translation>毎年</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="230"/>
+      <source>Keep existing recurrence</source>
+      <translation>既存の繰り返しを維持</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="238"/>
+      <source>Number of occurrences</source>
+      <translation>繰り返し回数</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="251"/>
+      <source>No end date</source>
+      <translation>終了日なし</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="258"/>
+      <source>Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</source>
+      <translation>カスタムの繰り返し設定は、明示的に置き換えるまで保持されます。個別の予定の繰り返しを変更するには、すべての予定を編集してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="268"/>
+      <source>Description</source>
+      <translation>説明</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="290"/>
+      <source>Notify attendees about changes</source>
+      <translation>変更を参加者に通知</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="302"/>
+      <source>Reload (discard draft)</source>
+      <translation>再読み込み (下書きを破棄)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="312"/>
+      <source>Reapply my edits to the latest version</source>
+      <translation>最新バージョンの編集内容を再適用する</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
+      <source>New event</source>
+      <translation>新しい予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
+      <source>Edit event</source>
+      <translation>予定を編集</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="52"/>
+      <source>No writable calendar is available. Refresh the calendar list first.</source>
+      <translation>書き込み可能なカレンダーがありません。先にカレンダーリストを更新してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="69"/>
+      <source>This event is read-only.</source>
+      <translation>この予定は読み取り専用です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="217"/>
+      <source>Choose occurrence</source>
+      <translation>予定を選択</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="220"/>
+      <source>%1 (%2 UTC)</source>
+      <translation>%1 (%2 UTC)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="285"/>
+      <source>Saving event...</source>
+      <translation>予定を保存中…</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="310"/>
+      <source>Loading the whole series...</source>
+      <translation>すべての予定を読み込み中…</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="369"/>
+      <source>The earlier creation succeeded. Your later edits are retained. Review them, then save.</source>
+      <translation>先ほどの作成は完了しました。その後の編集内容は保持されています。確認してから保存してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="374"/>
+      <source>Event saved</source>
+      <translation>予定を保存しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="381"/>
+      <source>This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</source>
+      <translation>この予定は Google カレンダーで変更されました。下書きは保持されています。再読み込みするか、最新バージョンの編集内容を再適用してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="411"/>
+      <source>Your edits have been reapplied. Review them, then save.</source>
+      <translation>編集内容が再適用されました。確認してから保存してください。</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormCalendarEventDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formcalendareventdetails.ui" line="14"/>
+      <source>Event details</source>
+      <translation>予定の詳細</translation>
+    </message>
+  </context>
+  <context>
     <name>FormCategoryDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="78"/>
@@ -2413,7 +2648,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="57"/>
       <source>I am ready.</source>
       <translation>用意ができました。</translation>
@@ -2663,6 +2897,24 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
   </context>
   <context>
+    <name>FormEditGCalendarAccount</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="18"/>
+      <source>Calendar setup</source>
+      <translation>カレンダーの設定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="25"/>
+      <source>Reminders</source>
+      <translation>リマインダー</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="55"/>
+      <source>Wait for the setup test to finish before saving.</source>
+      <translation>保存する前にセットアップのテストが完了するまでお待ちください。</translation>
+    </message>
+  </context>
+  <context>
     <name>FormEditGmailAccount</name>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formeditgmailaccount.cpp" line="14"/>
@@ -2833,6 +3085,19 @@ Attachments supplied by the feed are separate from the webpage and might not app
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="104"/>
       <source>Ignore notifications for this feed</source>
       <translation>このフィードの通知を無視する</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormGCalendarFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="16"/>
+      <source>Reminders</source>
+      <translation>リマインダー</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="26"/>
+      <source>Select calendars belonging to this account.</source>
+      <translation>このアカウントに属するカレンダーを選択してください。</translation>
     </message>
   </context>
   <context>
@@ -4401,7 +4666,6 @@ You have to restart manually.</source>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="143"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="143"/>
       <source>Feeds were loaded.</source>
       <translation>フィードが読み込まれました</translation>
     </message>
@@ -4454,7 +4718,6 @@ You have to restart manually.</source>
       <translation>重大なエラーが発生しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="123"/>
       <source>Parsing data...</source>
       <translation>データの解析中...</translation>
@@ -4794,6 +5057,601 @@ You can install it now.</source>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="128"/>
       <source>Available files</source>
       <translation>利用可能なファイル</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarAccountDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="23"/>
+      <source>Account name</source>
+      <translation>アカウント名</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="36"/>
+      <source>OAuth 2.0 settings</source>
+      <translation>OAuth 2.0 設定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="48"/>
+      <source>Client ID</source>
+      <translation>クライアント ID</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="61"/>
+      <source>Client secret</source>
+      <translation>クライアントシークレット</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="80"/>
+      <source>Event cache</source>
+      <translation>予定のキャッシュ</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="86"/>
+      <source>Keep past events</source>
+      <translation>過去のイベントを維持</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="96"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="119"/>
+      <source> days</source>
+      <translation> 日間</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="109"/>
+      <source>Fetch future events</source>
+      <translation>今後の予定を取得</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="135"/>
+      <source>Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</source>
+      <translation>キャッシュされた予定はオフラインでも利用できます。ローカルで予定を削除しても、Google カレンダー上の予定はキャンセルされません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="148"/>
+      <source>Refresh calendar list on startup</source>
+      <translation>起動時にカレンダーリストを更新</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="151"/>
+      <source>Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</source>
+      <translation>キャッシュがない場合、カレンダーは自動的に検出されます。予定の取得には通常のフィード更新設定が使用されます。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="160"/>
+      <source>&amp;Test setup</source>
+      <translation>テストセットアップ</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="19"/>
+      <source>Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</source>
+      <translation>Calendar API が有効になっている Google デスクトップアプリケーションの OAuth 認証情報を使用してください。「セットアップのテスト」でカレンダーへのアクセスを認証・検証します。テスト済みの認証情報を保持するにはアカウントを保存してください。カレンダーの認証は Gmail とは別個に行われます。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
+      <source>Enter an account name.</source>
+      <translation>アカウント名を入力して下さい。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
+      <source>Account name is set.</source>
+      <translation>アカウント名が設定されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
+      <source>Preconfigured client ID will be used.</source>
+      <translation>事前に設定されたクライアント ID が使用されます。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="69"/>
+      <source>Client ID is set.</source>
+      <translation>クライアント ID が設定されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="68"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="110"/>
+      <source>Enter your Google desktop application&apos;s client ID.</source>
+      <translation>Google デスクトップアプリケーションのクライアント ID を入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
+      <source>No client secret entered.</source>
+      <translation>クライアントシークレットが入力されていません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
+      <source>Client secret is set.</source>
+      <translation>クライアントシークレットが設定されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="96"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="97"/>
+      <source>Not tested yet.</source>
+      <translation>まだテストしていません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="132"/>
+      <source>You did not grant access.</source>
+      <translation>アクセスを許可していません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="137"/>
+      <source>Waiting for authorization...</source>
+      <translation>認証を待機中…</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="138"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="160"/>
+      <source>Testing setup.</source>
+      <translation>セットアップをテスト中。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="145"/>
+      <source>Authorization returned no access token.</source>
+      <translation>認証からアクセストークンが返されませんでした。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="149"/>
+      <source>Authorization returned no refresh token. Test setup again to grant offline access.</source>
+      <translation>認証からリフレッシュトークンが返されませんでした。オフラインアクセスを許可するには、もう一度セットアップのテストを実行してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="159"/>
+      <source>Testing Calendar access...</source>
+      <translation>カレンダーへのアクセスをテスト中…</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="174"/>
+      <source>Tested successfully.</source>
+      <translation>テストに成功しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="180"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="203"/>
+      <source>An unexpected error occurred while testing Calendar access.</source>
+      <translation>カレンダーへのアクセスのテスト中に予期しないエラーが発生しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="194"/>
+      <source>No calendar with readable event details was found.</source>
+      <translation>予定の詳細を読み取れるカレンダーが見つかりませんでした。</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarEntryPoint</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarentrypoint.cpp" line="34"/>
+      <source>Google Calendar events, editing and local reminders via the Calendar REST API.</source>
+      <translation>Calendar REST API を介した Google カレンダーの予定表示、編集、ローカルリマインダー機能です。</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarReminderDetails</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="57"/>
+      <source>Multiple values</source>
+      <translation>複数の値</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="59"/>
+      <source>Reminder timing</source>
+      <translation>リマインダーのタイミング</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="61"/>
+      <source>Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</source>
+      <translation>リマインダーは、RSS Guard の実行中にキャッシュされた予定を使用します。既定の確認間隔は 30 分であるため、通知が最大 1 間隔分遅れる場合があります。見逃したリマインダーは 1 間隔分までさかのぼって通知されます。予定が終了すると繰り返しは停止します。予定を既読にしてもリマインダーは解除されません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="66"/>
+      <source>The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</source>
+      <translation>アカウントでリマインダーが有効になっている必要があります。チェック間隔、終日予定の時刻、通知テキストはアカウント設定から取得されます。ローカルオフセットは開始前の分数（カンマ区切り）で指定します（0 は開始時刻）。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="121"/>
+      <source>Enter distinct nonnegative reminder offsets in minutes.</source>
+      <translation>重複しない 0 以上のリマインダーオフセット（分単位）を入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="142"/>
+      <source>Add at least one local reminder offset or select Google&apos;s popup offsets.</source>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上追加するか、Google のポップアップ通知のオフセットを選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="150"/>
+      <source>Select at least one calendar.</source>
+      <translation>カレンダーを 1 つ以上選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="183"/>
+      <source>Choose reminder rules for the selected calendars.</source>
+      <translation>選択したカレンダーのリマインダールールを選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="190"/>
+      <source>Enter at least one local reminder offset.</source>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上入力してください。</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarReminderSettings</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="17"/>
+      <source>Enable local reminders</source>
+      <translation>ローカルリマインダーを有効</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="27"/>
+      <source>Selected calendars use different reminder settings.</source>
+      <translation>選択したカレンダーでは異なるリマインダー設定が使用されています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="55"/>
+      <source>Apply reminder settings to all selected calendars</source>
+      <translation>選択したすべてのカレンダーにリマインダー設定を適用</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="98"/>
+      <source>Rules</source>
+      <translation>ルール</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="109"/>
+      <source>Inherit account rules</source>
+      <translation>アカウントのルールを継承</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="114"/>
+      <source>Disable for this calendar</source>
+      <translation>このカレンダーでは無効にする</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="119"/>
+      <source>Use local offsets</source>
+      <translation>ローカルオフセットを使用</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="124"/>
+      <source>Use Google&apos;s popup offsets</source>
+      <translation>Google のポップアップ通知のオフセットを使用</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="159"/>
+      <source>Check every</source>
+      <translation>チェック間隔</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="169"/>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="225"/>
+      <source> minutes</source>
+      <translation> 分</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="185"/>
+      <source>Use Google&apos;s popup reminder offsets</source>
+      <translation>Google のポップアップリマインダーのオフセットを使用</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="192"/>
+      <source>Local offsets</source>
+      <translation>ローカルオフセット</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="205"/>
+      <source>Minutes before start, separated by commas; 0 means at start</source>
+      <translation>開始前の分数（カンマ区切り、0 は開始時刻）</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="212"/>
+      <source>Repeat every</source>
+      <translation>繰り返し間隔</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="222"/>
+      <source>Do not repeat</source>
+      <translation>繰り返さない</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="235"/>
+      <source>All-day time</source>
+      <translation>終日予定の時刻</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="259"/>
+      <source>Notification title</source>
+      <translation>通知タイトル</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="272"/>
+      <source>Notification text</source>
+      <translation>通知テキスト</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="304"/>
+      <source>Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</source>
+      <translation>テキストのプレースホルダー: {title}, {start}, {end}, {calendar}, {location}, {url}。終日予定の時刻にはカレンダーのタイムゾーンが使用され、ローカルルールに適用されます。</translation>
+    </message>
+  </context>
+  <context>
+    <name>GCalendarServiceRoot</name>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="56"/>
+      <source>Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</source>
+      <translation>1970 年より前に開始する予定は RSS Guard でキャッシュできません。これらの予定は Google カレンダーで管理してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="122"/>
+      <source>Enter at least one local reminder offset.</source>
+      <translation>ローカルリマインダーのオフセットを 1 つ以上入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="136"/>
+      <source>Enter distinct nonnegative reminder offsets in minutes.</source>
+      <translation>重複しない 0 以上のリマインダーオフセット（分単位）を入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="162"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="275"/>
+      <source>Google Calendar</source>
+      <translation>Google カレンダー</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="222"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
+      <source>Cannot edit calendar</source>
+      <translation>カレンダーを編集できません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
+      <source>An unexpected error occurred.</source>
+      <translation>予期しないエラーが発生しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="241"/>
+      <source>Unsupported Calendar account data version.</source>
+      <translation>サポートされていないカレンダーアカウントのデータバージョンです。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="246"/>
+      <source>Invalid Calendar account settings or reminder history.</source>
+      <translation>カレンダーアカウントの設定またはリマインダー履歴が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="369"/>
+      <source>Wait for the current calendar update before changing account settings.</source>
+      <translation>アカウント設定を変更する前に、現在のカレンダーの更新が完了するまでお待ちください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="372"/>
+      <source>Enter an account name and a valid calendar cache window.</source>
+      <translation>アカウント名と有効なカレンダーキャッシュ期間を入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
+      <source>Enter your Google desktop application&apos;s client ID.</source>
+      <translation>Google デスクトップアプリケーションのクライアント ID を入力してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="689"/>
+      <source>Authorize this account to refresh calendars. Cached events remain available.</source>
+      <translation>カレンダーを更新するには、このアカウントを認証してください。キャッシュされた予定は引き続き利用できます。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="467"/>
+      <source>Authorization failed: %1</source>
+      <translation>認証に失敗しました: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="468"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="473"/>
+      <source>Google Calendar authorization failed</source>
+      <translation>Google カレンダーの認証に失敗しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="474"/>
+      <source>Account &apos;%1&apos;: %2</source>
+      <translation>アカウント &apos;%1&apos;: %2</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="477"/>
+      <source>Authorize</source>
+      <translation>認証</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="518"/>
+      <source>Authorized</source>
+      <translation>認証済み</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="526"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="650"/>
+      <source>Calendar authorization failed.</source>
+      <translation>カレンダーの認証に失敗しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="531"/>
+      <source>Authorization was declined.</source>
+      <translation>認証が拒否されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="556"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="617"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="729"/>
+      <source>Authorize the Calendar account before refreshing events.</source>
+      <translation>予定を更新する前に、カレンダーアカウントを認証してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="642"/>
+      <source>Timed out waiting for Calendar authorization.</source>
+      <translation>カレンダー認証の待機中にタイムアウトしました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="797"/>
+      <source>Invalid or duplicate calendar ID; cached calendars were preserved.</source>
+      <translation>カレンダー ID が無効か重複しています。キャッシュされたカレンダーは保持されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="844"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1686"/>
+      <source>This calendar is disabled.</source>
+      <translation>このカレンダーは無効になっています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="854"/>
+      <source>Calendar details are unavailable or access is limited to free/busy information.</source>
+      <translation>カレンダーの詳細を利用できないか、アクセスが 予定あり／なし 情報のみに制限されています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="880"/>
+      <source>Invalid cached event; calendar data was preserved.</source>
+      <translation>キャッシュされた予定が無効です。カレンダーのデータは保持されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="893"/>
+      <source>Duplicate event occurrence in calendar response.</source>
+      <translation>カレンダーの応答に重複した予定があります。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="962"/>
+      <source>Invalid cached event; destructive reconciliation was cancelled.</source>
+      <translation>キャッシュされた予定が無効です。破壊的な同期調整はキャンセルされました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1094"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1122"/>
+      <source>New event</source>
+      <translation>新しい予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1110"/>
+      <source>Authorize Google Calendar</source>
+      <translation>Google カレンダーを認証</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1113"/>
+      <source>Refresh calendar list</source>
+      <translation>カレンダーリストを更新</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1141"/>
+      <source>Event details</source>
+      <translation>予定の詳細</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1145"/>
+      <source>Edit event</source>
+      <translation>予定を編集</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1174"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
+      <source>Cannot create event</source>
+      <translation>予定を作成できません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1191"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
+      <source>Cannot edit event</source>
+      <translation>予定を編集できません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1361"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1364"/>
+      <source>Reminder check failed</source>
+      <translation>リマインダーの確認に失敗しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1365"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1382"/>
+      <source>An unexpected error occurred while checking reminders.</source>
+      <translation>リマインダーの確認中に予期しないエラーが発生しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1422"/>
+      <source>Open</source>
+      <translation>開く</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1449"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
+      <source>Cannot open event details</source>
+      <translation>予定の詳細を開けません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1516"/>
+      <source>The saved event cannot be stored as an individual occurrence.</source>
+      <translation>保存された予定を個別の予定として登録できません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1530"/>
+      <source>Cached event metadata is invalid; the saved remote event was not applied locally.</source>
+      <translation>キャッシュされた予定のメタデータが無効です。保存されたリモートの予定はローカルに適用されませんでした。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1590"/>
+      <source>This Calendar account is stopped.</source>
+      <translation>このカレンダーアカウントは停止しています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1593"/>
+      <source>Wait for the calendar list to finish refreshing.</source>
+      <translation>カレンダーリストの更新が完了するまでお待ちください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1597"/>
+      <source>Select an available calendar.</source>
+      <translation>利用可能なカレンダーを選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1625"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1782"/>
+      <source>An unexpected error occurred while processing the event.</source>
+      <translation>予定の処理中に予期しないエラーが発生しました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1642"/>
+      <source>Saved in Google Calendar, but the local cache could not be refreshed: %1</source>
+      <translation>Google カレンダーに保存されましたが、ローカルキャッシュを更新できませんでした: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1648"/>
+      <source>Calendar event operation failed</source>
+      <translation>カレンダーの予定の操作に失敗しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1665"/>
+      <source>Calendar operation cancelled or account settings changed. The draft was preserved.</source>
+      <translation>カレンダー操作がキャンセルされたか、アカウント設定が変更されました。下書きは保持されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1680"/>
+      <source>The remote event response is invalid.</source>
+      <translation>リモートからの予定の応答が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1697"/>
+      <source>Unsupported field in event changes.</source>
+      <translation>予定の変更内容にサポートされていないフィールドが含まれています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1703"/>
+      <source>This event or calendar is read-only.</source>
+      <translation>この予定またはカレンダーは読み取り専用です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1721"/>
+      <source>Google accepted the write but returned an invalid event resource. Refresh this calendar.</source>
+      <translation>Google 側で書き込みは受理されましたが、無効な予定リソースが返されました。このカレンダーを更新してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1748"/>
+      <source>Invalid recurring-event occurrence returned after saving.</source>
+      <translation>保存後に無効な繰り返し予定の発生回が返されました。</translation>
     </message>
   </context>
   <context>
@@ -6856,79 +7714,79 @@ Prediction against the current database. Later changes, script side effects and 
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1049"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1050"/>
       <source>Problem with starting external e-mail client</source>
       <translation>外部 Eメールクライアントの起動に問題があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1050"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1051"/>
       <source>External e-mail client could not be started.</source>
       <translation>外部 Eメールクライアントを起動できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="665"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="666"/>
       <source>Open with external tool</source>
       <translation>外部ツールで開く</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="423"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="424"/>
       <source>Use source-specific article list columns</source>
       <translation>ソース固有の記事リストの列を使用する</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="716"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="717"/>
       <source>Play attachment</source>
       <translation>添付ファイルを再生</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="851"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="852"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="853"/>
       <source>%n selected article(s)</source>
       <translation>
         <numerusform>%n 件の記事が選択されました</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="983"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1327"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="984"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1341"/>
       <source>Filtering changed</source>
       <translation>フィルタリングが変更されました</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="984"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1328"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="985"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1342"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>フィルタリングの変更後、%n 件の記事が残っています</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1015"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1016"/>
       <source>No URL</source>
       <translation>URL がありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1016"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1017"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>記事にはURLがないため、メディア プレーヤーで再生できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1354"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1368"/>
       <source>Cannot run external tool</source>
       <translation>外部ツールを実行できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1355"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1369"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>外部ツール &apos;%1&apos; を開始できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="686"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="687"/>
       <source>No external tools activated</source>
       <translation>有効な外部ツールがありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="646"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="647"/>
       <source>Context menu for articles</source>
       <translation>記事のコンテキストメニュー</translation>
     </message>
@@ -7473,17 +8331,17 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1058"/>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1066"/>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1826"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1831"/>
       <source>Could not obtain the inserted article ID.</source>
       <translation>新規追加された記事の ID を取得できませんでした。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2521"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2526"/>
       <source>cannot move item of kind %1</source>
       <translation>種類 %1 のアイテムを移動できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2662"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2667"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>現在のデータベースは最後に挿入された行の ID を返せないため、記事フィルタを挿入できません</translation>
     </message>
@@ -8198,6 +9056,190 @@ stack: %3</source>
       <source>Incompatible plugin API. Rebuild the plugin against this version of RSS Guard.</source>
       <translation>プラグインの API に互換性がありません。このバージョンの RSS Guard に合わせてプラグインを再ビルドしてください。</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="73"/>
+      <source>Invalid recurring event identity.</source>
+      <translation>繰り返し予定の識別情報が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="81"/>
+      <source>Missing calendar or event ID.</source>
+      <translation>カレンダー ID またはイベント ID がありません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="108"/>
+      <source>Invalid calendar event time range or time zone.</source>
+      <translation>カレンダーの予定の期間またはタイムゾーンが無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="119"/>
+      <source>Invalid or unsupported calendar event metadata.</source>
+      <translation>カレンダーの予定のメタデータが無効またはサポートされていません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="168"/>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="36"/>
+      <source>Untitled event</source>
+      <translation>無題の予定</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="196"/>
+      <source>Time zone: %1</source>
+      <translation>タイムゾーン: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="200"/>
+      <source>Organizer: %1</source>
+      <translation>主催者: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="204"/>
+      <source>Participants</source>
+      <translation>参加者</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="225"/>
+      <source>Meeting link</source>
+      <translation>ミーティングリンク</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="16"/>
+      <source>This local time does not exist in the selected time zone.</source>
+      <translation>選択したタイムゾーンにこのローカル時刻は存在しません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="19"/>
+      <source>Choose which occurrence of the ambiguous local time to use.</source>
+      <translation>重複しているローカル時刻のどちらの予定を使用するか選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="57"/>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="122"/>
+      <source>Choose a valid event time zone.</source>
+      <translation>有効な予定のタイムゾーンを選択してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="77"/>
+      <source>This event cannot be edited.</source>
+      <translation>この予定は編集できません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="129"/>
+      <source>The event&apos;s final date must not precede its start date.</source>
+      <translation>予定の終了日は開始日より前にすることはできません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="139"/>
+      <source>The event must end after it starts.</source>
+      <translation>終了時刻は開始時刻より後に設定する必要があります。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="151"/>
+      <source>Edit the whole series to change its recurrence.</source>
+      <translation>繰り返し設定を変更するには、すべての予定を編集してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="172"/>
+      <source>The reloaded event does not match this draft.</source>
+      <translation>再読み込みされた予定はこの下書きと一致しません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="18"/>
+      <source>Invalid calendar reminder settings or trigger state.</source>
+      <translation>カレンダーのリマインダー設定またはトリガー状態が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="89"/>
+      <source>The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</source>
+      <translation>今後のキャッシュ期間は、すべてのリマインダーオフセットが含まれている必要があります（Google のポップアップリマインダーの場合は 28 日以上）。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarfeed.cpp" line="31"/>
+      <source>Invalid or unsupported calendar metadata.</source>
+      <translation>カレンダーのメタデータが無効またはサポートされていません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="81"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="120"/>
+      <source>Calendar operation cancelled.</source>
+      <translation>カレンダー操作がキャンセルされました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="117"/>
+      <source>Google Calendar request timed out.</source>
+      <translation>Google カレンダーへのリクエストがタイムアウトしました。	</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="136"/>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="165"/>
+      <source>Authorize the Calendar account first.</source>
+      <translation>先にカレンダーアカウントを認証してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="175"/>
+      <source>Invalid JSON response from Google Calendar.</source>
+      <translation>Google カレンダーから無効な JSON 応答が返されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="195"/>
+      <source>Google Calendar request failed (HTTP %1).</source>
+      <translation>Google カレンダーのリクエストに失敗しました (HTTP %1)。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="215"/>
+      <source>Invalid Google Calendar collection response.</source>
+      <translation>Google カレンダーのコレクション応答が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="221"/>
+      <source>Invalid item in Google Calendar response.</source>
+      <translation>Google カレンダーの応答に無効な項目が含まれています。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="227"/>
+      <source>Invalid Google Calendar page token.</source>
+      <translation>Google カレンダーのページトークンが無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="240"/>
+      <source>Google Calendar pagination did not complete.</source>
+      <translation>Google カレンダーのページネーションが完了しませんでした。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="261"/>
+      <source>Invalid calendar cache window.</source>
+      <translation>カレンダーのキャッシュ期間が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="281"/>
+      <source>Invalid recurring-event instance window.</source>
+      <translation>繰り返し予定のインスタンス期間が無効です。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="299"/>
+      <source>Missing client event ID.</source>
+      <translation>クライアントイベント ID がありません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="325"/>
+      <source>Reload the event before editing it.</source>
+      <translation>編集する前に予定を再読み込みしてください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="64"/>
+      <source>Invalid calendar custom data; existing data was preserved.</source>
+      <translation>カレンダーのカスタムデータが無効です。既存のデータは保持されました。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="75"/>
+      <source>This Calendar account no longer exists.</source>
+      <translation>このカレンダーアカウントは既に存在しません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="96"/>
+      <source>This calendar no longer exists.</source>
+      <translation>このカレンダーは既に存在しません。</translation>
+    </message>
   </context>
   <context>
     <name>QtMultimediaBackend</name>
@@ -8619,27 +9661,27 @@ Number of disabled feeds: %3</source>
 無効化されたフィード数: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="718"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="722"/>
       <source>unknown synchronization error</source>
       <translation>不明な同期エラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="740"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="744"/>
       <source>no feed tree obtained</source>
       <translation>フィードツリーが取得できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="821"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="825"/>
       <source>unknown data returned from sync-in</source>
       <translation>sync-in から返された不明なデータ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="828"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="832"/>
       <source>Error when fetching list of feeds</source>
       <translation>フィードのリストを取得時にエラーが発生しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="829"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="833"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>アカウント &apos;%1&apos; のフィードとフォルダを取得できませんでした。エラー: %2</translation>
     </message>
@@ -10231,87 +11273,87 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="109"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="130"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="131"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="134"/>
       <source>yes</source>
       <translation>はい</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="109"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="130"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="131"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="133"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="134"/>
       <source>no</source>
       <translation>いいえ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="111"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="129"/>
       <source>yes (application setting)</source>
       <translation>はい（アプリケーション設定）</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="132"/>
       <source>%1 ms</source>
       <translation>%1 ms</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="114"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="132"/>
       <source>application default</source>
       <translation>アプリケーションのデフォルト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="301"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="321"/>
       <source>Script</source>
       <translation>スクリプト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="304"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="324"/>
       <source>Local file</source>
       <translation>ローカルファイル</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="626"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="646"/>
       <source>uses application setting</source>
       <translation>アプリケーションの設定を使用する</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="629"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="649"/>
       <source>enabled</source>
       <translation>有効</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="632"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="652"/>
       <source>disabled</source>
       <translation>無効</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="635"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="655"/>
       <source>unknown state</source>
       <translation>不明なステータス</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="307"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="327"/>
       <source>Unknown</source>
       <translation>不明</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="574"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="594"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>フィードを移動できません。詳細情報はデバッグログに記録されています</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="525"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="545"/>
       <source>feed format not recognized</source>
       <translation>フィード形式が認識されません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="113"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -10334,7 +11376,7 @@ Cookieを無視: %7
 記事全文を取得: %10 (プレーンテキストのみ: %11)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="573"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="593"/>
       <source>Cannot move feed</source>
       <translation>フィードを移動できません</translation>
     </message>
@@ -10729,27 +11771,27 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="807"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="888"/>
       <source>Error when loading initial feeds</source>
       <translation>初期フィードの読み込み時のエラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="592"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="615"/>
       <source>Fetch metadata</source>
       <translation>メタデータを取得</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
       <source>First steps</source>
       <translation>最初のステップ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="102"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="107"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
       <translation>この新しいプロファイルにはフィードが含まれていません。どうしますか？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="104"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="109"/>
       <source>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
 
 Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
@@ -10766,112 +11808,138 @@ OPMLファイルからの読み込み：標準のOPML 2.0ファイルをイン�
 デフォルトフィードの読み込み：様々な興味深いフィードの小さなセットを読み込みます。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="117"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="122"/>
       <source>Import from &amp;RSS Guard 4.x</source>
       <translation>RSS Guard 4.x からインポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="121"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="126"/>
       <source>Import from &amp;QuiteRSS</source>
       <translation>QuiteRSSからインポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="125"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="130"/>
       <source>Load from &amp;OPML file</source>
       <translation>OPMLファイルから読み込む</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="129"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="134"/>
       <source>Load &amp;default feeds</source>
       <translation>デフォルトフィードを読み込む</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="380"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="385"/>
       <source>MediaWiki API returned HTTP 304 without the required JSON catalog.</source>
       <translation>MediaWiki API が必要な JSON カタログを含まない HTTP 304 を返しました。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="497"/>
       <source>Unsupported feed type.</source>
       <translation>サポートされていないフィード形式です。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="540"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="545"/>
       <source>feed is working, but is empty</source>
       <translation>フィードは動作していますが、内容は空です</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="744"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="589"/>
+      <source>Clone this</source>
+      <translation>これを複製</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
+      <source>Cannot clone feed</source>
+      <translation>フィードを複製できません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="642"/>
+      <source>Cannot clone feed because another critical operation is ongoing.</source>
+      <translation>別の重要な操作が進行中のため、フィードを複製できません。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="651"/>
+      <source>%1 (copy)</source>
+      <translation>%1 (コピー)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="684"/>
+      <source>Cannot save feed: %1</source>
+      <translation>フィードを保存できません: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="825"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation>エラーのため一部のフィード/フォルダがインポートされませんでした。詳細についてはデバッグログを確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="848"/>
       <source>Cannot add folder</source>
       <translation>フォルダを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="768"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="849"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation>別の重要な操作が進行中のため、フォルダを追加できません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="823"/>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="832"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="904"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="913"/>
       <source>Error during file import</source>
       <translation>ファイルのインポート中にエラーが発生しました</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="847"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="928"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
         <numerusform>%n 個のフィードのメタデータを取得しています</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="856"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="937"/>
       <source>Fetched %n feeds...</source>
       <translation>
         <numerusform>%n 個のフィードを取得しました…</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="866"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="947"/>
       <source>Export feeds</source>
       <translation>フィードをエクスポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="867"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="948"/>
       <source>Import feeds</source>
       <translation>フィードをインポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="869"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="950"/>
       <source>Import from QuiteRSS</source>
       <translation>QuiteRSSからインポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="871"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="952"/>
       <source>Import from RSS Guard 4.x</source>
       <translation>RSS Guard 4.x からインポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="62"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="67"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>これは標準的なRSS/RDF/ATOMフィードに必須のサービスアカウントです</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="212"/>
       <source>Cannot add item</source>
       <translation>アイテムを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="208"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="213"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>別の重要な作業が進行中のため、フィードを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="747"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="828"/>
       <source>Import was completely successful.</source>
       <translation>インポートは完全に成功しました</translation>
     </message>
@@ -11598,47 +12666,47 @@ Last login on: %4</source>
       <translation>ソースを表示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="491"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="493"/>
       <source>Save page to PDF file</source>
       <translation>ページを PDF ファイルに保存</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="494"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="496"/>
       <source>PDF files (*.pdf)</source>
       <translation>PDF ファイル(*.pdf)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="510"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="512"/>
       <source>Save complete page to file</source>
       <translation>ページ全体をファイルに保存</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="513"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="515"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation>Mime HTMLファイル (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="566"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="568"/>
       <source>Advanced</source>
       <translation>高度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="569"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="571"/>
       <source>Extra actions</source>
       <translation>追加アクション</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="572"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="574"/>
       <source>Page actions</source>
       <translation>ページアクション</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="579"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="581"/>
       <source>Web attributes</source>
       <translation>ウェブ属性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="583"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="585"/>
       <source>Diagnostics</source>
       <translation>診断</translation>
     </message>
