@@ -5370,7 +5370,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="304"/>
       <source>Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</source>
-      <translation type="unfinished">Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</translation>
+      <translation>テキストのプレースホルダー: {title}, {start}, {end}, {calendar}, {location}, {url}。終日予定の時刻にはカレンダーのタイムゾーンが使用され、ローカルルールに適用されます。</translation>
     </message>
   </context>
   <context>
@@ -5378,7 +5378,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="56"/>
       <source>Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</source>
-      <translation type="unfinished">Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</translation>
+      <translation>1970 年より前に開始する予定は RSS Guard でキャッシュできません。これらの予定は Google カレンダーで管理してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="122"/>
@@ -5394,13 +5394,13 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="162"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="275"/>
       <source>Google Calendar</source>
-      <translation type="unfinished">Google Calendar</translation>
+      <translation>Google カレンダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="222"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
       <source>Cannot edit calendar</source>
-      <translation type="unfinished">Cannot edit calendar</translation>
+      <translation>カレンダーを編集できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
@@ -5408,27 +5408,27 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
       <source>An unexpected error occurred.</source>
-      <translation type="unfinished">An unexpected error occurred.</translation>
+      <translation>予期しないエラーが発生しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="241"/>
       <source>Unsupported Calendar account data version.</source>
-      <translation type="unfinished">Unsupported Calendar account data version.</translation>
+      <translation>サポートされていないカレンダーアカウントのデータバージョンです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="246"/>
       <source>Invalid Calendar account settings or reminder history.</source>
-      <translation type="unfinished">Invalid Calendar account settings or reminder history.</translation>
+      <translation>カレンダーアカウントの設定またはリマインダー履歴が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="369"/>
       <source>Wait for the current calendar update before changing account settings.</source>
-      <translation type="unfinished">Wait for the current calendar update before changing account settings.</translation>
+      <translation>アカウント設定を変更する前に、現在のカレンダーの更新が完了するまでお待ちください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="372"/>
       <source>Enter an account name and a valid calendar cache window.</source>
-      <translation type="unfinished">Enter an account name and a valid calendar cache window.</translation>
+      <translation>アカウント名と有効なカレンダーキャッシュ期間を入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
@@ -5439,87 +5439,87 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="689"/>
       <source>Authorize this account to refresh calendars. Cached events remain available.</source>
-      <translation type="unfinished">Authorize this account to refresh calendars. Cached events remain available.</translation>
+      <translation>カレンダーを更新するには、このアカウントを認証してください。キャッシュされた予定は引き続き利用できます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="467"/>
       <source>Authorization failed: %1</source>
-      <translation type="unfinished">Authorization failed: %1</translation>
+      <translation>認証に失敗しました: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="468"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="473"/>
       <source>Google Calendar authorization failed</source>
-      <translation type="unfinished">Google Calendar authorization failed</translation>
+      <translation>Google カレンダーの認証に失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="474"/>
       <source>Account &apos;%1&apos;: %2</source>
-      <translation type="unfinished">Account &apos;%1&apos;: %2</translation>
+      <translation>アカウント &apos;%1&apos;: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="477"/>
       <source>Authorize</source>
-      <translation type="unfinished">Authorize</translation>
+      <translation>認証</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="518"/>
       <source>Authorized</source>
-      <translation type="unfinished">Authorized</translation>
+      <translation>認証済み</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="526"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="650"/>
       <source>Calendar authorization failed.</source>
-      <translation type="unfinished">Calendar authorization failed.</translation>
+      <translation>カレンダーの認証に失敗しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="531"/>
       <source>Authorization was declined.</source>
-      <translation type="unfinished">Authorization was declined.</translation>
+      <translation>認証が拒否されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="556"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="617"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="729"/>
       <source>Authorize the Calendar account before refreshing events.</source>
-      <translation type="unfinished">Authorize the Calendar account before refreshing events.</translation>
+      <translation>予定を更新する前に、カレンダーアカウントを認証してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="642"/>
       <source>Timed out waiting for Calendar authorization.</source>
-      <translation type="unfinished">Timed out waiting for Calendar authorization.</translation>
+      <translation>カレンダー認証の待機中にタイムアウトしました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="797"/>
       <source>Invalid or duplicate calendar ID; cached calendars were preserved.</source>
-      <translation type="unfinished">Invalid or duplicate calendar ID; cached calendars were preserved.</translation>
+      <translation>カレンダー ID が無効か重複しています。キャッシュされたカレンダーは保持されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="844"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1686"/>
       <source>This calendar is disabled.</source>
-      <translation type="unfinished">This calendar is disabled.</translation>
+      <translation>このカレンダーは無効になっています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="854"/>
       <source>Calendar details are unavailable or access is limited to free/busy information.</source>
-      <translation type="unfinished">Calendar details are unavailable or access is limited to free/busy information.</translation>
+      <translation>カレンダーの詳細を利用できないか、アクセスが 予定あり／なし 情報のみに制限されています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="880"/>
       <source>Invalid cached event; calendar data was preserved.</source>
-      <translation type="unfinished">Invalid cached event; calendar data was preserved.</translation>
+      <translation>キャッシュされた予定が無効です。カレンダーのデータは保持されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="893"/>
       <source>Duplicate event occurrence in calendar response.</source>
-      <translation type="unfinished">Duplicate event occurrence in calendar response.</translation>
+      <translation>カレンダーの応答に重複した予定があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="962"/>
       <source>Invalid cached event; destructive reconciliation was cancelled.</source>
-      <translation type="unfinished">Invalid cached event; destructive reconciliation was cancelled.</translation>
+      <translation>キャッシュされた予定が無効です。破壊的な同期調整はキャンセルされました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1094"/>
@@ -5530,12 +5530,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1110"/>
       <source>Authorize Google Calendar</source>
-      <translation type="unfinished">Authorize Google Calendar</translation>
+      <translation>Google カレンダーを認証</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1113"/>
       <source>Refresh calendar list</source>
-      <translation type="unfinished">Refresh calendar list</translation>
+      <translation>カレンダーリストを更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1141"/>
@@ -5551,107 +5551,107 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1174"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
       <source>Cannot create event</source>
-      <translation type="unfinished">Cannot create event</translation>
+      <translation>予定を作成できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1191"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
       <source>Cannot edit event</source>
-      <translation type="unfinished">Cannot edit event</translation>
+      <translation>予定を編集できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1361"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1364"/>
       <source>Reminder check failed</source>
-      <translation type="unfinished">Reminder check failed</translation>
+      <translation>リマインダーの確認に失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1365"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1382"/>
       <source>An unexpected error occurred while checking reminders.</source>
-      <translation type="unfinished">An unexpected error occurred while checking reminders.</translation>
+      <translation>リマインダーの確認中に予期しないエラーが発生しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1422"/>
       <source>Open</source>
-      <translation type="unfinished">Open</translation>
+      <translation>開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1449"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
       <source>Cannot open event details</source>
-      <translation type="unfinished">Cannot open event details</translation>
+      <translation>予定の詳細を開けません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1516"/>
       <source>The saved event cannot be stored as an individual occurrence.</source>
-      <translation type="unfinished">The saved event cannot be stored as an individual occurrence.</translation>
+      <translation>保存された予定を個別の予定として登録できません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1530"/>
       <source>Cached event metadata is invalid; the saved remote event was not applied locally.</source>
-      <translation type="unfinished">Cached event metadata is invalid; the saved remote event was not applied locally.</translation>
+      <translation>キャッシュされた予定のメタデータが無効です。保存されたリモートの予定はローカルに適用されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1590"/>
       <source>This Calendar account is stopped.</source>
-      <translation type="unfinished">This Calendar account is stopped.</translation>
+      <translation>このカレンダーアカウントは停止しています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1593"/>
       <source>Wait for the calendar list to finish refreshing.</source>
-      <translation type="unfinished">Wait for the calendar list to finish refreshing.</translation>
+      <translation>カレンダーリストの更新が完了するまでお待ちください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1597"/>
       <source>Select an available calendar.</source>
-      <translation type="unfinished">Select an available calendar.</translation>
+      <translation>利用可能なカレンダーを選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1625"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1782"/>
       <source>An unexpected error occurred while processing the event.</source>
-      <translation type="unfinished">An unexpected error occurred while processing the event.</translation>
+      <translation>予定の処理中に予期しないエラーが発生しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1642"/>
       <source>Saved in Google Calendar, but the local cache could not be refreshed: %1</source>
-      <translation type="unfinished">Saved in Google Calendar, but the local cache could not be refreshed: %1</translation>
+      <translation>Google カレンダーに保存されましたが、ローカルキャッシュを更新できませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1648"/>
       <source>Calendar event operation failed</source>
-      <translation type="unfinished">Calendar event operation failed</translation>
+      <translation>カレンダーの予定の操作に失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1665"/>
       <source>Calendar operation cancelled or account settings changed. The draft was preserved.</source>
-      <translation type="unfinished">Calendar operation cancelled or account settings changed. The draft was preserved.</translation>
+      <translation>カレンダー操作がキャンセルされたか、アカウント設定が変更されました。下書きは保持されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1680"/>
       <source>The remote event response is invalid.</source>
-      <translation type="unfinished">The remote event response is invalid.</translation>
+      <translation>リモートからの予定の応答が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1697"/>
       <source>Unsupported field in event changes.</source>
-      <translation type="unfinished">Unsupported field in event changes.</translation>
+      <translation>予定の変更内容にサポートされていないフィールドが含まれています。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1703"/>
       <source>This event or calendar is read-only.</source>
-      <translation type="unfinished">This event or calendar is read-only.</translation>
+      <translation>この予定またはカレンダーは読み取り専用です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1721"/>
       <source>Google accepted the write but returned an invalid event resource. Refresh this calendar.</source>
-      <translation type="unfinished">Google accepted the write but returned an invalid event resource. Refresh this calendar.</translation>
+      <translation>Google 側で書き込みは受理されましたが、無効な予定リソースが返されました。このカレンダーを更新してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1748"/>
       <source>Invalid recurring-event occurrence returned after saving.</source>
-      <translation type="unfinished">Invalid recurring-event occurrence returned after saving.</translation>
+      <translation>保存後に無効な繰り返し予定の発生回が返されました。</translation>
     </message>
   </context>
   <context>
@@ -9059,17 +9059,17 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="73"/>
       <source>Invalid recurring event identity.</source>
-      <translation type="unfinished">Invalid recurring event identity.</translation>
+      <translation>繰り返し予定の識別情報が無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="81"/>
       <source>Missing calendar or event ID.</source>
-      <translation type="unfinished">Missing calendar or event ID.</translation>
+      <translation>カレンダー ID またはイベント ID がありません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="108"/>
       <source>Invalid calendar event time range or time zone.</source>
-      <translation type="unfinished">Invalid calendar event time range or time zone.</translation>
+      <translation>カレンダーの予定の期間またはタイムゾーンが無効です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="119"/>
