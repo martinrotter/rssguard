@@ -355,32 +355,32 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="19"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新建活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="26"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>编辑活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="46"/>
       <source>Open in Google Calendar</source>
-      <translation type="unfinished">Open in Google Calendar</translation>
+      <translation>在 Google 日历中打开</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="53"/>
       <source>Join meeting</source>
-      <translation type="unfinished">Join meeting</translation>
+      <translation>加入会议</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="110"/>
       <source>This event is cancelled.</source>
-      <translation type="unfinished">This event is cancelled.</translation>
+      <translation>此活动被取消。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="113"/>
       <source>This event is read-only.</source>
-      <translation type="unfinished">This event is read-only.</translation>
+      <translation>此活动只读。</translation>
     </message>
   </context>
   <context>
@@ -2317,27 +2317,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="14"/>
       <source>Calendar event</source>
-      <translation type="unfinished">Calendar event</translation>
+      <translation>日历活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="28"/>
       <source>Calendar</source>
-      <translation type="unfinished">Calendar</translation>
+      <translation>日历</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="41"/>
       <source>Edit</source>
-      <translation type="unfinished">Edit</translation>
+      <translation>编辑</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="52"/>
       <source>This occurrence</source>
-      <translation type="unfinished">This occurrence</translation>
+      <translation>此次</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="57"/>
       <source>The whole series</source>
-      <translation type="unfinished">The whole series</translation>
+      <translation>整个序列</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="65"/>
@@ -2347,17 +2347,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="78"/>
       <source>Location</source>
-      <translation type="unfinished">Location</translation>
+      <translation>地点</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="91"/>
       <source>All-day event</source>
-      <translation type="unfinished">All-day event</translation>
+      <translation>全天活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="98"/>
       <source>Starts</source>
-      <translation type="unfinished">Starts</translation>
+      <translation>开始</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="127"/>
@@ -2368,57 +2368,57 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="136"/>
       <source>Ends</source>
-      <translation type="unfinished">Ends</translation>
+      <translation>结束</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="174"/>
       <source>Time zone</source>
-      <translation type="unfinished">Time zone</translation>
+      <translation>时区</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="194"/>
       <source>Repeat</source>
-      <translation type="unfinished">Repeat</translation>
+      <translation>重复</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="205"/>
       <source>Do not repeat</source>
-      <translation type="unfinished">Do not repeat</translation>
+      <translation>不重复</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="210"/>
       <source>Daily</source>
-      <translation type="unfinished">Daily</translation>
+      <translation>每天</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="215"/>
       <source>Weekly</source>
-      <translation type="unfinished">Weekly</translation>
+      <translation>每周</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="220"/>
       <source>Monthly</source>
-      <translation type="unfinished">Monthly</translation>
+      <translation>每月</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="225"/>
       <source>Yearly</source>
-      <translation type="unfinished">Yearly</translation>
+      <translation>每年</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="230"/>
       <source>Keep existing recurrence</source>
-      <translation type="unfinished">Keep existing recurrence</translation>
+      <translation>保存现有复现</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="238"/>
       <source>Number of occurrences</source>
-      <translation type="unfinished">Number of occurrences</translation>
+      <translation>出现次数</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="251"/>
       <source>No end date</source>
-      <translation type="unfinished">No end date</translation>
+      <translation>无结束日期</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="258"/>
@@ -2433,27 +2433,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="290"/>
       <source>Notify attendees about changes</source>
-      <translation type="unfinished">Notify attendees about changes</translation>
+      <translation>就有关变化通知参与者</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="302"/>
       <source>Reload (discard draft)</source>
-      <translation type="unfinished">Reload (discard draft)</translation>
+      <translation>重新加载(丢弃草稿)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="312"/>
       <source>Reapply my edits to the latest version</source>
-      <translation type="unfinished">Reapply my edits to the latest version</translation>
+      <translation>重新应用我的编辑到最新版本</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新建活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>编辑活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="52"/>
@@ -2463,27 +2463,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="69"/>
       <source>This event is read-only.</source>
-      <translation type="unfinished">This event is read-only.</translation>
+      <translation>此活动只读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="217"/>
       <source>Choose occurrence</source>
-      <translation type="unfinished">Choose occurrence</translation>
+      <translation>选择发生</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="220"/>
       <source>%1 (%2 UTC)</source>
-      <translation type="unfinished">%1 (%2 UTC)</translation>
+      <translation>%1 (%2 UTC)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="285"/>
       <source>Saving event...</source>
-      <translation type="unfinished">Saving event...</translation>
+      <translation>正在保存活动……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="310"/>
       <source>Loading the whole series...</source>
-      <translation type="unfinished">Loading the whole series...</translation>
+      <translation>正在加载整个序列……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="369"/>
@@ -2493,7 +2493,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="374"/>
       <source>Event saved</source>
-      <translation type="unfinished">Event saved</translation>
+      <translation>活动已保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="381"/>
@@ -2511,7 +2511,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendareventdetails.ui" line="14"/>
       <source>Event details</source>
-      <translation type="unfinished">Event details</translation>
+      <translation>活动详情</translation>
     </message>
   </context>
   <context>
@@ -2900,12 +2900,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="18"/>
       <source>Calendar setup</source>
-      <translation type="unfinished">Calendar setup</translation>
+      <translation>日历设置</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="25"/>
       <source>Reminders</source>
-      <translation type="unfinished">Reminders</translation>
+      <translation>提醒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="55"/>
@@ -3091,7 +3091,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="16"/>
       <source>Reminders</source>
-      <translation type="unfinished">Reminders</translation>
+      <translation>提醒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="26"/>
@@ -5061,7 +5061,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="23"/>
       <source>Account name</source>
-      <translation type="unfinished">Account name</translation>
+      <translation>账户名</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="36"/>
@@ -5081,38 +5081,38 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="80"/>
       <source>Event cache</source>
-      <translation type="unfinished">Event cache</translation>
+      <translation>活动缓存</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="86"/>
       <source>Keep past events</source>
-      <translation type="unfinished">Keep past events</translation>
+      <translation>保留过去的活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="96"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="119"/>
       <source> days</source>
-      <translation type="unfinished"> days</translation>
+      <translation> 天</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="109"/>
       <source>Fetch future events</source>
-      <translation type="unfinished">Fetch future events</translation>
+      <translation>获取未来活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="135"/>
       <source>Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</source>
-      <translation type="unfinished">Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</translation>
+      <translation>已缓存的活动离线时仍可用。在本地删除一项活动不会在 Google 日历中取消它。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="148"/>
       <source>Refresh calendar list on startup</source>
-      <translation type="unfinished">Refresh calendar list on startup</translation>
+      <translation>启动时刷新日历列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="151"/>
       <source>Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</source>
-      <translation type="unfinished">Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</translation>
+      <translation>当没有缓存时总是发现日历。活动获取使用正常的源更新设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="160"/>
@@ -5122,28 +5122,28 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="19"/>
       <source>Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</source>
-      <translation type="unfinished">Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</translation>
+      <translation>对启用日历API的 Google桌面应用程序使用 OAuth 凭据。测试设置授权并验证日历访问。 保存账户以保留经测试的授权。日历授权与Gmail分开。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
       <source>Enter an account name.</source>
-      <translation type="unfinished">Enter an account name.</translation>
+      <translation>输入账户名。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
       <source>Account name is set.</source>
-      <translation type="unfinished">Account name is set.</translation>
+      <translation>账户名已设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
       <source>Preconfigured client ID will be used.</source>
-      <translation type="unfinished">Preconfigured client ID will be used.</translation>
+      <translation>将使用预先配置好的客户端ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="69"/>
       <source>Client ID is set.</source>
-      <translation type="unfinished">Client ID is set.</translation>
+      <translation>客户端ID已设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="68"/>
@@ -5154,12 +5154,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
       <source>No client secret entered.</source>
-      <translation type="unfinished">No client secret entered.</translation>
+      <translation>没有输入客户端 secret。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
       <source>Client secret is set.</source>
-      <translation type="unfinished">Client secret is set.</translation>
+      <translation>客户端 secret 已设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="96"/>
@@ -5175,18 +5175,18 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="137"/>
       <source>Waiting for authorization...</source>
-      <translation type="unfinished">Waiting for authorization...</translation>
+      <translation>等待授权中……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="138"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="160"/>
       <source>Testing setup.</source>
-      <translation type="unfinished">Testing setup.</translation>
+      <translation>测试设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="145"/>
       <source>Authorization returned no access token.</source>
-      <translation type="unfinished">Authorization returned no access token.</translation>
+      <translation>授权没有返回访问令牌。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="149"/>
@@ -5196,12 +5196,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="159"/>
       <source>Testing Calendar access...</source>
-      <translation type="unfinished">Testing Calendar access...</translation>
+      <translation>正测试日历访问……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="174"/>
       <source>Tested successfully.</source>
-      <translation type="unfinished">Tested successfully.</translation>
+      <translation>测试成功。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="180"/>
@@ -5212,7 +5212,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="194"/>
       <source>No calendar with readable event details was found.</source>
-      <translation>没有找到含可读活动详细信息的日历。</translation>
+      <translation>没有找到含可读取的活动详情的日历。</translation>
     </message>
   </context>
   <context>
@@ -5228,47 +5228,47 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="57"/>
       <source>Multiple values</source>
-      <translation type="unfinished">Multiple values</translation>
+      <translation>多个值</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="59"/>
       <source>Reminder timing</source>
-      <translation type="unfinished">Reminder timing</translation>
+      <translation>提醒时间</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="61"/>
       <source>Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</source>
-      <translation type="unfinished">Reminders use cached events while RSS Guard is running. The default check interval is 30 minutes, so delivery can be one interval late. Missed reminders are caught up for one interval. Repeats stop when the event ends. Reading an event does not dismiss reminders.</translation>
+      <translation>RSS Guard 正运行时提醒使用已缓存的活动。默认检查间隔为 30 分钟，因此提醒可能会晚一个间隔期到来。错过的提醒会在一个间隔期补上。活动结束时，重复停止。读取一项活动不会忽略提醒。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="66"/>
       <source>The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</source>
-      <translation type="unfinished">The account must have reminders enabled. Check interval, all-day time and notification text come from account settings. Local offsets are minutes before start, separated by commas; 0 means at start.</translation>
+      <translation>账户必须启用提醒。在账户设置中检查间隔，全天时间和通知文本。 本地偏移为开始前的分钟数，用逗号隔开；0表示开始时。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="121"/>
       <source>Enter distinct nonnegative reminder offsets in minutes.</source>
-      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+      <translation>输入明确的非复数提醒偏移（单位：分钟）。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="142"/>
       <source>Add at least one local reminder offset or select Google&apos;s popup offsets.</source>
-      <translation type="unfinished">Add at least one local reminder offset or select Google&apos;s popup offsets.</translation>
+      <translation>至少添加一个本地提醒偏移或选择 Google&apos;的弹出窗口偏移。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="150"/>
       <source>Select at least one calendar.</source>
-      <translation type="unfinished">Select at least one calendar.</translation>
+      <translation>选择至少一个日历。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="183"/>
       <source>Choose reminder rules for the selected calendars.</source>
-      <translation type="unfinished">Choose reminder rules for the selected calendars.</translation>
+      <translation>选择所选日历的提醒规则。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="190"/>
       <source>Enter at least one local reminder offset.</source>
-      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+      <translation>输入至少一个本地提醒偏移。</translation>
     </message>
   </context>
   <context>
@@ -5276,98 +5276,98 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="17"/>
       <source>Enable local reminders</source>
-      <translation type="unfinished">Enable local reminders</translation>
+      <translation>启用本地提醒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="27"/>
       <source>Selected calendars use different reminder settings.</source>
-      <translation type="unfinished">Selected calendars use different reminder settings.</translation>
+      <translation>所选日历使用不同的提醒设置。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="55"/>
       <source>Apply reminder settings to all selected calendars</source>
-      <translation type="unfinished">Apply reminder settings to all selected calendars</translation>
+      <translation>将提醒设置应用到所有选中的日历</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="98"/>
       <source>Rules</source>
-      <translation type="unfinished">Rules</translation>
+      <translation>规则</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="109"/>
       <source>Inherit account rules</source>
-      <translation type="unfinished">Inherit account rules</translation>
+      <translation>继承账户规则</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="114"/>
       <source>Disable for this calendar</source>
-      <translation type="unfinished">Disable for this calendar</translation>
+      <translation>此日历禁用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="119"/>
       <source>Use local offsets</source>
-      <translation type="unfinished">Use local offsets</translation>
+      <translation>使用本地偏移</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="124"/>
       <source>Use Google&apos;s popup offsets</source>
-      <translation type="unfinished">Use Google&apos;s popup offsets</translation>
+      <translation>使用 Google&apos;的弹窗偏移</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="159"/>
       <source>Check every</source>
-      <translation type="unfinished">Check every</translation>
+      <translation>检查间隔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="169"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="225"/>
       <source> minutes</source>
-      <translation type="unfinished"> minutes</translation>
+      <translation> 分钟</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="185"/>
       <source>Use Google&apos;s popup reminder offsets</source>
-      <translation type="unfinished">Use Google&apos;s popup reminder offsets</translation>
+      <translation>使用 Google&apos;的弹窗提醒偏移</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="192"/>
       <source>Local offsets</source>
-      <translation type="unfinished">Local offsets</translation>
+      <translation>本地偏移</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="205"/>
       <source>Minutes before start, separated by commas; 0 means at start</source>
-      <translation type="unfinished">Minutes before start, separated by commas; 0 means at start</translation>
+      <translation>开始前的几分钟，用逗号分隔；0表示开始时</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="212"/>
       <source>Repeat every</source>
-      <translation type="unfinished">Repeat every</translation>
+      <translation>重复间隔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="222"/>
       <source>Do not repeat</source>
-      <translation type="unfinished">Do not repeat</translation>
+      <translation>不重复</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="235"/>
       <source>All-day time</source>
-      <translation type="unfinished">All-day time</translation>
+      <translation>全天时间</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="259"/>
       <source>Notification title</source>
-      <translation type="unfinished">Notification title</translation>
+      <translation>通知标题</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="272"/>
       <source>Notification text</source>
-      <translation type="unfinished">Notification text</translation>
+      <translation>通知文本</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="304"/>
       <source>Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</source>
-      <translation type="unfinished">Text placeholders: {title}, {start}, {end}, {calendar}, {location}, {url}. The all-day time uses the calendar&apos;s time zone and applies to local rules.</translation>
+      <translation>文本占位符： {title}, {start}, {end}, {calendar}, {location}, {url}。全天时间使用日历的&apos;时区并应用于本地规则。</translation>
     </message>
   </context>
   <context>
@@ -5375,29 +5375,29 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="56"/>
       <source>Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</source>
-      <translation type="unfinished">Events starting before 1970 cannot be cached by RSS Guard. Manage these events in Google Calendar.</translation>
+      <translation>RSS Guard 无法缓存1970年之前开始的事件。在 Google 日历中管理这些事件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="122"/>
       <source>Enter at least one local reminder offset.</source>
-      <translation type="unfinished">Enter at least one local reminder offset.</translation>
+      <translation>输入至少一个本地提醒偏移。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="136"/>
       <source>Enter distinct nonnegative reminder offsets in minutes.</source>
-      <translation type="unfinished">Enter distinct nonnegative reminder offsets in minutes.</translation>
+      <translation>输入明确的非复数提醒偏移（单位：分钟）。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="162"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="275"/>
       <source>Google Calendar</source>
-      <translation type="unfinished">Google Calendar</translation>
+      <translation>Google 日历</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="222"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
       <source>Cannot edit calendar</source>
-      <translation type="unfinished">Cannot edit calendar</translation>
+      <translation>无法编辑日历</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="225"/>
@@ -5405,27 +5405,27 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
       <source>An unexpected error occurred.</source>
-      <translation type="unfinished">An unexpected error occurred.</translation>
+      <translation>发生了意外错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="241"/>
       <source>Unsupported Calendar account data version.</source>
-      <translation type="unfinished">Unsupported Calendar account data version.</translation>
+      <translation>不支持的日历账户数据版本。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="246"/>
       <source>Invalid Calendar account settings or reminder history.</source>
-      <translation type="unfinished">Invalid Calendar account settings or reminder history.</translation>
+      <translation>无效的日历账户设置或提醒历史。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="369"/>
       <source>Wait for the current calendar update before changing account settings.</source>
-      <translation type="unfinished">Wait for the current calendar update before changing account settings.</translation>
+      <translation>在更改账户设置之前等待当前日历更新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="372"/>
       <source>Enter an account name and a valid calendar cache window.</source>
-      <translation type="unfinished">Enter an account name and a valid calendar cache window.</translation>
+      <translation>输入账户名称和有效的日历缓存窗口。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
@@ -5436,219 +5436,219 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="689"/>
       <source>Authorize this account to refresh calendars. Cached events remain available.</source>
-      <translation type="unfinished">Authorize this account to refresh calendars. Cached events remain available.</translation>
+      <translation>授权此账户来刷新日历。缓存活动仍然可用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="467"/>
       <source>Authorization failed: %1</source>
-      <translation type="unfinished">Authorization failed: %1</translation>
+      <translation>授权失败: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="468"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="473"/>
       <source>Google Calendar authorization failed</source>
-      <translation type="unfinished">Google Calendar authorization failed</translation>
+      <translation>Google 日历授权失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="474"/>
       <source>Account &apos;%1&apos;: %2</source>
-      <translation type="unfinished">Account &apos;%1&apos;: %2</translation>
+      <translation>账户 &apos;%1&apos; %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="477"/>
       <source>Authorize</source>
-      <translation type="unfinished">Authorize</translation>
+      <translation>授权</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="518"/>
       <source>Authorized</source>
-      <translation type="unfinished">Authorized</translation>
+      <translation>已授权</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="526"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="650"/>
       <source>Calendar authorization failed.</source>
-      <translation type="unfinished">Calendar authorization failed.</translation>
+      <translation>日历授权失败。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="531"/>
       <source>Authorization was declined.</source>
-      <translation type="unfinished">Authorization was declined.</translation>
+      <translation>授权被拒绝。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="556"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="617"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="729"/>
       <source>Authorize the Calendar account before refreshing events.</source>
-      <translation type="unfinished">Authorize the Calendar account before refreshing events.</translation>
+      <translation>刷新活动前授权日历账户。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="642"/>
       <source>Timed out waiting for Calendar authorization.</source>
-      <translation type="unfinished">Timed out waiting for Calendar authorization.</translation>
+      <translation>等待日历授权超时。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="797"/>
       <source>Invalid or duplicate calendar ID; cached calendars were preserved.</source>
-      <translation type="unfinished">Invalid or duplicate calendar ID; cached calendars were preserved.</translation>
+      <translation>无效或重复的日历 ID；缓存的日历已保存。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="844"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1686"/>
       <source>This calendar is disabled.</source>
-      <translation type="unfinished">This calendar is disabled.</translation>
+      <translation>此日历被禁用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="854"/>
       <source>Calendar details are unavailable or access is limited to free/busy information.</source>
-      <translation type="unfinished">Calendar details are unavailable or access is limited to free/busy information.</translation>
+      <translation>日历详情不可用或访问仅限于空闲/忙碌信息。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="880"/>
       <source>Invalid cached event; calendar data was preserved.</source>
-      <translation type="unfinished">Invalid cached event; calendar data was preserved.</translation>
+      <translation>无效的已缓存活动；日历数据被保留。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="893"/>
       <source>Duplicate event occurrence in calendar response.</source>
-      <translation type="unfinished">Duplicate event occurrence in calendar response.</translation>
+      <translation>日历响应中出现重复的活动。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="962"/>
       <source>Invalid cached event; destructive reconciliation was cancelled.</source>
-      <translation type="unfinished">Invalid cached event; destructive reconciliation was cancelled.</translation>
+      <translation>无效的已缓存活动；破坏性调节已取消。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1094"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1122"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新建活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1110"/>
       <source>Authorize Google Calendar</source>
-      <translation type="unfinished">Authorize Google Calendar</translation>
+      <translation>授权 Google 日历</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1113"/>
       <source>Refresh calendar list</source>
-      <translation type="unfinished">Refresh calendar list</translation>
+      <translation>刷新日历列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1141"/>
       <source>Event details</source>
-      <translation type="unfinished">Event details</translation>
+      <translation>活动详情</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1145"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>编辑活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1174"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1177"/>
       <source>Cannot create event</source>
-      <translation type="unfinished">Cannot create event</translation>
+      <translation>无法创建活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1191"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1194"/>
       <source>Cannot edit event</source>
-      <translation type="unfinished">Cannot edit event</translation>
+      <translation>无法编辑活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1361"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1364"/>
       <source>Reminder check failed</source>
-      <translation type="unfinished">Reminder check failed</translation>
+      <translation>提醒检查失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1365"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1382"/>
       <source>An unexpected error occurred while checking reminders.</source>
-      <translation type="unfinished">An unexpected error occurred while checking reminders.</translation>
+      <translation>检查提醒时发生意外错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1422"/>
       <source>Open</source>
-      <translation type="unfinished">Open</translation>
+      <translation>打开</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1449"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1452"/>
       <source>Cannot open event details</source>
-      <translation type="unfinished">Cannot open event details</translation>
+      <translation>无法打开活动详情</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1516"/>
       <source>The saved event cannot be stored as an individual occurrence.</source>
-      <translation type="unfinished">The saved event cannot be stored as an individual occurrence.</translation>
+      <translation>已保存的活动不能存储为单独的发生。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1530"/>
       <source>Cached event metadata is invalid; the saved remote event was not applied locally.</source>
-      <translation type="unfinished">Cached event metadata is invalid; the saved remote event was not applied locally.</translation>
+      <translation>已缓存活动的元数据无效；已保存的远程活动未在本地应用。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1590"/>
       <source>This Calendar account is stopped.</source>
-      <translation type="unfinished">This Calendar account is stopped.</translation>
+      <translation>此日历账户被停止。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1593"/>
       <source>Wait for the calendar list to finish refreshing.</source>
-      <translation type="unfinished">Wait for the calendar list to finish refreshing.</translation>
+      <translation>等待日历列表完成刷新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1597"/>
       <source>Select an available calendar.</source>
-      <translation type="unfinished">Select an available calendar.</translation>
+      <translation>选择可用的日历。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1625"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1782"/>
       <source>An unexpected error occurred while processing the event.</source>
-      <translation type="unfinished">An unexpected error occurred while processing the event.</translation>
+      <translation>处理该活动时发生意外错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1642"/>
       <source>Saved in Google Calendar, but the local cache could not be refreshed: %1</source>
-      <translation type="unfinished">Saved in Google Calendar, but the local cache could not be refreshed: %1</translation>
+      <translation>已保存到 Google 日历，但无法刷新本地缓存: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1648"/>
       <source>Calendar event operation failed</source>
-      <translation type="unfinished">Calendar event operation failed</translation>
+      <translation>日历活动操作失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1665"/>
       <source>Calendar operation cancelled or account settings changed. The draft was preserved.</source>
-      <translation type="unfinished">Calendar operation cancelled or account settings changed. The draft was preserved.</translation>
+      <translation>日历操作已取消或账户设置已更改。草稿已保留。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1680"/>
       <source>The remote event response is invalid.</source>
-      <translation type="unfinished">The remote event response is invalid.</translation>
+      <translation>此远程活动响应无效。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1697"/>
       <source>Unsupported field in event changes.</source>
-      <translation type="unfinished">Unsupported field in event changes.</translation>
+      <translation>活动更改中不支持的字段。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1703"/>
       <source>This event or calendar is read-only.</source>
-      <translation type="unfinished">This event or calendar is read-only.</translation>
+      <translation>此活动或日历只读。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1721"/>
       <source>Google accepted the write but returned an invalid event resource. Refresh this calendar.</source>
-      <translation type="unfinished">Google accepted the write but returned an invalid event resource. Refresh this calendar.</translation>
+      <translation>Google 接受了写入，但返回了无效的活动资源。刷新此日历。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1748"/>
       <source>Invalid recurring-event occurrence returned after saving.</source>
-      <translation type="unfinished">Invalid recurring-event occurrence returned after saving.</translation>
+      <translation>保存后返回了无效的循环活动。</translation>
     </message>
   </context>
   <context>
@@ -9056,186 +9056,186 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="73"/>
       <source>Invalid recurring event identity.</source>
-      <translation type="unfinished">Invalid recurring event identity.</translation>
+      <translation>无效的循环活动身份。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="81"/>
       <source>Missing calendar or event ID.</source>
-      <translation type="unfinished">Missing calendar or event ID.</translation>
+      <translation>没有日历或活动 ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="108"/>
       <source>Invalid calendar event time range or time zone.</source>
-      <translation type="unfinished">Invalid calendar event time range or time zone.</translation>
+      <translation>无效的日历活动时间范围或时区。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="119"/>
       <source>Invalid or unsupported calendar event metadata.</source>
-      <translation type="unfinished">Invalid or unsupported calendar event metadata.</translation>
+      <translation>无效或不支持的日历活动元数据。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="168"/>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="36"/>
       <source>Untitled event</source>
-      <translation type="unfinished">Untitled event</translation>
+      <translation>未命名活动</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="196"/>
       <source>Time zone: %1</source>
-      <translation type="unfinished">Time zone: %1</translation>
+      <translation>时区: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="200"/>
       <source>Organizer: %1</source>
-      <translation type="unfinished">Organizer: %1</translation>
+      <translation>组织者：%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="204"/>
       <source>Participants</source>
-      <translation type="unfinished">Participants</translation>
+      <translation>参与者</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarevent.cpp" line="225"/>
       <source>Meeting link</source>
-      <translation type="unfinished">Meeting link</translation>
+      <translation>会议链接</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="16"/>
       <source>This local time does not exist in the selected time zone.</source>
-      <translation type="unfinished">This local time does not exist in the selected time zone.</translation>
+      <translation>这个本地时间在选定的时区中不存在。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="19"/>
       <source>Choose which occurrence of the ambiguous local time to use.</source>
-      <translation type="unfinished">Choose which occurrence of the ambiguous local time to use.</translation>
+      <translation>选择要使用哪个模糊的本地时间。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="57"/>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="122"/>
       <source>Choose a valid event time zone.</source>
-      <translation type="unfinished">Choose a valid event time zone.</translation>
+      <translation>选择有效的活动时区。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="77"/>
       <source>This event cannot be edited.</source>
-      <translation type="unfinished">This event cannot be edited.</translation>
+      <translation>此活动无法编辑。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="129"/>
       <source>The event&apos;s final date must not precede its start date.</source>
-      <translation type="unfinished">The event&apos;s final date must not precede its start date.</translation>
+      <translation>活动&apos;s 最终日期不能在开始日期之前。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="139"/>
       <source>The event must end after it starts.</source>
-      <translation type="unfinished">The event must end after it starts.</translation>
+      <translation>活动开始后必须结束。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="151"/>
       <source>Edit the whole series to change its recurrence.</source>
-      <translation type="unfinished">Edit the whole series to change its recurrence.</translation>
+      <translation>编辑整个序列以更改其重现。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendareventdraft.cpp" line="172"/>
       <source>The reloaded event does not match this draft.</source>
-      <translation type="unfinished">The reloaded event does not match this draft.</translation>
+      <translation>重新加载的事件不匹配此草稿。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="18"/>
       <source>Invalid calendar reminder settings or trigger state.</source>
-      <translation type="unfinished">Invalid calendar reminder settings or trigger state.</translation>
+      <translation>无效的日历提醒设置或触发器状态。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/calendarreminders.cpp" line="89"/>
       <source>The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</source>
-      <translation type="unfinished">The future cache window must cover all reminder offsets (at least 28 days for Google&apos;s popup reminders).</translation>
+      <translation>未来的缓存窗口必须覆盖所有提醒偏移(Google&apos;s 弹出提醒至少28天)。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarfeed.cpp" line="31"/>
       <source>Invalid or unsupported calendar metadata.</source>
-      <translation type="unfinished">Invalid or unsupported calendar metadata.</translation>
+      <translation>无效或不支持的日历元数据。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="81"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="120"/>
       <source>Calendar operation cancelled.</source>
-      <translation type="unfinished">Calendar operation cancelled.</translation>
+      <translation>日历操作已取消。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="117"/>
       <source>Google Calendar request timed out.</source>
-      <translation type="unfinished">Google Calendar request timed out.</translation>
+      <translation>Google 日历请求超时。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="136"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="165"/>
       <source>Authorize the Calendar account first.</source>
-      <translation type="unfinished">Authorize the Calendar account first.</translation>
+      <translation>先授权日历账户。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="175"/>
       <source>Invalid JSON response from Google Calendar.</source>
-      <translation type="unfinished">Invalid JSON response from Google Calendar.</translation>
+      <translation>来自 Google 日历的无效 JSON 响应。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="195"/>
       <source>Google Calendar request failed (HTTP %1).</source>
-      <translation type="unfinished">Google Calendar request failed (HTTP %1).</translation>
+      <translation>Google 日历请求失败 (HTTP %1)。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="215"/>
       <source>Invalid Google Calendar collection response.</source>
-      <translation type="unfinished">Invalid Google Calendar collection response.</translation>
+      <translation>无效的 Google 日历集响应。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="221"/>
       <source>Invalid item in Google Calendar response.</source>
-      <translation type="unfinished">Invalid item in Google Calendar response.</translation>
+      <translation>Google 日历响应中无效项。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="227"/>
       <source>Invalid Google Calendar page token.</source>
-      <translation type="unfinished">Invalid Google Calendar page token.</translation>
+      <translation>无效的 Google 日历页面令牌。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="240"/>
       <source>Google Calendar pagination did not complete.</source>
-      <translation type="unfinished">Google Calendar pagination did not complete.</translation>
+      <translation>Google 日历分页未完成。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="261"/>
       <source>Invalid calendar cache window.</source>
-      <translation type="unfinished">Invalid calendar cache window.</translation>
+      <translation>无效的日历缓存窗口。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="281"/>
       <source>Invalid recurring-event instance window.</source>
-      <translation type="unfinished">Invalid recurring-event instance window.</translation>
+      <translation>无效的循环事件实例窗口。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="299"/>
       <source>Missing client event ID.</source>
-      <translation type="unfinished">Missing client event ID.</translation>
+      <translation>没有客户端事件 ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarnetworkfactory.cpp" line="325"/>
       <source>Reload the event before editing it.</source>
-      <translation type="unfinished">Reload the event before editing it.</translation>
+      <translation>编辑前重新加载该活动。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="64"/>
       <source>Invalid calendar custom data; existing data was preserved.</source>
-      <translation type="unfinished">Invalid calendar custom data; existing data was preserved.</translation>
+      <translation>无效的日历自定义数据；现有数据被保留。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="75"/>
       <source>This Calendar account no longer exists.</source>
-      <translation type="unfinished">This Calendar account no longer exists.</translation>
+      <translation>此日历账户不再存在。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="96"/>
       <source>This calendar no longer exists.</source>
-      <translation type="unfinished">This calendar no longer exists.</translation>
+      <translation>此日历已不存在。</translation>
     </message>
   </context>
   <context>
@@ -11842,23 +11842,23 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="589"/>
       <source>Clone this</source>
-      <translation type="unfinished">Clone this</translation>
+      <translation>克隆这个</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
       <source>Cannot clone feed</source>
-      <translation type="unfinished">Cannot clone feed</translation>
+      <translation>无法克隆源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="642"/>
       <source>Cannot clone feed because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot clone feed because another critical operation is ongoing.</translation>
+      <translation>正进行另一项关键操作，无法克隆源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="651"/>
       <source>%1 (copy)</source>
-      <translation type="unfinished">%1 (copy)</translation>
+      <translation>%1 (副本)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="684"/>
