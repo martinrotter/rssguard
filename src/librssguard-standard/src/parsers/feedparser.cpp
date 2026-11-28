@@ -211,6 +211,12 @@ QString FeedParser::discoverySourceKey(const QString& source, StandardFeed::Sour
   return QString::number(int(source_type)) + QL1C(':') + normalized_source;
 }
 
+bool FeedParser::recordDiscoveryRequest(QSet<QString>& attempted_urls, const QString& url) {
+  const auto previous_count = attempted_urls.size();
+  attempted_urls.insert(discoverySourceKey(url));
+  return attempted_urls.size() != previous_count;
+}
+
 QString FeedParser::discoveryUrlWithSuffix(const QUrl& url, const QString& suffix) {
   QUrl probe_url = url.adjusted(QUrl::StripTrailingSlash | QUrl::RemoveFragment);
   QString path = probe_url.path(QUrl::FullyEncoded);

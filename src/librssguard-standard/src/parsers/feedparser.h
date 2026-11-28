@@ -17,6 +17,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
+#include <QSet>
 #include <QString>
 #include <QUrl>
 
@@ -168,6 +169,7 @@ class FEED_PARSER_DLLSPEC FeedParser {
 
   protected:
     static QString discoveryUrlWithSuffix(const QUrl& url, const QString& suffix);
+    static bool recordDiscoveryRequest(QSet<QString>& attempted_urls, const QString& url);
     static NetworkResult networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url);
 
     void logUnsuccessfulRequest(const NetworkResult& reply) const;

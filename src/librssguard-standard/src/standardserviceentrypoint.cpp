@@ -44,9 +44,17 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
-  auto acc = qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
-    return DatabaseQueries::getAccounts<StandardServiceRoot>(db, code());
-  });
+  auto* gui_thread = qApp->thread();
+  return qApp->database()->worker()->read<QList<ServiceRoot*>>([this, gui_thread](const QSqlDatabase& db) {
+    const auto accounts = DatabaseQueries::getAccounts<StandardServiceRoot>(db, code());
 
-  return acc;
+    // The built-in nodes are logical children, so moving the account does not move them automatically.
+    for (auto* account : accounts) {
+      for (auto* item : account->getSubTree<RootItem>()) {
+        item->moveToThread(gui_thread);
+      }
+    }
+
+    return accounts;
+  });
 }

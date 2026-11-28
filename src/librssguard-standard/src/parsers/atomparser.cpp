@@ -38,6 +38,7 @@ QList<GuessedFeedWithIcons> AtomParser::discoverFeeds(ServiceRoot* root,
 
   QString my_url = url.toString();
   QList<GuessedFeedWithIcons> feeds;
+  QSet<QString> attempted_urls;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded ATOM feed links from HTML data.
@@ -96,6 +97,10 @@ QList<GuessedFeedWithIcons> AtomParser::discoverFeeds(ServiceRoot* root,
       }
       else {
         feed_link = document_result.m_url.resolved(feed_link).toString();
+      }
+
+      if (!recordDiscoveryRequest(attempted_urls, feed_link)) {
+        continue;
       }
 
       QByteArray data;

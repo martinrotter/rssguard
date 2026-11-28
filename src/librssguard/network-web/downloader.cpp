@@ -297,15 +297,9 @@ void Downloader::finishReply(QNetworkReply* reply) {
       return;
     }
 
-    // Communication indicates that HTTP redirection is needed.
-    // Setup redirection URL and download again.
-    qWarningNN << LOGSEC_NETWORK << "Network layer indicates HTTP redirection is needed.";
-    qWarningNN << LOGSEC_NETWORK << "Origin URL:" << QUOTE_W_SPACE_DOT(request.url().toString());
-    qWarningNN << LOGSEC_NETWORK << "Proposed redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
-
     redirection_url = request.url().resolved(redirection_url);
-
-    qWarningNN << LOGSEC_NETWORK << "Resolved redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
+    qDebugNN << LOGSEC_NETWORK << "Following HTTP redirect from" << QUOTE_W_SPACE(request.url().toString())
+             << "to" << QUOTE_W_SPACE_DOT(redirection_url.toString());
 
     if (!hasSameOrigin(request.url(), redirection_url)) {
       request.setRawHeader(HTTP_HEADERS_AUTHORIZATION, {});

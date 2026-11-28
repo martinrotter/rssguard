@@ -589,7 +589,6 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
       auto* clone = new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Clone this"), parent_menu);
       clone->setObjectName(QSL("m_actionCloneFeed"));
       const QPointer<StandardServiceRoot> service(this);
-      // Accounts loaded from the database can belong to a worker thread.
       connect(clone, &QAction::triggered, parent_menu, [service, feed]() {
         if (service != nullptr && feed != nullptr && !feed->deleting() && feed->account() == service.data()) {
           service->cloneFeed(*feed);

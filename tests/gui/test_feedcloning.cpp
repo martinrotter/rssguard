@@ -21,6 +21,7 @@
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
 
+#include <algorithm>
 #include <functional>
 #include <memory>
 
@@ -34,11 +35,14 @@
 #include <QPluginLoader>
 #include <QPushButton>
 #include <QScopeGuard>
+#include <QSemaphore>
 #include <QSettings>
 #include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
+#include <QThread>
 #include <QTimer>
+#include <QtConcurrentRun>
 
 namespace {
   class OtherService : public ServiceRoot {
@@ -67,6 +71,7 @@ class TestFeedCloning : public QObject {
 
   private slots:
     void initTestCase();
+    void loadedAccountOwnsGuiThreadActions();
     void actionTargetsSingleStandardFeed();
     void cloneAndEdit_data();
     void cloneAndEdit();
@@ -146,7 +151,14 @@ void TestFeedCloning::initTestCase() {
     }
   });
 
-  const auto accounts = m_service->initializeSubtree();
+  // Keep the load off the GUI thread even if Qt runs a pending database job in the caller.
+  QSemaphore load_started;
+  auto load = QtConcurrent::run([&]() {
+    load_started.release();
+    return m_service->initializeSubtree();
+  });
+  load_started.acquire();
+  const auto accounts = load.result();
   QCOMPARE(accounts.size(), 1);
   m_account = accounts.constFirst();
   auto* reader = qApp->feedReader();
@@ -257,6 +269,25 @@ int TestFeedCloning::savedFeedCount() const {
     query.exec(QSL("SELECT COUNT(*) FROM Feeds WHERE account_id = 1;"));
     return query.next() ? query.value(0).toInt() : -1;
   });
+}
+
+void TestFeedCloning::loadedAccountOwnsGuiThreadActions() {
+  QCOMPARE(m_account->thread(), qApp->thread());
+  for (auto* item : m_account->childItems()) {
+    if (item->kind() != RootItem::Kind::Feed && item->kind() != RootItem::Kind::Category) {
+      QCOMPARE(item->thread(), qApp->thread());
+    }
+  }
+
+  QMenu menu;
+  const auto actions = m_account->contextMenuFeedsList({m_rootFeed}, &menu);
+  const auto metadata_title = QCoreApplication::translate("StandardServiceRoot", "Fetch metadata");
+  const auto metadata = std::find_if(actions.cbegin(), actions.cend(), [&metadata_title](const QAction* action) {
+    return action->text() == metadata_title;
+  });
+  QVERIFY(metadata != actions.cend());
+  QCOMPARE((*metadata)->thread(), qApp->thread());
+  QCOMPARE((*metadata)->parent(), static_cast<QObject*>(m_account));
 }
 
 void TestFeedCloning::actionTargetsSingleStandardFeed() {

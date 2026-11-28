@@ -35,6 +35,7 @@ QList<GuessedFeedWithIcons> RdfParser::discoverFeeds(ServiceRoot* root,
 
   QString my_url = url.toString();
   QList<GuessedFeedWithIcons> feeds;
+  QSet<QString> attempted_urls;
   bool base_feed_found = false;
 
   // 1. Test direct URL for a feed.
@@ -85,6 +86,10 @@ QList<GuessedFeedWithIcons> RdfParser::discoverFeeds(ServiceRoot* root,
       }
       else {
         feed_link = document_result.m_url.resolved(feed_link).toString();
+      }
+
+      if (!recordDiscoveryRequest(attempted_urls, feed_link)) {
+        continue;
       }
 
       QByteArray data;

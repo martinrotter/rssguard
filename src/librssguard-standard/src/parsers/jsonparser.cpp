@@ -36,6 +36,7 @@ QList<GuessedFeedWithIcons> JsonParser::discoverFeeds(ServiceRoot* root,
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Json).toLocal8Bit()}};
 
   QList<GuessedFeedWithIcons> feeds;
+  QSet<QString> attempted_urls;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded JSON feed links from HTML data.
@@ -76,6 +77,10 @@ QList<GuessedFeedWithIcons> JsonParser::discoverFeeds(ServiceRoot* root,
       }
       else {
         feed_link = document_result.m_url.resolved(feed_link).toString();
+      }
+
+      if (!recordDiscoveryRequest(attempted_urls, feed_link)) {
+        continue;
       }
 
       QByteArray data;

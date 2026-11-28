@@ -44,16 +44,16 @@ void BaseNetworkAccessManager::loadSettings() {
     setProxy(QNetworkProxy::ProxyType::NoProxy);
   }
   else {
-    qWarningNN << LOGSEC_NETWORK << "Using application-wide proxy.";
+    const auto application_proxy = QNetworkProxy::applicationProxy();
+    qDebugNN << LOGSEC_NETWORK << "Using application-wide proxy.";
 
-    if (QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::DefaultProxy &&
-        QNetworkProxy::applicationProxy().type() != QNetworkProxy::ProxyType::NoProxy) {
-      qWarningNN << LOGSEC_NETWORK
-                 << "Used proxy address:" << QUOTE_W_SPACE_COMMA(QNetworkProxy::applicationProxy().hostName())
-                 << " type:" << QUOTE_W_SPACE_DOT(QNetworkProxy::applicationProxy().type());
+    if (application_proxy.type() != QNetworkProxy::ProxyType::DefaultProxy &&
+        application_proxy.type() != QNetworkProxy::ProxyType::NoProxy) {
+      qDebugNN << LOGSEC_NETWORK << "Used proxy address:" << QUOTE_W_SPACE_COMMA(application_proxy.hostName())
+               << " type:" << QUOTE_W_SPACE_DOT(application_proxy.type());
     }
 
-    setProxy(QNetworkProxy::applicationProxy());
+    setProxy(application_proxy);
   }
 
   m_enableHttp2 = qApp->settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool();

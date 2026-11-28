@@ -8405,7 +8405,7 @@ Feedly is a secure space where you can privately organize and research the topic
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="668"/>
+        <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="674"/>
         <location filename="../src/librssguard-xmpp/src/parsers/feedparser.cpp" line="451"/>
         <source>Comments</source>
         <translation type="unfinished"></translation>
@@ -8539,36 +8539,36 @@ List of supported readers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="306"/>
-        <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="190"/>
-        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="191"/>
+        <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="311"/>
+        <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="195"/>
+        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="196"/>
         <source>XML is not well-formed, %1, line %2, column %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="315"/>
+        <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="320"/>
         <source>not an ATOM feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="120"/>
+        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="125"/>
         <location filename="../src/librssguard-standard/src/parsers/wordpressjsonparser.cpp" line="147"/>
         <source>JSON error &apos;%1&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="124"/>
-        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="156"/>
+        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="129"/>
+        <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="161"/>
         <source>not a JSON feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="199"/>
+        <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="204"/>
         <source>not an RDF feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="198"/>
+        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="203"/>
         <source>not a RSS feed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11762,12 +11762,12 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
 <context>
     <name>StandardServiceRoot</name>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="889"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="888"/>
         <source>Error when loading initial feeds</source>
         <translation>Error when loading initial feeds</translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="615"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="614"/>
         <source>Fetch metadata</source>
         <translation>Fetch metadata</translation>
     </message>
@@ -11833,49 +11833,49 @@ Load default feeds: Will load small set of various interesting feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="640"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="682"/>
         <source>Cannot clone feed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="642"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="641"/>
         <source>Cannot clone feed because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="651"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="650"/>
         <source>%1 (copy)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="684"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
         <source>Cannot save feed: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="826"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="825"/>
         <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="849"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="848"/>
         <source>Cannot add folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="850"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="849"/>
         <source>Cannot add folder because another critical operation is ongoing.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="905"/>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="914"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="904"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="913"/>
         <source>Error during file import</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="929"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="928"/>
         <source>Fetching metadata for %n feeds</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -11883,7 +11883,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="938"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="937"/>
         <source>Fetched %n feeds...</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -11891,22 +11891,22 @@ Load default feeds: Will load small set of various interesting feeds.</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="948"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="947"/>
         <source>Export feeds</source>
         <translation>Export feeds</translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="949"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="948"/>
         <source>Import feeds</source>
         <translation>Import feeds</translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="951"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="950"/>
         <source>Import from QuiteRSS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="953"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="952"/>
         <source>Import from RSS Guard 4.x</source>
         <translation type="unfinished"></translation>
     </message>
@@ -11926,7 +11926,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
         <translation>Cannot add feed because another critical operation is ongoing.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="829"/>
+        <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="828"/>
         <source>Import was completely successful.</source>
         <translation type="unfinished"></translation>
     </message>
