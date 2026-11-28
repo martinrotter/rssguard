@@ -8,8 +8,11 @@
 #include "miscellaneous/iofactory.h"
 
 #include <QDir>
+#include <QFileInfo>
+#include <QSaveFile>
 #include <QSqlDriver>
 #include <QSqlError>
+#include <QTemporaryDir>
 
 SqliteDriver::SqliteDriver(const QString& database_directory, QObject* parent)
   : DatabaseDriver(parent), m_databaseFilePath(database_directory) {}
@@ -201,11 +204,46 @@ QString SqliteDriver::qtDriverCode() const {
 void SqliteDriver::backupDatabase(const QString& backup_folder, const QString& backup_name) {
   qDebugNN << LOGSEC_DB << "Creating SQLite DB backup.";
 
-  saveDatabase();
+  const QString backup_path = backup_folder + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE;
+  const QFileInfo backup_info(backup_path);
+  // QSaveFile follows symlinks, which could replace a file outside the backup path.
+  if (backup_info.isSymLink()) {
+    throw ApplicationException(tr("The backup destination is a symbolic link. Choose another backup name."));
+  }
 
-  if (!IOFactory::copyFile(databaseFilePath(),
-                           backup_folder + QDir::separator() + backup_name + BACKUP_SUFFIX_DATABASE)) {
-    throw ApplicationException(tr("Database file not copied to output directory successfully."));
+  const QString copy_error = tr("Database file not copied to output directory successfully.");
+  QTemporaryDir snapshot_dir(backup_info.absolutePath() + QSL("/.rssguard-backup-XXXXXX"));
+  if (!snapshot_dir.isValid()) {
+    throw ApplicationException(copy_error);
+  }
+
+  const QString snapshot_path = snapshot_dir.filePath(QSL("snapshot.sqlite"));
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    // Include committed WAL data even when another connection still holds an older snapshot.
+    SqlQuery query(db);
+    if (!query.prepare(QSL("VACUUM INTO ?;"))) {
+      throw ApplicationException(
+        tr("Cannot prepare SQLite backup snapshot (requires SQLite 3.27 or newer): %1").arg(query.lastError().text()));
+    }
+    query.addBindValue(snapshot_path);
+    query.exec();
+  });
+
+  QFile snapshot(snapshot_path);
+  QSaveFile backup(backup_path);
+  if (!snapshot.open(QIODevice::ReadOnly) || !backup.open(QIODevice::WriteOnly)) {
+    throw ApplicationException(copy_error);
+  }
+
+  QByteArray buffer(64 * 1024, Qt::Uninitialized);
+  qint64 bytes_read;
+  while ((bytes_read = snapshot.read(buffer.data(), buffer.size())) > 0) {
+    if (backup.write(buffer.constData(), bytes_read) != bytes_read) {
+      throw ApplicationException(copy_error);
+    }
+  }
+  if (bytes_read < 0 || !backup.commit()) {
+    throw ApplicationException(copy_error);
   }
 }
 

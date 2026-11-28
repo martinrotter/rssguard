@@ -16,6 +16,7 @@
 #include <QFile>
 #include <QRegularExpression>
 #include <QScopedPointer>
+#include <QSet>
 
 FeedParser::FeedParser() : FeedParser({}, DataType::Xml) {}
 
@@ -481,25 +482,41 @@ QList<Message> FeedParser::messages() {
     // Received date.
     new_message.m_retrieved = retrieved_time = retrieved_time.addMSecs(1);
 
-    // Enclosures, also remove duplicates.
-    QStringList enc_urls;
+    // Process enclosures in feed order, keeping the first occurrence of each URL.
+    auto& enclosures = new_message.m_enclosures;
+    const bool check_duplicates = enclosures.size() > 1;
+    QSet<QString> seen_urls;
+    if (check_duplicates) {
+      seen_urls.reserve(enclosures.size());
+    }
 
-    enc_urls.reserve(new_message.m_enclosures.size());
-
-    for (int i = 0; i < new_message.m_enclosures.size(); i++) {
-      QSharedPointer<MessageEnclosure> enc = new_message.m_enclosures[i];
-
-      if (enc_urls.contains(enc->url())) {
-        qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(enc->url());
-        new_message.m_enclosures.removeAt(i--);
-        continue;
+    auto kept_enclosures_end = enclosures.begin();
+    const auto enclosures_end = enclosures.end();
+    for (auto current = kept_enclosures_end; current != enclosures_end; ++current) {
+      auto& enc = *current;
+      if (check_duplicates) {
+        const QString url = enc->url();
+        const auto previous_size = seen_urls.size();
+        seen_urls.insert(url);
+        if (seen_urls.size() == previous_size) {
+          qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(url);
+          enc.clear();
+          continue;
+        }
       }
-
-      enc_urls.append(enc->url());
 
       if (enc->mimeType().simplified().isEmpty()) {
         enc->setMimeType(QSL(DEFAULT_ENCLOSURE_MIME_TYPE));
       }
+
+      if (kept_enclosures_end != current) {
+        *kept_enclosures_end = std::move(enc);
+      }
+      ++kept_enclosures_end;
+    }
+
+    if (kept_enclosures_end != enclosures_end) {
+      enclosures.erase(kept_enclosures_end, enclosures_end);
     }
 
     // Url.

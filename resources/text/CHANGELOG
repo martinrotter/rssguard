@@ -37,6 +37,9 @@ Fixed:
 * Reopened database connections now restore their settings, including checks that keep related records consistent.
 * Article counts work on MariaDB servers that enforce stricter query rules.
 * Keyboard shortcut handling does less work when checking which action should run.
+* SQLite backups include recently saved changes even while the database is being read.
+* The text article viewer prepares pages with many resized images faster.
+* Feeds with many attachments are processed faster, including when the same attachment appears more than once.
 
 5.3.0
 -----

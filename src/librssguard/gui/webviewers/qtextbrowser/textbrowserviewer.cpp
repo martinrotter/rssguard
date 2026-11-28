@@ -42,8 +42,8 @@ namespace {
   };
 
   struct ImageHtmlEdit {
-      int m_offset;
-      int m_length;
+      qsizetype m_offset;
+      qsizetype m_length;
       QByteArray m_html;
   };
 
@@ -89,16 +89,16 @@ namespace {
         image_html += QSL(" alt=\"%1\">").arg(token);
 
         // Replace just the original image tag, retaining all other source HTML.
-        const int offset = int(element.original_tag.data - html.constData());
-        const int length = int(element.original_tag.length);
+        const qsizetype offset = element.original_tag.data - html.constData();
+        const auto length = element.original_tag.length;
 
-        if (offset >= 0 && length <= html.size() - offset) {
+        if (offset >= 0 && offset <= html.size() && length <= size_t(html.size() - offset)) {
           metadata.insert(token,
                           {alt ? QString::fromUtf8(alt->value) : QString(),
                            valid_height ? maximum_height : 0,
                            valid_fit ? fit_percentage : 0.0,
                            alt != nullptr});
-          edits.append({offset, length, image_html.toUtf8()});
+          edits.append({offset, qsizetype(length), image_html.toUtf8()});
         }
       }
     }
@@ -118,7 +118,7 @@ namespace {
       return html;
     }
 
-    QByteArray utf8 = html.toUtf8();
+    const QByteArray utf8 = html.toUtf8();
     GumboOutput* output = gumbo_parse(utf8.constData());
     QList<ImageHtmlEdit> edits;
     const QString token_prefix = QSL("rssguard-image-cap-%1-").arg(QUuid::createUuid().toString(QUuid::WithoutBraces));
@@ -126,15 +126,32 @@ namespace {
     collectImageImportMetadata(output->root, utf8, token_prefix, metadata, edits);
     gumbo_destroy_output(&kGumboDefaultOptions, output);
 
-    std::sort(edits.begin(), edits.end(), [](const ImageHtmlEdit& left, const ImageHtmlEdit& right) {
-      return left.m_offset > right.m_offset;
-    });
-
-    for (const ImageHtmlEdit& edit : std::as_const(edits)) {
-      utf8.replace(edit.m_offset, edit.m_length, edit.m_html);
+    if (edits.isEmpty()) {
+      return html;
     }
 
-    return QString::fromUtf8(utf8);
+    std::sort(edits.begin(), edits.end(), [](const ImageHtmlEdit& left, const ImageHtmlEdit& right) {
+      return left.m_offset < right.m_offset;
+    });
+
+    QByteArray result;
+    result.reserve(utf8.size());
+    qsizetype offset = 0;
+
+    for (const ImageHtmlEdit& edit : std::as_const(edits)) {
+      if (edit.m_offset < offset) {
+        // Conflicting source ranges cannot be replaced independently.
+        metadata.clear();
+        return html;
+      }
+
+      result.append(utf8.constData() + offset, edit.m_offset - offset);
+      result.append(edit.m_html);
+      offset = edit.m_offset + edit.m_length;
+    }
+
+    result.append(utf8.constData() + offset, utf8.size() - offset);
+    return QString::fromUtf8(result);
   }
 
   void restoreImageImportMetadata(QTextDocument* document, const QHash<QString, ImageImportMetadata>& metadata) {

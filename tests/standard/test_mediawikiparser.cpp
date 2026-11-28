@@ -36,6 +36,15 @@ namespace {
       QString jsonMessageId(const QJsonObject& item) const override {
         return item.value(QSL("id")).toString();
       }
+      QList<QSharedPointer<MessageEnclosure>> jsonMessageEnclosures(const QJsonObject& item) const override {
+        QList<QSharedPointer<MessageEnclosure>> enclosures;
+        for (const auto& candidate : item.value(QSL("attachments")).toArray()) {
+          const auto enclosure = candidate.toObject();
+          enclosures.append(QSharedPointer<MessageEnclosure>::create(enclosure.value(QSL("url")).toString(),
+                                                                    enclosure.value(QSL("mime")).toString()));
+        }
+        return enclosures;
+      }
   };
 
   class MemoryFeed : public Feed {
@@ -112,6 +121,7 @@ class TestMediaWikiParser : public QObject {
 
   private slots:
     void cleanupKeepsOrderAndTitleFallback();
+    void cleanupKeepsFirstEnclosureForEachUrl();
     void categoryHtmlUsesEditUri();
     void categoryHtmlUsesMinifiedBooleans_data();
     void categoryHtmlUsesMinifiedBooleans();
@@ -160,6 +170,38 @@ void TestMediaWikiParser::cleanupKeepsOrderAndTitleFallback() {
     QCOMPARE(messages.at(i - 1).m_created.msecsTo(messages.at(i).m_created), qint64(-1));
     QCOMPARE(messages.at(i - 1).m_retrieved.msecsTo(messages.at(i).m_retrieved), qint64(1));
   }
+}
+
+void TestMediaWikiParser::cleanupKeepsFirstEnclosureForEachUrl() {
+  CleanupParser parser(QSL(R"([
+    {"title":"Attachments","attachments":[
+      {"url":"https://example.test/A","mime":" \t "},
+      {"url":"https://example.test/A","mime":"audio/ogg"},
+      {"url":"https://example.test/a","mime":"application/json"},
+      {"mime":"text/plain"},
+      {"url":"https://example.test/a","mime":"audio/ogg"},
+      {"url":"","mime":"audio/ogg"},
+      {"url":"https://example.test/B","mime":" text/plain "}
+    ]},
+    {"title":"Single attachment","attachments":[{"url":"https://example.test/single"}]}
+  ])"));
+
+  const auto messages = parser.messages();
+  QCOMPARE(messages.size(), 2);
+  const auto& enclosures = messages.first().m_enclosures;
+  QCOMPARE(enclosures.size(), 4);
+  QCOMPARE(enclosures.at(0)->url(), QSL("https://example.test/A"));
+  QCOMPARE(enclosures.at(0)->mimeType(), QSL("image/jpg"));
+  QCOMPARE(enclosures.at(1)->url(), QSL("https://example.test/a"));
+  QCOMPARE(enclosures.at(1)->mimeType(), QSL("application/json"));
+  QVERIFY(enclosures.at(2)->url().isEmpty());
+  QCOMPARE(enclosures.at(2)->mimeType(), QSL("text/plain"));
+  QCOMPARE(enclosures.at(3)->url(), QSL("https://example.test/B"));
+  QCOMPARE(enclosures.at(3)->mimeType(), QSL(" text/plain "));
+
+  const auto& single = messages.last().m_enclosures;
+  QCOMPARE(single.size(), 1);
+  QCOMPARE(single.first()->mimeType(), QSL("image/jpg"));
 }
 
 void TestMediaWikiParser::categoryHtmlUsesEditUri() {

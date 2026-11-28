@@ -19,6 +19,7 @@ class TestSqliteVacuum : public QObject {
     void init();
     void shrinksDatabaseFileWhileConnectionsRemainOpen();
     void reportsBlockedCheckpoint();
+    void backupIncludesCommittedWalWhileReaderRemainsOpen();
 };
 
 void TestSqliteVacuum::init() {
@@ -85,6 +86,64 @@ void TestSqliteVacuum::reportsBlockedCheckpoint() {
   driver->vacuumDatabase();
   QCOMPARE(QFileInfo(driver->databaseName()).size(), driver->databaseDataSize());
   QCOMPARE(QFileInfo(driver->databaseName() + QSL("-wal")).size(), qint64(0));
+}
+
+void TestSqliteVacuum::backupIncludesCommittedWalWhileReaderRemainsOpen() {
+  auto* driver = qApp->database()->driver();
+  auto* worker = qApp->database()->worker();
+  QTemporaryDir backup_folder;
+  QVERIFY(backup_folder.isValid());
+  const QString backup_name = QSL("state's backup");
+  qApp->backupDatabaseSettings(true, false, backup_folder.path(), backup_name);
+
+  const QString reader_name = QSL("backup-test-reader");
+  QSqlDatabase reader = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), reader_name);
+  const auto close_reader = qScopeGuard([&]() {
+    reader.close();
+    reader = QSqlDatabase();
+    QSqlDatabase::removeDatabase(reader_name);
+  });
+  reader.setDatabaseName(driver->databaseName());
+  QVERIFY(reader.open());
+  QVERIFY(reader.transaction());
+  QSqlQuery snapshot(reader);
+  QVERIFY(snapshot.exec(QSL("SELECT MAX(id) FROM VacuumTest;")));
+  QVERIFY(snapshot.next());
+  QCOMPARE(snapshot.value(0).toInt(), 240);
+  snapshot.finish();
+
+  worker->write([](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.exec(QSL("INSERT INTO VacuumTest (id, contents) VALUES (241, X'112233');"));
+  });
+  QVERIFY(QFileInfo(driver->databaseName() + QSL("-wal")).size() > 0);
+  qApp->backupDatabaseSettings(true, false, backup_folder.path(), backup_name);
+  QVERIFY(reader.rollback());
+
+  // A failed attempt to replace this backup must leave the latest successful copy intact.
+  {
+    QVERIFY(worker->write<bool>([](QSqlDatabase db) { return db.transaction(); }));
+    const auto rollback = qScopeGuard([worker]() {
+      worker->write([](QSqlDatabase db) { db.rollback(); });
+    });
+    QVERIFY_EXCEPTION_THROWN(qApp->backupDatabaseSettings(true, false, backup_folder.path(), backup_name),
+                             ApplicationException);
+  }
+
+  const QString backup_connection_name = QSL("backup-test-copy");
+  QSqlDatabase backup = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), backup_connection_name);
+  const auto close_backup = qScopeGuard([&]() {
+    backup.close();
+    backup = QSqlDatabase();
+    QSqlDatabase::removeDatabase(backup_connection_name);
+  });
+  backup.setDatabaseName(backup_folder.filePath(backup_name + QSL(BACKUP_SUFFIX_DATABASE)));
+  backup.setConnectOptions(QSL("QSQLITE_OPEN_READONLY"));
+  QVERIFY(backup.open());
+  QSqlQuery copied(backup);
+  QVERIFY(copied.exec(QSL("SELECT contents FROM VacuumTest WHERE id = 241;")));
+  QVERIFY(copied.next());
+  QCOMPARE(copied.value(0).toByteArray(), QByteArray::fromHex("112233"));
 }
 
 int main(int argc, char* argv[]) {
