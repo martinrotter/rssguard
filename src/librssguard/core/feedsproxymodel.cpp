@@ -384,11 +384,10 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
     // feeds are queued one after another too.
     // Moreover, sort everything alphabetically or
     // by item counts, depending on the sort column.
-    if (left_item->keepOnTop()) {
-      return sortOrder() == Qt::SortOrder::AscendingOrder;
-    }
-    else if (right_item->keepOnTop()) {
-      return sortOrder() == Qt::SortOrder::DescendingOrder;
+    const bool left_pinned = left_item->keepOnTop();
+    const bool right_pinned = right_item->keepOnTop();
+    if (left_pinned != right_pinned) {
+      return sortOrder() == Qt::SortOrder::AscendingOrder ? left_pinned : right_pinned;
     }
     else if (left_item->kind() == right_item->kind()) {
       if (left.column() == FDS_MODEL_COUNTS_INDEX) {

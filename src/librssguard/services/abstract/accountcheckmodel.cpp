@@ -357,11 +357,10 @@ bool AccountCheckSortedModel::lessThan(const QModelIndex& source_left, const QMo
                                         RootItem::Kind::Unread,
                                         RootItem::Kind::Bin};
 
-    if (lhs->keepOnTop()) {
-      return sortOrder() == Qt::SortOrder::AscendingOrder;
-    }
-    else if (rhs->keepOnTop()) {
-      return sortOrder() == Qt::SortOrder::DescendingOrder;
+    const bool left_pinned = lhs->keepOnTop();
+    const bool right_pinned = rhs->keepOnTop();
+    if (left_pinned != right_pinned) {
+      return sortOrder() == Qt::SortOrder::AscendingOrder ? left_pinned : right_pinned;
     }
 
     auto left_priority = priorities.indexOf(lhs->kind());

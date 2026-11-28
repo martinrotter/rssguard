@@ -548,7 +548,7 @@ QObject* FilterMessage::getArticleFromDatabase(DuplicityCheck criteria) const {
 bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   DuplicateBindValues bind_values;
   const QString where_clause = duplicateWhereClause(criteria, bind_values);
-  const QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clause + QSL(";");
+  const QString full_query = QSL("SELECT 1 FROM Messages WHERE ") + where_clause + QSL(" LIMIT 1;");
   bool res = system()->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
     SqlQuery q(db);
     q.prepare(full_query);
@@ -558,12 +558,9 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
     }
 
     if (q.exec(false) && q.next()) {
-      if (q.value(0).toInt() > 0) {
-        // Whoops, we have the "same" message in database.
-        qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title())
-                 << "was identified as duplicate by filter script.";
-        return true;
-      }
+      qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title())
+               << "was identified as duplicate by filter script.";
+      return true;
     }
     else if (q.lastError().isValid()) {
       qWarningNN << LOGSEC_CORE << "Error when checking for duplicate messages via filtering system, error:"

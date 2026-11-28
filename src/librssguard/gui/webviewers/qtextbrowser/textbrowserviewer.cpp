@@ -350,14 +350,12 @@ void TextBrowserViewer::findText(const QString& text, bool backwards) {
       QTextBrowser::find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0));
 
     if (!found) {
-      textCursor().clearSelection();
-      moveCursor(QTextCursor::MoveOperation::Start);
+      moveCursor(backwards ? QTextCursor::MoveOperation::End : QTextCursor::MoveOperation::Start);
 
       QTextBrowser::find(text, backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0));
     }
   }
   else {
-    textCursor().clearSelection();
     moveCursor(QTextCursor::MoveOperation::Start);
   }
 }

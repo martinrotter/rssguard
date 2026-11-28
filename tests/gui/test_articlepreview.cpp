@@ -110,6 +110,7 @@ class TestArticlePreview : public QObject {
     void delayedTabLoadPreservesVisibility_data();
     void delayedTabLoadPreservesVisibility();
     void delayedTabClosesWhenFeedIsRemoved();
+    void textSearchWrapsBackward();
     void embeddedPreviewAfterClear_data();
     void embeddedPreviewAfterClear();
     void embeddedPreviewDoesNotRevealBackgroundTab();
@@ -237,6 +238,22 @@ void TestArticlePreview::delayedTabClosesWhenFeedIsRemoved() {
 
   QTRY_COMPARE(tabs->count(), 1);
   QTRY_VERIFY(page.isNull());
+}
+
+void TestArticlePreview::textSearchWrapsBackward() {
+  TextBrowserViewer viewer;
+  const QString content = QSL("First match, second match, end of article.");
+  const QString query = QSL("match");
+  viewer.setPlainText(content);
+  viewer.moveCursor(QTextCursor::MoveOperation::End);
+
+  viewer.findText(query, true);
+  QCOMPARE(viewer.textCursor().selectionStart(), int(content.lastIndexOf(query)));
+  viewer.findText(query, true);
+  QCOMPARE(viewer.textCursor().selectionStart(), int(content.indexOf(query)));
+  viewer.findText(query, true);
+  QCOMPARE(viewer.textCursor().selectionStart(), int(content.lastIndexOf(query)));
+  QCOMPARE(viewer.textCursor().selectedText(), query);
 }
 
 void TestArticlePreview::embeddedPreviewAfterClear_data() {

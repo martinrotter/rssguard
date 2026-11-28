@@ -64,6 +64,7 @@ class TestFiltering : public QObject {
     void ordinaryWritesDoNotRequestOverwrite();
     void overwriteSurvivesChainAndCanBeCancelled();
     void detachedLookupCannotOverwriteIncomingArticle();
+    void exactDuplicateCheckReportsMatches();
     void overwriteReachesDatabase_data();
     void overwriteReachesDatabase();
     void workflowsShareSavePolicy_data();
@@ -212,6 +213,28 @@ void TestFiltering::detachedLookupCannotOverwriteIncomingArticle() {
   QVERIFY(!incoming.m_overwrite);
   QVERIFY(!incoming.m_isRead);
   QVERIFY(!storedMessage(seed.first().m_id).m_isRead);
+}
+
+void TestFiltering::exactDuplicateCheckReportsMatches() {
+  QList<Message> seed{message(QSL("duplicate-check-first")), message(QSL("duplicate-check-second"))};
+  for (auto& article : seed) {
+    article.m_author = QSL("Duplicate check author");
+  }
+  QVERIFY(DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true).succeeded());
+  QVERIFY(seed.first().m_id > 0);
+
+  Message existing = storedMessage(seed.first().m_id);
+  existing.m_isImportant = true;
+  auto filtering = system(FilteringSystem::FiteringUseCase::ExistingArticles);
+  filtering->setMessage(&existing);
+  MessageFilter filter;
+  setScript(filter,
+            QSL("msg.isRead = msg.isAlreadyInDatabase(Msg.SameAuthor);"
+                "msg.isImportant = msg.isAlreadyInDatabase(Msg.SameCustomId)"));
+
+  QCOMPARE(filtering->filterMessage(filter), FilterMessage::FilteringAction::Accept);
+  QVERIFY(existing.m_isRead);
+  QVERIFY(!existing.m_isImportant);
 }
 
 void TestFiltering::overwriteReachesDatabase_data() {

@@ -15,6 +15,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/category.h"
 
 #include <memory>
@@ -25,6 +26,7 @@
 #include <QDir>
 #include <QMetaMethod>
 #include <QProcess>
+#include <QScopeGuard>
 #include <QSet>
 #include <QSettings>
 #include <QSignalSpy>
@@ -95,6 +97,7 @@ class TestFilterMatchMode : public QObject {
     void cleanupTestCase();
     void defaultAndInvalidModes();
     void feedsMatchAnyAndAll();
+    void pinnedFeedOrdering();
     void feedTextSearchIntersectsWithBothModes();
     void foldersAndSelectedFeedRemainVisible();
     void articlesRefreshWhenOnlyModeChanges();
@@ -215,6 +218,55 @@ void TestFilterMatchMode::cleanup() {
 
 void TestFilterMatchMode::cleanupTestCase() {
   m_window.reset();
+}
+
+void TestFilterMatchMode::pinnedFeedOrdering() {
+  class InspectableAccountModel : public AccountCheckSortedModel {
+    public:
+      using AccountCheckSortedModel::AccountCheckSortedModel;
+      using AccountCheckSortedModel::lessThan;
+  };
+
+  auto* reader = qApp->feedReader();
+  QSortFilterProxyModel* feeds = reader->feedsProxyModel();
+  const int previous_column = feeds->sortColumn();
+  const auto previous_order = feeds->sortOrder();
+  const auto restore = qScopeGuard([&]() {
+    m_enabledUnread->setKeepOnTop(false);
+    m_disabledUnread->setKeepOnTop(false);
+    m_enabledUnread->setCountOfUnreadMessages(2);
+    m_disabledUnread->setCountOfUnreadMessages(1);
+    feeds->sort(previous_column, previous_order);
+    feeds->invalidate();
+  });
+
+  m_enabledUnread->setCountOfUnreadMessages(1);
+  m_disabledUnread->setCountOfUnreadMessages(2);
+  m_disabledUnread->setKeepOnTop(true);
+  const auto enabled = reader->feedsModel()->indexForItem(m_enabledUnread);
+  const auto disabled = reader->feedsModel()->indexForItem(m_disabledUnread);
+  for (const auto order : {Qt::SortOrder::AscendingOrder, Qt::SortOrder::DescendingOrder}) {
+    m_enabledUnread->setKeepOnTop(false);
+    feeds->sort(FDS_MODEL_COUNTS_INDEX, order);
+    feeds->invalidate();
+    QCOMPARE(feeds->mapFromSource(disabled).row(), 0);
+
+    m_enabledUnread->setKeepOnTop(true);
+    feeds->invalidate();
+    QCOMPARE(feeds->mapFromSource(enabled).row(), order == Qt::SortOrder::AscendingOrder ? 0 : 1);
+    QCOMPARE(feeds->mapFromSource(disabled).row(), order == Qt::SortOrder::AscendingOrder ? 1 : 0);
+  }
+
+  QObject owner;
+  InspectableAccountModel checked(&owner);
+  checked.setRootItem(m_account, false);
+  const auto checked_enabled = checked.sourceModel()->indexForItem(m_enabledUnread);
+  const auto checked_disabled = checked.sourceModel()->indexForItem(m_disabledUnread);
+  QVERIFY(checked_enabled.isValid());
+  QVERIFY(checked_disabled.isValid());
+  QVERIFY(checked.lessThan(checked_disabled, checked_enabled));
+  QVERIFY(!checked.lessThan(checked_enabled, checked_disabled));
+  QVERIFY(!checked.lessThan(checked_enabled, checked_enabled));
 }
 
 FeedMessageViewer* TestFilterMatchMode::viewer() const {
