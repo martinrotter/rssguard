@@ -65,6 +65,8 @@ class TestFiltering : public QObject {
     void overwriteSurvivesChainAndCanBeCancelled();
     void detachedLookupCannotOverwriteIncomingArticle();
     void exactDuplicateCheckReportsMatches();
+    void winklerDuplicateCheckUsesCommonPrefix_data();
+    void winklerDuplicateCheckUsesCommonPrefix();
     void overwriteReachesDatabase_data();
     void overwriteReachesDatabase();
     void workflowsShareSavePolicy_data();
@@ -235,6 +237,36 @@ void TestFiltering::exactDuplicateCheckReportsMatches() {
   QCOMPARE(filtering->filterMessage(filter), FilterMessage::FilteringAction::Accept);
   QVERIFY(existing.m_isRead);
   QVERIFY(!existing.m_isImportant);
+}
+
+void TestFiltering::winklerDuplicateCheckUsesCommonPrefix_data() {
+  QTest::addColumn<QString>("stored_title");
+  QTest::addColumn<QString>("incoming_title");
+  QTest::addColumn<double>("threshold");
+  QTest::addColumn<bool>("expected_match");
+  QTest::newRow("three-letter-prefix") << QSL("MARTHA") << QSL("MARHTA") << 0.045 << true;
+  QTest::newRow("no-prefix") << QSL("YABCD") << QSL("XABCD") << 0.125 << false;
+  QTest::newRow("four-letter-cap") << QSL("ABCDEFG") << QSL("ABCDEFH") << 0.05 << false;
+}
+
+void TestFiltering::winklerDuplicateCheckUsesCommonPrefix() {
+  QFETCH(QString, stored_title);
+  QFETCH(QString, incoming_title);
+  QFETCH(double, threshold);
+  QFETCH(bool, expected_match);
+
+  QList<Message> seed{message(QSL("winkler-stored-") + stored_title)};
+  seed.first().m_title = stored_title;
+  DatabaseQueries::updateMessages(&m_database, &m_settings, seed, m_feed, false, true).throwIfFailed();
+
+  Message incoming = message(QSL("winkler-incoming-") + incoming_title);
+  incoming.m_title = incoming_title;
+  auto filtering = system();
+  filtering->setMessage(&incoming);
+  MessageFilter filter;
+  setScript(filter, QSL("msg.isRead = msg.isAlreadyInDatabaseWinkler(Msg.SameTitle, %1)").arg(threshold));
+  QCOMPARE(filtering->filterMessage(filter), FilterMessage::FilteringAction::Accept);
+  QCOMPARE(incoming.m_isRead, expected_match);
 }
 
 void TestFiltering::overwriteReachesDatabase_data() {

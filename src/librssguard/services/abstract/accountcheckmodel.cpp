@@ -38,6 +38,7 @@ void AccountCheckModel::setRootItem(RootItem* root_item, bool delete_previous_ro
   }
 
   m_checkStates.clear();
+  m_unavailableItems.clear();
   m_rootItem = root_item;
 
   endResetModel();
@@ -173,12 +174,11 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
   RootItem* item = itemForIndex(index);
 
   if (role == Qt::ItemDataRole::CheckStateRole) {
-    if (m_checkStates.contains(item)) {
+    if (!m_unavailableItems.contains(item) && m_checkStates.contains(item)) {
       return m_checkStates.value(item);
     }
-    else {
-      return static_cast<int>(Qt::CheckState::Unchecked);
-    }
+
+    return static_cast<int>(Qt::CheckState::Unchecked);
   }
   else if (role == Qt::ItemDataRole::DecorationRole) {
     return item->data(0, Qt::ItemDataRole::DecorationRole);
@@ -204,6 +204,8 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
     }
   }
   else if (role == Qt::ItemDataRole::ToolTipRole) {
+    const auto reason = m_unavailableItems.value(item);
+
     if (item->kind() == RootItem::Kind::Feed) {
       auto desc = item->description();
       auto url = item->toFeed()->source();
@@ -214,7 +216,11 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
         txt += QSL("\n\n%1").arg(desc);
       }
 
-      return txt;
+      return reason.isEmpty() ? txt : QSL("%1\n\n%2").arg(reason, txt);
+    }
+
+    if (!reason.isEmpty()) {
+      return reason;
     }
   }
 
@@ -226,8 +232,7 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
     RootItem* item = itemForIndex(index);
     const Qt::CheckState check_state = static_cast<Qt::CheckState>(value.toInt());
 
-    if (item == m_rootItem) {
-      // Cannot set data on root item.
+    if (item == m_rootItem || m_unavailableItems.contains(item)) {
       return false;
     }
 
@@ -258,33 +263,8 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
 
     // Iterate all valid parents.
     while ((parent_index = parent_index.parent()).isValid()) {
-      // We now have parent index. Get parent item too.
       item = item->parent();
-
-      // Check children of this new parent item.
-      bool all_checked = true;
-      bool all_unchecked = true;
-      auto childr = item->childItems();
-
-      for (RootItem* child_of_parent : std::as_const(childr)) {
-        if (m_checkStates.contains(child_of_parent)) {
-          all_checked &= m_checkStates[child_of_parent] == Qt::CheckState::Checked;
-          all_unchecked &= m_checkStates[child_of_parent] == Qt::CheckState::Unchecked;
-        }
-        else {
-          all_checked = false;
-        }
-      }
-
-      if (all_checked) {
-        setData(parent_index, Qt::CheckState::Checked, Qt::CheckStateRole);
-      }
-      else if (all_unchecked) {
-        setData(parent_index, Qt::CheckState::Unchecked, Qt::CheckStateRole);
-      }
-      else {
-        setData(parent_index, Qt::CheckState::PartiallyChecked, Qt::CheckStateRole);
-      }
+      setData(parent_index, childCheckState(item), Qt::CheckStateRole);
     }
 
     m_recursiveChange = false;
@@ -294,6 +274,58 @@ bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value,
   return false;
 }
 
+Qt::CheckState AccountCheckModel::childCheckState(const RootItem* item) const {
+  bool all_checked = true;
+  bool all_unchecked = true;
+
+  for (RootItem* child : item->childItems()) {
+    if (m_unavailableItems.contains(child)) {
+      continue;
+    }
+
+    const auto state = m_checkStates.value(child, Qt::CheckState::Unchecked);
+    all_checked &= state == Qt::CheckState::Checked;
+    all_unchecked &= state == Qt::CheckState::Unchecked;
+  }
+
+  if (all_unchecked) {
+    return Qt::CheckState::Unchecked;
+  }
+
+  return all_checked ? Qt::CheckState::Checked : Qt::CheckState::PartiallyChecked;
+}
+
+void AccountCheckModel::setUnavailableItems(QHash<RootItem*, QString> items) {
+  if (m_unavailableItems != items) {
+    m_unavailableItems.swap(items);
+    refreshAvailability({}, items);
+  }
+}
+
+void AccountCheckModel::refreshAvailability(const QModelIndex& current, const QHash<RootItem*, QString>& previous) {
+  const auto count = rowCount(current);
+
+  for (int row = 0; row < count; ++row) {
+    refreshAvailability(index(row, 0, current), previous);
+  }
+
+  if (current.isValid()) {
+    auto* item = itemForIndex(current);
+    const auto old_state = m_checkStates.value(item, Qt::CheckState::Unchecked);
+    const bool unavailable = m_unavailableItems.contains(item);
+    const auto state = count > 0 && !unavailable ? childCheckState(item) : old_state;
+
+    if (old_state != state) {
+      m_checkStates[item] = state;
+    }
+
+    if (old_state != state || unavailable != previous.contains(item) ||
+        previous.value(item) != m_unavailableItems.value(item)) {
+      emit dataChanged(current, current);
+    }
+  }
+}
+
 Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
   if (!index.isValid() || (itemForIndex(index)->kind() != RootItem::Kind::Category &&
                            itemForIndex(index)->kind() != RootItem::Kind::Feed)) {
@@ -301,6 +333,10 @@ Qt::ItemFlags AccountCheckModel::flags(const QModelIndex& index) const {
   }
 
   Qt::ItemFlags flags = Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsSelectable;
+
+  if (m_unavailableItems.contains(itemForIndex(index))) {
+    return Qt::ItemFlag::NoItemFlags;
+  }
 
   if (index.column() == 0) {
     flags |= Qt::ItemFlag::ItemIsUserCheckable;
@@ -313,7 +349,7 @@ QList<RootItem*> AccountCheckModel::checkedItems() const {
   auto keys = m_checkStates.keys();
   auto res = qlinq::from(keys)
                .where([&](const auto& key) {
-                 return m_checkStates.value(key) == Qt::CheckState::Checked;
+                  return !m_unavailableItems.contains(key) && m_checkStates.value(key) == Qt::CheckState::Checked;
                })
                .toList();
 
@@ -327,7 +363,8 @@ void AccountCheckModel::removeCheckState(RootItem* item) {
 }
 
 bool AccountCheckModel::isItemChecked(RootItem* item) const {
-  return m_checkStates.value(item, Qt::CheckState::Unchecked) != Qt::CheckState::Unchecked;
+  return !m_unavailableItems.contains(item) &&
+         m_checkStates.value(item, Qt::CheckState::Unchecked) != Qt::CheckState::Unchecked;
 }
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {

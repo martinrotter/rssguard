@@ -111,6 +111,7 @@ class TestArticlePreview : public QObject {
     void delayedTabLoadPreservesVisibility();
     void delayedTabClosesWhenFeedIsRemoved();
     void textSearchWrapsBackward();
+    void linklessArticleUsesMatchingFeedBaseUrl();
     void embeddedPreviewAfterClear_data();
     void embeddedPreviewAfterClear();
     void embeddedPreviewDoesNotRevealBackgroundTab();
@@ -254,6 +255,27 @@ void TestArticlePreview::textSearchWrapsBackward() {
   viewer.findText(query, true);
   QCOMPARE(viewer.textCursor().selectionStart(), int(content.lastIndexOf(query)));
   QCOMPARE(viewer.textCursor().selectedText(), query);
+}
+
+void TestArticlePreview::linklessArticleUsesMatchingFeedBaseUrl() {
+  TestServiceRoot account;
+  auto* feed = new Feed(&account);
+  feed->setId(42);
+  feed->setSource(QSL("https://reader:secret@example.invalid:8443/feeds/\U0001F4F0/news.xml?token=secret#section"));
+  account.appendChild(feed);
+
+  auto message = m_message;
+  message.m_feedId = feed->id();
+  TextBrowserViewer viewer;
+  viewer.loadMessage(message, &account, feed);
+  QCOMPARE(viewer.url(), QUrl(QSL("https://example.invalid:8443/feeds/\U0001F4F0/news.xml")));
+  QCOMPARE(viewer.document()->baseUrl().resolved(QUrl(QSL("images/photo.png"))),
+           QUrl(QSL("https://example.invalid:8443/feeds/\U0001F4F0/images/photo.png")));
+
+  message.m_feedId = 43;
+  viewer.loadMessage(message, &account, nullptr);
+  QVERIFY(viewer.url().isEmpty());
+  QVERIFY(viewer.plainText().contains(QSL("Article preview regression test.")));
 }
 
 void TestArticlePreview::embeddedPreviewAfterClear_data() {

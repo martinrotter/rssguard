@@ -2,6 +2,9 @@
 
 #include "miscellaneous/textfactory.h"
 
+#include <QDir>
+#include <QFile>
+#include <QTemporaryDir>
 #include <QTest>
 
 class TestTextFactory : public QObject {
@@ -13,6 +16,7 @@ class TestTextFactory : public QObject {
     void createsUniqueName();
     void parsesDateTime_data();
     void parsesDateTime();
+    void createsEncryptionKeyInNewSettingsDirectory();
 };
 
 void TestTextFactory::extractsUsernameFromEmail() {
@@ -53,6 +57,26 @@ void TestTextFactory::parsesDateTime() {
   QFETCH(bool, valid);
 
   QCOMPARE(TextFactory::parseDateTime(input).isValid(), valid);
+}
+
+void TestTextFactory::createsEncryptionKeyInNewSettingsDirectory() {
+  QTemporaryDir profile;
+  QVERIFY(profile.isValid());
+
+  const QDir settings(profile.filePath(QSL("data/config")));
+  QVERIFY(!settings.exists());
+
+  TextFactory::initializeSecretEncryptionKey(settings.path());
+
+  QFile key_file(settings.filePath(QSL(ENCRYPTION_FILE_NAME)));
+  QVERIFY(key_file.open(QIODevice::ReadOnly));
+
+  bool valid = false;
+  const quint64 key = key_file.readAll().toULongLong(&valid);
+  QVERIFY(valid && key != 0);
+
+  const QString secret = QSL("test credential");
+  QCOMPARE(TextFactory::decrypt(TextFactory::encrypt(secret), key), secret);
 }
 
 QTEST_APPLESS_MAIN(TestTextFactory)

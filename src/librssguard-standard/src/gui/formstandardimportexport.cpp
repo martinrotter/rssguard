@@ -13,6 +13,7 @@
 #include <librssguard/miscellaneous/iofactory.h>
 #include <librssguard/services/abstract/category.h>
 
+#include <QSignalBlocker>
 #include <QTextStream>
 
 FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_root, QWidget* parent)
@@ -22,6 +23,18 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_model, &FeedsImportExportModel::parsingStarted, this, &FormStandardImportExport::onParsingStarted);
   connect(m_model, &FeedsImportExportModel::parsingFinished, this, &FormStandardImportExport::onParsingFinished);
   connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);
+  connect(m_ui->m_cmbRootNode,
+          qOverload<int>(&QComboBox::currentIndexChanged),
+          this,
+          &FormStandardImportExport::refreshImportAvailability);
+
+  m_updateImportButtonTimer.setSingleShot(true);
+  connect(&m_updateImportButtonTimer, &QTimer::timeout, this, &FormStandardImportExport::updateImportButton);
+  connect(m_model->sourceModel(), &AccountCheckModel::checkStateChanged, this, [this]() {
+    if (m_model->mode() == FeedsImportExportModel::Mode::Import && m_conversionType == ConversionType::OPML20) {
+      m_updateImportButtonTimer.start(0);
+    }
+  });
 
   QPalette pal;
 
@@ -91,8 +104,7 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Import from file"));
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 
-      // Load categories.
-      loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
+      reloadDestinations();
       setWindowTitle(tr("Import feeds"));
       setWindowIcon(qApp->icons()->fromTheme(QSL("document-import")));
       break;
@@ -149,7 +161,7 @@ void FormStandardImportExport::onParsingFinished(int count_failed, int count_suc
   m_ui->m_treeFeeds->setModel(m_model);
   m_ui->m_treeFeeds->expandAll();
 
-  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(true);
+  refreshImportAvailability();
 }
 
 void FormStandardImportExport::onParsingProgress(int completed, int total) {
@@ -366,6 +378,12 @@ void FormStandardImportExport::importFeeds() {
   QString output_message;
   RootItem* parent = m_ui->m_cmbRootNode->currentData().value<RootItem*>();
 
+  refreshImportAvailability();
+
+  if (!m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->isEnabled()) {
+    return;
+  }
+
   if (m_serviceRoot->mergeImportExportModel(m_model, parent, output_message)) {
     m_serviceRoot->requestItemExpand(parent->getSubTree<RootItem>(), true);
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok, output_message, output_message);
@@ -373,12 +391,81 @@ void FormStandardImportExport::importFeeds() {
   else {
     m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, output_message, output_message);
   }
+
+  reloadDestinations();
 }
 
-void FormStandardImportExport::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
-  m_ui->m_cmbRootNode->addItem(root_item->icon(), root_item->title(), QVariant::fromValue(root_item));
-
-  for (Category* category : categories) {
-    m_ui->m_cmbRootNode->addItem(category->icon(), category->title(), QVariant::fromValue(category));
+void FormStandardImportExport::refreshImportAvailability() {
+  if (m_model->mode() != FeedsImportExportModel::Mode::Import) {
+    return;
   }
+
+  if (m_conversionType == ConversionType::OPML20) {
+    const auto* destination = m_ui->m_cmbRootNode->currentData().value<RootItem*>();
+    auto* root = m_model->sourceModel()->rootItem();
+    QHash<RootItem*, QString> unavailable;
+
+    if (destination != nullptr && root != nullptr) {
+      markUnavailableItems(root, StandardServiceRoot::importSourceKeys(*destination), unavailable);
+    }
+
+    m_model->sourceModel()->setUnavailableItems(std::move(unavailable));
+  }
+
+  updateImportButton();
+}
+
+bool FormStandardImportExport::markUnavailableItems(RootItem* item,
+                                                   const QSet<QString>& existing_sources,
+                                                   QHash<RootItem*, QString>& unavailable) const {
+  if (item->kind() == RootItem::Kind::Feed) {
+    const bool duplicate = existing_sources.contains(StandardServiceRoot::importSourceKey(*item->toFeed()));
+
+    if (duplicate) {
+      unavailable.insert(item, tr("Already in the selected destination"));
+    }
+
+    return duplicate;
+  }
+
+  bool all_unavailable = item->childCount() > 0;
+
+  for (RootItem* child : std::as_const(item->childItems())) {
+    all_unavailable &= markUnavailableItems(child, existing_sources, unavailable);
+  }
+
+  if (all_unavailable && item->kind() == RootItem::Kind::Category) {
+    unavailable.insert(item, tr("All feeds in this folder are already in the selected destination"));
+  }
+
+  return all_unavailable;
+}
+
+void FormStandardImportExport::updateImportButton() {
+  m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)
+    ->setEnabled(m_ui->m_groupFeeds->isEnabled() && m_ui->m_cmbRootNode->currentIndex() >= 0 &&
+                 (m_conversionType != ConversionType::OPML20 || !m_model->sourceModel()->checkedItems().isEmpty()));
+}
+
+void FormStandardImportExport::reloadDestinations() {
+  auto* combo = m_ui->m_cmbRootNode;
+  const auto selected = combo->currentData();
+  const auto add_destination = [combo](RootItem* item) {
+    combo->addItem(item->fullIcon(), item->title(), QVariant::fromValue(item));
+  };
+
+  {
+    const QSignalBlocker blocker(combo);
+    combo->clear();
+    add_destination(m_serviceRoot);
+
+    for (Category* category : m_serviceRoot->getSubTreeCategories()) {
+      add_destination(category);
+    }
+
+    const auto index = combo->findData(selected);
+    combo->setCurrentIndex(index >= 0 ? index : 0);
+  }
+
+  refreshImportAvailability();
 }

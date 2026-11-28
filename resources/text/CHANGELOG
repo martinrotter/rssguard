@@ -19,6 +19,9 @@ Fixed:
 * OPML import uses the feed URL as its name when the file and available online metadata provide an empty or missing name. (#2540)
 * OPML import restores folders from `category` paths for feeds listed at the top level.
 * OPML import reuses same-named folders under the same parent, including when importing the same file again.
+* The OPML import preview disables feeds already present in the selected account or folder and updates when the destination changes. Repeat imports also skip folders that contain only existing feeds.
+* The OPML import destination list shows folder icons and includes newly imported folders immediately, while keeping the selected destination.
+* A clean profile now saves its encryption key on first startup so saved passwords remain readable after restarting.
 * Removing a feed just after opening one of its articles closes the loading tab safely.
 * XML feeds with consecutive unescaped ampersands can now load, and cleanup for malformed feeds is faster.
 * Large XML feeds with extra whitespace load faster when RSS Guard detects their text encoding.
@@ -28,6 +31,9 @@ Fixed:
 * Improved reliability when reading event details from iCalendar feeds.
 * Large refreshes start faster when many feeds share the same website.
 * Clearing a wildcard search shows feeds that match the other active filters again.
+* Article filters that look for similar titles now compare the beginnings of those titles correctly.
+* Article previews handle missing feeds safely and use the online feed address for relative links when an article has no link of its own.
+* Large feeds with many entries that have neither a title nor a link are processed faster.
 
 5.3.0
 -----

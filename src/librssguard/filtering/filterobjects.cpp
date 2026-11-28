@@ -338,14 +338,11 @@ double jaro_winkler_distance(const QString& first, const QString& second, JaroWi
 
   double m = matches;
   double jaro = (m / len1 + m / len2 + (m - transpositions / 2.0) / m) / 3.0;
-  size_t common_prefix = 0;
-  len2 = std::min(qsizetype(4), len2);
+  qsizetype common_prefix = 0;
+  const qsizetype prefix_limit = std::min(qsizetype(4), len2);
 
-  for (qsizetype i = 0; i < len2; ++i) {
-    if (str1->at(i) == str2->at(i)) {
-      ++common_prefix;
-      break;
-    }
+  while (common_prefix < prefix_limit && str1->at(common_prefix) == str2->at(common_prefix)) {
+    ++common_prefix;
   }
 
   return 1.0 - (jaro + common_prefix * 0.1 * (1.0 - jaro));

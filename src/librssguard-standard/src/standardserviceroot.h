@@ -10,6 +10,7 @@
 #include <QCoreApplication>
 #include <QMutex>
 #include <QPair>
+#include <QSet>
 
 class StandardCategory;
 class FeedsImportExportModel;
@@ -79,6 +80,8 @@ class StandardServiceRoot : public ServiceRoot {
     void cloneFeed(const StandardFeed& source);
     QList<Message> obtainNewMessagesImpl(Feed* feed, std::function<void()>* after_messages_stored);
     void fetchMetadataForAllFeeds(const QList<Feed*>& feeds);
+    static QString importSourceKey(const Feed& feed);
+    static QSet<QString> importSourceKeys(const RootItem& destination);
 
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.

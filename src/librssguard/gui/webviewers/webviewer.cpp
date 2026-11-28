@@ -312,34 +312,41 @@ QString WebViewer::convertToHtmlWithLimitedImages(const QString& html, int fit_w
 }
 
 QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
-  QUrl url;
-
   if (!message.m_url.isEmpty()) {
-    url = message.m_url;
-  }
-  else {
-    auto* feed = root != nullptr ? root->account()
-                                     ->getItemFromSubTree([message](const RootItem* it) {
-                                       return it->kind() == RootItem::Kind::Feed && it->id() == message.m_feedId;
-                                     })
-                                     ->toFeed()
-                                 : nullptr;
+    QUrl url(message.m_url);
 
-    if (feed != nullptr) {
-      QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-      if (url.isValid()) {
-        QString deducted_url = url.scheme() + QSL("://") + (url.isLocalFile() ? url.toLocalFile() : url.host());
-        url = deducted_url;
-      }
+    if (url.isValid() && url.hasFragment()) {
+      url.setFragment(QString());
     }
+
+    return url;
   }
 
-  if (url.isValid() && url.hasFragment()) {
-    url.setFragment(QString());
+  const auto* account = root != nullptr ? root->account() : nullptr;
+
+  if (account == nullptr) {
+    return {};
   }
 
-  return url;
+  const auto* item = account->getItemFromSubTree([id = message.m_feedId](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Feed && item->id() == id;
+  });
+  const auto* feed = item != nullptr ? item->toFeed() : nullptr;
+
+  if (feed == nullptr) {
+    return {};
+  }
+
+  const QUrl source(feed->source());
+  const auto scheme = source.scheme();
+
+  if (!source.isValid() || source.host().isEmpty() ||
+      (scheme != QL1S("http") && scheme != QL1S("https") && scheme != QL1S("gemini"))) {
+    return {};
+  }
+
+  // Resolve relative article links without carrying feed credentials or query parameters.
+  return source.adjusted(QUrl::RemoveUserInfo | QUrl::RemoveQuery | QUrl::RemoveFragment);
 }
 
 QString WebViewer::htmlForMessage(const Message& message, RootItem* root, Feed* feed) const {

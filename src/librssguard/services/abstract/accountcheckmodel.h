@@ -33,6 +33,7 @@ class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
 
     bool isItemChecked(RootItem* item) const;
     bool setItemChecked(RootItem* item, Qt::CheckState check);
+    void setUnavailableItems(QHash<RootItem*, QString> items);
     void setCheckStateChangeInterceptor(std::function<bool(RootItem*, Qt::CheckState)> interceptor);
 
     // Returns feed/category which lies at the specified index or
@@ -57,7 +58,11 @@ class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
     RootItem* m_rootItem;
 
   private:
+    Qt::CheckState childCheckState(const RootItem* item) const;
+    void refreshAvailability(const QModelIndex& index, const QHash<RootItem*, QString>& previous);
+
     QHash<RootItem*, Qt::CheckState> m_checkStates;
+    QHash<RootItem*, QString> m_unavailableItems;
     std::function<bool(RootItem*, Qt::CheckState)> m_checkStateChangeInterceptor;
     bool m_recursiveChange;
 };

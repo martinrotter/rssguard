@@ -445,17 +445,18 @@ QList<Message> FeedParser::messages() {
 
   // Fixup missing data.
   //
-  // NOTE: Message must have "title" field, otherwise it is skipped.
+  // An article without a title uses its URL. If both are blank, skip it.
 
   QDateTime retrieved_time = current_time;
 
-  for (int i = 0; i < messages.size(); i++) {
-    Message& new_message = messages[i];
+  auto kept_end = messages.begin();
+  const auto end = messages.end();
+  for (auto article = kept_end; article != end; ++article) {
+    Message& new_message = *article;
 
     // Title.
     if (new_message.m_title.simplified().isEmpty()) {
       if (new_message.m_url.simplified().isEmpty()) {
-        messages.removeAt(i--);
         continue;
       }
       else {
@@ -505,6 +506,16 @@ QList<Message> FeedParser::messages() {
     static QRegularExpression reg_non_url(QSL("[\\t\\n]"));
 
     new_message.m_url = new_message.m_url.replace(reg_non_url, {});
+
+    // Compact the survivors in order and erase the discarded tail once.
+    if (kept_end != article) {
+      *kept_end = new_message;
+    }
+    ++kept_end;
+  }
+
+  if (kept_end != end) {
+    messages.erase(kept_end, end);
   }
 
   return messages;

@@ -19,6 +19,25 @@ Q_NEVER_INLINE QList<Message> messagesViaBase(FeedParser* parser) {
 
 namespace {
 
+  class CleanupParser : public FeedParser {
+    public:
+      explicit CleanupParser(const QString& data) : FeedParser(data, DataType::Json) {}
+
+    protected:
+      QJsonArray jsonMessageElements() override {
+        return m_json.array();
+      }
+      QString jsonMessageTitle(const QJsonObject& item) const override {
+        return item.value(QSL("title")).toString();
+      }
+      QString jsonMessageUrl(const QJsonObject& item) const override {
+        return item.value(QSL("url")).toString();
+      }
+      QString jsonMessageId(const QJsonObject& item) const override {
+        return item.value(QSL("id")).toString();
+      }
+  };
+
   class MemoryFeed : public Feed {
     public:
       QVariantHash customDatabaseData() const override {
@@ -92,6 +111,7 @@ class TestMediaWikiParser : public QObject {
     Q_OBJECT
 
   private slots:
+    void cleanupKeepsOrderAndTitleFallback();
     void categoryHtmlUsesEditUri();
     void categoryHtmlUsesMinifiedBooleans_data();
     void categoryHtmlUsesMinifiedBooleans();
@@ -115,6 +135,32 @@ class TestMediaWikiParser : public QObject {
     void changedSourceAndInvalidStateRestartBackfill();
     void standardFeedPreservesArbitraryData();
 };
+
+void TestMediaWikiParser::cleanupKeepsOrderAndTitleFallback() {
+  CleanupParser parser(QSL(R"([
+    {"id":"discard-first","title":"\t","url":"\n"},
+    {"id":"repeat","title":"First"},
+    {"id":"discard-middle"},
+    {"id":"repeat","url":"https://example.test/\tsecond"},
+    {"title":"No ID"},
+    {"id":"discard-last","title":" "}
+  ])"));
+
+  const auto messages = parser.messages();
+  QCOMPARE(messages.size(), 3);
+  QCOMPARE(messages.at(0).m_title, QSL("First"));
+  QCOMPARE(messages.at(1).m_title, QSL("https://example.test/\tsecond"));
+  QCOMPARE(messages.at(1).m_url, QSL("https://example.test/second"));
+  QCOMPARE(messages.at(2).m_title, QSL("No ID"));
+  QCOMPARE(messages.at(0).m_customId, QSL("repeat"));
+  QCOMPARE(messages.at(1).m_customId, QSL("repeat"));
+  QVERIFY(messages.at(2).m_customId.isEmpty());
+
+  for (qsizetype i = 1; i < messages.size(); ++i) {
+    QCOMPARE(messages.at(i - 1).m_created.msecsTo(messages.at(i).m_created), qint64(-1));
+    QCOMPARE(messages.at(i - 1).m_retrieved.msecsTo(messages.at(i).m_retrieved), qint64(1));
+  }
+}
 
 void TestMediaWikiParser::categoryHtmlUsesEditUri() {
   const QByteArray html = R"(<html><head><meta content="MediaWiki 1.47" name="generator">

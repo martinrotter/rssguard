@@ -721,6 +721,20 @@ QString StandardServiceRoot::defaultTitle() {
   return SystemFactory::loggedInUser() + QSL(" (RSS/ATOM/JSON)");
 }
 
+QString StandardServiceRoot::importSourceKey(const Feed& feed) {
+  return feed.source().toLower();
+}
+
+QSet<QString> StandardServiceRoot::importSourceKeys(const RootItem& destination) {
+  QSet<QString> sources;
+
+  for (const Feed* feed : destination.getSubTreeFeeds()) {
+    sources.insert(importSourceKey(*feed));
+  }
+
+  return sources;
+}
+
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
                                                  RootItem* target_root_node,
                                                  QString& output_message) {
@@ -731,6 +745,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
 
   new_parents.push(model->sourceModel()->rootItem());
   bool some_feed_category_error = false;
+  auto existing_sources = importSourceKeys(*target_root_node);
 
   // Iterate all new items we would like to merge into current model.
   while (!new_parents.isEmpty()) {
@@ -780,12 +795,9 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
-        const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
-          return it->kind() == RootItem::Kind::Feed &&
-                 it->toFeed()->source().toLower() == source_feed->source().toLower();
-        });
+        const auto source_key = importSourceKey(*source_feed);
 
-        if (feed_with_same_url != nullptr) {
+        if (existing_sources.contains(source_key)) {
           continue;
         }
 
@@ -799,6 +811,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
                                                  target_parent->id());
           });
 
+          existing_sources.insert(source_key);
           requestItemReassignment(new_feed, target_parent);
         }
         catch (const ApplicationException& ex) {

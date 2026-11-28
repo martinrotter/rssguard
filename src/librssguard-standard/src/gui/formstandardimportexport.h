@@ -8,12 +8,12 @@
 #include "ui_formstandardimportexport.h"
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
   class FormStandardImportExport;
 }
 
-class Category;
 class StandardServiceRoot;
 
 class FormStandardImportExport : public QDialog {
@@ -51,13 +51,19 @@ class FormStandardImportExport : public QDialog {
 
     void exportFeeds();
     void importFeeds();
+    void refreshImportAvailability();
+    void updateImportButton();
+    bool markUnavailableItems(RootItem* item,
+                              const QSet<QString>& existing_sources,
+                              QHash<RootItem*, QString>& unavailable) const;
 
-    void loadCategories(const QList<Category*>& categories, RootItem* root_item);
+    void reloadDestinations();
 
     QScopedPointer<Ui::FormStandardImportExport> m_ui;
-    ConversionType m_conversionType;
+    ConversionType m_conversionType = ConversionType::OPML20;
     FeedsImportExportModel* m_model;
     StandardServiceRoot* m_serviceRoot;
+    QTimer m_updateImportButtonTimer;
 };
 
 #endif // FORMEXPORT_H

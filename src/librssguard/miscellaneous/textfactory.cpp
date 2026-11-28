@@ -29,6 +29,7 @@
 #include <QLocale>
 #include <QRandomGenerator64>
 #include <QRegularExpression>
+#include <QSaveFile>
 #include <QString>
 #include <QStringList>
 #include <QTextDocument>
@@ -722,7 +723,18 @@ void TextFactory::initializeSecretEncryptionKey(const QString& settings_director
   s_encryptionKey = generateSecretEncryptionKey();
 
   try {
-    IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+    if (!QDir().mkpath(settings_directory)) {
+      throw ApplicationException(QSL("Cannot create settings directory '%1'.")
+                                   .arg(QDir::toNativeSeparators(settings_directory)));
+    }
+
+    QSaveFile key_file(encryption_file_path);
+    const auto key_data = QByteArray::number(s_encryptionKey);
+
+    if (!key_file.open(QIODevice::WriteOnly) || key_file.write(key_data) != key_data.size() || !key_file.commit()) {
+      throw ApplicationException(QSL("Cannot save encryption key file '%1' (%2).")
+                                   .arg(QDir::toNativeSeparators(encryption_file_path), key_file.errorString()));
+    }
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_CORE << "Failed to write newly generated encryption key to file, error"
