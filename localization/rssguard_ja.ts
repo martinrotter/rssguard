@@ -4668,12 +4668,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="425"/>
       <source>Already in the selected destination</source>
-      <translation type="unfinished">Already in the selected destination</translation>
+      <translation>選択した保存先にすでに存在します</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="438"/>
       <source>All feeds in this folder are already in the selected destination</source>
-      <translation type="unfinished">All feeds in this folder are already in the selected destination</translation>
+      <translation>このフォルダー内のすべてのフィードは、すでに選択した移動先にあります</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="155"/>
@@ -11193,7 +11193,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="211"/>
       <source>The backup destination is a symbolic link. Choose another backup name.</source>
-      <translation type="unfinished">The backup destination is a symbolic link. Choose another backup name.</translation>
+      <translation>バックアップの保存先がシンボリックリンクになっています。別のバックアップ名を選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="214"/>
@@ -11203,7 +11203,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="226"/>
       <source>Cannot prepare SQLite backup snapshot (requires SQLite 3.27 or newer): %1</source>
-      <translation type="unfinished">Cannot prepare SQLite backup snapshot (requires SQLite 3.27 or newer): %1</translation>
+      <translation>SQLite バックアップスナップショットを準備できません（SQLite 3.27 以降が必要です）: %1</translation>
     </message>
   </context>
   <context>
