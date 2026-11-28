@@ -2363,7 +2363,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="127"/>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="165"/>
       <source>This local time occurs twice. Choose which occurrence to use.</source>
-      <translation type="unfinished">This local time occurs twice. Choose which occurrence to use.</translation>
+      <translation>这个本地时间出现了两次。选择使用哪一次。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="136"/>
@@ -2423,7 +2423,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="258"/>
       <source>Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</source>
-      <translation type="unfinished">Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</translation>
+      <translation>保留自定义重现，直到您明确替换它。要更改出现的重现，请编辑整个序列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="268"/>
@@ -2458,7 +2458,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="52"/>
       <source>No writable calendar is available. Refresh the calendar list first.</source>
-      <translation type="unfinished">No writable calendar is available. Refresh the calendar list first.</translation>
+      <translation>没有可写的日历。请先刷新日历列表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="69"/>
@@ -2488,7 +2488,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="369"/>
       <source>The earlier creation succeeded. Your later edits are retained. Review them, then save.</source>
-      <translation type="unfinished">The earlier creation succeeded. Your later edits are retained. Review them, then save.</translation>
+      <translation>早前的创建成功了。您稍后的编辑被保留。审阅它们，然后保存。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="374"/>
@@ -2498,12 +2498,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="381"/>
       <source>This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</source>
-      <translation type="unfinished">This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</translation>
+      <translation>此活动在 Google Calendar 中已更改。您的草稿将被保留。重新加载或重新应用您的编辑到最新版本。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="411"/>
       <source>Your edits have been reapplied. Review them, then save.</source>
-      <translation type="unfinished">Your edits have been reapplied. Review them, then save.</translation>
+      <translation>您的编辑已被重新应用。审阅它们，然后保存。</translation>
     </message>
   </context>
   <context>
@@ -2910,7 +2910,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="55"/>
       <source>Wait for the setup test to finish before saving.</source>
-      <translation type="unfinished">Wait for the setup test to finish before saving.</translation>
+      <translation>保存前等待设置测试完成。</translation>
     </message>
   </context>
   <context>
@@ -3096,7 +3096,7 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="26"/>
       <source>Select calendars belonging to this account.</source>
-      <translation type="unfinished">Select calendars belonging to this account.</translation>
+      <translation>选择属于此账户的日历。</translation>
     </message>
   </context>
   <context>
@@ -5149,7 +5149,7 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="68"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="110"/>
       <source>Enter your Google desktop application&apos;s client ID.</source>
-      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+      <translation>输入您的 Google 桌面应用程序&apos;的客户端 ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
@@ -5191,7 +5191,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="149"/>
       <source>Authorization returned no refresh token. Test setup again to grant offline access.</source>
-      <translation type="unfinished">Authorization returned no refresh token. Test setup again to grant offline access.</translation>
+      <translation>授权没有返回新令牌。再次测试设置来授予离线访问权。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="159"/>
@@ -5207,12 +5207,12 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="180"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="203"/>
       <source>An unexpected error occurred while testing Calendar access.</source>
-      <translation type="unfinished">An unexpected error occurred while testing Calendar access.</translation>
+      <translation>测试日历访问时发生意外错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="194"/>
       <source>No calendar with readable event details was found.</source>
-      <translation type="unfinished">No calendar with readable event details was found.</translation>
+      <translation>没有找到含可读活动详细信息的日历。</translation>
     </message>
   </context>
   <context>
@@ -5220,7 +5220,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarentrypoint.cpp" line="34"/>
       <source>Google Calendar events, editing and local reminders via the Calendar REST API.</source>
-      <translation type="unfinished">Google Calendar events, editing and local reminders via the Calendar REST API.</translation>
+      <translation>通过 Calendar REST API进行的 Google 日历活动、编辑和本地提醒。</translation>
     </message>
   </context>
   <context>
@@ -5430,7 +5430,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
       <source>Enter your Google desktop application&apos;s client ID.</source>
-      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+      <translation>输入您的 Google 桌面应用程序&apos;的客户端 ID。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
