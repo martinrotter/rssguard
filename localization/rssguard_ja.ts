@@ -356,32 +356,32 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="19"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新しい予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="26"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>予定を編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="46"/>
       <source>Open in Google Calendar</source>
-      <translation type="unfinished">Open in Google Calendar</translation>
+      <translation>Google カレンダーで開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.ui" line="53"/>
       <source>Join meeting</source>
-      <translation type="unfinished">Join meeting</translation>
+      <translation>ミーティングに参加</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="110"/>
       <source>This event is cancelled.</source>
-      <translation type="unfinished">This event is cancelled.</translation>
+      <translation>この予定はキャンセルされました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/calendareventpreviewer.cpp" line="113"/>
       <source>This event is read-only.</source>
-      <translation type="unfinished">This event is read-only.</translation>
+      <translation>この予定は読み取り専用です。</translation>
     </message>
   </context>
   <context>
@@ -2318,27 +2318,27 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="14"/>
       <source>Calendar event</source>
-      <translation type="unfinished">Calendar event</translation>
+      <translation>カレンダーの予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="28"/>
       <source>Calendar</source>
-      <translation type="unfinished">Calendar</translation>
+      <translation>カレンダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="41"/>
       <source>Edit</source>
-      <translation type="unfinished">Edit</translation>
+      <translation>編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="52"/>
       <source>This occurrence</source>
-      <translation type="unfinished">This occurrence</translation>
+      <translation>この予定のみ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="57"/>
       <source>The whole series</source>
-      <translation type="unfinished">The whole series</translation>
+      <translation>すべての予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="65"/>
@@ -2348,83 +2348,83 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="78"/>
       <source>Location</source>
-      <translation type="unfinished">Location</translation>
+      <translation>場所</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="91"/>
       <source>All-day event</source>
-      <translation type="unfinished">All-day event</translation>
+      <translation>終日</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="98"/>
       <source>Starts</source>
-      <translation type="unfinished">Starts</translation>
+      <translation>開始日</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="127"/>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="165"/>
       <source>This local time occurs twice. Choose which occurrence to use.</source>
-      <translation type="unfinished">This local time occurs twice. Choose which occurrence to use.</translation>
+      <translation>このローカル時刻は 2 回発生します。使用する方を選択してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="136"/>
       <source>Ends</source>
-      <translation type="unfinished">Ends</translation>
+      <translation>終了日</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="174"/>
       <source>Time zone</source>
-      <translation type="unfinished">Time zone</translation>
+      <translation>タイムゾーン</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="194"/>
       <source>Repeat</source>
-      <translation type="unfinished">Repeat</translation>
+      <translation>繰り返し</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="205"/>
       <source>Do not repeat</source>
-      <translation type="unfinished">Do not repeat</translation>
+      <translation>繰り返さない</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="210"/>
       <source>Daily</source>
-      <translation type="unfinished">Daily</translation>
+      <translation>毎日</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="215"/>
       <source>Weekly</source>
-      <translation type="unfinished">Weekly</translation>
+      <translation>毎週</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="220"/>
       <source>Monthly</source>
-      <translation type="unfinished">Monthly</translation>
+      <translation>毎月</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="225"/>
       <source>Yearly</source>
-      <translation type="unfinished">Yearly</translation>
+      <translation>毎年</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="230"/>
       <source>Keep existing recurrence</source>
-      <translation type="unfinished">Keep existing recurrence</translation>
+      <translation>既存の繰り返しを維持</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="238"/>
       <source>Number of occurrences</source>
-      <translation type="unfinished">Number of occurrences</translation>
+      <translation>繰り返し回数</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="251"/>
       <source>No end date</source>
-      <translation type="unfinished">No end date</translation>
+      <translation>終了日なし</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="258"/>
       <source>Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</source>
-      <translation type="unfinished">Custom recurrence is retained until you explicitly replace it. To change recurrence for an occurrence, edit the whole series.</translation>
+      <translation>カスタムの繰り返し設定は、明示的に置き換えるまで保持されます。個別の予定の繰り返しを変更するには、すべての予定を編集してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="268"/>
@@ -2434,77 +2434,77 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="290"/>
       <source>Notify attendees about changes</source>
-      <translation type="unfinished">Notify attendees about changes</translation>
+      <translation>変更を参加者に通知</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="302"/>
       <source>Reload (discard draft)</source>
-      <translation type="unfinished">Reload (discard draft)</translation>
+      <translation>再読み込み (下書きを破棄)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.ui" line="312"/>
       <source>Reapply my edits to the latest version</source>
-      <translation type="unfinished">Reapply my edits to the latest version</translation>
+      <translation>最新バージョンの編集内容を再適用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新しい予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="36"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>予定を編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="52"/>
       <source>No writable calendar is available. Refresh the calendar list first.</source>
-      <translation type="unfinished">No writable calendar is available. Refresh the calendar list first.</translation>
+      <translation>書き込み可能なカレンダーがありません。先にカレンダーリストを更新してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="69"/>
       <source>This event is read-only.</source>
-      <translation type="unfinished">This event is read-only.</translation>
+      <translation>この予定は読み取り専用です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="217"/>
       <source>Choose occurrence</source>
-      <translation type="unfinished">Choose occurrence</translation>
+      <translation>予定を選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="220"/>
       <source>%1 (%2 UTC)</source>
-      <translation type="unfinished">%1 (%2 UTC)</translation>
+      <translation>%1 (%2 UTC)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="285"/>
       <source>Saving event...</source>
-      <translation type="unfinished">Saving event...</translation>
+      <translation>予定を保存中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="310"/>
       <source>Loading the whole series...</source>
-      <translation type="unfinished">Loading the whole series...</translation>
+      <translation>すべての予定を読み込み中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="369"/>
       <source>The earlier creation succeeded. Your later edits are retained. Review them, then save.</source>
-      <translation type="unfinished">The earlier creation succeeded. Your later edits are retained. Review them, then save.</translation>
+      <translation>先ほどの作成は完了しました。その後の編集内容は保持されています。確認してから保存してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="374"/>
       <source>Event saved</source>
-      <translation type="unfinished">Event saved</translation>
+      <translation>予定を保存しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="381"/>
       <source>This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</source>
-      <translation type="unfinished">This event changed in Google Calendar. Your draft is retained. Reload it or reapply your edits to the latest version.</translation>
+      <translation>この予定は Google カレンダーで変更されました。下書きは保持されています。再読み込みするか、最新バージョンの編集内容を再適用してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendarevent.cpp" line="411"/>
       <source>Your edits have been reapplied. Review them, then save.</source>
-      <translation type="unfinished">Your edits have been reapplied. Review them, then save.</translation>
+      <translation>編集内容が再適用されました。確認してから保存してください。</translation>
     </message>
   </context>
   <context>
@@ -2512,7 +2512,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formcalendareventdetails.ui" line="14"/>
       <source>Event details</source>
-      <translation type="unfinished">Event details</translation>
+      <translation>予定の詳細</translation>
     </message>
   </context>
   <context>
@@ -2901,17 +2901,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="18"/>
       <source>Calendar setup</source>
-      <translation type="unfinished">Calendar setup</translation>
+      <translation>カレンダーの設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="25"/>
       <source>Reminders</source>
-      <translation type="unfinished">Reminders</translation>
+      <translation>リマインダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formeditgcalendaraccount.cpp" line="55"/>
       <source>Wait for the setup test to finish before saving.</source>
-      <translation type="unfinished">Wait for the setup test to finish before saving.</translation>
+      <translation>保存する前にセットアップのテストが完了するまでお待ちください。</translation>
     </message>
   </context>
   <context>
@@ -3092,12 +3092,12 @@ Attachments supplied by the feed are separate from the webpage and might not app
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="16"/>
       <source>Reminders</source>
-      <translation type="unfinished">Reminders</translation>
+      <translation>リマインダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/formgcalendarfeeddetails.cpp" line="26"/>
       <source>Select calendars belonging to this account.</source>
-      <translation type="unfinished">Select calendars belonging to this account.</translation>
+      <translation>このアカウントに属するカレンダーを選択してください。</translation>
     </message>
   </context>
   <context>
@@ -5064,7 +5064,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="23"/>
       <source>Account name</source>
-      <translation type="unfinished">Account name</translation>
+      <translation>アカウント名</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="36"/>
@@ -5084,38 +5084,38 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="80"/>
       <source>Event cache</source>
-      <translation type="unfinished">Event cache</translation>
+      <translation>予定のキャッシュ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="86"/>
       <source>Keep past events</source>
-      <translation type="unfinished">Keep past events</translation>
+      <translation>過去のイベントを維持</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="96"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="119"/>
       <source> days</source>
-      <translation type="unfinished"> days</translation>
+      <translation> 日間</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="109"/>
       <source>Fetch future events</source>
-      <translation type="unfinished">Fetch future events</translation>
+      <translation>今後の予定を取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="135"/>
       <source>Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</source>
-      <translation type="unfinished">Cached events remain available offline. Removing an event locally does not cancel it in Google Calendar.</translation>
+      <translation>キャッシュされた予定はオフラインでも利用できます。ローカルで予定を削除しても、Google カレンダー上の予定はキャンセルされません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="148"/>
       <source>Refresh calendar list on startup</source>
-      <translation type="unfinished">Refresh calendar list on startup</translation>
+      <translation>起動時にカレンダーリストを更新</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="151"/>
       <source>Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</source>
-      <translation type="unfinished">Calendars are always discovered when none are cached. Event fetching uses the normal feed update settings.</translation>
+      <translation>キャッシュがない場合、カレンダーは自動的に検出されます。予定の取得には通常のフィード更新設定が使用されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.ui" line="160"/>
@@ -5125,44 +5125,44 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="19"/>
       <source>Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</source>
-      <translation type="unfinished">Use OAuth credentials for a Google desktop application with the Calendar API enabled. Test setup authorizes and verifies Calendar access. Save the account to keep the tested authorization. Calendar authorization is separate from Gmail.</translation>
+      <translation>Calendar API が有効になっている Google デスクトップアプリケーションの OAuth 認証情報を使用してください。「セットアップのテスト」でカレンダーへのアクセスを認証・検証します。テスト済みの認証情報を保持するにはアカウントを保存してください。カレンダーの認証は Gmail とは別個に行われます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
       <source>Enter an account name.</source>
-      <translation type="unfinished">Enter an account name.</translation>
+      <translation>アカウント名を入力して下さい。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="61"/>
       <source>Account name is set.</source>
-      <translation type="unfinished">Account name is set.</translation>
+      <translation>アカウント名が設定されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
       <source>Preconfigured client ID will be used.</source>
-      <translation type="unfinished">Preconfigured client ID will be used.</translation>
+      <translation>事前に設定されたクライアント ID が使用されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="65"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="69"/>
       <source>Client ID is set.</source>
-      <translation type="unfinished">Client ID is set.</translation>
+      <translation>クライアント ID が設定されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="68"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="110"/>
       <source>Enter your Google desktop application&apos;s client ID.</source>
-      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+      <translation>Google デスクトップアプリケーションのクライアント ID を入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
       <source>No client secret entered.</source>
-      <translation type="unfinished">No client secret entered.</translation>
+      <translation>クライアントシークレットが入力されていません。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="73"/>
       <source>Client secret is set.</source>
-      <translation type="unfinished">Client secret is set.</translation>
+      <translation>クライアントシークレットが設定されました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="96"/>
@@ -5178,44 +5178,44 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="137"/>
       <source>Waiting for authorization...</source>
-      <translation type="unfinished">Waiting for authorization...</translation>
+      <translation>認証を待機中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="138"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="160"/>
       <source>Testing setup.</source>
-      <translation type="unfinished">Testing setup.</translation>
+      <translation>セットアップをテスト中。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="145"/>
       <source>Authorization returned no access token.</source>
-      <translation type="unfinished">Authorization returned no access token.</translation>
+      <translation>認証からアクセストークンが返されませんでした。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="149"/>
       <source>Authorization returned no refresh token. Test setup again to grant offline access.</source>
-      <translation type="unfinished">Authorization returned no refresh token. Test setup again to grant offline access.</translation>
+      <translation>認証からリフレッシュトークンが返されませんでした。オフラインアクセスを許可するには、もう一度セットアップのテストを実行してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="159"/>
       <source>Testing Calendar access...</source>
-      <translation type="unfinished">Testing Calendar access...</translation>
+      <translation>カレンダーへのアクセスをテスト中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="174"/>
       <source>Tested successfully.</source>
-      <translation type="unfinished">Tested successfully.</translation>
+      <translation>テストに成功しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="180"/>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="203"/>
       <source>An unexpected error occurred while testing Calendar access.</source>
-      <translation type="unfinished">An unexpected error occurred while testing Calendar access.</translation>
+      <translation>カレンダーへのアクセスのテスト中に予期しないエラーが発生しました。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendaraccountdetails.cpp" line="194"/>
       <source>No calendar with readable event details was found.</source>
-      <translation type="unfinished">No calendar with readable event details was found.</translation>
+      <translation>予定の詳細を読み取れるカレンダーが見つかりませんでした。</translation>
     </message>
   </context>
   <context>
@@ -5223,7 +5223,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarentrypoint.cpp" line="34"/>
       <source>Google Calendar events, editing and local reminders via the Calendar REST API.</source>
-      <translation type="unfinished">Google Calendar events, editing and local reminders via the Calendar REST API.</translation>
+      <translation>Calendar REST API を介した Google カレンダーの予定表示、編集、ローカルリマインダー機能です。</translation>
     </message>
   </context>
   <context>
@@ -5231,12 +5231,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="57"/>
       <source>Multiple values</source>
-      <translation type="unfinished">Multiple values</translation>
+      <translation>複数の値</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="59"/>
       <source>Reminder timing</source>
-      <translation type="unfinished">Reminder timing</translation>
+      <translation>リマインダーのタイミング</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarreminderdetails.cpp" line="61"/>
@@ -5350,7 +5350,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="222"/>
       <source>Do not repeat</source>
-      <translation type="unfinished">Do not repeat</translation>
+      <translation>繰り返さない</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gui/gcalendarremindersettings.ui" line="235"/>
@@ -5433,7 +5433,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="376"/>
       <source>Enter your Google desktop application&apos;s client ID.</source>
-      <translation type="unfinished">Enter your Google desktop application&apos;s client ID.</translation>
+      <translation>Google デスクトップアプリケーションのクライアント ID を入力してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="442"/>
@@ -5525,7 +5525,7 @@ You can install it now.</source>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1094"/>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1122"/>
       <source>New event</source>
-      <translation type="unfinished">New event</translation>
+      <translation>新しい予定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1110"/>
@@ -5540,12 +5540,12 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1141"/>
       <source>Event details</source>
-      <translation type="unfinished">Event details</translation>
+      <translation>予定の詳細</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1145"/>
       <source>Edit event</source>
-      <translation type="unfinished">Edit event</translation>
+      <translation>予定を編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gcalendar/src/gcalendarserviceroot.cpp" line="1174"/>
